@@ -1,0 +1,49 @@
+site_name: SON BLOG
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - palette-toggle
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - search.highlight
+    - navigation.footer
+
+  language: en
+  palette:
+    # 라이트 모드 팔레트 토글
+    - scheme: default
+      primary: black
+      background: white
+      toggle:
+        icon: material/brightness-7  # 태양 아이콘
+        name: Switch to dark mode
+
+    # 다크 모드 팔레트 토글
+    - scheme: slate
+      primary: blue grey
+      toggle:
+        icon: material/brightness-4  # 달 아이콘
+        name: Switch to light mode
+
+  font:
+    text: 'KyoboHand'
+    code: 'Comic Shanns'
+
+extra_css:
+  - 'extra.css'
+
+plugins:
+  - awesome-pages
+  - search
+
+markdown_extensions:
+  - pymdownx.superfences
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences

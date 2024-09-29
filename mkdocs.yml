@@ -30,9 +30,7 @@ theme:
         icon: material/brightness-4  # 달 아이콘
         name: Switch to light mode
 
-  font:
-    text: 'KyoboHand'
-    code: 'Comic Shanns'
+
 
 extra_css:
   - 'extra.css'
@@ -40,6 +38,8 @@ extra_css:
 plugins:
   - awesome-pages
   - search
+  - glightbox
+
 
 markdown_extensions:
   - pymdownx.superfences

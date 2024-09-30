@@ -4,7 +4,6 @@ theme:
   features:
     - palette-toggle
     - navigation.sections
-    - navigation.expand
     - navigation.path
     - search.highlight
     - navigation.footer

@@ -2,16 +2,13 @@ site_name: SON BLOG
 theme:
   name: material
   features:
-    - navigation.instant
-    - navigation.instant.prefetch
     - palette-toggle
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.path
     - search.highlight
     - navigation.footer
+    - navigation.indexes
 
   language: en
   palette:

@@ -17,7 +17,12 @@ p code, li code {
     padding: 2px 5px !important;           /* 내부 padding 추가 */
 }
 
-
+.md-ellipsis {
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer/Edge */
+    user-select: none;          /* Non-prefixed version, for modern browsers */
+}
 
 /* note 타입의 admonition에 대한 폰트 크기 조정 */
 .admonition.info {

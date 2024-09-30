@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../1.%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/">
+        <link rel="prev" href="../3.%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/">
       
       
-        <link rel="next" href="../3.%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/">
+        <link rel="next" href="../../../z.%EC%9E%A1%EB%8F%99%EC%82%AC%EB%8B%88/admonition/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>2.콜백과 퓨처 - SON BLOG</title>
+        <title>4. 순차처리 & 일괄처리 & 진정한 비동기 - SON BLOG</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.콜백과 퓨처
+              4. 순차처리 & 일괄처리 & 진정한 비동기
             
           </span>
         </div>
@@ -565,28 +565,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    2.콜백과 퓨처
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../2.%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -595,42 +577,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      콜백
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      퓨처
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -661,10 +607,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    4. 순차처리 & 일괄처리 & 진정한 비동기
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -673,6 +637,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      순차 처리
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelining" class="md-nav__link">
+    <span class="md-ellipsis">
+      일괄 처리(파이프라이닝, pipelining)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      완전한 비동기 처리
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -794,7 +803,16 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      콜백
+      순차 처리
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipelining" class="md-nav__link">
+    <span class="md-ellipsis">
+      일괄 처리(파이프라이닝, pipelining)
     </span>
   </a>
   
@@ -803,7 +821,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      퓨처
+      완전한 비동기 처리
     </span>
   </a>
   
@@ -824,67 +842,153 @@
                   
 
 
-  <h1>2.콜백과 퓨처</h1>
+  <h1>4. 순차처리 & 일괄처리 & 진정한 비동기</h1>
 
-<p>이벤트 루프를 사용하는 프로그래밍에는 <code>콜백</code>과 <code>퓨처</code>라는 두 가지의 형태가 있다.</p>
-<hr />
-<h2 id="_1">콜백</h2>
-<p>콜백 패러다임에서는 각 함수를 호출할 때 콜백이라는 인자를 넘긴다. 함수가 값을 반환하는 대신, 그 값을 인자로 실어 콜백 함수를 호출한다.
-이 구조에서는 호출한 함수의 결과를 받는 함수가 더해지고, 다시 그 함수의 결과를 받는 또 다른 함수가 더해지면서 함수의 사슬이 만들어진다.
-→ 이런 식으로 콜백 깊이가 깊어지는 상황을 “콜백 지옥”이라고 부른다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
-<span class="kn">from</span> <span class="nn">some_database_library</span> <span class="kn">import</span> <span class="n">save_results_to_db</span>
+<h2 id="_1">순차 처리</h2>
+<p>순차 처리는 가장 전통적인 방식으로, 작업을 하나씩 순서대로 처리. 즉, 하나의 작업이 완료될 때까지 다음 작업을 시작하지 않고 기다리는 방식</p>
+<ul>
+<li><strong>단순하고 직관적</strong>: 코드 흐름이 명확하며, 디버깅과 이해가 쉬움.</li>
+<li><strong>낮은 성능</strong>: 각 작업이 끝날 때까지 기다리므로, 시간이 오래 걸리는 작업이 있다면 프로그램 전체가 느려질 수 있음. 예를 들어, 네트워크 요청이나 파일 I/O 작업이 있을 때, 해당 작업이 끝날 때까지 다음 작업이 시작되지 않음.</li>
+<li><strong>자원 활용 비효율적</strong>: CPU나 메모리 같은 자원이 충분히 사용되지 않음.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fetch_data_from_server</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fetching data from server...&quot;</span><span class="p">)</span>
+    <span class="c1"># 네트워크 요청 시뮬레이션 (네트워크 지연이 있음)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data received&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">save_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">callback</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> to database&quot;</span><span class="p">)</span>
-    <span class="c1"># 데이터베이스에 값을 저장하고 완료되면 콜백 호출</span>
-    <span class="n">save_results_to_db</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">process_data</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing data...&quot;</span><span class="p">)</span>
+    <span class="c1"># 데이터 처리</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data processed&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">print_response</span><span class="p">(</span><span class="n">db_response</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Response from database: </span><span class="si">{</span><span class="n">db_response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">fetch_data_from_server</span><span class="p">()</span>
+    <span class="n">process_data</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="c1"># print_response()가 아닌 함수 객체를 넘겨야 함</span>
-    <span class="n">eventloop</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">save_value</span><span class="p">,</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">print_response</span><span class="p">))</span>
+<span class="n">main</span><span class="p">()</span>
 </code></pre></div>
-<p><code>save_result_to_db</code> 는 비동기 함수다. 이 함수가 즉시 반환되면서 함수가 종료되고 다른 코드를 실행할 수 있다.</p>
-<ol>
-<li>
-<p>save_value</p>
-<ol>
-<li>이 함수는 데이터베이스에 “Hello World” 값을 저장하는 비동기 작업을 수행합니다. <code>save_results_to_db(value, callback)</code> 은 비동기 함수로, 데이터베이스에 저장이 완료되면 콜백 함수인 <code>callback</code> 을 호출한다.</li>
-</ol>
-</li>
-<li>
-<p>print_response</p>
-<ol>
-<li>이 함수는 데이터베이스에 저장된 후, 그 결과를 받아 처리하는 콜백 함수입니다. 결과가 들어오면 데이터베이스로부터 응답을 출력한다.</li>
-</ol>
-</li>
-<li>
-<p>이벤트 루프에 작업 추가</p>
-<ol>
-<li><code>partial(save_value, “Hello World”, print_response)</code> 는 save_value 함수에 “Hello World”라는 값과 <code>print_response</code> 콜백을 함께 전달하여 새로운 함수로 만들고, 이를 이벤트 루프에 추가합니다.</li>
-<li>이벤트 루프가 실행되면서 <code>save_value</code> 함수가 실행되고, 이 함수는 비동기적으로 데이터베이스 “Hello World” 를 저장하고 작업이 완료되면 콜백으로 <code>print_response</code> 가 호출된다.</li>
-</ol>
-</li>
-</ol>
-<p><strong>동작 흐름</strong></p>
-<ol>
-<li>이벤트 루프에 작업 추가</li>
-<li>이벤트 루프에서 작업 실행</li>
-<li>콜백 함수 실행</li>
-</ol>
 <hr />
-<h2 id="_2">퓨처</h2>
-<p>save_results_to_db 함수가 <code>Future</code> 타입의 값을 반환한다고 할 때, 이는 해당 함수가 비동기적으로 동작하며, 함수 호출 후 즉시 결과를 반환하지 않고, 작업이 완료되었을 때 그 결과를 나중에 제공할 것을 약속하는 객체(Future) 를 반환한다는 의미입니다.</p>
-<p><strong>Future 타입의 이해</strong></p>
-<p>비동기 작업의 완료 상태와 결과를 나중에 받을 수 있도록 하는 객체입니다. 주로 비동기 프로그래밍에서 사용되며, I/O 작업이나 네트워크 요청과 같이 시간이 걸리는 작업에서 자주 사용된다.</p>
+<h2 id="pipelining">일괄 처리(파이프라이닝, pipelining)</h2>
+<p>여러 작업을 배치로 모아서 한 번에 처리하는 방식이다. 즉, 여러 개의 작업을 한꺼번에 처리하지만, 여전히 순차적으로 실행된다.</p>
+<p>파이프라이닝은 작업을 여러 단계로 나누어 동시에 진행할 수 있는 특징이 있다.</p>
+<ul>
+<li><strong>효율성 증가</strong>: 여러 작업을 묶어서 동시에 처리할 수 있어, 순차 처리보다는 빠릅니다.</li>
+<li><strong>비동기와 순차 처리의 중간 지점</strong>: 비동기적으로 처리되지는 않지만, 각 작업을 일괄 처리하는 방식으로 속도를 높일 수 있습니다.</li>
+<li><strong>CPU 자원 활용 증가</strong>: 동시에 처리할 수 있는 작업이 많을 경우 CPU 자원을 더 효율적으로 사용할 수 있습니다.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">fetch_data_from_server</span><span class="p">(</span><span class="n">server</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fetching data from </span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 네트워크 요청 지연 시뮬레이션</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data received from </span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Data from </span><span class="si">{</span><span class="n">server</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">servers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Server 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Server 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Server 3&#39;</span><span class="p">]</span>
+
+    <span class="c1"># 일괄 처리: 각 서버에 대한 데이터를 동시에 요청</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">fetch_data_from_server</span><span class="p">(</span><span class="n">server</span><span class="p">)</span> <span class="k">for</span> <span class="n">server</span> <span class="ow">in</span> <span class="n">servers</span><span class="p">]</span>
+
+    <span class="c1"># 결과를 한꺼번에 처리</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All data fetched:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
 <ol>
-<li>비동기 작업을 시작할 때, 작업은 즉시 결과를 반환하지 않으므로 Future 객체가 반환된다.</li>
-<li>작업이 완료되면, Future 객체는 결과 값을 가지게 되고, 이 값을 확인하거나 처리할 수 있다. 이를 통해 우리는 비동기 작업의 결과를 추적할 수 있다.</li>
-<li>Future 객체는 콜백 함수를 등록할 수 있으며, 비동기 작업이 완료되었을 때 해당 콜백 함수가 실행된다.</li>
+<li><strong>순차 처리</strong><ul>
+<li>작업을 하나씩 처리하며, 각 작업이 끝날 때까지 기다렸다가 다음 작업을 시작합니다. 이는 매우 단순하지만, 처리 시간이 길어질 수 있습니다.</li>
+</ul>
+</li>
+<li><strong>일괄 처리(배치 처리)</strong><ul>
+<li>여러 작업을 한꺼번에 모아서 동시에 처리하는 방식입니다. 이 방식은 순차 처리보다 더 빠르게 작업을 완료할 수 있습니다.</li>
+</ul>
+</li>
 </ol>
+<p><strong>문제 설명</strong></p>
+<p><strong>데이터베이스 처리</strong>를 예로 들었을 때, <strong>서버의 처리 속도</strong>는 한 번에 얼마나 많은 요청을 처리할 수 있는지에 영향을 받습니다.
+서버가 <strong>초당 100개의 요청</strong>을 처리할 수 있다고 가정해 봅시다.</p>
+<ol>
+<li>
+<p><strong>순차 처리와 일괄 처리의 차이점</strong></p>
+<ul>
+<li>순차 처리는 한 번에 하나의 요청을 보내고, 해당 요청이 완료될 때까지 기다린 후에 다음 요청을 처리하는 방식입니다. 이는 각각의 요청이 완료될 때까지 대기 시간이 발생하므로 전체 처리 시간이 길어집니다. </li>
+<li>반면 일괄 처리는 여러 요청을 동시에 서버에 보내는 방식입니다. 예를 들어, 한 번에 100개의 요청을 동시에 서버로 보내면, 서버는 이를 병렬로 처리할 수 있습니다. 이 방식은 여러 요청을 한꺼번에 처리함으로써 순차 처리보다 훨씬 빠르게 결과를 얻을 수 있는 장점이 있습니다.  </li>
+</ul>
+</li>
+<li>
+<p><strong>일괄 처리에서 처리 시간이 발생하는 이유</strong></p>
+<ul>
+<li>일괄 처리 방식에서도 일정한 처리 시간이 필요합니다. 예를 들어, 한 번에 100개의 요청을 보낸다고 해도, 서버가 이를 처리하는 데 100밀리초가 걸릴 수 있습니다. 이는 서버가 요청을 처리하는 데 소요되는 시간입니다. </li>
+<li>하지만 중요한 점은, 순차 처리에서는 100개의 요청 각각이 100밀리초씩 걸리지만, 일괄 처리를 하면 100개의 요청을 동시에 처리하므로 전체 요청을 처리하는 데 걸리는 시간은 100밀리초로 동일합니다. 이렇게 일괄 처리는 순차 처리보다 처리 효율이 훨씬 높습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>데이터베이스 과부하 문제</strong></p>
+<ul>
+<li>서버가 한 번에 처리할 수 있는 요청 수를 초과하면 과부하가 발생할 수 있습니다. 예를 들어, 서버가 한 번에 100개의 요청을 처리할 수 있는데, 한 번에 1000개의 요청을 보내면 서버가 처리 능력을 초과하여 성능이 저하됩니다. </li>
+<li>또한, 너무 많은 요청을 준비하는 과정에서 추가적인 시간과 자원이 소모되기 때문에, 일괄 처리의 이점을 충분히 살리지 못하고 오히려 성능이 떨어질 수 있습니다. 즉, 적절한 양의 요청을 보내는 것이 중요합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>서버 처리 속도가 느릴 때의 문제점</strong></p>
+<ul>
+<li>서버의 처리 속도가 매우 느려서 한 번에 하나의 요청만 처리할 수 있는 상황이라면, 일괄 처리의 장점이 사라집니다. 아무리 많은 요청을 한꺼번에 보내더라도, 서버가 이를 순차적으로 처리해야 하기 때문에 전체 처리 시간은 순차 처리와 동일하게 됩니다.</li>
+</ul>
+</li>
+</ol>
+<p>따라서 서버가 처리 속도가 느릴 경우, 일괄 처리는 성능 향상에 큰 효과를 발휘하지 못할 수 있습니다.</p>
+<hr />
+<h2 id="_2">완전한 비동기 처리</h2>
+<p>이 방식에서는 각 작업이 서로를 기다리지 않으며, 작업이 끝나는 대로 바로 다음 작업을 실행한다. 작업 중에 I/O가 발생하더라도 CPU는 다른 작업을 처리할 수 있으므로, 동시에 여러 작업이 실행되는 것처럼 보인다.</p>
+<ul>
+<li><strong>최고의 성능</strong>: CPU가 놀지 않고 I/O 대기 시간 동안 다른 작업을 처리할 수 있기 때문에 시스템 자원을 최대한으로 활용합니다.</li>
+<li><strong>복잡성 증가</strong>: 완전한 비동기 처리에서는 동시성 문제가 발생할 수 있습니다. 작업들이 동시에 실행되기 때문에 코드의 동기화와 예외 처리에 주의를 기울여야 합니다.</li>
+<li><strong>자원 최적화</strong>: 네트워크나 파일 I/O처럼 시간이 오래 걸리는 작업에서도 성능 저하 없이 다른 작업을 처리할 수 있습니다.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">aiohttp</span>
+
+<span class="c1"># 결과를 저장하는 함수</span>
+<span class="k">def</span> <span class="nf">save_result_aiohttp</span><span class="p">(</span><span class="n">client_session</span><span class="p">):</span>
+    <span class="n">sem</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Semaphore</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">saver</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">sem</span><span class="p">,</span> <span class="n">client_session</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://127.0.0.1:8080/add&quot;</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">sem</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">client_session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">result</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">saver</span>
+
+<span class="c1"># 비동기 작업을 수행하는 함수</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">calculate_task_aiohttp</span><span class="p">(</span><span class="n">num_iter</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">task_difficulty</span><span class="p">):</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">client_session</span><span class="p">:</span>
+        <span class="n">saver</span> <span class="o">=</span> <span class="n">save_result_aiohttp</span><span class="p">(</span><span class="n">client_session</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iter</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">do_task</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">task_difficulty</span><span class="p">)</span>  <span class="c1"># 작업 처리 함수 호출</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">saver</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>  <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>  <span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p>(1) 데이터베이스 저장을 즉시 <code>await</code> 하는 대신, <code>asyncio.create_task</code> 를 사용해 이벤트 루프에 데이터베이스 저장 요청을 넣고 함수가 끝나기 전에 작업이 완료됐는지 확인한다.</p>
+<p>(2) <strong>이 함수에서 가장 중요한 부분이다.</strong> 이벤트 루프가 실행을 기다리는 작업을 처리할 수 있도록 주 함수를 일시 중단한다. 이 부분이 없으면 큐에 들어간 작업은 프로그램이 끝날 때까지 실행되지 않는다.</p>
+<p>(3) 완료되지 않은 작업을 기다린다. 만약 for 루프 안에서 <code>asyncio.sleep</code> 을 하지 않았다면 여기서 모든 저장이 어루어졌을 것이다.</p>
+<p>이 코드의 성능 특성을 살펴보기 전에 먼저 <code>asyncio.sleep(0)</code>  문의 중요성부터 보자. 0초 동안 잠든다는 표현이 이상해 보일 수도 있지만 실제 이 문장은 함수가 실행을 이벤트 루프에 넘겨서 다른 작업을 실행하라고 양보하는 문장이다. 일반적으로 비동기적인 코드에서는 await 문이 실행될 때마다 이런 양보가 일어난다. CPU 위주의 코드에서는 보통 await를 하지 않으므로 강제로 한 번씩 양보해주는 일이 아주 중요하다.</p>
+<p>이런 일을 하지 않으면 CPU 위주의 작업이 끝나기 전까지 아무 작업도 실행하지 않을 것이다.
+이런 제어의 장점은 이벤트 루프에 실행을 넘길 최적의 시점을 우리가 정할 수 있다는 점이다.</p>
+<p>실행을 넘기면 프로그램의 실행 상태가 바뀌므로 계산 중간에 이런 일을 하면 CPU 캐시가 바뀔 수도 있다. 게다가 이벤트 루프에 실행을 넘기는 일도 부가비용으므로 너무 자주 하면 안된다.
+하지만 CPU 작업을 처리하는 중에는 어떤 I/O 작업도 할 수 없다. 따라서 전체 애플리케이션이 API로 이뤄져 있다면, CPU 위주 작업을 실행하는 동안은 아무 요청도 처리할 수 없다.</p>
+<p>일반적으로는 50~100밀리초 정도마다 반복하리라 예상되는 루프에서 <code>asyncio.sleep(0)</code> 을 호출하기를 권장한다.</p>
+<p>완전한 비동기 해법의 이점은 CPU 작업하는  도중에 I/O 작업도 할 수 있다는 점이다. 이는 전체 실행 시간에서 CPU 위주의 작업을 수행하는 데 걸린 시간을 상쇄해버리는 효과가 있다. 이벤트 루프의 부하 때문에 전체 비용을 다 상쇄하지는 못하지만, 거의 다 상쇄할 수는 있다. 실제로 난이도 8인 작업을 600번 반복할 때 완전한 비동기 코드는 순차 코드보다 7.3배 빠르게 실행되고, 일괄 처리 코드보다 I/O 부하를 2배 더 빠르게 처리한다.</p>
+<p>하지만 개별 I/O 작업은 서버의 100밀리초 응답 시간보다 더 오래 걸렸다는 사실도 알 수 있다. 이 시간은 asyncio.sleep(0) 문을 호출하는 시간 간격과 (각 I/O 작업은 3번 await를 하는 반면, 각 CPU 작업은 1번 await한다) 이벤트 루프가 다음에 어떤 작업을 실행할지 결정하는 방법에 따라 달라진다.</p>
+<p>비록 CPU만 사용해서 문제를 해결하여 달성할 수 있는 속도와는 큰 격차가 있지만, 비동기 코드는 순차적 코드보다 월등히 빠르다. 이런 문제를 완전히 해결하려면 multiprocessing 같은 모듈을 사용해서 I/O 작업을 별로의 프로세스로 완전히 분리하여 CPU 작업의 성능이 떨어지지 않도록 해야 한다.</p>
 
 
 
@@ -914,7 +1018,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../1.%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1.비동기 프로그래밍 소개">
+          <a href="../3.%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.비동기 작업의 과부하">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -924,20 +1028,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                1.비동기 프로그래밍 소개
+                3.비동기 작업의 과부하
               </div>
             </div>
           </a>
         
         
           
-          <a href="../3.%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.비동기 작업의 과부하">
+          <a href="../../../z.%EC%9E%A1%EB%8F%99%EC%82%AC%EB%8B%88/admonition/" class="md-footer__link md-footer__link--next" aria-label="Next: Admonition">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                3.비동기 작업의 과부하
+                Admonition
               </div>
             </div>
             <div class="md-footer__button md-icon">

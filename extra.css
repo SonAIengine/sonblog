@@ -17,6 +17,10 @@ p code, li code {
     padding: 2px 5px !important;           /* 내부 padding 추가 */
 }
 
+nav.md-nav[data-md-level="1"] {
+    padding-left: 10px;
+}
+
 .md-ellipsis {
     -webkit-user-select: none;  /* Safari */
     -moz-user-select: none;     /* Firefox */

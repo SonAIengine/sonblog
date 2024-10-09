@@ -17,6 +17,16 @@ p code, li code {
     padding: 2px 5px !important;           /* 내부 padding 추가 */
 }
 
+p em {
+    color: #9a9797;
+}
+
+body hr {
+    margin-bottom: 20px;!important;
+    margin-top: 20px;!important;
+}
+
+
 nav.md-nav[data-md-level="1"] {
     padding-left: 10px;
 }

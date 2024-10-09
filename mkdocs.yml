@@ -13,7 +13,7 @@ theme:
   palette:
     # 라이트 모드 팔레트 토글
     - scheme: default
-      primary: black
+      primary: white
       background: white
       toggle:
         icon: material/brightness-7  # 태양 아이콘
@@ -43,3 +43,4 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - md_in_html

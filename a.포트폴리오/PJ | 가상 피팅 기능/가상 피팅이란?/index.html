@@ -1055,6 +1055,15 @@
 <p><em>아.. 모델이 입으니까 이뻐보이는거 아닌가? 내가 입으면….</em></p>
 <p>이러한 문제를 해결하기 위해 우리는 AI, 여기서 비전 기술을 활용하여 가상으로 의류를 착용해볼 수 있는 시스템을 개발하게 되었습니다.</p>
 <hr />
+<p><code>OOTDiffusion</code> 기술을 활용하여 사용자가 상품 이미지를 가상으로 입어보는 경험을 제공하는 솔루션을 개발했습니다.</p>
+<div class="admonition note">
+<p class="admonition-title"><strong>주요 업무</strong></p>
+<ul>
+<li>OOTD 딥러닝 모델 사용</li>
+<li>Next.js를 통해 FO 화면 기획 및 개발</li>
+<li>이미지 업로드 및 합성 이미지 반환받기 위한 백엔드 개발</li>
+</ul>
+</div>
 <h3 id="_2">기술 개요</h3>
 <p><strong>의류 객체 추출</strong> <a class="glightbox" href="https://i.postimg.cc/T3BvqprC/Untitled-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Image" src="https://i.postimg.cc/T3BvqprC/Untitled-7.png" width="150" /></a></p>
 <ul>
@@ -1062,16 +1071,27 @@
 <li>AI 는 의류와 배경을 정확하게 구분하여 의류 객체만을 추출</li>
 <li>화질 개선을 위해 필요 시 이미지 스케일업을 적용</li>
 </ul>
-<div style="height: 50px"></div>
+<div style="height: 100px"></div>
 
-<p><strong>가상 피팅</strong></p>
+<p><br></p>
+<p><strong>가상 피팅</strong> <a class="glightbox" href="https://i.postimg.cc/bwkrxvHT/Untitled-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Image" src="https://i.postimg.cc/bwkrxvHT/Untitled-12.png" width="300" /></a></p>
 <ul>
 <li>소비자가 자신의 사진 업로드하고, 의류 객체를 선택하여 입히는 과정</li>
 <li>여기서 <code>포즈 추정(pose estimation)</code>과 <code>이미지 합성</code> 기술이 사용</li>
 <li>포즈 추정이란 사용자의 신체 특징과 자세를 파악하여 의류 객체를 자연스럽게 입힐 수 있도록 도와줌</li>
 </ul>
+<div style="height: 140px"></div>
+
+<p><strong>세부 구현 및 동작 방식</strong> (Next.js &amp; Python FastAPI)</p>
+<ul>
+<li>피팅해보기 버튼 클릭 시, 팝업창을 통해 왼쪽에 추출된 상품 이미지, 오른쪽에는 사용자 이미지(내 사진)를 업로드하도록 화면 설계</li>
+<li>사용자가 자신의 이미지를 업로드하고, 피팅하고 싶은 의상을 클릭하면 의상 이미지와 사용자 이미지를 넘겨주고 피팅된 이미지를 반환받아 사용자 사진에 적용</li>
+<li>가상 착용 이미지를 사용자 사진으로 교체하고, 초기화 버튼을 추가하여 사용자가 쉽게 재시도할 수 있도록 설계</li>
+<li>상의와 하의를 따로 입어보기 위해 이전에 피팅된 사진에 추가 피팅이 가능하도록 구현</li>
+</ul>
 <p><br></p>
 <p><a class="glightbox" href="https://img2.stibee.com/113011_2372327_1726728635403994231.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Image" src="https://img2.stibee.com/113011_2372327_1726728635403994231.jpg" /></a></p>
+<p><br></p>
 <p><strong>피팅 완료</strong></p>
 <ul>
 <li>소비자는 모델이 착용하고 있는 의류들을 직접 선택하여 즉시 자신의 사진에 적용해볼 수 있게 됨</li>

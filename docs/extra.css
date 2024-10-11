@@ -36,7 +36,10 @@ nav.md-nav[data-md-level="1"] {
     -moz-user-select: none;     /* Firefox */
     -ms-user-select: none;      /* Internet Explorer/Edge */
     user-select: none;          /* Non-prefixed version, for modern browsers */
+    cursor: pointer;
 }
+
+md-ellipsis
 
 /* note 타입의 admonition에 대한 폰트 크기 조정 */
 .admonition.info {

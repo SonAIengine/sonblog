@@ -31,6 +31,10 @@ theme:
 extra_css:
   - 'extra.css'
 
+extra_javascript:
+  - 'custom.js'
+
+
 plugins:
   - awesome-pages
   - search

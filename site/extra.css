@@ -60,3 +60,7 @@ md-ellipsis
 body {
     font-family: 'RixXladywatermelonR', sans-serif;
 }
+
+.md-grid {
+    max-width: 1440px;
+}

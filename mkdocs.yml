@@ -2,14 +2,12 @@ site_name: SON BLOG
 theme:
   name: material
   features:
-    - palette-toggle
     - navigation.sections
     - navigation.path
-    - search.highlight
-    - navigation.footer
     - navigation.indexes
     - navigation.top
-
+    - toc.follow
+    - navigation.tabs
   language: en
   palette:
     # 라이트 모드 팔레트 토글

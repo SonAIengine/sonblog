@@ -9,25 +9,23 @@
       
       
       
-        <link rel="prev" href="../2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/">
+        <link rel="prev" href="../admonition/">
       
       
-        <link rel="next" href="../4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/">
       
-      
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
-        <title>3. 비동기 작업의 과부하 - SON BLOG</title>
+        <title>Tauri 2.0 - 크로스 플랫폼 앱 개발 프레임워크 - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +44,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../extra.css">
+      <link rel="stylesheet" href="../../extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +62,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -82,6 +80,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#tauri-20-" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -94,7 +97,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3. 비동기 작업의 과부하
+              Tauri 2.0 - 크로스 플랫폼 앱 개발 프레임워크
             
           </span>
         </div>
@@ -215,7 +218,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -233,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -342,7 +345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -412,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -484,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -505,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../a.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,10 +541,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -557,11 +558,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -575,7 +576,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             B.파이썬
@@ -634,7 +635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../b.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -655,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../b.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -676,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../b.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -702,10 +703,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -722,11 +721,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -740,7 +739,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             비동기 프로그래밍
@@ -754,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../b.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -775,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../b.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -793,17 +792,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../b.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -812,7 +804,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -825,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../b.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -858,8 +849,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -875,11 +868,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -893,7 +886,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Z.잡동사니
@@ -907,7 +900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../z.%EC%9E%A1%EB%8F%99%EC%82%AC%EB%8B%88/admonition/" class="md-nav__link">
+      <a href="../admonition/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -925,10 +918,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../z.%EC%9E%A1%EB%8F%99%EC%82%AC%EB%8B%88/tauri/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tauri 2.0 - 크로스 플랫폼 앱 개발 프레임워크
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -937,6 +950,167 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      개요
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      주요 장점
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      개발자 관점에서의 장점
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      고려사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      설치 및 설정 가이드
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설치 및 설정 가이드">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Rust 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nextjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Next.js 프로젝트 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tsconfigjson-jsconfigjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. tsconfig.json 또는 jsconfig.json 설정
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-nextconfigjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. next.config.js 설정
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tauri" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Tauri 관련 패키지 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-packagejson" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. package.json 스크립트 추가
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-tauri" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tauri 초기화
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-mainrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. main.rs 설정
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      향후 발전 방향
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      추가 정보
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -966,6 +1140,157 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      개요
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      주요 장점
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      개발자 관점에서의 장점
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      고려사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      설치 및 설정 가이드
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="설치 및 설정 가이드">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Rust 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nextjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Next.js 프로젝트 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tsconfigjson-jsconfigjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. tsconfig.json 또는 jsconfig.json 설정
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-nextconfigjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. next.config.js 설정
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tauri" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Tauri 관련 패키지 설치
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-packagejson" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. package.json 스크립트 추가
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-tauri" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tauri 초기화
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-mainrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. main.rs 설정
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      향후 발전 방향
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      추가 정보
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -980,59 +1305,104 @@
                   
 
 
-  <h1>3. 비동기 작업의 과부하</h1>
-
-<p>비동기 프로그래밍에서 I/O 작업을 처리할 때 한 번에 너무 많은 작업을 실행하면, 오히려 성능이 저하 될 수 있다. 예를 들어, 파일 시스템에서 동시에 너무 많은 파일을 열거나 네트워크 상에서 한 번에 너무 많은 연결을 맺으면 서버에 과도한 부하가 발생할 수 있다.  또는 비동기 작업의 수가 지나치게 많아지면, 운영체제가 자주 컨텍스트 스위칭을 하게 되어 성능이 저하될 수 있다.</p>
-<p>이를 해결하기 위한 방법 중 하나가 <code>chunking</code> 또는 <code>batching</code> 기법으로, 작업을 일정한 크기(chunks)로 나누어 처리하는 것이다. 즉, 비동기 작업을 한꺼번에 모두 실행하는 대신 작업의 묶음(batch)으로 나누어 순차적으로 처리하여 부하를 조절하는 방법이다.</p>
-<p>예를 들어, 1000개의 파일을 처리해야 할 때, 한 번에 100개의 파일만 열고, 그 파일들이 처리되면 그 다음 100개를 처리하는 방식이다.</p>
-<p><strong>Chunk Size 방식의 동작 방식</strong></p>
-<ol>
-<li>작업 나누기</li>
-<li>순차 처리</li>
-<li>비동기적으로 실행</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
-
-<span class="c1"># 비동기적으로 파일을 처리하는 함수 (예: 읽기, 쓰기)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">process_file</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 파일 처리에 1초 걸린다고 가정</span>
-
-<span class="c1"># 작업을 일정한 크기(chunk_size)로 나누어 처리하는 함수</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">process_files_in_chunks</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">),</span> <span class="n">chunk_size</span><span class="p">):</span>
-        <span class="c1"># 파일들을 chunk로 나누어서 처리</span>
-        <span class="n">chunk</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">]</span>
-        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">process_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">])</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processed chunk: </span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># 메인 함수</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c1"># 예시 파일 리스트</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;file_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
-
-    <span class="c1"># 한 번에 5개 파일씩 처리</span>
-    <span class="k">await</span> <span class="n">process_files_in_chunks</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-
-<span class="c1"># asyncio 이벤트 루프 실행</span>
-<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+<h1 id="tauri-20-">Tauri 2.0 - 크로스 플랫폼 앱 개발 프레임워크</h1>
+<h2 id="_1">개요</h2>
+<p>Tauri는 데스크톱 애플리케이션을 구축하기 위한 현대적인 프레임워크입니다. </p>
+<ul>
+<li>Backend: <strong>Rust</strong> </li>
+<li>Frontend: webview를 통한 HTML, CSS, JS (React.js, <strong>Next.js</strong> 등) 지원</li>
+</ul>
+<p><br>
+<a class="glightbox" href="../img_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img_1.png" height="200" src="../img_1.png" width="300" /></a></p>
+<h2 id="_2">주요 장점</h2>
+<ul>
+<li>매우 작은 바이너리 크기 (Electron 대비 1/10 ~ 1/20 수준)</li>
+<li>높은 성능과 낮은 메모리 사용량</li>
+<li>Rust의 안전성과 성능 이점</li>
+<li>강력한 보안 기능 내장</li>
+<li>크로스 플랫폼 지원 (Windows, macOS, Linux)</li>
+</ul>
+<h2 id="_3">개발자 관점에서의 장점</h2>
+<ul>
+<li>npm 생태계 활용 가능</li>
+<li>웹 개발 경험을 데스크톱 앱 개발에 활용</li>
+<li>시스템 API에 대한 안전한 접근 제공</li>
+<li>커스텀 플러그인 개발 가능</li>
+</ul>
+<h2 id="_4">고려사항</h2>
+<ul>
+<li>Rust 학습 곡선이 있을 수 있음</li>
+<li>Electron에 비해 생태계가 상대적으로 작음</li>
+<li>OS 네이티브 기능 사용 시 추가 Rust 개발 필요</li>
+</ul>
+<h2 id="_5">설치 및 설정 가이드</h2>
+<h3 id="1-rust">1. Rust 설치</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>--proto<span class="w"> </span><span class="s1">&#39;=https&#39;</span><span class="w"> </span>--tlsv1.2<span class="w"> </span>-sSf<span class="w"> </span>https://sh.rustup.rs<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
 </code></pre></div>
-<ol>
-<li><code>process_file</code> 함수<ol>
-<li>파일을 처리하는 비동기 함수이다.</li>
-</ol>
-</li>
-<li><code>process_files_in_chunks</code><ol>
-<li>전체 파일 리스트를 chunk 로 나누어 처리하는 함수</li>
-<li>한 번에 chunk_size 만큼의 파일을 비동기적으로 처리하고, 그 다음 chunk로 넘어간다.</li>
-<li>예를 들어, 20개의 파일을 한 번에 5개씩 묶어서 비동기적으로 처리하고, 각 chunk가 완료되면 다음 5개의 파일을 처리한다.</li>
-</ol>
-</li>
-<li><code>asyncio.gather()</code><ol>
-<li>gather는 여러 비동기 작업을 동시에 처리할 때 사용</li>
-</ol>
-</li>
-</ol>
+<h3 id="2-nextjs">2. Next.js 프로젝트 생성</h3>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>create-next-app@latest<span class="w"> </span>--use-npm
+</code></pre></div>
+<h3 id="3-tsconfigjson-jsconfigjson">3. tsconfig.json 또는 jsconfig.json 설정</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;node_modules&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;src-tauri&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="4-nextconfigjs">4. next.config.js 설정</h3>
+<div class="highlight"><pre><span></span><code><span class="cm">/** @type {import(&#39;next&#39;).NextConfig} */</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">nextConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;export&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nextConfig</span>
+</code></pre></div>
+<h3 id="5-tauri">5. Tauri 관련 패키지 설치</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>@tauri-apps/cli@<span class="s2">&quot;&gt;1.0.0&quot;</span>
+npm<span class="w"> </span>install<span class="w"> </span>@tauri-apps/api@1
+</code></pre></div>
+<h3 id="6-packagejson">6. package.json 스크립트 추가</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tauri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tauri&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="7-tauri">7. Tauri 초기화</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>tauri<span class="w"> </span>init
+</code></pre></div>
+<h3 id="8-mainrs">8. main.rs 설정</h3>
+<p><div class="highlight"><pre><span></span><code><span class="cp">#![cfg_attr(not(debug_assertions), windows_subsystem = </span><span class="s">&quot;windows&quot;</span><span class="cp">)]</span>
+
+<span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tauri</span><span class="p">::</span><span class="n">Builder</span><span class="p">::</span><span class="n">default</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">tauri</span><span class="p">::</span><span class="n">generate_context</span><span class="o">!</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;error while running tauri application&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<br>
+<br>
+build하면 설치 프로그램도 자동으로 생성된다. </p>
+<p><a class="glightbox" href="../img_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img_2.png" src="../img_2.png" /></a>
+<br>
+<br></p>
+<p>어플리케이션을 실행하면 이렇게뜬다.
+<br>
+<br>
+<a class="glightbox" href="../img_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img_4.png" height="200" src="../img_4.png" width="300" /></a></p>
+<h2 id="_6">향후 발전 방향</h2>
+<ul>
+<li>사용자 컴퓨터의 내장 GPU나 NPU를 활용한 On-device AI 기능 구현</li>
+<li>LLM 기반 에이전트 통합</li>
+<li>내장 NPU를 활용한 모델 학습 및 LLM 구동</li>
+</ul>
+<h2 id="_7">추가 정보</h2>
+<ul>
+<li>tray icon 설정 등 상세 기능은 공식 홈페이지 문서 참조</li>
+<li>빌드 시 설치 프로그램 자동 생성</li>
+<li>UI는 기존 웹 개발 방식으로 구현 가능</li>
+</ul>
 
 
 
@@ -1062,7 +1432,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. 콜백과 퓨처">
+          <a href="../admonition/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Admonition">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1072,27 +1442,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                2. 콜백과 퓨처
+                Admonition
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. 순차처리 &amp; 일괄처리 &amp; 진정한 비동기">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                4. 순차처리 & 일괄처리 & 진정한 비동기
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
@@ -1119,12 +1473,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["palette-toggle", "navigation.sections", "navigation.path", "search.highlight", "navigation.footer", "navigation.indexes"], "search": "../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["palette-toggle", "navigation.sections", "navigation.path", "search.highlight", "navigation.footer", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
       
-        <script src="../../../custom.js"></script>
+        <script src="../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

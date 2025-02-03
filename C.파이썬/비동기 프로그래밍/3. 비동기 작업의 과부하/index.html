@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="../2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/">
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="next" href="../4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
-        <title>SON BLOG</title>
+        <title>3. 비동기 작업의 과부하 - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,16 +46,25 @@
       
     
     
-      <link rel="stylesheet" href="/extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -79,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -99,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              3. 비동기 작업의 과부하
             
           </span>
         </div>
@@ -194,7 +207,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -219,7 +232,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-tabs__link">
+        <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-tabs__link">
           
   
     
@@ -242,7 +255,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+        <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
           
   
     
@@ -258,17 +271,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
           
   
     
@@ -306,7 +323,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -324,7 +341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -436,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -509,7 +526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -584,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -605,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -689,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+      <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -710,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -731,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/B.PoC/tauri/" class="md-nav__link">
+      <a href="../../../B.PoC/tauri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,8 +773,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -768,19 +787,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -791,7 +813,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             C.파이썬
@@ -818,17 +840,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -853,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -874,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -895,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -921,8 +946,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -938,18 +965,21 @@
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -960,7 +990,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             비동기 프로그래밍
@@ -974,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -995,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1013,10 +1043,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1025,6 +1062,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1037,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1094,8 +1132,75 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  <h1>3. 비동기 작업의 과부하</h1>
+
+<p>비동기 프로그래밍에서 I/O 작업을 처리할 때 한 번에 너무 많은 작업을 실행하면, 오히려 성능이 저하 될 수 있다. 예를 들어, 파일 시스템에서 동시에 너무 많은 파일을 열거나 네트워크 상에서 한 번에 너무 많은 연결을 맺으면 서버에 과도한 부하가 발생할 수 있다.  또는 비동기 작업의 수가 지나치게 많아지면, 운영체제가 자주 컨텍스트 스위칭을 하게 되어 성능이 저하될 수 있다.</p>
+<p>이를 해결하기 위한 방법 중 하나가 <code>chunking</code> 또는 <code>batching</code> 기법으로, 작업을 일정한 크기(chunks)로 나누어 처리하는 것이다. 즉, 비동기 작업을 한꺼번에 모두 실행하는 대신 작업의 묶음(batch)으로 나누어 순차적으로 처리하여 부하를 조절하는 방법이다.</p>
+<p>예를 들어, 1000개의 파일을 처리해야 할 때, 한 번에 100개의 파일만 열고, 그 파일들이 처리되면 그 다음 100개를 처리하는 방식이다.</p>
+<p><strong>Chunk Size 방식의 동작 방식</strong></p>
+<ol>
+<li>작업 나누기</li>
+<li>순차 처리</li>
+<li>비동기적으로 실행</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="c1"># 비동기적으로 파일을 처리하는 함수 (예: 읽기, 쓰기)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">process_file</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 파일 처리에 1초 걸린다고 가정</span>
+
+<span class="c1"># 작업을 일정한 크기(chunk_size)로 나누어 처리하는 함수</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">process_files_in_chunks</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">),</span> <span class="n">chunk_size</span><span class="p">):</span>
+        <span class="c1"># 파일들을 chunk로 나누어서 처리</span>
+        <span class="n">chunk</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">chunk_size</span><span class="p">]</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">process_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">chunk</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processed chunk: </span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 메인 함수</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># 예시 파일 리스트</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;file_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+
+    <span class="c1"># 한 번에 5개 파일씩 처리</span>
+    <span class="k">await</span> <span class="n">process_files_in_chunks</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># asyncio 이벤트 루프 실행</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<ol>
+<li><code>process_file</code> 함수<ol>
+<li>파일을 처리하는 비동기 함수이다.</li>
+</ol>
+</li>
+<li><code>process_files_in_chunks</code><ol>
+<li>전체 파일 리스트를 chunk 로 나누어 처리하는 함수</li>
+<li>한 번에 chunk_size 만큼의 파일을 비동기적으로 처리하고, 그 다음 chunk로 넘어간다.</li>
+<li>예를 들어, 20개의 파일을 한 번에 5개씩 묶어서 비동기적으로 처리하고, 각 chunk가 완료되면 다음 5개의 파일을 처리한다.</li>
+</ol>
+</li>
+<li><code>asyncio.gather()</code><ol>
+<li>gather는 여러 비동기 작업을 동시에 처리할 때 사용</li>
+</ol>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1135,13 +1240,15 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "/assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
       
-        <script src="/custom.js"></script>
+        <script src="../../../custom.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

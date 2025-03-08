@@ -2125,10 +2125,15 @@ Sentence -&gt; Tokens -&gt; Embedding -&gt; Transformer -&gt; Down-Stream Layer 
 <p>물음표('?')를 별도의 토큰으로 분리한 것도 주목할 만합니다. 이처럼 특수문자도 개별 토큰으로 처리되어 문장의 의미를 더욱 정확하게 파악할 수 있습니다.</p>
 <p><br></p>
 <p><strong>5. 토큰 ID 시스템</strong></p>
-<p>각 토큰에는 고유한 ID가 부여됩니다. 이 ID는 모델이 텍스트를 처리할 때 사용되며, 작은 숫자일수록 학습 데이터에서 자주 등장했거나 중요한 특수 토큰일 가능성이 높습니다.</p>
+<p>각 토큰에는 고유한 ID가 부여됩니다. 이 ID는 모델이 텍스트를 처리할 때 사용되며, 작은 숫자일수록 학습 데이터에서 자주 등장했거나 중요한 특수 토큰일 가능성이 높습니다. 
+이러한 과정을 우리는 <code>인코딩(encoding)</code> 이라고 합니다. 그리고 이렇게 인코딩된 숫자 ID를 다시 텍스트로 변환하는 작업을 <code>디코딩(decoding)</code> 이라고합니다.</p>
 <p><br></p>
 <p>위에서 생성된 토큰 ID (예: [3970, 4321, 2574, 7554, 3521, 35])가 바로 <strong>Transformer</strong> 모델의 실제 입력값이 됩니다. </p>
-<p><strong>Transformer</strong> 가 어떻게 언어를 이해하게 되는지, 다음 포스트에서 다뤄보겠습니다.</p>
+<blockquote>
+<p>🔥
+Sentence -&gt; Tokens -&gt; Embedding -&gt; Transformer -&gt; Down-Stream Layer -&gt; Output</p>
+</blockquote>
+<p>다음 과정인 <code>Embdding</code> 에 대해선 다음 시간에 다춰보겠습니다.</p>
 <p>감사합니다.</p>
 
 

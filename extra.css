@@ -37,8 +37,6 @@ body > div.md-container > main > div > div.md-sidebar.md-sidebar--primary > div 
     margin-right: 5px;
 }
 
-body > div.md-container > main > div > div.md-sidebar.md-sidebar--primary > div > div > nav > ul > li.md-nav__item.md-nav__item--active.md-nav__item--section.md-nav__item--nested > nav > ul > li:nth-child(2) > nav > ul > li > a > span
-
 .md-ellipsis {
     -webkit-user-select: none;  /* Safari */
     -moz-user-select: none;     /* Firefox */

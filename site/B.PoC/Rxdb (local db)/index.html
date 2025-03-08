@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/">
       
-        <link rel="next" href="A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/">
+      
+        <link rel="next" href="../intel%20NPU%20model%20use/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
-        <title>SON BLOG</title>
+        <title>RxDB 란 무엇인가? (opensearch 연동) - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,16 +46,16 @@
       
     
     
-      <link rel="stylesheet" href="extra.css">
+      <link rel="stylesheet" href="../../extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -62,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -81,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#rxdb-opensearch" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -115,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              내 소개
+              RxDB 란 무엇인가? (opensearch 연동)
             
           </span>
         </div>
@@ -208,11 +210,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -237,7 +237,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-tabs__link">
+        <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-tabs__link">
           
   
     
@@ -256,11 +256,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -286,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+        <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
           
   
     
@@ -324,7 +326,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -339,19 +341,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -360,7 +353,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -464,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -612,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -633,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/PJ%20%7C%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%2B%20opensearch/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80%3F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -666,8 +658,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -680,19 +674,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -703,7 +700,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             B.PoC
@@ -714,10 +711,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RxDB 란 무엇인가? (opensearch 연동)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -726,6 +743,233 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB가 Frontend에 적합한 이유
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      기존 SQL이 Frontend에 적합하지 않은 이유
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="기존 SQL이 Frontend에 적합하지 않은 이유">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 초기 빌드 크기와 시작 시간
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 데이터 모델의 복잡성
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB란?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb-frontend_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB가 Frontend에 적합한 이유
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RxDB가 Frontend에 적합한 이유">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. JavaScript 기반으로 최적화
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-json-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. JSON 기반 NoSQL 접근 방식
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reactive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Reactive Programming 지원
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 자연스럽고 직관적인 데이터 모델
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 오프라인-우선 전략
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB 활용 예시
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RxDB 활용 예시">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-todo-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 할 일 관리 애플리케이션 (Todo Application)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 채팅 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 게시판 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 협업 도구
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 모바일 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 데이터 집약적 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-electron" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Electron 기반 데스크톱 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      실습
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      결론
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -738,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -759,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="B.PoC/tauri/" class="md-nav__link">
+      <a href="../tauri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +1125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -902,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -923,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1002,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1023,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1044,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1065,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1114,6 +1358,221 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB가 Frontend에 적합한 이유
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      기존 SQL이 Frontend에 적합하지 않은 이유
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="기존 SQL이 Frontend에 적합하지 않은 이유">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 초기 빌드 크기와 시작 시간
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 데이터 모델의 복잡성
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB란?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb-frontend_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB가 Frontend에 적합한 이유
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RxDB가 Frontend에 적합한 이유">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. JavaScript 기반으로 최적화
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-json-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. JSON 기반 NoSQL 접근 방식
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-reactive-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Reactive Programming 지원
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 자연스럽고 직관적인 데이터 모델
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 오프라인-우선 전략
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rxdb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      RxDB 활용 예시
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RxDB 활용 예시">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-todo-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 할 일 관리 애플리케이션 (Todo Application)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 채팅 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 게시판 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 협업 도구
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 모바일 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 데이터 집약적 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-electron" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Electron 기반 데스크톱 애플리케이션
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      실습
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      결론
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1127,9 +1586,96 @@
                   
 
 
-<h1 id="_1">내 소개</h1>
-<p>우리는 여름 동안 얼마나 치열하게 살았나</p>
-<p>그 열기가 남아 맴도는 가을향기가 되기를</p>
+<h1 id="rxdb-opensearch">RxDB 란 무엇인가? (opensearch 연동)</h1>
+<h2 id="rxdb-frontend">RxDB가 Frontend에 적합한 이유</h2>
+<p>RxDB(Reactive Database)는 NoSQL 데이터베이스로, UI 중심의 실시간 상태 변경 감지가 중요한 Frontend 애플리케이션에 최적화된 데이터베이스입니다.</p>
+<h2 id="sql-frontend">기존 SQL이 Frontend에 적합하지 않은 이유</h2>
+<h3 id="1">1. 초기 빌드 크기와 시작 시간</h3>
+<ul>
+<li>SQL 데이터베이스는 초기 빌드 크기가 크며, 애플리케이션 시작 시간이 길어질 수 있습니다.</li>
+<li>Frontend 환경에서는 빠른 로드와 초기화가 중요한데, SQL은 이에 적합하지 않습니다.</li>
+</ul>
+<h3 id="2">2. 데이터 모델의 복잡성</h3>
+<ul>
+<li>SQL은 스키마 기반의 데이터 모델을 사용하여 변경 시 유연성이 떨어집니다.</li>
+<li>테이블 간의 관계를 설정하고 관리해야 하기 때문에 UI와의 데이터 매핑이 복잡해질 수 있습니다.</li>
+</ul>
+<h2 id="rxdb">RxDB란?</h2>
+<p>RxDB는 Reactive한 NoSQL 데이터베이스로, 데이터의 현재 상태를 질의할 수 있을 뿐만 아니라 상태 변화에 대해 실시간으로 감지(subscribe)할 수 있습니다. 이를 통해 실시간 UI 업데이트가 필요한 Frontend 애플리케이션에 적합한 선택이 됩니다.</p>
+<h2 id="rxdb-frontend_1">RxDB가 Frontend에 적합한 이유</h2>
+<h3 id="1-javascript">1. JavaScript 기반으로 최적화</h3>
+<ul>
+<li>RxDB는 JavaScript로 구현되어 JavaScript 애플리케이션 환경에서 최적화된 성능을 제공합니다.</li>
+</ul>
+<h3 id="2-json-nosql">2. JSON 기반 NoSQL 접근 방식</h3>
+<ul>
+<li>RxDB는 데이터를 JSON 문서 형태로 관리합니다.</li>
+<li>JavaScript가 JSON 객체와 기본적으로 호환되므로, 데이터 처리와 직관적인 매핑이 용이합니다.</li>
+</ul>
+<h3 id="3-reactive-programming">3. Reactive Programming 지원</h3>
+<ul>
+<li>데이터 변경을 RxJS를 통해 실시간으로 구독할 수 있습니다.</li>
+<li>상태 변화에 즉각적으로 반응하는 UI 중심 애플리케이션에서 큰 강점을 가집니다.</li>
+</ul>
+<h3 id="4">4. 자연스럽고 직관적인 데이터 모델</h3>
+<ul>
+<li>NoSQL 문서 기반의 데이터 모델은 UI 중심 애플리케이션에 직관적이며, 추가적인 데이터 매핑 작업이 줄어듭니다.</li>
+</ul>
+<h3 id="5-">5. 오프라인-우선 전략</h3>
+<ul>
+<li>RxDB는 로컬 데이터 저장소를 활용하여 오프라인 환경에서도 데이터 저장 및 작업이 가능합니다.</li>
+<li>온라인 상태로 전환되면 서버와 자동 동기화를 지원합니다.</li>
+</ul>
+<h2 id="rxdb_1">RxDB 활용 예시</h2>
+<h3 id="1-todo-application">1. 할 일 관리 애플리케이션 (Todo Application)</h3>
+<ul>
+<li>RxDB를 사용하여 사용자의 할 일 목록을 관리합니다.</li>
+<li>실시간 데이터 반영을 통해 추가, 수정, 삭제된 작업이 즉시 UI에 표시됩니다.</li>
+<li>사용자 경험(UX)을 크게 향상시킵니다.</li>
+</ul>
+<h3 id="2_1">2. 채팅 애플리케이션</h3>
+<ul>
+<li>실시간 메시지 전송과 기록 관리를 위해 사용됩니다.</li>
+<li>새로운 메시지를 저장하고 즉시 사용자에게 표시합니다.</li>
+<li>오프라인 저장소를 통해 인터넷 연결이 없을 때도 대화 내용을 확인할 수 있습니다.</li>
+</ul>
+<h3 id="3">3. 게시판 애플리케이션</h3>
+<ul>
+<li>사용자가 게시글을 작성, 수정, 삭제할 수 있는 애플리케이션에서 활용됩니다.</li>
+<li>게시글 변경 사항을 실시간으로 동기화하고 다른 사용자에게 반영합니다.</li>
+</ul>
+<h3 id="4_1">4. 협업 도구</h3>
+<ul>
+<li>여러 사용자가 동시에 작업하는 환경에서 RxDB는 실시간 데이터 복제를 통해 원활한 데이터 공유를 지원합니다.</li>
+<li>실시간 동기화 기능을 활용해 작업 충돌을 최소화할 수 있습니다.</li>
+</ul>
+<h3 id="5">5. 모바일 애플리케이션</h3>
+<ul>
+<li>오프라인 지원과 네트워크 상태에 따른 원활한 동기화를 제공합니다.</li>
+<li>데이터를 로컬에 저장하여 네트워크 연결 없이도 안정적인 사용자 경험을 제공합니다.</li>
+</ul>
+<h3 id="6">6. 데이터 집약적 애플리케이션</h3>
+<ul>
+<li>대용량 데이터를 처리하고 효율적으로 관리할 수 있는 애플리케이션에서 사용됩니다.</li>
+<li>강력한 쿼리 기능과 유연한 저장 옵션을 통해 성능을 최적화할 수 있습니다.</li>
+</ul>
+<h3 id="7-electron">7. Electron 기반 데스크톱 애플리케이션</h3>
+<ul>
+<li>Electron과 함께 사용하여 데스크톱 환경에서도 반응형 데이터 관리를 구현할 수 있습니다.</li>
+<li>예: 사용자 정의 영웅 목록 관리 애플리케이션.</li>
+</ul>
+<h2 id="_1">실습</h2>
+<p>opensearch에서 데이터를 가져와서 RxDB에 저장하고
+<br>
+오프라인에서도 잘 작동하는지 테스트</p>
+<p><a class="glightbox" href="../img_6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img_6.png" src="../img_6.png" /></a></p>
+<p>데이터는 잘 들어간 것을 확인할 수 있다.</p>
+<p>간단한 검색 기능을 추가했다. (LIKE 검색)
+<br>
+오프라인에서도 잘 동작한다.</p>
+<p><a class="glightbox" href="../img_7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img_7.png" height="200" src="../img_7.png" width="300" /></a></p>
+<h2 id="_2">결론</h2>
+<p>RxDB는 <strong>JavaScript 기반의 Reactive NoSQL 데이터베이스</strong>로, <strong>실시간 UI 업데이트, 오프라인 지원, 직관적인 데이터 모델</strong>을 제공하여 Frontend 애플리케이션에 최적화되어 있습니다. 특히 <strong>채팅, 협업, 모바일, 데이터 집약적 애플리케이션</strong>과 같은 실시간 반응성이 중요한 프로젝트에서 큰 장점을 가집니다.</p>
 
 
 
@@ -1182,12 +1728,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
       
-        <script src="custom.js"></script>
+        <script src="../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

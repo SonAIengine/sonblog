@@ -2668,10 +2668,10 @@ tail<span class="w"> </span>-f<span class="w"> </span>/var/log/opensearch/opense
 <h2 id="_19">결론</h2>
 <p>이 가이드를 통해 OpenSearch에서 OpenAI API를 사용한 고품질 시맨틱 검색 시스템을 성공적으로 구축할 수 있습니다. 핵심은 올바른 커넥터 설정(전처리/후처리 함수 포함)과 적절한 거리 메트릭(<code>cosinesimil</code>) 사용입니다.</p>
 <h3 id="_20">검증된 성공 요소</h3>
-<p>✅ <strong>커넥터</strong>: <code>pre_process_function</code>과 <code>post_process_function</code> 필수<br />
-✅ <strong>거리 메트릭</strong>: <code>cosinesimil</code> 사용 (<code>cosine</code> 아님)<br />
-✅ <strong>차원 설정</strong>: text-embedding-3-small = 1536차원<br />
-✅ <strong>모델 테스트</strong>: 파이프라인 적용 전 개별 모델 호출 테스트</p>
+<p><strong>커넥터</strong>: <code>pre_process_function</code>과 <code>post_process_function</code> 필수<br />
+<strong>거리 메트릭</strong>: <code>cosinesimil</code> 사용 (<code>cosine</code> 아님)<br />
+<strong>차원 설정</strong>: text-embedding-3-small = 1536차원<br />
+<strong>모델 테스트</strong>: 파이프라인 적용 전 개별 모델 호출 테스트</p>
 <p>이제 OpenAI의 강력한 임베딩 기술을 활용한 고품질 검색 시스템을 운영할 수 있습니다!</p>
 
 

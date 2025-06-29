@@ -150,8 +150,19 @@
               "icon": "lucide-list",
               "title": "Vector Search 의 개요"
             }
+          },
+          {
+            "id": "068d10c664d7ae5a",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",

@@ -378,9 +378,9 @@ tail -f /var/log/opensearch/opensearch.log | grep -i "embedding\|neural\|ml"
 
 ### 검증된 성공 요소
 
-✅ **커넥터**: `pre_process_function`과 `post_process_function` 필수  
-✅ **거리 메트릭**: `cosinesimil` 사용 (`cosine` 아님)  
-✅ **차원 설정**: text-embedding-3-small = 1536차원  
-✅ **모델 테스트**: 파이프라인 적용 전 개별 모델 호출 테스트
+**커넥터**: `pre_process_function`과 `post_process_function` 필수  
+**거리 메트릭**: `cosinesimil` 사용 (`cosine` 아님)  
+**차원 설정**: text-embedding-3-small = 1536차원  
+**모델 테스트**: 파이프라인 적용 전 개별 모델 호출 테스트
 
 이제 OpenAI의 강력한 임베딩 기술을 활용한 고품질 검색 시스템을 운영할 수 있습니다!

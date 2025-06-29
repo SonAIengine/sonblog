@@ -8,7 +8,7 @@ MkDocs는 마크다운 파일을 이용해 문서 웹사이트를 만들 수 있
 |--------|------|------|
 | `mkdocs new [dir-name]` | 새로운 MkDocs 프로젝트 생성 | `mkdocs new my-docs` |
 | `mkdocs serve` | 개발 서버 실행 (기본 포트: 8000) | `mkdocs serve` |
-| `mkdocs build` | 정적 사이트 생성 (site 디렉토리에 빌드) | `mkdocs build` |
+| `mkdocs build` | 정적 사이트 생성 (site 디렉z토리에 빌드) | `mkdocs build` |
 | `mkdocs gh-deploy` | GitHub Pages에 사이트 배포 | `mkdocs gh-deploy` |
 | `mkdocs -h` | 도움말 표시 | `mkdocs -h` |
 

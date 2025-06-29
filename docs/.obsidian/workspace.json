@@ -166,7 +166,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -179,7 +180,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6eb9fd4111a46b0d",
+  "active": "b1489dbf48251e10",
   "lastOpenFiles": [
     "E.검색엔진/Vector Search.md",
     "E.검색엔진"

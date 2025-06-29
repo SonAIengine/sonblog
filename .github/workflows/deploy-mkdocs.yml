@@ -1,4 +1,4 @@
-name: Deploy MkDocs
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
@@ -6,29 +6,29 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v3
+      - name: Checkout source
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        pip install mkdocs mkdocs-material \
-                    mkdocs-awesome-pages-plugin \
-                    mkdocs-glightbox
+      - name: Install MkDocs and plugins
+        run: |
+          pip install mkdocs mkdocs-material \
+                      mkdocs-awesome-pages-plugin \
+                      mkdocs-glightbox
 
-    - name: Build MkDocs site
-      run: mkdocs build
+      - name: Build MkDocs site
+        run: mkdocs build
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./site
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site

@@ -213,12 +213,7 @@ GET /my-openai-nlp-index/_search
 - `post_process_function`: `connector.post_process.openai.embedding`
 - 이 함수들이 없으면 응답 처리 오류가 발생합니다.
 
-### 2. OpenSearch 거리 메트릭
-
-- `cosine` ❌ (오류 발생)
-- `cosinesimil` ✅ (올바른 설정)
-
-### 3. 모델 차원 설정
+### 2. 모델 차원 설정
 
 - text-embedding-3-small: **1536차원**
 - text-embedding-3-large: **3072차원**

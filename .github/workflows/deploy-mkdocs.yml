@@ -3,10 +3,10 @@ name: Deploy MkDocs
 on:
   push:
     branches:
-      - main  # main 브랜치에 push될 때마다 실행
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,11 +19,16 @@ jobs:
         python-version: '3.10'
 
     - name: Install dependencies
-      run: | 
-        pip install mkdocs mkdocs-material mkdocs-awesome-pages-plugin mkdocs-glightbox
+      run: |
+        pip install mkdocs mkdocs-material \
+                    mkdocs-awesome-pages-plugin \
+                    mkdocs-glightbox
+
+    - name: Build MkDocs site
+      run: mkdocs build
 
     - name: Deploy to GitHub Pages
-      run: mkdocs gh-deploy --force
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site

@@ -149,7 +149,29 @@ PUT /logs
 ---
 
 ### 4. Range 집계
-`{   "aggs": {     "price_ranges": {       "range": {         "field": "price",         "ranges": [           { "to": 100 },           { "from": 100, "to": 500 },           { "from": 500 }         ]       },       "aggs": {         "total_quantity": {           "sum": {             "field": "quantity"           }         }       }     }   } }`
+```
+{
+  "aggs": {
+    "price_ranges": {
+      "range": {
+        "field": "price",
+        "ranges": [
+          { "to": 100 },
+          { "from": 100, "to": 500 },
+          { "from": 500 }
+        ]
+      },
+      "aggs": {
+        "total_quantity": {
+          "sum": {
+            "field": "quantity"
+          }
+        }
+      }
+    }
+  }
+}
+```
 
 → 범위 기반 버킷 집계도 star-tree로 처리 가능
 

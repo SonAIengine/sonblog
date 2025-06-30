@@ -1,0 +1,1 @@
+집계(Aggregation)은

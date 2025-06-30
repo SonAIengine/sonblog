@@ -46,4 +46,43 @@ Star-tree는 트리 형태로 구성되며, 다음과 같은 구성요소를 포
 - `max_leaf_docs` 값으로 문서 수 제한 가능
 
 
-## 🛠️ 설정 예시
+## 설정 예시
+```
+PUT /logs
+{
+  "settings": {
+    "index.composite_index": true,
+    "index.append_only.enabled": true
+  },
+  "mappings": {
+    "composite": {
+      "request_aggs": {
+        "type": "star_tree",
+        "config": {
+          "ordered_dimensions": [
+            { "name": "status" },
+            { "name": "port" },
+            { "name": "method" }
+          ],
+          "metrics": [
+            { "name": "size", "stats": ["sum"] },
+            { "name": "latency", "stats": ["avg"] }
+          ],
+          "date_dimension": {
+            "name": "@timestamp",
+            "calendar_intervals": ["month", "day"]
+          }
+        }
+      }
+    },
+    "properties": {
+      "status": { "type": "integer" },
+      "port": { "type": "integer" },
+      "method": { "type": "keyword" },
+      "size": { "type": "integer" },
+      "latency": { "type": "scaled_float", "scaling_factor": 10 }
+    }
+  }
+}
+
+```

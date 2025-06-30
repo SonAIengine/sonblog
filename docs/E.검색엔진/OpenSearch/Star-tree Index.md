@@ -86,3 +86,66 @@ PUT /logs
 }
 
 ```
+
+## 쿼리 예시 및 최적화 방식
+
+쿼리는 기존 OpenSearch 쿼리와 동일하며, star-tree가 자동 적용됩니다.
+
+### 1. 단일 조건 집
+```
+{
+  "query": { "term": { "status": 500 } },
+  "aggs": { "sum_size": { "sum": { "field": "size" } } }
+}
+```
+
+→ `status=500` 노드에 미리 저장된 값에서 `sum(size)`를 즉시 반환
+
+---
+
+### 2. 날짜 기반 집계
+
+json
+
+복사편집
+
+`{   "size": 0,   "query": { "range": { "status": { "gte": "200", "lte": "400" } } },   "aggs": {     "by_month": {       "date_histogram": {         "field": "@timestamp",         "calendar_interval": "month"       },       "aggs": {         "sum_size": {           "sum": {             "field": "size"           }         }       }     }   } }`
+
+→ 월 단위로 `status` 필터를 적용한 `sum(size)`를 빠르게 반환
+
+---
+
+### 3. Terms 집계
+
+json
+
+복사편집
+
+`{   "aggs": {     "users": {       "terms": {         "field": "user_id"       }     }   } }`
+
+→ `user_id`가 dimension에 포함된 경우 star-tree로 최적화
+
+---
+
+### 4. Range 집계
+
+json
+
+복사편집
+
+`{   "aggs": {     "price_ranges": {       "range": {         "field": "price",         "ranges": [           { "to": 100 },           { "from": 100, "to": 500 },           { "from": 500 }         ]       },       "aggs": {         "total_quantity": {           "sum": {             "field": "quantity"           }         }       }     }   } }`
+
+→ 범위 기반 버킷 집계도 star-tree로 처리 가능
+
+---
+
+## ⚠️ 주의사항 및 제한
+
+|항목|제한 내용|
+|---|---|
+|❌ 문서 수정/삭제|지원하지 않음 (append-only 인덱스 필요)|
+|❌ _id와 같은 고유 필드|dimension으로 사용 금지 (고카디널리티로 인한 성능 저하)|
+|❌ array 필드|지원하지 않음|
+|❌ must_not, minimum_should_match|Boolean 쿼리에서 지원되지 않음|
+|✅ 지원 쿼리|term, terms, range, match_all, 일부 bool 쿼리|
+|✅ 지원 집계|sum, avg, min, max, value_count, date_histogram, terms, range|

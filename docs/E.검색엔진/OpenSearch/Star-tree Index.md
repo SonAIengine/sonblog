@@ -14,33 +14,36 @@ Star-tree Index는 **미리 집계된(Aggregated) 값을 다양한 차원 조합
 - **페이징 및 디스크 I/O 효율 향상**: 적은 리프 탐색으로 빠른 응답 가능
 
 
-## 🌲 Star-tree Index 구조
+## Star-tree Index 구조
 
 Star-tree는 트리 형태로 구성되며, 다음과 같은 구성요소를 포함합니다:
 
-### 📌 Dimension 노드 (ordered_dimensions)
+### Dimension 노드 (ordered_dimensions)
 
 - 예: `status`, `port`, `method`
     
 - 트리의 경로를 구성하는 필드들
     
 
-### 📌 Metric 노드 (metrics)
+### Metric 노드 (metrics)
 
 - 예: `sum(size)`, `avg(latency)`
     
 - 리프 노드에 저장되는 사전 계산된 값들
     
 
-### 📌 Star 노드 (`*`)
+### Star 노드 (`*`)
 
 - 특정 차원에 대해 모든 값을 집계한 노드
     
 - 쿼리 조건이 없는 차원을 건너뛸 수 있도록 최적화
     
 
-### 📌 Leaf 노드
+### Leaf 노드
 
 - 지정된 조합에 대한 최종 metric 값 저장
     
 - `max_leaf_docs` 값으로 문서 수 제한 가능
+
+
+## 🛠️ 설정 예시

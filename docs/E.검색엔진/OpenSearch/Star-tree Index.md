@@ -57,17 +57,32 @@ Star-tree는 고빈도 조건에서도 **지연시간이 일정하게 유지**�
 
 ## 사용 방법
 
-json
-
-복사편집
-
-`PUT /my-index {   "mappings": {     "properties": {       "status": { "type": "keyword" },       "day": { "type": "integer" },       "size": { "type": "float" }     }   },   "settings": {     "index": {       "composite_index": {         "star_tree": {           "dimensions": ["status", "day"],           "metrics": ["avg(size)", "count(*)"],           "max_leaf_docs": 10000         }       }     }   } }`
+```
+PUT /my-index
+{
+  "mappings": {
+    "properties": {
+      "status": { "type": "keyword" },
+      "day": { "type": "integer" },
+      "size": { "type": "float" }
+    }
+  },
+  "settings": {
+    "index": {
+      "composite_index": {
+        "star_tree": {
+          "dimensions": ["status", "day"],
+          "metrics": ["avg(size)", "count(*)"],
+          "max_leaf_docs": 10000
+        }
+      }
+    }
+  }
+}
+```
 
 - 위와 같이 인덱스 생성 시 설정
     
 - 쿼리 문법은 기존과 동일하게 사용 가능
     
 - OpenSearch 2.19 기준으로 일부 aggregation 타입만 지원
-    
-
----

@@ -28,3 +28,46 @@ Star-tree는 지정된 **차원(Dimensions)** 조합에 따라 **트리 구조**
 |status=400에 대한 평균(duration)|3천 건|5ms|6.5ms|
 
 Star-tree는 고빈도 조건에서도 **지연시간이 일정하게 유지**되며, 저빈도 조건과의 차이가 거의 없습니다.
+
+
+## 주요 장점
+
+### 1. 예측 가능한 낮은 지연 시간
+
+- 대용량 데이터에서도 평균 지연 시간이 **ms 단위**로 줄어듭니다.
+    
+
+### 2. 멀티 집계 지원
+
+- 여러 필드에 대해 집계를 수행할 경우에도, 트리 traversal이 중복되지 않아 빠릅니다.
+    
+
+### 3. 복잡한 집계 쿼리 처리량 향상
+
+- `date_histogram + sub aggregation` 조합에서도 기존보다 20배 이상의 처리량 향상
+    
+
+| 쿼리                       | 문서 수   | 기존 지연시간 | Star-tree 지연시간 | 기존 처리량 | Star-tree 처리량 |
+| ------------------------ | ------ | ------- | -------------- | ------ | ------------- |
+| 연도별 tip 합계 (passenger=1) | 1.2억 건 | 13초     | 94ms           | 0.08   | 2.01          |
+
+### 4. 구성 유연성
+
+- `max_leaf_docs` 파라미터를 조정해 **저장 공간 vs 쿼리 속도**를 균형 있게 선택 가능
+
+## 사용 방법
+
+json
+
+복사편집
+
+`PUT /my-index {   "mappings": {     "properties": {       "status": { "type": "keyword" },       "day": { "type": "integer" },       "size": { "type": "float" }     }   },   "settings": {     "index": {       "composite_index": {         "star_tree": {           "dimensions": ["status", "day"],           "metrics": ["avg(size)", "count(*)"],           "max_leaf_docs": 10000         }       }     }   } }`
+
+- 위와 같이 인덱스 생성 시 설정
+    
+- 쿼리 문법은 기존과 동일하게 사용 가능
+    
+- OpenSearch 2.19 기준으로 일부 aggregation 타입만 지원
+    
+
+---

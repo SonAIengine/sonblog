@@ -49,3 +49,4 @@ for time in range(block_size):
 	print(f"타깃 텐서 : {target}")
 ```
 
+인공지능 모델 훈련 시에는 단일 글자 텐서만 입력으로 주어지지 않는다. 여러 개의 텐서가 함께 묶여 입력으로 제공된다. 이를 배치(batch)

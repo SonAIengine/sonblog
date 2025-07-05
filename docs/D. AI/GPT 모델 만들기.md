@@ -48,3 +48,4 @@ for time in range(block_size):
 	print(f"입력 텐서 : {context}")
 	print(f"타깃 텐서 : {target}")
 ```
+

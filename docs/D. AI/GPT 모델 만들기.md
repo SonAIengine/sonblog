@@ -45,4 +45,6 @@ for time in range(block_size):
 	context = x[:time+1]
 	target = y[time]
 
-	print(f)
+	print(f"입력 텐서 : {context}")
+	print(f"타깃 텐서 : {target}")
+```

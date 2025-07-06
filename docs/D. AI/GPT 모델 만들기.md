@@ -244,4 +244,26 @@ Loss를 사용할 때 2가지 중요한 가정이 있다.
 크로스 엔트로피 함수는 분류 문제에서 모델 성능을 측정하는 데 자주 사용된다.
 이 함수는 모델이 예측한 확률 분포(임베딩)와 실제 레이블(target) 분포 간의 차이를 계산한다.
 
-손실이 낮을수록 모델의 예측이 실제 레이블에 더 가깝다는 것을 의미한다. 이러한 손실 계산은 모델이 학습 과정에서 자신의 성능을 평가하고 개선
+손실이 낮을수록 모델의 예측이 실제 레이블에 더 가깝다는 것을 의미한다. 이러한 손실 계산은 모델이 학습 과정에서 자신의 성능을 평가하고 개선할 수 있게 해주는 중요한 지표가 된다. 손실 함수를 통해 모델은 자신의 예측과 실제 정답 사이의 오차를 인식하고, 이를 최소화하는 방향으로 파라미터를 조정할 수 있다.
+
+손실 함수를 설정하고 다시 한번 코드를 실행해보겠다.
+
+```python
+import torch
+import torch.nn
+from torch.nn import functional as F
+
+class semiGPT(nn.Moudle):
+	def __init__(self, vocab_length):
+		super().__init__()
+		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+	
+	def forward(self, inputs, targets):
+		logits = self.embedding_token_table(inputs)
+		
+		return logits
+
+model = semiGPT(ko_vocab_size)
+output = model(example_x, example_y)
+print(output.shape)
+```

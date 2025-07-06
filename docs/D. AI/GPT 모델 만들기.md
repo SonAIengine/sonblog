@@ -309,3 +309,6 @@ print(output)
 ```
 
 첫 번째로 logits의 shape를 변경했다.
+> logits = logits.view(batch * seq_length, vocab)
+
+이 코드는 원래 [4, 8, 2701] 형태의 logits를 [32, 2701] 형태로 변경한다. 여기서 32는 

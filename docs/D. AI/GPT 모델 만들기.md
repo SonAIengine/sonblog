@@ -268,3 +268,8 @@ model = semiGPT(ko_vocab_size)
 outputm loss = model(example_x, example_y)
 print(output)
 ```
+
+코드를 실행하면 에러를 발생하는 것이 정상이다. 이는 `shape` 가 맞지 않기 때문이다.
+이 또한 다양한 연구를 하다 보면 자주 만나는 오류여서 예제로 가져왔다.
+
+> RuntimeError: Expected target size

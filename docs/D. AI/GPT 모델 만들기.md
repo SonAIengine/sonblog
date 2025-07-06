@@ -65,5 +65,6 @@ block_size = 8
 
 def batch_function(mode):
 	dataset = train_dataset if mode == "train" else test_dataset
-	idx = torch.randint(len(dataset))
+	idx = torch.randint(len(dataset) - block_size, (batch_size))
+	x = torch.stack([dataset[index:index+block_size])
 ```

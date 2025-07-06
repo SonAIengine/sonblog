@@ -84,14 +84,14 @@ for size in range(batch_size):
 
 이 코드는 PyTorch를 사용하여 언어 모델 학습을 위한 **미니 배치(batch)** 를 생성하고, 그 배치에서 각 타임스텝의 **입력(context)** 과 **타깃(target)** 을 출력하는 예제이다.
 
-
  `torch.manual_seed(1234)` 는 PyTorch의 난수 생성 시드를 고정하여 **재현 가능한 결과**를 만든다.
 
 `batch_size = 4`, `block_size = 8`  
 - **batch_size**: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수)
 - **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨
 
- **batch_function(mode)** 는 `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수이다.
+ ### **batch_function(mode)** 
+ 는 `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수이다.
 
 ```python
 dataset = train_dataset if mode == "train" else test_dataset

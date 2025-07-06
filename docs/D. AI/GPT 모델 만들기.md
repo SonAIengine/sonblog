@@ -202,4 +202,7 @@ print(output.shape)
 먼저, 큰 흐름을 살펴보고 코드를 살펴보겠다.
 semiGPT는 `__init__` 함수에서 `vocab_length` 를 (매개)변수로 받아 토큰 임베딩(embedding) 테이블을 만든다. 여기서 `vocab_length`는 모델이 다룰 수 있는 단어의 총 개수이므로 2701개가 된다.
 
-임베딩 테이블
+임베딩 테이블은 각 단어를 고유한 숫자 벡터로 변환하는 역할을 한다. 이를 코드로 구현한 부분이 
+`self.token_embedding_table = nn.Embedding(vocab_length, vocab_length)` 이다.
+
+리

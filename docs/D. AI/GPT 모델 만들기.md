@@ -60,6 +60,8 @@ for time in range(block_size):
 `block_size` 는 각 텐서의 길이를 결정하고, `batch_size` 는 한 번에 처리할 텐서의 개수를 설정한다.
 이 두 매개변수를 적절히 조절하면 모델의 학습 속도와 성능을 최적화할 수 있다.
 
+### PyTorch 언어 모델 학습을 위한 배치 생성 예제
+
 ```python
 torch.maunal_seed(1234)
 
@@ -169,3 +171,5 @@ input : tensor([10, 20, 30, 40, 50, 60, 70, 80]), target : 90
 
 
 ### 언어 모델 만들기
+semiGPT 클래스를 만드는 과정은 객체 지향 프로그래밍의 기본 원칙을 따른다. 
+- 첫 번째는 `__init__`

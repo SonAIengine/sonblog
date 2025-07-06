@@ -70,5 +70,9 @@ def batch_function(mode):
 	y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 	return x, y
 
+for size in range(batch_size):
+	for t in range()
+
+
 
 ```

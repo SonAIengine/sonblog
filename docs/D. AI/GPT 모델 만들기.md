@@ -177,3 +177,11 @@ semiGPT 클래스를 만드는 과정은 객체 지향 프로그래밍의 기본
 
 이러한 구조는 파이토치와 같은 딥러닝 프레임워크에서 일반적으로 사용되는 방식으로, 모델의 구조를 명확하게 정의하고 사용하기 쉽게 만든다. 이렇게 설계된 semiGPT 클래스는 다양한 언어 모델링 작업에 활용될 수 있으며, 필요에 따라 쉽게 확장하거나 수정이 가능하다.
 
+```python
+import torch
+import torch.nn
+from torch.nn import functional as F
+
+class semiGPT(nn.Moudle):
+	
+```

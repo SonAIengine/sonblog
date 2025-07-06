@@ -299,7 +299,7 @@ class semiGPT(nn.Moudle):
 		logits = self.embedding_token_table(inputs)
 		batch, seq_length, vecab_length = logits.shape
 		logits = logits.view(batch * seq_length, vocab_length)
-		targets = targets.view(batch)
+		targets = targets.view(batch*seq_length)
 		loss = F.cross_entropy(logits, targets)
 		return logits, loss
 
@@ -307,3 +307,5 @@ model = semiGPT(ko_vocab_size)
 outputm loss = model(example_x, example_y)
 print(output)
 ```
+
+첫 번째로 logits의 shape를 변경했다.

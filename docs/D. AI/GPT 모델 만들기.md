@@ -90,7 +90,7 @@ for size in range(batch_size):
 - **batch_size**: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수)
 - **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨
 
- #### **batch_function(mode)** 
+ #### 1. batch_function(mode)
  `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수이다.
 
 ```python
@@ -124,7 +124,7 @@ y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 
 - 학습용 미니 배치를 하나 생성합니다.
 
-#### context와 target을 하나씩 출력
+#### 2. context와 target을 하나씩 출력
 
 ```python
 for size in range(batch_size):
@@ -149,12 +149,9 @@ input : tensor([10, 20, 30]), target : 40
 input : tensor([10, 20, 30, 40, 50, 60, 70, 80]), target : 90
 ```
 
-이 구조는 GPT 계열의 오토리그레시브 모델에서 학습 시 주어진 `context`로 다음 토큰을 예측하는 방식과 같습니다.
+이 구조는 GPT 계열의 오토리그레시브 모델에서 학습 시 주어진 `context`로 다음 토큰을 예측하는 방식과 같습니다. 
 
-### 요약
-
-이 코드는 언어 모델 학습을 위해:
-
+요약하자면, 이 코드는 언어 모델 학습을 위해
 - 입력 시퀀스와 타깃 시퀀스를 자동 생성하고
     
 - 각 타임스텝에서 `context → target` 관계를 출력해

@@ -64,5 +64,6 @@ batch_size = 4
 block_size = 8
 
 def batch_function(mode):
-	dataset = train_data
+	dataset = train_dataset if mode == "train" else test_dataset
+	idx = torch.randint(len(dataset))
 ```

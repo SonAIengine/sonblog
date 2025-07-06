@@ -74,8 +74,7 @@ example_x, example_y = batch_function("train")
 
 for size in range(batch_size):
 	for t in range(block_size):
-		context = example_x
-
-
-
+		context = example_x[size, :t+1]
+		target = example_y[size, t]
+		print(f"input : {context}, target : {target}")
 ```

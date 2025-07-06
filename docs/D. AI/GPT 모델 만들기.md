@@ -316,4 +316,5 @@ print(output)
 두 번째로 targets의 shape를 변경해 logits와 연산될 수 있도록 만든다.
 ```targets = targets.view(batch*seq_length)```
 
-이 코드는 원래 [4, 8] 형태의 targets
+이 코드는 원래 [4, 8] 형태의 targets를 [32] 형태로 변경한다.
+

@@ -183,5 +183,7 @@ import torch.nn
 from torch.nn import functional as F
 
 class semiGPT(nn.Moudle):
-	
+	def __init__(self, vocab_length):
+		super().__init__()
+		self.embedding_token_table == nn.Embedding(vocab_lengthm)
 ```

@@ -24,4 +24,4 @@
     - posterior를 새로운 prior로 사용
         
 - **수렴 효과**  
-    샘플링이 반복될수록 분포는 실제 클릭률 근처로 좁혀지고, 더 높은 성공률의 arm이 자주 선택되게 됩니다 [velog.io+5infossm.github.io+5jhk0530.medium.com+5](https://infossm.github.io/blog/2019/01/10/discounted-thompson-sampling/?utm_source=chatgpt.com).
+    샘플링이 반복될수록 분포는 실제 클릭률 근처로 좁혀지고, 더 높은 성공률의 arm이 자주 선택되게 됩니다.

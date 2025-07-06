@@ -272,4 +272,6 @@ print(output)
 코드를 실행하면 에러를 발생하는 것이 정상이다. 이는 `shape` 가 맞지 않기 때문이다.
 이 또한 다양한 연구를 하다 보면 자주 만나는 오류여서 예제로 가져왔다.
 
-> RuntimeError: Expected target size
+> RuntimeError: Expected target size [4, 2701], got[4, 8]
+
+오류가 발생하는 이유를 다시 살펴보겠다. 오류 메시지에서 볼 수 있듯이, 모델은 target size[4, 2701]을 기대하지만, 실제 targets shape으로는 [4, 8

@@ -197,5 +197,9 @@ output = model(example_x, example_y)
 print(output.shape)
 ```
 
+> 결과: torch.Size([4,8,2701])
+
 먼저, 큰 흐름을 살펴보고 코드를 살펴보겠다.
-semiGPT는 `__init__` 함수에서 `vocab_length` 를 (매개)변수로 받아 토큰 임베딩(embedding) 테이블을 만든다. 여기서 `vocab_length
+semiGPT는 `__init__` 함수에서 `vocab_length` 를 (매개)변수로 받아 토큰 임베딩(embedding) 테이블을 만든다. 여기서 `vocab_length`는 모델이 다룰 수 있는 단어의 총 개수이므로 2701개가 된다.
+
+임베딩 테이블

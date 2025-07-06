@@ -274,4 +274,6 @@ print(output)
 
 > RuntimeError: Expected target size [4, 2701], got[4, 8]
 
-오류가 발생하는 이유를 다시 살펴보겠다. 오류 메시지에서 볼 수 있듯이, 모델은 target size[4, 2701]을 기대하지만, 실제 targets shape으로는 [4, 8
+오류가 발생하는 이유를 다시 살펴보겠다. 오류 메시지에서 볼 수 있듯이, 모델은 target size[4, 2701]을 기대하지만, 실제 targets shape으로는 [4, 8]을 받았다는 에러이다. 이는 vacab_length가 2701임을 나타낸다.
+
+example_x, example_y는 각각 [4, 8] 크기이므로 모델에서 크로스엔트로피 손실 함수가 올바르게 작동하려면 예측한 것(logits)과 실제 값(targets)의 차이

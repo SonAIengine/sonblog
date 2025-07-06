@@ -78,3 +78,106 @@ for size in range(batch_size):
 		target = example_y[size, t]
 		print(f"input : {context}, target : {target}")
 ```
+
+이 코드는 PyTorch를 사용하여 언어 모델 학습을 위한 **미니 배치(batch)** 를 생성하고, 그 배치에서 각 타임스텝의 **입력(context)** 과 **타깃(target)** 을 출력하는 예제이다.
+
+ `torch.manual_seed(1234)` 는 PyTorch의 난수 생성 시드를 고정하여 **재현 가능한 결과**를 만든다.
+
+`batch_size = 4`, `block_size = 8`  
+- **batch_size**: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수).
+- **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨.
+
+---
+
+### 3. `batch_function(mode)`
+
+#### 목적:
+
+`train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수입니다.
+
+```python
+dataset = train_dataset if mode == "train" else test_dataset
+```
+
+- `mode`에 따라 사용할 데이터셋을 선택합니다.
+    
+
+```python
+idx = torch.randint(len(dataset) - block_size, (batch_size))
+```
+
+- 데이터셋에서 block_size만큼의 연속된 구간을 추출할 **시작 인덱스**를 무작위로 `batch_size`개 만큼 선택합니다.
+    
+
+```python
+x = torch.stack([dataset[index:index+block_size] for index in idx])
+y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
+```
+
+- `x`: `[index : index + block_size]` 범위 → 입력 시퀀스
+    
+- `y`: `[index+1 : index + block_size + 1]` 범위 → 타깃 시퀀스 (한 칸 오른쪽으로 shift된 값)
+    
+
+예시:
+
+- x: `[1, 2, 3, 4, 5, 6, 7, 8]`
+    
+- y: `[2, 3, 4, 5, 6, 7, 8, 9]`  
+    → 언어 모델에서는 주어진 context로 다음 단어를 예측하므로 이렇게 한 칸씩 이동시킵니다.
+    
+
+---
+
+### 4. `example_x, example_y = batch_function("train")`
+
+- 학습용 미니 배치를 하나 생성합니다.
+    
+
+---
+
+### 5. context와 target을 하나씩 출력
+
+```python
+for size in range(batch_size):
+	for t in range(block_size):
+		context = example_x[size, :t+1]
+		target = example_y[size, t]
+		print(f"input : {context}, target : {target}")
+```
+
+#### 예시:
+
+- `example_x[size] = [10, 20, 30, 40, 50, 60, 70, 80]`
+    
+- `example_y[size] = [20, 30, 40, 50, 60, 70, 80, 90]`
+    
+
+출력은 다음과 같이 됨:
+
+```text
+input : tensor([10]), target : 20
+input : tensor([10, 20]), target : 30
+input : tensor([10, 20, 30]), target : 40
+...
+input : tensor([10, 20, 30, 40, 50, 60, 70, 80]), target : 90
+```
+
+이 구조는 GPT 계열의 오토리그레시브 모델에서 학습 시 주어진 `context`로 다음 토큰을 예측하는 방식과 같습니다.
+
+---
+
+### 요약
+
+이 코드는 언어 모델 학습을 위해:
+
+- 입력 시퀀스와 타깃 시퀀스를 자동 생성하고
+    
+- 각 타임스텝에서 `context → target` 관계를 출력해
+    
+- 모델이 "이런 문맥에서 다음 단어가 무엇일까?" 를 학습하게 도와주는 구조입니다.
+    
+
+---
+
+필요하다면 `train_dataset`, `test_dataset`이 어떤 형식이어야 하는지 예시도 들어드릴 수 있어요.

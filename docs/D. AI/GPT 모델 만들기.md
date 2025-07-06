@@ -285,3 +285,24 @@ example_x, example_y는 각각 [4, 8] 크기이므로 모델에서 크로스엔�
 
 수정된 코드는 다음과 같다.
 
+```python
+import torch
+import torch.nn
+from torch.nn import functional as F
+
+class semiGPT(nn.Moudle):
+	def __init__(self, vocab_length):
+		super().__init__()
+		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+	
+	def forward(self, inputs, targets):
+		logits = self.embedding_token_table(inputs)
+
+		losss = F.cross_entropy(logits, targets)
+		return logits, loss
+
+model = semiGPT(ko_vocab_size)
+outputm loss = model(example_x, example_y)
+print(output)
+
+```

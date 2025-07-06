@@ -311,4 +311,6 @@ print(output)
 첫 번째로 logits의 shape를 변경했다.
 > logits = logits.view(batch * seq_length, vocab)
 
-이 코드는 원래 [4, 8, 2701] 형태의 logits를 [32, 2701] 형태로 변경한다. 여기서 32는 
+이 코드는 원래 [4, 8, 2701] 형태의 logits를 [32, 2701] 형태로 변경한다. 여기서 32는 4(batch) * 8(seq_length)이다. view 함수는 텐서의 모양을 변경하는 파이토치 메서드로 이는 마치 같은 데이터를 다른 방식으로 보는 것처럼 만드는 효과가 있다.
+
+두 번째로 targets의 shape를 변경해 logits와 연살

@@ -186,10 +186,15 @@ class semiGPT(nn.Moudle):
 	def __init__(self, vocab_length):
 		super().__init__()
 		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+	
 	def forward(self, inputs, targets):
 		logits = self.embedding_token_table(inputs)
 		
 		return logits
 
-model = 
+model = semiGPT(ko_vocab_size)
+output = model(example_x, example_y)
+print(output.shape)
 ```
+
+먼

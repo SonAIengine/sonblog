@@ -90,14 +90,15 @@ for size in range(batch_size):
 - **batch_size**: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수)
 - **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨
 
- ### **batch_function(mode)** 
- 는 `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수이다.
+ #### **batch_function(mode)** 
+ `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수이다.
 
 ```python
 dataset = train_dataset if mode == "train" else test_dataset
 ```
 
 - `mode`에 따라 사용할 데이터셋을 선택합니다.
+
 
 ```python
 idx = torch.randint(len(dataset) - block_size, (batch_size))
@@ -113,6 +114,7 @@ y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 - `x`: `[index : index + block_size]` 범위 → 입력 시퀀스
 - `y`: `[index+1 : index + block_size + 1]` 범위 → 타깃 시퀀스 (한 칸 오른쪽으로 shift된 값)
 
+
 **예시**
 - x: `[1, 2, 3, 4, 5, 6, 7, 8]`
 - y: `[2, 3, 4, 5, 6, 7, 8, 9]`  
@@ -122,7 +124,7 @@ y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 
 - 학습용 미니 배치를 하나 생성합니다.
 
-context와 target을 하나씩 출력
+#### context와 target을 하나씩 출력
 
 ```python
 for size in range(batch_size):

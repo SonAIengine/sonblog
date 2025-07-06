@@ -185,5 +185,11 @@ from torch.nn import functional as F
 class semiGPT(nn.Moudle):
 	def __init__(self, vocab_length):
 		super().__init__()
-		self.embedding_token_table == nn.Embedding(vocab_lengthm)
+		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+	def forward(self, inputs, targets):
+		logits = self.embedding_token_table(inputs)
+		
+		return logits
+
+model = 
 ```

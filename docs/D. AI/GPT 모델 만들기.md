@@ -230,5 +230,7 @@ semiGPT는 `__init__` 함수에서 `vocab_length` 를 (매개)변수로 받아 �
 
 > `Torch와 torch.nn` :  파이토치의 핵심 라이브러리인 torch는 텐서 연산과 자동 미분 기능 등을 제공해 딥러닝 모델 구현에 필수적인 기능을 제공한다. 신경망 구축에 필요한 다양한 레이어와 매개변수 관리 기능은 `torch.nn` 모듈에서 제공한다. 이를 통해 모델 아키텍처를 정의하고 매개변수를 초기화하며, 순전파(forward pass) 를 구현할 수 있다.
 
-> `torch.nn.functional` : 주로 상태가 없는(stateless) 함수들을 제공한다. 여기에는 활성화 함수(ReLU, Sigmoid 등)와 손실 함수(Cross Entropy Loss 등)가 포함된다. 이 모듈은 함수적 인터페이스를 통해 레이어
+> `torch.nn.functional` : 주로 상태가 없는(stateless) 함수들을 제공한다. 여기에는 활성화 함수(ReLU, Sigmoid 등)와 손실 함수(Cross Entropy Loss 등)가 포함된다. 이 모듈은 함수적 인터페이스를 통해 레이어의 작동을 구현할 때 활용한다.
+
+### 
 

@@ -37,6 +37,7 @@ data 딕셔너리의 train 키에서 document 값을 가져와 모든 문서를 
 
 **train_dataset[:block_size]** 이런 식으로 훈련 데이터셋의 처음 8개 글자를 텐서 형태로 보여줄 수 있다. 이 텐서는 숫자 배열이며 각 숫자는 특정 글자를 나타낸다. **학습 과정에 이런 블록은 트랜스포머 모델이 각 글자 뒤에 나타날 글자를 예측하도록 돕니다.** 모델은 각 위치에서 글자를 예측하며, 이 과정을 통해 문장 구조와 언어 패턴을 학습한다. 예를 들어 모델에 1928이라고 인코딩된 텍스트 정보를 입력했다고 가정해보자, 모델은 1928이라는 숫자로 인코딩된 텍스트를 봤다면 다음 글자 2315를 예측할 때 1928을 사용하고, 그 다음 글자인 0을 예측할 때는 1928과 2315를 함께 사용해 예측하도록 훈련한다.
 
+
 ```python
 x = train_dataset[:block_size]
 y = train_dataset[1:block_size+1]
@@ -51,8 +52,10 @@ for time in range(block_size):
 
 인공지능 모델 훈련 시에는 단일 글자 텐서만 입력으로 주어지지 않는다. 여러 개의 텐서가 함께 묶여 입력으로 제공된다. 이를 `배치(batch)` 라고 한다.
 
+
 이제 `block_size` 와 `batch_size` 를 활용해 데이터가 어떻게 입력되는지 자세히 살펴보겠다.
 배치 처리는 모델의 학습 효율을 높이는 중요한 기법으로, 여러 데이터 샘플을 동시에 처리함으로써 계산 속도를 향상시키고 모델의 일반화 능력을 개선한다.
+
 
 `block_size` 는 각 텐서의 길이를 결정하고, `batch_size` 는 한 번에 처리할 텐서의 개수를 설정한다.
 이 두 매개변수를 적절히 조절하면 모델의 학습 속도와 성능을 최적화할 수 있다.
@@ -80,6 +83,7 @@ for size in range(batch_size):
 ```
 
 이 코드는 PyTorch를 사용하여 언어 모델 학습을 위한 **미니 배치(batch)** 를 생성하고, 그 배치에서 각 타임스텝의 **입력(context)** 과 **타깃(target)** 을 출력하는 예제이다.
+
 
  `torch.manual_seed(1234)` 는 PyTorch의 난수 생성 시드를 고정하여 **재현 가능한 결과**를 만든다.
 
@@ -117,11 +121,8 @@ y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
  `example_x, example_y = batch_function("train")`
 
 - 학습용 미니 배치를 하나 생성합니다.
-    
 
----
-
-### 5. context와 target을 하나씩 출력
+context와 target을 하나씩 출력
 
 ```python
 for size in range(batch_size):
@@ -131,14 +132,12 @@ for size in range(batch_size):
 		print(f"input : {context}, target : {target}")
 ```
 
-#### 예시:
+예시
 
 - `example_x[size] = [10, 20, 30, 40, 50, 60, 70, 80]`
-    
 - `example_y[size] = [20, 30, 40, 50, 60, 70, 80, 90]`
-    
 
-출력은 다음과 같이 됨:
+출력은 다음과 같이 됨
 
 ```text
 input : tensor([10]), target : 20
@@ -150,8 +149,6 @@ input : tensor([10, 20, 30, 40, 50, 60, 70, 80]), target : 90
 
 이 구조는 GPT 계열의 오토리그레시브 모델에서 학습 시 주어진 `context`로 다음 토큰을 예측하는 방식과 같습니다.
 
----
-
 ### 요약
 
 이 코드는 언어 모델 학습을 위해:
@@ -161,8 +158,3 @@ input : tensor([10, 20, 30, 40, 50, 60, 70, 80]), target : 90
 - 각 타임스텝에서 `context → target` 관계를 출력해
     
 - 모델이 "이런 문맥에서 다음 단어가 무엇일까?" 를 학습하게 도와주는 구조입니다.
-    
-
----
-
-필요하다면 `train_dataset`, `test_dataset`이 어떤 형식이어야 하는지 예시도 들어드릴 수 있어요.

@@ -70,8 +70,11 @@ def batch_function(mode):
 	y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 	return x, y
 
+example_x, example_y = batch_function("train")
+
 for size in range(batch_size):
-	for t in range()
+	for t in range(block_size):
+		context = example_x
 
 
 

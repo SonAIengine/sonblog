@@ -84,23 +84,16 @@ for size in range(batch_size):
  `torch.manual_seed(1234)` 는 PyTorch의 난수 생성 시드를 고정하여 **재현 가능한 결과**를 만든다.
 
 `batch_size = 4`, `block_size = 8`  
-- **batch_size**: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수).
-- **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨.
+- **batch_size**: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수)
+- **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨
 
----
-
-### 3. `batch_function(mode)`
-
-#### 목적:
-
-`train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수입니다.
+ **batch_function(mode)** 는 `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수입니다.
 
 ```python
 dataset = train_dataset if mode == "train" else test_dataset
 ```
 
 - `mode`에 따라 사용할 데이터셋을 선택합니다.
-    
 
 ```python
 idx = torch.randint(len(dataset) - block_size, (batch_size))

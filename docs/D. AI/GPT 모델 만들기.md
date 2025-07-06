@@ -57,6 +57,12 @@ for time in range(block_size):
 `block_size` 는 각 텐서의 길이를 결정하고, `batch_size` 는 한 번에 처리할 텐서의 개수를 설정한다.
 이 두 매개변수를 적절히 조절하면 모델의 학습 속도와 성능을 최적화할 수 있다.
 
-```
+```python
+torch.maunal_seed(1234)
 
+batch_size = 4
+block_size = 8
+
+def batch_function(mode):
+	dataset = train_data
 ```

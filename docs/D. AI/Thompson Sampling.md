@@ -13,3 +13,19 @@
     - 각 arm마다 θₖ로부터 값 하나를 샘플링
     - 가장 큰 값의 arm을 선택 → 그 결과(클릭 여부)로 α 또는 β 값 업데이트
 
+### Bernoulli (이진) 사례 흐름
+- **초기화**  
+    모든 arm k에 대해 (αₖ, βₖ) = (1, 1).
+    
+- **매 라운드 수행**
+    
+    - θ̂ₖ ~ Beta(αₖ, βₖ) 샘플링
+        
+    - 𝑘* = argmaxₖ θ̂ₖ 인 arm을 선택
+        
+    - 클릭(r=1)하면 αₖ* += 1, 클릭없으면 βₖ* += 1 [arxiv.org+9infossm.github.io+9yjjo.tistory.com+9](https://infossm.github.io/blog/2019/01/10/discounted-thompson-sampling/?utm_source=chatgpt.com)[kukim.tistory.com+4themoonlight.io+4velog.io+4](https://www.themoonlight.io/ko/review/fast-precise-thompson-sampling-for-bayesian-optimization?utm_source=chatgpt.com)[velog.io](https://velog.io/%40minchoul2/RecSys-%EC%B6%94%EC%B2%9C%EC%9D%84-%EC%9C%84%ED%95%9C-MABMulti-Armed-Bandit-%EC%8B%AC%ED%99%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98Thompson-sampling-LinUCB?utm_source=chatgpt.com)
+        
+    - posterior를 새로운 prior로 사용
+        
+- **수렴 효과**  
+    샘플링이 반복될수록 분포는 실제 클릭률 근처로 좁혀지고, 더 높은 성공률의 arm이 자주 선택되게 됩니다 [velog.io+5infossm.github.io+5jhk0530.medium.com+5](https://infossm.github.io/blog/2019/01/10/discounted-thompson-sampling/?utm_source=chatgpt.com).

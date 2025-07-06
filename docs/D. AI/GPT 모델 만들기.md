@@ -197,4 +197,5 @@ output = model(example_x, example_y)
 print(output.shape)
 ```
 
-먼
+먼저, 큰 흐름을 살펴보고 코드를 살펴보겠다.
+semiGPT는 `__init__` 함수에서 `vocab_length` 를 (매개)변수로 받아 토큰 임베딩(embedding) 테이블을 만든다. 여기서 `vocab_length

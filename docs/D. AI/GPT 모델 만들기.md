@@ -260,10 +260,11 @@ class semiGPT(nn.Moudle):
 	
 	def forward(self, inputs, targets):
 		logits = self.embedding_token_table(inputs)
-		
-		return logits
+
+		losss = F.cross_entropy(logits, targets)
+		return logits, loss
 
 model = semiGPT(ko_vocab_size)
-output = model(example_x, example_y)
-print(output.shape)
+outputm loss = model(example_x, example_y)
+print(output)
 ```

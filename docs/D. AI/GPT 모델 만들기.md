@@ -308,6 +308,8 @@ outputm loss = model(example_x, example_y)
 print(output)
 ```
 
+> 실행 결
+
 첫 번째로 logits의 shape를 변경했다.
 ```logits = logits.view(batch * seq_length, vocab)```
 
@@ -316,7 +318,7 @@ print(output)
 두 번째로 targets의 shape를 변경해 logits와 연산될 수 있도록 만든다.
 ```targets = targets.view(batch*seq_length)```
 
-이 코드는 원래 [4, 8] 형태의 targets를 [32] 형태로 변경한다.
+이 코드는 원래 [4, 8] 형태의 targets를 [32] 형태로 변경한다. 이렇게 수정하면 이전에 발생했던 shape 불일치 에러가 해결되고, 모델이 정상적으로 손실을 계산할 수 있게 된다.
 
-이러한 shape 변경을 통해 각 토큰에 대한 예측(logits)과 실제 값(targets)을 일대일로 비교할 수 있게 된다. 
+
 

@@ -330,5 +330,30 @@ print(loss)
 #### generate 메서드
 다음으로 학습한 모델이 예측한 글자를 생성하기 위해 `generate` 메서드를 추가한다. 이 메서드는 모델이 학습한 패턴을 바탕으로 새로운 텍스트를 생성한다. `generate` 메서드는 입력된 시작 문자열에 기반해 연속으로 다음 글자를 예측하고 텍스트를 생성한다.
 
+```python
+import torch
+import torch.nn
+from torch.nn import functional as F
 
+class semiGPT(nn.Moudle):
+	def __init__(self, vocab_length):
+		super().__init__()
+		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+	
+	def forward(self, inputs, targets):
+		logits = self.embedding_token_table(inputs)
+		batch, seq_length, vecab_length = logits.shape
+		logits = logits.view(batch * seq_length, vocab_length)
+		targets = targets.view(batch*seq_length)
+		loss = F.cross_entropy(logits, targets)
+		return logits, loss
+
+	def generate(self, inputs, max_new_tokens):
+		for _ in range(max_new_tokens):
+			
+
+model = semiGPT(ko_vocab_size)
+outputm loss = model(example_x, example_y)
+print(loss)
+```
 

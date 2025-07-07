@@ -48,7 +48,7 @@ Thompson Sampling은 **베이지안 확률 모델**을 이용해서, 여러 선�
 
 ## 탐색과 활용의 균형
 
-Thompson Sampling의 가장 큰 특징은, **탐색(explore)**과 **활용(exploit)** 사이의 균형을 자동으로 맞춰준다는 점입니다.
+Thompson Sampling의 가장 큰 특징은, 탐색(explore)과 활용(exploit) 사이의 균형을 자동으로 맞춰준다는 점입니다.
 
 - 아직 정보가 부족한 선택지는 **분포의 분산이 커서** 샘플링 값이 요동치기 때문에 탐색 대상이 됩니다.
     

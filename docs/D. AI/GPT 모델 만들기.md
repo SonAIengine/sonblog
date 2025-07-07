@@ -367,4 +367,4 @@ token_decode(model.generate(torch.zeros((1,1),
 
 > 실행결과: 엿입빤쌩슝찮찡펭
 
-
+먼저, `max_new_tokens` 횟수만큼 반복문을 실행한다. 각 반복에서 현재의 `inputs` 를 forward를 통과시켜 logits와 loss를 얻는다. logits[:, -1, :]

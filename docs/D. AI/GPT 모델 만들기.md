@@ -361,7 +361,9 @@ model = semiGPT(ko_vocab_size)
 outputm loss = model(example_x, example_y)
 print(loss)
 
-token_decode(model.generate(torch.zeros(1,1),
-							dtype=torch.long))
+token_decode(model.generate(torch.zeros((1,1),
+							dtype=torch.long),
+							max_new_tokens=10)[0].tolist())
 ```
 
+> 실행 결과: te

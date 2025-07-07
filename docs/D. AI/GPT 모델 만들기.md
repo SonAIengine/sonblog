@@ -309,7 +309,7 @@ print(loss)
 ```
 
 > 실행 결과
-> tensor(8.2693, grad_fn=<NllLossBa)
+> tensor(**8.2693**, grad_fn=NllLossBackward0)
 
 첫 번째로 logits의 shape를 변경했다.
 ```logits = logits.view(batch * seq_length, vocab)```
@@ -321,5 +321,5 @@ print(loss)
 
 이 코드는 원래 [4, 8] 형태의 targets를 [32] 형태로 변경한다. 이렇게 수정하면 이전에 발생했던 shape 불일치 에러가 해결되고, 모델이 정상적으로 손실을 계산할 수 있게 된다.
 
-
+`한 가지 궁금한 점은 손실값이 8.26`
 

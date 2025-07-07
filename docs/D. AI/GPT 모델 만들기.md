@@ -367,4 +367,14 @@ token_decode(model.generate(torch.zeros((1,1),
 
 > 실행결과: 엿입빤쌩슝찮찡펭
 
-먼저, `max_new_tokens` 횟수만큼 반복문을 실행한다. 각 반복에서 현재의 `inputs` 를 forward를 통과시켜 logits와 loss를 얻는다. logits[:, -1, :]
+먼저, `max_new_tokens` 횟수만큼 반복문을 실행한다. 각 반복에서 현재의 `inputs` 를 forward를 통과시켜 logits와 loss를 얻는다. logits[:, -1, :]을 통해 가장 최근에 생성된 토큰에 대한 로짓만을 선택한다.
+
+```python
+import torch
+
+logits = torch.tensor(
+	[
+		[0.1, 0.2, 0.3, 0.4],
+	]
+)
+```

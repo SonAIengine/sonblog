@@ -354,10 +354,14 @@ class semiGPT(nn.Moudle):
 			logits = logits[:, -1, :]
 			print(logits.shape)
 			probs = F.softmax(logits, dim-1)
-			next_inputs = torch.multio
+			next_inputs = torch.multionmial(probs, num_samples=1)
+		return inputs
 
 model = semiGPT(ko_vocab_size)
 outputm loss = model(example_x, example_y)
 print(loss)
+
+token_decode(model.generate(torch.zeros(1,1),
+							dtype=torch.long))
 ```
 

@@ -382,5 +382,10 @@ logits = torch.tensor(
 	]
 )
 
-result = logits[:]
+result = logits[:,-1,:]
+print("선택되는 값 : ", result)
+print("결과에 대한 size값 : ", result.size())
 ```
+
+> 실행결과: 
+> 선택되는 값 : tensor([[0.3000, ]])

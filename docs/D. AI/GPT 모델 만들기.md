@@ -318,5 +318,5 @@ print(output)
 
 이 코드는 원래 [4, 8] 형태의 targets를 [32] 형태로 변경한다.
 
-이러한 shape 변경을 통해 각 토큰에 대한 예측(logits)과 실제 값(targets)을 일대일로 비교할 수 있게 된다. 코드에서는 변경된 shape으
+이러한 shape 변경을 통해 각 토큰에 대한 예측(logits)과 실제 값(targets)을 일대일로 비교할 수 있게 된다. 
 

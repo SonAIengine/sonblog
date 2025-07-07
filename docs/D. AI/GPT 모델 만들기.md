@@ -305,10 +305,11 @@ class semiGPT(nn.Moudle):
 
 model = semiGPT(ko_vocab_size)
 outputm loss = model(example_x, example_y)
-print(output)
+print(loss)
 ```
 
-> 실행 결
+> 실행 결과
+> tensor(8.2693, grad_fn=<NllLossBa)
 
 첫 번째로 logits의 shape를 변경했다.
 ```logits = logits.view(batch * seq_length, vocab)```

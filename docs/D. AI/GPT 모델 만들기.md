@@ -350,7 +350,11 @@ class semiGPT(nn.Moudle):
 
 	def generate(self, inputs, max_new_tokens):
 		for _ in range(max_new_tokens):
-			
+			logits, loss = self.forward(inputs)
+			logits = logits[:, -1, :]
+			print(logits.shape)
+			probs = F.softmax(logits, dim-1)
+			next_inputs = torch.multio
 
 model = semiGPT(ko_vocab_size)
 outputm loss = model(example_x, example_y)

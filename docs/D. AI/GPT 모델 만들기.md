@@ -577,6 +577,9 @@ for step in range(max_iteration):
 
 
 inputs = torch.zeros((1,1), dtype=toch.long, device=device)
-print(token_decode(model.generate(inputs, max_new_tokens=100)[0].toli))
+print(token_decode(model.generate(inputs, max_new_tokens=100)[0].tolist()))
 ```
 
+> 실행결과:
+> step: 49500, train loss : 3.3963, val loss : 3.4179
+> step: 49800, train loss : 3.3909, val loss : 3,

@@ -531,5 +531,11 @@ def batch_function(mode):
 
 ```python
 @torch.no_grad()
-def compute_
+def compute_loss_metrics():
+	out = {}
+	model.eval()
+	for mode in ["train", "eval"]:
+		losses = torch.zeros(eval_iteration)
+		for k in range(eval_iteration):
+			inputs, targets = batch
 ```

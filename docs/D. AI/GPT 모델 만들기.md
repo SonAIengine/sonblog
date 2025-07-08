@@ -563,3 +563,10 @@ def compute_loss_metrics():
 
 학습 중간중간 실행되는 `comput_loss_metrics` 함수의 실행이 끝나면 `model.train()` 으로 모델을 다시 훈련 모드로 전환해 이후 모델을 계속 훈련할 수 있도록 설정한다. 마지막으로, train과 eval 모드의 평균 손실값을 포함한 out 딕셔러리를 반환한다. 이 딕셔너리는 모델의 현재 학습 상태를 평가하는 데 사용되며, 훈련과 평가 데이터 모두에 대한 모델의 성능을 한눈에 볼 수 있게 해준다.
 
+```python
+for step in range(max_iteration):
+	if step % eval_interval == 0:
+		losses = compute_loss_metrics()
+		print(f'step)
+```
+

@@ -608,4 +608,4 @@ print(token_decode(model.generate(inputs, max_new_tokens=100)[0].tolist()))
 
 결과적으로 트랜스포머는 자연어 처리(NLP) 분야에서 혁신적인 발전으로 인정받으며, BERT, GPT 등 다양한 변형 모델의 기반이 된다. 또한 텍스트 이해와 생성 작업에서 뛰어난 성능을 보여 지금도 널리 사용된다.
 
-GPT 모델에는 여러 가지 중요한 기술이 적용된다. 
+GPT 모델에는 여러 가지 중요한 기술이 적용된다. masked attention, multi head attention, positional Encoding, 전차 연결, 레이어 정규화, dropopt 등이 있다. 이제 이러한 기법들을 모델에 단계적으로 적용하며 학습에 어떤 영향을 주는

@@ -511,3 +511,5 @@ print(loss.item())
 device = "cuda" if torch.cuda.is_available() else "cpu"
 ```
 
+`torch.cuda.is_available()` 함수를 사용해 현재 실행 환경에서 CUDA 사용 가능 여부를 확인한다.
+CUDA는 엔비디아의 GPU를 활용해 딥러닝 연산을 가속화하는 툴킷(tookit)

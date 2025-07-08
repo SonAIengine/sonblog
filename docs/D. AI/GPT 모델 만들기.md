@@ -515,5 +515,10 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 CUDA는 엔비디아의 GPU를 활용해 딥러닝 연산을 가속화하는 툴킷(toolkit)이다. 이 기능을 통해 GPU의 강력한 병렬 처리 능력을 활용해 딥러닝 모델의 학습 속도를 크게 향상 시킬 수 있다.
 
 ```python
-def
+def batch_function(mode):
+	dataset = train_dataset if mode == "train" else test_dataset
+	idx = torch.randint(len(dataset) - block_size, (batch_size,))
+	x = torch.stack([dataset[index:index+block_size] for index in idx])
+	y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
+	return x, y
 ```

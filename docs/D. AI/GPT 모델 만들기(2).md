@@ -25,3 +25,6 @@ embeddings_tensor = torch.randn(num_batches,
 embeddings_tensor.shape
 ```
 
+> torch.Size([2, 4, 6])
+
+이 

@@ -582,4 +582,8 @@ print(token_decode(model.generate(inputs, max_new_tokens=100)[0].tolist()))
 
 > 실행결과:
 > step: 49500, train loss : 3.3963, val loss : 3.4179
-> step: 49800, train loss : 3.3909, val loss : 3,
+> step: 49800, train loss : 3.3909, val loss : 3.4089
+> 등 온 차등 일부회사업이다. 9%로나 첫 국민 서 백 교섭5월말했던 카카페이다리
+
+위 코드를 실행하면 모델이 일정 간격으로 학습 손실과 검증 손실을 계산하고 출력하는 과정을 반복한다.
+max_iteration/

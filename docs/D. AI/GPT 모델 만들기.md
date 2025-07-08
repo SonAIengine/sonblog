@@ -527,4 +527,9 @@ def batch_function(mode):
 앞서 준비한 `batch_function` 함수에 CUDA를 사용할 수 있는 환경에서 GPU를 활용해 연산을 수행하도록 수정한다. 이를 위해 입력 데이터 (x)와 목표 데이터 (y)를 동시에 `device`로 이동한다. CUDA 환경이 준비돼 있다면 이러한 방식으로 데이터를 GPU로 전송해 처리 속도를 크게 향상할 수 있다.
 
 ### Loss 함수 만들기
-다음은 calculate_loss 함수이
+다음은 `calculate_loss` 함수이다. 모델이 제대로 학습하고 있는지 확인하기 위해 이 함수를 만들어 중간중간 평가해 보겠다.
+
+```python
+@torch.no_grad()
+def compute_
+```

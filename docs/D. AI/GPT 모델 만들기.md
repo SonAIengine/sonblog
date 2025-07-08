@@ -596,4 +596,4 @@ print(token_decode(model.generate(inputs, max_new_tokens=100)[0].tolist()))
   
 - batch_function 함수를 사용해 학습 데이터에서 미니배치를 추출한다. 모델에 입력 데이터(example_x)와 정답 데이터(example_y)를 전달해 예측값과 손실값을 계산한다. 그 다음 역전파를 수행하고 옵티마이저를 사용해 모델의 파라미터를 업데이트한다.
 
-- 학습이 완료된 
+- 학습이 완료된 후, 모델을 사용해 새로운 텍스트를 생성한다. ㅇ

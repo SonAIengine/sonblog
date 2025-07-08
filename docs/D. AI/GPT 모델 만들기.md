@@ -126,7 +126,7 @@ y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 
 - 학습용 미니 배치를 하나 생성합니다.
 
-#### 2. context와 target을 하나씩 출력
+#### context와 target을 하나씩 출력
 
 ```python
 for size in range(batch_size):
@@ -327,7 +327,7 @@ print(loss)
 
 `이처럼 정보 이론의 개념을 적용하면 모델이 정보를 학습하고 예측 효과를 수학적으로 분석할 수 있다. 그러나 정보 이론에 근거해 학습을 수행하더라도 원하는 성능이 나오지 않을 수 있다. 이는 인공지능이 단순히 정보 처리의 문제만이 아니라 복잡한 요소들이 상호작용하는 다층적 학문이기 때문이다.`
 
-#### generate 메서드
+### generate 메서드
 다음으로 학습한 모델이 예측한 글자를 생성하기 위해 `generate` 메서드를 추가한다. 이 메서드는 모델이 학습한 패턴을 바탕으로 새로운 텍스트를 생성한다. `generate` 메서드는 입력된 시작 문자열에 기반해 연속으로 다음 글자를 예측하고 텍스트를 생성한다.
 
 ```python
@@ -527,3 +527,4 @@ def batch_function(mode):
 앞서 준비한 `batch_function` 함수에 CUDA를 사용할 수 있는 환경에서 GPU를 활용해 연산을 수행하도록 수정한다. 이를 위해 입력 데이터 (x)와 목표 데이터 (y)를 동시에 `device`로 이동한다. CUDA 환경이 준비돼 있다면 이러한 방식으로 데이터를 GPU로 전송해 처리 속도를 크게 향상할 수 있다.
 
 ### Loss 함수 만들기
+다음은 calculate_loss 함수이

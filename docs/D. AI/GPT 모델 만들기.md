@@ -594,4 +594,6 @@ print(token_decode(model.generate(inputs, max_new_tokens=100)[0].tolist()))
   
 - losses 딕셔너리에는 train과 eval 키를 통해 접근할 수 있는 학습 손실과 검증 손실 값을 저장한다. 이후 print 함수로 현재 단계(step), 학습 손실(losses["train"]), 그리고 검증 손실(losses["eval"])을 출력한다. 이를 통해 학습 과정 진행 상황을 모니터링하고 모델이 학습 데이터와 검증 데이터에 대해 얼마나 잘 작동하는 지 평가할 수 있다.
   
-- batch_function 함수를 사용해 학습 데이터에서 미니배치를 추출한다. 모델에 입력 데이터(example_x)와 정답 데이터(example_y)를 전달해 예측값과 손실값을 계산한다. 그 다음 역전파를 수행하고 옵티마이저를 사용해 모델의 파이
+- batch_function 함수를 사용해 학습 데이터에서 미니배치를 추출한다. 모델에 입력 데이터(example_x)와 정답 데이터(example_y)를 전달해 예측값과 손실값을 계산한다. 그 다음 역전파를 수행하고 옵티마이저를 사용해 모델의 파라미터를 업데이트한다.
+
+- 학습이 완료된 

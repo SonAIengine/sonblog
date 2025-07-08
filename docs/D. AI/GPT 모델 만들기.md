@@ -448,6 +448,8 @@ logits = logits[:, -1, :]  # => (batch, vocab_size)
 ###  Optimizer 추가하기
 모델 훈련 시 손실 함수를 이용해 모델의 예측 값과 실제 정답 데이터 사이의 차이(손실)를 계산하고, 이 손실을 최소화하기 위해 모델의 매개변수를 적절하게 조정한다. 옵티마이저는 이 매개변수 조정 과정을 담당해 모델이 더 정확한 예측을 할 수 있도록 내부 구조를 지속적으로 개선한다. 이러한 과정을 통해 모델은 주어진 데이터에 대해 더 나은 성능을 보이게 된다.
 
-```
-learning
+```python
+learning_rate = 1e-2
+model = semiGPT(ko_vocab_size)
+optimizer = torch.optim.AdamW(model.parameter)
 ```

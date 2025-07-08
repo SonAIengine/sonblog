@@ -467,5 +467,13 @@ AdamW는 Adam이라는 기존 옵티마이저를 개선한 버전이다. 이 옵
 해당 코드를 실행하면, 학습 과정에서 이 옵티마이저를 사용해 모델의 가중치를 업데이트하고 손실을 최소화하는 방향으로 학습을 진행한다.
 
 ```python
-from tqdm.auto im
+from tqdm.auto import tqdm
+
+batch_size = 32
+
+for steps in tqdm(range(10000)):
+	example_x, example_y = batch_function("train")
+	logits, loss = model(example_x, example_y)
+
+	opti
 ```

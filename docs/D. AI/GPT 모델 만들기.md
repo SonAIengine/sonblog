@@ -589,5 +589,5 @@ print(token_decode(model.generate(inputs, max_new_tokens=100)[0].tolist()))
 `max_iteration` 은 모델이 수행할 최대 반복 횟수를 의미하며, `eval_interval` 은 평가를 수행할 간격을 나타낸다.
 
 - max_iteration 만큼 반복을 수행하는 for 루프를 통해 모델 학습을 진행한다.
-- 각 반복에서 step 변수는 현재 반복의 번호를 나타낸다. step % eval_interval == 0 조건문은 현재 반복 번호가 eval_interval 로 정확히 나눠떨어질 때, 즉 지정된 평가 간격마다 참이 된다. 이때 compute_loss_metrics() 함수를 호출해 현재 모델의 학습 손실과 검증 손실을 계산한다. 이 함수는 학습 데이터와 검증 데이터에 대해 모델을 평가하고 각 평균 손실값을 계산해 반환한다.
-- losses 딕셔너리
+- 각 반복에서 `step` 변수는 현재 반복의 번호를 나타낸다. `step % eval_interval == 0` 조건문은 현재 반복 번호가 eval_interval 로 정확히 나눠떨어질 때, 즉 지정된 평가 간격마다 참이 된다. 이때 `compute_loss_metrics()` 함수를 호출해 현재 모델의 학습 손실과 검증 손실을 계산한다. 이 함수는 학습 데이터와 검증 데이터에 대해 모델을 평가하고 각 평균 손실값을 계산해 반환한다.
+- losses 딕셔너리에는 train과 eval 키를 통해 접근할 수 있는 학습 손실과 검증 손실 값을 저장한다. 이후 print 함수로 ㅎ

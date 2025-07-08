@@ -21,5 +21,7 @@ num_batches, seqence_length, embedding_dim = 2, 4, 6
 embeddings_tensor = torch.randn(num_batches,
 								seqence_length,
 								embedding_dim)
-							
+
+embeddings_tensor.shape
 ```
+

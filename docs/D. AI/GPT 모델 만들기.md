@@ -457,4 +457,7 @@ optimizer = torch.optim.AdamW(model.parameter(), lr=learning_rate)
 모델의 학습을 위해 학습률은 1e-2로 정하고, 옵티마이저로 AdamW를 사용한다.
 AdamW는 Adam이라는 기존 옵티마이저를 개선한 버전이다. 이 옵티마이저의 주요 특징은 가중치 감쇠라는 기법을 더 효과적으로 사용한다는 점이다. 가중치 감쇠는 모델이 훈련 데이터에 과도하게 맞춰지는 것을 방지하고, 일반화 능력을 향상시키는 데 도움을 준다.
 
-`torch.optim.AdamW(model.parameter(), lr=learning_rate)` 코드는 파이토치에서 AdamW 옵
+`torch.optim.AdamW(model.parameter(), lr=learning_rate)` 코드는 파이토치에서 AdamW 옵티마이저를 생성하는 부분이다.
+
+- torch.optim은 파이토치의 최적화 알고리즘 모듈이다. 이 모듈에는 다양한 옵티마이저가 포함되어 있다.
+- AdamW는 Adam 옵티마이저의 변형으로, 가중치 감쇠(weghit de)

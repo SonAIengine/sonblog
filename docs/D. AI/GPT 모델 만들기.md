@@ -451,5 +451,8 @@ logits = logits[:, -1, :]  # => (batch, vocab_size)
 ```python
 learning_rate = 1e-2
 model = semiGPT(ko_vocab_size)
-optimizer = torch.optim.AdamW(model.parameter)
+optimizer = torch.optim.AdamW(model.parameter(), lr=learning_rate)
 ```
+
+모델의 학습을 위해 학습률은 1e-2로 정하고, 옵티마이저로 AdamW를 사용한다.
+AdamW는 Adam이라는 기존 옵티마이저를 개선한 버전ㅇ

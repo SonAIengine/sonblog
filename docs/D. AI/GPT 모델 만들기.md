@@ -520,5 +520,6 @@ def batch_function(mode):
 	idx = torch.randint(len(dataset) - block_size, (batch_size,))
 	x = torch.stack([dataset[index:index+block_size] for index in idx])
 	y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
+	x, y = 
 	return x, y
 ```

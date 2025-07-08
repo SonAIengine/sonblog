@@ -520,6 +520,8 @@ def batch_function(mode):
 	idx = torch.randint(len(dataset) - block_size, (batch_size,))
 	x = torch.stack([dataset[index:index+block_size] for index in idx])
 	y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
-	x, y = 
+	x, y = x.to(device), y.to(device)
 	return x, y
 ```
+
+앞서 준비한 batch_function 함수에 CUDA를 사용할 수 있는 환경에서 GPU를 활용해 연산을 수행하도록 수정한다. 이를 위해 입력 데이터 (x)와 목표 데이터 (y)를 동시에 device로 이동한다. CUDA 환겨잉 

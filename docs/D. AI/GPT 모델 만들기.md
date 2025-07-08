@@ -574,5 +574,9 @@ for step in range(max_iteration):
 	optimizer.zero_grad(set_to_none=True)
 	loss.backward()
 	optimizer.step()
+
+
+inputs = torch.zeros((1,1), dtype=toch.long, device=device)
+print(token_decode(model.generate(inputs, max_new_tokens=100)[0].toli))
 ```
 

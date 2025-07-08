@@ -474,6 +474,12 @@ batch_size = 32
 for steps in tqdm(range(10000)):
 	example_x, example_y = batch_function("train")
 	logits, loss = model(example_x, example_y)
+	# 옵티망
+	optimizer.zero_grad(set_to_none=True)
+	# 역전파 계산
+	loss.backward()
+	# 가중치 업데이트
+	optimizer.step()
 
-	opti
+print(loss.item())
 ```

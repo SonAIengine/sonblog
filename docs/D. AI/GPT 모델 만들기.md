@@ -537,5 +537,12 @@ def compute_loss_metrics():
 	for mode in ["train", "eval"]:
 		losses = torch.zeros(eval_iteration)
 		for k in range(eval_iteration):
-			inputs, targets = batch
+			inputs, targets = batch_function(mode)
+			logits, loss = model(inputs, targets)
+			losses[k] = loss.item()
+		out[mode] = losses.mean()
+	model,train()
+	return out
 ```
+
+@torch,n

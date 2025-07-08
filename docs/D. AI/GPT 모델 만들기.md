@@ -600,4 +600,3 @@ print(token_decode(model.generate(inputs, max_new_tokens=100)[0].tolist()))
 
 - 이 코드를 모두 종합해 `optimizer` 를 적용한 전체 코드이다. 오류가 발생하거나 중간에 문제가 생겼을 때는 세션을 초기화하고 코드를 다시 실행하면 일괄적으로 작동하도록 구성했다.
 
-이 실습 결과

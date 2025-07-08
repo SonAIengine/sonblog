@@ -541,7 +541,7 @@ def compute_loss_metrics():
 			logits, loss = model(inputs, targets)
 			losses[k] = loss.item()
 		out[mode] = losses.mean()
-	model,train()
+	model.train()
 	return out
 ```
 
@@ -561,4 +561,5 @@ def compute_loss_metrics():
 
 그 다음, train과 eval 두 가지 모드에 대해 반복한다. 각 모드에서 eval_iteration 횟수만큼 반복하며 손실을 계산한다. `batch_function(mode)` 함수로 데이터 배치를 가져오고, `model(inputs, targets)` 로 로짓과 손실을 계산한다. 계산된 손실은 losses 텐서에 저장한다. 각 모드에서 계산된 손실들의 평균을 구해 `out` 딕셔러리에 저장한다. 이 평균 손실은 각 모드에서 모델 성능을 나타내는 지표로 사용된다.
 
-학습 중간중간 실행되는 `comput_loss_metrics` 함수의 실행이 끝나면 `model.train()` 으로 모델을 다시 훈련 모드로 전환해 이후 모델을 계속 훈련할 수 있도록 설정한다. 마지막으로, train과 eval 모드의 평균 손실값을 포함한 out 딕셔러리를 반환한다. 이 딕셔러리
+학습 중간중간 실행되는 `comput_loss_metrics` 함수의 실행이 끝나면 `model.train()` 으로 모델을 다시 훈련 모드로 전환해 이후 모델을 계속 훈련할 수 있도록 설정한다. 마지막으로, train과 eval 모드의 평균 손실값을 포함한 out 딕셔러리를 반환한다. 이 딕셔너리는 모델의 현재 학습 상태를 평가하는 데 사용되며, 훈련과 평가 데이터 모두에 대한 모델의 성능을 한눈에 볼 수 있게 해준다.
+

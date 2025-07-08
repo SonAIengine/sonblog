@@ -569,6 +569,10 @@ for step in range(max_iteration):
 		losses = compute_loss_metrics()
 		print(f'step : {step}, train loss : {losses["train"]: .4f}, val loss : {losses["eval"]: .4f}')
 
-	exam
+	example_x, example_y = batch_function("train")
+	logits, loss = model(example_x, example_y)
+	optimizer.zero_grad(set_to_none=True)
+	loss.backward()
+	optimizer.step()
 ```
 

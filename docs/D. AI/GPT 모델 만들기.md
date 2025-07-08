@@ -567,6 +567,8 @@ def compute_loss_metrics():
 for step in range(max_iteration):
 	if step % eval_interval == 0:
 		losses = compute_loss_metrics()
-		print(f'step)
+		print(f'step : {step}, train loss : {losses["train"]: .4f}, val loss : {losses["eval"]: .4f}')
+
+	exam
 ```
 

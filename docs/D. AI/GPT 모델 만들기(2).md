@@ -32,10 +32,15 @@ embeddings_tensor.shape
 다음으로, embeddings_tensor 를 활용해 averaged_embeddings 라는 변수를 생성한다.
 이 변수는 다음 시퀀스로 넘어갈 때마다 평균값을 사용하도록 설계된다.
 
-~~~3python
-# 
+~~~python
+# 이전 임베딩의 평균을 저장할 텐서 초기화 
 averaged_embeddings = torch.zeros((num_batches, sequence_length, embedding_dim))
 
+# 각 배치에 대해 반복
+for batch_index in range(num_batches):
+	
+	for sequence_position in range(sequence_length):
+	
 
 ~~~
 

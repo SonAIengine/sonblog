@@ -68,3 +68,44 @@ data_test = BERTDataset(dataset_test, 0, 1, tok, max_len, True, False)
 어텐션 마스크는 BERT에 데이터가 입력되었을 때 어텐션 함수가 적용되어 연산이 된다.
 이때 1로 패딩된 값들은 연산할 필요가 없기 때문에 연산을 하지 않아도 된다고 알려주는 데이터가 있어야 하는데 그게 바로 어텐션 마스크 시퀀스인 것이다.
 이렇게 BERT나 KoBERT에는 어텐션 마스크 데이터도 함께 입력되어야 한다
+
+torch 형식의 dataset을 만들어준다.
+
+```python
+train_dataloader = torch.utils.data.DataLoader(data_train, batch_size=batch_size, num_workers=5)
+test_dataloader = torch.utils.data.DataLoader(data_test, batch_size=batch_size, num_workers=5)
+```
+
+### KoBERT 학습모델 만들기
+학습시킬 KoBERT 모델을 만들어야 하는데, 아래 코드에서 다중분류할 클래스 수 만큼 num_classes 변수를 수정해주어야 한다. 이번 프로젝트에서는 7가지의 class를 분류하기 때문에 7로 입력해주었다.
+
+```python
+class BERTClassifier(nn.Module):
+    def __init__(self,
+                 bert,
+                 hidden_size = 768,
+                 num_classes=7,   ##클래스 수 조정##
+                 dr_rate=None,
+                 params=None):
+        super(BERTClassifier, self).__init__()
+        self.bert = bert
+        self.dr_rate = dr_rate
+                 
+        self.classifier = nn.Linear(hidden_size , num_classes)
+        if dr_rate:
+            self.dropout = nn.Dropout(p=dr_rate)
+    
+    def gen_attention_mask(self, token_ids, valid_length):
+        attention_mask = torch.zeros_like(token_ids)
+        for i, v in enumerate(valid_length):
+            attention_mask[i][:v] = 1
+        return attention_mask.float()
+
+    def forward(self, token_ids, valid_length, segment_ids):
+        attention_mask = self.gen_attention_mask(token_ids, valid_length)
+        
+        _, pooler = self.bert(input_ids = token_ids, token_type_ids = segment_ids.long(), attention_mask = attention_mask.float().to(token_ids.device))
+        if self.dr_rate:
+            out = self.dropout(pooler)
+        return self.classifier(out)
+```

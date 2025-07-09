@@ -18,3 +18,28 @@ class BERTDataset(Dataset):
     def __len__(self):
         return (len(self.labels))
 ```
+
+하이퍼 파라미터들을 조정해준다.
+
+```python
+# Setting parameters
+max_len = 64
+batch_size = 64
+warmup_ratio = 0.1
+num_epochs = 5
+max_grad_norm = 1
+log_interval = 200
+learning_rate =  5e-5
+```
+
+이제 버트토크나이저와 위에서 정의한 클래스를 적용해 토큰화와 패딩을 해준다.
+
+```python
+#토큰화
+tokenizer = get_tokenizer()
+tok = nlp.data.BERTSPTokenizer(tokenizer, vocab, lower=False)
+
+data_train = BERTDataset(dataset_train, 0, 1, tok, max_len, True, False)
+data_test = BERTDataset(dataset_test, 0, 1, tok, max_len, True, False)
+```
+

@@ -56,5 +56,7 @@ for batch_index in range(num_batches):
 
 이 방법은 간단하지만 시퀀스 내에서 이전 정보를 현재에 효과적으로 전달하는 방법으로 사용된다.
 
-이렇게 계산한 `embedding_tensorp[1]` 과 `averaged_embeddingsp[1]` 을 출력해 비교하게
+`averaged_embeddings[0]`  의 값은 시퀀스가 증가함에 따라 변화한다. 하지만 for 문을 사용하는 방식은 시간 복잡도 문제로 인해 효율적이지 않다. 대신 행렬곱을 활용해 이 과정을 더우
+
+
 

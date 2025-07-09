@@ -38,8 +38,11 @@ averaged_embeddings = torch.zeros((num_batches, sequence_length, embedding_dim))
 
 # 각 배치에 대해 반복
 for batch_index in range(num_batches):
-	
+	# 각 시퀀스 위치에 대해 반복
 	for sequence_position in range(sequence_length):
+		# 현재 시퀀스 위치까지의 이전 임베딩을 슬라이스
+		previous_embeddings = embeddings_tensor[batch_index, :sequence_position + 1]
+		# 현재 위치까지의 
 	
 
 ~~~

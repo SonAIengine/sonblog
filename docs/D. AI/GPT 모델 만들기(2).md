@@ -31,3 +31,5 @@ embeddings_tensor.shape
 
 다음으로, embeddings_tensor 를 활용해 averaged_embeddings 라는 변수를 생성한다.
 
+
+

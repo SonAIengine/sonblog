@@ -269,9 +269,6 @@ body>div.md-container>main>div>div.md-sidebar.md-sidebar--primary>div>div>nav ul
 body {
     font-family: 'RixXladywatermelonR', sans-serif;
     line-height: 1.8;
-    /* 줄 간격을 더 넓혀 가독성 향상 */
-    color: #333;
-    /* 완전한 검은색 대신 부드러운 회색 텍스트 */
 }
 
 .md-grid {

@@ -19,7 +19,7 @@ theme:
         name: Switch to dark mode
 
     # 다크 모드 팔레트 토글
-    - scheme: slate
+    - scheme: default
       primary: black
       toggle:
         icon: material/brightness-4  # 달 아이콘

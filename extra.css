@@ -5,8 +5,6 @@ pre code {
     /* 코드 간의 적당한 간격 */
     border-radius: 6px !important;
     font-size: 0.85em !important;
-    /* 살짝 큰 폰트 사이즈 */
-    font-family: 'D2 Coding', monospace;
     /* D2 Coding 폰트 적용 */
     background-color: #f6f8fa;
     /* 코드 블록 배경색 */
@@ -17,7 +15,7 @@ p code,
 li code {
     background-color: #eff2f5;
     /* 밝은 회색 배경 */
-    margin: 0 4px !important;
+    margin: 0 2px !important;
     /* 코드 간의 적당한 간격 */
     border-radius: 6px !important;
     font-weight: 500;
@@ -31,9 +29,6 @@ li code {
     padding: 3px 6px !important;
     /* 내부 padding 추가 */
     color: #24292e;
-    /* 텍스트 색상 */
-    font-family: 'D2 Coding', monospace;
-    /* 일관된 폰트 적용 */
 }
 
 p em {
@@ -41,9 +36,23 @@ p em {
     /* 기존보다 약간 어둡게 하여 가독성 향상 */
 }
 
+p {
+    margin-bottom: 1.1em;
+    /* 단락 간 간격 추가 */
+}
+
+li {
+    margin-bottom: 0.4em;
+    /* 목록 항목 간 간격 추가 */
+}
+
 body hr {
-    margin-bottom: 20px !important;
-    margin-top: 20px !important;
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    /* 연한 회색으로 변경 */
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
 }
 
 
@@ -69,15 +78,22 @@ body>div.md-container>main>div>div.md-sidebar.md-sidebar--primary>div>div>nav ul
     cursor: pointer;
 }
 
-/* note 타입의 admonition에 대한 폰트 크기 조정 */
+/* note 타입의 admonition 스타일 개선 */
 .admonition.info {
+    background-color: #f0f7ff;
+    border-left: 5px solid #4a90e2;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
     font-size: 0.9em;
-    /* 기본 폰트 크기 대비 20% 크게 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .admonition.info .admonition-title {
+    font-weight: bold;
+    color: #4a90e2;
     font-size: 1.0em;
-    /* 제목의 폰트 크기를 30% 크게 */
+    margin-bottom: 0.5em;
 }
 
 @font-face {
@@ -89,6 +105,8 @@ body>div.md-container>main>div>div.md-sidebar.md-sidebar--primary>div>div>nav ul
 
 body {
     font-family: 'RixXladywatermelonR', sans-serif;
+    line-height: 1.7;
+    /* 줄 간격을 넓혀 가독성 향상 */
 }
 
 .md-grid {

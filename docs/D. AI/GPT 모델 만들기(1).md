@@ -93,6 +93,7 @@ for size in range(batch_size):
 - **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨
 
 ### batch_function(mode)
+
  `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수이다.
 
 ```python

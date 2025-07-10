@@ -1,27 +1,86 @@
 pre code {
-    background-color: #2d2d2d !important;
-    /* 어두운 배경 (IDE 느낌) */
-    color: #f8f8f2 !important;
-    /* 밝은 텍스트 (가독성) */
+    background-color: #282c34 !important;
+    /* Atom One Dark 테마 배경 */
+    color: #abb2bf !important;
+    /* 기본 텍스트 색상 */
     font-family: 'D2 Coding', monospace;
-    /* D2 Coding 폰트 적용 */
-    border: 1px solid #444 !important;
-    /* 미세한 테두리 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-    /* 깊이감 있는 그림자 */
-    padding: 1em 1.5em !important;
-    /* 넉넉한 내부 여백 */
+    border: 1px solid #181a1f !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35) !important;
+    padding: 1.2em 1.5em !important;
     margin: 1.5em 0 !important;
-    /* 코드 블록 위아래 여백 */
-    border-radius: 8px !important;
-    /* 부드러운 모서리 */
+    border-radius: 10px !important;
     font-size: 0.9em !important;
-    /* 살짝 큰 폰트 */
     white-space: pre-wrap !important;
-    /* 자동 줄바꿈 처리 */
     word-break: break-all !important;
-    /* 긴 코드 라인 처리 */
 }
+
+/* --- Atom One Dark 테마 구문 강조 스타일 --- */
+pre code .c,
+pre code .c1,
+pre code .cs {
+    color: #5c6370 !important;
+    font-style: italic;
+}
+
+/* 주석 */
+pre code .k,
+pre code .kc,
+pre code .kd,
+pre code .kn,
+pre code .kp,
+pre code .kr,
+pre code .kt,
+pre code .nt {
+    color: #c678dd !important;
+}
+
+/* 키워드 */
+pre code .s,
+pre code .s1,
+pre code .s2,
+pre code .sa,
+pre code .sb,
+pre code .sc,
+pre code .sd,
+pre code .se,
+pre code .sh,
+pre code .si,
+pre code .sx,
+pre code .sr,
+pre code .ss {
+    color: #98c379 !important;
+}
+
+/* 문자열 */
+pre code .nc,
+pre code .nf {
+    color: #61afef !important;
+}
+
+/* 클래스/함수 이름 */
+pre code .bp,
+pre code .nb {
+    color: #d19a66 !important;
+}
+
+/* 빌트인 (self, True, print) */
+pre code .m,
+pre code .mf,
+pre code .mh,
+pre code .mi,
+pre code .mo,
+pre code .il {
+    color: #d19a66 !important;
+}
+
+/* 숫자 */
+pre code .o,
+pre code .ow {
+    color: #56b6c2 !important;
+}
+
+/* 연산자 */
+
 
 p code,
 li code {

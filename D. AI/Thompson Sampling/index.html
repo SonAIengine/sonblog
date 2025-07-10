@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../../%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/">
+        <link rel="prev" href="../Qwen3-embedding/">
       
       
-        <link rel="next" href="../../%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/">
+        <link rel="next" href="../Transformer/a.Tokenization/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>이미지 검색이란? - SON BLOG</title>
+        <title>Thompson Sampling - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +46,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../extra.css">
+      <link rel="stylesheet" href="../../extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -97,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              이미지 검색이란?
+              Thompson Sampling
             
           </span>
         </div>
@@ -216,7 +216,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -233,8 +233,6 @@
   
   
   
-    
-  
   
     
     
@@ -242,13 +240,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
           
   
   
@@ -273,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+        <a href="../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
           
   
   
@@ -302,7 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+        <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
           
   
   
@@ -323,11 +319,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-tabs__link">
           
   
   
@@ -363,7 +361,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-tabs__link">
+        <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-tabs__link">
           
   
   
@@ -391,7 +389,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-tabs__link">
+        <a href="../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-tabs__link">
           
   
   
@@ -427,7 +425,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -445,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -464,10 +462,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -481,22 +477,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -509,7 +502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             A.포트폴리오
@@ -533,20 +526,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
             
   
   
@@ -573,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -601,10 +591,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -616,20 +604,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
   
   
@@ -642,7 +627,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             쇼핑몰 이미지 검색 기능
@@ -653,19 +638,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -676,7 +652,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -709,20 +684,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
             
   
   
@@ -749,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   
@@ -772,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -861,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+      <a href="../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
         
   
   
@@ -884,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   
@@ -907,7 +879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/tauri/" class="md-nav__link">
+      <a href="../../B.PoC/tauri/" class="md-nav__link">
         
   
   
@@ -1037,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   
@@ -1060,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   
@@ -1083,7 +1055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   
@@ -1167,7 +1139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   
@@ -1190,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -1213,7 +1185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   
@@ -1236,7 +1208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -1271,8 +1243,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1292,19 +1266,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -1317,7 +1294,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             D. AI
@@ -1331,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
+      <a href="../GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
         
   
   
@@ -1354,7 +1331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
+      <a href="../GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
         
   
   
@@ -1377,7 +1354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/KoBERT/" class="md-nav__link">
+      <a href="../KoBERT/" class="md-nav__link">
         
   
   
@@ -1400,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Qwen3-embedding/" class="md-nav__link">
+      <a href="../Qwen3-embedding/" class="md-nav__link">
         
   
   
@@ -1420,10 +1397,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Thompson Sampling
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1434,6 +1431,111 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      핵심 개념 한 줄 요약
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="핵심 개념 한 줄 요약">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-armed-bandit" class="md-nav__link">
+    <span class="md-ellipsis">
+      예시: 슬롯머신 게임 (Multi-Armed Bandit 문제)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thompson-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thompson Sampling 동작 방식
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beta 분포란?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      탐색과 활용의 균형
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 의사 코드 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      어디에 사용할 수 있을까?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      장점 요약
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      마무리
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1456,17 +1558,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
         
           
-          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="">
             
   
   
@@ -1493,7 +1598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Transformer/a.Tokenization/" class="md-nav__link">
+      <a href="../Transformer/a.Tokenization/" class="md-nav__link">
         
   
   
@@ -1676,7 +1781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
+      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -1803,7 +1908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -1883,7 +1988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -1906,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2000,7 +2105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -2087,7 +2192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-nav__link">
+      <a href="../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-nav__link">
         
   
   
@@ -2110,7 +2215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../F.%EC%9D%BC%EC%A0%95/2025.07.04/" class="md-nav__link">
+      <a href="../../F.%EC%9D%BC%EC%A0%95/2025.07.04/" class="md-nav__link">
         
   
   
@@ -2150,8 +2255,101 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      핵심 개념 한 줄 요약
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="핵심 개념 한 줄 요약">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-armed-bandit" class="md-nav__link">
+    <span class="md-ellipsis">
+      예시: 슬롯머신 게임 (Multi-Armed Bandit 문제)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thompson-sampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thompson Sampling 동작 방식
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beta 분포란?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      탐색과 활용의 균형
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python 의사 코드 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      어디에 사용할 수 있을까?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      장점 요약
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      마무리
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2167,77 +2365,112 @@
 
 
 
-<h1 id="_1">이미지 검색이란?</h1>
-<div class="admonition note">
-<p class="admonition-title">💡 이미지 검색이란?</p>
-<p><strong>이미지를 바탕으로 유사한 이미지나 관련 정보를 찾아주는 기술</strong></p>
-</div>
-<p>쇼핑몰 검색에서 사용한다면,</p>
-<p>상품 이미지 안에 존재하는 가방, 귀걸이, 안경 등과 같은 객체를 추출하여 검색할 수 있는 기능</p>
-<hr />
-<h1 id="_2">이미지 객체 추출</h1>
-<h2 id="ai">AI 모델은 사진을 보고 고양이인지 어떻게 알 수 있을까?</h2>
-<p><a class="glightbox" href="https://live.lge.co.kr/wp-content/uploads/2020/06/AI%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84_01.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Image title" src="https://live.lge.co.kr/wp-content/uploads/2020/06/AI%EC%9A%A9%EC%96%B4%EC%82%AC%EC%A0%84_01.jpg" width="500" /></a></p>
-<h3 id="_3">특징 추출</h3>
-<ul>
-<li>다양한 객체(예: 고양이, 강아지, 새 등)의 이미지를 수집하여 학습</li>
-<li>모델은 이미지 데이터를 입력받아 각 이미지의 시각적 특징(예: 색상, 모양, 질감 등)을 추출</li>
-</ul>
-<h3 id="_4">다양한 특징 기반 파악</h3>
-<ul>
-<li>추출된 특징들을 바탕으로 데이터를 분석</li>
-<li>모델은 각 객체의 여러 이미지를 비교하여 <strong>공통된 특징</strong>을 파악하고, 이러한 특징을 바탕으로 <strong>객체를 분류</strong>  </li>
-</ul>
-<h3 id="_5">모델의 이미지 분류 <a class="glightbox" href="https://i.postimg.cc/mZYJzmXX/Untitled-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Image title" src="https://i.postimg.cc/mZYJzmXX/Untitled-4.png" width="90" /></a></h3>
-<p><em>분류하고 싶은 새로운 이미지를 가져왔습니다.</em></p>
-<ul>
-<li>학습된 특징들을 바탕으로 판단</li>
-<li>모델은 이전에 학습한 특징들을 사용하여 어떤 객체인지 식별</li>
-</ul>
-<h3 id="_6">고양이로 인식 <a class="glightbox" href="https://i.postimg.cc/L8nxTDDM/Untitled-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Image title" src="https://i.postimg.cc/L8nxTDDM/Untitled-5.png" width="100" /></a></h3>
-<ul>
-<li>최종적으로 입력된 이미지를 분석한 결과를 바탕으로</li>
-<li>입력 받은 이미지가 고양이라는 결론을 내립니다.</li>
-</ul>
-<h3 id="_7">쇼핑몰에 적합한 상품 분류 모델을 생성하면?</h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>쇼핑몰 이미지 검색 모델</strong>을 효과적으로 학습시키기 위해서는 다양한 제품(예: 의류, 신발, 가방 등)의 이미지를 수집하고,<br />
-각 이미지의 시각적 특징을 추출하여 이를 학습시켜야합니다. </p>
-<p>이후 이 AI 모델은 새로운 이미지를 입력받았을 때, 학습된 특징을 바탕으로 이를 정확히 인식하고,<br />
-유사한 제품을 검색하여 사용자에게 추천할 수 있게됩니다.</p>
-</div>
-<hr />
-<h2 id="_8">쇼핑몰 이미지 검색의 동작 방식</h2>
-<h3 id="1">1. 이미지 입력 <a class="glightbox" href="https://i.postimg.cc/J7s3S0Jb/Untitled-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Image" src="https://i.postimg.cc/J7s3S0Jb/Untitled-6.png" width="150" /></a></h3>
-<p>사용자가 쇼핑몰 검색창에 상품을 추출하고자 하는 이미지를 업로드<br />
-(예 : 패션 아이템이 담긴 이미지)  </p>
-<div style="height: 90px"></div>
+  <h1>Thompson Sampling</h1>
 
-<h3 id="2">2. 이미지 분석 <a class="glightbox" href="https://i.postimg.cc/T3BvqprC/Untitled-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="right" alt="Image" src="https://i.postimg.cc/T3BvqprC/Untitled-7.png" width="150" /></a></h3>
+<p>A/B 테스트, 추천 시스템, 광고 최적화처럼 실시간으로 결과를 보면서 "무엇이 더 좋을까?"를 판단해야 할 때 사용하는 방법이다.</p>
+<p>그냥 무작위로 고르기엔 아깝고, 한 가지만 고집하기엔 불확실하다.</p>
+<p>이럴 때 유용하게 쓰이는 방법이 바로 <strong>Thompson Sampling</strong>이다.</p>
+<h2 id="_1">핵심 개념 한 줄 요약</h2>
+<p><strong>확률적으로 잘 될 것 같은 선택지를 고른다.</strong></p>
+<p>Thompson Sampling은 <strong>베이지안 확률 모델</strong>을 이용해서, 여러 선택지 중에서 <strong>성공 확률이 높아 보이는 것</strong>을 <strong>무작위로 뽑아 실험</strong>하고, 결과를 반영해 점점 더 좋은 선택을 할 수 있도록 돕는 방식이다.</p>
+<h3 id="multi-armed-bandit">예시: 슬롯머신 게임 (Multi-Armed Bandit 문제)</h3>
+<p>당신 앞에 슬롯머신(뽑기 기계)이 3대 있다.</p>
 <ul>
-<li><strong>객체 검출</strong>: 이미지 내의 각 객체(예: 옷, 신발, 가방 등)를 감지하고 분할</li>
-<li><strong>특징 추출</strong>: 각 객체의 색상, 모양, 텍스처 등 시각적 특징을 분석하여 특징 벡터를 생성</li>
+<li>A 슬롯머신: 성공률 10%</li>
+<li>B 슬롯머신: 성공률 30%</li>
+<li>C 슬롯머신: 성공률 50%</li>
 </ul>
-<div style="height: 90px"></div>
+<p>하지만 당신은 이 확률들을 모른다.<br />
+당첨/실패 결과를 보면서, 점점 더 나은 선택을 해야 한다.</p>
+<h2 id="thompson-sampling">Thompson Sampling 동작 방식</h2>
+<ol>
+<li><strong>각 선택지(arm)에 대해 성공률을 추정하는 분포</strong>를 초기화한다.<ul>
+<li>초기에는 모두 <code>Beta(1, 1)</code>로 시작한다. (완전 랜덤한 상태)</li>
+</ul>
+</li>
+<li><strong>각 선택지에서 하나씩 확률 값을 샘플링한다.</strong><ul>
+<li>예: A=0.12, B=0.37, C=0.42</li>
+</ul>
+</li>
+<li>
+<p><strong>가장 높은 값을 가진 선택지를 선택한다.</strong></p>
+</li>
+<li>
+<p><strong>결과에 따라 분포를 업데이트한다.</strong></p>
+<ul>
+<li>성공 시: α (성공 횟수) += 1</li>
+<li>실패 시: β (실패 횟수) += 1</li>
+</ul>
+</li>
+<li><strong>이 과정을 반복하면서</strong>, 잘 되는 선택지는 더 자주 뽑히고, 확신 없는 선택지는 가끔씩 탐색한다.</li>
+</ol>
+<h2 id="beta">Beta 분포란?</h2>
+<p><code>Beta(α, β)</code>는 "이 선택지는 성공률이 이 정도일 것이다"라는 <strong>믿음</strong>을 나타낸다.</p>
+<ul>
+<li>α: 성공한 횟수 + 1</li>
+<li>β: 실패한 횟수 + 1</li>
+</ul>
+<p>예를 들어, 어떤 버튼이 3번 성공하고 2번 실패했다면 → <code>Beta(4, 3)</code><br />
+샘플링을 통해 "이 버튼의 실제 클릭률이 얼마일까?"를 계속 추정하는 거다.</p>
+<h2 id="_2">탐색과 활용의 균형</h2>
+<p>Thompson Sampling의 가장 큰 특징은, 탐색(explore)과 활용(exploit) 사이의 균형을 자동으로 맞춰준다는 점이다.</p>
+<ul>
+<li>아직 정보가 부족한 선택지는 <strong>분포의 분산이 커서</strong> 샘플링 값이 요동치기 때문에 탐색 대상이 된다.</li>
+<li>정보가 충분히 쌓인 선택지는 <strong>분포가 날카로워져서</strong> 거의 확정적으로 선택된다.</li>
+</ul>
+<p>따라서 별도의 파라미터 없이도 자연스럽게 효율적인 선택을 하게 됩니다.</p>
+<h2 id="python">Python 의사 코드 예시</h2>
+<div class="highlight"><pre><span></span><code><span class="n">alpha</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 각 선택지의 성공 횟수</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>   <span class="c1"># 각 선택지의 실패 횟수</span>
 
-<h3 id="3">3. 세부 이미지 출력</h3>
-<p>감지된 각 객체를 별도의 이미지로 분할 아래와 같이,<br />
-하나의 이미지에서 셔츠, 바지, 신발 등의 객체를 각각 추출
-<a class="glightbox" href="https://i.postimg.cc/BnTBNzFk/image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Image" src="https://i.postimg.cc/BnTBNzFk/image-2.png" wight="200" /></a></p>
-<h3 id="4">4. 세부 이미지 검색</h3>
-<p>각 객체 이미지에 대해 유사한 제품을 검색엔진에서 검색</p>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">sampled_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)]</span>
+    <span class="n">chosen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sampled_probs</span><span class="p">)</span>
+
+    <span class="n">reward</span> <span class="o">=</span> <span class="n">pull</span><span class="p">(</span><span class="n">chosen</span><span class="p">)</span>  <span class="c1"># 실제 클릭 여부 (1 또는 0)</span>
+
+    <span class="k">if</span> <span class="n">reward</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">alpha</span><span class="p">[</span><span class="n">chosen</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">beta</span><span class="p">[</span><span class="n">chosen</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+<h2 id="_3">어디에 사용할 수 있을까?</h2>
+<table>
+<thead>
+<tr>
+<th>분야</th>
+<th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A/B 테스트</td>
+<td>어떤 버튼 디자인이 더 나은가</td>
+</tr>
+<tr>
+<td>광고 최적화</td>
+<td>어떤 문구가 클릭률이 높은가</td>
+</tr>
+<tr>
+<td>추천 시스템</td>
+<td>어떤 상품을 먼저 보여줄까</td>
+</tr>
+<tr>
+<td>게임 설계</td>
+<td>어떤 보상이 효과적인가</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">장점 요약</h2>
 <ul>
-<li><strong>특징 매칭</strong>: 추출된 특징 벡터를 바탕으로 검색엔진의 제품 이미지와 유사성을 비교</li>
-<li><strong>결과 제공</strong>: 가장 유사한 제품 이미지를 사용자에게 제공</li>
+<li>탐색과 활용의 균형을 자동으로 조절</li>
+<li>수학적으로 안정성과 성능이 검증됨</li>
+<li>코드 구현이 간단함</li>
+<li>실제 서비스에서 성능이 우수함</li>
 </ul>
-<hr />
-<p><a class="glightbox" href="https://i.postimg.cc/VNHzJmgc/image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="left" alt="Image" src="https://i.postimg.cc/VNHzJmgc/image-3.png" width="300" /></a></p>
-<h2 id="_9">쇼핑몰 이미지 검색의 장점</h2>
-<ul>
-<li><strong>사용자 편의성 향상</strong>: 사용자는 복잡한 키워드 입력 없이 이미지를 통해 원하는 제품을 쉽게 찾을 수 있음</li>
-<li><strong>쇼핑 경험 개선</strong>: 사용자는 특정 스타일의 전체적인 코디를 검색하고 구매할 수 있어 쇼핑 경험이 향상</li>
-</ul>
+<h2 id="_5">마무리</h2>
+<p>Thompson Sampling은 "성공 확률이 높아 보이는 선택을 확률적으로 뽑아 실험하고, 그 결과를 반영하여 더 나은 선택으로 진화해가는" 방법이다. 
+A/B 테스트나 추천 시스템처럼 사용자 행동을 기반으로 최적의 선택을 찾아야 할 때 매우 유용한 전략이며, 구현도 간단하기 때문에 실무에 쉽게 적용할 수 있다.</p>
 
 
 
@@ -2292,12 +2525,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
-        <script src="../../../custom.js"></script>
+        <script src="../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

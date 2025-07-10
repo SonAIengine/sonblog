@@ -1363,26 +1363,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#batch_functionmode" class="md-nav__link">
+  <a href="#1-batch_functionmode" class="md-nav__link">
     <span class="md-ellipsis">
-      batch_function(mode)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="batch_function(mode)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#context-target" class="md-nav__link">
-    <span class="md-ellipsis">
-      context와 target을 하나씩 출력
+      1. batch_function(mode)
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#2-context-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. context와 target을 하나씩 출력
+    </span>
+  </a>
   
 </li>
       
@@ -2263,26 +2257,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#batch_functionmode" class="md-nav__link">
+  <a href="#1-batch_functionmode" class="md-nav__link">
     <span class="md-ellipsis">
-      batch_function(mode)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="batch_function(mode)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#context-target" class="md-nav__link">
-    <span class="md-ellipsis">
-      context와 target을 하나씩 출력
+      1. batch_function(mode)
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#2-context-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. context와 target을 하나씩 출력
+    </span>
+  </a>
   
 </li>
       
@@ -2414,7 +2402,7 @@
 <p><code>batch_size = 4</code>, <code>block_size = 8</code><br />
 - <strong>batch_size</strong>: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수)
 - <strong>block_size</strong>: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨</p>
-<h3 id="batch_functionmode">batch_function(mode)</h3>
+<h3 id="1-batch_functionmode">1. batch_function(mode)</h3>
 <p><code>train_dataset</code> 또는 <code>test_dataset</code> 중 하나에서 학습 배치를 만드는 함수이다.</p>
 <div class="highlight"><pre><span></span><code><span class="n">dataset</span> <span class="o">=</span> <span class="n">train_dataset</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span> <span class="k">else</span> <span class="n">test_dataset</span>
 </code></pre></div>
@@ -2441,7 +2429,7 @@
 <ul>
 <li>학습용 미니 배치를 하나 생성합니다.</li>
 </ul>
-<h4 id="context-target">context와 target을 하나씩 출력</h4>
+<h3 id="2-context-target">2. context와 target을 하나씩 출력</h3>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">block_size</span><span class="p">):</span>
         <span class="n">context</span> <span class="o">=</span> <span class="n">example_x</span><span class="p">[</span><span class="n">size</span><span class="p">,</span> <span class="p">:</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>

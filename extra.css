@@ -55,6 +55,30 @@ body hr {
     margin-bottom: 30px !important;
 }
 
+/* 제목(Header) 스타일 */
+h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    padding-bottom: 0.4em;
+    border-bottom: 2px solid #eaecef;
+    margin-top: 2.4em;
+    margin-bottom: 1.2em;
+}
+
+h3 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+h4 {
+    font-size: 1.15em;
+    font-weight: 600;
+    margin-top: 1.8em;
+    margin-bottom: 0.8em;
+}
+
 
 nav.md-nav[data-md-level="1"] {
     padding-left: 10px;

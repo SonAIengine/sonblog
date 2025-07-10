@@ -173,15 +173,6 @@ li {
     /* 목록 항목 간 간격 추가 */
 }
 
-body hr {
-    border: none;
-    height: 1px;
-    background-color: #e0e0e0;
-    /* 연한 회색으로 변경 */
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
-}
-
 /* 제목(Header) 스타일 */
 h2 {
     font-size: 1.8em;

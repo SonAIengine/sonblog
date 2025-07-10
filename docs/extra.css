@@ -1,9 +1,9 @@
 /* === Light Mode Code Block Style (GitHub-like) === */
 pre code {
-    background-color: #221313 !important;
-    color: #2c3e50 !important;
-    border: 1px solid #dcdfe3 !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    background-color: #000000 !important;
+    color: #e0e6ed !important;
+    border: 1px solid #444c56 !important;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.06) !important;
     padding: 1.2em 1.5em !important;
     margin: 1.5em 0 !important;
     border-radius: 8px !important;

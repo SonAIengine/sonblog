@@ -92,7 +92,7 @@ for size in range(batch_size):
 - **batch_size**: 학습에 사용할 문장 또는 시퀀스의 개수 (한 번에 처리할 데이터 수)
 - **block_size**: 각 시퀀스(문장)의 길이. 즉, 시퀀스 하나는 8개의 토큰으로 구성됨
 
-### 1. batch_function(mode)
+#### 1. batch_function(mode)
 
  `train_dataset` 또는 `test_dataset` 중 하나에서 학습 배치를 만드는 함수이다.
 
@@ -127,7 +127,7 @@ y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 
 - 학습용 미니 배치를 하나 생성합니다.
 
-### 2. context와 target을 하나씩 출력
+#### 2. context와 target을 하나씩 출력
 
 ```python
 for size in range(batch_size):

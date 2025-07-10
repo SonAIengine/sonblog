@@ -91,20 +91,10 @@ h4 {
     margin-bottom: 0.8em;
 }
 
-/* 링크(a) 스타일 */
-a {
-    color: #0077cc;
-    /* 눈에 띄는 파란색 계열 */
-    text-decoration: none;
-    /* 기본 밑줄 제거 */
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-}
-
 a:hover {
     text-decoration: underline;
     /* 마우스를 올리면 밑줄 표시 */
-    color: #0055aa;
+    font-weight: 500;
     /* 호버 시 약간 더 진한 색상 */
 }
 

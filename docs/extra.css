@@ -229,3 +229,46 @@ body {
 .md-grid {
     max-width: 1440px;
 }
+
+/* --- Dark Mode Overrides --- */
+[data-md-color-scheme="slate"] body {
+    color: #adbac7;
+}
+
+[data-md-color-scheme="slate"] h2 {
+    border-bottom-color: #444c56;
+}
+
+[data-md-color-scheme="slate"] a {
+    color: #58a6ff;
+}
+
+[data-md-color-scheme="slate"] a:hover {
+    color: #79c0ff;
+}
+
+[data-md-color-scheme="slate"] p code,
+[data-md-color-scheme="slate"] li code {
+    background-color: #373e47;
+    color: #cdd9e5;
+    border: 1px solid #4d555e;
+}
+
+[data-md-color-scheme="slate"] blockquote {
+    background-color: #2d333b;
+    border-left-color: #484f58;
+    color: #a0a8b4;
+}
+
+[data-md-color-scheme="slate"] body hr {
+    background-color: #444c56;
+}
+
+[data-md-color-scheme="slate"] .admonition.info {
+    background-color: #2d333b;
+    border-left-color: #58a6ff;
+}
+
+[data-md-color-scheme="slate"] .admonition.info .admonition-title {
+    color: #58a6ff;
+}

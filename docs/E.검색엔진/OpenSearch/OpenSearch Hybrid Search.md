@@ -49,19 +49,122 @@ GET /_plugins/_flow_framework/workflow/<workflow_id>/_status
 ### 2. 수동 구성 (커스터마이징 가능)
 
 #### Step 1. Ingest Pipeline 생성
+```
+PUT /_ingest/pipeline/nlp-ingest-pipeline
+{
+  "description": "텍스트 임베딩 파이프라인",
+  "processors": [
+    {
+      "text_embedding": {
+        "model_id": "모델_ID",
+        "field_map": {
+          "passage_text": "passage_embedding"
+        }
+      }
+    }
+  ]
+}
+```
 
 #### Step 2. Vector Index 생성
-
+```
+PUT /my-nlp-index
+{
+  "settings": {
+    "index.knn": true,
+    "default_pipeline": "nlp-ingest-pipeline"
+  },
+  "mappings": {
+    "properties": {
+      "id": { "type": "text" },
+      "passage_text": { "type": "text" },
+      "passage_embedding": {
+        "type": "knn_vector",
+        "dimension": 768,
+        "method": {
+          "engine": "lucene",
+          "space_type": "l2",
+          "name": "hnsw",
+          "parameters": {}
+        }
+      }
+    }
+  }
+}
+```
 
 #### Step 3. Search Pipeline 설정
-
+```
+PUT /_search/pipeline/nlp-search-pipeline
+{
+  "description": "Hybrid Search용 포스트 프로세서",
+  "phase_results_processors": [
+    {
+      "normalization-processor": {
+        "normalization": {
+          "technique": "min_max"
+        },
+        "combination": {
+          "technique": "arithmetic_mean",
+          "parameters": {
+            "weights": [0.3, 0.7]
+          }
+        }
+      }
+    }
+  ]
+}
+```
 `
 
 #### Step 4. 문서 색인
+```
+PUT /my-nlp-index/_doc/1
+{
+  "passage_text": "Hello world",
+  "id": "s1"
+}
+
+PUT /my-nlp-index/_doc/2
+{
+  "passage_text": "Hi planet",
+  "id": "s2"
+}
+```
 
 색인 시 ingest pipeline이 실행되어 `passage_embedding` 필드에 벡터가 생성됩니다.
 
 #### Step 5. Hybrid Search 실행
+```
+GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
+{
+  "_source": {
+    "exclude": ["passage_embedding"]
+  },
+  "query": {
+    "hybrid": {
+      "queries": [
+        {
+          "match": {
+            "passage_text": {
+              "query": "Hi world"
+            }
+          }
+        },
+        {
+          "neural": {
+            "passage_embedding": {
+              "query_text": "Hi world",
+              "model_id": "모델_ID",
+              "k": 5
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 다음은 match 쿼리와 neural 쿼리를 결합한 예시입니다.
 

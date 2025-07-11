@@ -16,9 +16,8 @@ Learning to Rank는 검색 결과를 **사용자 관점에서 더 유의미한 �
     
 
 LTR의 목적은 "문서가 얼마나 유용한가"를 직접 예측하는 것이 아니라, 
-**상대적 순서를 예측하는 함수 f(query, document features)를 학습하는 것입니다.
+상대적 순서를 예측하는 함수 f(query, document features)를 학습하는 것입니다.
 
----
 
 ## 2. 정답 순서 정의: Judgment List (골든 셋)
 
@@ -37,11 +36,11 @@ grade,keywords,movie
 
 이 리스트를 기준으로 모델의 정렬 품질을 **NDCG, ERR** 같은 랭킹 평가 지표로 측정할 수 있습니다.
 
----
 
 ## 3. 랭킹 모델의 입력: Feature
 
-LTR 모델은 검색 쿼리와 문서 간의 관련도를 판단할 수 있는 **피처(특징값)**을 입력으로 사용합니다. 예를 들어 영화 검색 시스템이라면 다음과 같은 피처가 사용될 수 있습니다:
+LTR 모델은 검색 쿼리와 문서 간의 관련도를 판단할 수 있는 피처(특징값)을 입력으로 사용한다.
+예를 들어 영화 검색 시스템이라면 다음과 같은 피처가 사용될 수 있다.
 
 - `titleScore`: 제목에 검색어가 얼마나 잘 매칭되는지
     
@@ -58,13 +57,13 @@ LTR 모델은 검색 쿼리와 문서 간의 관련도를 판단할 수 있는 *
 
 이러한 피처를 이용해 함수 f(titleScore, descScore, popularity, rating, ...) 형태로 결과를 점수화하고, 그 점수를 기반으로 문서를 정렬합니다.
 
----
 
 ## 4. 학습 데이터 구축: Feature 값 로깅
 
-학습을 위해서는 judgment list에 각 문서의 피처 값이 추가되어야 합니다. 예를 들어:
-
-```
+학습을 위해서는 judgment list에 각 문서의 피처 값이 추가되어야 합니다.
+ 
+예를 들어
+```text
 grade,keywords,movie,titleScore,descScore,popularity
 4,Rambo,First Blood,0.0,21.5,100
 4,Rambo,Rambo,42.5,21.5,95

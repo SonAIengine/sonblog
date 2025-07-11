@@ -183,6 +183,12 @@ h2 {
     margin-bottom: 1.2em;
 }
 
+h3 {
+    font-size: 1.4em;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
 a:hover {
     text-decoration: underline;
     /* 마우스를 올리면 밑줄 표시 */

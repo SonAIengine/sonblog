@@ -1,13 +1,12 @@
-다음은 OpenSearch의 **Learning to Rank (LTR)**의 핵심 개념을 설명하는 “ML Ranking Core Concepts” 내용을 정리한 것입니다. 이 가이드는 OpenSearch에서 머신러닝을 이용해 검색 결과의 관련도를 향상시키고자 하는 개발자 및 데이터 과학자를 위한 기초 개념을 담고 있습니다.
+다음은 OpenSearch의 Learning to Rank (LTR)의 핵심 개념을 설명하는 “ML Ranking Core Concepts” 내용을 정리한 것이다.
 
----
-
-# Learning to Rank (LTR) 핵심 개념 정리
+이 가이드는 OpenSearch에서 머신러닝을 이용해 검색 결과의 관련도를 향상시키고자 하는 개발자 및 데이터 과학자를 위한 기초 개념을 담고 있다.
 
 ## 1. LTR이란?
 
 Learning to Rank는 검색 결과를 **사용자 관점에서 더 유의미한 순서로 정렬**하기 위해 머신러닝을 활용하는 기법입니다.  
-다른 머신러닝 문제와의 차이점은 다음과 같습니다:
+
+다른 머신러닝 문제와의 차이점은 다음과 같다.
 
 - **회귀(Regression)**: 수치 예측 (예: 주가 예측)
     
@@ -16,7 +15,8 @@ Learning to Rank는 검색 결과를 **사용자 관점에서 더 유의미한 �
 - **랭킹(LTR)**: 특정 쿼리에 대해 문서를 **어떤 순서로 정렬해야 가장 유용한가**를 학습
     
 
-LTR의 목적은 "문서가 얼마나 유용한가"를 직접 예측하는 것이 아니라, **상대적 순서를 예측하는 함수 f(query, document features)**를 학습하는 것입니다.
+LTR의 목적은 "문서가 얼마나 유용한가"를 직접 예측하는 것이 아니라, 
+**상대적 순서를 예측하는 함수 f(query, document features)를 학습하는 것입니다.
 
 ---
 
@@ -138,17 +138,3 @@ LTR에서 사용할 수 있는 대표적인 모델은 다음과 같습니다:
 - **A/B 테스트 전략**: 기존 시스템과 비교 평가 및 KPI 정의 필요
     
 
----
-
-## 참고 링크
-
-- [Learning to Rank 개요](https://opensearch.org/docs/latest/search-plugins/learning-to-rank/core-concepts/)
-    
-- [hello-ltr 데모 GitHub](https://github.com/o19s/hello-ltr)
-    
-- [OpenSearch LTR 플러그인 문서](https://opensearch.org/docs/latest/search-plugins/learning-to-rank/)
-    
-
----
-
-이 문서는 OpenSearch 환경에서 LTR을 도입하려는 개발자나 검색 모델을 머신러닝 기반으로 개선하고자 하는 데이터 과학자에게 핵심 개념과 실전 고려사항을 안내하기 위한 요약 가이드입니다.

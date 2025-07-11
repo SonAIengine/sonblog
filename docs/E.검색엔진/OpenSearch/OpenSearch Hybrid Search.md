@@ -46,3 +46,39 @@ POST /_plugins/_flow_framework/workflow?use_case=hybrid_search&provision=true
 GET /_plugins/_flow_framework/workflow/<workflow_id>/_status
 ~~~
 
+### 2. 수동 구성 (커스터마이징 가능)
+
+#### Step 1. Ingest Pipeline 생성
+
+#### Step 2. Vector Index 생성
+
+
+#### Step 3. Search Pipeline 설정
+
+`
+
+#### Step 4. 문서 색인
+
+색인 시 ingest pipeline이 실행되어 `passage_embedding` 필드에 벡터가 생성됩니다.
+
+#### Step 5. Hybrid Search 실행
+
+다음은 match 쿼리와 neural 쿼리를 결합한 예시입니다.
+
+결과에는 키워드 기반과 의미 기반 쿼리 모두를 고려한 문서가 반환됩니다.
+
+
+## 확장 예시
+
+### Match + Term 쿼리 결합
+
+이 방식으로 다양한 쿼리 유형을 조합할 수 있습니다.
+
+
+
+## 마무리
+
+OpenSearch의 하이브리드 검색 기능은 정보 검색 시스템에서 **정확도 향상**과 **다양한 사용자 질의 대응**을 가능하게 하는 강력한 도구입니다. 키워드 검색만으로는 찾기 어려운 문서도 시맨틱 검색과 결합하여 더 정밀하게 찾아낼 수 있습니다.
+
+> 다음 글에서는 하이브리드 쿼리에서 정렬(Sorting), 페이징(Pagination), post-filter, Aggregation 등을 결합하는 고급 활용 방법을 다룰 예정입니다.
+

@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../2.%20multiprocessing/">
+        <link rel="prev" href="../../OpenSearch%20Hybrid%20Search/">
       
       
-        <link rel="next" href="../../%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/">
+        <link rel="next" href="../Embeddings%20model/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>3. 파이썬의 MVC 패턴 - SON BLOG</title>
+        <title>Approximate k NN - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +46,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../extra.css">
+      <link rel="stylesheet" href="../../../../extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#1-approximate-k-nn" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -92,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3. 파이썬의 MVC 패턴
+              Approximate k NN
             
           </span>
         </div>
@@ -211,7 +216,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -239,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
+        <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
           
   
   
@@ -264,13 +269,67 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+        <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
           
   
   
     
   
   B.PoC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  C.파이썬
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../D.%20AI/Dropout/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  D. AI
 
         </a>
       </li>
@@ -297,61 +356,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
-          
-  
-  
-    
-  
-  C.파이썬
-
-        </a>
-      </li>
-    
-  
-
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../D.%20AI/Dropout/" class="md-tabs__link">
-          
-  
-  
-    
-  
-  D. AI
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/OpenSearch%20Hybrid%20Search/" class="md-tabs__link">
+        <a href="../../OpenSearch%20Hybrid%20Search/" class="md-tabs__link">
           
   
   
@@ -376,7 +381,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-tabs__link">
+        <a href="../../../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-tabs__link">
           
   
   
@@ -412,7 +417,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -430,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -550,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -628,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -708,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   
@@ -731,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -820,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+      <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
         
   
   
@@ -843,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   
@@ -866,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/tauri/" class="md-nav__link">
+      <a href="../../../../B.PoC/tauri/" class="md-nav__link">
         
   
   
@@ -893,10 +898,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -908,22 +911,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   
@@ -936,7 +936,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             C.파이썬
@@ -947,10 +947,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -965,21 +963,18 @@
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
             
   
   
@@ -992,7 +987,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             기초
@@ -1006,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   
@@ -1029,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   
@@ -1049,17 +1044,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   
@@ -1070,7 +1058,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1107,20 +1094,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
             
   
   
@@ -1147,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   
@@ -1170,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -1193,7 +1177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   
@@ -1216,7 +1200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -1313,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Dropout/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Dropout/" class="md-nav__link">
         
   
   
@@ -1336,7 +1320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
+      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
         
   
   
@@ -1359,7 +1343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
+      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
         
   
   
@@ -1382,7 +1366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/KoBERT/" class="md-nav__link">
+      <a href="../../../../D.%20AI/KoBERT/" class="md-nav__link">
         
   
   
@@ -1405,7 +1389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Qwen3-embedding/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Qwen3-embedding/" class="md-nav__link">
         
   
   
@@ -1428,7 +1412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
         
   
   
@@ -1451,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Tokenization/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Tokenization/" class="md-nav__link">
         
   
   
@@ -1478,8 +1462,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1491,19 +1477,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -1516,7 +1505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             E.검색엔진
@@ -1527,8 +1516,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1543,18 +1534,21 @@
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
-          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="">
             
   
   
@@ -1567,7 +1561,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             OpenSearch
@@ -1581,7 +1575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/OpenSearch%20Hybrid%20Search/" class="md-nav__link">
+      <a href="../../OpenSearch%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -1601,8 +1595,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1621,11 +1617,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1_2" id="__nav_6_1_2_label" tabindex="0">
@@ -1641,7 +1637,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1_2">
             <span class="md-nav__icon md-icon"></span>
             Vector Search
@@ -1652,10 +1648,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Approximate k NN
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1666,6 +1682,111 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-approximate-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Approximate k-NN이란?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 벡터 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 데이터 색인 및 검색 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 모델 기반 인덱스 구성 (Training 기반)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 모델 기반 인덱스 구성 (Training 기반)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: 학습용 인덱스 생성 및 데이터 삽입
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-train-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Train API 호출
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: 모델을 사용하는 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 고급 기능 및 주의 사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      마무리
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1678,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
+      <a href="../Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -1701,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -1828,7 +1949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -1908,7 +2029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../../Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -1931,7 +2052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -1988,17 +2109,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
             
   
   
@@ -2025,7 +2149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../../../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -2112,7 +2236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-nav__link">
+      <a href="../../../../F.%EC%9D%BC%EC%A0%95/2025.07.03/" class="md-nav__link">
         
   
   
@@ -2135,7 +2259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../F.%EC%9D%BC%EC%A0%95/2025.07.04/" class="md-nav__link">
+      <a href="../../../../F.%EC%9D%BC%EC%A0%95/2025.07.04/" class="md-nav__link">
         
   
   
@@ -2176,6 +2300,101 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-approximate-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Approximate k-NN이란?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 벡터 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 데이터 색인 및 검색 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 모델 기반 인덱스 구성 (Training 기반)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 모델 기반 인덱스 구성 (Training 기반)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: 학습용 인덱스 생성 및 데이터 삽입
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-train-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Train API 호출
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: 모델을 사용하는 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 고급 기능 및 주의 사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      마무리
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2190,49 +2409,186 @@
 
 
 
-  <h1>3. 파이썬의 MVC 패턴</h1>
+  <h1>Approximate k NN</h1>
 
-<p>애플리케이션을 세 가지 주요 구성 요소로 나누어 관리하는 <strong>디자인 패턴</strong></p>
-<p>이 패턴은 유지 보수성과 확장성을 높이고, 코드의 역할을 명확하게 분리하여 개발을 더욱 체계적으로 할 수 있게 합니다.</p>
-<div class="highlight"><pre><span></span><code><span class="n">project_root</span><span class="o">/</span>
-<span class="err">├──</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span>
-<span class="err">├──</span> <span class="n">app</span><span class="o">/</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">controllers</span><span class="o">/</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">main_controller</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">models</span><span class="o">/</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">data_model</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">views</span><span class="o">/</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">main_view</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">ribbon_bar</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">└──</span> <span class="n">resources</span><span class="o">/</span>
-<span class="err">│</span>       <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>       <span class="err">└──</span> <span class="n">icons</span><span class="o">/</span>
-<span class="err">│</span>           <span class="err">└──</span> <span class="n">example_icon</span><span class="o">.</span><span class="n">png</span>
-<span class="err">├──</span> <span class="n">config</span><span class="o">/</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">└──</span> <span class="n">settings</span><span class="o">.</span><span class="n">py</span>
-<span class="err">├──</span> <span class="n">tests</span><span class="o">/</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">test_models</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">test_views</span><span class="o">.</span><span class="n">py</span>
-<span class="err">│</span>   <span class="err">└──</span> <span class="n">test_controllers</span><span class="o">.</span><span class="n">py</span>
-<span class="err">└──</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
-</code></pre></div>
-<p><code>main.py</code>: 애플리케이션의 시작점.</p>
-<p><code>app/</code>: 주요 애플리케이션 코드가 위치.</p>
+<p>OpenSearch는 기본적으로 <strong>정확한 k-NN 검색</strong>을 지원하지만, 데이터 양이 많고 벡터의 차원이 높아질수록 성능 저하 문제가 발생합니다. 이 문제를 해결하기 위한 대안으로 <strong>Approximate k-NN 검색</strong> 기능이 제공된다.</p>
+<p>Approximate k-NN 검색은 일부 정확성을 희생하는 대신, 검색 속도를 획기적으로 높이는 방식으로 <strong>수십만 개 이상의 벡터 데이터를 다룰 때 특히 유용</strong>하다.</p>
+<h2 id="1-approximate-k-nn">1. Approximate k-NN이란?</h2>
 <ul>
-<li><code>controllers/</code>: 컨트롤러 파일들이 위치하며, 비즈니스 로직과 뷰 간의 상호작용을 담당.</li>
-<li><code>models/</code>: 데이터베이스 모델이나 비즈니스 데이터를 처리하는 로직이 위치.</li>
-<li><code>views/</code>: 사용자에게 데이터를 렌더링하는 역할을 하는 파일들.</li>
-<li><code>resources/</code>: 애플리케이션에서 사용하는 리소스들 (예: 이미지, 아이콘 등).</li>
+<li>
+<p><strong>정확한 k-NN</strong>: 모든 벡터 간 거리 계산 → 정확하지만 느림</p>
+</li>
+<li>
+<p><strong>근사 k-NN (ANN)</strong>: 인덱스 구조를 최적화하여 일부 정확도를 희생하고 속도 향상</p>
+</li>
 </ul>
-<p><code>config/</code>: 설정 파일들이 위치하며, 애플리케이션의 환경 설정을 정의.</p>
-<p><code>tests/</code>: 테스트 코드가 위치하며, 각 부분에 대한 유닛 테스트 파일들이 포함.</p>
-<p><code>requirements.txt</code>: 프로젝트에서 필요한 Python 패키지 목록.</p>
+<p>OpenSearch는 다음 라이브러리 기반 ANN 알고리즘을 활용한다.</p>
+<ul>
+<li>
+<p><strong>NMSLIB</strong></p>
+</li>
+<li>
+<p><strong>Faiss</strong></p>
+</li>
+<li>
+<p><strong>Lucene</strong></p>
+</li>
+</ul>
+<h2 id="2">2. 벡터 인덱스 생성</h2>
+<p>먼저 벡터 인덱스를 생성할 때 <code>index.knn</code> 설정을 <code>true</code>로 지정해야 한다. 이는 벡터를 인덱싱할 때 네이티브 라이브러리 인덱스를 생성하겠다는 뜻이다.</p>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;knn.algo_param.ef_search&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hnsw&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;faiss&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;ef_construction&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;m&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>
+<p><code>engine</code>: faiss, nmslib, lucene 중 선택</p>
+</li>
+<li>
+<p><code>space_type</code>: 유사도 계산 방식 (예: <code>l2</code>, <code>innerproduct</code>)</p>
+</li>
+<li>
+<p><code>dimension</code>: 벡터 차원 수</p>
+</li>
+</ul>
+<h2 id="3">3. 데이터 색인 및 검색 예시</h2>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">_bulk</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.2</span><span class="w"> </span><span class="p">}</span>
+<span class="err">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span><span class="err">/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>
+<p><code>k</code>: 유사 벡터 수</p>
+</li>
+<li>
+<p><code>size</code>: 최종 반환할 결과 수 (샤드 수에 따라 곱해짐)</p>
+</li>
+</ul>
+<blockquote>
+<p>Lucene, Faiss, NMSLIB 엔진별로 <code>k</code>와 <code>size</code> 해석 방식에 차이가 있음</p>
+</blockquote>
+<h2 id="4-training">4. 모델 기반 인덱스 구성 (Training 기반)</h2>
+<p>특정 알고리즘(예: IVF, PQ 등)을 사용할 경우 인덱싱 전에 모델 학습(Train API)이 필요하다.</p>
+<h3 id="step-1">Step 1: 학습용 인덱스 생성 및 데이터 삽입</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/</span><span class="kc">tra</span><span class="err">i</span><span class="kc">n</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;train-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">_bulk</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train-index&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;train-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">5.5</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="err">...</span>
+</code></pre></div>
+<blockquote>
+<p><code>index.knn</code>은 설정하지 않아야 학습 전용으로 사용할 수 있음</p>
+</blockquote>
+<h3 id="step-2-train-api">Step 2: Train API 호출</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">/_plugi</span><span class="kc">ns</span><span class="err">/_k</span><span class="kc">nn</span><span class="err">/models/my</span><span class="mi">-</span><span class="err">model/_</span><span class="kc">tra</span><span class="err">i</span><span class="kc">n</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;training_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train-index&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;training_field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train-field&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My model description&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ivf&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;faiss&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;encoder&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pq&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;code_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;m&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>학습이 완료되면 <code>state: created</code>로 변경된다.</p>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">/_plugi</span><span class="kc">ns</span><span class="err">/_k</span><span class="kc">nn</span><span class="err">/models/my</span><span class="mi">-</span><span class="err">model?</span><span class="kc">f</span><span class="err">il</span><span class="kc">ter</span><span class="err">_pa</span><span class="kc">t</span><span class="err">h=s</span><span class="kc">tate</span><span class="err">&amp;pre</span><span class="kc">tt</span><span class="err">y</span>
+</code></pre></div>
+<h3 id="step-3">Step 3: 모델을 사용하는 인덱스 생성</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/</span><span class="kc">tar</span><span class="err">ge</span><span class="kc">t</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;index.knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;target-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-model&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이제 이 인덱스에 데이터를 삽입하면 모델 기반 인덱스가 자동으로 구성된다.</p>
+<h2 id="5">5. 고급 기능 및 주의 사항</h2>
+<ul>
+<li>
+<p>ANN 방식은 <strong>정확도보다 속도와 확장성에 중점</strong></p>
+</li>
+<li>
+<p>필터 조건은 <strong>검색 후 결과에 적용</strong>됨 (사전 필터링 불가)</p>
+</li>
+<li>
+<p>벡터는 최대 <strong>16,000차원까지 지원</strong></p>
+</li>
+<li>
+<p>벡터 인덱스는 <strong>네이티브 메모리</strong>에 로딩되며 Warmup API로 사전 로딩 가능</p>
+</li>
+<li>
+<p>검색 성능을 확인하려면 Stats API 활용</p>
+</li>
+</ul>
+<h2 id="_1">마무리</h2>
+<p>OpenSearch의 Approximate k-NN 검색 기능은 대용량 벡터 데이터를 빠르게 검색해야 하는 모든 상황에서 핵심 도구이다. 특히 <strong>수십만 개 이상의 고차원 벡터 데이터</strong>를 다루는 추천 시스템, 문서 유사도 검색, 이미지 검색 등에서 탁월한 성능을 발휘한다.</p>
 
 
 
@@ -2287,12 +2643,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
-        <script src="../../../custom.js"></script>
+        <script src="../../../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

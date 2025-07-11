@@ -56,20 +56,17 @@ PUT my-knn-index-1
 - `space_type`: 유사도 계산 방식 (예: `l2`, `innerproduct`)
     
 - `dimension`: 벡터 차원 수
-    
-
----
 
 ## 3. 데이터 색인 및 검색 예시
 
-```http
+```json
 POST _bulk
 { "index": { "_index": "my-knn-index-1", "_id": "1" } }
 { "my_vector1": [1.5, 2.5], "price": 12.2 }
 ...
 ```
 
-```http
+```json
 GET my-knn-index-1/_search
 {
   "size": 2,
@@ -87,19 +84,17 @@ GET my-knn-index-1/_search
 - `k`: 유사 벡터 수
     
 - `size`: 최종 반환할 결과 수 (샤드 수에 따라 곱해짐)
-    
 
 > Lucene, Faiss, NMSLIB 엔진별로 `k`와 `size` 해석 방식에 차이가 있음
 
----
 
 ## 4. 모델 기반 인덱스 구성 (Training 기반)
 
-특정 알고리즘(예: IVF, PQ 등)을 사용할 경우 인덱싱 전에 **모델 학습(Train API)**이 필요합니다.
+특정 알고리즘(예: IVF, PQ 등)을 사용할 경우 인덱싱 전에 모델 학습(Train API)이 필요합니다.
 
 ### Step 1: 학습용 인덱스 생성 및 데이터 삽입
 
-```http
+```json
 PUT /train-index
 {
   "mappings": {
@@ -113,7 +108,7 @@ PUT /train-index
 }
 ```
 
-```http
+```json
 POST _bulk
 { "index": { "_index": "train-index", "_id": "1" } }
 { "train-field": [1.5, 5.5, 4.5, 6.4] }
@@ -124,7 +119,7 @@ POST _bulk
 
 ### Step 2: Train API 호출
 
-```http
+```json
 POST /_plugins/_knn/models/my-model/_train
 {
   "training_index": "train-index",
@@ -149,13 +144,13 @@ POST /_plugins/_knn/models/my-model/_train
 
 학습이 완료되면 `state: created`로 변경됩니다:
 
-```http
+```json
 GET /_plugins/_knn/models/my-model?filter_path=state&pretty
 ```
 
 ### Step 3: 모델을 사용하는 인덱스 생성
 
-```http
+```json
 PUT /target-index
 {
   "settings": {
@@ -172,9 +167,7 @@ PUT /target-index
 }
 ```
 
-이제 이 인덱스에 데이터를 삽입하면 모델 기반 인덱스가 자동으로 구성됩니다.
-
----
+이제 이 인덱스에 데이터를 삽입하면 모델 기반 인덱스가 자동으로 구성된다.
 
 ## 5. 고급 기능 및 주의 사항
 

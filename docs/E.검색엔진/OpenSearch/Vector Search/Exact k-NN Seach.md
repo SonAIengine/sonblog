@@ -39,7 +39,7 @@ PUT my-knn-index-1
 
 ### 데이터 삽입
 
-```http
+```json
 POST _bulk
 { "index": { "_index": "my-knn-index-1", "_id": "1" } }
 { "my_vector1": [1.5, 2.5], "price": 12.2 }
@@ -48,11 +48,10 @@ POST _bulk
 { "my_vector2": [1.5, 5.5, 4.5, 6.4], "price": 8.9 }
 ```
 
----
 
 ## 3. 정확한 k-NN 검색 실행
 
-```http
+```json
 GET my-knn-index-1/_search
 {
   "size": 4,
@@ -84,17 +83,15 @@ GET my-knn-index-1/_search
 - `query_value`: 쿼리 벡터
     
 - `space_type`: 거리 함수 (`l2`, `cosinesimil`, `hammingbit` 등)
-    
 
----
 
 ## 4. Pre-filter 적용 예시
 
-Scoring Script는 **검색 전에 조건 필터링**을 걸 수 있다는 점이 큰 장점입니다.
+Scoring Script는 **검색 전에 조건 필터링**을 걸 수 있다는 점이 큰 장점이다.
 
 ### 인덱스 생성
 
-```http
+```json
 PUT my-knn-index-2
 {
   "mappings": {
@@ -108,7 +105,7 @@ PUT my-knn-index-2
 
 ### 문서 삽입
 
-```http
+```json
 POST _bulk
 { "index": { "_index": "my-knn-index-2", "_id": "1" } }
 { "my_vector": [1, 1], "color": "RED" }
@@ -118,7 +115,7 @@ POST _bulk
 
 ### Pre-filter + 벡터 검색
 
-```http
+```json
 GET my-knn-index-2/_search
 {
   "size": 2,
@@ -145,11 +142,10 @@ GET my-knn-index-2/_search
 }
 ```
 
----
 
 ## 5. Binary 데이터에 대한 Hamming Distance 검색
 
-Scoring Script는 **Binary 또는 Long 타입 필드**에 대해 **Hamming Distance** 기반 벡터 검색도 지원합니다.
+Scoring Script는 **Binary 또는 Long 타입 필드**에 대해 **Hamming Distance** 기반 벡터 검색도 지원한다.
 
 ### 인덱스 생성
 

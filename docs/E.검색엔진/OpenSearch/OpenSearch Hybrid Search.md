@@ -5,3 +5,15 @@ OpenSearch 2.11부터 도입된 **Hybrid Search(하이브리드 검색)** 기능
 하이브리드 검색은 전통적인 키워드 검색(Query DSL 기반)과 신경망 임베딩을 활용한 의미 기반 검색(Neural Search)의 결과를 결합하여 검색 정확도를 향상시키는 방식이다.
 
 이를 위해 OpenSearch는 **search pipeline**을 통해 쿼리 실행 중간 결과를 가로채고 점수(score)를 조정하거나 재정렬하는 방식으로 동작합니다.
+
+### 제공되는 Processor 유형
+
+| Processor 종류            | 도입 버전 | 설명                                          |
+| ----------------------- | ----- | ------------------------------------------- |
+| Normalization Processor | 2.10  | 여러 쿼리 결과의 점수를 정규화 및 결합 (예: min-max, mean 등) |
+| Score Ranker Processor  | 2.19  | 랭크 기반 결과를 결합하는 Rank Fusion 기법 사용            |
+
+## 사전 준비
+
+하이브리드 검색을 사용하려면 먼저 텍스트 임베딩 모델(text embedding model)이 설정되어 있어야 한다.
+이미 벡터 임베딩이 생성된 상태라면 바로 검색 파이프라인 구축으로 넘어갈 수 있습니다.

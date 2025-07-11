@@ -49,7 +49,7 @@ GET /_plugins/_flow_framework/workflow/<workflow_id>/_status
 ### 2. 수동 구성 (커스터마이징 가능)
 
 #### Step 1. Ingest Pipeline 생성
-```
+```json
 PUT /_ingest/pipeline/nlp-ingest-pipeline
 {
   "description": "텍스트 임베딩 파이프라인",
@@ -67,7 +67,7 @@ PUT /_ingest/pipeline/nlp-ingest-pipeline
 ```
 
 #### Step 2. Vector Index 생성
-```
+```json
 PUT /my-nlp-index
 {
   "settings": {
@@ -94,7 +94,7 @@ PUT /my-nlp-index
 ```
 
 #### Step 3. Search Pipeline 설정
-```
+```json
 PUT /_search/pipeline/nlp-search-pipeline
 {
   "description": "Hybrid Search용 포스트 프로세서",
@@ -118,7 +118,7 @@ PUT /_search/pipeline/nlp-search-pipeline
 `
 
 #### Step 4. 문서 색인
-```
+```json
 PUT /my-nlp-index/_doc/1
 {
   "passage_text": "Hello world",
@@ -135,7 +135,7 @@ PUT /my-nlp-index/_doc/2
 색인 시 ingest pipeline이 실행되어 `passage_embedding` 필드에 벡터가 생성됩니다.
 
 #### Step 5. Hybrid Search 실행
-```
+```json
 GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
 {
   "_source": {
@@ -174,6 +174,16 @@ GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
 ## 확장 예시
 
 ### Match + Term 쿼리 결합
+```json
+"query": {
+  "hybrid": {
+    "queries": [
+      { "match": { "passage_text": "hello" } },
+      { "term": { "passage_text": { "value": "planet" } } }
+    ]
+  }
+}
+```
 
 이 방식으로 다양한 쿼리 유형을 조합할 수 있습니다.
 
@@ -182,6 +192,4 @@ GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
 ## 마무리
 
 OpenSearch의 하이브리드 검색 기능은 정보 검색 시스템에서 **정확도 향상**과 **다양한 사용자 질의 대응**을 가능하게 하는 강력한 도구입니다. 키워드 검색만으로는 찾기 어려운 문서도 시맨틱 검색과 결합하여 더 정밀하게 찾아낼 수 있습니다.
-
-> 다음 글에서는 하이브리드 쿼리에서 정렬(Sorting), 페이징(Pagination), post-filter, Aggregation 등을 결합하는 고급 활용 방법을 다룰 예정입니다.
 

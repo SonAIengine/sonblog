@@ -4,7 +4,7 @@ OpenSearch 2.11부터 도입된 **Hybrid Search(하이브리드 검색)** 기능
 
 하이브리드 검색은 전통적인 키워드 검색(Query DSL 기반)과 신경망 임베딩을 활용한 의미 기반 검색(Neural Search)의 결과를 결합하여 검색 정확도를 향상시키는 방식이다.
 
-이를 위해 OpenSearch는 **search pipeline**을 통해 쿼리 실행 중간 결과를 가로채고 점수(score)를 조정하거나 재정렬하는 방식으로 동작합니다.
+이를 위해 OpenSearch는 **search pipeline**을 통해 쿼리 실행 중간 결과를 가로채고 점수(score)를 조정하거나 재정렬하는 방식으로 동작한다.
 
 ### 제공되는 Processor 유형
 
@@ -16,7 +16,7 @@ OpenSearch 2.11부터 도입된 **Hybrid Search(하이브리드 검색)** 기능
 ## 사전 준비
 
 하이브리드 검색을 사용하려면 먼저 텍스트 임베딩 모델(text embedding model)이 설정되어 있어야 한다.
-이미 벡터 임베딩이 생성된 상태라면 바로 검색 파이프라인 구축으로 넘어갈 수 있습니다.
+이미 벡터 임베딩이 생성된 상태라면 바로 검색 파이프라인 구축으로 넘어갈 수 있다.
 
 
 ## 구성 방법
@@ -132,7 +132,7 @@ PUT /my-nlp-index/_doc/2
 }
 ```
 
-색인 시 ingest pipeline이 실행되어 `passage_embedding` 필드에 벡터가 생성됩니다.
+색인 시 ingest pipeline이 실행되어 `passage_embedding` 필드에 벡터가 생성된다.
 
 #### Step 5. Hybrid Search 실행
 ```json
@@ -166,9 +166,9 @@ GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
 }
 ```
 
-다음은 match 쿼리와 neural 쿼리를 결합한 예시입니다.
+다음은 match 쿼리와 neural 쿼리를 결합한 예시이다.
 
-결과에는 키워드 기반과 의미 기반 쿼리 모두를 고려한 문서가 반환됩니다.
+결과에는 키워드 기반과 의미 기반 쿼리 모두를 고려한 문서가 반환된다.
 
 
 ## 확장 예시
@@ -185,7 +185,7 @@ GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
 }
 ```
 
-이 방식으로 다양한 쿼리 유형을 조합할 수 있습니다.
+이 방식으로 다양한 쿼리 유형을 조합할 수 있다.
 
 
 

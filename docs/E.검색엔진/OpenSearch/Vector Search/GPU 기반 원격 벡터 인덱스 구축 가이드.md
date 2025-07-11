@@ -9,9 +9,7 @@ OpenSearch(v3.0.0)는 **GPU 가속 원격 인덱스 빌드 서비스**를 통해
 - **CPU 기반 색인 대비 비용 절감**
     
 - 색인 처리가 **OpenSearch 외부에서 비동기적으로 수행됨**
-    
 
----
 
 ## 사전 준비 사항
 
@@ -20,9 +18,7 @@ OpenSearch(v3.0.0)는 **GPU 가속 원격 인덱스 빌드 서비스**를 통해
 2. **벡터 타입: FP32 (32-bit float)**
     
 3. **AWS S3 저장소 필수** (중간 저장소 역할)
-    
 
----
 
 ## 1단계: 원격 인덱스 빌드 기능 활성화
 
@@ -50,11 +46,10 @@ PUT /my-index/_settings
 
 > 두 설정이 **모두 true**여야 인덱스에 대해 원격 빌드가 활성화됨
 
----
 
 ## 2단계: 원격 벡터 저장소(S3) 등록
 
-OpenSearch 클러스터는 벡터와 문서 ID를 **S3 저장소**에 업로드하며, 원격 GPU 빌더는 이를 가져와 외부에서 인덱스를 생성한 뒤 결과를 다시 저장소에 업로드합니다.
+OpenSearch 클러스터는 벡터와 문서 ID를 **S3 저장소**에 업로드하며, 원격 GPU 빌더는 이를 가져와 외부에서 인덱스를 생성한 뒤 결과를 다시 저장소에 업로드한다.
 
 ### 저장소 등록 예시
 
@@ -80,7 +75,6 @@ PUT /_cluster/settings
 }
 ```
 
----
 
 ## 3단계: 원격 인덱스 빌드 서비스(endpoint) 설정
 
@@ -98,7 +92,6 @@ PUT /_cluster/settings
 
 > GPU 빌더 서비스 구성에 대한 자세한 내용은 공식 **User Guide** 참조
 
----
 
 ## 동작 방식
 
@@ -115,8 +108,6 @@ PUT /_cluster/settings
 - 빌드 작업은 백그라운드에서 자동 실행됨
     
 
----
-
 ## 모니터링 방법
 
 **k-NN Stats API**를 사용해 원격 인덱스 빌드 작업 상태를 확인 가능:
@@ -126,9 +117,6 @@ GET /_plugins/_knn/stats
 ```
 
 - `remote_index_build` 항목에서 현재 작업량, 성공/실패 통계 등을 확인할 수 있음
-    
-
----
 
 ## 요약
 
@@ -139,16 +127,3 @@ GET /_plugins/_knn/stats
 |성능 향상|GPU 사용으로 인덱스 속도 대폭 향상|
 |활용 조건|특정 세그먼트 크기 범위 + 지원 구성 사용|
 |API|Warm-up, Stats API 활용 가능|
-
----
-
-## 참고 링크
-
-- [OpenSearch 벡터 인덱스 GPU 빌드 공식 문서](https://opensearch.org/docs/latest/search-plugins/knn/remote-index-build/)
-    
-- [Faiss HNSW 설명](https://github.com/facebookresearch/faiss/wiki/HNSW)
-    
-
----
-
-이 기능은 특히 **대량 벡터 데이터를 사전 처리한 후 검색 전용 인덱스를 구축하는 환경**에서 매우 유용하며, OpenSearch를 벡터 검색 엔진으로 사용하는 기업들에게 **색인 속도 및 비용 최적화**를 동시에 제공할 수 있습니다.

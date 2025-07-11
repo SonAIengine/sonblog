@@ -42,3 +42,7 @@ POST /_plugins/_flow_framework/workflow?use_case=hybrid_search&provision=true
 
 성공 시 반환되는 workflow_id 로 생성 상태를 확인 할 수 있다.
 
+~~~json
+GET /_plugins/_flow_framework/workflow/<workflow_id>/_status
+~~~
+

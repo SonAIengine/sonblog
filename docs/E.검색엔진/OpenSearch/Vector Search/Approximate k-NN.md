@@ -90,7 +90,7 @@ GET my-knn-index-1/_search
 
 ## 4. 모델 기반 인덱스 구성 (Training 기반)
 
-특정 알고리즘(예: IVF, PQ 등)을 사용할 경우 인덱싱 전에 모델 학습(Train API)이 필요합니다.
+특정 알고리즘(예: IVF, PQ 등)을 사용할 경우 인덱싱 전에 모델 학습(Train API)이 필요하다.
 
 ### Step 1: 학습용 인덱스 생성 및 데이터 삽입
 
@@ -142,7 +142,7 @@ POST /_plugins/_knn/models/my-model/_train
 }
 ```
 
-학습이 완료되면 `state: created`로 변경됩니다:
+학습이 완료되면 `state: created`로 변경된다.
 
 ```json
 GET /_plugins/_knn/models/my-model?filter_path=state&pretty
@@ -180,25 +180,7 @@ PUT /target-index
 - 벡터 인덱스는 **네이티브 메모리**에 로딩되며 Warmup API로 사전 로딩 가능
     
 - 검색 성능을 확인하려면 Stats API 활용
-    
-
----
 
 ## 마무리
 
-OpenSearch의 Approximate k-NN 검색 기능은 대용량 벡터 데이터를 빠르게 검색해야 하는 모든 상황에서 핵심 도구입니다. 특히 **수십만 개 이상의 고차원 벡터 데이터**를 다루는 추천 시스템, 문서 유사도 검색, 이미지 검색 등에서 탁월한 성능을 발휘합니다.
-
----
-
-## 참고 링크
-
-- [OpenSearch 공식 k-NN 문서](https://opensearch.org/docs/latest/search-plugins/knn/)
-    
-- [Apache Lucene 공식 문서](https://lucene.apache.org/core/)
-    
-- [IVF + PQ 설명 및 요구사항](https://opensearch.org/docs/latest/search-plugins/knn/approximate-methods/)
-    
-
----
-
-이 글은 OpenSearch를 활용한 벡터 검색 시스템을 구축하거나 최적화하려는 개발자 및 AI 검색 시스템 엔지니어에게 실질적인 가이드를 제공합니다.
+OpenSearch의 Approximate k-NN 검색 기능은 대용량 벡터 데이터를 빠르게 검색해야 하는 모든 상황에서 핵심 도구이다. 특히 **수십만 개 이상의 고차원 벡터 데이터**를 다루는 추천 시스템, 문서 유사도 검색, 이미지 검색 등에서 탁월한 성능을 발휘한다.

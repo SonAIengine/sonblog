@@ -103,7 +103,7 @@ GET my-knn-index-1/_search
 기본적으로 어떤 하위 객체가 매칭되었는지 알 수 없다.
 `inner_hits`를 통해 해당 정보를 확인할 수 있다.
 
-```http
+```json
 GET my-knn-index-1/_search
 {
   "_source": false,
@@ -127,19 +127,18 @@ GET my-knn-index-1/_search
 }
 ```
 
----
 
 ## 6. 모든 Nested 벡터 점수 확인 (확장 검색)
 
-기본 설정에서는 문서 내에서 가장 높은 벡터 점수만 사용합니다.  
+기본 설정에서는 문서 내에서 가장 높은 벡터 점수만 사용한다.
 모든 벡터 스코어를 반영하려면 `expand_nested_docs: true`를 설정하고,  
 문서 점수로 어떤 값을 사용할지 `score_mode`로 지정합니다.
 
-```http
+```json
 "score_mode": "max" // 또는 "avg", "sum", "none"
 ```
 
-```http
+```json
 "knn": {
   "nested_field.my_vector": {
     "vector": [1,1,1],
@@ -149,13 +148,12 @@ GET my-knn-index-1/_search
 }
 ```
 
----
 
 ## 7. Top-level 또는 Nested 필드 필터링
 
-`knn` 쿼리에 `filter`를 추가하여 문서 단위로 필터링할 수 있습니다.
+`knn` 쿼리에 `filter`를 추가하여 문서 단위로 필터링할 수 있다.
 
-```http
+```json
 GET my-knn-index-1/_search
 {
   "query": {
@@ -181,7 +179,6 @@ GET my-knn-index-1/_search
 
 > 위 예시에서는 `parking: true` 조건을 만족하는 문서만 벡터 유사도로 검색
 
----
 
 ## 요약
 
@@ -191,18 +188,3 @@ GET my-knn-index-1/_search
 |**inner_hits**|어떤 하위 객체가 매칭되었는지 확인|
 |**expand_nested_docs**|모든 벡터 점수 고려 가능|
 |**filter**|벡터 검색 시 조건 필터 가능 (top-level 및 nested)|
-
----
-
-## 참고 링크
-
-- [OpenSearch Nested Field 벡터 검색 공식 문서](https://opensearch.org/docs/latest/search-plugins/knn/nested-knn/)
-    
-- [Lucene HNSW 알고리즘 정보](https://lucene.apache.org/core/)
-    
-- [OpenSearch Vector Search 전체 가이드](https://opensearch.org/docs/latest/vector-search/)
-    
-
----
-
-이 글은 복잡한 문서 구조를 가진 시스템에서 **다중 벡터 기반 검색 정확도를 높이고자 하는 개발자와 검색 엔지니어**를 위한 실전 중심 가이드입니다.

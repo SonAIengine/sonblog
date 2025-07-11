@@ -167,6 +167,36 @@ GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
 ```
 
 다음은 match 쿼리와 neural 쿼리를 결합한 예시이다.
+~~~json
+GET /my-nlp-index/_search?search_pipeline=nlp-search-pipeline
+{
+  "_source": {
+    "exclude": ["passage_embedding"]
+  },
+  "query": {
+    "hybrid": {
+      "queries": [
+        {
+          "match": {
+            "passage_text": {
+              "query": "Hi world"
+            }
+          }
+        },
+        {
+          "neural": {
+            "passage_embedding": {
+              "query_text": "Hi world",
+              "model_id": "모델_ID",
+              "k": 5
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+~~~
 
 결과에는 키워드 기반과 의미 기반 쿼리 모두를 고려한 문서가 반환된다.
 

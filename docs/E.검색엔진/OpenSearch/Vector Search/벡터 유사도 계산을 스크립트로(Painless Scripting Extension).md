@@ -59,7 +59,6 @@ GET my-knn-index-2/_search
 |**`cosineSimilarity` (최적화)**|`float cosineSimilarity(query, doc, norm)`|쿼리 벡터의 크기를 별도로 넘겨 반복 계산 방지|
 |**`hamming`**|`float hamming(float[] query, doc['vec'])`|해밍 거리. 벡터 값이 정수여야 하며, binary 또는 long 타입 지원 (2.16+)|
 
----
 
 ## 4. 예외 및 주의사항
 
@@ -75,9 +74,7 @@ GET my-knn-index-2/_search
 
 - **코사인 유사도는 0 벡터 사용 금지**  
     → 크기가 0인 벡터는 계산 불가 → 예외 발생
-    
 
----
 
 ## 5. 실전 활용 팁
 
@@ -88,25 +85,10 @@ GET my-knn-index-2/_search
 - `cosineSimilarity`는 자주 쓰이는 경우 norm 미리 계산하여 속도 개선 가능
     
 - 스코어가 `0~1` 범위로 제한되지 않으므로 결과 정규화 필요 시 수식 추가
-    
 
----
 
 ## 마무리
 
-OpenSearch의 **Painless 스크립팅 확장** 기능은 단순한 벡터 검색을 넘어서 **복잡한 랭킹 로직**, **조건부 벡터 스코어링**, **커스텀 점수 조정** 등의 고급 기능 구현을 가능하게 합니다. Approximate k-NN이나 `knn_score` 기반 스크립트보다 더 높은 유연성이 필요한 경우에 적극 활용해보세요.
+OpenSearch의 **Painless 스크립팅 확장** 기능은 단순한 벡터 검색을 넘어서 **복잡한 랭킹 로직**, **조건부 벡터 스코어링**, **커스텀 점수 조정** 등의 고급 기능 구현을 가능하게 한다.
 
----
-
-## 참고 링크
-
-- [Painless Scripting Extensions 공식 문서](https://opensearch.org/docs/latest/search-plugins/knn/painless-scripting/)
-    
-- [k-NN Score Script 문서](https://opensearch.org/docs/latest/search-plugins/knn/knn-score-script/)
-    
-- [OpenSearch Script Score DSL](https://opensearch.org/docs/latest/query-dsl/script-score/)
-    
-
----
-
-이 글은 OpenSearch 기반 벡터 검색 및 커스텀 랭킹을 구현하려는 검색 엔지니어와 개발자를 위한 실무 중심 가이드입니다.
+Approximate k-NN이나 `knn_score` 기반 스크립트보다 더 높은 유연성이 필요한 경우에 적극 활용할 수 있다.

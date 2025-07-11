@@ -47,7 +47,7 @@ OpenSearch의 **Learning to Rank (LTR)** 플러그인은 **검색 결과의 정�
 | **이미 익숙한 사용자**      | [Plugin 통합 가이드](https://opensearch.org/docs/latest/search-plugins/learning-to-rank/integrate/)        |
 
 
-## 🧪 사용 예시
+## 사용 예시
 
 ```json
 GET /my-index/_search
@@ -71,28 +71,11 @@ GET /my-index/_search
 }
 ```
 
----
 
-## 🛠️ 언제 유용한가?
+## 언제 유용한가?
 
 - 클릭/전환 로그가 누적된 **이커머스 검색**
     
 - 뉴스/게시글 등에서 **사용자 관심 기반 결과 노출**
     
 - 다양한 필드를 가진 문서에 대해 **다양한 가중치 학습 필요**할 때
-    
-
----
-
-## 🔗 참고 링크
-
-- [OpenSearch Learning to Rank 공식 문서](https://opensearch.org/docs/latest/search-plugins/learning-to-rank/)
-    
-- [hello-ltr GitHub 데모](https://github.com/o19s/hello-ltr)
-    
-- [OpenSearch LTR plugin 개발 문서](https://github.com/opensearch-project/opensearch-learning-to-rank-base)
-    
-
----
-
-요약하자면, **LTR은 검색 결과의 품질을 "사용자 행동 기반"으로 개선**할 수 있는 고급 기능입니다. OpenSearch에서는 이를 **플러그인 형태로 제공**하며, 실사용에 필요한 학습/적용 파이프라인도 구성할 수 있도록 지원합니다.

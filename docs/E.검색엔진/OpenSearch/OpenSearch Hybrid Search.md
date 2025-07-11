@@ -17,3 +17,27 @@ OpenSearch 2.11부터 도입된 **Hybrid Search(하이브리드 검색)** 기능
 
 하이브리드 검색을 사용하려면 먼저 텍스트 임베딩 모델(text embedding model)이 설정되어 있어야 한다.
 이미 벡터 임베딩이 생성된 상태라면 바로 검색 파이프라인 구축으로 넘어갈 수 있습니다.
+
+
+## 구성 방법
+
+하이브리드 검색 설정은 두 가지 방식으로 구성할 수 있다.
+
+### 1. 자동화 워크플로우 (추천)
+
+OpenSearch에서 제공하는 `hybrid_search` 템플릿을 활용하여 다음을 자동 생성할 수 있다.
+
+- Ingest pipeline (텍스트 임베딩 처리)
+    
+- Vector index
+    
+- Search pipeline
+
+~~~json
+POST /_plugins/_flow_framework/workflow?use_case=hybrid_search&provision=true
+{
+  "create_ingest_pipeline.model_id": "모델_ID"
+}
+~~~
+
+성공 시 반환되는 workflow_id

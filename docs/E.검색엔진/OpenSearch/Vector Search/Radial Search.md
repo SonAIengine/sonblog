@@ -89,11 +89,10 @@ GET knn-index-test/_search
 
 - **설명**: 쿼리 벡터와의 **l2 거리 제곱이 2 이하인 벡터**만 검색
 
----
 
-## 6. 예시: `max_distance` + 필터 결합
+## 6. 예시: max_distance + 필터 결합
 
-```http
+```json
 GET knn-index-test/_search
 {
   "query": {
@@ -108,6 +107,7 @@ GET knn-index-test/_search
               "lte": 5
             }
           }
+        
         }
       }
     }
@@ -116,13 +116,11 @@ GET knn-index-test/_search
 ```
 
 - **설명**: 거리 조건 + `price` 필드 범위 필터 적용
-    
 
----
 
-## 7. 예시: `min_score` 기반 검색
+## 7. 예시: min_score 기반 검색
 
-```http
+```json
 GET knn-index-test/_search
 {
   "query": {
@@ -138,13 +136,11 @@ GET knn-index-test/_search
 
 - **설명**: **유사도 점수가 0.95 이상**인 벡터만 검색  
     (주로 cosine similarity 등 유사도 기반 공간에서 활용)
-    
 
----
 
-## 8. 예시: `min_score` + 필터 결합
+## 8. 예시: min_score + 필터 결합
 
-```http
+```json
 GET knn-index-test/_search
 {
   "query": {
@@ -167,9 +163,6 @@ GET knn-index-test/_search
 ```
 
 - **결과**: 유사도 점수 조건 + 가격 필터를 모두 만족하는 문서 반환
-    
-
----
 
 ## 9. 실전 팁
 
@@ -180,25 +173,10 @@ GET knn-index-test/_search
 - `filter`를 함께 사용하면 **속도 개선** 및 **정밀한 검색 제어** 가능
     
 - `nested_field`, `hybrid`, `binary`, `hamming` 검색과 함께 응용 가능
-    
 
----
 
 ## 마무리
 
-Radial Search는 단순한 Top-k 검색을 넘어서 **벡터 공간의 범위 기반 검색**을 가능하게 합니다. 거리 제한 또는 유사도 임계값을 기준으로 문서를 선별하는 데 탁월한 방식이며, **추천 시스템, 위치 기반 검색, 정밀 필터링 검색** 등에 활용할 수 있습니다.
+Radial Search는 단순한 Top-k 검색을 넘어서 **벡터 공간의 범위 기반 검색**을 가능하게 한다.
 
----
-
-## 참고 자료
-
-- [OpenSearch Radial Search 공식 문서](https://opensearch.org/docs/latest/search-plugins/knn/radial-search/)
-    
-- [Vector Search 개념 정리](https://opensearch.org/docs/latest/vector-search/)
-    
-- [Faiss 및 Lucene 기반 HNSW 설명](https://opensearch.org/docs/latest/search-plugins/knn/approximate-methods/)
-    
-
----
-
-이 글은 OpenSearch의 고급 벡터 검색 기능을 활용하여 **정확하고 유연한 검색 시스템을 구축하려는 개발자와 AI 엔지니어**를 위한 실전 가이드입니다.
+거리 제한 또는 유사도 임계값을 기준으로 문서를 선별하는 데 탁월한 방식이며, **추천 시스템, 위치 기반 검색, 정밀 필터링 검색** 등에 활용할 수 있다.

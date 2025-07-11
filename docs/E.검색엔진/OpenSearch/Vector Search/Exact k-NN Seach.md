@@ -1,6 +1,6 @@
 대규모 벡터 기반 검색에서 대부분은 속도를 위해 **Approximate k-NN(근사 최근접 이웃)** 검색을 사용한다.
 
-하지만 필터링이 필요하거나 더 높은 정확도가 요구되는 경우에는 OpenSearch의 **Scoring Script 기반 Exact k-NN 검색**을 활용할 수 있습니다.
+하지만 필터링이 필요하거나 더 높은 정확도가 요구되는 경우에는 OpenSearch의 **Scoring Script 기반 Exact k-NN 검색**을 활용할 수 있다.
 
 ## 1. 왜 Scoring Script 기반 k-NN을 사용할까?
 
@@ -149,7 +149,7 @@ Scoring Script는 **Binary 또는 Long 타입 필드**에 대해 **Hamming Dista
 
 ### 인덱스 생성
 
-```http
+```json
 PUT my-index
 {
   "mappings": {
@@ -168,7 +168,7 @@ PUT my-index
 
 ### Base64 인코딩된 데이터 삽입
 
-```http
+```json
 POST _bulk
 { "index": { "_index": "my-index", "_id": "1" } }
 { "my_binary": "SGVsbG8gV29ybGQh", "color": "RED" }
@@ -177,7 +177,7 @@ POST _bulk
 
 ### 검색 (Hamming distance 기반)
 
-```http
+```json
 GET my-index/_search
 {
   "size": 2,
@@ -206,11 +206,10 @@ GET my-index/_search
 
 > `query_value`는 base64 문자열 (또는 long 정수)
 
----
 
 ## 마무리
 
-OpenSearch의 Scoring Script 기반 k-NN 검색은 다음과 같은 상황에서 강력한 도구가 됩니다:
+OpenSearch의 Scoring Script 기반 k-NN 검색은 다음과 같은 상황에서 강력한 도구가 된다.
 
 - **필터를 먼저 적용한 후 벡터 검색이 필요한 경우**
     
@@ -219,19 +218,4 @@ OpenSearch의 Scoring Script 기반 k-NN 검색은 다음과 같은 상황에서
 - **Binary 데이터에 대한 벡터 유사도 계산이 필요한 경우**
     
 
-단, 대규모 데이터셋에는 적합하지 않으며 **Approximate k-NN 방식과 함께 하이브리드로 사용하는 것이 바람직**합니다.
-
----
-
-## 참고 자료
-
-- [k-NN Plugin 공식 문서](https://opensearch.org/docs/latest/search-plugins/knn/)
-    
-- [Distance functions (Spaces)](https://opensearch.org/docs/latest/search-plugins/knn/knn-score-script/#space-types)
-    
-- [OpenSearch Script Score 활용법](https://opensearch.org/docs/latest/query-dsl/script-score/)
-    
-
----
-
-이 글은 OpenSearch 기반의 AI 검색 시스템, 추천 엔진, 고정밀 벡터 유사도 분석 도구를 설계하려는 분들을 위한 실용 가이드입니다.
+단, 대규모 데이터셋에는 적합하지 않으며 **Approximate k-NN 방식과 함께 하이브리드로 사용하는 것이 바람직**하다.

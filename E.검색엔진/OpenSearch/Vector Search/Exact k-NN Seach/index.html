@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Exact%20k-NN%20Seach/">
+        <link rel="prev" href="../Embeddings%20model/">
       
       
-        <link rel="next" href="../../Version%20history/3.0.0/%EC%9A%94%EC%95%BD/">
+        <link rel="next" href="../Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Vector Sech 가이드 - SON BLOG</title>
+        <title>Exact k NN Seach - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#1-scoring-script-k-nn" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vector Sech 가이드
+              Exact k NN Seach
             
           </span>
         </div>
@@ -1696,29 +1696,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../Exact%20k-NN%20Seach/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Exact k NN Seach
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1734,7 +1711,7 @@
   
   
   <span class="md-ellipsis">
-    Vector Sech 가이드
+    Exact k NN Seach
     
   </span>
   
@@ -1747,7 +1724,7 @@
   
   
   <span class="md-ellipsis">
-    Vector Sech 가이드
+    Exact k NN Seach
     
   </span>
   
@@ -1768,43 +1745,142 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-scoring-script-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 왜 Scoring Script 기반 k-NN을 사용할까?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 인덱스 생성 및 데이터 삽입
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 인덱스 생성 및 데이터 삽입">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      벡터 검색 방식 비교
+      인덱스 생성
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-raw-vector" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Raw Vector 검색
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-neural-search" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 자동 생성 임베딩 검색 (Neural Search)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-sparse-vector" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 희소 벡터(Sparse Vector) 검색
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      데이터 삽입
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 정확한 k-NN 검색 실행
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pre-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Pre-filter 적용 예시
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Pre-filter 적용 예시">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      인덱스 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      문서 삽입
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-filter + 벡터 검색
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-binary-hamming-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Binary 데이터에 대한 Hamming Distance 검색
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Binary 데이터에 대한 Hamming Distance 검색">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      인덱스 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base64 인코딩된 데이터 삽입
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hamming-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      검색 (Hamming distance 기반)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       마무리
     </span>
@@ -1816,6 +1892,29 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vector Sech 가이드
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2290,43 +2389,142 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-scoring-script-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 왜 Scoring Script 기반 k-NN을 사용할까?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 인덱스 생성 및 데이터 삽입
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 인덱스 생성 및 데이터 삽입">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      벡터 검색 방식 비교
+      인덱스 생성
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#1-raw-vector" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Raw Vector 검색
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-neural-search" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 자동 생성 임베딩 검색 (Neural Search)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-sparse-vector" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 희소 벡터(Sparse Vector) 검색
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      데이터 삽입
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-k-nn" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 정확한 k-NN 검색 실행
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pre-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Pre-filter 적용 예시
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Pre-filter 적용 예시">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      인덱스 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      문서 삽입
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-filter + 벡터 검색
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-binary-hamming-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Binary 데이터에 대한 Hamming Distance 검색
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Binary 데이터에 대한 Hamming Distance 검색">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      인덱스 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base64 인코딩된 데이터 삽입
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hamming-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      검색 (Hamming distance 기반)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       마무리
     </span>
@@ -2350,48 +2548,71 @@
 
 
 
-  <h1>Vector Sech 가이드</h1>
+  <h1>Exact k NN Seach</h1>
 
-<p>벡터 검색은 텍스트, 이미지, 제품 설명 등 복잡한 데이터를 벡터(숫자 배열)로 변환하여 의미 기반 검색을 가능하게 하는 최신 검색 방식입니다. </p>
-<p>OpenSearch는 다양한 벡터 검색 기능을 제공하며, 각각의 방식에 따라 사용법과 쿼리 형식이 다르다.</p>
-<h2 id="_1">벡터 검색 방식 비교</h2>
-<table>
-<thead>
-<tr>
-<th>기능</th>
-<th>쿼리 타입</th>
-<th>입력 형식</th>
-<th>임베딩 모델 필요 여부</th>
-<th>주요 사용 사례</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Raw Vector 검색</strong></td>
-<td><code>knn</code></td>
-<td>벡터 배열 (vector)</td>
-<td>❌ 필요 없음</td>
-<td>기존 벡터를 활용한 검색</td>
-</tr>
-<tr>
-<td><strong>자동 생성 임베딩 검색</strong></td>
-<td><code>neural</code></td>
-<td>텍스트 또는 이미지</td>
-<td>✅ 필요</td>
-<td>AI 기반 의미 검색</td>
-</tr>
-</tbody>
-</table>
-<h2 id="1-raw-vector">1. Raw Vector 검색</h2>
-<p>벡터가 이미 생성되어 있고, 이를 직접 활용하여 검색하고자 할 경우에는 <code>knn</code> 쿼리를 사용한다. 
-벡터 필드에 배열을 직접 입력하고 <code>k</code> 값을 지정하여 유사한 문서 N개를 검색한다.</p>
-<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="err">raw</span><span class="mi">-</span><span class="err">vec</span><span class="kc">t</span><span class="err">or</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex/_search</span>
+<p>대규모 벡터 기반 검색에서 대부분은 속도를 위해 <strong>Approximate k-NN(근사 최근접 이웃)</strong> 검색을 사용한다.</p>
+<p>하지만 필터링이 필요하거나 더 높은 정확도가 요구되는 경우에는 OpenSearch의 <strong>Scoring Script 기반 Exact k-NN 검색</strong>을 활용할 수 있다.</p>
+<h2 id="1-scoring-script-k-nn">1. 왜 Scoring Script 기반 k-NN을 사용할까?</h2>
+<ul>
+<li>
+<p><strong>필터링 조건과 함께 벡터 검색</strong>이 필요한 경우</p>
+</li>
+<li>
+<p><strong>벡터 수가 적고 정확도가 중요한 경우</strong></p>
+</li>
+<li>
+<p><strong>기존 Approximate k-NN 구조에서는 필터를 사후(post) 적용</strong>하지만, Scoring Script는 <strong>검색 전 필터(pre-filter) 적용이 가능</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>단점: <strong>브루트포스 방식</strong>이라 대규모 데이터셋에서는 속도가 느릴 수 있음</p>
+</blockquote>
+<h2 id="2">2. 인덱스 생성 및 데이터 삽입</h2>
+<h3 id="_1">인덱스 생성</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span>
 <span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;my_vector2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><code>index.knn</code> 설정은 생략 가능. 이는 Approximate 방식 사용 안 할 경우에 유리 (속도, 메모리 측면)</p>
+</blockquote>
+<h3 id="_2">데이터 삽입</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">_bulk</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.2</span><span class="w"> </span><span class="p">}</span>
+<span class="err">...</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">5.5</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.9</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h2 id="3-k-nn">3. 정확한 k-NN 검색 실행</h2>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span><span class="err">/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="nt">&quot;script_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;match_all&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_score&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_vector2&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;query_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cosinesimil&quot;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -2399,63 +2620,134 @@
 </code></pre></div>
 <ul>
 <li>
-<p><code>my_vector</code>: 색인된 문서의 벡터 필드</p>
+<p><code>lang</code>: 반드시 <code>knn</code> 사용</p>
 </li>
 <li>
-<p><code>vector</code>: 쿼리 벡터 배열 (직접 입력)</p>
+<p><code>source</code>: <code>"knn_score"</code></p>
 </li>
 <li>
-<p><code>k</code>: 반환할 문서 개수</p>
+<p><code>field</code>: 벡터 필드명</p>
+</li>
+<li>
+<p><code>query_value</code>: 쿼리 벡터</p>
+</li>
+<li>
+<p><code>space_type</code>: 거리 함수 (<code>l2</code>, <code>cosinesimil</code>, <code>hammingbit</code> 등)</p>
 </li>
 </ul>
-<blockquote>
-<p>🔎 적합한 경우: 외부에서 임베딩한 벡터 데이터를 직접 인덱싱하여 사용하는 경우</p>
-</blockquote>
-<h2 id="2-neural-search">2. 자동 생성 임베딩 검색 (Neural Search)</h2>
-<p>OpenSearch는 AI 검색을 위해 쿼리 입력값(텍스트, 이미지 등)을 임베딩으로 자동 변환해주는 기능을 제공한다. 이때 사용하는 쿼리 타입은 <code>neural</code> 이다.</p>
-<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="err">ai</span><span class="mi">-</span><span class="err">search</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex/_search</span>
+<h2 id="4-pre-filter">4. Pre-filter 적용 예시</h2>
+<p>Scoring Script는 <strong>검색 전에 조건 필터링</strong>을 걸 수 있다는 점이 큰 장점이다.</p>
+<h3 id="_3">인덱스 생성</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-2</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;excludes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;output_embedding&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;keyword&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_4">문서 삽입</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">_bulk</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RED&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BLUE&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="pre-filter">Pre-filter + 벡터 검색</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-2</span><span class="err">/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;neural&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;output_embedding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;query_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is AI search?&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mBGzipQB2gmRjlv_dOoB&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="nt">&quot;script_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;bool&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BLUE&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_score&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_vector&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;query_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">9.9</span><span class="p">,</span><span class="w"> </span><span class="mf">9.9</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l2&quot;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<h2 id="5-binary-hamming-distance">5. Binary 데이터에 대한 Hamming Distance 검색</h2>
+<p>Scoring Script는 <strong>Binary 또는 Long 타입 필드</strong>에 대해 <strong>Hamming Distance</strong> 기반 벡터 검색도 지원한다.</p>
+<h3 id="_5">인덱스 생성</h3>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_binary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;doc_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;keyword&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="base64">Base64 인코딩된 데이터 삽입</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">_bulk</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-index&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_binary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SGVsbG8gV29ybGQh&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RED&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="err">...</span>
+</code></pre></div>
+<h3 id="hamming-distance">검색 (Hamming distance 기반)</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;script_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;bool&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BLUE&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_score&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_binary&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;query_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U29tZXRoaW5nIEltIGxvb2tpbmcgZm9y&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hammingbit&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><code>query_value</code>는 base64 문자열 (또는 long 정수)</p>
+</blockquote>
+<h2 id="_6">마무리</h2>
+<p>OpenSearch의 Scoring Script 기반 k-NN 검색은 다음과 같은 상황에서 강력한 도구가 된다.</p>
 <ul>
 <li>
-<p><code>query_text</code>: 검색어(자연어 등)</p>
+<p><strong>필터를 먼저 적용한 후 벡터 검색이 필요한 경우</strong></p>
 </li>
 <li>
-<p><code>model_id</code>: 텍스트 임베딩 모델 ID (Ingest pipeline에서 사용한 것과 동일해야 함)</p>
+<p><strong>정확한 유사도 계산이 필수인 환경</strong></p>
 </li>
 <li>
-<p><code>output_embedding</code>: 임베딩 결과가 저장된 벡터 필드</p>
-</li>
-<li>
-<p><code>_source.excludes</code>: 검색 결과에서 임베딩 벡터를 제외하고 싶을 경우</p>
+<p><strong>Binary 데이터에 대한 벡터 유사도 계산이 필요한 경우</strong></p>
 </li>
 </ul>
-<blockquote>
-<p>✅ 적합한 경우: 자연어 질의에 대한 <strong>의미 기반 검색</strong>이 필요한 경우<br />
-예: “이 제품과 유사한 다른 제품 보여줘”, “AI 검색이 뭐야?” 등의 질문</p>
-</blockquote>
-<h2 id="3-sparse-vector">3. 희소 벡터(Sparse Vector) 검색</h2>
-<p>OpenSearch는 희소 벡터(sparse vector)를 활용한 검색도 지원합니다. 이는 단어 빈도 기반의 BoW(Bag of Words), TF-IDF, BM25 등 전통적인 방식과 유사한 희소 표현을 벡터화하여 사용하는 구조입니다.</p>
-<blockquote>
-<p>📌 참고: 희소 벡터 검색은 Neural Sparse Search 기능을 통해 사용할 수 있으며, 별도 모델과 설정이 필요합니다.</p>
-</blockquote>
-<h2 id="_2">마무리</h2>
-<p>OpenSearch의 벡터 검색 기능은 단순한 키워드 매칭을 넘어서 <strong>의미와 맥락을 이해하는 검색</strong>을 가능하게 한다. 필요에 따라 raw vector 검색 또는 AI 기반 neural search를 선택하여 사용할 수 있으며, <strong>하이브리드 검색</strong>과 결합하면 더욱 강력한 검색 엔진을 구현할 수 있다.</p>
+<p>단, 대규모 데이터셋에는 적합하지 않으며 <strong>Approximate k-NN 방식과 함께 하이브리드로 사용하는 것이 바람직</strong>하다.</p>
 
 
 

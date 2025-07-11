@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../OpenSearch%20Hybrid%20Search/">
+        <link rel="prev" href="../Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/">
       
       
-        <link rel="next" href="../Embeddings%20model/">
+        <link rel="next" href="../Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Approximate k NN - SON BLOG</title>
+        <title>Radial Search - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-approximate-k-nn" class="md-skip">
+        <a href="#1-radial-search" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Approximate k NN
+              Radial Search
             
           </span>
         </div>
@@ -1656,30 +1656,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Approximate k NN
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Approximate%20k-NN/" class="md-nav__link">
         
   
   
@@ -1690,111 +1670,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-approximate-k-nn" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Approximate k-NN이란?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 벡터 인덱스 생성
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 데이터 색인 및 검색 예시
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-training" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 모델 기반 인덱스 구성 (Training 기반)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 모델 기반 인덱스 구성 (Training 기반)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1: 학습용 인덱스 생성 및 데이터 삽입
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-train-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Train API 호출
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: 모델을 사용하는 인덱스 생성
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 고급 기능 및 주의 사항
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      마무리
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1873,10 +1748,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Radial%20Search/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Radial Search
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1887,6 +1782,129 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-radial-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Radial Search란?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Radial Search란?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      주요 파라미터
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 지원 범위
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 데이터 색인
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-max_distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 예시: max_distance 기반 검색
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-max_distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 예시: max_distance + 필터 결합
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-min_score" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 예시: min_score 기반 검색
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-min_score" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 예시: min_score + 필터 결합
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 실전 팁
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      마무리
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2407,64 +2425,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-approximate-k-nn" class="md-nav__link">
+  <a href="#1-radial-search" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Approximate k-NN이란?
+      1. Radial Search란?
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 벡터 인덱스 생성
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 데이터 색인 및 검색 예시
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-training" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 모델 기반 인덱스 구성 (Training 기반)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 모델 기반 인덱스 구성 (Training 기반)">
+    <nav class="md-nav" aria-label="1. Radial Search란?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: 학습용 인덱스 생성 및 데이터 삽입
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-train-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2: Train API 호출
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: 모델을 사용하는 인덱스 생성
+      주요 파라미터
     </span>
   </a>
   
@@ -2476,16 +2449,79 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      5. 고급 기능 및 주의 사항
+      2. 지원 범위
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 데이터 색인
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-max_distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 예시: max_distance 기반 검색
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-max_distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 예시: max_distance + 필터 결합
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-min_score" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 예시: min_score 기반 검색
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-min_score" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 예시: min_score + 필터 결합
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 실전 팁
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       마무리
     </span>
@@ -2509,44 +2545,75 @@
 
 
 
-  <h1>Approximate k NN</h1>
+  <h1>Radial Search</h1>
 
-<p>OpenSearch는 기본적으로 <strong>정확한 k-NN 검색</strong>을 지원하지만, 데이터 양이 많고 벡터의 차원이 높아질수록 성능 저하 문제가 발생합니다. 이 문제를 해결하기 위한 대안으로 <strong>Approximate k-NN 검색</strong> 기능이 제공된다.</p>
-<p>Approximate k-NN 검색은 일부 정확성을 희생하는 대신, 검색 속도를 획기적으로 높이는 방식으로 <strong>수십만 개 이상의 벡터 데이터를 다룰 때 특히 유용</strong>하다.</p>
-<h2 id="1-approximate-k-nn">1. Approximate k-NN이란?</h2>
-<ul>
-<li>
-<p><strong>정확한 k-NN</strong>: 모든 벡터 간 거리 계산 → 정확하지만 느림</p>
-</li>
-<li>
-<p><strong>근사 k-NN (ANN)</strong>: 인덱스 구조를 최적화하여 일부 정확도를 희생하고 속도 향상</p>
-</li>
-</ul>
-<p>OpenSearch는 다음 라이브러리 기반 ANN 알고리즘을 활용한다.</p>
-<ul>
-<li>
-<p><strong>NMSLIB</strong></p>
-</li>
-<li>
-<p><strong>Faiss</strong></p>
-</li>
-<li>
-<p><strong>Lucene</strong></p>
-</li>
-</ul>
-<h2 id="2">2. 벡터 인덱스 생성</h2>
-<p>먼저 벡터 인덱스를 생성할 때 <code>index.knn</code> 설정을 <code>true</code>로 지정해야 한다. 이는 벡터를 인덱싱할 때 네이티브 라이브러리 인덱스를 생성하겠다는 뜻이다.</p>
-<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span>
+<p>OpenSearch는 벡터 검색에서 일반적으로 사용하는 <strong>Top-k 검색</strong> 방식 외에도, <strong>특정 거리나 유사도 임계값 기준으로 검색하는 Radial Search(반경 검색)</strong> 기능을 지원한다,</p>
+<p>이는 <strong>공간적 근접성</strong>이나 <strong>유사도 임계값 기반 필터링</strong>이 필요한 경우에 매우 유용하다.</p>
+<h2 id="1-radial-search">1. Radial Search란?</h2>
+<p>Radial Search는 쿼리 벡터를 중심으로 <strong>지정된 반경 이내</strong> 또는 <strong>유사도 점수가 일정 기준 이상인 문서</strong>를 반환하는 벡터 검색 방식입니다.</p>
+<h3 id="_1">주요 파라미터</h3>
+<table>
+<thead>
+<tr>
+<th>파라미터</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>max_distance</code></td>
+<td>쿼리 벡터와의 거리(l2 등) 기준으로 거리 이내에 있는 벡터 검색</td>
+</tr>
+<tr>
+<td><code>min_score</code></td>
+<td>유사도 점수가 특정 기준 이상인 벡터 검색</td>
+</tr>
+<tr>
+<td><code>k</code></td>
+<td>Top-k 검색 (선택적으로 사용, 위 두 값 중 하나만 필요)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>이 중 하나만 지정하면 동작함 (<code>k</code>, <code>max_distance</code>, <code>min_score</code> 중 택1)</p>
+</blockquote>
+<h2 id="2">2. 지원 범위</h2>
+<table>
+<thead>
+<tr>
+<th>엔진</th>
+<th>필터 지원</th>
+<th>Nested 지원</th>
+<th>검색 방식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lucene</strong></td>
+<td>✅</td>
+<td>❌</td>
+<td>Approximate</td>
+</tr>
+<tr>
+<td><strong>Faiss</strong></td>
+<td>✅</td>
+<td>✅</td>
+<td>Approximate</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>즉, <strong>필터 조건</strong>, <strong>Nested Field</strong>, <strong>공간 기반 거리 조건</strong>과 함께 활용 가능</p>
+</blockquote>
+<h2 id="3">3. 인덱스 생성</h2>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">test</span>
 <span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;knn.algo_param.ef_search&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">&quot;index.knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
@@ -2554,8 +2621,97 @@
 <span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hnsw&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;faiss&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;ef_construction&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;m&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span>
+<span class="w">            </span><span class="nt">&quot;ef_construction&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;m&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;ef_search&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="4">4. 데이터 색인</h2>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">_bulk?re</span><span class="kc">fres</span><span class="err">h=</span><span class="kc">true</span>
+<span class="p">{</span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn-index-test&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">}}</span>
+<span class="p">{</span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">7.0</span><span class="p">,</span><span class="w"> </span><span class="mf">8.2</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.4</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn-index-test&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">}}</span>
+<span class="p">{</span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">7.1</span><span class="p">,</span><span class="w"> </span><span class="mf">7.4</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">14.2</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn-index-test&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="p">}}</span>
+<span class="p">{</span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">8.3</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="5-max_distance">5. 예시: max_distance 기반 검색</h2>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">test</span><span class="err">/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">7.1</span><span class="p">,</span><span class="w"> </span><span class="mf">8.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;max_distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong>설명</strong>: 쿼리 벡터와의 <strong>l2 거리 제곱이 2 이하인 벡터</strong>만 검색</li>
+</ul>
+<h2 id="6-max_distance">6. 예시: max_distance + 필터 결합</h2>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">test</span><span class="err">/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">7.1</span><span class="p">,</span><span class="w"> </span><span class="mf">8.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;max_distance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;gte&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;lte&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong>설명</strong>: 거리 조건 + <code>price</code> 필드 범위 필터 적용</li>
+</ul>
+<h2 id="7-min_score">7. 예시: min_score 기반 검색</h2>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">test</span><span class="err">/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">7.1</span><span class="p">,</span><span class="w"> </span><span class="mf">8.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;min_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong>설명</strong>: <strong>유사도 점수가 0.95 이상</strong>인 벡터만 검색<br />
+    (주로 cosine similarity 등 유사도 기반 공간에서 활용)</li>
+</ul>
+<h2 id="8-min_score">8. 예시: min_score + 필터 결합</h2>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-</span><span class="kc">test</span><span class="err">/_search</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">7.1</span><span class="p">,</span><span class="w"> </span><span class="mf">8.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;min_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;gte&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;lte&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
@@ -2564,131 +2720,26 @@
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>
-<p><code>engine</code>: faiss, nmslib, lucene 중 선택</p>
-</li>
-<li>
-<p><code>space_type</code>: 유사도 계산 방식 (예: <code>l2</code>, <code>innerproduct</code>)</p>
-</li>
-<li>
-<p><code>dimension</code>: 벡터 차원 수</p>
-</li>
+<li><strong>결과</strong>: 유사도 점수 조건 + 가격 필터를 모두 만족하는 문서 반환</li>
 </ul>
-<h2 id="3">3. 데이터 색인 및 검색 예시</h2>
-<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">_bulk</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.2</span><span class="w"> </span><span class="p">}</span>
-<span class="err">...</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span><span class="err">/_search</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;my_vector1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<h2 id="9">9. 실전 팁</h2>
 <ul>
 <li>
-<p><code>k</code>: 유사 벡터 수</p>
+<p><code>max_distance</code>는 <strong>거리 기반 필터링</strong>이 필요할 때 유용</p>
 </li>
 <li>
-<p><code>size</code>: 최종 반환할 결과 수 (샤드 수에 따라 곱해짐)</p>
+<p><code>min_score</code>는 <strong>유사도 기반 추천/검색</strong>에서 매우 직관적</p>
+</li>
+<li>
+<p><code>filter</code>를 함께 사용하면 <strong>속도 개선</strong> 및 <strong>정밀한 검색 제어</strong> 가능</p>
+</li>
+<li>
+<p><code>nested_field</code>, <code>hybrid</code>, <code>binary</code>, <code>hamming</code> 검색과 함께 응용 가능</p>
 </li>
 </ul>
-<blockquote>
-<p>Lucene, Faiss, NMSLIB 엔진별로 <code>k</code>와 <code>size</code> 해석 방식에 차이가 있음</p>
-</blockquote>
-<h2 id="4-training">4. 모델 기반 인덱스 구성 (Training 기반)</h2>
-<p>특정 알고리즘(예: IVF, PQ 등)을 사용할 경우 인덱싱 전에 모델 학습(Train API)이 필요하다.</p>
-<h3 id="step-1">Step 1: 학습용 인덱스 생성 및 데이터 삽입</h3>
-<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/</span><span class="kc">tra</span><span class="err">i</span><span class="kc">n</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;train-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">_bulk</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train-index&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;train-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">5.5</span><span class="p">,</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
-<span class="err">...</span>
-</code></pre></div>
-<blockquote>
-<p><code>index.knn</code>은 설정하지 않아야 학습 전용으로 사용할 수 있음</p>
-</blockquote>
-<h3 id="step-2-train-api">Step 2: Train API 호출</h3>
-<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">/_plugi</span><span class="kc">ns</span><span class="err">/_k</span><span class="kc">nn</span><span class="err">/models/my</span><span class="mi">-</span><span class="err">model/_</span><span class="kc">tra</span><span class="err">i</span><span class="kc">n</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;training_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train-index&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;training_field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train-field&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My model description&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ivf&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;faiss&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;encoder&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pq&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;code_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;m&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>학습이 완료되면 <code>state: created</code>로 변경된다.</p>
-<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">/_plugi</span><span class="kc">ns</span><span class="err">/_k</span><span class="kc">nn</span><span class="err">/models/my</span><span class="mi">-</span><span class="err">model?</span><span class="kc">f</span><span class="err">il</span><span class="kc">ter</span><span class="err">_pa</span><span class="kc">t</span><span class="err">h=s</span><span class="kc">tate</span><span class="err">&amp;pre</span><span class="kc">tt</span><span class="err">y</span>
-</code></pre></div>
-<h3 id="step-3">Step 3: 모델을 사용하는 인덱스 생성</h3>
-<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/</span><span class="kc">tar</span><span class="err">ge</span><span class="kc">t</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;index.knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;target-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-model&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>이제 이 인덱스에 데이터를 삽입하면 모델 기반 인덱스가 자동으로 구성된다.</p>
-<h2 id="5">5. 고급 기능 및 주의 사항</h2>
-<ul>
-<li>
-<p>ANN 방식은 <strong>정확도보다 속도와 확장성에 중점</strong></p>
-</li>
-<li>
-<p>필터 조건은 <strong>검색 후 결과에 적용</strong>됨 (사전 필터링 불가)</p>
-</li>
-<li>
-<p>벡터는 최대 <strong>16,000차원까지 지원</strong></p>
-</li>
-<li>
-<p>벡터 인덱스는 <strong>네이티브 메모리</strong>에 로딩되며 Warmup API로 사전 로딩 가능</p>
-</li>
-<li>
-<p>검색 성능을 확인하려면 Stats API 활용</p>
-</li>
-</ul>
-<h2 id="_1">마무리</h2>
-<p>OpenSearch의 Approximate k-NN 검색 기능은 대용량 벡터 데이터를 빠르게 검색해야 하는 모든 상황에서 핵심 도구이다. 특히 <strong>수십만 개 이상의 고차원 벡터 데이터</strong>를 다루는 추천 시스템, 문서 유사도 검색, 이미지 검색 등에서 탁월한 성능을 발휘한다.</p>
+<h2 id="_2">마무리</h2>
+<p>Radial Search는 단순한 Top-k 검색을 넘어서 <strong>벡터 공간의 범위 기반 검색</strong>을 가능하게 한다.</p>
+<p>거리 제한 또는 유사도 임계값을 기준으로 문서를 선별하는 데 탁월한 방식이며, <strong>추천 시스템, 위치 기반 검색, 정밀 필터링 검색</strong> 등에 활용할 수 있다.</p>
 
 
 

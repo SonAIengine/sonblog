@@ -85,6 +85,20 @@
         "type": "tabs",
         "children": [
           {
+            "id": "b0675eb7979a61d8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
             "id": "9967b18b58c0bbb9",
             "type": "leaf",
             "state": {
@@ -128,20 +142,6 @@
               },
               "icon": "lucide-tags",
               "title": "태그"
-            }
-          },
-          {
-            "id": "b0675eb7979a61d8",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "개요"
             }
           },
           {

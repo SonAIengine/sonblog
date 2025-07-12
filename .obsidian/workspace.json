@@ -172,6 +172,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a9f0d400e53e84dc",
-  "lastOpenFiles": []
+  "active": "d8dc6fe98109eb68",
+  "lastOpenFiles": [
+    "eval \"$(ssh-agent -s)\".pub",
+    "eval \"$(ssh-agent -s)\""
+  ]
 }

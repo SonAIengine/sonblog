@@ -11,10 +11,14 @@
             "id": "a9f0d400e53e84dc",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "E.검색엔진/OpenSearch/Auto Configurations/자동화 구성 가이드.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "자동화 구성 가이드"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 283.5
   },
   "right": {
     "id": "30f2fcf0f913dec5",
@@ -177,6 +181,8 @@
   },
   "active": "a9f0d400e53e84dc",
   "lastOpenFiles": [
+    "E.검색엔진/OpenSearch/Auto Configurations/자동화 구성 가이드.md",
+    "E.검색엔진/OpenSearch/Auto Configurations",
     "eval \"$(ssh-agent -s)\".pub",
     "eval \"$(ssh-agent -s)\""
   ]

@@ -43,7 +43,7 @@ POST _reindex
 
 ## 2. 원격 클러스터에서 Reindex
 
-다른 OpenSearch 클러스터에서 데이터를 복사할 수도 있다. 이때는 `remote` 옵션을 활용한다:
+다른 OpenSearch 클러스터에서 데이터를 복사할 수도 있다. 이때는 `remote` 옵션을 활용한다.
 
 ```json
 POST _reindex
@@ -146,7 +146,7 @@ POST _reindex
 }
 ```
 
-또는 미리 정의된 ingest pipeline을 이용해 복잡한 변형도 수행할 수 있다:
+또는 미리 정의된 ingest pipeline을 이용해 복잡한 변형도 수행할 수 있다.
 
 ```json
 PUT _ingest/pipeline/custom-pipeline
@@ -175,7 +175,7 @@ PUT _ingest/pipeline/custom-pipeline
 }
 ```
 
-이후 파이프라인을 적용하여 Reindex 수행:
+이후 파이프라인을 적용하여 Reindex 수행.
 
 ```json
 POST _reindex
@@ -194,7 +194,7 @@ POST _reindex
 
 ## 7. 현재 인덱스 자체 수정: `_update_by_query`
 
-인덱스를 복사하지 않고 현재 인덱스의 데이터를 직접 업데이트하고 싶다면 `_update_by_query` API를 사용한다:
+인덱스를 복사하지 않고 현재 인덱스의 데이터를 직접 업데이트하고 싶다면 `_update_by_query` API를 사용한다.
 
 ```json
 POST my_index/_update_by_query
@@ -206,7 +206,6 @@ POST my_index/_update_by_query
 }
 ```
 
----
 
 ## 성능 및 최적화 팁
 
@@ -215,10 +214,3 @@ POST my_index/_update_by_query
 - 대용량 데이터는 `slice`를 통해 병렬 처리로 성능을 개선할 수 있다.
     
 - `max_docs`, `size` 옵션을 사용해 처리할 문서 개수를 제한할 수도 있다.
-    
-
----
-
-## 마무리
-
-OpenSearch의 Reindex 기능은 단순한 인덱스 복사 기능을 넘어, 데이터 필터링, 변형, 병합까지 다양한 용도로 활용될 수 있다. 구조 변경이 필요한 상황이나 기존 데이터를 새롭게 구성해야 할 때 매우 유용한 도구이므로, 상황에 따라 적절히 활용하면 효율적인 데이터 운영이 가능하다.

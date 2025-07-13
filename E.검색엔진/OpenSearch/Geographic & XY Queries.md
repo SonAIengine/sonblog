@@ -1,6 +1,84 @@
 OpenSearch는 텍스트 기반 검색뿐 아니라 정교한 지리 공간 검색 기능을 제공한다.  
 `geo_point`와 `geo_shape` 필드 설계만 올바르게 해두면 반경 필터링, 복합 도형 분석, 거리 기반 정렬·집계 등 대부분의 위치 기반 요구 사항을 단일 쿼리 또는 집계로 해결할 수 있다.
 
+## OpenSearch의 Geographic & XY Queries 정리
+
+OpenSearch는 **공간 기반 데이터(위치, 도형 등)** 를 처리할 수 있도록 두 가지 좌표 체계 기반의 쿼리를 제공한다.
+
+- **Geographic Queries**: 지리적(위/경도) 데이터를 위한 쿼리
+    
+- **XY Queries**: 수학적 2차원 평면(Cartesian 좌표계)을 위한 쿼리
+
+## 1. XY Queries (2차원 평면 좌표계)
+
+**XY Queries**는 Cartesian(직교) 좌표계를 기반으로 도형을 검색한다.  
+해당 도형은 다음 필드에 저장된다:
+
+- `xy_point`: 점(point)만 지원
+- `xy_shape`: 점, 선(line), 원(circle), 다각형(polygon) 지원
+
+### 지원 관계(Relations)
+
+XY 쿼리는 다음의 공간 관계 중 하나를 기준으로 도형을 검색한다.
+
+- `INTERSECTS` (교차함)
+    
+- `DISJOINT` (완전히 분리됨)
+    
+- `WITHIN` (내부에 포함됨)
+    
+- `CONTAINS` (포함함)
+
+예: 어떤 사각형 도형과 교차하는 점 또는 도형을 가진 문서를 찾기
+
+
+## 2. Geographic Queries (위/경도 기반 지리 쿼리)
+
+**Geographic Queries**는 위도(latitude), 경도(longitude)를 포함한 **지리적 위치** 기반 데이터를 처리한다.
+
+### 지원 필드 유형
+
+- `geo_point`: 단일 지리 좌표 (위도/경도 점) 지원
+    
+- `geo_shape`: 점, 선, 원, 다각형 등 복합 지리 도형 지원
+
+### 지원 쿼리 유형
+
+| 쿼리 유형                | 설명                                                                                           |
+| -------------------- | -------------------------------------------------------------------------------------------- |
+| **Geo-bounding box** | 지정된 사각형(경계 박스) 안에 위치한 `geo_point` 검색                                                         |
+| **Geodistance**      | 특정 좌표에서 일정 거리 내에 있는 `geo_point` 검색                                                           |
+| **Geopolygon**       | 지정된 다각형 내부에 위치한 `geo_point` 검색                                                               |
+| **Geoshape**         | 도형 간의 관계(`INTERSECTS`, `DISJOINT`, `WITHIN`, `CONTAINS`)를 기준으로 `geo_shape` 또는 `geo_point` 검색 |
+
+---
+
+## 3. Geoshape vs XY 쿼리 비교
+
+| 항목    | Geoshape Query                         | XY Query               |
+| ----- | -------------------------------------- | ---------------------- |
+| 좌표계   | 지리 좌표계 (위/경도)                          | 2D Cartesian 좌표계       |
+| 필드 타입 | `geo_point`, `geo_shape`               | `xy_point`, `xy_shape` |
+| 사용 목적 | 지도 기반 데이터 (위치, 영역 등)                   | 2차원 수학/도형 좌표계          |
+| 공간 관계 | INTERSECTS, DISJOINT, WITHIN, CONTAINS | 동일한 4가지 지원             |
+
+---
+
+## 4. 정리 요약
+
+|항목|Geographic Query|XY Query|
+|---|---|---|
+|좌표 체계|지리 (경도/위도)|2D Cartesian|
+|지원 필드|`geo_point`, `geo_shape`|`xy_point`, `xy_shape`|
+|지원 도형|점, 선, 원, 다각형|점, 선, 원, 다각형|
+|대표 쿼리|bounding box, distance, polygon, geoshape|xy_shape (도형 관계)|
+|주요 용도|지도, 위치, 거리 기반 검색|기하학적 분석, 시각 좌표 데이터 등|
+
+---
+
+이 기능들은 위치 기반 검색, 지도 기반 시각화, CAD 시스템, 이미지 좌표 분석 등 다양한 공간 데이터 활용 시나리오에 유용하다.  
+**지도 기반**이면 `geo`, **일반 좌표 기반**이면 `xy`를 사용하면 된다.
+
 ## 1. 데이터 준비 – 어떤 형태로 저장해야 하는가
 
 ### 1.1 공간 필드 타입

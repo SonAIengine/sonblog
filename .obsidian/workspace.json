@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "E.검색엔진/OpenSearch/Span Query.md",
+                "file": "E.검색엔진/OpenSearch/Specialized Query 10종.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Span Query"
+              "title": "Specialized Query 10종"
             }
           }
         ]
@@ -181,8 +181,9 @@
   },
   "active": "a9f0d400e53e84dc",
   "lastOpenFiles": [
-    "E.검색엔진/OpenSearch/Geographic & XY Queries.md",
     "E.검색엔진/OpenSearch/Span Query.md",
+    "E.검색엔진/OpenSearch/Specialized Query 10종.md",
+    "E.검색엔진/OpenSearch/Geographic & XY Queries.md",
     "E.검색엔진/OpenSearch/Reindex.md",
     "E.검색엔진/OpenSearch/Append-only Index.md",
     "E.검색엔진/OpenSearch/Auto Configurations/Workflow 활용 예시.md",

@@ -77,9 +77,6 @@ POST /clothing/_bulk?refresh=true
     - `slop`: 허용 간격(미일치 토큰 수)
         
     - `in_order`: 순서 강제 여부
-        
-- **문법**
-    
 
 ```json
 {
@@ -95,16 +92,10 @@ POST /clothing/_bulk?refresh=true
 ```
 
 - **활용**: “long sleeve”와 “sleeve long” 모두 허용하며, 사이에 최대 1단어 허용
-    
-
----
 
 ### 2-4. span_or – OR 논리 결합
 
 - **목적**: 여러 Span 패턴 중 **하나라도** 일치
-    
-- **문법**
-    
 
 ```json
 {
@@ -118,16 +109,10 @@ POST /clothing/_bulk?refresh=true
 ```
 
 - **활용**: 다양한 동의어·변형을 한 번에 허용
-    
-
----
 
 ### 2-5. span_not – 제외 조건
 
 - **목적**: `include` Span과 **겹치는** 경우를 `exclude`로 제거
-    
-- **문법**
-    
 
 ```json
 {
@@ -148,16 +133,13 @@ POST /clothing/_bulk?refresh=true
 ```
 
 - **활용**: “dress”는 검색하되 “dress shirt” 구문은 제외
-    
-
----
 
 ### 2-6. span_containing / span_within – 포함·포함됨 관계
 
-|쿼리|little|big|결과|
-|---|---|---|---|
-|`span_containing`|작은 Span|큰 Span|**큰** Span 반환|
-|`span_within`|작은 Span|큰 Span|**작은** Span 반환|
+| 쿼리                | little  | big    | 결과             |
+| ----------------- | ------- | ------ | -------------- |
+| `span_containing` | 작은 Span | 큰 Span | **큰** Span 반환  |
+| `span_within`     | 작은 Span | 큰 Span | **작은** Span 반환 |
 
 ```json
 // silk·dress 근접(5) span 안에서 red 찾기
@@ -179,16 +161,10 @@ POST /clothing/_bulk?refresh=true
 ```
 
 - **활용**: 특정 단어가 **특정 문맥** 안에 등장하는지 검증
-    
-
----
 
 ### 2-7. span_multi – 멀티텀 쿼리 래핑
 
 - **목적**: prefix·wildcard·regexp 등 **Multi-Term Query** 를 Span으로 사용
-    
-- **문법**
-    
 
 ```json
 {
@@ -203,16 +179,10 @@ POST /clothing/_bulk?refresh=true
 ```
 
 - **활용**: “dress*” 패턴과 “sleeve” 변형을 5단어 이내로 제한
-    
-
----
 
 ### 2-8. field_masking_span – 필드 교차 매칭
 
 - **목적**: 서로 다른 필드 간 Span 조합 가능
-    
-- **문법**
-    
 
 ```json
 {
@@ -224,9 +194,6 @@ POST /clothing/_bulk?refresh=true
 ```
 
 - **주의**: 점수는 `field`의 norm을 기준으로 계산된다.
-    
-
----
 
 ## 3. 복합 쿼리 실전 예시
 
@@ -280,31 +247,14 @@ GET /clothing/_search
 }
 ```
 
----
 
 ## 4. 활용 시나리오
 
-|도메인|요구|Span Query 전략|
-|---|---|---|
-|특허 검색|청구항에서 A·B 키워드가 특정 거리·순서로 등장|`span_near`, `span_not`|
-|계약서 검증|“unless”가 포함되지 않은 “terminate” 문장 찾기|`span_not` (`include` terminate, `exclude` unless 근접)|
-|e-커머스|소재·색상·품목 조합(“red silk dress”) 타깃|`span_containing`|
-|의료 논문|약물명과 질병명이 같은 문장에 등장|문장 토큰화 후 `span_near`|
-|검색 랭킹|제목 앞부분 키워드 가중치|`span_first` + boost|
+| 도메인    | 요구                                  | Span Query 전략                                         |
+| ------ | ----------------------------------- | ----------------------------------------------------- |
+| 특허 검색  | 청구항에서 A·B 키워드가 특정 거리·순서로 등장         | `span_near`, `span_not`                               |
+| 계약서 검증 | “unless”가 포함되지 않은 “terminate” 문장 찾기 | `span_not` (`include` terminate, `exclude` unless 근접) |
+| e-커머스  | 소재·색상·품목 조합(“red silk dress”) 타깃    | `span_containing`                                     |
+| 의료 논문  | 약물명과 질병명이 같은 문장에 등장                 | 문장 토큰화 후 `span_near`                                  |
+| 검색 랭킹  | 제목 앞부분 키워드 가중치                      | `span_first` + boost                                  |
 
----
-
-## 5. 정리
-
-1. **span_term** 은 모든 Span Query의 최소 단위이다.
-    
-2. **span_near**, **span_first**, **span_not** 등으로 **순서·거리·배제** 로직을 구성한다.
-    
-3. **span_multi** 와 **field_masking_span** 으로 **와일드카드·다중 필드** 조합이 가능하다.
-    
-4. **span_containing / span_within** 으로 **문맥 안 포함 관계**를 검증한다.
-    
-5. 위치 기반 정밀 검색이 필요할 때 Span Query를 활용하면, 일반 `match_phrase` 로는 불가능한 복잡한 요구 사항을 해결할 수 있다.
-    
-
-OpenSearch에서 Span Query를 적절히 설계하면, 법률 검토 자동화, 특허 유사 구문 검색, 상품 설명 고급 필터 등 **위치 민감 검색 시나리오**에 높은 정확도와 유연성을 동시에 확보할 수 있다.

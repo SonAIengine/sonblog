@@ -353,8 +353,15 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/OpenSearch%20Hybrid%20Search/" class="md-tabs__link">
+        <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/OpenSearch%20Hybrid%20Search/" class="md-tabs__link">
           
   
   
@@ -364,6 +371,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -1413,7 +1423,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      행렬곱 연산으로 더 빠르게 정보를 주고 받기
+      셀프 어텐션이란?
     </span>
   </a>
   
@@ -1642,8 +1652,55 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1_1" id="__nav_6_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hybrid Search
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Hybrid Search
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/OpenSearch%20Hybrid%20Search/" class="md-nav__link">
+      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/OpenSearch%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -1654,6 +1711,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2597,7 +2662,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      행렬곱 연산으로 더 빠르게 정보를 주고 받기
+      셀프 어텐션이란?
     </span>
   </a>
   
@@ -2673,7 +2738,8 @@
 <p>예를 들어, "나는 학교에 간다"라는 문장에서 '간다'를 해석할 때 이전 단어들의 임베딩 벡터의 평균은 '나', '는', '학교', '에'의 의미를 포함한 새로운 벡터가 된다. 이 평균 벡터는 문장의 전반적인 문맥을 나타내며, 모델이 '간다'와 같은 다음 단어를 더 정확하게 예측하거나 이해하는 데 도움을 준다.</p>
 <p>이 방법은 간단하지만 시퀀스 내에서 이전 정보를 현재에 효과적으로 전달하는 방법으로 사용된다.</p>
 <p><code>averaged_embeddings[0]</code> 의 값은 시퀀스가 증가함에 따라 변화한다. 하지만 for 문을 사용하는 방식은 시간 복잡도 문제로 인해 효율적이지 않다. 대신 <strong>행렬곱</strong>을 활용해 이 과정을 더욱 간단하고 효율적으로 수행할 수 있다.</p>
-<h3 id="_3">행렬곱 연산으로 더 빠르게 정보를 주고 받기</h3>
+<h3 id="_3">셀프 어텐션이란?</h3>
+<p>시퀀스가 증가하면서 의미 정보를 어떻게 전달할 수 있는지 알아봤고 마스크를 사용해 모델이 중요한 정보에 집중할 수 있게 하는 과정을 살펴봤다.</p>
 
 
 

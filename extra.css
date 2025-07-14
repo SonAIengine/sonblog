@@ -335,35 +335,41 @@ body {
 
 /* ===== 사이드바 계층별 들여쓰기 개선 (가독성 향상) ===== */
 
-/* 최상위 항목 */
-.md-sidebar--primary nav > ul > li {
-    padding-left: 0.5em;
-    font-weight: 600;
-    font-size: 0.95em;
-}
-
-/* 1단계 하위 항목 */
-.md-sidebar--primary nav > ul > li > ul > li {
-    padding-left: 1.2em;
-    font-weight: 500;
-    font-size: 0.92em;
-    opacity: 0.9;
-}
-
-/* 2단계 하위 항목 */
-.md-sidebar--primary nav > ul > li > ul > li > ul > li {
-    padding-left: 1.8em;
-    font-weight: 400;
-    font-size: 0.90em;
-    opacity: 0.85;
-}
-
-/* o 표시 스타일 */
-.md-sidebar--primary nav ul li a > span::before {
+/* 사이드바 기본 스타일 조정 */
+.md-sidebar--primary nav.md-nav ul.md-nav__list li.md-nav__item > a.md-nav__link > span.md-ellipsis::before {
     content: "o";
-    padding-right: 6px;
-    color: #6c757d;
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+    color: #6b7280; /* 회색 기호 */
     font-weight: bold;
-    font-size: 0.75em;
 }
+
+/* 1단계 들여쓰기 */
+.md-sidebar--primary nav.md-nav[data-md-level="1"] ul.md-nav__list > li.md-nav__item {
+    padding-left: 0.6em;
+}
+
+/* 2단계 섹션 (예: BERT 내부 항목들) */
+.md-sidebar--primary nav.md-nav[data-md-level="2"] ul.md-nav__list > li.md-nav__item {
+    padding-left: 1.4em;
+}
+
+/* 3단계 항목 (TOC나 더 깊은 구조 대응용) */
+.md-sidebar--primary nav.md-nav[data-md-level="3"] ul.md-nav__list > li.md-nav__item {
+    padding-left: 2em;
+}
+
+/* 항목 강조 효과 개선 */
+.md-sidebar--primary .md-nav__link {
+    font-size: 0.92em;
+    opacity: 0.95;
+}
+
+/* 현재 페이지 항목 강조 */
+.md-sidebar--primary .md-nav__link--active > .md-ellipsis {
+    color: #1d4ed8; /* 진한 파랑 */
+    font-weight: bold;
+}
+
 

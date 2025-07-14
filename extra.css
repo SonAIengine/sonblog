@@ -332,3 +332,14 @@ body {
     opacity: 1;
     color: white;
 }
+
+/* ===== 사이드바 계층별 들여쓰기 개선 ===== */
+.md-sidebar--primary nav > ul > li {
+    padding-left: 0.5em;
+}
+.md-sidebar--primary nav > ul > li > ul > li {
+    padding-left: 1.5em;
+}
+.md-sidebar--primary nav > ul > li > ul > li > ul > li {
+    padding-left: 2.5em;
+}

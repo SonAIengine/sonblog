@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/">
+        <link rel="prev" href="../../../D.%20AI/Tokenization/">
       
       
-        <link rel="next" href="../Radial%20Search/">
+        <link rel="next" href="../Hybrid%20Search/OpenSearch%20Hybrid%20Search/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Nested Field로 다중 벡터 다루기 - SON BLOG</title>
+        <title>BPE 토크나이저의 장점 - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +46,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-nested-field" class="md-skip">
+        <a href="#1" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Nested Field로 다중 벡터 다루기
+              BPE 토크나이저의 장점
             
           </span>
         </div>
@@ -216,7 +216,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -244,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
+        <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
           
   
   
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+        <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
           
   
   
@@ -298,7 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+        <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
           
   
   
@@ -323,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../D.%20AI/Dropout/" class="md-tabs__link">
+        <a href="../../../D.%20AI/Dropout/" class="md-tabs__link">
           
   
   
@@ -356,7 +356,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../BPE%20%ED%86%A0%ED%81%AC%EB%82%98%EC%9D%B4%EC%A0%80%EC%9D%98%20%EC%9E%A5%EC%A0%90/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -381,7 +381,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
+        <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
           
   
   
@@ -417,7 +417,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -435,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -555,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -633,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -713,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   
@@ -736,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -825,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+      <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
         
   
   
@@ -848,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   
@@ -871,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B.PoC/tauri/" class="md-nav__link">
+      <a href="../../../B.PoC/tauri/" class="md-nav__link">
         
   
   
@@ -1001,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   
@@ -1024,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   
@@ -1047,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   
@@ -1131,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   
@@ -1154,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -1177,7 +1177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   
@@ -1200,7 +1200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -1297,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Dropout/" class="md-nav__link">
+      <a href="../../../D.%20AI/Dropout/" class="md-nav__link">
         
   
   
@@ -1320,7 +1320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
+      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
         
   
   
@@ -1343,7 +1343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
+      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
         
   
   
@@ -1366,7 +1366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/KoBERT/" class="md-nav__link">
+      <a href="../../../D.%20AI/KoBERT/" class="md-nav__link">
         
   
   
@@ -1389,7 +1389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Qwen3-embedding/" class="md-nav__link">
+      <a href="../../../D.%20AI/Qwen3-embedding/" class="md-nav__link">
         
   
   
@@ -1412,7 +1412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
+      <a href="../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
         
   
   
@@ -1435,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Tokenization/" class="md-nav__link">
+      <a href="../../../D.%20AI/Tokenization/" class="md-nav__link">
         
   
   
@@ -1578,10 +1578,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../BPE%20%ED%86%A0%ED%81%AC%EB%82%98%EC%9D%B4%EC%A0%80%EC%9D%98%20%EC%9E%A5%EC%A0%90/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    BPE 토크나이저의 장점
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1592,6 +1612,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 어휘 크기를 효과적으로 줄일 수 있다
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 희귀 단어에 대한 대응력이 뛰어나다
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 토큰 수를 줄여 연산 효율을 높일 수 있다
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 다국어 처리에 효과적이다
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 학습 안정성을 높일 수 있다
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bpe" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 예시: "국제시장과 국제적인"에 대한 BPE 처리 과정
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 예시: &#34;국제시장과 국제적인&#34;에 대한 BPE 처리 과정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1단계: 초기 문자 단위 분할
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2단계: 빈도 기반 문자 쌍 병합
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      최종 토큰화 결과 (예시)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      요약
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1651,7 +1785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Hybrid%20Search/OpenSearch%20Hybrid%20Search/" class="md-nav__link">
+      <a href="../Hybrid%20Search/OpenSearch%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -1729,7 +1863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
+      <a href="../Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
         
   
   
@@ -1807,7 +1941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Plugin/UBI%20Schema/" class="md-nav__link">
+      <a href="../Plugin/UBI%20Schema/" class="md-nav__link">
         
   
   
@@ -1835,10 +1969,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1871,11 +2003,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_5" >
         
           
           <label class="md-nav__link" for="__nav_6_1_5" id="__nav_6_1_5_label" tabindex="0">
@@ -1891,7 +2023,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1_5">
             <span class="md-nav__icon md-icon"></span>
             Vector Search
@@ -1905,7 +2037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Approximate%20k-NN/" class="md-nav__link">
+      <a href="../Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
         
   
   
@@ -1928,7 +2060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Embeddings%20model/" class="md-nav__link">
+      <a href="../Vector%20Search/Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -1951,7 +2083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Exact%20k-NN%20Seach/" class="md-nav__link">
+      <a href="../Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
         
   
   
@@ -1974,7 +2106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -1994,30 +2126,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Nested Field로 다중 벡터 다루기
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2028,96 +2140,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-nested-field" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Nested Field란?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 인덱스 생성 예시
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 문서 색인 예시
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 기본 벡터 검색 쿼리
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-inner-hits-nested" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Inner Hits로 매칭된 Nested 객체 확인
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-nested" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. 모든 Nested 벡터 점수 확인 (확장 검색)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-top-level-nested" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Top-level 또는 Nested 필드 필터링
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      요약
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2130,7 +2152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Radial%20Search/" class="md-nav__link">
+      <a href="../Vector%20Search/Radial%20Search/" class="md-nav__link">
         
   
   
@@ -2153,7 +2175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2176,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2199,7 +2221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
+      <a href="../Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
         
   
   
@@ -2222,7 +2244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2349,7 +2371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2429,7 +2451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -2452,7 +2474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2549,7 +2571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -2634,7 +2656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+      <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
         
   
   
@@ -2682,9 +2704,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-nested-field" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Nested Field란?
+      1. 어휘 크기를 효과적으로 줄일 수 있다
     </span>
   </a>
   
@@ -2693,7 +2715,7 @@
         <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 인덱스 생성 예시
+      2. 희귀 단어에 대한 대응력이 뛰어나다
     </span>
   </a>
   
@@ -2702,7 +2724,7 @@
         <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 문서 색인 예시
+      3. 토큰 수를 줄여 연산 효율을 높일 수 있다
     </span>
   </a>
   
@@ -2711,41 +2733,65 @@
         <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 기본 벡터 검색 쿼리
+      4. 다국어 처리에 효과적이다
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-inner-hits-nested" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Inner Hits로 매칭된 Nested 객체 확인
+      5. 학습 안정성을 높일 수 있다
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-nested" class="md-nav__link">
+  <a href="#6-bpe" class="md-nav__link">
     <span class="md-ellipsis">
-      6. 모든 Nested 벡터 점수 확인 (확장 검색)
+      6. 예시: "국제시장과 국제적인"에 대한 BPE 처리 과정
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-top-level-nested" class="md-nav__link">
+    <nav class="md-nav" aria-label="6. 예시: &#34;국제시장과 국제적인&#34;에 대한 BPE 처리 과정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Top-level 또는 Nested 필드 필터링
+      1단계: 초기 문자 단위 분할
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2단계: 빈도 기반 문자 쌍 병합
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      최종 토큰화 결과 (예시)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       요약
     </span>
@@ -2769,192 +2815,85 @@
 
 
 
-  <h1>Nested Field로 다중 벡터 다루기</h1>
+  <h1>BPE 토크나이저의 장점</h1>
 
-<p>벡터 기반 검색 시스템을 구축할 때, 하나의 문서가 여러 개의 구성 요소(예: 문단, 이미지, 설명 등)로 이뤄져 있다면 <strong>각 요소마다 벡터를 생성하여 문서 내에 함께 저장</strong>하고 싶을 수 있다.</p>
-<p>OpenSearch는 이를 위해 <strong>nested 필드 기반 벡터 검색</strong> 기능을 제공한다.</p>
-<h2 id="1-nested-field">1. Nested Field란?</h2>
-<ul>
+<p>BPE(Byte Pair Encoding)는 텍스트를 처리하는 데 있어 효율성과 유연성을 동시에 제공하는 토큰화 방법이다. 특히 자연어 처리(NLP) 모델의 학습 및 추론 과정에서 다양한 장점을 가지므로, GPT 계열을 포함한 여러 언어 모델에서 널리 사용되고 있다.</p>
+<h3 id="1">1. 어휘 크기를 효과적으로 줄일 수 있다</h3>
+<p>BPE는 전체 단어 단위로 어휘를 구성하지 않고, 문자 또는 하위 문자열 단위에서 자주 등장하는 쌍을 반복적으로 병합함으로써 어휘 집합을 구성한다. </p>
+<p>이를 통해 전체 어휘 집합의 크기를 기존의 단어 기반 토크나이저보다 훨씬 작게 유지할 수 있으며, 모델 파라미터와 메모리 효율성을 높이는 데 기여한다.</p>
+<h3 id="2">2. 희귀 단어에 대한 대응력이 뛰어나다</h3>
+<p>기존의 단어 기반 토큰화 방식은 학습 데이터에 등장하지 않는 단어(OOV, Out-of-Vocabulary)에 대해 처리하지 못하는 문제가 있다. </p>
+<p>반면, BPE는 낯선 단어도 하위 문자열(subword) 단위로 분해하여 표현할 수 있으므로, OOV 문제를 효과적으로 완화할 수 있다.</p>
+<p>이로 인해 모델의 일반화 성능이 향상되고, 사용자 입력에 대한 유연한 대응이 가능해진다.</p>
+<h3 id="3">3. 토큰 수를 줄여 연산 효율을 높일 수 있다</h3>
+<p>자주 등장하는 문자열을 하나의 토큰으로 병합하기 때문에, 동일한 문장을 기존의 문자 단위 혹은 단어 단위보다 적은 수의 토큰으로 표현할 수 있다. </p>
+<p>이는 학습 및 추론 시 처리해야 할 토큰 수를 줄이는 결과로 이어져, 연산 속도와 메모리 사용 측면에서 효율을 높일 수 있다.</p>
+<h3 id="4">4. 다국어 처리에 효과적이다</h3>
+<p>BPE는 언어에 관계없이 동일한 방식으로 적용 가능하므로, 다국어 텍스트를 처리하는 데 강점을 가진다. 특히 형태소 분석이 어려운 언어(예: 한글, 일본어, 중국어 등)에서도 일관된 방식으로 텍스트를 분해하고 학습할 수 있어, 다국어 언어 모델 개발에 적합하다.</p>
+<h3 id="5">5. 학습 안정성을 높일 수 있다</h3>
+<p>BPE는 긴 단어를 더 짧은 하위 단위로 나누기 때문에, 자주 등장하지 않는 단어들도 더 안정적으로 학습될 수 있다. </p>
+<p>이로 인해 모델은 드문 표현에 대해서도 일관된 표현력을 가질 수 있으며, 전반적인 학습 안정성과 추론 성능이 향상된다.</p>
+<h3 id="6-bpe">6. 예시: "국제시장과 국제적인"에 대한 BPE 처리 과정</h3>
+<p>입력 문장은 다음과 같다.</p>
+<div class="highlight"><pre><span></span><code>국제시장과 국제적인
+</code></pre></div>
+<h4 id="1_1">1단계: 초기 문자 단위 분할</h4>
+<p>BPE는 일반적으로 처음에는 한 글자(문자)를 하나의 토큰으로 본다.</p>
+<div class="highlight"><pre><span></span><code>국 제 시 장 과   국 제 적 인
+</code></pre></div>
+<p>이 상태에서 자주 등장하는 <strong>문자 쌍</strong>을 반복적으로 병합한다.</p>
+<h4 id="2_1">2단계: 빈도 기반 문자 쌍 병합</h4>
+<p>입력 데이터에서 자주 등장하는 문자 쌍을 아래와 같이 병합해 간다.</p>
+<ol>
 <li>
-<p>하나의 문서 내에 배열 형태로 객체를 포함할 수 있는 구조</p>
+<p><code>국</code> + <code>제</code> → <code>국제</code></p>
 </li>
 <li>
-<p>각 객체 안에 <code>knn_vector</code>를 포함하여 <strong>다수의 벡터를 한 문서에 저장 가능</strong></p>
+<p><code>시</code> + <code>장</code> → <code>시장</code></p>
 </li>
 <li>
-<p>검색 시 각 문서의 <strong>가장 유사한 벡터만 기준으로 스코어 결정</strong></p>
+<p><code>국제</code> + <code>시</code> + <code>장</code> → <code>국제시장</code> (데이터가 많아지면 이 단위도 병합 대상이 될 수 있음)</p>
 </li>
-</ul>
-<h2 id="2">2. 인덱스 생성 예시</h2>
-<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;nested_field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nested&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hnsw&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lucene&quot;</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;ef_construction&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;m&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
-<span class="w">              </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="3">3. 문서 색인 예시</h2>
-<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">_bulk?re</span><span class="kc">fres</span><span class="err">h=</span><span class="kc">true</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;nested_field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yellow&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;white&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-<span class="p">{</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my-knn-index-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;nested_field&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="w"> </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="4">4. 기본 벡터 검색 쿼리</h2>
-<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span><span class="err">/_search</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;nested&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nested_field&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;nested_field.my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>이 쿼리는 벡터 유사도가 높은 상위 2개 벡터가 포함된 문서를 반환<br />
-→ 벡터가 모두 문서 1에 있더라도 <strong>서로 다른 문서</strong>가 포함될 수 있음</p>
-</blockquote>
-<h2 id="5-inner-hits-nested">5. Inner Hits로 매칭된 Nested 객체 확인</h2>
-<p>기본적으로 어떤 하위 객체가 매칭되었는지 알 수 없다.
-<code>inner_hits</code>를 통해 해당 정보를 확인할 수 있다.</p>
-<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span><span class="err">/_search</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;nested&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nested_field&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;nested_field.my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;inner_hits&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nested_field.color&quot;</span><span class="p">]</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="6-nested">6. 모든 Nested 벡터 점수 확인 (확장 검색)</h2>
-<p>기본 설정에서는 문서 내에서 가장 높은 벡터 점수만 사용한다.
-모든 벡터 스코어를 반영하려면 <code>expand_nested_docs: true</code>를 설정하고,<br />
-문서 점수로 어떤 값을 사용할지 <code>score_mode</code>로 지정합니다.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;score_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;max&quot;</span><span class="w"> </span><span class="c1">// 또는 &quot;avg&quot;, &quot;sum&quot;, &quot;none&quot;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;nested_field.my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;expand_nested_docs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="7-top-level-nested">7. Top-level 또는 Nested 필드 필터링</h2>
-<p><code>knn</code> 쿼리에 <code>filter</code>를 추가하여 문서 단위로 필터링할 수 있다.</p>
-<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">my</span><span class="mi">-</span><span class="err">k</span><span class="kc">nn</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span><span class="mi">-1</span><span class="err">/_search</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;nested&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nested_field&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;nested_field.my_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;parking&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">              </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>위 예시에서는 <code>parking: true</code> 조건을 만족하는 문서만 벡터 유사도로 검색</p>
-</blockquote>
-<h2 id="_1">요약</h2>
+<li>
+<p><code>국제</code> + <code>적</code> → <code>국제적</code></p>
+</li>
+<li>
+<p><code>국제적</code> + <code>인</code> → <code>국제적인</code></p>
+</li>
+</ol>
+<h4 id="_1">최종 토큰화 결과 (예시)</h4>
 <table>
 <thead>
 <tr>
-<th>기능</th>
-<th>설명</th>
+<th>원문</th>
+<th>최종 토큰화 결과 (BPE)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>nested_field 벡터</strong></td>
-<td>여러 벡터를 하나의 문서에 저장 가능</td>
+<td>국제시장과</td>
+<td>국제, 시장, 과</td>
 </tr>
 <tr>
-<td><strong>inner_hits</strong></td>
-<td>어떤 하위 객체가 매칭되었는지 확인</td>
-</tr>
-<tr>
-<td><strong>expand_nested_docs</strong></td>
-<td>모든 벡터 점수 고려 가능</td>
-</tr>
-<tr>
-<td><strong>filter</strong></td>
-<td>벡터 검색 시 조건 필터 가능 (top-level 및 nested)</td>
+<td>국제적인</td>
+<td>국제, 적, 인</td>
 </tr>
 </tbody>
 </table>
+<p>※ 데이터가 충분하다면 <code>"국제적인"</code>을 하나의 토큰으로 병합하는 경우도 있을 수 있다.</p>
+<h3 id="_2">요약</h3>
+<p>BPE는 다음과 같은 장점을 제공한다.</p>
+<ul>
+<li>
+<p>"국제시장", "국제적인" 모두에서 <code>"국제"</code>가 공통적으로 등장하므로, 이를 하나의 토큰으로 처리하여 <strong>중복 학습을 줄이고 의미를 일반화</strong>할 수 있다.</p>
+</li>
+<li>
+<p>희귀한 조합(예: "시장과", "적인")도 부분적으로 쪼개어 <strong>OOV 없이 처리</strong>할 수 있다.</p>
+</li>
+<li>
+<p>동일한 접두어/접미어가 반복되는 한국어 특성상 <strong>복합어 처리에 매우 효율적</strong>이다.</p>
+</li>
+</ul>
 
 
 
@@ -3009,12 +2948,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
-        <script src="../../../../custom.js"></script>
+        <script src="../../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

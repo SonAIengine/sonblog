@@ -1490,6 +1490,66 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#query-key-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query, Key, Value 행렬은 어떻게 생성하는가?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query, Key, Value 행렬은 어떻게 생성하는가?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 입력 임베딩 확보 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 전용 가중치 행렬 정의 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 선형 투영 수행 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 멀티 헤드 분할 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 학습과 업데이트 단계
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2878,6 +2938,66 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#query-key-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query, Key, Value 행렬은 어떻게 생성하는가?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query, Key, Value 행렬은 어떻게 생성하는가?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 입력 임베딩 확보 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 전용 가중치 행렬 정의 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 선형 투영 수행 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 멀티 헤드 분할 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 학습과 업데이트 단계
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3060,6 +3180,40 @@
 </tbody>
 </table>
 <p>스케일드 닷 프로덕트 어텐션은 이렇듯 “유사도 측정 → 스케일 조정 → 확률화 → 문맥 통합”의 명확한 절차를 통해, 입력 시퀀스 내부 관계를 효과적으로 모델링하는 핵심 구성 요소이다.</p>
+<h2 id="query-key-value">Query, Key, Value 행렬은 어떻게 생성하는가?</h2>
+<h3 id="1_3">1. 입력 임베딩 확보 단계</h3>
+<ul>
+<li>문장의 각 토큰을 임베딩 벡터로 변환한 뒤, 위치 인코딩을 더해 입력 행렬 <strong>X</strong>를 준비한다.  </li>
+<li><strong>X</strong>의 크기는 <code>n × d_model</code>이며, <em>n</em>은 토큰 수, <em>d_model</em>은 모델 차원이다.</li>
+</ul>
+<h3 id="2">2. 전용 가중치 행렬 정의 단계</h3>
+<ul>
+<li>쿼리·키·밸류 각각에 대응하는 가중치 행렬 <code>W_Q</code>, <code>W_K</code>, <code>W_V</code>를 학습 가능한 파라미터로 초기화한다.  </li>
+<li>일반적인 크기는 <code>d_model × d_h</code>이며, <code>d_h</code>는 헤드별 차원이다.</li>
+</ul>
+<h3 id="3_2">3. 선형 투영 수행 단계</h3>
+<ul>
+<li>입력 행렬 <strong>X</strong>에 각 가중치 행렬을 곱해 세 개의 행렬을 얻는다.  </li>
+<li><code>Q = X · W_Q</code>  </li>
+<li><code>K = X · W_K</code>  </li>
+<li><code>V = X · W_V</code>  </li>
+<li>이 연산은 완전연결층과 동일하며 GPU 병렬화가 용이하다.</li>
+</ul>
+<h3 id="4_1">4. 멀티 헤드 분할 단계</h3>
+<ul>
+<li>표현 다양성을 위해 <code>h</code>개의 헤드로 분리한다.  </li>
+<li>구현 방식  </li>
+<li><strong>병합 방식</strong>: 한 번의 행렬 곱으로 <code>Q</code>, <code>K</code>, <code>V</code>를 <code>n × (h·d_k)</code> 크기로 만든 뒤 마지막 차원을 <code>(h, d_k)</code>로 리쉐이프한다.  </li>
+<li><strong>분리 방식</strong>: 헤드마다 고유한 <code>(W_{Q_i}, W_{K_i}, W_{V_i})</code>를 두고 독립적으로 투영한다.</li>
+</ul>
+<h3 id="5_1">5. 학습과 업데이트 단계</h3>
+<ul>
+<li><code>W_Q</code>, <code>W_K</code>, <code>W_V</code>는 역전파를 통해 손실 함수의 그래디언트를 받아 지속적으로 갱신된다.  </li>
+<li>옵티마이저(예: AdamW)가 가중치를 조정하여 토큰 간 의미 관계를 내재화한다.</li>
+</ul>
+<blockquote>
+<p>위 절차를 통해 생성된 <strong>Q</strong>, <strong>K</strong>, <strong>V</strong> 행렬은 이후 스케일드 닷 프로덕트 어텐션에 입력되어 문맥 정보를 계산하게 된다.</p>
+</blockquote>
 
 
 

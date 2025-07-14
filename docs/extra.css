@@ -335,41 +335,36 @@ body {
 
 /* ===== 사이드바 계층별 들여쓰기 개선 (가독성 향상) ===== */
 
-/* 사이드바 기본 스타일 조정 */
-.md-sidebar--primary nav.md-nav ul.md-nav__list li.md-nav__item > a.md-nav__link > span.md-ellipsis::before {
-    content: "o";
-    display: inline-block;
-    width: 1.2em;
-    margin-left: -1.2em;
-    color: #6b7280; /* 회색 기호 */
-    font-weight: bold;
-}
+/* === 계층에 따른 들여쓰기 최소화 조정 === */
 
-/* 1단계 들여쓰기 */
+/* Level 1 (최상위) */
 .md-sidebar--primary nav.md-nav[data-md-level="1"] ul.md-nav__list > li.md-nav__item {
-    padding-left: 0.6em;
+    padding-left: 0.5em;
 }
 
-/* 2단계 섹션 (예: BERT 내부 항목들) */
+/* Level 2 */
 .md-sidebar--primary nav.md-nav[data-md-level="2"] ul.md-nav__list > li.md-nav__item {
-    padding-left: 1.4em;
+    padding-left: 1em;
 }
 
-/* 3단계 항목 (TOC나 더 깊은 구조 대응용) */
+/* Level 3 */
 .md-sidebar--primary nav.md-nav[data-md-level="3"] ul.md-nav__list > li.md-nav__item {
+    padding-left: 1.5em;
+}
+
+/* Level 4 이상 */
+.md-sidebar--primary nav.md-nav[data-md-level="4"] ul.md-nav__list > li.md-nav__item,
+.md-sidebar--primary nav.md-nav[data-md-level="5"] ul.md-nav__list > li.md-nav__item {
     padding-left: 2em;
 }
 
-/* 항목 강조 효과 개선 */
-.md-sidebar--primary .md-nav__link {
-    font-size: 0.92em;
-    opacity: 0.95;
-}
 
-/* 현재 페이지 항목 강조 */
-.md-sidebar--primary .md-nav__link--active > .md-ellipsis {
-    color: #1d4ed8; /* 진한 파랑 */
+.md-sidebar--primary nav.md-nav ul.md-nav__list li.md-nav__item > a.md-nav__link > span.md-ellipsis::before {
+    content: "›";
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+    color: #999;
     font-weight: bold;
+    font-size: 0.8em;
 }
-
-

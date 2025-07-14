@@ -1426,6 +1426,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scaled-dot-product-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaled Dot-Product Attention 를 정의하시오.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaled Dot-Product Attention 를 정의하시오.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 입력 구성 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dot-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Dot-Product 유사도 계산 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 스케일링 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 소프트맥스 정규화 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 가중합 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      핵심 특징 정리
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2745,6 +2814,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scaled-dot-product-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaled Dot-Product Attention 를 정의하시오.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaled Dot-Product Attention 를 정의하시오.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 입력 구성 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dot-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Dot-Product 유사도 계산 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 스케일링 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 소프트맥스 정규화 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 가중합 단계
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      핵심 특징 정리
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2760,8 +2898,6 @@
                   
 
 
-
-  <h1>BERT란?</h1>
 
 <h2 id="1">1. 셀프 어텐션의 전체 단계를 설명하라</h2>
 <h3 id="_1">셀프 어텐션, 왜 중요한가</h3>
@@ -2842,6 +2978,88 @@
 </li>
 </ul>
 <p>0단계에서 쿼리·키·밸류를 분리 투영하고, 1단계와 2단계에서 유사도를 안정적으로 계산하며, 3단계에서 정규화된 가중치를 만들고, 4단계에서 문맥이 반영된 표현을 얻게 되는 흐름이 셀프 어텐션의 핵심이다. 이러한 단계적 설계 덕분에 트랜스포머 모델은 긴 문장에서도 관계를 효과적으로 학습하고, 번역·요약·질문 답변 등 다양한 자연어 처리 과제에서 높은 성능을 발휘하게 된다.</p>
+<h1 id="scaled-dot-product-attention">Scaled Dot-Product Attention 를 정의하시오.</h1>
+<p>스케일드 닷 프로덕트 어텐션은 쿼리(Query), 키(Key), 밸류(Value) 삼중 구조를 사용해,
+<strong>유사도 계산 → 스케일 조정 → 확률 정규화 → 가중합</strong>의 네 단계를 거쳐 문맥 정보를 추출하는 어텐션 메커니즘이다. </p>
+<p>트랜스포머 계열 모델에서 기본 블록으로 채택되는 이유는 계산 효율성과 병렬화 용이성에 있다.</p>
+<h3 id="1_2">1. 입력 구성 단계</h3>
+<ul>
+<li>
+<p>입력 시퀀스의 각 토큰 임베딩을 <strong>쿼리, 키, 밸류</strong>로 독립 투영한다.</p>
+</li>
+<li>
+<p>쿼리는 “질문자”, 키는 “후보 답변자”, 밸류는 “실제 답변 내용” 역할을 담당한다.</p>
+</li>
+</ul>
+<h3 id="2-dot-product">2. Dot-Product 유사도 계산 단계</h3>
+<ul>
+<li>
+<p>한 토큰의 쿼리와 모든 토큰의 키 간에 내적(닷 프로덕트)을 수행해 유사도 행렬을 만든다.</p>
+</li>
+<li>
+<p>내적은 두 벡터의 방향 유사도를 단일 숫자로 빠르게 환산하므로, 대규모 시퀀스에서 효율적이다.</p>
+</li>
+</ul>
+<h3 id="3_1">3. 스케일링 단계</h3>
+<ul>
+<li>
+<p>키 벡터 차원의 <strong>제곱근으로 유사도 값을 나누어</strong> 스케일을 조정한다.</p>
+</li>
+<li>
+<p>차원이 클수록 내적값이 과도하게 커져 소프트맥스가 한두 항목에만 치우치는 현상이 생기므로, 이를 방지해 학습 안정성을 높인다.</p>
+</li>
+</ul>
+<h3 id="4">4. 소프트맥스 정규화 단계</h3>
+<ul>
+<li>
+<p>스케일링된 유사도 행렬에 <strong>소프트맥스</strong>를 적용해 각 행이 0~1 확률 분포가 되도록 만든다.</p>
+</li>
+<li>
+<p>결과 분포는 “각 토큰이 다른 토큰에 얼마만큼 주목할지”를 나타내는 가중치 역할을 한다.</p>
+</li>
+</ul>
+<h3 id="5">5. 가중합 단계</h3>
+<ul>
+<li>
+<p>정규화된 가중치를 밸류 벡터에 곱해 <strong>가중합</strong>을 수행한다.</p>
+</li>
+<li>
+<p>이 가중합 결과가 바로 각 토큰이 시퀀스 전체 문맥을 반영해 새로 얻은 표현(어텐션 결과)이다.</p>
+</li>
+</ul>
+<h3 id="_2">핵심 특징 정리</h3>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>목적</th>
+<th>효과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>닷 프로덕트</td>
+<td>토큰 간 유사도 산출</td>
+<td>계산량이 작고 GPU 병렬화에 적합하다</td>
+</tr>
+<tr>
+<td>스케일링</td>
+<td>큰 차원에서의 값 폭주 방지</td>
+<td>그래디언트 안정성 확보</td>
+</tr>
+<tr>
+<td>소프트맥스</td>
+<td>가중치 확률 분포화</td>
+<td>직관적 해석·역전파 용이</td>
+</tr>
+<tr>
+<td>밸류 가중합</td>
+<td>문맥 정보 결합</td>
+<td>입력 토큰을 문맥 기반으로 재표현</td>
+</tr>
+</tbody>
+</table>
+<p>스케일드 닷 프로덕트 어텐션은 이렇듯 “유사도 측정 → 스케일 조정 → 확률화 → 문맥 통합”의 명확한 절차를 통해, 입력 시퀀스 내부 관계를 효과적으로 모델링하는 핵심 구성 요소이다.</p>
 
 
 

@@ -348,7 +348,7 @@ nav.md-nav--secondary > ul.md-nav__list > li.md-nav__item {
   
   /* TOC 더 깊은 중첩 항목 */
   nav.md-nav--secondary ul.md-nav__list ul.md-nav__list ul.md-nav__list li.md-nav__item {
-    padding-left: 1.8em;
+    padding-left: 1.6em;
   }
   
   /* TOC 항목의 기호 스타일 (선택 사항) */

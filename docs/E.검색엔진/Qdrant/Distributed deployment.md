@@ -73,18 +73,40 @@ Qdrant 클러스터의 노드 수는 **비용·장애 허용성(내구성)·성�
     
 - 노드당 최소 2샤드를 권장하며, **미래 확장**을 고려해 12샤드 구성이 무난하다.
 
-### 5. 샤드 이동·복제
+### 5. 노드 장애 복구 시나리오
 
-**샤드 이동**
-~~~
-POST /collections/{col}/cluster
-{
-  "move_shard": {
-    "shard_id": 0,
-    "from_peer_id": 111,
-    "to_peer_id": 222,
-    "method": "snapshot"   # stream_records | wal_delta
-  }
-}
-~~~
+|상황|단일 노드|2노드(미복제)|2노드(복제)|3+노드(복제)|
+|---|---|---|---|---|
+|일시적 다운|전체 중단|전체 중단|컬렉션 작업 제외 정상|완전 정상|
+|영구 손실|백업 필요|백업 필요|백업 필요|복구 가능|
 
+- **dead 노드 제거**: `DELETE /cluster/peer/{peer_id}`
+    
+- **새 노드 합류 후** 샤드 복제 또는 스냅샷 복원으로 데이터 복구
+
+### 6. 일관성 옵션
+
+|옵션|의미|기본값|
+|---|---|---|
+|`write_consistency_factor`|쓰기 성공 판단에 필요한 복제본 수|1|
+|`consistency` (읽기)|all·majority·quorum·숫자|1|
+|`ordering` (쓰기)|weak·medium·strong|weak|
+
+- `write_consistency_factor = replication_factor` 로 설정하면 노드 일부 다운 시 쓰기 차단 후 데이터 재동기화 비용 감소.
+    
+- 강한 일관성이 필요한 경우 `ordering=strong` 사용.
+
+### 7. 추가 기능
+
+- **Listener 모드**: `node_type: "Listener"` 로 설정 시 검색 트래픽에서 제외하고 수집 전용 노드로 사용.
+    
+- **Consensus Checkpointing**: `POST /cluster/recover` 호출로 Raft 로그 스냅샷 생성·로그 절단을 통해 신규 노드 동기화 속도 개선.
+
+
+### 8. 권장 운영 전략
+
+1. **프로덕션**: 최소 3노드, `replication_factor ≥2`, `write_consistency_factor = replication_factor`
+    
+2. **비용 절감형**: 2노드 + 복제, 중요 컬렉션만 복제 활성화
+    
+3. **개발·테스트**: 단일 노드, 주기적 스냅샷 백업 필수

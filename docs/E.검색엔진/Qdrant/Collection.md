@@ -23,7 +23,7 @@ Cosine 방식은 내부적으로 정규화된 벡터에 대한 Dot Product로 �
 ## 컬렉션 생성 예시
 
 ```http
-PUT /collections/my_collection
+PUT /collections/:collection_name
 {
   "vectors": {
     "size": 300,

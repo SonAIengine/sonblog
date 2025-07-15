@@ -23,27 +23,25 @@ Payload는 벡터에 연결된 부가 정보로, JSON 형식으로 저장된다.
 }
 ```
 
----
 
 ## 지원하는 Payload 타입
 
 Qdrant는 다양한 데이터 타입을 지원하며, 검색 시 필터링 조건으로도 사용할 수 있다. 데이터 타입에 따라 검색 가능한 조건이 다르므로 적절한 타입 사용이 중요하다.
 
-|타입|설명|
-|---|---|
-|Integer|64비트 정수, 단일 혹은 배열 형태로 저장 가능|
-|Float|64비트 실수, 가격, 점수 등의 정밀한 수치 표현|
-|Bool|true 또는 false|
-|Keyword|문자열 데이터, 정렬 및 매칭 조건에 적합|
-|Geo|위도(lat), 경도(lon)로 구성된 좌표값|
-|Datetime|RFC 3339 포맷의 날짜/시간|
-|UUID|고유 식별자 형태의 문자열. 1.11.0 이상에서 별도 타입 지원|
+| 타입       | 설명                                   |
+| -------- | ------------------------------------ |
+| Integer  | 64비트 정수, 단일 혹은 배열 형태로 저장 가능          |
+| Float    | 64비트 실수, 가격, 점수 등의 정밀한 수치 표현         |
+| Bool     | true 또는 false                        |
+| Keyword  | 문자열 데이터, 정렬 및 매칭 조건에 적합              |
+| Geo      | 위도(lat), 경도(lon)로 구성된 좌표값            |
+| Datetime | RFC 3339 포맷의 날짜/시간                   |
+| UUID     | 고유 식별자 형태의 문자열. 1.11.0 이상에서 별도 타입 지원 |
 
 ### 배열 처리 방식
 
 배열은 내부 값 중 **하나라도 조건에 부합**하면 필터 조건을 충족한 것으로 간주된다.
 
----
 
 ## Payload 삽입 예시
 
@@ -65,7 +63,6 @@ PUT /collections/my_collection/points
 }
 ```
 
----
 
 ## Payload 업데이트 방식
 
@@ -108,7 +105,6 @@ POST /collections/my_collection/points/payload
 
 이 방식은 `property1` 내부의 `nested_property` 값만 변경한다.
 
----
 
 ### 3. Overwrite Payload
 
@@ -125,7 +121,6 @@ PUT /collections/my_collection/points/payload
 }
 ```
 
----
 
 ### 4. Clear Payload
 
@@ -137,8 +132,6 @@ POST /collections/my_collection/points/payload/clear
   "points": [1, 2]
 }
 ```
-
----
 
 ### 5. Delete Payload Keys
 
@@ -154,13 +147,12 @@ POST /collections/my_collection/points/payload/delete
 
 필터를 활용한 제거도 가능하다.
 
----
 
 ## Payload 인덱싱
 
 효율적인 검색을 위해 payload 필드에 인덱스를 생성할 수 있다. 인덱스는 검색 속도를 크게 향상시키며, 특히 결과 범위를 빠르게 줄일 수 있는 필드에 효과적이다.
 
-예시:
+예시
 
 ```json
 PUT /collections/my_collection/index
@@ -183,11 +175,10 @@ PUT /collections/my_collection/index
 }
 ```
 
----
 
 ## Facet Count (패싯 카운트)
 
-1.12.0부터 Qdrant는 특정 필드에 대해 **값별 개수 통계(facet)**를 제공한다. 이는 SQL의 `GROUP BY`와 유사하며, 필터링 또는 분포 시각화에 활용된다.
+1.12.0부터 Qdrant는 특정 필드에 대해 값별 개수 통계(facet)를 제공한다. 이는 SQL의 `GROUP BY`와 유사하며, 필터링 또는 분포 시각화에 활용된다.
 
 ```json
 POST /collections/my_collection/facet
@@ -199,7 +190,7 @@ POST /collections/my_collection/facet
 }
 ```
 
-결과 예시:
+결과 예시
 
 ```json
 "hits": [
@@ -211,7 +202,6 @@ POST /collections/my_collection/facet
 
 기본적으로 `limit`은 10이며, `exact: true`로 설정하면 정확한 수치를 반환한다.
 
----
 
 ## 마무리
 
@@ -219,7 +209,3 @@ Qdrant의 Payload 기능은 벡터 기반 검색에 구조화된 조건을 더�
 정형 데이터와 비정형 데이터가 함께 존재하는 상황에서도 Qdrant는 유연하고 강력한 데이터 표현 및 필터링 능력을 제공한다.
 
 Payload를 잘 설계하고 인덱싱을 적절히 설정하면 검색 품질과 응답 속도를 모두 향상시킬 수 있다.
-
----
-
-다음으로 검색 필터링(Query Filter)나 Geo Search, Hybrid Search 기능 등도 정리할 수 있다. 추가 요청이 있다면 알려주기 바란다.

@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2683,6 +2688,21 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    의미론적 Chunk
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2695,6 +2715,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      장점
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      단점
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3577,6 +3634,34 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      장점
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      단점
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3591,8 +3676,6 @@
                   
 
 
-
-  <h1>의미론적 Chunk</h1>
 
 <p>대표적인 방법은 문장을 단위로 나눈 뒤, 각 문장의 임베딩(벡터)을 계산해 “의미적으로 유사한” 문장들을 하나의 청크로 묶는 방식입니다. </p>
 <p>아래 예시는 OpenAIEmbeddings를 이용해 간단한 semantic chunking 함수를 구현하고, 기존 고정 길이 청크 대신 적용하는 방법을 보여줍니다.</p>
@@ -3692,6 +3775,101 @@
 </li>
 </ol>
 <p>이렇게 하면 “고정 토큰 수”가 아니라 “의미적으로 일관된” 단위로 문서를 분할해서 색인할 수 있습니다.</p>
+<h1 id="_1">장점과 단점</h1>
+<h2 id="_2">장점</h2>
+<ol>
+<li>
+<p><strong>의미적 일관성 유지</strong></p>
+<ul>
+<li>
+<p>의미 단위(문장·절·개념)로 묶기 때문에 한 청크 안의 내용이 주제적으로 응집되어 있다.</p>
+</li>
+<li>
+<p>LLM이나 벡터 검색 엔진이 “한 덩어리의 의미”를 보다 명확히 파악할 수 있어, 검색·유사도 평가·요약 정확도가 향상된다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>중요 정보 손실 최소화</strong></p>
+<ul>
+<li>
+<p>fixed-length splitting은 문장 중간을 자를 수 있어 문장이 분절되거나 핵심 어구가 잘릴 위험이 있다.</p>
+</li>
+<li>
+<p>semantic chunking은 문장 경계(또는 의미 단위) 단위로 묶으므로, 맥락이 끊기지 않는다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>유연한 청크 크기</strong></p>
+<ul>
+<li>
+<p>내용이 단순한 부분은 한 청크가 작게, 복잡한 부분은 더 길게 자동 조정되어 저장·처리 효율을 높인다.</p>
+</li>
+<li>
+<p>유사도 계산 시에도 “불필요한 패딩”이나 “빈 공간”이 줄어들어 벡터 차원의 낭비가 감소한다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>검색 품질 개선</strong></p>
+<ul>
+<li>
+<p>의미적으로 응집된 단위로 벡터를 만들면, 키워드가 분산되지 않아 BM25 같은 sparse 검색에서도 더 높은 정확도를 기대할 수 있다.</p>
+</li>
+<li>
+<p>Hybrid 검색 시 dense·sparse 벡터가 모두 통일된 의미 단위로 정렬되므로, 결과의 일관성과 다양성이 향상된다.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="_3">단점</h2>
+<ol>
+<li>
+<p><strong>추가 계산 비용</strong></p>
+<ul>
+<li>
+<p>문장 토크나이저(Punkt, spaCy 등)로 분할 후, 각 문장에 대해 임베딩을 계산해야 하므로 API 호출 횟수·연산량이 크게 늘어난다.</p>
+</li>
+<li>
+<p>전체 문서에 문장 수만큼 벡터 연산을 수행하므로, 고정 길이 청크 대비 지연(latency)과 비용이 상승한다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>파라미터 튜닝 복잡성</strong></p>
+<ul>
+<li>
+<p>유사도 임계값(threshold), 문장 그룹화 로직 등 하이퍼파라미터를 적절히 설정해야 한다.</p>
+</li>
+<li>
+<p>threshold가 너무 높으면 청크가 작게 쪼개지고(과도 분할), 낮으면 묶음이 과도해져(과다 병합) 의미 집중도가 떨어질 수 있다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>변동하는 청크 크기</strong></p>
+<ul>
+<li>
+<p>청크 길이가 고정되지 않아, Q&amp;A나 LLM 체인에 넘길 때 토큰 수 관리가 어렵다.</p>
+</li>
+<li>
+<p>예측 불가능한 길이로 인해 한 번에 처리할 수 있는 컨텍스트 크기를 초과할 위험이 있다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>임베딩 품질 의존성</strong></p>
+<ul>
+<li>
+<p>semantic chunking의 핵심은 임베딩의 품질에 달려 있다.</p>
+</li>
+<li>
+<p>임베딩 모델 성능이 낮거나 도메인과 맞지 않으면, 유사도 계산 자체가 부정확해져 오히려 잘못된 청크가 생성될 수 있다.</p>
+</li>
+</ul>
+</li>
+</ol>
 
 
 

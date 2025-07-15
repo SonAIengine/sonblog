@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../Qptimizer/">
+        <link rel="prev" href="../../../../D.%20AI/BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/">
       
       
-        <link rel="next" href="../Running%20with%20GPU/">
+        <link rel="next" href="../OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Reranking Hybrid Search - SON BLOG</title>
+        <title>Hybrid Search - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +46,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../extra.css">
+      <link rel="stylesheet" href="../../../../extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Reranking Hybrid Search
+              Hybrid Search
             
           </span>
         </div>
@@ -216,7 +216,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -244,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
+        <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
           
   
   
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+        <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
           
   
   
@@ -298,7 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+        <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
           
   
   
@@ -323,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../D.%20AI/Dropout/" class="md-tabs__link">
+        <a href="../../../../D.%20AI/Dropout/" class="md-tabs__link">
           
   
   
@@ -365,7 +365,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -393,7 +393,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
+        <a href="../../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
           
   
   
@@ -429,7 +429,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -447,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -567,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -645,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -725,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   
@@ -748,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -837,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+      <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
         
   
   
@@ -860,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   
@@ -883,7 +883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../B.PoC/tauri/" class="md-nav__link">
+      <a href="../../../../B.PoC/tauri/" class="md-nav__link">
         
   
   
@@ -1013,7 +1013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   
@@ -1036,7 +1036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   
@@ -1059,7 +1059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   
@@ -1143,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   
@@ -1166,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -1189,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   
@@ -1212,7 +1212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -1311,7 +1311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Dropout/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Dropout/" class="md-nav__link">
         
   
   
@@ -1334,7 +1334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
+      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
         
   
   
@@ -1357,7 +1357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
+      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
         
   
   
@@ -1380,7 +1380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/KoBERT/" class="md-nav__link">
+      <a href="../../../../D.%20AI/KoBERT/" class="md-nav__link">
         
   
   
@@ -1403,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Qwen3-embedding/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Qwen3-embedding/" class="md-nav__link">
         
   
   
@@ -1426,7 +1426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
         
   
   
@@ -1449,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/Tokenization/" class="md-nav__link">
+      <a href="../../../../D.%20AI/Tokenization/" class="md-nav__link">
         
   
   
@@ -1523,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/BERT/Query%2C%20Key%2C%20Value%20%ED%96%89%EB%A0%AC%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%EA%B0%80%3F/" class="md-nav__link">
+      <a href="../../../../D.%20AI/BERT/Query%2C%20Key%2C%20Value%20%ED%96%89%EB%A0%AC%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%EA%B0%80%3F/" class="md-nav__link">
         
   
   
@@ -1546,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/BERT/Scaled%20Dot-Product%20Attention%20%EB%A5%BC%20%EC%A0%95%EC%9D%98%ED%95%98%EC%8B%9C%EC%98%A4./" class="md-nav__link">
+      <a href="../../../../D.%20AI/BERT/Scaled%20Dot-Product%20Attention%20%EB%A5%BC%20%EC%A0%95%EC%9D%98%ED%95%98%EC%8B%9C%EC%98%A4./" class="md-nav__link">
         
   
   
@@ -1569,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../D.%20AI/BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/" class="md-nav__link">
+      <a href="../../../../D.%20AI/BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/" class="md-nav__link">
         
   
   
@@ -1660,6 +1660,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1687,11 +1689,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="">
@@ -1707,7 +1709,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             OpenSearch
@@ -1718,8 +1720,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1736,11 +1740,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1_1" id="__nav_6_1_1_label" tabindex="0">
@@ -1756,7 +1760,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1_1">
             <span class="md-nav__icon md-icon"></span>
             Hybrid Search
@@ -1767,10 +1771,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Hybrid Search
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1781,6 +1805,174 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      하이브리드 검색이란?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="하이브리드 검색이란?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      제공되는 Processor 유형
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      사전 준비
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      구성 방법
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="구성 방법">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 자동화 워크플로우 (추천)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 수동 구성 (커스터마이징 가능)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 수동 구성 (커스터마이징 가능)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-ingest-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Ingest Pipeline 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-vector-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Vector Index 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-search-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Search Pipeline 설정
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. 문서 색인
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-hybrid-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Hybrid Search 실행
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      확장 예시
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="확장 예시">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#match-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      Match + Term 쿼리 결합
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      마무리
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1793,7 +1985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -1871,7 +2063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
+      <a href="../../Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
         
   
   
@@ -1949,7 +2141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
+      <a href="../../Plugin/UBI%20Schema/" class="md-nav__link">
         
   
   
@@ -2045,7 +2237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
+      <a href="../../Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
         
   
   
@@ -2068,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
+      <a href="../../Vector%20Search/Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -2091,7 +2283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
+      <a href="../../Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
         
   
   
@@ -2114,7 +2306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2137,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
+      <a href="../../Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2160,7 +2352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
+      <a href="../../Vector%20Search/Radial%20Search/" class="md-nav__link">
         
   
   
@@ -2183,7 +2375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2206,7 +2398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2229,7 +2421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
+      <a href="../../Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
         
   
   
@@ -2252,7 +2444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2379,7 +2571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2459,7 +2651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../../Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -2482,7 +2674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2526,8 +2718,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2595,11 +2785,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
@@ -2615,7 +2805,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             Qdrant
@@ -2629,7 +2819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Capacity%20Planning/" class="md-nav__link">
+      <a href="../../../Qdrant/Capacity%20Planning/" class="md-nav__link">
         
   
   
@@ -2652,7 +2842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Codebase%20with%20Semantic%20Search/" class="md-nav__link">
+      <a href="../../../Qdrant/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
         
   
   
@@ -2675,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Collection/" class="md-nav__link">
+      <a href="../../../Qdrant/Collection/" class="md-nav__link">
         
   
   
@@ -2698,7 +2888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Distributed%20deployment/" class="md-nav__link">
+      <a href="../../../Qdrant/Distributed%20deployment/" class="md-nav__link">
         
   
   
@@ -2721,7 +2911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Explore%20the%20Data/" class="md-nav__link">
+      <a href="../../../Qdrant/Explore%20the%20Data/" class="md-nav__link">
         
   
   
@@ -2744,7 +2934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FastEmbed/" class="md-nav__link">
+      <a href="../../../Qdrant/FastEmbed/" class="md-nav__link">
         
   
   
@@ -2767,7 +2957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Filtering/" class="md-nav__link">
+      <a href="../../../Qdrant/Filtering/" class="md-nav__link">
         
   
   
@@ -2790,7 +2980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Hybrid%20Queries/" class="md-nav__link">
+      <a href="../../../Qdrant/Hybrid%20Queries/" class="md-nav__link">
         
   
   
@@ -2813,7 +3003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Indexing/" class="md-nav__link">
+      <a href="../../../Qdrant/Indexing/" class="md-nav__link">
         
   
   
@@ -2836,7 +3026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
+      <a href="../../../Qdrant/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
         
   
   
@@ -2859,7 +3049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Multivector%20Reranking/" class="md-nav__link">
+      <a href="../../../Qdrant/Multivector%20Reranking/" class="md-nav__link">
         
   
   
@@ -2882,7 +3072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Payload/" class="md-nav__link">
+      <a href="../../../Qdrant/Payload/" class="md-nav__link">
         
   
   
@@ -2905,7 +3095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Points/" class="md-nav__link">
+      <a href="../../../Qdrant/Points/" class="md-nav__link">
         
   
   
@@ -2928,7 +3118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Qdrant%20Async%20API/" class="md-nav__link">
+      <a href="../../../Qdrant/Qdrant%20Async%20API/" class="md-nav__link">
         
   
   
@@ -2951,7 +3141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Qdrant%20LangChain/" class="md-nav__link">
+      <a href="../../../Qdrant/Qdrant%20LangChain/" class="md-nav__link">
         
   
   
@@ -2974,7 +3164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Qptimizer/" class="md-nav__link">
+      <a href="../../../Qdrant/Qptimizer/" class="md-nav__link">
         
   
   
@@ -2994,30 +3184,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Reranking Hybrid Search
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../Qdrant/Reranking%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -3028,144 +3198,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 아키텍처 개요
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 준비 사항
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 인제스트 단계
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 인제스트 단계">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 임베딩 생성
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 컬렉션 생성
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3 데이터 업서트
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 검색·재랭킹 단계
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 검색·재랭킹 단계">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 쿼리 임베딩
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-dense-sparse" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 하이브리드 검색 (Dense + Sparse)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-colbert" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3 ColBERT 재랭킹
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 베스트 프랙티스
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. 결론
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3178,7 +3210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Running%20with%20GPU/" class="md-nav__link">
+      <a href="../../../Qdrant/Running%20with%20GPU/" class="md-nav__link">
         
   
   
@@ -3201,7 +3233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Scaling%20PDF%20Retrieval/" class="md-nav__link">
+      <a href="../../../Qdrant/Scaling%20PDF%20Retrieval/" class="md-nav__link">
         
   
   
@@ -3224,7 +3256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Semantic%20Search%20Tutorials/" class="md-nav__link">
+      <a href="../../../Qdrant/Semantic%20Search%20Tutorials/" class="md-nav__link">
         
   
   
@@ -3247,7 +3279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Similarity%20Search/" class="md-nav__link">
+      <a href="../../../Qdrant/Similarity%20Search/" class="md-nav__link">
         
   
   
@@ -3270,7 +3302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Storage/" class="md-nav__link">
+      <a href="../../../Qdrant/Storage/" class="md-nav__link">
         
   
   
@@ -3293,7 +3325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Vectors/" class="md-nav__link">
+      <a href="../../../Qdrant/Vectors/" class="md-nav__link">
         
   
   
@@ -3316,7 +3348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
+      <a href="../../../Qdrant/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
         
   
   
@@ -3339,7 +3371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%EC%A0%95%EC%A0%81%20%EC%9E%84%EB%B2%A0%EB%94%A9%28Static%20Embedding%29%2C%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%3F/" class="md-nav__link">
+      <a href="../../../Qdrant/%EC%A0%95%EC%A0%81%20%EC%9E%84%EB%B2%A0%EB%94%A9%28Static%20Embedding%29%2C%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C%3F/" class="md-nav__link">
         
   
   
@@ -3420,7 +3452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../../../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -3505,7 +3537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+      <a href="../../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
         
   
   
@@ -3553,55 +3585,136 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      하이브리드 검색이란?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="하이브리드 검색이란?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      제공되는 Processor 유형
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      사전 준비
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      구성 방법
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="구성 방법">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 아키텍처 개요
+      1. 자동화 워크플로우 (추천)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 준비 사항
+      2. 수동 구성 (커스터마이징 가능)
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="2. 수동 구성 (커스터마이징 가능)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-ingest-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Ingest Pipeline 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-vector-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Vector Index 생성
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-search-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Search Pipeline 설정
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. 문서 색인
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-hybrid-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Hybrid Search 실행
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 인제스트 단계
+      확장 예시
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. 인제스트 단계">
+    <nav class="md-nav" aria-label="확장 예시">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31" class="md-nav__link">
+  <a href="#match-term" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 임베딩 생성
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 컬렉션 생성
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3 데이터 업서트
+      Match + Term 쿼리 결합
     </span>
   </a>
   
@@ -3613,60 +3726,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 검색·재랭킹 단계
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 검색·재랭킹 단계">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 쿼리 임베딩
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-dense-sparse" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 하이브리드 검색 (Dense + Sparse)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-colbert" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3 ColBERT 재랭킹
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 베스트 프랙티스
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. 결론
+      마무리
     </span>
   </a>
   
@@ -3688,202 +3750,213 @@
 
 
 
-  <h1>Reranking Hybrid Search</h1>
+  <h1>Hybrid Search</h1>
 
-<p>본 문서는 <strong>Dense + Sparse + Late-Interaction</strong> 임베딩을 한 컬렉션에 저장하고,<br />
-하이브리드 검색 후 ColBERT로 재랭킹하는 전 과정을 예시 코드와 함께 설명한다.  </p>
-<p>모든 예시는 Python 3.9 이상, Qdrant 서버가 <code>http://localhost:6333</code> 에 구동되어 있다는 전제하에 작성되었다.</p>
-<h2 id="1">1. 아키텍처 개요</h2>
+<p>OpenSearch 2.11부터 도입된 <strong>Hybrid Search(하이브리드 검색)</strong> 기능은 키워드 기반 검색과 시맨틱(의미 기반) 검색을 결합하여 보다 정밀하고 유연한 검색 결과를 제공할 수 있게 해줍니다. 이 글에서는 하이브리드 검색의 개념부터 자동화된 설정 방법, 수동 설정 방식까지 전 과정을 상세히 소개합니다.</p>
+<h2 id="_1">하이브리드 검색이란?</h2>
+<p>하이브리드 검색은 전통적인 키워드 검색(Query DSL 기반)과 신경망 임베딩을 활용한 의미 기반 검색(Neural Search)의 결과를 결합하여 검색 정확도를 향상시키는 방식이다.</p>
+<p>이를 위해 OpenSearch는 <strong>search pipeline</strong>을 통해 쿼리 실행 중간 결과를 가로채고 점수(score)를 조정하거나 재정렬하는 방식으로 동작한다.</p>
+<h3 id="processor">제공되는 Processor 유형</h3>
 <table>
 <thead>
 <tr>
-<th>단계</th>
-<th>내용</th>
+<th>Processor 종류</th>
+<th>도입 버전</th>
+<th>설명</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>문서 인제스트</strong></td>
-<td>문서 → ① Dense (BGE) ② Sparse (BM25) ③ ColBERT 토큰 벡터 생성 → Qdrant 저장</td>
+<td>Normalization Processor</td>
+<td>2.10</td>
+<td>여러 쿼리 결과의 점수를 정규화 및 결합 (예: min-max, mean 등)</td>
 </tr>
 <tr>
-<td><strong>검색 쿼리</strong></td>
-<td>쿼리 → 동일 세 가지 임베딩 생성</td>
-</tr>
-<tr>
-<td><strong>하이브리드 검색</strong></td>
-<td>Dense + Sparse 두 서브쿼리를 <code>prefetch</code> 로 병렬 수행</td>
-</tr>
-<tr>
-<td><strong>재랭킹</strong></td>
-<td>ColBERT 멀티벡터로 후보를 <code>MaxSim</code> 기반 재정렬</td>
-</tr>
-<tr>
-<td><strong>결과</strong></td>
-<td>최종 상위 N개 문서 반환</td>
+<td>Score Ranker Processor</td>
+<td>2.19</td>
+<td>랭크 기반 결과를 결합하는 Rank Fusion 기법 사용</td>
 </tr>
 </tbody>
 </table>
-<p>멀티벡터(ColBERT) 스페이스는 <strong>HNSW 인덱스를 끈(m = 0)</strong> 상태로 저장해 RAM·삽입 시간을 최소화한다.</p>
-<h2 id="2">2. 준비 사항</h2>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>qdrant-client<span class="o">[</span>fastembed<span class="o">]</span>&gt;<span class="o">=</span><span class="m">1</span>.14.2
-pip<span class="w"> </span>install<span class="w"> </span>fastembed
-</code></pre></div>
-<p>모델 이름</p>
+<h2 id="_2">사전 준비</h2>
+<p>하이브리드 검색을 사용하려면 먼저 텍스트 임베딩 모델(text embedding model)이 설정되어 있어야 한다.
+이미 벡터 임베딩이 생성된 상태라면 바로 검색 파이프라인 구축으로 넘어갈 수 있다.</p>
+<h2 id="_3">구성 방법</h2>
+<p>하이브리드 검색 설정은 두 가지 방식으로 구성할 수 있다.</p>
+<h3 id="1">1. 자동화 워크플로우 (추천)</h3>
+<p>OpenSearch에서 제공하는 <code>hybrid_search</code> 템플릿을 활용하여 다음을 자동 생성할 수 있다.</p>
 <ul>
 <li>
-<p>Dense : <code>sentence-transformers/all-MiniLM-L6-v2</code></p>
+<p>Ingest pipeline (텍스트 임베딩 처리)</p>
 </li>
 <li>
-<p>Sparse : <code>Qdrant/bm25</code></p>
+<p>Vector index</p>
 </li>
 <li>
-<p>Late-Interaction : <code>colbert-ir/colbertv2.0</code></p>
+<p>Search pipeline</p>
 </li>
 </ul>
-<h2 id="3">3. 인제스트 단계</h2>
-<h3 id="31">3.1 임베딩 생성</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastembed</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">TextEmbedding</span><span class="p">,</span>
-    <span class="n">SparseTextEmbedding</span><span class="p">,</span>
-    <span class="n">LateInteractionTextEmbedding</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">docs</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;Artificial intelligence is used in hospitals for cancer diagnosis and treatment.&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Self-driving cars use AI to detect obstacles and make driving decisions.&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;AI is transforming customer service through chatbots and automation.&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="n">dense_model</span>   <span class="o">=</span> <span class="n">TextEmbedding</span><span class="p">(</span><span class="s2">&quot;sentence-transformers/all-MiniLM-L6-v2&quot;</span><span class="p">)</span>
-<span class="n">sparse_model</span>  <span class="o">=</span> <span class="n">SparseTextEmbedding</span><span class="p">(</span><span class="s2">&quot;Qdrant/bm25&quot;</span><span class="p">)</span>
-<span class="n">colbert_model</span> <span class="o">=</span> <span class="n">LateInteractionTextEmbedding</span><span class="p">(</span><span class="s2">&quot;colbert-ir/colbertv2.0&quot;</span><span class="p">)</span>
-
-<span class="n">dense_vecs</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dense_model</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
-<span class="n">sparse_vecs</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sparse_model</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
-<span class="n">colbert_vecs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">colbert_model</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>      <span class="c1"># 리스트(토큰수)→128차원 벡터 배열</span>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">/_plugi</span><span class="kc">ns</span><span class="err">/_</span><span class="kc">fl</span><span class="err">ow_</span><span class="kc">fra</span><span class="err">mework/work</span><span class="kc">fl</span><span class="err">ow?use_case=hybrid_search&amp;provisio</span><span class="kc">n</span><span class="err">=</span><span class="kc">true</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;create_ingest_pipeline.model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;모델_ID&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="32">3.2 컬렉션 생성</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qdrant_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">QdrantClient</span><span class="p">,</span> <span class="n">models</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">QdrantClient</span><span class="p">(</span><span class="s2">&quot;http://localhost:6333&quot;</span><span class="p">)</span>
-
-<span class="n">client</span><span class="o">.</span><span class="n">create_collection</span><span class="p">(</span>
-    <span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;hybrid-search&quot;</span><span class="p">,</span>
-    <span class="n">vectors_config</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;all-MiniLM-L6-v2&quot;</span><span class="p">:</span> <span class="n">models</span><span class="o">.</span><span class="n">VectorParams</span><span class="p">(</span>
-            <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">dense_vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-            <span class="n">distance</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">Distance</span><span class="o">.</span><span class="n">COSINE</span><span class="p">,</span>
-        <span class="p">),</span>
-        <span class="s2">&quot;colbertv2.0&quot;</span><span class="p">:</span> <span class="n">models</span><span class="o">.</span><span class="n">VectorParams</span><span class="p">(</span>
-            <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colbert_vecs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span>
-            <span class="n">distance</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">Distance</span><span class="o">.</span><span class="n">COSINE</span><span class="p">,</span>
-            <span class="n">multivector_config</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">MultiVectorConfig</span><span class="p">(</span>
-                <span class="n">comparator</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">MultiVectorComparator</span><span class="o">.</span><span class="n">MAX_SIM</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">hnsw_config</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">HnswConfigDiff</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>  <span class="c1"># 인덱싱 OFF</span>
-        <span class="p">),</span>
-    <span class="p">},</span>
-    <span class="n">sparse_vectors_config</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;bm25&quot;</span><span class="p">:</span> <span class="n">models</span><span class="o">.</span><span class="n">SparseVectorParams</span><span class="p">(</span>
-            <span class="n">modifier</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">Modifier</span><span class="o">.</span><span class="n">IDF</span>   <span class="c1"># IDF 자동 적용</span>
-        <span class="p">)</span>
-    <span class="p">},</span>
-<span class="p">)</span>
+<p>성공 시 반환되는 workflow_id 로 생성 상태를 확인 할 수 있다.</p>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">/_plugi</span><span class="kc">ns</span><span class="err">/_</span><span class="kc">fl</span><span class="err">ow_</span><span class="kc">fra</span><span class="err">mework/work</span><span class="kc">fl</span><span class="err">ow/&lt;work</span><span class="kc">fl</span><span class="err">ow_id&gt;/_s</span><span class="kc">tatus</span>
 </code></pre></div>
-<h3 id="33">3.3 데이터 업서트</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qdrant_client.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PointStruct</span>
+<h3 id="2">2. 수동 구성 (커스터마이징 가능)</h3>
+<h4 id="step-1-ingest-pipeline">Step 1. Ingest Pipeline 생성</h4>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/_i</span><span class="kc">n</span><span class="err">ges</span><span class="kc">t</span><span class="err">/pipeli</span><span class="kc">ne</span><span class="err">/</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">ges</span><span class="kc">t</span><span class="mi">-</span><span class="err">pipeli</span><span class="kc">ne</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;텍스트 임베딩 파이프라인&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;processors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;text_embedding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;모델_ID&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;field_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;passage_embedding&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="step-2-vector-index">Step 2. Vector Index 생성</h4>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;index.knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;default_pipeline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nlp-ingest-pipeline&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;passage_embedding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lucene&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hnsw&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="step-3-search-pipeline">Step 3. Search Pipeline 설정</h4>
+<p><div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/_search/pipeli</span><span class="kc">ne</span><span class="err">/</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">search</span><span class="mi">-</span><span class="err">pipeli</span><span class="kc">ne</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hybrid Search용 포스트 프로세서&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;phase_results_processors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;normalization-processor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;normalization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;technique&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;min_max&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;combination&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;technique&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arithmetic_mean&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;weights&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+`</p>
+<h4 id="step-4">Step 4. 문서 색인</h4>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex/_doc/</span><span class="mi">1</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hello world&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s1&quot;</span>
+<span class="p">}</span>
 
-<span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">PointStruct</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
-        <span class="n">vector</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;all-MiniLM-L6-v2&quot;</span><span class="p">:</span> <span class="n">dense_vecs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-            <span class="s2">&quot;bm25&quot;</span><span class="p">:</span> <span class="n">sparse_vecs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">as_object</span><span class="p">(),</span>
-            <span class="s2">&quot;colbertv2.0&quot;</span><span class="p">:</span> <span class="n">colbert_vecs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-        <span class="p">},</span>
-        <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;document&quot;</span><span class="p">:</span> <span class="n">docs</span><span class="p">[</span><span class="n">i</span><span class="p">]},</span>
-    <span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
-<span class="p">]</span>
-
-<span class="n">client</span><span class="o">.</span><span class="n">upsert</span><span class="p">(</span>
-    <span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;hybrid-search&quot;</span><span class="p">,</span>
-    <span class="n">points</span><span class="o">=</span><span class="n">points</span><span class="p">,</span>
-    <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-<span class="p">)</span>
+<span class="err">PUT</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex/_doc/</span><span class="mi">2</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hi planet&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s2&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
-<h2 id="4">4. 검색·재랭킹 단계</h2>
-<h3 id="41">4.1 쿼리 임베딩</h3>
-<div class="highlight"><pre><span></span><code><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;How does AI help in medicine?&quot;</span>
-
-<span class="n">dense_q</span>   <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">dense_model</span><span class="o">.</span><span class="n">query_embed</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
-<span class="n">sparse_q</span>  <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">sparse_model</span><span class="o">.</span><span class="n">query_embed</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
-<span class="n">colbert_q</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colbert_model</span><span class="o">.</span><span class="n">query_embed</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
+<p>색인 시 ingest pipeline이 실행되어 <code>passage_embedding</code> 필드에 벡터가 생성된다.</p>
+<h4 id="step-5-hybrid-search">Step 5. Hybrid Search 실행</h4>
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex/_search?search_pipeli</span><span class="kc">ne</span><span class="err">=</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">search</span><span class="mi">-</span><span class="err">pipeli</span><span class="kc">ne</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;passage_embedding&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hybrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hi world&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;neural&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;passage_embedding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;query_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hi world&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;모델_ID&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="42-dense-sparse">4.2 하이브리드 검색 (Dense + Sparse)</h3>
-<div class="highlight"><pre><span></span><code><span class="n">prefetch</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">models</span><span class="o">.</span><span class="n">Prefetch</span><span class="p">(</span>
-        <span class="n">query</span><span class="o">=</span><span class="n">dense_q</span><span class="p">,</span>
-        <span class="n">using</span><span class="o">=</span><span class="s2">&quot;all-MiniLM-L6-v2&quot;</span><span class="p">,</span>
-        <span class="n">limit</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="p">),</span>
-    <span class="n">models</span><span class="o">.</span><span class="n">Prefetch</span><span class="p">(</span>
-        <span class="n">query</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SparseVector</span><span class="p">(</span><span class="o">**</span><span class="n">sparse_q</span><span class="o">.</span><span class="n">as_object</span><span class="p">()),</span>
-        <span class="n">using</span><span class="o">=</span><span class="s2">&quot;bm25&quot;</span><span class="p">,</span>
-        <span class="n">limit</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="p">),</span>
-<span class="p">]</span>
+<p>다음은 match 쿼리와 neural 쿼리를 결합한 예시이다.
+<div class="highlight"><pre><span></span><code><span class="err">GET</span><span class="w"> </span><span class="err">/my</span><span class="mi">-</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex/_search?search_pipeli</span><span class="kc">ne</span><span class="err">=</span><span class="kc">nl</span><span class="err">p</span><span class="mi">-</span><span class="err">search</span><span class="mi">-</span><span class="err">pipeli</span><span class="kc">ne</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;passage_embedding&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hybrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hi world&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;neural&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;passage_embedding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;query_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hi world&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;모델_ID&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;k&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>결과에는 키워드 기반과 의미 기반 쿼리 모두를 고려한 문서가 반환된다.</p>
+<h2 id="_4">확장 예시</h2>
+<h3 id="match-term">Match + Term 쿼리 결합</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;hybrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;queries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;term&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;passage_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;planet&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="43-colbert">4.3 ColBERT 재랭킹</h3>
-<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">query_points</span><span class="p">(</span>
-    <span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;hybrid-search&quot;</span><span class="p">,</span>
-    <span class="n">prefetch</span><span class="o">=</span><span class="n">prefetch</span><span class="p">,</span>           <span class="c1"># 후보 20+20</span>
-    <span class="n">query</span><span class="o">=</span><span class="n">colbert_q</span><span class="p">,</span>             <span class="c1"># 토큰-레벨 MaxSim</span>
-    <span class="n">using</span><span class="o">=</span><span class="s2">&quot;colbertv2.0&quot;</span><span class="p">,</span>
-    <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>                    <span class="c1"># 최종 상위 10</span>
-    <span class="n">with_payload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">points</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">payload</span><span class="p">[</span><span class="s2">&quot;document&quot;</span><span class="p">],</span> <span class="s2">&quot;| score:&quot;</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="5">5. 베스트 프랙티스</h2>
-<ol>
-<li>
-<p><strong>멀티벡터 인덱싱 OFF</strong></p>
-<ul>
-<li>
-<p><code>hnsw_config.m = 0</code> 로 RAM·삽입 속도 최적화</p>
-</li>
-<li>
-<p>재랭킹 전용 필드에는 인덱싱이 불필요하다.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Dense + Sparse 후보 집합 축소</strong></p>
-<ul>
-<li>1차 검색 <code>limit</code> 값을 작게 잡아 ColBERT 계산량을 제어한다.</li>
-</ul>
-</li>
-<li>
-<p><strong>지속적 품질 모니터링</strong></p>
-<ul>
-<li>정기적으로 Precision@k, MRR 등을 평가하여 모델·파라미터를 조정한다.</li>
-</ul>
-</li>
-<li>
-<p><strong>지연 시간 vs 정확도 균형</strong></p>
-<ul>
-<li>재랭킹은 비용이 크므로 반드시 축소된 후보 집합에만 적용한다.</li>
-</ul>
-</li>
-</ol>
-<h2 id="6">6. 결론</h2>
-<p>Qdrant는 한 컬렉션 안에서 <strong>Dense + Sparse + 멀티벡터</strong>를 동시에 저장하고,<br />
-<code>prefetch</code> / <code>multivector</code> 기능으로 <strong>하이브리드 검색→ColBERT 재랭킹</strong>을 한 번의 호출로 수행할 수 있다.<br />
-인덱스 사용 여부를 필드 단위로 제어할 수 있으므로 성능·자원 사용을 세밀하게 최적화할 수 있다.</p>
-<p>Qdrant Cloud를 이용하면 동일 구성을 관리형 환경에서 즉시 활용할 수 있다. 지금 바로 무료로 가입하여 고정밀 검색 파이프라인을 구축해 보자.</p>
+<p>이 방식으로 다양한 쿼리 유형을 조합할 수 있다.</p>
+<h2 id="_5">마무리</h2>
+<p>OpenSearch의 하이브리드 검색 기능은 정보 검색 시스템에서 <strong>정확도 향상</strong>과 <strong>다양한 사용자 질의 대응</strong>을 가능하게 하는 강력한 도구입니다. 키워드 검색만으로는 찾기 어려운 문서도 시맨틱 검색과 결합하여 더 정밀하게 찾아낼 수 있습니다.</p>
 
 
 
@@ -3938,12 +4011,12 @@ pip<span class="w"> </span>install<span class="w"> </span>fastembed
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
-        <script src="../../../custom.js"></script>
+        <script src="../../../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

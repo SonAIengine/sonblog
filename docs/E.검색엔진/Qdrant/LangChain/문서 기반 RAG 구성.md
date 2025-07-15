@@ -171,6 +171,5 @@ if __name__ == "__main__":
     - `mode=dense|sparse|hybrid` 옵션
         
     - hybrid 모드 시 score 반환, optional metadata 필터링 지원
-        
 
-이대로 실행하시면 업로드된 모든 문서를 자동으로 분할·색인하고, HTTP API로 세 가지 검색 모드를 사용할 수 있습니다.
+

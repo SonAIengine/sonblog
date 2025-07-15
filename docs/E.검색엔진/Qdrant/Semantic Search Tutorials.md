@@ -189,7 +189,6 @@ search_result = client.query_points(
 
 RRF(Reciprocal Rank Fusion) 또는 DBSF(Distribution-Based Score Fusion)로 두 결과를 합친다.
 
----
 
 ## 4. 검색 품질 측정 및 HNSW 튜닝
 
@@ -226,16 +225,13 @@ client.update_collection(
 
 인덱싱 완료 후 precision@k를 다시 계산하여 향상 여부를 확인한다.
 
----
 
 ## 5. 종합 네트워킹·운영 팁
 
 - 컨테이너·클러스터 환경에서는 **포트 6333(HTTP), 6334(gRPC), 6335(클러스터 통신)**을 모두 열어야 한다.
     
 - 다중 노드일 경우 각 인스턴스가 동일 포트로 상호 통신 가능해야 하며, 클라이언트는 6333 또는 6334에 접근하면 된다.
-    
 
----
 
 ## 6. 결론 및 다음 단계
 

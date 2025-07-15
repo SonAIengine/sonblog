@@ -332,3 +332,29 @@ body {
     opacity: 1;
     color: white;
 }
+
+/* ===== 사이드바 계층별 들여쓰기 개선 (가독성 향상) ===== */
+
+
+/* TOC 최상위 항목 */
+nav.md-nav--secondary > ul.md-nav__list > li.md-nav__item {
+    padding-left: 0.8em;
+  }
+  
+  /* TOC 하위 항목 (한 단계 중첩) */
+  nav.md-nav--secondary ul.md-nav__list > li.md-nav__item > nav > ul.md-nav__list > li.md-nav__item {
+    padding-left: 1.2em;
+  }
+  
+  /* TOC 더 깊은 중첩 항목 */
+  nav.md-nav--secondary ul.md-nav__list ul.md-nav__list ul.md-nav__list li.md-nav__item {
+    padding-left: 1.6em;
+  }
+  
+  /* TOC 항목의 기호 스타일 (선택 사항) */
+  nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::before {
+    content: "•";
+    margin-right: 6px;
+    color: #999;
+    font-size: 0.75em;
+  }

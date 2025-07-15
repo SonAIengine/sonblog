@@ -73,7 +73,6 @@ asyncio.run(main())
 
 정도만 해주면 된다.
 
----
 
 #### 유의 사항
 
@@ -83,7 +82,5 @@ asyncio.run(main())
     
 - **타 SDK도 async 사용**: Cohere·OpenAI Python 등 다른 비동기 클라이언트와 결합할 때 역시 동일하게 `await` 를 붙여야 한다.
     
-
----
 
 비동기 API를 사용하면 **스레드 블로킹 없이** 데이터베이스·외부 API 호출을 병렬로 처리할 수 있으므로, Python 웹 서비스의 처리량과 응답성을 크게 개선할 수 있다. Qdrant의 `AsyncQdrantClient` 를 적극 활용하여 고성능 비동기 애플리케이션을 구축하기 바란다.

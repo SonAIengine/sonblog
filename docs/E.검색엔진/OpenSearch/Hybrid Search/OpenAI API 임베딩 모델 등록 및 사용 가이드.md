@@ -170,7 +170,7 @@ PUT /my-openai-nlp-index/_doc/1
 
 ### Step 7: 파이프라인 테스트 (선택사항)
 
-파이프라인이 정상 작동하는지 시뮬레이션으로 확인:
+파이프라인이 정상 작동하는지 시뮬레이션으로 확인
 
 ```json
 POST /_ingest/pipeline/openai-nlp/_simulate

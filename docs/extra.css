@@ -9,10 +9,10 @@ pre code {
     border-radius: 8px !important;
     font-size: 0.85em !important;
     line-height: 1.6 !important;
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace !important;
     white-space: pre-wrap !important;
     word-break: break-word !important;
     overflow-x: auto !important;
+    font-family: 'RixXladywatermelonR', sans-serif;
 }
 
 

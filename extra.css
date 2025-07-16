@@ -163,7 +163,7 @@ p em {
 
 p {
     margin-bottom: 1.4em;
-    line-height: 1.8;
+    line-height: 2.0;
     /* 단락 간 간격 추가 */
 }
 
@@ -196,7 +196,7 @@ h3 {
 a:hover {
     text-decoration: underline;
     /* 마우스를 올리면 밑줄 표시 */
-    font-weight: 500;
+    font-weight: 600;
     /* 호버 시 약간 더 진한 색상 */
 }
 

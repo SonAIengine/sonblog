@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../../../../D.%20AI/BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/">
+        <link rel="prev" href="../Docx/">
       
       
         <link rel="next" href="../../../LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/">
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pdfminerhigh_level" class="md-skip">
+        <a href="#pdf" class="md-skip">
           Skip to content
         </a>
       
@@ -365,7 +365,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../Docx/" class="md-tabs__link">
           
   
   
@@ -1725,6 +1725,8 @@
       
         
       
+        
+      
     
     
     
@@ -1760,6 +1762,29 @@
             Document Loader
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Docx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1814,9 +1839,123 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pdfminerhigh_level" class="md-nav__link">
+  <a href="#pdf" class="md-nav__link">
     <span class="md-ellipsis">
-      pdfminer.high_level
+      PDF 문서에서 구조화된 텍스트와 테이블 추출하기
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      핵심 목표
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      사용 라이브러리
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      주요 처리 단계
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="주요 처리 단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clean_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 텍스트 전처리 (clean_text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-classify_text_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 텍스트 유형 분류 (classify_text_type)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-extract_unified_content" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 페이지별 텍스트 및 테이블 통합 추출 (extract_unified_content)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extract_tables_separately" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 별도 테이블 구성 (extract_tables_separately)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-format_content_for_output" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 결과 포맷팅 (format_content_for_output)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-create_comprehensive_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 최종 결과 통합 및 저장 (create_comprehensive_result)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      실행 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      활용 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      코드
     </span>
   </a>
   
@@ -3850,9 +3989,123 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pdfminerhigh_level" class="md-nav__link">
+  <a href="#pdf" class="md-nav__link">
     <span class="md-ellipsis">
-      pdfminer.high_level
+      PDF 문서에서 구조화된 텍스트와 테이블 추출하기
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      핵심 목표
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      사용 라이브러리
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      주요 처리 단계
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="주요 처리 단계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clean_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 텍스트 전처리 (clean_text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-classify_text_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 텍스트 유형 분류 (classify_text_type)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-extract_unified_content" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 페이지별 텍스트 및 테이블 통합 추출 (extract_unified_content)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-extract_tables_separately" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 별도 테이블 구성 (extract_tables_separately)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-format_content_for_output" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 결과 포맷팅 (format_content_for_output)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-create_comprehensive_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 최종 결과 통합 및 저장 (create_comprehensive_result)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      실행 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      활용 예시
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      코드
     </span>
   </a>
   
@@ -3876,131 +4129,149 @@
 
   <h1>PDF</h1>
 
-<h2 id="pdfminerhigh_level">pdfminer.high_level</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pdfminer.high_level</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_text</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pdfminer.layout</span><span class="w"> </span><span class="kn">import</span> <span class="n">LAParams</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_korean_text_from_pdf</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    한글 PDF 파일에서 텍스트를 추출하는 함수</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        pdf_path (str): PDF 파일 경로</span>
-<span class="sd">        output_path (str, optional): 추출된 텍스트를 저장할 파일 경로</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        str: 추출된 텍스트</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># LAParams 설정 (한글 처리를 위한 최적화)</span>
-        <span class="n">laparams</span> <span class="o">=</span> <span class="n">LAParams</span><span class="p">(</span>
-            <span class="n">boxes_flow</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>        <span class="c1"># 텍스트 박스 흐름 조정</span>
-            <span class="n">word_margin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>       <span class="c1"># 단어 간 여백</span>
-            <span class="n">char_margin</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>       <span class="c1"># 문자 간 여백</span>
-            <span class="n">line_margin</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>       <span class="c1"># 줄 간 여백</span>
-            <span class="n">detect_vertical</span><span class="o">=</span><span class="kc">True</span>   <span class="c1"># 세로 텍스트 감지</span>
-        <span class="p">)</span>
-
-        <span class="c1"># PDF에서 텍스트 추출</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">extract_text</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">laparams</span><span class="o">=</span><span class="n">laparams</span><span class="p">)</span>
-
-        <span class="c1"># 추출된 텍스트 정리</span>
-        <span class="n">cleaned_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-        <span class="c1"># 파일로 저장 (선택사항)</span>
-        <span class="k">if</span> <span class="n">output_path</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cleaned_text</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;텍스트가 </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">에 저장되었습니다.&quot;</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">cleaned_text</span>
-
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;오류 발생: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">extract_text_by_pages</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    페이지별로 텍스트를 추출하는 함수</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        pdf_path (str): PDF 파일 경로</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list: 페이지별 텍스트 리스트</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">pdfminer.high_level</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_pages</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">pdfminer.layout</span><span class="w"> </span><span class="kn">import</span> <span class="n">LTTextContainer</span>
-
-    <span class="n">pages_text</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">page_layout</span> <span class="ow">in</span> <span class="n">extract_pages</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">):</span>
-            <span class="n">page_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">page_layout</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">LTTextContainer</span><span class="p">):</span>
-                    <span class="n">page_text</span> <span class="o">+=</span> <span class="n">element</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
-            <span class="n">pages_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">page_text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-
-        <span class="k">return</span> <span class="n">pages_text</span>
-
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;오류 발생: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[]</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="c1"># 사용 예시</span>
-    <span class="n">pdf_file</span> <span class="o">=</span> <span class="s2">&quot;sample_korean.pdf&quot;</span>  <span class="c1"># 한글 PDF 파일 경로</span>
-
-    <span class="c1"># 파일 존재 확인</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;파일을 찾을 수 없습니다: </span><span class="si">{</span><span class="n">pdf_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PDF 텍스트 추출 시작...&quot;</span><span class="p">)</span>
-
-    <span class="c1"># 전체 텍스트 추출</span>
-    <span class="n">extracted_text</span> <span class="o">=</span> <span class="n">extract_korean_text_from_pdf</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">,</span> <span class="s2">&quot;extracted_korean_text.txt&quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">extracted_text</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 추출된 텍스트 미리보기 ===&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">extracted_text</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>  <span class="c1"># 처음 500자만 출력</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">전체 텍스트 길이: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">extracted_text</span><span class="p">)</span><span class="si">}</span><span class="s2"> 문자&quot;</span><span class="p">)</span>
-
-    <span class="c1"># 페이지별 텍스트 추출</span>
-    <span class="n">pages</span> <span class="o">=</span> <span class="n">extract_text_by_pages</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">총 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pages</span><span class="p">)</span><span class="si">}</span><span class="s2">페이지가 처리되었습니다.&quot;</span><span class="p">)</span>
-
-    <span class="c1"># 각 페이지의 텍스트 미리보기</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">page_text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pages</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">page_text</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>  <span class="c1"># 빈 페이지가 아닌 경우만</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 페이지 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ---&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">page_text</span><span class="p">[:</span><span class="mi">200</span><span class="p">])</span>  <span class="c1"># 처음 200자만 출력</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">batch_extract_pdfs</span><span class="p">(</span><span class="n">pdf_folder</span><span class="p">,</span> <span class="n">output_folder</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    폴더 내의 모든 PDF 파일에서 텍스트 추출</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        pdf_folder (str): PDF 파일들이 있는 폴더 경로</span>
-<span class="sd">        output_folder (str): 추출된 텍스트를 저장할 폴더 경로</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_folder</span><span class="p">):</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">output_folder</span><span class="p">)</span>
-
-    <span class="n">pdf_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">pdf_folder</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.pdf&#39;</span><span class="p">)]</span>
-
-    <span class="k">for</span> <span class="n">pdf_file</span> <span class="ow">in</span> <span class="n">pdf_files</span><span class="p">:</span>
-        <span class="n">pdf_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pdf_folder</span><span class="p">,</span> <span class="n">pdf_file</span><span class="p">)</span>
-        <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">pdf_file</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">)</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;처리 중: </span><span class="si">{</span><span class="n">pdf_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">extract_korean_text_from_pdf</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+<h2 id="pdf">PDF 문서에서 구조화된 텍스트와 테이블 추출하기</h2>
+<p>PDF 문서는 다양한 레이아웃과 서식을 가지며, 그 안에서 유의미한 정보를 자동으로 추출하는 것은 쉽지 않다. 특히 한국어 문서의 경우 문단 구조, 표, 목록 등의 다양한 요소가 뒤섞여 있어 정제된 텍스트를 얻기 위해서는 복잡한 후처리 과정이 필요하다. 본 글에서는 <code>pdfminer.six</code> 라이브러리를 활용하여 PDF 문서로부터 <strong>제목, 일반 문단, 표 형식의 데이터</strong>를 구분하여 통합적으로 추출하고, 사람이 읽기 쉬운 형태로 가공하는 전체 파이프라인을 설명한다.</p>
+<h2 id="_1">핵심 목표</h2>
+<ul>
+<li>
+<p>PDF 문서에서 텍스트, 제목, 목록, 표 등의 유형을 구분하여 추출</p>
+</li>
+<li>
+<p>Y 좌표 및 X 좌표 기반으로 텍스트를 정렬 및 그룹화</p>
+</li>
+<li>
+<p>테이블 형태를 감지하여 행 단위로 구성</p>
+</li>
+<li>
+<p>결과를 마크다운 형태에 가까운 구조로 출력</p>
+</li>
+<li>
+<p>추가적으로 전체 텍스트 및 테이블을 별도로 백업</p>
+</li>
+</ul>
+<h2 id="_2">사용 라이브러리</h2>
+<ul>
+<li>
+<p><code>pdfminer.six</code>: PDF 문서의 레이아웃 분석 및 텍스트 추출을 담당</p>
+</li>
+<li>
+<p><code>re</code>: 정규표현식을 통한 텍스트 패턴 분석</p>
+</li>
+<li>
+<p><code>pandas</code>: 테이블 구조 저장 시 사용 가능</p>
+</li>
+<li>
+<p><code>os</code>, <code>sys</code>: 파일 입출력 및 경로 제어</p>
+</li>
+</ul>
+<h2 id="_3">주요 처리 단계</h2>
+<h3 id="1-clean_text">1. 텍스트 전처리 (<code>clean_text</code>)</h3>
+<p>텍스트를 추출한 이후에는 다음과 같은 정제를 수행한다:</p>
+<ul>
+<li>
+<p>연속된 공백과 개행 제거</p>
+</li>
+<li>
+<p>선행/후행 공백 제거</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\n\s*\n\s*\n&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="2-classify_text_type">2. 텍스트 유형 분류 (<code>classify_text_type</code>)</h3>
+<p>문단을 다음 4가지로 분류한다:</p>
+<ul>
+<li>
+<p>제목 (<code>title</code>)</p>
+</li>
+<li>
+<p>일반 텍스트 (<code>text</code>)</p>
+</li>
+<li>
+<p>목록 (<code>list</code>)</p>
+</li>
+<li>
+<p>표 (<code>table</code>)</p>
+</li>
+</ul>
+<p>정규표현식을 통해 <code>제1조</code>, <code>1. 개요</code>, <code>가) 설명</code> 등의 패턴을 판별한다. 표에 대해서는 날짜, 시간, 숫자 등 반복되는 숫자 패턴 및 키워드 기반으로 감지한다.</p>
+<h3 id="3-extract_unified_content">3. 페이지별 텍스트 및 테이블 통합 추출 (<code>extract_unified_content</code>)</h3>
+<p>PDF 페이지마다 모든 <code>LTTextContainer</code>를 순회하며 텍스트를 추출하고, 다음과 같은 방식으로 처리한다:</p>
+<ul>
+<li>
+<p>Y 좌표 기준 정렬 (위 → 아래)</p>
+</li>
+<li>
+<p>같은 줄에 있는 텍스트들을 X 좌표 기준으로 정렬</p>
+</li>
+<li>
+<p>여러 개의 요소가 한 줄에 존재하는 경우 <code>|</code> 기호로 묶어서 테이블 행으로 구성</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>이름 | 나이 | 직책
+홍길동 | 34 | 매니저
+</code></pre></div>
+<h3 id="4-extract_tables_separately">4. 별도 테이블 구성 (<code>extract_tables_separately</code>)</h3>
+<p>추출된 텍스트 중에서 <strong>정확히 테이블일 가능성이 높은 행</strong>만을 별도로 추출한다. 다수의 열을 포함하면서 숫자 및 시간/근무 관련 키워드를 가진 행들만 필터링하며, 이를 <code>rows</code> 리스트로 구성한다.</p>
+<h3 id="5-format_content_for_output">5. 결과 포맷팅 (<code>format_content_for_output</code>)</h3>
+<p>다음과 같은 마크다운 유사 형식으로 구성된다:</p>
+<ul>
+<li>
+<p>제목: <code>## 제목</code></p>
+</li>
+<li>
+<p>테이블: <code>📊 텍스트1 | 텍스트2</code></p>
+</li>
+<li>
+<p>목록: <code>가) 항목</code></p>
+</li>
+<li>
+<p>일반 문단: 그대로 출력</p>
+</li>
+<li>
+<p>페이지 헤더: <code>=== 페이지 N ===</code> 표시</p>
+</li>
+</ul>
+<h3 id="6-create_comprehensive_result">6. 최종 결과 통합 및 저장 (<code>create_comprehensive_result</code>)</h3>
+<p>최종적으로 다음 섹션들을 포함하는 통합 분석 결과를 생성한다:</p>
+<ul>
+<li>
+<p>문서 내용 (텍스트 + 테이블 순서 통합)</p>
+</li>
+<li>
+<p>구조화된 테이블 데이터 (행 기반 정리)</p>
+</li>
+<li>
+<p>전체 텍스트 (백업용, 길이 제한 있음)</p>
+</li>
+</ul>
+<p>출력은 <code>result.txt</code> 파일로 저장되며, 결과는 CLI에 일부 미리보기 형태로 출력된다.</p>
+<h2 id="_4">실행 예시</h2>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>pdf_analyzer.py
+</code></pre></div>
+<p>출력 예</p>
+<div class="highlight"><pre><span></span><code>📁 처리할 파일: data/23. 플래티어_행복소통협의회 운영규정.pdf
+💾 출력 파일: result.txt
+✅ 종합 결과가 저장되었습니다: result.txt
+📊 총 내용 길이: 12,345 문자
+📄 통합 내용 항목: 84 개
+📋 구조화된 테이블: 5 개
+</code></pre></div>
+<h2 id="_5">활용 예시</h2>
+<ul>
+<li>
+<p>사내 규정집, 회의록, 보고서 등 구조화된 문서를 분석하여 요약할 때 활용할 수 있다.</p>
+</li>
+<li>
+<p>정형 텍스트와 반정형 테이블을 함께 다루는 업무에서 정리 도구로 활용이 가능하다.</p>
+</li>
+<li>
+<p>추출된 테이블 데이터는 CSV, Excel 등으로 변환하여 추가 가공도 가능하다.</p>
+</li>
+</ul>
+<h2 id="_6">코드</h2>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
 
 

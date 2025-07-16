@@ -163,11 +163,13 @@ p em {
 
 p {
     margin-bottom: 1.4em;
+    line-height: 1.8;
     /* 단락 간 간격 추가 */
 }
 
 li {
     margin-bottom: 0.6em;
+    line-height: 1.8;
     /* 목록 항목 간 간격 추가 */
 }
 

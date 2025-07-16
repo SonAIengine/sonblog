@@ -10,12 +10,11 @@ LangChain의 문서 로더는 PDF, Word, Excel, CSV, JSON 등 여러 형식의 �
 
 ### 2. **Document 객체의 구조**
 
-`Document` 객체는 두 가지 주요 속성을 가진다:
+`Document` 객체는 두 가지 주요 속성을 가진다
 
-- `page_content`: 문서의 실제 내용을 포함하는 문자열.
+- `page_content`: 문서의 실제 내용을 포함하는 문자열
     
-- `metadata`: 문서와 관련된 메타데이터를 저장하는 딕셔너리.
-    
+- `metadata`: 문서와 관련된 메타데이터를 저장하는 딕셔너리
 
 #### 예시 코드
 

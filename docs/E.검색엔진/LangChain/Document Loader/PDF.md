@@ -136,6 +136,7 @@ python pdf_analyzer.py
 
 
 ## 코드
+
 ```python
 from pdfminer.high_level import extract_text, extract_pages
 from pdfminer.layout import LAParams, LTTextContainer
@@ -160,7 +161,7 @@ def classify_text_type(text):
     for pattern in title_patterns:
         if re.match(pattern, text): return "title"
     table_patterns = [
-        r'\d+시간|\d+분', r'\d+월|\d+일|\d+년', r'연장근로|초과근무|휴가|근태',
+        r'\d+시간|\d+분', r'\d+월|\d+일|\d+년',
         r'\d+:\d+|\d+시\s*\d+분', r'[가-힣]+\s*\|\s*[가-힣]+',
         r'[가-힣]+\s+\d+\s+[가-힣]+', r'^\s*\d+\s+[가-힣]+\s+\d+',
     ]
@@ -240,7 +241,7 @@ def extract_tables_separately(pdf_path):
             if len(row) > 1:
                 row.sort(key=lambda x: x['x0'])
                 texts = [r['text'] for r in row]
-                if any(re.search(r'\d', t) for t in texts) or any(re.search(r'시간|분|월|일|근무|휴가|연장', t) for t in texts):
+                if any(re.search(r'\d', t) for t in texts):
                     rows.append(texts)
             i += 1
         if rows:

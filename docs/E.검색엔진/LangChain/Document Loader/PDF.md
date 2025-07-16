@@ -1,128 +1,140 @@
-## pdfminer.high_level 
+## PDF 문서에서 구조화된 텍스트와 테이블 추출하기
+
+PDF 문서는 다양한 레이아웃과 서식을 가지며, 그 안에서 유의미한 정보를 자동으로 추출하는 것은 쉽지 않다. 특히 한국어 문서의 경우 문단 구조, 표, 목록 등의 다양한 요소가 뒤섞여 있어 정제된 텍스트를 얻기 위해서는 복잡한 후처리 과정이 필요하다. 본 글에서는 `pdfminer.six` 라이브러리를 활용하여 PDF 문서로부터 **제목, 일반 문단, 표 형식의 데이터**를 구분하여 통합적으로 추출하고, 사람이 읽기 쉬운 형태로 가공하는 전체 파이프라인을 설명한다.
+
+## 핵심 목표
+
+- PDF 문서에서 텍스트, 제목, 목록, 표 등의 유형을 구분하여 추출
+    
+- Y 좌표 및 X 좌표 기반으로 텍스트를 정렬 및 그룹화
+    
+- 테이블 형태를 감지하여 행 단위로 구성
+    
+- 결과를 마크다운 형태에 가까운 구조로 출력
+    
+- 추가적으로 전체 텍스트 및 테이블을 별도로 백업
+
+
+## 사용 라이브러리
+
+- `pdfminer.six`: PDF 문서의 레이아웃 분석 및 텍스트 추출을 담당
+    
+- `re`: 정규표현식을 통한 텍스트 패턴 분석
+    
+- `pandas`: 테이블 구조 저장 시 사용 가능
+    
+- `os`, `sys`: 파일 입출력 및 경로 제어
+
+
+## 주요 처리 단계
+
+### 1. 텍스트 전처리 (`clean_text`)
+
+텍스트를 추출한 이후에는 다음과 같은 정제를 수행한다:
+
+- 연속된 공백과 개행 제거
+    
+- 선행/후행 공백 제거
+    
 
 ```python
-from pdfminer.high_level import extract_text
-from pdfminer.layout import LAParams
-import os
-import sys
+text = re.sub(r'\s+', ' ', text)
+text = re.sub(r'\n\s*\n\s*\n', '\n\n', text)
+text = text.strip()
+```
 
-def extract_korean_text_from_pdf(pdf_path, output_path=None):
-    """
-    한글 PDF 파일에서 텍스트를 추출하는 함수
-    
-    Args:
-        pdf_path (str): PDF 파일 경로
-        output_path (str, optional): 추출된 텍스트를 저장할 파일 경로
-    
-    Returns:
-        str: 추출된 텍스트
-    """
-    try:
-        # LAParams 설정 (한글 처리를 위한 최적화)
-        laparams = LAParams(
-            boxes_flow=0.5,        # 텍스트 박스 흐름 조정
-            word_margin=0.1,       # 단어 간 여백
-            char_margin=2.0,       # 문자 간 여백
-            line_margin=0.5,       # 줄 간 여백
-            detect_vertical=True   # 세로 텍스트 감지
-        )
-        
-        # PDF에서 텍스트 추출
-        text = extract_text(pdf_path, laparams=laparams)
-        
-        # 추출된 텍스트 정리
-        cleaned_text = text.strip()
-        
-        # 파일로 저장 (선택사항)
-        if output_path:
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(cleaned_text)
-            print(f"텍스트가 {output_path}에 저장되었습니다.")
-        
-        return cleaned_text
-        
-    except Exception as e:
-        print(f"오류 발생: {e}")
-        return None
+### 2. 텍스트 유형 분류 (`classify_text_type`)
 
-def extract_text_by_pages(pdf_path):
-    """
-    페이지별로 텍스트를 추출하는 함수
-    
-    Args:
-        pdf_path (str): PDF 파일 경로
-    
-    Returns:
-        list: 페이지별 텍스트 리스트
-    """
-    from pdfminer.high_level import extract_pages
-    from pdfminer.layout import LTTextContainer
-    
-    pages_text = []
-    
-    try:
-        for page_layout in extract_pages(pdf_path):
-            page_text = ""
-            for element in page_layout:
-                if isinstance(element, LTTextContainer):
-                    page_text += element.get_text()
-            pages_text.append(page_text.strip())
-        
-        return pages_text
-        
-    except Exception as e:
-        print(f"오류 발생: {e}")
-        return []
+문단을 다음 4가지로 분류한다:
 
-def main():
-    # 사용 예시
-    pdf_file = "sample_korean.pdf"  # 한글 PDF 파일 경로
+- 제목 (`title`)
     
-    # 파일 존재 확인
-    if not os.path.exists(pdf_file):
-        print(f"파일을 찾을 수 없습니다: {pdf_file}")
-        return
+- 일반 텍스트 (`text`)
     
-    print("PDF 텍스트 추출 시작...")
+- 목록 (`list`)
     
-    # 전체 텍스트 추출
-    extracted_text = extract_korean_text_from_pdf(pdf_file, "extracted_korean_text.txt")
+- 표 (`table`)
     
-    if extracted_text:
-        print("\n=== 추출된 텍스트 미리보기 ===")
-        print(extracted_text[:500])  # 처음 500자만 출력
-        print(f"\n전체 텍스트 길이: {len(extracted_text)} 문자")
-    
-    # 페이지별 텍스트 추출
-    pages = extract_text_by_pages(pdf_file)
-    print(f"\n총 {len(pages)}페이지가 처리되었습니다.")
-    
-    # 각 페이지의 텍스트 미리보기
-    for i, page_text in enumerate(pages):
-        if page_text.strip():  # 빈 페이지가 아닌 경우만
-            print(f"\n--- 페이지 {i+1} ---")
-            print(page_text[:200])  # 처음 200자만 출력
 
-def batch_extract_pdfs(pdf_folder, output_folder):
-    """
-    폴더 내의 모든 PDF 파일에서 텍스트 추출
-    
-    Args:
-        pdf_folder (str): PDF 파일들이 있는 폴더 경로
-        output_folder (str): 추출된 텍스트를 저장할 폴더 경로
-    """
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-    
-    pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith('.pdf')]
-    
-    for pdf_file in pdf_files:
-        pdf_path = os.path.join(pdf_folder, pdf_file)
-        output_path = os.path.join(output_folder, f"{os.path.splitext(pdf_file)[0]}.txt")
-        
-        print(f"처리 중: {pdf_file}")
-        extract_korean_text_from_pdf(pdf_path, output_path)
+정규표현식을 통해 `제1조`, `1. 개요`, `가) 설명` 등의 패턴을 판별한다. 표에 대해서는 날짜, 시간, 숫자 등 반복되는 숫자 패턴 및 키워드 기반으로 감지한다.
 
-if __name__ == "__main__":
-    main()
+
+### 3. 페이지별 텍스트 및 테이블 통합 추출 (`extract_unified_content`)
+
+PDF 페이지마다 모든 `LTTextContainer`를 순회하며 텍스트를 추출하고, 다음과 같은 방식으로 처리한다:
+
+- Y 좌표 기준 정렬 (위 → 아래)
+    
+- 같은 줄에 있는 텍스트들을 X 좌표 기준으로 정렬
+    
+- 여러 개의 요소가 한 줄에 존재하는 경우 `|` 기호로 묶어서 테이블 행으로 구성
+
+```
+이름 | 나이 | 직책
+홍길동 | 34 | 매니저
+```
+
+### 4. 별도 테이블 구성 (`extract_tables_separately`)
+
+추출된 텍스트 중에서 **정확히 테이블일 가능성이 높은 행**만을 별도로 추출한다. 다수의 열을 포함하면서 숫자 및 시간/근무 관련 키워드를 가진 행들만 필터링하며, 이를 `rows` 리스트로 구성한다.
+
+
+### 5. 결과 포맷팅 (`format_content_for_output`)
+
+다음과 같은 마크다운 유사 형식으로 구성된다:
+
+- 제목: `## 제목`
+    
+- 테이블: `📊 텍스트1 | 텍스트2`
+    
+- 목록: `가) 항목`
+    
+- 일반 문단: 그대로 출력
+    
+- 페이지 헤더: `=== 페이지 N ===` 표시
+
+### 6. 최종 결과 통합 및 저장 (`create_comprehensive_result`)
+
+최종적으로 다음 섹션들을 포함하는 통합 분석 결과를 생성한다:
+
+- 문서 내용 (텍스트 + 테이블 순서 통합)
+    
+- 구조화된 테이블 데이터 (행 기반 정리)
+    
+- 전체 텍스트 (백업용, 길이 제한 있음)
+    
+
+출력은 `result.txt` 파일로 저장되며, 결과는 CLI에 일부 미리보기 형태로 출력된다.
+
+
+## 실행 예시
+
+```bash
+python pdf_analyzer.py
+```
+
+출력 예
+
+```
+📁 처리할 파일: data/23. 플래티어_행복소통협의회 운영규정.pdf
+💾 출력 파일: result.txt
+✅ 종합 결과가 저장되었습니다: result.txt
+📊 총 내용 길이: 12,345 문자
+📄 통합 내용 항목: 84 개
+📋 구조화된 테이블: 5 개
+```
+
+
+## 활용 예시
+
+- 사내 규정집, 회의록, 보고서 등 구조화된 문서를 분석하여 요약할 때 활용할 수 있다.
+    
+- 정형 텍스트와 반정형 테이블을 함께 다루는 업무에서 정리 도구로 활용이 가능하다.
+    
+- 추출된 테이블 데이터는 CSV, Excel 등으로 변환하여 추가 가공도 가능하다.
+    
+
+
+## 코드
+```
 ```

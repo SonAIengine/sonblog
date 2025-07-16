@@ -25,15 +25,6 @@ PDF 문서는 다양한 레이아웃과 서식을 가지며, 그 안에서 유�
     
 - `os`, `sys`: 파일 입출력 및 경로 제어
 
-
-#### 추가) 시스템에 LibreOffice를 설치
-
-`.doc`, `.ppt`, `.xls` 등의 **MS Office 바이너리 형식 문서를 열고 다른 형식으로 변환**하는 CLI 도구
-
-```sh
-sudo apt install libreoffice -y
-```
-
 ## 주요 처리 단계
 
 ### 1. 텍스트 전처리 (`clean_text`)

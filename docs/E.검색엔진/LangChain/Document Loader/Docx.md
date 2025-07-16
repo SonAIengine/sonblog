@@ -19,9 +19,13 @@
 ## 전제 조건
 
 - 시스템에 `libreoffice` CLI 설치되어 있어야 한다
-    
+```sh
+sudo apt install libreoffice -y
+```
+
 - Python 환경에서 LangChain Community 패키지가 설치되어 있어야 한다  
     (예: `pip install langchain-community`)
+
 
 ## 코드 설명
 
@@ -36,7 +40,6 @@ doc_path = Path("data/3. 휴가규정_(주)플래티어_250312.doc")
 docx_path = doc_path.with_suffix(".docx")
 ```
 
----
 
 ### 2. `.doc` → `.docx` 변환 (LibreOffice 사용)
 
@@ -59,7 +62,6 @@ if not docx_path.exists():
         print(f"[SUCCESS] 변환 완료: {docx_path.name}")
 ```
 
----
 
 ### 3. LangChain을 통한 문서 파싱
 
@@ -72,7 +74,6 @@ loader = Docx2txtLoader(str(docx_path))
 docs = loader.load()
 ```
 
----
 
 ### 4. 문서 내용 출력
 
@@ -83,7 +84,6 @@ print("\n문서 미리보기:\n")
 print(docs[0].page_content)
 ```
 
----
 
 ## 전체 코드
 
@@ -119,7 +119,6 @@ print("\n문서 미리보기:\n")
 print(docs[0].page_content)
 ```
 
----
 
 ## 결론
 

@@ -152,6 +152,8 @@ li code {
     font-size: 0.85em !important;
     /* 살짝 큰 폰트 사이즈 */
     box-shadow: 0 1px 3px rgba(129, 127, 127, 0.06) !important;
+
+    border: 0.5px solid #e1e1e1;
     padding: 2px 5px !important;
     /* 텍스트와 테두리 사이의 최소한의 여백 */
     color: #24292e;

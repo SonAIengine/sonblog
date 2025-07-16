@@ -4078,7 +4078,9 @@
 <h2 id="_2">전제 조건</h2>
 <ul>
 <li>
-<p>시스템에 <code>libreoffice</code> CLI 설치되어 있어야 한다</p>
+<p>시스템에 <code>libreoffice</code> CLI 설치되어 있어야 한다
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libreoffice<span class="w"> </span>-y
+</code></pre></div></p>
 </li>
 <li>
 <p>Python 환경에서 LangChain Community 패키지가 설치되어 있어야 한다<br />
@@ -4093,7 +4095,6 @@
 <span class="n">doc_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/3. 휴가규정_(주)플래티어_250312.doc&quot;</span><span class="p">)</span>
 <span class="n">docx_path</span> <span class="o">=</span> <span class="n">doc_path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">&quot;.docx&quot;</span><span class="p">)</span>
 </code></pre></div>
-<hr />
 <h3 id="2-doc-docx-libreoffice">2. <code>.doc</code> → <code>.docx</code> 변환 (LibreOffice 사용)</h3>
 <p>LibreOffice를 백그라운드 모드(<code>--headless</code>)로 실행해 <code>.docx</code>로 변환한다. 이미 <code>.docx</code>가 존재하면 이 과정을 생략한다.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
@@ -4111,7 +4112,6 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[SUCCESS] 변환 완료: </span><span class="si">{</span><span class="n">docx_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<hr />
 <h3 id="3-langchain">3. LangChain을 통한 문서 파싱</h3>
 <p>변환된 <code>.docx</code> 파일을 <code>Docx2txtLoader</code>로 로딩한다. 문서는 하나 이상의 <code>Document</code> 객체로 반환된다.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">Docx2txtLoader</span>
@@ -4119,13 +4119,11 @@
 <span class="n">loader</span> <span class="o">=</span> <span class="n">Docx2txtLoader</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">docx_path</span><span class="p">))</span>
 <span class="n">docs</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 </code></pre></div>
-<hr />
 <h3 id="4">4. 문서 내용 출력</h3>
 <p>파싱된 문서 중 첫 번째 문서 내용을 확인할 수 있다.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">문서 미리보기:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">page_content</span><span class="p">)</span>
 </code></pre></div>
-<hr />
 <h2 id="_4">전체 코드</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
@@ -4157,7 +4155,6 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">문서 미리보기:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">page_content</span><span class="p">)</span>
 </code></pre></div>
-<hr />
 <h2 id="_5">결론</h2>
 <p>이와 같은 파이프라인을 활용하면 <code>.doc</code> 형식으로 된 사내 문서를 자동으로 변환하고, 그 내용을 RAG 기반 검색 시스템, 텍스트 분석 파이프라인 등에서 활용할 수 있다. 특히 문서가 수십~수백 개 존재할 경우에도 반복적으로 처리할 수 있어 문서 자동화의 기초로 유용하다.</p>
 

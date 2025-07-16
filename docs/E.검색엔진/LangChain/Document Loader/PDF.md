@@ -136,5 +136,185 @@ python pdf_analyzer.py
 
 
 ## 코드
+```python
+from pdfminer.high_level import extract_text, extract_pages
+from pdfminer.layout import LAParams, LTTextContainer
+import os
+import re
+
+def clean_text(text):
+    if not text:
+        return ""
+    text = re.sub(r'\s+', ' ', text)
+    text = re.sub(r'\n\s*\n\s*\n', '\n\n', text)
+    return text.strip()
+
+def classify_text_type(text):
+    if not text or len(text) < 2:
+        return "ignore"
+    title_patterns = [
+        r'^[0-9]+\.\s*[가-힣]', r'^[가-힣]+\s*[0-9]*\.\s*[가-힣]',
+        r'^[IVX]+\.\s*[가-힣]', r'^제\s*[0-9]+\s*[조항절]',
+        r'^[가-힣]{2,}\s*[:：]', r'^[가-힣]{1,10}\s*관리\s*지침',
+    ]
+    for pattern in title_patterns:
+        if re.match(pattern, text): return "title"
+    table_patterns = [
+        r'\d+시간|\d+분', r'\d+월|\d+일|\d+년', r'연장근로|초과근무|휴가|근태',
+        r'\d+:\d+|\d+시\s*\d+분', r'[가-힣]+\s*\|\s*[가-힣]+',
+        r'[가-힣]+\s+\d+\s+[가-힣]+', r'^\s*\d+\s+[가-힣]+\s+\d+',
+    ]
+    for pattern in table_patterns:
+        if re.search(pattern, text): return "table"
+    list_patterns = [
+        r'^[가-힣]\)\s*', r'^[0-9]+\)\s*', r'^-\s*[가-힣]', r'^•\s*[가-힣]'
+    ]
+    for pattern in list_patterns:
+        if re.match(pattern, text): return "list"
+    return "text"
+
+def extract_unified_content(pdf_path):
+    laparams = LAParams(
+        boxes_flow=0.4, word_margin=0.1,
+        char_margin=1.5, line_margin=0.4, detect_vertical=True
+    )
+    all_content = []
+    for page_num, layout in enumerate(extract_pages(pdf_path, laparams=laparams)):
+        elements = []
+        for el in layout:
+            if isinstance(el, LTTextContainer):
+                text = clean_text(el.get_text())
+                if text and len(text) > 1:
+                    x0, y0, x1, y1 = el.bbox
+                    text_type = classify_text_type(text)
+                    if text_type != "ignore":
+                        elements.append({'text': text, 'type': text_type, 'x0': x0, 'y0': y0})
+        elements.sort(key=lambda x: -x['y0'])
+        grouped = []
+        i = 0
+        while i < len(elements):
+            group = [elements[i]]
+            y = elements[i]['y0']
+            j = i + 1
+            while j < len(elements):
+                if abs(elements[j]['y0'] - y) <= 5:
+                    group.append(elements.pop(j))
+                else:
+                    j += 1
+            group.sort(key=lambda x: x['x0'])
+            if len(group) > 1:
+                table_row = ' | '.join([g['text'] for g in group])
+                grouped.append({'text': table_row, 'type': 'table'})
+            else:
+                grouped.append(group[0])
+            i += 1
+        all_content.append({'text': f"\n=== 페이지 {page_num + 1} ===", 'type': 'page_header'})
+        all_content.extend(grouped)
+    return all_content
+
+def extract_tables_separately(pdf_path):
+    laparams = LAParams(
+        boxes_flow=0.3, word_margin=0.05,
+        char_margin=1.0, line_margin=0.3, detect_vertical=True
+    )
+    tables = []
+    for page_num, layout in enumerate(extract_pages(pdf_path, laparams=laparams)):
+        rows, elements = [], []
+        for el in layout:
+            if isinstance(el, LTTextContainer):
+                text = clean_text(el.get_text())
+                if text and len(text) > 1:
+                    x0, y0, x1, y1 = el.bbox
+                    elements.append({'text': text, 'x0': x0, 'y0': y0})
+        elements.sort(key=lambda x: -x['y0'])
+        i = 0
+        while i < len(elements):
+            row = [elements[i]]
+            y = elements[i]['y0']
+            j = i + 1
+            while j < len(elements):
+                if abs(elements[j]['y0'] - y) <= 5:
+                    row.append(elements.pop(j))
+                else:
+                    j += 1
+            if len(row) > 1:
+                row.sort(key=lambda x: x['x0'])
+                texts = [r['text'] for r in row]
+                if any(re.search(r'\d', t) for t in texts) or any(re.search(r'시간|분|월|일|근무|휴가|연장', t) for t in texts):
+                    rows.append(texts)
+            i += 1
+        if rows:
+            tables.append({'page': page_num + 1, 'rows': rows})
+    return tables
+
+def format_content(content):
+    lines = []
+    for item in content:
+        t = item['text']
+        tp = item['type']
+        if tp == 'page_header': lines.append(f"\n{t}\n" + "-"*50)
+        elif tp == 'title': lines.append(f"\n## {t}")
+        elif tp == 'table': lines.append(t)
+        elif tp == 'list': lines.append(f" - {t}")
+        else: lines.append(t)
+    return '\n'.join(lines)
+
+def create_result(pdf_path, output_path="result.txt"):
+    try:
+        unified = extract_unified_content(pdf_path)
+        tables = extract_tables_separately(pdf_path)
+        basic_text = clean_text(extract_text(pdf_path))
+
+        sections = [
+            "="*80,
+            "PDF 문서 분석 결과",
+            "="*80
+        ]
+
+        if unified:
+            sections.append("\n\n[통합 텍스트 및 테이블]")
+            sections.append("-"*60)
+            sections.append(format_content(unified))
+
+        if tables:
+            sections.append("\n\n[구조화된 테이블]")
+            sections.append("-"*60)
+            for t in tables:
+                sections.append(f"\n- 페이지 {t['page']}")
+                for i, row in enumerate(t['rows']):
+                    if i == 0:
+                        sections.append("헤더: " + " | ".join(row))
+                        sections.append("-"*40)
+                    else:
+                        sections.append(" | ".join(row))
+
+        if basic_text and len(basic_text) > 100:
+            sections.append("\n\n[전체 텍스트 (참고용)]")
+            sections.append("-"*60)
+            sections.append(basic_text[:3000] + "\n...(이하 생략)" if len(basic_text) > 3000 else basic_text)
+
+        result = '\n'.join(sections)
+        os.makedirs(os.path.dirname(output_path) if os.path.dirname(output_path) else '.', exist_ok=True)
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(result)
+
+    except Exception as e:
+        print(f"[오류] 결과 생성 실패: {e}")
+
+if __name__ == "__main__":
+    create_result("data/23. 플래티어_행복소통협의회 운영규정.pdf", "result.txt")
 ```
-```
+
+---
+
+### 주요 변경 요약
+
+|항목|설명|
+|---|---|
+|로그 제거|`print` 문 대부분 제거, 필요한 경우 `Exception` 시 메시지만 출력|
+|미리보기 제거|1500자 출력 등 모든 프리뷰 제거|
+|불필요한 출력 제거|`🎉`, `📁`, `📋` 등 이모티콘 출력 삭제|
+|출력 구조 간결화|출력 포맷을 최소한의 마크다운 형태로 유지|
+|실행 구조 단순화|`main()` → `create_result()` 호출만 수행|
+
+이제 이 코드는 **조용히 PDF를 분석하고, 바로 `result.txt`에 결과만 저장**하는 형태로 사용할 수 있다. 배치 처리나 서버 측 자동화에도 적합하다.

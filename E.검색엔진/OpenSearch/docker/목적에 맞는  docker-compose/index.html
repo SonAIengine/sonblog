@@ -3092,6 +3092,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      여기에 ML 노드를 추가하면?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 주요 변경사항 요약
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 주요 변경사항 요약">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-noderoles-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. node.roles: ml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pluginsml_commonsonly_run_on_ml_node-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 2. plugins.ml_commons.only_run_on_ml_node: true
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      예시 요약
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      추가 옵션 (선택)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      결론
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4538,6 +4607,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      여기에 ML 노드를 추가하면?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 주요 변경사항 요약
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 주요 변경사항 요약">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-noderoles-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. node.roles: ml
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pluginsml_commonsonly_run_on_ml_node-true" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 2. plugins.ml_commons.only_run_on_ml_node: true
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      예시 요약
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      추가 옵션 (선택)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      결론
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5237,6 +5375,182 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 <p>벡터 검색/ML 기능 확장 (예: <code>ml</code> 노드 추가)</p>
 </li>
 </ul>
+<h2 id="ml">여기에 ML 노드를 추가하면?</h2>
+<p>현재 구성에 <strong>ML 전용 노드 (<code>opensearch-ml-node</code>)를 하나 추가</strong>하려면, 아래와 같이 Docker Compose에 노드를 하나 더 정의하고 <code>node.roles=ml</code>을 설정하면 된다. </p>
+<p>이 노드는 ML 추론 전용이며, text embedding, 벡터 생성 등에 활용된다.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">opensearch-node1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:3</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearch-node1</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*opensearch-environment</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=opensearch-node1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=opensearch-node1,opensearch-node2,opensearch-ml-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="nt">opensearch-node2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:3</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearch-node2</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*opensearch-environment</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=opensearch-node2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=opensearch-node1,opensearch-node2,opensearch-ml-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="nt">opensearch-ml-node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:3</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearch-ml-node</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*opensearch-environment</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=opensearch-ml-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=ml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=opensearch-node1,opensearch-node2,opensearch-ml-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.ml_commons.only_run_on_ml_node=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.ml_commons.task_dispatch_policy=round_robin</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">soft</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
+<span class="w">        </span><span class="nt">hard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
+<span class="w">      </span><span class="nt">nofile</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">soft</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65536</span>
+<span class="w">        </span><span class="nt">hard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65536</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearch-data-ml:/usr/share/opensearch/data</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearch-net</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">opensearch-data1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/tech/data/opensearch-dir/data-d1</span>
+<span class="w">  </span><span class="nt">opensearch-data2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/tech/data/opensearch-dir/data-d2</span>
+<span class="w">  </span><span class="nt">opensearch-data-ml</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/tech/data/opensearch-dir/data-ml</span>
+</code></pre></div>
+<h2 id="_4">🔍 주요 변경사항 요약</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node.roles=ml</code></td>
+<td>ML 전용 노드로 설정하여 색인, 검색 등의 작업은 하지 않고 ML 태스크만 처리함</td>
+</tr>
+<tr>
+<td><code>plugins.ml_commons.only_run_on_ml_node=true</code></td>
+<td>ML 태스크가 이 노드에서만 실행되도록 제한</td>
+</tr>
+<tr>
+<td><code>discovery.seed_hosts</code></td>
+<td>모든 노드에서 ml 노드를 포함하여 클러스터에 조인하도록 설정</td>
+</tr>
+<tr>
+<td><code>cluster.initial_cluster_manager_nodes</code></td>
+<td>ML 노드는 manager가 아니므로 여기에 포함되지 않음</td>
+</tr>
+<tr>
+<td><code>plugins.ml_commons.task_dispatch_policy=round_robin</code></td>
+<td>ML 태스크 분산 방식 설정 (옵션)</td>
+</tr>
+</tbody>
+</table>
+<p>OpenSearch에서 <strong>ML 전용 노드만 사용되도록 설정하려면</strong>, 다음 2가지 설정이 핵심이다.</p>
+<h3 id="1-noderoles-ml">1. <code>node.roles: ml</code></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=ml</span>
+</code></pre></div>
+<ul>
+<li>
+<p>이 노드는 <strong>색인(indexing), 검색(query), cluster manager 역할을 하지 않고</strong>, <strong>ML 작업만 수행</strong>하도록 지정된다.</p>
+</li>
+<li>
+<p>OpenSearch 2.x 이상부터는 노드 역할(role)을 명시하지 않으면 기본적으로 <code>["data", "ingest", "cluster_manager", "remote_cluster_client", "ml"]</code> 역할을 모두 수행한다.</p>
+</li>
+<li>
+<p>따라서 <code>node.roles=ml</code>을 명시적으로 설정해야 <strong>진짜 전용 ML 노드</strong>가 된다.</p>
+</li>
+</ul>
+<hr />
+<h2 id="2-pluginsml_commonsonly_run_on_ml_node-true">✅ 2. <code>plugins.ml_commons.only_run_on_ml_node: true</code></h2>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.ml_commons.only_run_on_ml_node=true</span>
+</code></pre></div>
+<ul>
+<li>
+<p>이 설정이 <code>true</code>이면 ML Commons는 <strong><code>node.roles</code>에 <code>ml</code>만 포함된 노드에서만 ML 태스크를 실행</strong>한다.</p>
+</li>
+<li>
+<p>일반 data 노드가 ML 태스크를 처리하지 않게 된다.</p>
+</li>
+<li>
+<p>따라서 이 설정을 반드시 추가해야 ML 전용 노드가 아닌 다른 노드에서 embedding 생성, 모델 추론 등의 ML 작업이 발생하지 않는다.</p>
+</li>
+</ul>
+<hr />
+<h2 id="_5">예시 요약</h2>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">opensearch-ml-node</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=ml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.ml_commons.only_run_on_ml_node=true</span>
+</code></pre></div>
+<p>이렇게 설정하면 ML 태스크(<code>text_embedding</code>, <code>model_predict</code>, <code>model_train</code>) 등은 오직 <code>opensearch-ml-node</code>에서만 처리된다.</p>
+<hr />
+<h2 id="_6">추가 옵션 (선택)</h2>
+<table>
+<thead>
+<tr>
+<th>설정 키</th>
+<th>설명</th>
+<th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plugins.ml_commons.task_dispatch_policy</code></td>
+<td>여러 ML 노드가 있을 때 태스크 분산 방식</td>
+<td><code>round_robin</code> 또는 <code>least_load</code></td>
+</tr>
+<tr>
+<td><code>plugins.ml_commons.native_memory_threshold</code></td>
+<td>ML 태스크 실행 전, 메모리 점유율 기준</td>
+<td><code>90</code> (90% 이상이면 거부)</td>
+</tr>
+<tr>
+<td><code>plugins.ml_commons.max_ml_task_per_node</code></td>
+<td>동시에 수행할 수 있는 ML 태스크 개수</td>
+<td><code>2</code> 등</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">결론</h2>
+<p><strong>"해당 ML 노드만 ML 태스크를 수행"</strong> 하도록 하려면 반드시 다음 두 가지를 같이 설정해야 한다:</p>
+<ol>
+<li>
+<p><code>node.roles=ml</code> → ML 이외의 역할 제거</p>
+</li>
+<li>
+<p><code>plugins.ml_commons.only_run_on_ml_node=true</code> → ML 노드에서만 태스크 실행 제한</p>
+</li>
+</ol>
+<p>이 구성을 통해 운영 클러스터의 색인·검색 성능에 영향을 주지 않고 ML 기능을 안정적으로 분리할 수 있다.</p>
 
 
 

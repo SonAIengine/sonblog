@@ -21,7 +21,7 @@ services:
 **설명**: 최소 구성으로 빠르게 기능 시연, 테스트에 적합하다.
 
 
-## 2. 개발/PoC + Performance Analyzer (`docker-compose-poc-pa.yml`)
+## 2. 개발/PoC + Performance Analyzer
 
 ```yaml
 version: "3.8"
@@ -45,7 +45,7 @@ services:
 
 ---
 
-## 3. 테스트용 보안 비활성 단일 노드 (`docker-compose-poc-no-security.yml`)
+## 3. 테스트용 보안 비활성 단일 노드
 
 ```yaml
 version: "3.8"
@@ -70,7 +70,7 @@ services:
 
 ---
 
-## 4. 벡터 검색 PoC 단일 노드 (`docker-compose-poc-vector.yml`)
+## 4. 벡터 검색 PoC 단일 노드
 
 ```yaml
 version: "3.8"
@@ -90,9 +90,8 @@ services:
 
 **설명**: 플러그인을 Dockerfile에서 추가 빌드하고 벡터 검색 테스트 가능하다.
 
----
 
-## 5. 중규모 운영: 클러스터 관리자 · 데이터 노드 분리 (`docker-compose-scale-role.yml`)
+## 5. 중규모 운영: 클러스터 관리자 · 데이터 노드 분리
 
 ```yaml
 version: "3.8"
@@ -126,9 +125,8 @@ services:
 
 **설명**: 역할 분리를 통해 안정성과 처리가능 성능 확보 가능하다.
 
----
 
-## 6. 중규모 운영: 다중 데이터 노드 + Dashboards (`docker-compose-scale-data.yml`)
+## 6. 중규모 운영: 다중 데이터 노드 + Dashboards
 
 ```yaml
 version: "3.8"
@@ -177,7 +175,6 @@ volumes:
 
 **설명**: 여러 데이터 노드로 색인·검색 요청 병렬 처리 가능하다.
 
----
 
 ## 7. 고가용성 3노드 클러스터 (`docker-compose-ha.yml`)
 
@@ -205,9 +202,7 @@ networks:
 
 **설명**: 복제(shard replica) 설정 시 한 노드 장애에도 자동 복구 가능하다.
 
----
-
-## 8. ML/벡터 검색 분리 클러스터 (`docker-compose-ml.yml`)
+## 8. ML/벡터 검색 분리 클러스터
 
 ```yaml
 version: "3.8"
@@ -236,9 +231,8 @@ services:
 
 **설명**: 벡터·ML 임베딩 처리만 전담하는 ML 노드를 분리해 자원 충돌 방지한다.
 
----
 
-## 9. 대용량 벡터: on‑disk 모드 (`docker-compose-vector-ondisk.yml`)
+## 9. 대용량 벡터: on‑disk 모드
 
 ```yaml
 version: "3.8"
@@ -258,9 +252,8 @@ services:
 
 **설명**: `faissOnDisk` 모드로 메모리 절약하면서도 P90 응답 100–200ms 수준 유지 가능하다.
 
----
 
-## 10. TLS 및 보안 구성 포함 (`docker-compose-secure.yml`)
+## 10. TLS 및 보안 구성 포함
 
 ```yaml
 version: "3.8"
@@ -288,8 +281,6 @@ services:
 
 **설명**: TLS 인증서를 마운트하여 보안 테스트 환경 구축이 가능하다.
 
----
-
 ## 구성 요약 표
 
 |#|구성|목적|
@@ -305,7 +296,6 @@ services:
 |9|벡터 on‑disk 모드|대용량 벡터 색인 시 메모리 절약 및 성능 유지|
 |10|TLS 보안 구성 포함|보안 테스트 환경 구축|
 
----
 
 ## 결론 및 활용 팁
 

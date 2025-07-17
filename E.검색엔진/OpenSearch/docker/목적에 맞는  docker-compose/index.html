@@ -3099,17 +3099,17 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="여기에 ML 노드를 추가하면?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      🔍 주요 변경사항 요약
+      주요 변경사항 요약
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔍 주요 변경사항 요약">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#1-noderoles-ml" class="md-nav__link">
@@ -3120,21 +3120,16 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#2-pluginsml_commonsonly_run_on_ml_node-true" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ 2. plugins.ml_commons.only_run_on_ml_node: true
+      2. plugins.ml_commons.only_run_on_ml_node: true
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       예시 요약
@@ -3142,8 +3137,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       추가 옵션 (선택)
@@ -3151,13 +3146,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       결론
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4614,17 +4614,17 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="여기에 ML 노드를 추가하면?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      🔍 주요 변경사항 요약
+      주요 변경사항 요약
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔍 주요 변경사항 요약">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#1-noderoles-ml" class="md-nav__link">
@@ -4635,21 +4635,16 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#2-pluginsml_commonsonly_run_on_ml_node-true" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ 2. plugins.ml_commons.only_run_on_ml_node: true
+      2. plugins.ml_commons.only_run_on_ml_node: true
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       예시 요약
@@ -4657,8 +4652,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       추가 옵션 (선택)
@@ -4666,13 +4661,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       결론
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5442,7 +5442,7 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 <span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bind</span>
 <span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/tech/data/opensearch-dir/data-ml</span>
 </code></pre></div>
-<h2 id="_4">🔍 주요 변경사항 요약</h2>
+<h3 id="_4">주요 변경사항 요약</h3>
 <table>
 <thead>
 <tr>
@@ -5488,8 +5488,7 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 <p>따라서 <code>node.roles=ml</code>을 명시적으로 설정해야 <strong>진짜 전용 ML 노드</strong>가 된다.</p>
 </li>
 </ul>
-<hr />
-<h2 id="2-pluginsml_commonsonly_run_on_ml_node-true">✅ 2. <code>plugins.ml_commons.only_run_on_ml_node: true</code></h2>
+<h3 id="2-pluginsml_commonsonly_run_on_ml_node-true">2. <code>plugins.ml_commons.only_run_on_ml_node: true</code></h3>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.ml_commons.only_run_on_ml_node=true</span>
 </code></pre></div>
 <ul>
@@ -5503,16 +5502,14 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 <p>따라서 이 설정을 반드시 추가해야 ML 전용 노드가 아닌 다른 노드에서 embedding 생성, 모델 추론 등의 ML 작업이 발생하지 않는다.</p>
 </li>
 </ul>
-<hr />
-<h2 id="_5">예시 요약</h2>
+<h3 id="_5">예시 요약</h3>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">opensearch-ml-node</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=ml</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.ml_commons.only_run_on_ml_node=true</span>
 </code></pre></div>
 <p>이렇게 설정하면 ML 태스크(<code>text_embedding</code>, <code>model_predict</code>, <code>model_train</code>) 등은 오직 <code>opensearch-ml-node</code>에서만 처리된다.</p>
-<hr />
-<h2 id="_6">추가 옵션 (선택)</h2>
+<h3 id="_6">추가 옵션 (선택)</h3>
 <table>
 <thead>
 <tr>
@@ -5535,13 +5532,12 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 <tr>
 <td><code>plugins.ml_commons.max_ml_task_per_node</code></td>
 <td>동시에 수행할 수 있는 ML 태스크 개수</td>
-<td><code>2</code> 등</td>
+<td><code>2</code> 등등</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="_7">결론</h2>
-<p><strong>"해당 ML 노드만 ML 태스크를 수행"</strong> 하도록 하려면 반드시 다음 두 가지를 같이 설정해야 한다:</p>
+<h3 id="_7">결론</h3>
+<p><strong>"해당 ML 노드만 ML 태스크를 수행"</strong> 하도록 하려면 반드시 다음 두 가지를 같이 설정해야 한다.</p>
 <ol>
 <li>
 <p><code>node.roles=ml</code> → ML 이외의 역할 제거</p>

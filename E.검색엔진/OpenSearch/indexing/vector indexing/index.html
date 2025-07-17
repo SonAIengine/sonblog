@@ -2940,6 +2940,93 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#rust-opensearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rust와 OpenSearch를 활용한 자동 벡터 임베딩 처리 구성
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rust와 OpenSearch를 활용한 자동 벡터 임베딩 처리 구성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Hugging Face 임베딩 모델 준비
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      모델 등록 예시
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 클러스터 설정 및 ML 노드 구성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ingest-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ingest Pipeline 설정
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 벡터 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Rust 코드로 문서 색인하기
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 컴퓨팅 자원 및 성능 고려사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 요약
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4095,6 +4182,93 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#rust-opensearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rust와 OpenSearch를 활용한 자동 벡터 임베딩 처리 구성
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rust와 OpenSearch를 활용한 자동 벡터 임베딩 처리 구성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Hugging Face 임베딩 모델 준비
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      모델 등록 예시
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 클러스터 설정 및 ML 노드 구성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ingest-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Ingest Pipeline 설정
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 벡터 인덱스 생성
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Rust 코드로 문서 색인하기
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 컴퓨팅 자원 및 성능 고려사항
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 요약
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4265,6 +4439,133 @@
 </li>
 </ul>
 <p>벡터 인덱스 생성 이후에는 실제 데이터를 인덱싱하고 검색을 수행하는 단계로 이어지며, 벡터 인덱스의 설계는 검색 정확도와 성능에 결정적인 영향을 준다. 따라서 용도에 따라 적절한 설정을 선택하는 것이 중요하다.</p>
+<p>아래는 <code>goodsNM</code> 필드를 대상으로 Hugging Face 임베딩 모델을 활용해 벡터를 자동 생성하여 저장하는 과정을 설명한 기술 블로그 글이다. Rust 코드 예시와 함께, OpenSearch 설정 및 컴퓨팅 자원 요구 사항에 대한 내용도 포함하였다.</p>
+<h2 id="rust-opensearch">Rust와 OpenSearch를 활용한 자동 벡터 임베딩 처리 구성</h2>
+<p>OpenSearch의 Ingest Pipeline 기능을 활용하면 <code>goodsNM</code> 상품명 필드를 기반으로 벡터를 자동 생성하여 <code>goods_vector</code> 필드에 저장할 수 있다. 본 글에서는 Hugging Face 사전 학습 임베딩 모델을 OpenSearch ML Commons에 등록하고, 필요한 클러스터 설정 및 노드 요구 사양까지 포함해 설명한다.</p>
+<h3 id="1-hugging-face">1. Hugging Face 임베딩 모델 준비</h3>
+<p>OpenSearch는 Hugging Face의 Text Embedding 모델을 지원하며, 사전 학습된 모델(예: all‑MiniLM‑L6‑v2, 384 차원)을 TorchScript 또는 ONNX 형식으로 업로드하여 사용할 수 있다 (<a href="https://opensearch.org/docs/2.5/ml-commons-plugin/model-serving-framework/?utm_source=chatgpt.com" title="Model-serving framework - OpenSearch Documentation">OpenSearch</a>, <a href="https://opensearch.org/docs/latest/ml-commons-plugin/pretrained-models/?utm_source=chatgpt.com" title="OpenSearch-provided pretrained models">OpenSearch</a>).</p>
+<p>먼저 TorchScript로 변환하여 Zip 파일로 압축한 후 체크섬을 계산한다.</p>
+<div class="highlight"><pre><span></span><code>torch.jit.script<span class="o">(</span>model<span class="o">)</span>.save<span class="o">(</span><span class="s2">&quot;model.ts&quot;</span><span class="o">)</span>
+zip<span class="w"> </span>model.zip<span class="w"> </span>model.ts
+sha256sum<span class="w"> </span>model.zip
+</code></pre></div>
+<h3 id="_2">모델 등록 예시</h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST</span><span class="w"> </span><span class="err">/_plugi</span><span class="kc">ns</span><span class="err">/_ml/models/_regis</span><span class="kc">ter</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all-MiniLM-L6-v2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TORCH_SCRIPT&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;model_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bert&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;embedding_dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">384</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;framework_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sentence_transformers&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://my-bucket/model.zip&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>embedding_dimension</code> 값은 사용하는 모델 차원과 일치해야 한다 (<a href="https://opensearch.isharkfly.com/ml-commons-plugin/api/model-apis/register-model/?utm_source=chatgpt.com" title="Register model - OpenSearch Documentation">OpenSearch Documentation</a>).</p>
+<h2 id="2-ml">2. 클러스터 설정 및 ML 노드 구성</h2>
+<p>인덱싱 과정에서 임베딩을 자동 생성하려면 ML Commons 관련 설정을 조정해야 한다.</p>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">_clus</span><span class="kc">ter</span><span class="err">/se</span><span class="kc">tt</span><span class="err">i</span><span class="kc">n</span><span class="err">gs</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;persistent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;plugins.ml_commons.allow_registering_model_via_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;plugins.ml_commons.only_run_on_ml_node&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;plugins.ml_commons.native_memory_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;99&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>GPU 가속이 가능한 ML 노드를 구성하면 추론 성능을 크게 향상할 수 있다. NVIDIA CUDA 11.6 또는 AWS Inferentia 등이 지원된다 (<a href="https://opensearch.org/docs/2.5/ml-commons-plugin/model-serving-framework/?utm_source=chatgpt.com" title="Model-serving framework - OpenSearch Documentation">OpenSearch</a>, <a href="https://docs.opensearch.org/docs/latest/ml-commons-plugin/gpu-acceleration/?utm_source=chatgpt.com" title="GPU acceleration - OpenSearch Documentation">OpenSearch Docs</a>).</p>
+<p>노드 메모리 용량은 모델 파일(수백 MB) 및 배치 추론 시점 메모리 사용량을 고려해 충분히 확보해야 한다 .</p>
+<h2 id="3-ingest-pipeline">3. Ingest Pipeline 설정</h2>
+<p><code>goodsNM</code> 텍스트를 자동으로 임베딩해 <code>goods_vector</code>에 저장하도록 파이프라인을 정의한다.</p>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/_i</span><span class="kc">n</span><span class="err">ges</span><span class="kc">t</span><span class="err">/pipeli</span><span class="kc">ne</span><span class="err">/goods</span><span class="mf">-e</span><span class="err">mbed</span><span class="mi">-</span><span class="err">pipeli</span><span class="kc">ne</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Auto-generate embedding for goodsNM&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;processors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;text_embedding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;model_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all-MiniLM-L6-v2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;field_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;goodsNM&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;goods_vector&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="4_1">4. 벡터 인덱스 생성</h2>
+<p>벡터 필드를 포함하도록 인덱스를 생성하고 파이프라인을 기본값으로 지정한다.</p>
+<div class="highlight"><pre><span></span><code><span class="err">PUT</span><span class="w"> </span><span class="err">/goods</span><span class="mi">-</span><span class="err">i</span><span class="kc">n</span><span class="err">dex</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;index.knn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;default_pipeline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;goods-embed-pipeline&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;goodsNM&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;goods_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;knn_vector&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;dimension&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">384</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hnsw&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;space_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cosinesimil&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="5-rust">5. Rust 코드로 문서 색인하기</h2>
+<p>Rust에서 <code>goodsNM</code>만 포함한 객체를 색인하면 자동으로 <code>goods_vector</code> 필드가 채워진다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">reqwest</span><span class="p">::</span><span class="n">Client</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="n">serde</span><span class="p">::</span><span class="n">Serialize</span><span class="p">;</span>
+
+<span class="cp">#[derive(Serialize)]</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">GoodsDoc</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">goodsNM</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[tokio::main]</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">error</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Client</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GoodsDoc</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">goodsNM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;삼성 갤럭시 노트10&quot;</span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span>
+<span class="w">        </span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s">&quot;http://localhost:9200/goods-index/_doc?refresh=true&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">json</span><span class="p">(</span><span class="o">&amp;</span><span class="n">doc</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;Status: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">status</span><span class="p">());</span>
+<span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&quot;Body: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">text</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>문서 조회 시 <code>goods_vector</code> 필드가 벡터 값으로 저장된 것을 확인할 수 있다.</p>
+<h2 id="6">6. 컴퓨팅 자원 및 성능 고려사항</h2>
+<ul>
+<li>
+<p><strong>CPU-only 구성</strong>: 소규모 데이터 처리용으로 가능하나, 임베딩 처리량이 낮고 응답 시간이 느릴 수 있다. dense 모드에서는 수백 ms 정도 소요될 수 있음.</p>
+</li>
+<li>
+<p><strong>GPU 구성</strong>: CUDA‑enabled NVIDIA 또는 AWS Inferentia ML 노드에서 TorchScript 모델 추론을 가속화 가능 (<a href="https://eliatra.com/blog/vector-and-hybrid-search-with-opensearch-and-the-neural-plugin-pt1/?utm_source=chatgpt.com" title="Implementing Vector and Hybrid Search with OpenSearch and the ...">eliatra.com</a>, <a href="https://docs.opensearch.org/docs/latest/ml-commons-plugin/gpu-acceleration/?utm_source=chatgpt.com" title="GPU acceleration - OpenSearch Documentation">OpenSearch Docs</a>), 대량 색인 시 GPU 구성 권장.</p>
+</li>
+<li>
+<p><strong>메모리 요구</strong>: 모델 파일과 병렬 추론을 고려해 ML 노드당 최소 16GB, 권장 32GB 이상 확보.</p>
+</li>
+<li>
+<p><strong>스케일링</strong>: 색인량이 증가할 경우 ML 노드를 별도로 분리하여 수평 확장 가능.</p>
+</li>
+</ul>
+<h2 id="7">7. 요약</h2>
+<ul>
+<li>
+<p><code>goodsNM</code> 필드를 <code>goods_vector</code>로 자동 벡터화하려면 Hugging Face 모델을 TorchScript 형식으로 업로드하고, ingest pipeline을 구성한 후 벡터 인덱스를 생성하면 된다.</p>
+</li>
+<li>
+<p>ML Commons 관련 클러스터 설정 및 ML 노드(GPU 포함) 구성이 필수이며, 특히 대규모 또는 실시간 색인 환경에서는 GPU 및 충분한 메모리 확보를 권장한다.</p>
+</li>
+<li>
+<p>Rust 애플리케이션에서는 상품명만 전달하면 ML 파이프라인이 자동으로 임베딩을 생성하여 벡터 색인을 처리해준다.</p>
+</li>
+</ul>
+<hr />
+<p>Hugging Face 모델 예시(예: all-MiniLM-L6-v2), 대규모 색인 사례, 또는 검색 쿼리 예시(hybrid search 등) 추가가 필요하면 요청해 달라.</p>
 
 
 

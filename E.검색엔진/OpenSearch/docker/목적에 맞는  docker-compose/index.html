@@ -12,7 +12,7 @@
         <link rel="prev" href="../../Version%20history/3.1.0/%EC%9A%94%EC%95%BD/">
       
       
-        <link rel="next" href="../%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/">
+        <link rel="next" href="../%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>성능 체크 - SON BLOG</title>
+        <title>목적에 맞는 docker compose - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tps" class="md-skip">
+        <a href="#1-poc-docker-compose-pocyml" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              성능 체크
+              목적에 맞는  docker compose
             
           </span>
         </div>
@@ -2783,6 +2783,8 @@
       
         
       
+        
+      
     
     
     
@@ -2804,7 +2806,7 @@
   
   
   <span class="md-ellipsis">
-    Docker compose
+    Docker
     
   </span>
   
@@ -2815,7 +2817,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3_6">
             <span class="md-nav__icon md-icon"></span>
-            Docker compose
+            Docker
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2838,7 +2840,7 @@
   
   
   <span class="md-ellipsis">
-    성능 체크
+    목적에 맞는  docker compose
     
   </span>
   
@@ -2851,7 +2853,7 @@
   
   
   <span class="md-ellipsis">
-    성능 체크
+    목적에 맞는  docker compose
     
   </span>
   
@@ -2872,9 +2874,90 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tps" class="md-nav__link">
+  <a href="#1-poc-docker-compose-pocyml" class="md-nav__link">
     <span class="md-ellipsis">
-      워크로드 기준(TPS)에 따른 구성 사례
+      1. 개발/PoC 용 단일 노드 (docker-compose-poc.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-poc-performance-analyzer-docker-compose-poc-payml" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 개발/PoC + Performance Analyzer (docker-compose-poc-pa.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-docker-compose-poc-no-securityyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 테스트용 보안 비활성 단일 노드 (docker-compose-poc-no-security.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-poc-docker-compose-poc-vectoryml" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 벡터 검색 PoC 단일 노드 (docker-compose-poc-vector.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-docker-compose-scale-roleyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 중규모 운영: 클러스터 관리자 · 데이터 노드 분리 (docker-compose-scale-role.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dashboards-docker-compose-scale-datayml" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 중규모 운영: 다중 데이터 노드 + Dashboards (docker-compose-scale-data.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3-docker-compose-hayml" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 고가용성 3노드 클러스터 (docker-compose-ha.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ml-docker-compose-mlyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. ML/벡터 검색 분리 클러스터 (docker-compose-ml.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ondisk-docker-compose-vector-ondiskyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 대용량 벡터: on‑disk 모드 (docker-compose-vector-ondisk.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tls-docker-compose-secureyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. TLS 및 보안 구성 포함 (docker-compose-secure.yml)
     </span>
   </a>
   
@@ -2883,7 +2966,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      색인 규모 기준 사례
+      구성 요약 표
     </span>
   </a>
   
@@ -2892,58 +2975,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      벡터 검색 및 엔진 비교 성능
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      실제 사례 추가
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="실제 사례 추가">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-elastic-vs-opensearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      사례 1: Elastic vs OpenSearch 비교 테스트
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-ccr" class="md-nav__link">
-    <span class="md-ellipsis">
-      사례 2: CCR(교차 클러스터 복제) 영향
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-diskoptimized" class="md-nav__link">
-    <span class="md-ellipsis">
-      사례 3: Disk‑optimized 벡터 엔진 사례
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      요약: 기준 및 구성 예시 정리
+      결론 및 활용 팁
     </span>
   </a>
   
@@ -2953,6 +2985,29 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    성능 체크
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4154,9 +4209,90 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tps" class="md-nav__link">
+  <a href="#1-poc-docker-compose-pocyml" class="md-nav__link">
     <span class="md-ellipsis">
-      워크로드 기준(TPS)에 따른 구성 사례
+      1. 개발/PoC 용 단일 노드 (docker-compose-poc.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-poc-performance-analyzer-docker-compose-poc-payml" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 개발/PoC + Performance Analyzer (docker-compose-poc-pa.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-docker-compose-poc-no-securityyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 테스트용 보안 비활성 단일 노드 (docker-compose-poc-no-security.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-poc-docker-compose-poc-vectoryml" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 벡터 검색 PoC 단일 노드 (docker-compose-poc-vector.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-docker-compose-scale-roleyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 중규모 운영: 클러스터 관리자 · 데이터 노드 분리 (docker-compose-scale-role.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-dashboards-docker-compose-scale-datayml" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 중규모 운영: 다중 데이터 노드 + Dashboards (docker-compose-scale-data.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-3-docker-compose-hayml" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 고가용성 3노드 클러스터 (docker-compose-ha.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ml-docker-compose-mlyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. ML/벡터 검색 분리 클러스터 (docker-compose-ml.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ondisk-docker-compose-vector-ondiskyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 대용량 벡터: on‑disk 모드 (docker-compose-vector-ondisk.yml)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tls-docker-compose-secureyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. TLS 및 보안 구성 포함 (docker-compose-secure.yml)
     </span>
   </a>
   
@@ -4165,7 +4301,7 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      색인 규모 기준 사례
+      구성 요약 표
     </span>
   </a>
   
@@ -4174,58 +4310,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      벡터 검색 및 엔진 비교 성능
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      실제 사례 추가
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="실제 사례 추가">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-elastic-vs-opensearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      사례 1: Elastic vs OpenSearch 비교 테스트
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-ccr" class="md-nav__link">
-    <span class="md-ellipsis">
-      사례 2: CCR(교차 클러스터 복제) 영향
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-diskoptimized" class="md-nav__link">
-    <span class="md-ellipsis">
-      사례 3: Disk‑optimized 벡터 엔진 사례
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      요약: 기준 및 구성 예시 정리
+      결론 및 활용 팁
     </span>
   </a>
   
@@ -4247,175 +4332,324 @@
 
 
 
-  <h1>성능 체크</h1>
+  <h1>목적에 맞는  docker compose</h1>
 
-<h2 id="tps">워크로드 기준(TPS)에 따른 구성 사례</h2>
+<h2 id="1-poc-docker-compose-pocyml">1. 개발/PoC 용 단일 노드 (<code>docker-compose-poc.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">os</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-poc</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.type=single-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_SECURITY_PLUGIN=true</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9200:9200&quot;</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: 최소 구성으로 빠르게 기능 시연, 테스트에 적합하다.</p>
+<h2 id="2-poc-performance-analyzer-docker-compose-poc-payml">2. 개발/PoC + Performance Analyzer (<code>docker-compose-poc-pa.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">os</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-poc-pa</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.type=single-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_SECURITY_PLUGIN=true</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9200:9200&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9600:9600&quot;</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: <code>9600</code> 포트를 열어 성능 분석 모듈 사용 가능하다.</p>
+<hr />
+<h2 id="3-docker-compose-poc-no-securityyml">3. 테스트용 보안 비활성 단일 노드 (<code>docker-compose-poc-no-security.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">os</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-nosec</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.type=single-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_INSTALL_DEMO_CONFIG=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_SECURITY_PLUGIN=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_SECURITY_DASHBOARDS_PLUGIN=true</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9200:9200&quot;</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: 보안 모듈을 완전히 비활성화하여 개발 환경 접근성을 높인다.</p>
+<hr />
+<h2 id="4-poc-docker-compose-poc-vectoryml">4. 벡터 검색 PoC 단일 노드 (<code>docker-compose-poc-vector.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">os</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-vector-poc</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.type=single-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms2g -Xmx2g</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9200:9200&quot;</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: 플러그인을 Dockerfile에서 추가 빌드하고 벡터 검색 테스트 가능하다.</p>
+<hr />
+<h2 id="5-docker-compose-scale-roleyml">5. 중규모 운영: 클러스터 관리자 · 데이터 노드 분리 (<code>docker-compose-scale-role.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">master</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-master</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=master</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=cluster_manager</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=master,data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.initial_cluster_manager_nodes=master</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+
+<span class="w">  </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-data</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=data,ingest</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=master,data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.initial_cluster_manager_nodes=master</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms4g -Xmx4g</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: 역할 분리를 통해 안정성과 처리가능 성능 확보 가능하다.</p>
+<hr />
+<h2 id="6-dashboards-docker-compose-scale-datayml">6. 중규모 운영: 다중 데이터 노드 + Dashboards (<code>docker-compose-scale-data.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">master</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*master-def</span>
+
+<span class="w">  </span><span class="nt">data1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-data1</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=data1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=data,ingest</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=master,data1,data2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.initial_cluster_manager_nodes=master</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms4g -Xmx4g</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data1-vol:/usr/share/opensearch/data</span>
+
+<span class="w">  </span><span class="nt">data2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*data1</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-data2</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=data2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=master,data1,data2</span>
+
+<span class="w">  </span><span class="nt">dashboards</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch-dashboards:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-dash</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_HOSTS=[&quot;http://master:9200&quot;]</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data2</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5601:5601&quot;</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">data1-vol</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">data2-vol</span><span class="p">:</span>
+</code></pre></div>
+<p><strong>설명</strong>: 여러 데이터 노드로 색인·검색 요청 병렬 처리 가능하다.</p>
+<hr />
+<h2 id="7-3-docker-compose-hayml">7. 고가용성 3노드 클러스터 (<code>docker-compose-ha.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">node1, node2, node3</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.name=&lt;각각&gt;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=cluster_manager,data,ingest</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.seed_hosts=node1,node2,node3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.initial_cluster_manager_nodes=node1,node2,node3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms2g -Xmx2g</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-net</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">os-net</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridge</span>
+</code></pre></div>
+<p><strong>설명</strong>: 복제(shard replica) 설정 시 한 노드 장애에도 자동 복구 가능하다.</p>
+<hr />
+<h2 id="8-ml-docker-compose-mlyml">8. ML/벡터 검색 분리 클러스터 (<code>docker-compose-ml.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-data</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=data,ingest</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms4g -Xmx4g</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+
+<span class="w">  </span><span class="nt">ml</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">os-ml</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.roles=ml</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms2g -Xmx2g</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.ml_commons.only_run_on_ml_node=true</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: 벡터·ML 임베딩 처리만 전담하는 ML 노드를 분리해 자원 충돌 방지한다.</p>
+<hr />
+<h2 id="9-ondisk-docker-compose-vector-ondiskyml">9. 대용량 벡터: on‑disk 모드 (<code>docker-compose-vector-ondisk.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">os</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.type=single-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NODE_OPTIONS=-Dknn.engine=faissOnDisk</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms4g -Xmx4g</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9200:9200&quot;</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: <code>faissOnDisk</code> 모드로 메모리 절약하면서도 P90 응답 100–200ms 수준 유지 가능하다.</p>
+<hr />
+<h2 id="10-tls-docker-compose-secureyml">10. TLS 및 보안 구성 포함 (<code>docker-compose-secure.yml</code>)</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">os</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opensearchproject/opensearch:latest</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.type=single-node</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.memory_lock=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENSEARCH_JAVA_OPTS=-Xms2g -Xmx2g</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.security.ssl.http.enabled=true</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.security.ssl.http.keystore.type=jks</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.security.ssl.http.keystore.path=certs/http.jks</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.security.ssl.http.keystore.password=changeme</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.security.ssl.http.truststore.type=jks</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.security.ssl.http.truststore.path=certs/http.jks</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins.security.ssl.http.truststore.password=changeme</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./certs:/usr/share/opensearch/config/certs:ro</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9200:9200&quot;</span>
+<span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>설명</strong>: TLS 인증서를 마운트하여 보안 테스트 환경 구축이 가능하다.</p>
+<hr />
+<h2 id="_1">구성 요약 표</h2>
 <table>
 <thead>
 <tr>
-<th>예상 TPS</th>
-<th>사용 사례</th>
-<th>CPU</th>
-<th>RAM</th>
-<th>구성 형태</th>
-<th>벤치마크 참고</th>
+<th>#</th>
+<th>구성</th>
+<th>목적</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>~10 TPS</td>
-<td>내부 PoC, 팀 문서 검색</td>
-<td>4 vCPU</td>
-<td>8 GB</td>
-<td>단일 노드</td>
-<td>일반적으로 검색 응답 속도 약 30–100ms이다</td>
+<td>1</td>
+<td>단일 노드 PoC</td>
+<td>기능 검증, 빠른 배포</td>
 </tr>
 <tr>
-<td>10–50 TPS</td>
-<td>쇼핑몰, 사내 검색 등</td>
-<td>8 vCPU</td>
-<td>16 GB</td>
-<td>단일 클러스터, 벡터 가능</td>
-<td>OpenSearch 3.0에서 벡터 처리 성능 2.5배 향상됨 (<a href="https://opensearch.org/blog/opensearch-project-update-performance-progress-in-opensearch-3-0/?utm_source=chatgpt.com" title="OpenSearch Project update: Performance progress in OpenSearch 3.0">OpenSearch</a>)</td>
+<td>2</td>
+<td>단일 노드 + Performance</td>
+<td>성능 진단 시스템</td>
 </tr>
 <tr>
-<td>50–300 TPS</td>
-<td>실시간 로그 분석, 실시간 상품 검색</td>
-<td>16 vCPU</td>
-<td>32 GB</td>
-<td>다중 노드 구성 권장</td>
-<td>2.17에서 저지연 응답 위해 동시 세그먼트 검색 도입</td>
+<td>3</td>
+<td>단일 노드 + 보안 비활성</td>
+<td>접근이 쉬운 테스트 환경</td>
 </tr>
 <tr>
-<td>300+ TPS</td>
-<td>실시간 광고 등 초고속 검색</td>
-<td>32+ vCPU</td>
-<td>64 GB 이상</td>
-<td>샤드 분산, ML/GPU 노드 분리 필수</td>
-<td>CCR 테스트에서 leader CPU 사용량만 12% 증가</td>
+<td>4</td>
+<td>단일 노드 + 벡터 PoC</td>
+<td>벡터 검색 기능 테스트</td>
+</tr>
+<tr>
+<td>5</td>
+<td>중규모(role 분리)</td>
+<td>역할 구분으로 안정적 운영 구조 확보</td>
+</tr>
+<tr>
+<td>6</td>
+<td>다중 데이터 노드 + Dashboards</td>
+<td>부하 분산 시스템 구축</td>
+</tr>
+<tr>
+<td>7</td>
+<td>HA 3노드 클러스터</td>
+<td>장애 복구 및 가용성 강화</td>
+</tr>
+<tr>
+<td>8</td>
+<td>데이터 + ML 분리</td>
+<td>벡터/ML 워크로드 자원 분리 최적화</td>
+</tr>
+<tr>
+<td>9</td>
+<td>벡터 on‑disk 모드</td>
+<td>대용량 벡터 색인 시 메모리 절약 및 성능 유지</td>
+</tr>
+<tr>
+<td>10</td>
+<td>TLS 보안 구성 포함</td>
+<td>보안 테스트 환경 구축</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_1">색인 규모 기준 사례</h2>
-<table>
-<thead>
-<tr>
-<th>색인 규모</th>
-<th>문서 수</th>
-<th>구성 추천</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&lt; 1 M</td>
-<td>수십만 문서</td>
-<td>4 vCPU, 8 GB</td>
-</tr>
-<tr>
-<td>1–10 M</td>
-<td>뉴스·상품</td>
-<td>8 vCPU, 16 GB</td>
-</tr>
-<tr>
-<td>10–100 M</td>
-<td>로그, 대규모 상품</td>
-<td>16 vCPU, 64 GB, 복수 노드</td>
-</tr>
-<tr>
-<td>&gt; 100 M</td>
-<td>SIEM, 빅데이터</td>
-<td>32+ vCPU, 128 GB+, 완전 분산</td>
-</tr>
-</tbody>
-</table>
+<hr />
+<h2 id="_2">결론 및 활용 팁</h2>
 <ul>
 <li>
-<p>벤치마크에 따르면 OpenSearch 2.17은 1.3 대비 최대 6배 향상된 성능을 보였다 (<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/bp-instances.html?utm_source=chatgpt.com" title="Choosing instance types and testing - Amazon OpenSearch Service">AWS Documentation</a>, <a href="https://opensearch.org/blog/opensearch-project-update-performance-progress-in-opensearch-3-0/?utm_source=chatgpt.com" title="OpenSearch Project update: Performance progress in OpenSearch 3.0">OpenSearch</a>, <a href="https://www.instaclustr.com/blog/opensearch-performance-benchmarking/?utm_source=chatgpt.com" title="OpenSearch® performance benchmarking for CCR - Instaclustr">Instaclustr</a>, <a href="https://www.elastic.co/search-labs/blog/elasticsearch-opensearch-vector-search-performance-comparison?utm_source=chatgpt.com" title="Elasticsearch vs. OpenSearch: Vector Search Performance ...">Elastic</a>, <a href="https://cloudchipr.com/blog/aws-opensearch?utm_source=chatgpt.com" title="AWS OpenSearch Deep Dive: Architecture, Pricing, and Best Practices">Cloudchipr</a>, <a href="https://redis.io/blog/benchmarking-results-for-vector-databases/?utm_source=chatgpt.com" title="Benchmarking results for vector databases | Redis">Redis</a>, <a href="https://opensearch.org/blog/opensearch-performance-2-17/?utm_source=chatgpt.com" title="A look at performance progress through version 2.17 - OpenSearch">OpenSearch</a>).</p>
+<p>각각의 구성 파일은 <strong>목적에 따라 바로 사용 가능</strong>하며 복사하여 사용하면 된다.</p>
 </li>
 <li>
-<p>Vector Engine의 on‑disk 모드 사용 시 메모리를 97% 절감하면서도 P90 지연 100–200ms 수준 유지됨 (<a href="https://aws.amazon.com/blogs/big-data/opensearch-vector-engine-is-now-disk-optimized-for-low-cost-accurate-vector-search/?utm_source=chatgpt.com" title="OpenSearch Vector Engine is now disk-optimized for low cost ... - AWS">Amazon Web Services, Inc.</a>).</p>
+<p>운영 환경에서는 <strong>TLS 구성, 자원 제한 설정, 백업 정책, 모니터링 추가</strong>가 필요하다.</p>
+</li>
+<li>
+<p>벡터 검색 성능, 샤드 전략 등 고도 설정은 추가 자료 요청할 경우 제공 가능하다.</p>
 </li>
 </ul>
-<h2 id="_2">벡터 검색 및 엔진 비교 성능</h2>
-<ul>
-<li>
-<p>OpenSearch 3.0에서 벡터 검색 성능이 2.5배 향상됨 (<a href="https://opensearch.org/blog/opensearch-project-update-performance-progress-in-opensearch-3-0/?utm_source=chatgpt.com" title="OpenSearch Project update: Performance progress in OpenSearch 3.0">OpenSearch</a>).</p>
-</li>
-<li>
-<p>Elastic 社 BBQ vs OpenSearch FAISS 비교 결과, Elastic 제품이 최대 5배 빠름 (<a href="https://www.elastic.co/search-labs/blog/elasticsearch-bbq-vs-opensearch-faiss?utm_source=chatgpt.com" title="Elasticsearch BBQ vs. OpenSearch FAISS: Vector search ...">Elastic</a>).</p>
-</li>
-<li>
-<p>그러나 독립 벤치마크 결과 OpenSearch 2.17.1이 Elastic 8.15.4 대비 벡터 검색에서 P90 기준 11% 빠름 (<a href="https://blog.trailofbits.com/2025/03/06/benchmarking-opensearch-and-elasticsearch/?utm_source=chatgpt.com" title="Benchmarking OpenSearch and Elasticsearch - The Trail of Bits Blog">The Trail of Bits Blog</a>).</p>
-</li>
-</ul>
-<h2 id="_3">실제 사례 추가</h2>
-<h3 id="1-elastic-vs-opensearch">사례 1: Elastic vs OpenSearch 비교 테스트</h3>
-<p>Trail of Bits 테스트에서 OpenSearch 2.17.1은 Big5 워크로드에서 Elastic 보다 1.6배 빠르고, 벡터 워크로드에서는 11% 더 빠른 성능을 보였다 (<a href="https://blog.trailofbits.com/2025/03/06/benchmarking-opensearch-and-elasticsearch/?utm_source=chatgpt.com" title="Benchmarking OpenSearch and Elasticsearch - The Trail of Bits Blog">The Trail of Bits Blog</a>).</p>
-<h3 id="2-ccr">사례 2: CCR(교차 클러스터 복제) 영향</h3>
-<p>AWS 벤치마크에 따르면, leader 노드의 CPU 사용률이 +12.4%, 90th percentile 인덱싱 지연이 +3.9% 증가했지만 검색 성능은 거의 영향 없었다 (<a href="https://www.instaclustr.com/blog/opensearch-performance-benchmarking/?utm_source=chatgpt.com" title="OpenSearch® performance benchmarking for CCR - Instaclustr">Instaclustr</a>).</p>
-<h3 id="3-diskoptimized">사례 3: Disk‑optimized 벡터 엔진 사례</h3>
-<p>Amazon OpenSearch Service에서 disk 모드 사용 시 메모리 97% 절감, P90 응답 100–200ms로 유지되며 비용 효율적임 (<a href="https://aws.amazon.com/blogs/big-data/opensearch-vector-engine-is-now-disk-optimized-for-low-cost-accurate-vector-search/?utm_source=chatgpt.com" title="OpenSearch Vector Engine is now disk-optimized for low cost ... - AWS">Amazon Web Services, Inc.</a>).</p>
-<h2 id="_4">요약: 기준 및 구성 예시 정리</h2>
-<ol>
-<li>
-<p><strong>TPS(트래픽)</strong></p>
-<ul>
-<li>
-<p>~10 TPS: 4 vCPU/8GB</p>
-</li>
-<li>
-<p>50–300 TPS: 16 vCPU/32GB, 다중 노드</p>
-</li>
-<li>
-<p>300+ TPS: 32+ vCPU/64GB 이상, 클러스터 분리</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>색인 규모</strong></p>
-<ul>
-<li>
-<p>&lt; 1M: 4 vCPU/8GB</p>
-</li>
-<li>
-<p>1–10M: 8 vCPU/16GB</p>
-</li>
-<li>
-<p>10–100M: 16 vCPU/64GB</p>
-</li>
-<li>
-<blockquote>
-<p>100M: 32+ vCPU/128GB+, 분산 노드</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>검색 유형</strong></p>
-<ul>
-<li>
-<p>BM25: 경량 구성 가능</p>
-</li>
-<li>
-<p>벡터/하이브리드: CPU 중심 2.5배 속도 향상</p>
-</li>
-<li>
-<p>RAG/AI 재랭킹: GPU 포함 ML 서버 별도 구성 추천</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>엔진·모드 선택</strong></p>
-<ul>
-<li>
-<p>on‑disk 모드로 메모리 최적화 (P90 200ms)</p>
-</li>
-<li>
-<p>concurrent segment search, disk‑optimized vector engine 사용</p>
-</li>
-</ul>
-</li>
-</ol>
 
 
 

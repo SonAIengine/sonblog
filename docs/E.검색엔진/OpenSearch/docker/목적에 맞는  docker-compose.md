@@ -394,3 +394,188 @@ volumes:
 networks:
   opensearch-net:
 ```
+
+아래는 제공하신 OpenSearch Docker Compose 구성 파일을 **요소별로 분해하고 각 설정의 의미와 목적**을 상세히 설명한 정리이다. 시스템 커널 설정부터 각 서비스 구성, 노드 설정, 네트워크, 볼륨까지 전반적으로 분석하였다.
+
+### 1. 커널 설정 (호스트 측)
+
+```bash
+sudo swapoff -a
+```
+
+- **의미**: 스왑 메모리를 비활성화한다.
+    
+- **목적**: OpenSearch는 안정적인 성능을 위해 스왑 사용을 권장하지 않는다.
+    
+
+```bash
+sudo vi /etc/sysctl.conf
+# 추가: vm.max_map_count=262144
+```
+
+- **의미**: 한 프로세스에서 사용할 수 있는 memory map 영역 수 제한을 증가시킨다.
+    
+- **목적**: Lucene 엔진이 메모리 맵 파일을 다수 사용하는데, 기본값(65530)으로는 부족하다.
+    
+
+```bash
+sudo sysctl -w vm.max_map_count=262144
+sudo sysctl -p
+```
+
+- **의미**: 설정을 즉시 적용하고 영구적으로 반영한다.
+    
+- **참고**: OpenSearch 및 Elasticsearch 등은 반드시 이 설정이 적용되어야 한다.
+    
+
+---
+
+### 2. 공통 환경 변수 정의 (`x-opensearch-environment`)
+
+```yaml
+x-opensearch-environment: &opensearch-environment
+  cluster.name: opensearch-cluster
+  bootstrap.memory_lock: "true"
+  OPENSEARCH_JAVA_OPTS: "-Xms4g -Xmx4g"
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD: "X2commerce!1"
+  plugins.security.ssl.http.enabled: false
+```
+
+| 항목                                  | 설명                                            |
+| ----------------------------------- | --------------------------------------------- |
+| `cluster.name`                      | 클러스터 이름. 여러 노드가 동일한 클러스터로 인식되도록 설정            |
+| `bootstrap.memory_lock`             | 메모리를 락(lock) 걸어 스왑 방지. 성능 안정성 확보              |
+| `OPENSEARCH_JAVA_OPTS`              | JVM 힙 메모리 설정 (4GB로 고정). 시스템 메모리의 절반 이하로 설정 권장 |
+| `OPENSEARCH_INITIAL_ADMIN_PASSWORD` | 초기 admin 계정 비밀번호 설정                           |
+| `plugins.security.ssl.http.enabled` | HTTP 보안 비활성화 (기본 TLS OFF)                     |
+
+
+### 3. OpenSearch 노드 설정
+
+### (1) `opensearch-node1` / `opensearch-node2`
+
+공통
+
+```yaml
+image: opensearchproject/opensearch:3
+container_name: ...
+environment:
+  <<: *opensearch-environment
+  - node.name=opensearch-nodeX
+  - discovery.seed_hosts=opensearch-node1,opensearch-node2
+  - cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2
+  - bootstrap.memory_lock=true
+ulimits:
+  memlock:
+    soft: -1
+    hard: -1
+  nofile:
+    soft: 65536
+    hard: 65536
+```
+
+|항목|설명|
+|---|---|
+|`node.name`|노드 식별 이름. 클러스터 내 고유해야 함|
+|`discovery.seed_hosts`|초기 클러스터 탐색 대상 노드 목록. 클러스터 조인을 위해 반드시 설정|
+|`cluster.initial_cluster_manager_nodes`|클러스터 초기 매니저 노드 목록. 클러스터 생성 시 필수|
+|`ulimits.memlock`|메모리 락 제한을 무제한으로 설정하여 힙 메모리 고정 가능하게 함|
+|`ulimits.nofile`|OpenSearch가 열 수 있는 파일 수. 65536 이상 권장|
+
+#### 추가 항목 (node1)
+
+```yaml
+ports:
+  - 9200:9200
+  - 9600:9600
+```
+
+|포트|설명|
+|---|---|
+|`9200`|REST API 및 클라이언트 요청 포트|
+|`9600`|Performance Analyzer(성능 분석 도구)용 포트|
+
+#### 추가 항목 (volumes)
+
+```yaml
+volumes:
+  - opensearch-dataX:/usr/share/opensearch/data
+```
+
+- 데이터 디렉토리를 로컬 경로에 바인딩하여 데이터 지속성을 확보
+
+
+### 4. Dashboards 설정
+
+```yaml
+image: opensearchproject/opensearch-dashboards:3
+container_name: opensearch-dashboards
+ports:
+  - 5601:5601
+expose:
+  - '5601'
+environment:
+  OPENSEARCH_HOSTS: '["https://opensearch-node1:9200","https://opensearch-node2:9200"]'
+```
+
+|항목|설명|
+|---|---|
+|`OPENSEARCH_HOSTS`|연결 대상 OpenSearch 노드의 주소. HTTPS 사용 시 TLS 인증서 필요|
+|`5601`|Dashboards UI 포트 (Kibana와 유사)|
+|`expose`|내부 Docker 네트워크에서 열리는 포트 (호스트에는 직접 노출되지 않음)|
+
+
+### 5. 볼륨 설정
+
+```yaml
+volumes:
+  opensearch-data1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tech/data/opensearch-dir/data-d1
+  opensearch-data2:
+    ...
+```
+
+|항목|설명|
+|---|---|
+|`driver: local`|일반적인 Docker 호스트 볼륨 사용|
+|`type: none` + `o: bind`|Docker에서 외부 디렉토리를 직접 마운트|
+|`device`|실제 호스트 파일 시스템 경로. 디스크 분리/백업이 가능하게 구성됨|
+
+
+### 6. 네트워크 설정
+
+```yaml
+networks:
+  opensearch-net:
+```
+
+- 모든 컨테이너가 동일한 Docker bridge 네트워크에 속함
+    
+- 각 노드는 이 네트워크 상에서 `opensearch-node1`, `opensearch-node2` 등의 이름으로 서로를 인식함
+
+
+### 종합 판단
+
+| 항목          | 설정 수준       | 평가                         |
+| ----------- | ----------- | -------------------------- |
+| **클러스터 구성** | 2노드         | 다중 노드 기반 최소 클러스터 구성        |
+| **자원 설정**   | JVM 힙 4GB   | 중간 규모 이상 처리량 가능            |
+| **성능 모니터링** | 9600 포트 활성화 | Performance Analyzer 사용 가능 |
+| **보안 설정**   | TLS 비활성     | 내부망 전용 또는 개발용 환경에 적합       |
+| **디스크 마운트** | 로컬 경로 지정    | 운영 데이터 지속성 확보              |
+| **확장성**     | 높음          | 3번째 노드 추가 시 고가용성 구성 완성 가능  |
+
+
+필요 시 다음 항목도 추가 구성 가능하다.
+
+- `node.roles` 분리 (cluster_manager, data, ingest, ml)
+    
+- `plugins.security.*`로 TLS 인증 및 로그인 설정
+    
+- `replica`, `shard` 수 설정
+    
+- 벡터 검색/ML 기능 확장 (예: `ml` 노드 추가)

@@ -579,3 +579,154 @@ networks:
 - `replica`, `shard` 수 설정
     
 - 벡터 검색/ML 기능 확장 (예: `ml` 노드 추가)
+
+
+## 여기에 ML 노드를 추가하면?
+
+현재 구성에 **ML 전용 노드 (`opensearch-ml-node`)를 하나 추가**하려면, 아래와 같이 Docker Compose에 노드를 하나 더 정의하고 `node.roles=ml`을 설정하면 된다. 
+
+이 노드는 ML 추론 전용이며, text embedding, 벡터 생성 등에 활용된다.
+
+```yaml
+services:
+  opensearch-node1:
+    image: opensearchproject/opensearch:3
+    container_name: opensearch-node1
+    environment:
+      <<: *opensearch-environment
+      - node.name=opensearch-node1
+      - discovery.seed_hosts=opensearch-node1,opensearch-node2,opensearch-ml-node
+      - cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2
+    ...
+
+  opensearch-node2:
+    image: opensearchproject/opensearch:3
+    container_name: opensearch-node2
+    environment:
+      <<: *opensearch-environment
+      - node.name=opensearch-node2
+      - discovery.seed_hosts=opensearch-node1,opensearch-node2,opensearch-ml-node
+      - cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2
+    ...
+
+  opensearch-ml-node:
+    image: opensearchproject/opensearch:3
+    container_name: opensearch-ml-node
+    environment:
+      <<: *opensearch-environment
+      - node.name=opensearch-ml-node
+      - node.roles=ml
+      - discovery.seed_hosts=opensearch-node1,opensearch-node2,opensearch-ml-node
+      - cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2
+      - plugins.ml_commons.only_run_on_ml_node=true
+      - plugins.ml_commons.task_dispatch_policy=round_robin
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch-data-ml:/usr/share/opensearch/data
+    networks:
+      - opensearch-net
+
+volumes:
+  opensearch-data1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tech/data/opensearch-dir/data-d1
+  opensearch-data2:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tech/data/opensearch-dir/data-d2
+  opensearch-data-ml:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tech/data/opensearch-dir/data-ml
+
+```
+
+## 🔍 주요 변경사항 요약
+
+| 항목                                                    | 설명                                             |
+| ----------------------------------------------------- | ---------------------------------------------- |
+| `node.roles=ml`                                       | ML 전용 노드로 설정하여 색인, 검색 등의 작업은 하지 않고 ML 태스크만 처리함 |
+| `plugins.ml_commons.only_run_on_ml_node=true`         | ML 태스크가 이 노드에서만 실행되도록 제한                       |
+| `discovery.seed_hosts`                                | 모든 노드에서 ml 노드를 포함하여 클러스터에 조인하도록 설정             |
+| `cluster.initial_cluster_manager_nodes`               | ML 노드는 manager가 아니므로 여기에 포함되지 않음               |
+| `plugins.ml_commons.task_dispatch_policy=round_robin` | ML 태스크 분산 방식 설정 (옵션)                           |
+
+
+OpenSearch에서 **ML 전용 노드만 사용되도록 설정하려면**, 다음 2가지 설정이 핵심이다.
+
+### 1. `node.roles: ml`
+
+```yaml
+- node.roles=ml
+```
+
+- 이 노드는 **색인(indexing), 검색(query), cluster manager 역할을 하지 않고**, **ML 작업만 수행**하도록 지정된다.
+    
+- OpenSearch 2.x 이상부터는 노드 역할(role)을 명시하지 않으면 기본적으로 `["data", "ingest", "cluster_manager", "remote_cluster_client", "ml"]` 역할을 모두 수행한다.
+    
+- 따라서 `node.roles=ml`을 명시적으로 설정해야 **진짜 전용 ML 노드**가 된다.
+    
+
+---
+
+## ✅ 2. `plugins.ml_commons.only_run_on_ml_node: true`
+
+```yaml
+- plugins.ml_commons.only_run_on_ml_node=true
+```
+
+- 이 설정이 `true`이면 ML Commons는 **`node.roles`에 `ml`만 포함된 노드에서만 ML 태스크를 실행**한다.
+    
+- 일반 data 노드가 ML 태스크를 처리하지 않게 된다.
+    
+- 따라서 이 설정을 반드시 추가해야 ML 전용 노드가 아닌 다른 노드에서 embedding 생성, 모델 추론 등의 ML 작업이 발생하지 않는다.
+    
+
+---
+
+## 예시 요약
+
+```yaml
+  opensearch-ml-node:
+    environment:
+      - node.roles=ml
+      - plugins.ml_commons.only_run_on_ml_node=true
+```
+
+이렇게 설정하면 ML 태스크(`text_embedding`, `model_predict`, `model_train`) 등은 오직 `opensearch-ml-node`에서만 처리된다.
+
+---
+
+## 추가 옵션 (선택)
+
+|설정 키|설명|예시|
+|---|---|---|
+|`plugins.ml_commons.task_dispatch_policy`|여러 ML 노드가 있을 때 태스크 분산 방식|`round_robin` 또는 `least_load`|
+|`plugins.ml_commons.native_memory_threshold`|ML 태스크 실행 전, 메모리 점유율 기준|`90` (90% 이상이면 거부)|
+|`plugins.ml_commons.max_ml_task_per_node`|동시에 수행할 수 있는 ML 태스크 개수|`2` 등|
+
+---
+
+## 결론
+
+**"해당 ML 노드만 ML 태스크를 수행"** 하도록 하려면 반드시 다음 두 가지를 같이 설정해야 한다:
+
+1. `node.roles=ml` → ML 이외의 역할 제거
+    
+2. `plugins.ml_commons.only_run_on_ml_node=true` → ML 노드에서만 태스크 실행 제한
+    
+
+이 구성을 통해 운영 클러스터의 색인·검색 성능에 영향을 주지 않고 ML 기능을 안정적으로 분리할 수 있다.

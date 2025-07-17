@@ -284,17 +284,3 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 - **메모리 요구**: 모델 파일과 병렬 추론을 고려해 ML 노드당 최소 16GB, 권장 32GB 이상 확보.
     
 - **스케일링**: 색인량이 증가할 경우 ML 노드를 별도로 분리하여 수평 확장 가능.
-    
-
-## 7. 요약
-
-- `goodsNM` 필드를 `goods_vector`로 자동 벡터화하려면 Hugging Face 모델을 TorchScript 형식으로 업로드하고, ingest pipeline을 구성한 후 벡터 인덱스를 생성하면 된다.
-    
-- ML Commons 관련 클러스터 설정 및 ML 노드(GPU 포함) 구성이 필수이며, 특히 대규모 또는 실시간 색인 환경에서는 GPU 및 충분한 메모리 확보를 권장한다.
-    
-- Rust 애플리케이션에서는 상품명만 전달하면 ML 파이프라인이 자동으로 임베딩을 생성하여 벡터 색인을 처리해준다.
-    
-
----
-
-Hugging Face 모델 예시(예: all-MiniLM-L6-v2), 대규모 색인 사례, 또는 검색 쿼리 예시(hybrid search 등) 추가가 필요하면 요청해 달라.

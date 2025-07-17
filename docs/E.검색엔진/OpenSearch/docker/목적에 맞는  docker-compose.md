@@ -654,7 +654,7 @@ volumes:
 
 ```
 
-## 🔍 주요 변경사항 요약
+### 주요 변경사항 요약
 
 | 항목                                                    | 설명                                             |
 | ----------------------------------------------------- | ---------------------------------------------- |
@@ -678,11 +678,9 @@ OpenSearch에서 **ML 전용 노드만 사용되도록 설정하려면**, 다음
 - OpenSearch 2.x 이상부터는 노드 역할(role)을 명시하지 않으면 기본적으로 `["data", "ingest", "cluster_manager", "remote_cluster_client", "ml"]` 역할을 모두 수행한다.
     
 - 따라서 `node.roles=ml`을 명시적으로 설정해야 **진짜 전용 ML 노드**가 된다.
-    
 
----
 
-## ✅ 2. `plugins.ml_commons.only_run_on_ml_node: true`
+### 2. `plugins.ml_commons.only_run_on_ml_node: true`
 
 ```yaml
 - plugins.ml_commons.only_run_on_ml_node=true
@@ -693,11 +691,9 @@ OpenSearch에서 **ML 전용 노드만 사용되도록 설정하려면**, 다음
 - 일반 data 노드가 ML 태스크를 처리하지 않게 된다.
     
 - 따라서 이 설정을 반드시 추가해야 ML 전용 노드가 아닌 다른 노드에서 embedding 생성, 모델 추론 등의 ML 작업이 발생하지 않는다.
-    
 
----
 
-## 예시 요약
+### 예시 요약
 
 ```yaml
   opensearch-ml-node:
@@ -708,25 +704,22 @@ OpenSearch에서 **ML 전용 노드만 사용되도록 설정하려면**, 다음
 
 이렇게 설정하면 ML 태스크(`text_embedding`, `model_predict`, `model_train`) 등은 오직 `opensearch-ml-node`에서만 처리된다.
 
----
 
-## 추가 옵션 (선택)
+### 추가 옵션 (선택)
 
-|설정 키|설명|예시|
-|---|---|---|
-|`plugins.ml_commons.task_dispatch_policy`|여러 ML 노드가 있을 때 태스크 분산 방식|`round_robin` 또는 `least_load`|
-|`plugins.ml_commons.native_memory_threshold`|ML 태스크 실행 전, 메모리 점유율 기준|`90` (90% 이상이면 거부)|
-|`plugins.ml_commons.max_ml_task_per_node`|동시에 수행할 수 있는 ML 태스크 개수|`2` 등|
+| 설정 키                                         | 설명                       | 예시                            |
+| -------------------------------------------- | ------------------------ | ----------------------------- |
+| `plugins.ml_commons.task_dispatch_policy`    | 여러 ML 노드가 있을 때 태스크 분산 방식 | `round_robin` 또는 `least_load` |
+| `plugins.ml_commons.native_memory_threshold` | ML 태스크 실행 전, 메모리 점유율 기준  | `90` (90% 이상이면 거부)            |
+| `plugins.ml_commons.max_ml_task_per_node`    | 동시에 수행할 수 있는 ML 태스크 개수   | `2` 등등                        |
 
----
 
-## 결론
+### 결론
 
-**"해당 ML 노드만 ML 태스크를 수행"** 하도록 하려면 반드시 다음 두 가지를 같이 설정해야 한다:
+**"해당 ML 노드만 ML 태스크를 수행"** 하도록 하려면 반드시 다음 두 가지를 같이 설정해야 한다.
 
 1. `node.roles=ml` → ML 이외의 역할 제거
     
 2. `plugins.ml_commons.only_run_on_ml_node=true` → ML 노드에서만 태스크 실행 제한
-    
 
 이 구성을 통해 운영 클러스터의 색인·검색 성능에 영향을 주지 않고 ML 기능을 안정적으로 분리할 수 있다.

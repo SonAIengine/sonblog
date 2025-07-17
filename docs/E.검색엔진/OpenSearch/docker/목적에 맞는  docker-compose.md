@@ -304,3 +304,93 @@ services:
 - 운영 환경에서는 **TLS 구성, 자원 제한 설정, 백업 정책, 모니터링 추가**가 필요하다.
     
 - 벡터 검색 성능, 샤드 전략 등 고도 설정은 추가 자료 요청할 경우 제공 가능하다.
+
+
+## 현재 쓰고 있는 docker-compose.yml
+```yaml
+#
+# sudo swapoff -a
+# sudo vi /etc/sysctl.conf => vm.max_map_count=262144
+# sudo sysctl -w vm.max_map_count=262144
+# sudo sysctl -p
+---
+x-opensearch-environment: &opensearch-environment
+  cluster.name: opensearch-cluster
+  bootstrap.memory_lock: "true"
+  OPENSEARCH_JAVA_OPTS: "-Xms4g -Xmx4g"
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD: "X2commerce!1"
+  plugins.security.ssl.http.enabled: false
+
+services:
+  opensearch-node1:
+    image: opensearchproject/opensearch:3
+    container_name: opensearch-node1
+    environment:
+      <<: *opensearch-environment
+      - node.name=opensearch-node1
+      - discovery.seed_hosts=opensearch-node1,opensearch-node2
+      - cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536  # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
+        hard: 65536
+    volumes:
+      - opensearch-data1:/usr/share/opensearch/data
+    ports:
+      - 9200:9200
+      - 9600:9600  # required for Performance Analyzer
+    networks:
+      - opensearch-net
+  opensearch-node2:
+    image: opensearchproject/opensearch:3
+    container_name: opensearch-node2
+    environment:
+      <<: *opensearch-environment
+      - node.name=opensearch-node2
+      - discovery.seed_hosts=opensearch-node1,opensearch-node2
+      - cluster.initial_cluster_manager_nodes=opensearch-node1,opensearch-node2
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - opensearch-data2:/usr/share/opensearch/data
+    networks:
+      - opensearch-net
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:3
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601
+    expose:
+      - '5601'
+    environment:
+      OPENSEARCH_HOSTS: '["https://opensearch-node1:9200","https://opensearch-node2:9200"]'
+    networks:
+      - opensearch-net
+
+volumes:
+  opensearch-data1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tech/data/opensearch-dir/data-d1
+  opensearch-data2:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/tech/data/opensearch-dir/data-d2
+
+networks:
+  opensearch-net:
+```

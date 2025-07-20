@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../Tokenization/">
+        <link rel="prev" href="../../BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/">
       
       
-        <link rel="next" href="../BERT/Query%2C%20Key%2C%20Value%20%ED%96%89%EB%A0%AC%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%EA%B0%80%3F/">
+        <link rel="next" href="../vLLM%20vs%20LMDeploy%20vs%20SGLang/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>멀티턴 vs 싱글턴 - SON BLOG</title>
+        <title>SGLang vs vLLM - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +46,16 @@
       
     
     
-      <link rel="stylesheet" href="../../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-single-turn" class="md-skip">
+        <a href="#1" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              멀티턴 vs 싱글턴
+              SGLang vs vLLM
             
           </span>
         </div>
@@ -216,7 +216,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -244,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
+        <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
           
   
   
@@ -269,7 +269,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+        <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
           
   
   
@@ -298,7 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+        <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
           
   
   
@@ -325,7 +325,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../Dropout/" class="md-tabs__link">
+        <a href="../../Dropout/" class="md-tabs__link">
           
   
   
@@ -361,7 +361,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-tabs__link">
+        <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-tabs__link">
           
   
   
@@ -389,7 +389,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
+        <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
           
   
   
@@ -425,7 +425,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -443,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -563,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -641,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -721,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   
@@ -744,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -833,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+      <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
         
   
   
@@ -856,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   
@@ -879,7 +879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../B.PoC/tauri/" class="md-nav__link">
+      <a href="../../../B.PoC/tauri/" class="md-nav__link">
         
   
   
@@ -1009,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   
@@ -1032,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   
@@ -1055,7 +1055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   
@@ -1139,7 +1139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   
@@ -1162,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -1185,7 +1185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   
@@ -1208,7 +1208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -1249,10 +1249,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -1316,7 +1312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Dropout/" class="md-nav__link">
+      <a href="../../Dropout/" class="md-nav__link">
         
   
   
@@ -1339,7 +1335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
+      <a href="../../GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
         
   
   
@@ -1362,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
+      <a href="../../GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
         
   
   
@@ -1385,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../KoBERT/" class="md-nav__link">
+      <a href="../../KoBERT/" class="md-nav__link">
         
   
   
@@ -1408,53 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Qwen3-embedding/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Qwen3 embedding
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SGLang%20vs%20vLLM/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SGLang vs vLLM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Thompson%20Sampling/" class="md-nav__link">
+      <a href="../../Thompson%20Sampling/" class="md-nav__link">
         
   
   
@@ -1477,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Tokenization/" class="md-nav__link">
+      <a href="../../Tokenization/" class="md-nav__link">
         
   
   
@@ -1488,142 +1438,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    멀티턴 vs 싱글턴
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    멀티턴 vs 싱글턴
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-single-turn" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 싱글턴(Single-turn) 대화란
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 싱글턴(Single-turn) 대화란">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      예시
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-multi-turn" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 멀티턴(Multi-turn) 대화란
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 멀티턴(Multi-turn) 대화란">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      예시
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 두 방식의 주요 차이점
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 멀티턴이 필요한 이유
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 요약
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1660,10 +1474,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
         
           
-          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="">
             
   
   
@@ -1676,8 +1490,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
             <span class="md-nav__icon md-icon"></span>
             BERT
           </label>
@@ -1690,7 +1504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../BERT/Query%2C%20Key%2C%20Value%20%ED%96%89%EB%A0%AC%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%EA%B0%80%3F/" class="md-nav__link">
+      <a href="../../BERT/Query%2C%20Key%2C%20Value%20%ED%96%89%EB%A0%AC%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%EA%B0%80%3F/" class="md-nav__link">
         
   
   
@@ -1713,7 +1527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../BERT/Scaled%20Dot-Product%20Attention%20%EB%A5%BC%20%EC%A0%95%EC%9D%98%ED%95%98%EC%8B%9C%EC%98%A4./" class="md-nav__link">
+      <a href="../../BERT/Scaled%20Dot-Product%20Attention%20%EB%A5%BC%20%EC%A0%95%EC%9D%98%ED%95%98%EC%8B%9C%EC%98%A4./" class="md-nav__link">
         
   
   
@@ -1736,12 +1550,333 @@
   
   
     <li class="md-nav__item">
-      <a href="../BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/" class="md-nav__link">
+      <a href="../../BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     셀프 어텐션의 전체 단계를 설명하라
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Serve
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            Model Serve
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    SGLang vs vLLM
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    SGLang vs vLLM
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 개요
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sglang" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGLang이란?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      vLLM이란?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 핵심 기술 비교
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 핵심 기술 비교">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sglang_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGLang 주요 기술
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      vLLM 주요 기술
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 성능 및 사용 사례
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 성능 및 사용 사례">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sglang_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGLang이 적합한 경우
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      vLLM이 적합한 경우
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 멀티 GPU 확장성
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 멀티 GPU 확장성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sglang-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGLang의 멀티 GPU 전략
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      vLLM의 멀티 GPU 전략
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 선택 가이드
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 요약
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vLLM%20vs%20LMDeploy%20vs%20SGLang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    vLLM vs LMDeploy vs SGLang
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%EB%A9%80%ED%8B%B0%ED%84%B4%20vs%20%EC%8B%B1%EA%B8%80%ED%84%B4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    멀티턴 vs 싱글턴
     
   </span>
   
@@ -1937,7 +2072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -1960,7 +2095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2038,7 +2173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
         
   
   
@@ -2116,7 +2251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -2194,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
         
   
   
@@ -2290,7 +2425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
         
   
   
@@ -2313,7 +2448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -2336,7 +2471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
         
   
   
@@ -2359,7 +2494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2382,7 +2517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2405,7 +2540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
         
   
   
@@ -2428,7 +2563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2451,7 +2586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2474,7 +2609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
         
   
   
@@ -2497,7 +2632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2624,7 +2759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2704,7 +2839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -2727,7 +2862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2823,7 +2958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
         
   
   
@@ -2846,7 +2981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
         
   
   
@@ -2869,7 +3004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
         
   
   
@@ -2892,7 +3027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -2915,7 +3050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
         
   
   
@@ -2938,7 +3073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20node.roles%2C%20node.attr%2C%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20node.roles%2C%20node.attr%2C%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
         
   
   
@@ -3016,7 +3151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
         
   
   
@@ -3155,7 +3290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/LangChain/LangChain%EA%B3%BC%20Qdrant/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/LangChain/LangChain%EA%B3%BC%20Qdrant/" class="md-nav__link">
         
   
   
@@ -3178,7 +3313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/LangChain/%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/LangChain/%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
         
   
   
@@ -3201,7 +3336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/LangChain/%EC%9D%98%EB%AF%B8%EB%A1%A0%EC%A0%81%20Chunk/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/LangChain/%EC%9D%98%EB%AF%B8%EB%A1%A0%EC%A0%81%20Chunk/" class="md-nav__link">
         
   
   
@@ -3327,7 +3462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
         
   
   
@@ -3350,7 +3485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
         
   
   
@@ -3373,7 +3508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
         
   
   
@@ -3396,7 +3531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
         
   
   
@@ -3419,7 +3554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
         
   
   
@@ -3442,7 +3577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
         
   
   
@@ -3465,7 +3600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
         
   
   
@@ -3488,7 +3623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
         
   
   
@@ -3511,7 +3646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
         
   
   
@@ -3534,7 +3669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
         
   
   
@@ -3557,7 +3692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
         
   
   
@@ -3580,7 +3715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
         
   
   
@@ -3603,7 +3738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
         
   
   
@@ -3626,7 +3761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
         
   
   
@@ -3649,7 +3784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
         
   
   
@@ -3672,7 +3807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
         
   
   
@@ -3695,7 +3830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -3718,7 +3853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
         
   
   
@@ -3741,7 +3876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
         
   
   
@@ -3764,7 +3899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
         
   
   
@@ -3787,7 +3922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
         
   
   
@@ -3810,7 +3945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
         
   
   
@@ -3833,7 +3968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
         
   
   
@@ -3856,7 +3991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
         
   
   
@@ -3879,7 +4014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/Qdrant/%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
         
   
   
@@ -3969,7 +4104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/%EB%AC%B4%EC%A0%9C/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/%EB%AC%B4%EC%A0%9C/" class="md-nav__link">
         
   
   
@@ -3993,6 +4128,12 @@
   
     
     
+      
+        
+      
+        
+      
+        
       
         
       
@@ -4038,6 +4179,75 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangChain/Chunker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chunker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangChain/%EB%8C%80%ED%99%94%20%EA%B8%B0%EB%A1%9D%20%EC%9C%A0%EC%A7%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    대화 기록 유지
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangChain/%EC%9D%BC%EA%B4%80%EB%90%9C%20output%20%28PydanticOutputParser%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    일관된 output (PydanticOutputParser)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -4058,10 +4268,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_2_1" id="__nav_6_3_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3_2_4" id="__nav_6_3_2_4_label" tabindex="0">
             
   
   
@@ -4074,8 +4284,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_2_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_2_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_2_4">
             <span class="md-nav__icon md-icon"></span>
             Document Loader
           </label>
@@ -4088,7 +4298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
         
   
   
@@ -4111,7 +4321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
         
   
   
@@ -4197,7 +4407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -4283,7 +4493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../../../E.%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84/%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -4368,7 +4578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+      <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
         
   
   
@@ -4416,19 +4626,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-single-turn" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 싱글턴(Single-turn) 대화란
+      1. 개요
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. 싱글턴(Single-turn) 대화란">
+    <nav class="md-nav" aria-label="1. 개요">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#sglang" class="md-nav__link">
     <span class="md-ellipsis">
-      예시
+      SGLang이란?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      vLLM이란?
     </span>
   </a>
   
@@ -4440,19 +4659,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-multi-turn" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 멀티턴(Multi-turn) 대화란
+      2. 핵심 기술 비교
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 멀티턴(Multi-turn) 대화란">
+    <nav class="md-nav" aria-label="2. 핵심 기술 비교">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#sglang_1" class="md-nav__link">
     <span class="md-ellipsis">
-      예시
+      SGLang 주요 기술
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      vLLM 주요 기술
     </span>
   </a>
   
@@ -4466,25 +4694,82 @@
         <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 두 방식의 주요 차이점
+      3. 성능 및 사용 사례
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 성능 및 사용 사례">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sglang_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGLang이 적합한 경우
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#vllm_2" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 멀티턴이 필요한 이유
+      vLLM이 적합한 경우
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 멀티 GPU 확장성
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 멀티 GPU 확장성">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sglang-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      SGLang의 멀티 GPU 전략
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vllm-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      vLLM의 멀티 GPU 전략
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      5. 요약
+      5. 선택 가이드
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 요약
     </span>
   </a>
   
@@ -4506,70 +4791,238 @@
 
 
 
-  <h1>멀티턴 vs 싱글턴</h1>
+  <h1>SGLang vs vLLM</h1>
 
-<p>LLM 기반의 챗봇이나 대화형 AI 시스템에서는 사용자와의 대화 흐름을 어떻게 관리하느냐에 따라 처리 방식이 크게 달라진다. </p>
-<p>이때 중요한 개념이 바로 <strong>싱글턴</strong>과 <strong>멀티턴</strong>이다. </p>
-<p>두 방식은 대화의 문맥 유지 여부와 처리 방식에서 본질적인 차이를 보인다.</p>
-<h2 id="1-single-turn">1. 싱글턴(Single-turn) 대화란</h2>
-<p>싱글턴은 <strong>하나의 사용자 질문에 대해 하나의 응답만 수행하고 종료되는 방식</strong>이다. 
-이 방식에서는 이전 대화 내용이나 맥락을 고려하지 않으며, 매 요청은 완전히 독립적으로 처리된다. 
-주로 <strong>FAQ 챗봇</strong>, <strong>단일 질의응답 시스템</strong>, <strong>한 번에 정보를 제공하는 응용 서비스</strong> 등에서 사용된다.</p>
-<h3 id="_1">예시</h3>
-<div class="highlight"><pre><span></span><code>사용자: 서울의 날씨 알려줘  
-AI: 서울은 오늘 맑고 기온은 29도입니다.
-</code></pre></div>
-<p>해당 대화는 질문과 응답이 한 번씩 오가며 종료되므로 싱글턴이다.</p>
-<h2 id="2-multi-turn">2. 멀티턴(Multi-turn) 대화란</h2>
-<p>멀티턴은 <strong>여러 번의 질문과 응답이 이어지며 문맥이 연속되는 대화 방식</strong>이다. 이 방식에서는 AI가 <strong>이전 대화의 흐름을 기억하고</strong>, 이를 기반으로 다음 응답을 생성한다. 따라서 사용자가 일부만 질문하거나 생략된 표현을 써도 맥락을 유지하며 자연스럽게 응답할 수 있다.</p>
-<h3 id="_2">예시</h3>
-<div class="highlight"><pre><span></span><code>사용자: 서울의 날씨 알려줘  
-AI: 서울은 오늘 맑고 기온은 29도입니다.  
-사용자: 내일은 어때?  
-AI: 내일은 흐리고 비가 예상됩니다.
-</code></pre></div>
-<p>위 예시에서 "내일은 어때?"라는 질문은 문맥상 "서울의 내일 날씨"를 의미하며, AI는 이를 <strong>이전 질문을 바탕으로 추론</strong>하여 적절한 응답을 생성한다. 이러한 방식이 멀티턴이다.</p>
-<h2 id="3">3. 두 방식의 주요 차이점</h2>
+<p>대형 언어 모델(LLM)의 활용이 확산됨에 따라, 효율적인 추론(inference) 및 서빙을 위한 인프라 선택이 점점 더 중요해지고 있다. </p>
+<p>본 글에서는 UC 버클리에서 개발된 두 가지 대표적인 추론 프레임워크인 <strong>SGLang</strong>과 <strong>vLLM</strong>을 다양한 관점에서 비교 분석한다. </p>
+<p>각각의 설계 철학, 핵심 기술, 성능, 멀티 GPU 지원 방식, 그리고 실제 활용 사례에 대해 다룬다.</p>
+<h2 id="1">1. 개요</h2>
+<h3 id="sglang">SGLang이란?</h3>
+<p>SGLang은 복잡한 LLM 기반 애플리케이션을 위한 추론 엔진으로, CPU 및 GPU 자원의 효율적인 활용을 통해 고성능을 지향한다. <strong>다중 턴 대화</strong>, <strong>도구 호출</strong>, <strong>계획 기반 응답</strong>, <strong>JSON과 같은 구조화된 출력</strong>을 자연스럽게 처리할 수 있도록 설계되었다.</p>
+<ul>
+<li>
+<p><strong>정식 명칭</strong>: Structured Generation Language</p>
+</li>
+<li>
+<p><strong>개발 기관</strong>: UC Berkeley</p>
+</li>
+<li>
+<p><strong>주요 목적</strong>:</p>
+<ul>
+<li>
+<p>복잡한 LLM 프로그램(멀티턴 대화, 도구 호출 등)을 효율적으로 실행</p>
+</li>
+<li>
+<p>구조화된 출력(JSON 등) 지원</p>
+</li>
+<li>
+<p>프론트엔드 DSL과 백엔드 런타임의 공동 설계를 통해 멀티 GPU 확장성 확보</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="vllm">vLLM이란?</h3>
+<p>vLLM은 고속 추론, 메모리 효율성, 손쉬운 통합을 목표로 하는 추론 프레임워크이다. 다양한 대형 언어 모델(Gemma, Qwen, GPT, DeepSeek 등)의 배치형 단일 요청 추론에 최적화되어 있다.</p>
+<ul>
+<li>
+<p><strong>정식 명칭</strong>: Vectorized Large Language Model Inference</p>
+</li>
+<li>
+<p><strong>개발 기관</strong>: UC Berkeley</p>
+</li>
+<li>
+<p><strong>주요 목적</strong>:</p>
+<ul>
+<li>
+<p>단일턴 추론 시 메모리 효율성과 처리량 향상</p>
+</li>
+<li>
+<p>PagedAttention 기반으로 고동시성과 고속 처리 구현</p>
+</li>
+<li>
+<p>기존 파이프라인과의 손쉬운 통합 지원</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2">2. 핵심 기술 비교</h2>
 <table>
 <thead>
 <tr>
 <th>항목</th>
-<th>싱글턴</th>
-<th>멀티턴</th>
+<th>SGLang</th>
+<th>vLLM</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>문맥 유지</td>
-<td>없음</td>
-<td>있음</td>
+<td>핵심 기술</td>
+<td>RadixAttention, DSL 기반 컴파일러 디자인</td>
+<td>PagedAttention, Continuous Batching</td>
 </tr>
 <tr>
-<td>응답 정확도</td>
-<td>질문 명확 시 정확함</td>
-<td>문맥 기반 유연한 응답 가능</td>
+<td>구조화된 출력</td>
+<td>지원(JSON, FSM 기반)</td>
+<td>미지원</td>
 </tr>
 <tr>
-<td>처리 난이도</td>
-<td>상대적으로 낮음</td>
-<td>상태 관리와 캐시 최적화 필요</td>
+<td>배치 처리</td>
+<td>연속적 동적 배치 지원</td>
+<td>Continuous Batching으로 자동화</td>
 </tr>
 <tr>
-<td>사용 사례</td>
-<td>검색형 Q&amp;A, FAQ</td>
-<td>챗봇, RAG, 상담 시스템, 에이전트</td>
+<td>캐시 최적화</td>
+<td>Prefix 공유를 통한 캐시 재사용</td>
+<td>PagedAttention 기반 GPU 메모리 최적화</td>
 </tr>
 </tbody>
 </table>
-<h2 id="4">4. 멀티턴이 필요한 이유</h2>
-<p>현실의 대화는 대부분 <strong>단계적으로 이어지는 질의응답</strong>으로 구성되므로, 사용자는 전체 질문을 한 번에 말하지 않는다. </p>
-<p>특히 RAG 기반 시스템에서는 문서를 요약한 뒤 
-“그럼 관련 예시는?”, 
-“이걸 표로 바꿔줘”, 
-“다른 문서도 분석해줘”와 같이 대화를 확장하게 된다. </p>
-<p>이러한 흐름을 자연스럽게 처리하기 위해서는 멀티턴 방식이 필수적이다.</p>
-<h2 id="5">5. 요약</h2>
-<p>멀티턴은 대화의 흐름을 기억하며 사용자와 <strong>지속적 상호작용</strong>을 가능하게 하는 방식이고, 싱글턴은 <strong>즉각적이고 독립적인 질문-응답</strong>에 적합한 방식이다. 챗봇의 목적이 단순한 정보 제공인지, 아니면 맥락 기반 응답을 요구하는지에 따라 적절한 방식을 선택하는 것이 중요하다.</p>
+<h3 id="sglang_1">SGLang 주요 기술</h3>
+<ul>
+<li>
+<p><strong>RadixAttention</strong>: Radix Tree를 이용한 KV 캐시 관리 방식으로, 다중 턴 대화에서 prefix 공유를 통해 최대 5배까지 캐시 적중률을 향상시킨다.</p>
+</li>
+<li>
+<p><strong>구조화된 출력 지원</strong>: 정규식 및 유한 상태 머신(FSM)을 활용한 제약 디코딩(constrained decoding)으로 JSON, XML 등 구조화된 출력이 가능하다.</p>
+</li>
+<li>
+<p><strong>컴파일러 영감 설계</strong>: DSL을 이용해 복잡한 LLM 워크플로우를 선언적으로 기술할 수 있으며, 런타임에서 이를 최적화한다.</p>
+</li>
+</ul>
+<h3 id="vllm_1">vLLM 주요 기술</h3>
+<ul>
+<li>
+<p><strong>PagedAttention</strong>: OS의 페이징 개념을 도입하여 KV 캐시를 고정 블록으로 분할, GPU 메모리의 동적 할당을 가능하게 한다.</p>
+</li>
+<li>
+<p><strong>연속 배치 처리(Continuous Batching)</strong>: 요청을 prefill과 decode로 분리하여 실시간으로 배치 크기를 조정함으로써 GPU 활용률을 극대화한다.</p>
+</li>
+<li>
+<p><strong>Zero Redundancy Tensor Parallelism</strong>: 중복 없는 가중치 분산 및 통신 최적화를 통해 멀티 GPU 환경에서 효율적인 추론이 가능하다.</p>
+</li>
+</ul>
+<h2 id="3">3. 성능 및 사용 사례</h2>
+<h3 id="sglang_2">SGLang이 적합한 경우</h3>
+<ul>
+<li>
+<p>멀티턴 대화형 시스템 (예: 챗봇, 에이전트 플래너)</p>
+</li>
+<li>
+<p>출력 형식이 엄격히 정의된 경우 (예: JSON 기반 API 응답)</p>
+</li>
+<li>
+<p>Tool calling이나 복합적인 LLM 논리 흐름을 처리해야 하는 경우</p>
+</li>
+</ul>
+<p><strong>성능 지표</strong>:</p>
+<ul>
+<li>
+<p>LLaMA-7B 기준, vLLM 대비 5배 높은 멀티턴 처리량</p>
+</li>
+<li>
+<p>RadixAttention을 통해 30~50% 낮은 응답 지연(latency)</p>
+</li>
+</ul>
+<h3 id="vllm_2">vLLM이 적합한 경우</h3>
+<ul>
+<li>
+<p>단일턴 Q&amp;A, 콘텐츠 생성 등 대량의 요청을 빠르게 처리해야 하는 경우</p>
+</li>
+<li>
+<p>리소스 제한 환경에서 최대의 처리량을 뽑아야 하는 경우</p>
+</li>
+<li>
+<p>HuggingFace Transformers 대비 14~24배 이상 높은 처리량</p>
+</li>
+<li>
+<p>GPU 한 대당 100개 이상의 동시 요청 처리 가능</p>
+</li>
+</ul>
+<h2 id="4-gpu">4. 멀티 GPU 확장성</h2>
+<h3 id="sglang-gpu">SGLang의 멀티 GPU 전략</h3>
+<ul>
+<li>
+<p><strong>Tensor Parallelism</strong>: <code>--tp 8</code> 과 같이 가중치를 다수 GPU에 분산</p>
+</li>
+<li>
+<p><strong>Data Parallelism</strong>: 입력 데이터를 셰어링하여 GPU 간 부하 균형</p>
+</li>
+<li>
+<p><strong>RadixAttention 캐시 공유</strong>: GPU 간 prefix 캐시를 공유하여 중복 연산 제거</p>
+</li>
+</ul>
+<h3 id="vllm-gpu">vLLM의 멀티 GPU 전략</h3>
+<ul>
+<li>
+<p><strong>Tensor Parallelism</strong>: SGLang과 유사하나, 메모리 중복이 없음</p>
+</li>
+<li>
+<p><strong>Distributed Scheduler</strong>: GPU 간 요청 라우팅 및 일부 요청 CPU 오프로딩</p>
+</li>
+<li>
+<p><strong>파이프라인 병렬화</strong>: Kubernetes 클러스터 기반 멀티 노드 스케일링 지원</p>
+</li>
+</ul>
+<h2 id="5">5. 선택 가이드</h2>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>추천 프레임워크</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>복잡한 멀티턴 대화, 도구 호출</td>
+<td>SGLang</td>
+</tr>
+<tr>
+<td>JSON, XML 등 구조화된 출력이 필수인 경우</td>
+<td>SGLang</td>
+</tr>
+<tr>
+<td>높은 요청 동시성과 단일턴 처리</td>
+<td>vLLM</td>
+</tr>
+<tr>
+<td>빠른 구축과 쉬운 통합이 필요한 경우</td>
+<td>vLLM</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6">6. 요약</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>SGLang</th>
+<th>vLLM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>핵심 강점</td>
+<td>멀티턴, 구조화 출력, 복잡한 논리 처리</td>
+<td>단일턴 고처리량, 메모리 효율</td>
+</tr>
+<tr>
+<td>기술 스택</td>
+<td>RadixAttention, DSL 기반 런타임 최적화</td>
+<td>PagedAttention, 배치 최적화</td>
+</tr>
+<tr>
+<td>사용 대상 모델</td>
+<td>LLaMA, DeepSeek 등 범용 LLM/VLM</td>
+<td>GPT-4, Mixtral 등 초대형 모델</td>
+</tr>
+<tr>
+<td>학습 난이도</td>
+<td>높음 (DSL 학습 필요)</td>
+<td>낮음 (즉시 사용 가능)</td>
+</tr>
+</tbody>
+</table>
+<p>이 글은 프로젝트 성격, 처리 요구, 출력 포맷에 따라 SGLang과 vLLM 중 어떤 프레임워크가 적합한지를 빠르게 판단할 수 있도록 구성되었다. 각자의 기술적 강점을 바탕으로 두 시스템을 적절히 선택하는 것이 고성능 LLM 서빙 전략의 핵심이다.</p>
 
 
 
@@ -4624,12 +5077,12 @@ AI: 내일은 흐리고 비가 예상됩니다.
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
-        <script src="../../custom.js"></script>
+        <script src="../../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

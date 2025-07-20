@@ -79,3 +79,15 @@ model = ChatOpenAI(model_name="gpt-4o", temperature=0.0)
 ```
 `temperature` 를 0.0 으로 설정하여 AI가 더욱 일관된 답변을 할 수 있도록 합니다.
 
+```python
+class FinancialAdvice(BaseModel):
+	setup: str = Feild(description="금융 조언 상황을 설정하기 위한 질문")
+	advice: str = Field(description="질문을 해결하기 위한 금융 답변")
+
+	@model_validator(mode="before")
+	@classmethod
+	def question_ends_with_question_mark(cls, values: dict) -> dict:
+		setup = values.get("setup", "")
+		if not setup.endswith("?"):
+			raise ValueError()
+```

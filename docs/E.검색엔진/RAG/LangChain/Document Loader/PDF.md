@@ -31,7 +31,6 @@ PDF에서 텍스트를 추출하는 가장 일반적인 방법은 `pdfplumber`, 
     
 5. 문서에 테이블이 포함되어 있다면 `layoutparser`를 이용해 테이블 박스를 탐지하고, 해당 영역만 별도로 OCR 처리한다.
 
-
 ## 3. 주요 라이브러리 및 환경 설정
 
 ```bash
@@ -47,7 +46,37 @@ Tesseract는 반드시 `kor.traineddata` 언어팩이 설치되어 있어야 하
 export TESSDATA_PREFIX=/opt/homebrew/share/
 ```
 
----
+### Dockerfile 예시
+```Dockerfile
+FROM python:3.10-slim
+
+# 시스템 패키지 업데이트 및 필수 도구 설치
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    poppler-utils \
+    tesseract-ocr \
+    tesseract-ocr-kor \
+    libgl1 \
+    build-essential \
+    cmake \
+    git \
+    curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Python 패키지 설치
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Tesseract 한글 데이터 경로 설정 (슬림 이미지는 환경변수가 필요 없음)
+ENV TESSDATA_PREFIX=/usr/share/tesseract-ocr/4.00/tessdata
+
+# 작업 디렉토리 설정
+WORKDIR /app
+COPY . /app
+
+CMD ["python", "main.py"]
+
+```
 
 ## 4. 핵심 코드 구조
 
@@ -70,7 +99,6 @@ def is_text_pdf(pdf_path):
     return False
 ```
 
----
 
 ### 4.2 텍스트 추출 함수
 
@@ -87,7 +115,6 @@ def extract_from_text_pdf(pdf_path):
     return text.strip()
 ```
 
----
 
 ### 4.3 이미지 기반 PDF OCR 처리
 
@@ -104,7 +131,6 @@ def extract_from_image_pdf(pdf_path):
     return text.strip()
 ```
 
----
 
 ### 4.4 파서의 전체 흐름 제어
 
@@ -125,7 +151,6 @@ def extract_korean_pdf(pdf_path):
         return extract_from_image_pdf(pdf_path)
 ```
 
----
 
 ## 5. 추가 고도화: PSM 자동 튜닝 및 테이블 OCR
 
@@ -161,7 +186,6 @@ def detect_table_ocr(image):
     return result
 ```
 
----
 
 ## 6. 결론
 
@@ -180,4 +204,3 @@ def detect_table_ocr(image):
 
 단순히 `pdfplumber.extract_text()`만 사용하는 방식보다 훨씬 정교하고 다양한 한글 PDF 문서에 적용할 수 있는 범용 파서로 발전시킬 수 있다.
 
-향후에는 페이지 내 요소 단위 청킹(chunking), vector embedding, 검색엔진 연계까지 통합하여 RAG(Retrieval-Augmented Generation) 파이프라인으로도 확장할 수 있다.

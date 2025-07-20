@@ -131,18 +131,24 @@ except: Exception as e:
 ### 전체 코드
 ```python
 from pydantic import BaseModel, Field, field_validator
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.output_parsers import PydanticOutputParser
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
+from dotenv import load_dotenv
 import os
 
-# OpenAI API 키 설정 (환경변수 방식 또는 직접 삽입 가능)
-os.environ["OPENAI_API_KEY"] = "sk-..."  # 여기에 실제 키를 입력하거나 환경 변수 사용
+# .env 파일에서 환경변수 로드
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    raise EnvironmentError("OPENAI_API_KEY가 .env에 설정되지 않았습니다.")
 
 # 언어 모델 설정
 model = ChatOpenAI(
-    model_name="gpt-4o",
+    model_name="gpt-4o-mini",
     temperature=0.0,
+    api_key=api_key,
 )
 
 # 금융 조언 모델 정의
@@ -162,7 +168,12 @@ parser = PydanticOutputParser(pydantic_object=FinancialAdvice)
 
 # 프롬프트 템플릿 정의
 prompt = PromptTemplate(
-    template="다음 금융 관련 질문에 답변해 주세요.\n{format_instructions}\n질문: {query}",
+    template=(
+        "다음 금융 관련 질문에 대해 조언을 작성해 주세요.\n"
+        "{format_instructions}\n"
+        "주의: 'setup'은 반드시 질문 형식이며, '?'로 끝나야 합니다.\n"
+        "질문: {query}"
+    ),
     input_variables=["query"],
     partial_variables={"format_instructions": parser.get_format_instructions()},
 )
@@ -173,10 +184,9 @@ chain = prompt | model | parser
 # 테스트 실행
 if __name__ == "__main__":
     try:
-        result = chain.invoke({"query": "부동산 투자 시 고려해야 할 점은 무엇인가요?"})
+        result = chain.invoke({"query": "주식 투자 시 고려해야 할 점은 무엇인가요"})
         print("질문:", result.setup)
         print("답변:", result.advice)
     except Exception as e:
         print(f"오류 발생: {e}")
-
 ```

@@ -98,4 +98,18 @@ class FinancialAdvice(BaseModel):
 
 `BaseModel` 은 `Pydantic` 의 기본 모델 클래스로 데이터를 구조화하고 검증하는 데 사용되며, `Field`는 각 필드에 대한 설명과 유효성 검증 정보를 추가하는 데 사용된다.
 
-`setup` 필드는 금융 조언 상황을 나타내는 질문을, advice 필드는 해당 질문에 대한 구체적인 금융 조언 답변을 저장하는 역할을 
+`setup` 필드는 금융 조언 상황을 나타내는 질문을, `advice` 필드는 해당 질문에 대한 구체적인 금융 조언 답변을 저장하는 역할을 한다.
+
+또한 `model_validator` 데코레이터를 사용해 사용해 질문 형식이 올바른지 검증하는 로직을 추가했다. 
+이 로직은 `question_ends_with_question_mark()` 라는 클래스 메서드에서 처리된다. 
+
+AI가 생성한 질문이 물음표(?) 로 끝나는지 확인하며, 그렇지 않을 경우 ValueError를 발생시켜 "잘못된 질문 형식입니다! 질문은 '?'로 끝나야 합니다." 라는 오류 메시지를 반환한다.
+
+결과적으로 FinancialAdvice 모델을 사용하면 질문과 답변을 명확하게 구분할 수 있으며, AI 응답의 형식적 오류를 방지할 수 있다.
+
+```python
+parser = PydanticOutPutParser(pydantic_object=FiancialAdvice)
+prompt = PromptTemplate(
+	template="다음 금융 관련 질문에 답변해 주세요. \n{format_instructions}\n질문:
+)
+```

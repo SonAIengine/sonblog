@@ -127,3 +127,56 @@ except: Exception as e:
 	print(f"오류 발생: {e}")
 ```
 
+
+### 전체 코드
+```python
+from pydantic import BaseModel, Field, field_validator
+from langchain.chat_models import ChatOpenAI
+from langchain.output_parsers import PydanticOutputParser
+from langchain.prompts import PromptTemplate
+import os
+
+# OpenAI API 키 설정 (환경변수 방식 또는 직접 삽입 가능)
+os.environ["OPENAI_API_KEY"] = "sk-..."  # 여기에 실제 키를 입력하거나 환경 변수 사용
+
+# 언어 모델 설정
+model = ChatOpenAI(
+    model_name="gpt-4o",
+    temperature=0.0,
+)
+
+# 금융 조언 모델 정의
+class FinancialAdvice(BaseModel):
+    setup: str = Field(description="금융 조언 상황을 설정하기 위한 질문")
+    advice: str = Field(description="질문을 해결하기 위한 금융 답변")
+
+    @field_validator("setup")
+    @classmethod
+    def question_must_end_with_question_mark(cls, v):
+        if not v.strip().endswith("?"):
+            raise ValueError("잘못된 질문 형식입니다! 질문은 '?'로 끝나야 합니다.")
+        return v
+
+# 출력 파서 설정
+parser = PydanticOutputParser(pydantic_object=FinancialAdvice)
+
+# 프롬프트 템플릿 정의
+prompt = PromptTemplate(
+    template="다음 금융 관련 질문에 답변해 주세요.\n{format_instructions}\n질문: {query}",
+    input_variables=["query"],
+    partial_variables={"format_instructions": parser.get_format_instructions()},
+)
+
+# 체인 구성
+chain = prompt | model | parser
+
+# 테스트 실행
+if __name__ == "__main__":
+    try:
+        result = chain.invoke({"query": "부동산 투자 시 고려해야 할 점은 무엇인가요?"})
+        print("질문:", result.setup)
+        print("답변:", result.advice)
+    except Exception as e:
+        print(f"오류 발생: {e}")
+
+```

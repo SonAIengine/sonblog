@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/">
+        <link rel="prev" href="../Qdrant%EC%9D%98%20Semantic%20Chunk/">
       
       
-        <link rel="next" href="../../%EC%9D%B4%EB%A1%A0/Capacity%20Planning/">
+        <link rel="next" href="../%EC%9D%B4%EB%A1%A0/Capacity%20Planning/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>의미론적 Chunk - SON BLOG</title>
+        <title>문서 기반 RAG 구성 - SON BLOG</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,16 +46,16 @@
       
     
     
-      <link rel="stylesheet" href="../../../../extra.css">
+      <link rel="stylesheet" href="../../../extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -97,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-header__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -117,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              의미론적 Chunk
+              문서 기반 RAG 구성
             
           </span>
         </div>
@@ -216,7 +211,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -244,7 +239,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
+        <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-tabs__link">
           
   
   
@@ -269,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
+        <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-tabs__link">
           
   
   
@@ -298,7 +293,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
+        <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-tabs__link">
           
   
   
@@ -323,7 +318,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../D.%20AI/Dropout/" class="md-tabs__link">
+        <a href="../../../D.%20AI/Dropout/" class="md-tabs__link">
           
   
   
@@ -365,7 +360,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-tabs__link">
+        <a href="../../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-tabs__link">
           
   
   
@@ -393,7 +388,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
+        <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
           
   
   
@@ -429,7 +424,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
+    <a href="../../.." title="SON BLOG" class="md-nav__button md-logo" aria-label="SON BLOG" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -447,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -567,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%20%EA%B8%B0%EB%8A%A5/%EA%B0%80%EC%83%81%20%ED%94%BC%ED%8C%85%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -645,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%87%BC%ED%95%91%EB%AA%B0%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%20%EA%B8%B0%EB%8A%A5/%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -725,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EA%B2%80%EC%83%89%20%EB%A1%9C%EC%A7%81%28opensearch%29/" class="md-nav__link">
         
   
   
@@ -748,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
+      <a href="../../../A.%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%EC%9D%B4%EB%9E%80/" class="md-nav__link">
         
   
   
@@ -837,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
+      <a href="../../../B.PoC/Rxdb%20%28local%20db%29/" class="md-nav__link">
         
   
   
@@ -860,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
+      <a href="../../../B.PoC/intel%20NPU%20model%20use/" class="md-nav__link">
         
   
   
@@ -883,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../B.PoC/tauri/" class="md-nav__link">
+      <a href="../../../B.PoC/tauri/" class="md-nav__link">
         
   
   
@@ -1013,7 +1008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/1.%20Class%EC%9D%98%20enter%EA%B3%BC%20exit/" class="md-nav__link">
         
   
   
@@ -1036,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/2.%20multiprocessing/" class="md-nav__link">
         
   
   
@@ -1059,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EA%B8%B0%EC%B4%88/3.%20%ED%8C%8C%EC%9D%B4%EC%8D%AC%EC%9D%98%20MVC%20%ED%8C%A8%ED%84%B4/" class="md-nav__link">
         
   
   
@@ -1143,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/1.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EC%86%8C%EA%B0%9C/" class="md-nav__link">
         
   
   
@@ -1166,7 +1161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/2.%20%EC%BD%9C%EB%B0%B1%EA%B3%BC%20%ED%93%A8%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -1189,7 +1184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/3.%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%9E%91%EC%97%85%EC%9D%98%20%EA%B3%BC%EB%B6%80%ED%95%98/" class="md-nav__link">
         
   
   
@@ -1212,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
+      <a href="../../../C.%ED%8C%8C%EC%9D%B4%EC%8D%AC/%EB%B9%84%EB%8F%99%EA%B8%B0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/4.%20%EC%88%9C%EC%B0%A8%EC%B2%98%EB%A6%AC%20%26%20%EC%9D%BC%EA%B4%84%EC%B2%98%EB%A6%AC%20%26%20%EC%A7%84%EC%A0%95%ED%95%9C%20%EB%B9%84%EB%8F%99%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -1311,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Dropout/" class="md-nav__link">
+      <a href="../../../D.%20AI/Dropout/" class="md-nav__link">
         
   
   
@@ -1334,7 +1329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
+      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%281%29/" class="md-nav__link">
         
   
   
@@ -1357,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
+      <a href="../../../D.%20AI/GPT%20%EB%AA%A8%EB%8D%B8%20%EB%A7%8C%EB%93%A4%EA%B8%B0%282%29/" class="md-nav__link">
         
   
   
@@ -1380,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/KoBERT/" class="md-nav__link">
+      <a href="../../../D.%20AI/KoBERT/" class="md-nav__link">
         
   
   
@@ -1403,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
+      <a href="../../../D.%20AI/Thompson%20Sampling/" class="md-nav__link">
         
   
   
@@ -1426,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Tokenization/" class="md-nav__link">
+      <a href="../../../D.%20AI/Tokenization/" class="md-nav__link">
         
   
   
@@ -1500,7 +1495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/BERT/Query%2C%20Key%2C%20Value%20%ED%96%89%EB%A0%AC%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%EA%B0%80%3F/" class="md-nav__link">
+      <a href="../../../D.%20AI/BERT/Query%2C%20Key%2C%20Value%20%ED%96%89%EB%A0%AC%EC%9D%80%20%EC%96%B4%EB%96%BB%EA%B2%8C%20%EC%83%9D%EC%84%B1%ED%95%98%EB%8A%94%EA%B0%80%3F/" class="md-nav__link">
         
   
   
@@ -1523,7 +1518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/BERT/Scaled%20Dot-Product%20Attention%20%EB%A5%BC%20%EC%A0%95%EC%9D%98%ED%95%98%EC%8B%9C%EC%98%A4./" class="md-nav__link">
+      <a href="../../../D.%20AI/BERT/Scaled%20Dot-Product%20Attention%20%EB%A5%BC%20%EC%A0%95%EC%9D%98%ED%95%98%EC%8B%9C%EC%98%A4./" class="md-nav__link">
         
   
   
@@ -1546,7 +1541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/" class="md-nav__link">
+      <a href="../../../D.%20AI/BERT/%EC%85%80%ED%94%84%20%EC%96%B4%ED%85%90%EC%85%98%EC%9D%98%20%EC%A0%84%EC%B2%B4%20%EB%8B%A8%EA%B3%84%EB%A5%BC%20%EC%84%A4%EB%AA%85%ED%95%98%EB%9D%BC/" class="md-nav__link">
         
   
   
@@ -1628,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Model%20Serve/SGLang%20vs%20vLLM/" class="md-nav__link">
+      <a href="../../../D.%20AI/Model%20Serve/SGLang%20vs%20vLLM/" class="md-nav__link">
         
   
   
@@ -1651,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Model%20Serve/vLLM%20vs%20LMDeploy%20vs%20SGLang/" class="md-nav__link">
+      <a href="../../../D.%20AI/Model%20Serve/vLLM%20vs%20LMDeploy%20vs%20SGLang/" class="md-nav__link">
         
   
   
@@ -1674,7 +1669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../D.%20AI/Model%20Serve/%EB%A9%80%ED%8B%B0%ED%84%B4%20vs%20%EC%8B%B1%EA%B8%80%ED%84%B4/" class="md-nav__link">
+      <a href="../../../D.%20AI/Model%20Serve/%EB%A9%80%ED%8B%B0%ED%84%B4%20vs%20%EC%8B%B1%EA%B8%80%ED%84%B4/" class="md-nav__link">
         
   
   
@@ -1883,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
+      <a href="../../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -1906,7 +1901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -1984,7 +1979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
+      <a href="../../OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
         
   
   
@@ -2062,7 +2057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
+      <a href="../../OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -2140,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
+      <a href="../../OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
         
   
   
@@ -2236,7 +2231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
         
   
   
@@ -2259,7 +2254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -2282,7 +2277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
         
   
   
@@ -2305,7 +2300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2328,7 +2323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2351,7 +2346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
         
   
   
@@ -2374,7 +2369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2397,7 +2392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2420,7 +2415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
         
   
   
@@ -2443,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2570,7 +2565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2650,7 +2645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../../OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -2673,7 +2668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../../OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -2769,7 +2764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
+      <a href="../../OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
         
   
   
@@ -2792,7 +2787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../../OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
         
   
   
@@ -2815,7 +2810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
+      <a href="../../OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
         
   
   
@@ -2838,7 +2833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
+      <a href="../../OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -2861,7 +2856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
+      <a href="../../OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
         
   
   
@@ -2884,7 +2879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20node.roles%2C%20node.attr%2C%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
+      <a href="../../OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20node.roles%2C%20node.attr%2C%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
         
   
   
@@ -2962,7 +2957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
+      <a href="../../OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
         
   
   
@@ -3004,6 +2999,10 @@
   
     
     
+      
+        
+      
+        
       
         
       
@@ -3052,59 +3051,6 @@
                 
   
   
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    LangChain
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2_1">
-            <span class="md-nav__icon md-icon"></span>
-            LangChain
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
@@ -3131,12 +3077,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../Qdrant%EC%9D%98%20Semantic%20Chunk/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    문서 기반 RAG 구성
+    Qdrant의 Semantic Chunk
     
   </span>
   
@@ -3160,78 +3106,18 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    의미론적 Chunk
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    의미론적 Chunk
+    문서 기반 RAG 구성
     
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      장점
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      단점
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -3310,10 +3196,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_2_4" id="__nav_6_2_4_label" tabindex="0">
             
   
   
@@ -3326,8 +3212,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_2_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_4">
             <span class="md-nav__icon md-icon"></span>
             이론
           </label>
@@ -3340,7 +3226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
         
   
   
@@ -3363,7 +3249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
         
   
   
@@ -3386,7 +3272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
         
   
   
@@ -3409,7 +3295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
         
   
   
@@ -3432,7 +3318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
         
   
   
@@ -3455,7 +3341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
         
   
   
@@ -3478,7 +3364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
         
   
   
@@ -3501,7 +3387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
         
   
   
@@ -3524,7 +3410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
         
   
   
@@ -3547,7 +3433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
         
   
   
@@ -3570,7 +3456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
         
   
   
@@ -3593,7 +3479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
         
   
   
@@ -3616,7 +3502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
         
   
   
@@ -3639,7 +3525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
         
   
   
@@ -3662,7 +3548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
         
   
   
@@ -3685,7 +3571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
         
   
   
@@ -3708,7 +3594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -3731,7 +3617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
         
   
   
@@ -3754,7 +3640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
         
   
   
@@ -3777,7 +3663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
         
   
   
@@ -3800,7 +3686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
         
   
   
@@ -3823,7 +3709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
         
   
   
@@ -3846,7 +3732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
         
   
   
@@ -3869,7 +3755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
         
   
   
@@ -3892,7 +3778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
         
   
   
@@ -3984,29 +3870,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../RAG/%EB%AC%B4%EC%A0%9C/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    무제
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
       
@@ -4031,10 +3894,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
             
   
   
@@ -4047,8 +3910,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
             <span class="md-nav__icon md-icon"></span>
             LangChain
           </label>
@@ -4061,7 +3924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RAG/LangChain/Chunker/" class="md-nav__link">
+      <a href="../../RAG/LangChain/Chunker/" class="md-nav__link">
         
   
   
@@ -4084,7 +3947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RAG/LangChain/%EB%8C%80%ED%99%94%20%EA%B8%B0%EB%A1%9D%20%EC%9C%A0%EC%A7%80/" class="md-nav__link">
+      <a href="../../RAG/LangChain/%EB%8C%80%ED%99%94%20%EA%B8%B0%EB%A1%9D%20%EC%9C%A0%EC%A7%80/" class="md-nav__link">
         
   
   
@@ -4107,7 +3970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RAG/LangChain/%EC%9D%BC%EA%B4%80%EB%90%9C%20output%20%28PydanticOutputParser%29/" class="md-nav__link">
+      <a href="../../RAG/LangChain/%EC%9D%BC%EA%B4%80%EB%90%9C%20output%20%28PydanticOutputParser%29/" class="md-nav__link">
         
   
   
@@ -4149,10 +4012,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1_4" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_2_4" id="__nav_6_3_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3_1_4" id="__nav_6_3_1_4_label" tabindex="0">
             
   
   
@@ -4165,8 +4028,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_2_4">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1_4">
             <span class="md-nav__icon md-icon"></span>
             Document Loader
           </label>
@@ -4179,7 +4042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
+      <a href="../../RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
         
   
   
@@ -4202,7 +4065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
+      <a href="../../RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
         
   
   
@@ -4258,10 +4121,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3_2" id="__nav_6_3_2_label" tabindex="0">
             
   
   
@@ -4274,8 +4137,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_3_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_2">
             <span class="md-nav__icon md-icon"></span>
             LangGraph
           </label>
@@ -4288,12 +4151,115 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
+      <a href="../../RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     LangGraph 활용처
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_3" id="__nav_6_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RAG 시스템 고도화
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            RAG 시스템 고도화
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/%EC%B2%AD%ED%82%B9%20%EC%A0%84%EB%9E%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    청킹 전략
     
   </span>
   
@@ -4377,7 +4343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -4462,7 +4428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
+      <a href="../../../F.%EA%B8%B0%ED%83%80/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
         
   
   
@@ -4502,34 +4468,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      장점
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      단점
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -4545,195 +4483,189 @@
 
 
 
-<p>대표적인 방법은 문장을 단위로 나눈 뒤, 각 문장의 임베딩(벡터)을 계산해 “의미적으로 유사한” 문장들을 하나의 청크로 묶는 방식입니다. </p>
-<p>아래 예시는 OpenAIEmbeddings를 이용해 간단한 semantic chunking 함수를 구현하고, 기존 고정 길이 청크 대신 적용하는 방법을 보여줍니다.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">sent_tokenize</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.documents</span><span class="w"> </span><span class="kn">import</span> <span class="n">Document</span>
+  <h1>문서 기반 RAG 구성</h1>
+
+<p>아래는 FastAPI를 이용해 “파일 업로드 → 로드(확장자별) → 청크(split) → Qdrant에 색인(index) → 검색(일반·희소·하이브리드)”까지 전 과정을 보여주는 예제 코드이다.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">UploadFile</span><span class="p">,</span> <span class="n">File</span><span class="p">,</span> <span class="n">HTTPException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.responses</span><span class="w"> </span><span class="kn">import</span> <span class="n">JSONResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tempfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">TemporaryDirectory</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uvicorn</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">TextLoader</span><span class="p">,</span>
+    <span class="n">PyPDFLoader</span><span class="p">,</span>
+    <span class="n">UnstructuredWordDocumentLoader</span><span class="p">,</span>
+    <span class="n">UnstructuredPowerPointLoader</span><span class="p">,</span>
+    <span class="n">UnstructuredMarkdownLoader</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain.text_splitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIEmbeddings</span>
-
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>  <span class="c1"># 최초 1회만</span>
-
-<span class="c1"># 1) 임베딩 객체 (기존 설정 그대로 재사용)</span>
-<span class="n">embedder</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-embedding-3-small&quot;</span><span class="p">,</span>
-    <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;YOUR_OPENAI_API_KEY&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">semantic_chunk</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                   <span class="n">embedder</span><span class="p">:</span> <span class="n">OpenAIEmbeddings</span><span class="p">,</span>
-                   <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.75</span>
-                  <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    1) 문장 단위로 분할</span>
-<span class="sd">    2) 각 문장 임베딩 계산</span>
-<span class="sd">    3) 순차적으로 유사도가 threshold 이상이면 같은 청크에 추가,</span>
-<span class="sd">       아니면 새 청크로 분리</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">sents</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">embs</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">embed_documents</span><span class="p">(</span><span class="n">sents</span><span class="p">)</span>  <span class="c1"># 문장별 벡터 리스트</span>
-
-    <span class="n">chunks</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">curr_sents</span><span class="p">,</span> <span class="n">curr_embs</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">sent</span><span class="p">,</span> <span class="n">emb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sents</span><span class="p">,</span> <span class="n">embs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">curr_sents</span><span class="p">:</span>
-            <span class="n">curr_sents</span><span class="p">,</span> <span class="n">curr_embs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sent</span><span class="p">],</span> <span class="p">[</span><span class="n">emb</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">avg_emb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">curr_embs</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-            <span class="n">sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="n">avg_emb</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">emb</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">avg_emb</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">sim</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span>
-                <span class="n">curr_sents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
-                <span class="n">curr_embs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">emb</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">curr_sents</span><span class="p">))</span>
-                <span class="n">curr_sents</span><span class="p">,</span> <span class="n">curr_embs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sent</span><span class="p">],</span> <span class="p">[</span><span class="n">emb</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">curr_sents</span><span class="p">:</span>
-        <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">curr_sents</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">chunks</span>
-
-<span class="c1"># ──────────────────────────────────────────────────────────────</span>
-<span class="c1"># 기존 청크 코드 대신 이 semantic_chunk를 적용</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">langchain.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextLoader</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qdrant_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">QdrantClient</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">qdrant_client.http.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorParams</span><span class="p">,</span> <span class="n">SparseVectorParams</span><span class="p">,</span> <span class="n">Distance</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_qdrant</span><span class="w"> </span><span class="kn">import</span> <span class="n">QdrantVectorStore</span><span class="p">,</span> <span class="n">RetrievalMode</span><span class="p">,</span> <span class="n">FastEmbedSparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qdrant_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">QdrantClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qdrant_client.http.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Distance</span><span class="p">,</span> <span class="n">VectorParams</span><span class="p">,</span> <span class="n">SparseVectorParams</span><span class="p">,</span> <span class="n">Filter</span><span class="p">,</span> <span class="n">FieldCondition</span><span class="p">,</span> <span class="n">MatchValue</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.documents</span><span class="w"> </span><span class="kn">import</span> <span class="n">Document</span>
 
-<span class="c1"># (1) 문서 로드</span>
-<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="s2">&quot;example.pdf&quot;</span><span class="p">)</span>  
-<span class="n">docs</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>  <span class="c1"># Page 단위 Document 리스트</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
-<span class="c1"># (2) 의미 기반 청크 생성</span>
-<span class="n">semantic_docs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
-    <span class="n">chunks</span> <span class="o">=</span> <span class="n">semantic_chunk</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span><span class="p">,</span> <span class="n">embedder</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.70</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
-        <span class="n">semantic_docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">Document</span><span class="p">(</span><span class="n">page_content</span><span class="o">=</span><span class="n">chunk</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-        <span class="p">)</span>
+<span class="c1"># 1) 임베딩 &amp; Qdrant 클라이언트 설정</span>
+<span class="n">OPENAI_API_KEY</span> <span class="o">=</span> <span class="s2">&quot;YOUR_OPENAI_API_KEY&quot;</span>
+<span class="n">QDRANT_URL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:6333&quot;</span>
+<span class="n">COLLECTION</span> <span class="o">=</span> <span class="s2">&quot;uploaded_docs&quot;</span>
 
-<span class="c1"># (3) Qdrant에 색인</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">QdrantClient</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://localhost:6333&quot;</span><span class="p">)</span>
-<span class="n">store</span> <span class="o">=</span> <span class="n">QdrantVectorStore</span><span class="p">(</span>
-    <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
-    <span class="n">collection_name</span><span class="o">=</span><span class="s2">&quot;my_semantic_docs&quot;</span><span class="p">,</span>
-    <span class="n">embedding</span><span class="o">=</span><span class="n">embedder</span><span class="p">,</span>
-    <span class="n">sparse_embedding</span><span class="o">=</span><span class="n">FastEmbedSparse</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Qdrant/bm25&quot;</span><span class="p">),</span>
-    <span class="n">retrieval_mode</span><span class="o">=</span><span class="n">RetrievalMode</span><span class="o">.</span><span class="n">HYBRID</span><span class="p">,</span>
-    <span class="n">vector_name</span><span class="o">=</span><span class="s2">&quot;dense&quot;</span><span class="p">,</span>
-    <span class="n">sparse_vector_name</span><span class="o">=</span><span class="s2">&quot;sparse&quot;</span><span class="p">,</span>
+<span class="c1"># dense, sparse embedding 인스턴스</span>
+<span class="n">dense_embed</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;text-embedding-3-small&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">OPENAI_API_KEY</span><span class="p">)</span>
+<span class="n">sparse_embed</span> <span class="o">=</span> <span class="n">FastEmbedSparse</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;Qdrant/bm25&quot;</span><span class="p">)</span>
+
+<span class="c1"># Qdrant 클라이언트</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">QdrantClient</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">QDRANT_URL</span><span class="p">)</span>
+<span class="c1"># 컬렉션 생성 (없으면)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">client</span><span class="o">.</span><span class="n">collection_exists</span><span class="p">(</span><span class="n">COLLECTION</span><span class="p">):</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">create_collection</span><span class="p">(</span>
+        <span class="n">collection_name</span><span class="o">=</span><span class="n">COLLECTION</span><span class="p">,</span>
+        <span class="n">vectors_config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dense&quot;</span><span class="p">:</span> <span class="n">VectorParams</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">dense_embed</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">Distance</span><span class="o">.</span><span class="n">COSINE</span><span class="p">)},</span>
+        <span class="n">sparse_vectors_config</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sparse&quot;</span><span class="p">:</span> <span class="n">SparseVectorParams</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">SparseIndexParams</span><span class="p">(</span><span class="n">on_disk</span><span class="o">=</span><span class="kc">False</span><span class="p">))},</span>
+    <span class="p">)</span>
+
+<span class="c1"># 2) 파일 → Document 로더 선택 함수</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_document</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]:</span>
+    <span class="n">suffix</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.txt&quot;</span><span class="p">:</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">suffix</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;.pdf&quot;</span><span class="p">}:</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">PyPDFLoader</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">suffix</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;.docx&quot;</span><span class="p">,</span> <span class="s2">&quot;.doc&quot;</span><span class="p">}:</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">UnstructuredWordDocumentLoader</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">suffix</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;.pptx&quot;</span><span class="p">,</span> <span class="s2">&quot;.ppt&quot;</span><span class="p">}:</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">UnstructuredPowerPointLoader</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">suffix</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;.md&quot;</span><span class="p">,</span> <span class="s2">&quot;.markdown&quot;</span><span class="p">}:</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">UnstructuredMarkdownLoader</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;지원하지 않는 파일 확장자: </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="c1"># 3) 텍스트 청크(split)</span>
+<span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span>
 <span class="p">)</span>
-<span class="n">store</span><span class="o">.</span><span class="n">add_documents</span><span class="p">(</span><span class="n">documents</span><span class="o">=</span><span class="n">semantic_docs</span><span class="p">)</span>
+
+<span class="c1"># 4) 색인 함수</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">index_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]):</span>
+    <span class="c1"># 모든 청크 생성</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">chunks</span> <span class="o">+=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
+    <span class="c1"># Qdrant VectorStore</span>
+    <span class="n">store</span> <span class="o">=</span> <span class="n">QdrantVectorStore</span><span class="p">(</span>
+        <span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">,</span>
+        <span class="n">collection_name</span><span class="o">=</span><span class="n">COLLECTION</span><span class="p">,</span>
+        <span class="n">embedding</span><span class="o">=</span><span class="n">dense_embed</span><span class="p">,</span>
+        <span class="n">sparse_embedding</span><span class="o">=</span><span class="n">sparse_embed</span><span class="p">,</span>
+        <span class="n">retrieval_mode</span><span class="o">=</span><span class="n">RetrievalMode</span><span class="o">.</span><span class="n">HYBRID</span><span class="p">,</span>
+        <span class="n">vector_name</span><span class="o">=</span><span class="s2">&quot;dense&quot;</span><span class="p">,</span>
+        <span class="n">sparse_vector_name</span><span class="o">=</span><span class="s2">&quot;sparse&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># bulk upsert</span>
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">add_documents</span><span class="p">(</span><span class="n">documents</span><span class="o">=</span><span class="n">chunks</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ids</span>
+
+<span class="c1"># 5) 업로드 엔드포인트</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/upload&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">upload</span><span class="p">(</span><span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">UploadFile</span><span class="p">]</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="o">...</span><span class="p">)):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">all_docs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">with</span> <span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+            <span class="n">tmp_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="n">dest</span> <span class="o">=</span> <span class="n">tmp_path</span> <span class="o">/</span> <span class="n">f</span><span class="o">.</span><span class="n">filename</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="k">await</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="n">dest</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+                <span class="n">all_docs</span> <span class="o">+=</span> <span class="n">load_document</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">index_documents</span><span class="p">(</span><span class="n">all_docs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">({</span><span class="s2">&quot;indexed_ids&quot;</span><span class="p">:</span> <span class="n">ids</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">)})</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="c1"># 6) 검색 엔드포인트</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/search&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span>
+    <span class="n">q</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hybrid&quot;</span><span class="p">,</span>  <span class="c1"># &#39;dense&#39;, &#39;sparse&#39;, &#39;hybrid&#39;</span>
+    <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">filter_text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">):</span>
+    <span class="c1"># 적절한 RetrievalMode 및 VectorStore 선택</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;dense&quot;</span><span class="p">:</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">QdrantVectorStore</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">COLLECTION</span><span class="p">,</span> <span class="n">embedding</span><span class="o">=</span><span class="n">dense_embed</span><span class="p">,</span>
+                                  <span class="n">retrieval_mode</span><span class="o">=</span><span class="n">RetrievalMode</span><span class="o">.</span><span class="n">DENSE</span><span class="p">,</span> <span class="n">vector_name</span><span class="o">=</span><span class="s2">&quot;dense&quot;</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;sparse&quot;</span><span class="p">:</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">QdrantVectorStore</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">COLLECTION</span><span class="p">,</span> <span class="n">sparse_embedding</span><span class="o">=</span><span class="n">sparse_embed</span><span class="p">,</span>
+                                  <span class="n">retrieval_mode</span><span class="o">=</span><span class="n">RetrievalMode</span><span class="o">.</span><span class="n">SPARSE</span><span class="p">,</span> <span class="n">sparse_vector_name</span><span class="o">=</span><span class="s2">&quot;sparse&quot;</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;hybrid&quot;</span><span class="p">:</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">QdrantVectorStore</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">COLLECTION</span><span class="p">,</span> <span class="n">embedding</span><span class="o">=</span><span class="n">dense_embed</span><span class="p">,</span> <span class="n">sparse_embedding</span><span class="o">=</span><span class="n">sparse_embed</span><span class="p">,</span>
+                                  <span class="n">retrieval_mode</span><span class="o">=</span><span class="n">RetrievalMode</span><span class="o">.</span><span class="n">HYBRID</span><span class="p">,</span> <span class="n">vector_name</span><span class="o">=</span><span class="s2">&quot;dense&quot;</span><span class="p">,</span> <span class="n">sparse_vector_name</span><span class="o">=</span><span class="s2">&quot;sparse&quot;</span><span class="p">)</span>
+        <span class="c1"># 메타필터 예제</span>
+        <span class="n">flt</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">filter_text</span><span class="p">:</span>
+            <span class="n">flt</span> <span class="o">=</span> <span class="n">Filter</span><span class="p">(</span><span class="n">should</span><span class="o">=</span><span class="p">[</span><span class="n">FieldCondition</span><span class="p">(</span>
+                <span class="n">key</span><span class="o">=</span><span class="s2">&quot;page_content&quot;</span><span class="p">,</span>
+                <span class="n">match</span><span class="o">=</span><span class="n">MatchValue</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">filter_text</span><span class="p">)</span>
+            <span class="p">)])</span>
+        <span class="c1"># 점수까지 반환</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">similarity_search_with_score</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">flt</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;mode는 dense, sparse, hybrid 중 하나여야 합니다.&quot;</span><span class="p">)</span>
+    <span class="c1"># 반환 포맷</span>
+    <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">({</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="n">q</span><span class="p">,</span>
+        <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">page_content</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="k">else</span> <span class="kc">None</span><span class="p">}</span>
+            <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="n">results</span> <span class="k">if</span> <span class="n">mode</span><span class="o">==</span><span class="s2">&quot;hybrid&quot;</span> <span class="k">else</span> <span class="p">[(</span><span class="n">d</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">results</span><span class="p">])</span>
+        <span class="p">]</span>
+    <span class="p">})</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>요약</strong></p>
+<p><strong>설명 정리</strong></p>
 <ol>
 <li>
-<p><strong>문장별 분할</strong>: <code>nltk.sent_tokenize</code> 등을 이용해 문장 리스트로 분리</p>
-</li>
-<li>
-<p><strong>문장 임베딩</strong>: <code>embedder.embed_documents(sentences)</code> 호출</p>
-</li>
-<li>
-<p><strong>유사도 기반 묶기</strong>: 이전 청크의 평균 임베딩과 새 문장 벡터 간 cosine 유사도 비교해, threshold 이상이면 같은 청크에 포함</p>
-</li>
-<li>
-<p><strong>Qdrant 색인</strong>: 기존처럼 <code>QdrantVectorStore.add_documents</code>에 semantic 청크를 넘겨주면 끝</p>
-</li>
-</ol>
-<p>이렇게 하면 “고정 토큰 수”가 아니라 “의미적으로 일관된” 단위로 문서를 분할해서 색인할 수 있습니다.</p>
-<h1 id="_1">장점과 단점</h1>
-<h2 id="_2">장점</h2>
-<ol>
-<li>
-<p><strong>의미적 일관성 유지</strong></p>
+<p><strong>파일 업로드</strong>(<code>/upload</code>)</p>
 <ul>
 <li>
-<p>의미 단위(문장·절·개념)로 묶기 때문에 한 청크 안의 내용이 주제적으로 응집되어 있다.</p>
+<p>다양한 확장자(<code>.txt</code>, <code>.pdf</code>, <code>.docx</code>, <code>.pptx</code>, <code>.md</code>) 지원</p>
 </li>
 <li>
-<p>LLM이나 벡터 검색 엔진이 “한 덩어리의 의미”를 보다 명확히 파악할 수 있어, 검색·유사도 평가·요약 정확도가 향상된다.</p>
+<p>임시 디렉터리에 저장 후 각 로더로 <code>Document</code> 객체 생성</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>중요 정보 손실 최소화</strong></p>
+<p><strong>청크(split)</strong></p>
 <ul>
-<li>
-<p>fixed-length splitting은 문장 중간을 자를 수 있어 문장이 분절되거나 핵심 어구가 잘릴 위험이 있다.</p>
-</li>
-<li>
-<p>semantic chunking은 문장 경계(또는 의미 단위) 단위로 묶으므로, 맥락이 끊기지 않는다.</p>
-</li>
+<li><code>RecursiveCharacterTextSplitter</code>로 <code>chunk_size=1000</code>, <code>overlap=200</code> 설정</li>
 </ul>
 </li>
 <li>
-<p><strong>유연한 청크 크기</strong></p>
+<p><strong>색인(index)</strong></p>
 <ul>
-<li>
-<p>내용이 단순한 부분은 한 청크가 작게, 복잡한 부분은 더 길게 자동 조정되어 저장·처리 효율을 높인다.</p>
-</li>
-<li>
-<p>유사도 계산 시에도 “불필요한 패딩”이나 “빈 공간”이 줄어들어 벡터 차원의 낭비가 감소한다.</p>
-</li>
+<li><code>RetrievalMode.HYBRID</code>로 컬렉션에 dense+sparse 벡터 함께 저장</li>
 </ul>
 </li>
 <li>
-<p><strong>검색 품질 개선</strong></p>
+<p><strong>검색</strong>(<code>/search</code>)</p>
 <ul>
 <li>
-<p>의미적으로 응집된 단위로 벡터를 만들면, 키워드가 분산되지 않아 BM25 같은 sparse 검색에서도 더 높은 정확도를 기대할 수 있다.</p>
+<p><code>mode=dense|sparse|hybrid</code> 옵션</p>
 </li>
 <li>
-<p>Hybrid 검색 시 dense·sparse 벡터가 모두 통일된 의미 단위로 정렬되므로, 결과의 일관성과 다양성이 향상된다.</p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="_3">단점</h2>
-<ol>
-<li>
-<p><strong>추가 계산 비용</strong></p>
-<ul>
-<li>
-<p>문장 토크나이저(Punkt, spaCy 등)로 분할 후, 각 문장에 대해 임베딩을 계산해야 하므로 API 호출 횟수·연산량이 크게 늘어난다.</p>
-</li>
-<li>
-<p>전체 문서에 문장 수만큼 벡터 연산을 수행하므로, 고정 길이 청크 대비 지연(latency)과 비용이 상승한다.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>파라미터 튜닝 복잡성</strong></p>
-<ul>
-<li>
-<p>유사도 임계값(threshold), 문장 그룹화 로직 등 하이퍼파라미터를 적절히 설정해야 한다.</p>
-</li>
-<li>
-<p>threshold가 너무 높으면 청크가 작게 쪼개지고(과도 분할), 낮으면 묶음이 과도해져(과다 병합) 의미 집중도가 떨어질 수 있다.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>변동하는 청크 크기</strong></p>
-<ul>
-<li>
-<p>청크 길이가 고정되지 않아, Q&amp;A나 LLM 체인에 넘길 때 토큰 수 관리가 어렵다.</p>
-</li>
-<li>
-<p>예측 불가능한 길이로 인해 한 번에 처리할 수 있는 컨텍스트 크기를 초과할 위험이 있다.</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>임베딩 품질 의존성</strong></p>
-<ul>
-<li>
-<p>semantic chunking의 핵심은 임베딩의 품질에 달려 있다.</p>
-</li>
-<li>
-<p>임베딩 모델 성능이 낮거나 도메인과 맞지 않으면, 유사도 계산 자체가 부정확해져 오히려 잘못된 청크가 생성될 수 있다.</p>
+<p>hybrid 모드 시 score 반환, optional metadata 필터링 지원</p>
 </li>
 </ul>
 </li>
@@ -4792,12 +4724,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
-        <script src="../../../../custom.js"></script>
+        <script src="../../../custom.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

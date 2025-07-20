@@ -77,6 +77,7 @@ LangChain에서 복잡한 언어 모델 응답을 다룰 때, `PydanticOutputPar
 ```
 model = ChatOpenAI(model_name="gpt-4o", temperature=0.0)
 ```
+
 `temperature` 를 0.0 으로 설정하여 AI가 더욱 일관된 답변을 할 수 있도록 합니다.
 
 ```python
@@ -89,5 +90,12 @@ class FinancialAdvice(BaseModel):
 	def question_ends_with_question_mark(cls, values: dict) -> dict:
 		setup = values.get("setup", "")
 		if not setup.endswith("?"):
-			raise ValueError()
+			raise ValueError("질문된 질문 형식입니다! 질문은 '?'로 끝나야 합니다.")
+		return values
 ```
+
+`Pydantic` 을 사용하여 FinancialAdvice 라는 클래스를 정의한다. 이 클래스는 AI 모델이 제공하는 데이터를 구조화된 형태로 저장하기 위한 데이터 모델을 만든다.
+
+`BaseModel` 은 `Pydantic` 의 기본 모델 클래스로 데이터를 구조화하고 검증하는 데 사용되며, `Field`는 각 필드에 대한 설명과 유효성 검증 정보를 추가하는 데 사용된다.
+
+`setup` 필드는 금융 조언 상황을 나타내는 질문을, advice 필드는 해당 질문에 대한 구체적인 금융 조언 답변을 저장하는 역할을 

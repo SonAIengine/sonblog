@@ -8,4 +8,5 @@
 from langChain_experimental.text_splitter import SemanticChunker
 ```
 
-SemanticChunker 의 기본 파라미터는 `breakpoint_threshold_type='percentile'` 과 `breakpoint_threshold_amount=95` 로 설정되어 있다. 이는 의미적 차이의 분포에서 95번째 백분위수를 초과하는 지점, 즉 상위 5%에 해당하는 
+SemanticChunker 의 기본 파라미터는 `breakpoint_threshold_type='percentile'` 과 `breakpoint_threshold_amount=95` 로 설정되어 있다. 이는 의미적 차이의 분포에서 95번째 백분위수를 초과하는 지점, 즉 상위 5%에 해당하는 큰 차이가 발생하는 지점을 분할 기준으로 선택한다. 이를 통해 의미적으로 큰 전환이 일어나는 곳에서 자연스럽게 텍스트를 나눌 수 있다.
+

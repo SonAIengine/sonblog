@@ -187,6 +187,69 @@ def detect_table_ocr(image):
 ```
 
 
+## 전체 코드
+
+```python
+import os
+import re
+import pdfplumber
+import pytesseract
+from pdf2image import convert_from_path
+from tempfile import TemporaryDirectory
+
+# 설정
+TESSERACT_LANG = "kor"
+TESSERACT_PSM = "6"
+
+def is_valid_text(text: str) -> bool:
+    return bool(re.search(r'[가-힣a-zA-Z0-9]', text)) and "(cid:" not in text
+
+def is_text_pdf(pdf_path: str) -> bool:
+    """실질 텍스트가 포함된 PDF인지 판단"""
+    with pdfplumber.open(pdf_path) as pdf:
+        return any(is_valid_text(page.extract_text() or "") for page in pdf.pages)
+
+def extract_text_pdf(pdf_path: str) -> str:
+    """텍스트 기반 PDF에서 텍스트 추출"""
+    with pdfplumber.open(pdf_path) as pdf:
+        return "\n".join(
+            f"\n--- [Page {i+1}] ---\n{page.extract_text().strip()}"
+            for i, page in enumerate(pdf.pages)
+            if page.extract_text()
+        )
+
+def extract_image_pdf(pdf_path: str) -> str:
+    """이미지 기반 PDF에서 OCR로 텍스트 추출"""
+    with TemporaryDirectory() as tmpdir:
+        images = convert_from_path(pdf_path, dpi=300, output_folder=tmpdir, fmt="png")
+        return "\n".join(
+            f"\n--- [Page {i+1}] ---\n{pytesseract.image_to_string(img, lang=TESSERACT_LANG, config=f'--psm {TESSERACT_PSM}').strip()}"
+            for i, img in enumerate(images)
+        )
+
+def extract_korean_pdf(pdf_path: str) -> str:
+    if not os.path.isfile(pdf_path):
+        raise FileNotFoundError(f"파일이 존재하지 않습니다: {pdf_path}")
+
+    print(f"[INFO] 추출 시작: {pdf_path}")
+
+    if is_text_pdf(pdf_path):
+        print("[INFO] 텍스트 기반 PDF로 판별됨. pdfplumber 사용.")
+        return extract_text_pdf(pdf_path)
+    else:
+        print("[INFO] 이미지 기반 PDF 또는 (cid:) 깨짐 텍스트. OCR 사용.")
+        return extract_image_pdf(pdf_path)
+
+if __name__ == "__main__":
+    pdf_path = "rag/data/14. 취업규칙_(주)플래티어_2022.05.pdf"
+    try:
+        text = extract_korean_pdf(pdf_path)
+        print(text)
+    except Exception as e:
+        print(f"[ERROR] {e}")
+
+```
+
 ## 6. 결론
 
 이 글에서 구현한 파서 구조는 다음의 장점을 가진다.

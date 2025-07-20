@@ -110,6 +110,20 @@ AI가 생성한 질문이 물음표(?) 로 끝나는지 확인하며, 그렇지 
 ```python
 parser = PydanticOutPutParser(pydantic_object=FiancialAdvice)
 prompt = PromptTemplate(
-	template="다음 금융 관련 질문에 답변해 주세요. \n{format_instructions}\n질문:
+	template="다음 금융 관련 질문에 답변해 주세요. \n{format_instructions}\n질문: {query}\n",
+	input_vriables=["query"]
+	partial_variables={"format_instructions": parser.get_format_instructions()},
 )
+
+# 언어 모델을 사용해 데이터 구조를 채우도록 프롬프트와 모델 설정
+chain = prompt | model | parser
 ```
+
+```python
+try: 
+	result = chain.invoke({"query": "부동산에 관련하여 금융 조언을 받을 수 있게 질문하라."})
+	print(result)
+except: Exception as e:
+	print(f"오류 발생: {e}")
+```
+

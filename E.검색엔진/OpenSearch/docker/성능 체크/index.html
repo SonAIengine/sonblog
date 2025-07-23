@@ -2874,6 +2874,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gpu-knn" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU: 단순 임베딩 기반 K‑NN 검색용
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-reranker-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU: Reranker 포함 (LLM 후처리) 검색용
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       색인 규모 기준 사례
@@ -4600,6 +4618,24 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gpu-knn" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU: 단순 임베딩 기반 K‑NN 검색용
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-reranker-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU: Reranker 포함 (LLM 후처리) 검색용
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       색인 규모 기준 사례
@@ -4730,6 +4766,90 @@
 <td>64 GB 이상</td>
 <td>샤드 분산, ML/GPU 노드 분리 필수</td>
 <td>CCR 테스트에서 leader CPU 사용량만 12% 증가</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gpu-knn">GPU: 단순 임베딩 기반 K‑NN 검색용</h2>
+<table>
+<thead>
+<tr>
+<th>TPS 범위</th>
+<th>GPU 예시 사양</th>
+<th>RTX 4090 대비 성능</th>
+<th>주요 용도</th>
+<th>가격 (온프레미스, 2025년 기준)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~10 TPS</td>
+<td>NVIDIA T4 / L4 (16GB)</td>
+<td>20–30% 수준</td>
+<td>소규모 문서 검색, 팀 내 검색</td>
+<td>T4: 약 $700(중고) (<a href="https://www.amazon.com/PNY-Datacenter-Express-Passive-Cooling/dp/B07QF9MJFR?utm_source=chatgpt.com" title="PNY NVIDIA Tesla T4 Datacenter Card 16GB GDDR6 PCI Express ...">아마존</a>), L4: 약 $2,000 추정 |</td>
+</tr>
+<tr>
+<td>10–50 TPS</td>
+<td>NVIDIA A10 (24GB) / RTX 6000 Ada (48GB)</td>
+<td>90–110% 수준</td>
+<td>중소형 쇼핑몰 및 FAQ 검색</td>
+<td>A10: 약 $3,000 (추정), RTX 6000 Ada: $5,000–6,000 |</td>
+</tr>
+<tr>
+<td>50–300 TPS</td>
+<td>NVIDIA A100 40GB / 2×L40s</td>
+<td>200–250% 이상</td>
+<td>대용량 상품 검색, 병렬 ANN 처리</td>
+<td>A100 40GB: $10,000–12,000 (<a href="https://simplepod.ai/blog/nvidia-a100-price/?utm_source=chatgpt.com" title="Understand the Nvidia A100 Price - SimplePod.AI Blog">simplepod.ai</a>), L40s: $7,500–9,600 |</td>
+</tr>
+<tr>
+<td>300+ TPS</td>
+<td>2×A100 80GB / 4×L40s / H100</td>
+<td>300–400% 이상</td>
+<td>초고속 검색, 글로벌 서비스</td>
+<td>A100 80GB: $13,000–15,000 (<a href="https://massedcompute.com/faq-answers/?question=What+are+the+estimated+costs+for+a+single+NVIDIA+A100+SXM4+GPU+in+an+on-premises+deployment%3F&amp;utm_source=chatgpt.com" title="What are the estimated costs for a single NVIDIA A100 SXM4 GPU ...">Massed Compute</a>); H100: $25,000 (<a href="https://cyfuture.cloud/kb/gpu/how-much-does-the-nvidia-h100-gpu-cost-in-2025?utm_source=chatgpt.com" title="How Much Does the NVIDIA H100 GPU Cost in 2025?">Cyfuture Cloud</a>, <a href="https://docs.jarvislabs.ai/blog/h100-price?utm_source=chatgpt.com" title="NVIDIA H100 Price Guide 2025: Detailed Costs, Comparisons ...">docs.jarvislabs.ai</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gpu-reranker-llm">GPU: Reranker 포함 (LLM 후처리) 검색용</h2>
+<table>
+<thead>
+<tr>
+<th>TPS 범위</th>
+<th>GPU 예시 사양</th>
+<th>RTX 4090 대비 성능</th>
+<th>주요 용도</th>
+<th>가격 (온프레미스, 2025년 기준)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~10 TPS</td>
+<td>RTX 4090 (24GB) / NVIDIA L40</td>
+<td>기준 성능 (100%)</td>
+<td>Q&amp;A 기반 검색, 단문 rerank</td>
+<td>RTX 4090: $1,600 (MSRP) (<a href="https://www.reddit.com/r/buildapc/comments/1jg0paf/when_did_1k_gpu_becomes_pocket_change/?utm_source=chatgpt.com" title="When did $1k+ GPU becomes pocket change? : r/buildapc - Reddit">Reddit</a>, <a href="https://www.pcgamer.com/best-graphics-card-deals-today/?utm_source=chatgpt.com" title="Best graphics card deals for every budget">PC Gamer</a>, <a href="https://cyfuture.cloud/kb/gpu/how-much-does-the-nvidia-h100-gpu-cost-in-2025?utm_source=chatgpt.com" title="How Much Does the NVIDIA H100 GPU Cost in 2025?">Cyfuture Cloud</a>); L40: $3,500–4,500 |</td>
+</tr>
+<tr>
+<td>10–50 TPS</td>
+<td>A100 40GB / RTX 6000 Ada ×2</td>
+<td>200–250% 수준</td>
+<td>상품 검색 + LLM reranker 조합</td>
+<td>A100: $10,000–12,000 (<a href="https://www.businessinsider.com/elon-musk-xai-data-center-colossus-power-memphis-2025-4?utm_source=chatgpt.com" title="Elon Musk's xAI is spending at least $400 million building its supercomputer in Memphis. It's short on electricity.">Business Insider</a>, <a href="https://simplepod.ai/blog/nvidia-a100-price/?utm_source=chatgpt.com" title="Understand the Nvidia A100 Price - SimplePod.AI Blog">simplepod.ai</a>); RTX 6000 Ada×2: $10,000–12,000 |</td>
+</tr>
+<tr>
+<td>50–300 TPS</td>
+<td>2×A100 80GB / 4×L40s / H100</td>
+<td>300–400% 이상</td>
+<td>고난도 문서 분류, 멀티턴 rerank</td>
+<td>A100 80GB: $13,000–15,000 (<a href="https://www.pcgamer.com/hardware/for-the-first-time-this-generation-u-s-retailers-are-listing-nvidia-rtx-50-series-graphics-cards-below-msrp/?utm_source=chatgpt.com" title="For the first time this generation US retailers are listing Nvidia RTX 50 series graphics cards below MSRP">PC Gamer</a>); H100: $25,000 (<a href="https://cyfuture.cloud/kb/gpu/how-much-does-the-nvidia-h100-gpu-cost-in-2025?utm_source=chatgpt.com" title="How Much Does the NVIDIA H100 GPU Cost in 2025?">Cyfuture Cloud</a>, <a href="https://docs.jarvislabs.ai/blog/h100-price?utm_source=chatgpt.com" title="NVIDIA H100 Price Guide 2025: Detailed Costs, Comparisons ...">docs.jarvislabs.ai</a>)</td>
+</tr>
+<tr>
+<td>300+ TPS</td>
+<td>H100 4장 이상 또는 GPU 팜 구성</td>
+<td>400% 이상</td>
+<td>대규모 광고, 실시간 정밀 rerank 등</td>
+<td>H100×4: $100,000+ (estimated from $25k each) (<a href="https://massedcompute.com/faq-answers/?question=What+are+the+estimated+costs+for+a+single+NVIDIA+A100+SXM4+GPU+in+an+on-premises+deployment%3F&amp;utm_source=chatgpt.com" title="What are the estimated costs for a single NVIDIA A100 SXM4 GPU ...">Massed Compute</a>)</td>
 </tr>
 </tbody>
 </table>

@@ -102,5 +102,19 @@ values = key_transform(input_tensor)
 # Attention 스코어 계산
 attention_scores = queries @ keys.transpose(-2, -1)
 
-# 하삼각행려
+# 하삼각행렬 생성 및 마스킹
+mask_lower_triangle = torch.tril(torch.ones(seq_length, seq_length))
+attention_scores = attention_scores.masked_fill(mask_lower_triangle == 0, float('-inf'))
+
+# 소프트맥스 함수를 사용해 확률 정규화
+normalized_scores = F.softmax(attentino_scores, dim=-1)
+
+# 최종 출력 계산
+output_tensor = normalized_scores @ values
+
+output_tensor
 ```
+
+먼저 torch.manual_seed(1111) 을 설정해 결과의 재현성을 보장한다. batch_size 2, seq_length 4, 그리고 num_channels 4인 임의의 input_tensor를 생성한다.
+
+셀프 어텐션 메커니즘을 구현하기 위해 세 개의 선형

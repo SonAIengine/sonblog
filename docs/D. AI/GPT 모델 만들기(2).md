@@ -117,4 +117,7 @@ output_tensor
 
 먼저 torch.manual_seed(1111) 을 설정해 결과의 재현성을 보장한다. batch_size 2, seq_length 4, 그리고 num_channels 4인 임의의 input_tensor를 생성한다.
 
-셀프 어텐션 메커니즘을 구현하기 위해 세 개의 선형
+셀프 어텐션 메커니즘을 구현하기 위해 세 개의 선형 변환 key_transform, query_transform, value_transform 을 정의한다. 각각에 대해 nn.Linear를 활용해 입력 차원을 head_size로 변환하는데, 여기서 head_size는 16으로 설정한다.
+
+이 선현 변환을 input_tensor에 적용해 keys, queries, values 표현을 얻는다. queries와 keys 표현의 내적을 통해 `attention_scores` 를 계산한다. 이 scores는 미래의 시퀀스 정보를 차단하기 위해 하위 삼각 행렬 `mask_lower_triangle` 로 마스킹 처리 한다. 마스킹 처리한 scores는 `float('-inf')` 로 설정한 미래의 위치를 포함하며, 이는 소프트맥스
+

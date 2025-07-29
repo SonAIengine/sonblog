@@ -76,5 +76,31 @@ Query는 질문하는 역할을 하는 문장으로 생각하면 된다.
 
 ```python
 import torch
-import torch.
+import torch.nn as nn
+import torch.nn.functional as F
+
+# 고정된 난수 시드 설정
+torch.manual_seed(1111)
+
+# 배치 크기, 시퀀스 길이, 채널 수 설정
+batch_size, seq_length, num_channels = 2, 4, 4
+input_tensor = torch.randn(batch_size, seq_length, num_channels)
+
+# 각 헤드의 크기
+head_size = 16
+
+# Key, Query, Value 변환을 위한 선형 레이어
+key_transform = nn.Linear(num_channels, head_size, bias=False)
+query_transform = nn.Linear(num_channels, head_size, bias=False)
+value_transform = nn.Linear(num_channels, head_size, bias=False)
+
+# Key, Query, Value 변환 수행
+keys = key_transform(input_tensor)
+queries = key_transform(input_tensor)
+values = key_transform(input_tensor)
+
+# Attention 스코어 계산
+attention_scores = queries @ keys.transpose(-2, -1)
+
+# 하삼각행려
 ```

@@ -119,5 +119,13 @@ output_tensor
 
 셀프 어텐션 메커니즘을 구현하기 위해 세 개의 선형 변환 key_transform, query_transform, value_transform 을 정의한다. 각각에 대해 nn.Linear를 활용해 입력 차원을 head_size로 변환하는데, 여기서 head_size는 16으로 설정한다.
 
-이 선현 변환을 input_tensor에 적용해 keys, queries, values 표현을 얻는다. queries와 keys 표현의 내적을 통해 `attention_scores` 를 계산한다. 이 scores는 미래의 시퀀스 정보를 차단하기 위해 하위 삼각 행렬 `mask_lower_triangle` 로 마스킹 처리 한다. 마스킹 처리한 scores는 `float('-inf')` 로 설정한 미래의 위치를 포함하며, 이는 소프트맥스
+이 선현 변환을 input_tensor에 적용해 keys, queries, values 표현을 얻는다. queries와 keys 표현의 내적을 통해 `attention_scores` 를 계산한다. 이 scores는 미래의 시퀀스 정보를 차단하기 위해 하위 삼각 행렬 `mask_lower_triangle` 로 마스킹 처리 한다. 마스킹 처리한 scores는 `float('-inf')` 로 설정한 미래의 위치를 포함하며, 이는 소프트맥스 적용 시 해당 위치의 가중치를 0으로 만든다.
+
+F.softmax 함수를 사용해 정규화된 attention_scores인 normalized_scores를 계산한다. 이렇게 정규화된 어텐션 가중치를 최종적으로 values에 적용해 셀프 어텐션의 결과인 output_tensor를 얻는다.
+
+`output_tensor` 는 각 시퀀스 위치에 과거와 현재의 정보만을 고려해 얻은 새로운 표현으로 나타내며, 이 과정은 모델이 시퀀스 내의 각 위치에 관련 정보를 동적으로 집약하는데 도움을 준다.
+
+이런 방식으로 셀프 어텐션 메커니즘은 시퀀스 데이터를 처리할 때 각 요소가 서로 어떻게 상호 작용하는지를 학습할 수 있게 하며, 특히 시퀀스 내에서 정보 흐름을 효과적으로 관리할 수 있게 한다.
+
+앞서 설명한 셀프 어텐션 구현에서 한 가지 중요한 단계 생략했다. 이 단계는 ''
 

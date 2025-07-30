@@ -119,7 +119,9 @@ output_tensor
 
 셀프 어텐션 메커니즘을 구현하기 위해 세 개의 선형 변환 key_transform, query_transform, value_transform 을 정의한다. 각각에 대해 nn.Linear를 활용해 입력 차원을 head_size로 변환하는데, 여기서 head_size는 16으로 설정한다.
 
-이 선현 변환을 input_tensor에 적용해 keys, queries, values 표현을 얻는다. queries와 keys 표현의 내적을 통해 `attention_scores` 를 계산한다. 이 scores는 미래의 시퀀스 정보를 차단하기 위해 하위 삼각 행렬 `mask_lower_triangle` 로 마스킹 처리 한다. 마스킹 처리한 scores는 `float('-inf')` 로 설정한 미래의 위치를 포함하며, 이는 소프트맥스 적용 시 해당 위치의 가중치를 0으로 만든다. 
+이 선현 변환을 input_tensor에 적용해 keys, queries, values 표현을 얻는다. queries와 keys 표현의 내적을 통해 `attention_scores` 를 계산한다. 이 scores는 미래의 시퀀스 정보를 차단하기 위해 하위 삼각 행렬 `mask_lower_triangle` 로 마스킹 처리 한다. 여기서 사용된 `torch.tril()` 은 상위 삼각 부분을 0으로 만든다. 그래서 이렇게 생성된 행렬은 각 위치에서 현재와 과거 정보만을 참조할 수 있도록 하는 마스크 역할이 되는 것이다.  
+
+마스킹 처리한 scores는 `float('-inf')` 로 -inf 값이 입력으로 주어지면 지수함수 값은 0에 매우 가까운 극솟값이 된다. 이는 설정한 미래의 위치를 포함하며, 모델의 의사결정 과정에서 해당 요소의 영향력을 제거하기 위해 소프트맥스 적용 시 해당 위치의 가중치를 0으로 만든다. 
 
 F.softmax 함수를 사용해 정규화된 attention_scores인 normalized_scores를 계산한다. 이렇게 정규화된 어텐션 가중치를 최종적으로 values에 적용해 셀프 어텐션의 결과인 output_tensor를 얻는다.
 

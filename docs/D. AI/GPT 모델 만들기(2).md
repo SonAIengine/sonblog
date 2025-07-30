@@ -174,4 +174,54 @@ wei.var()
 
 만약 나눠주지 않으면 학습 과정에서 문제가 발생한다. 여기서 dk는 모델의 쿼리 벡터의 차원 크기이다. 신경망은 오차 역전파라는 방식으로 학습을 하는데, 이때 각 층을 거치면서 변화량(그레이디언트)이 점점 작어져서 결국 제대로 된 학습이 이뤄지지 않게 된다. 이는 마치 긴 거리를 거치면서 전달되는 메시지가 점점 약해지다가 결국 아예 전달되지 않는 것과 비슷하다. ---------- why?
 
-따라서 squrt(dk) 로 나눠주는 스케일링(Scaling) 과정은 
+따라서 squrt(dk) 로 나눠주는 스케일링(Scaling) 과정은 트랜스포머 모델의 안정적인 학습을 위해 매우 중요한 단계이다. 이는 마치 여러 의견을 균현 있게 듣고 결정을 내리는 것과 같은 원리로, 더 효과적인 학습을 가능하게 한다.
+
+전체 코드를 다시 작성해 보겠습니다.
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+# 고정된 난수 시드 설정
+torch.manual_seed(1111)
+
+# 배치 크기, 시퀀스 길이, 채널 수 설정
+batch_size, seq_length, num_channels = 2, 4, 4
+input_tensor = torch.randn(batch_size, seq_length, num_channels)
+
+# 각 헤드의 크기
+head_size = 16
+
+# Key, Query, Value 변환을 위한 선형 레이어
+key_transform = nn.Linear(num_channels, head_size, bias=False)
+query_transform = nn.Linear(num_channels, head_size, bias=False)
+value_transform = nn.Linear(num_channels, head_size, bias=False)
+
+# Key, Query, Value 변환 수행
+keys = key_transform(input_tensor)
+queries = key_transform(input_tensor)
+values = key_transform(input_tensor)
+
+# Attention 스코어 계산
+scaling_factor = channel_size ** -0.5
+attention_scores = queries @ keys.transpose(-2, -1) * scaling_factor
+
+# 하삼각행렬 생성 및 마스킹
+mask_lower_triangle = torch.tril(torch.ones(seq_length, seq_length))
+attention_scores = attention_scores.masked_fill(mask_lower_triangle == 0, float('-inf'))
+
+# 소프트맥스 함수를 사용해 확률 정규화
+normalized_scores = F.softmax(attentino_scores, dim=-1)
+
+# 최종 출력 계산
+output_tensor = normalized_scores @ values
+
+output_tensor
+```
+
+먼저 필요한 라이브러리를 임포트하고 난수 시드를 설정한다. 배치 크기, 시퀀스 길이, 채널 수를 정의하고 입력 텐서를 생성한다. 각 헤드의 크기를 16으로 설정한다.
+
+Key, Query, Value 변환을 위한 선형 레이어를 정의하고, 이를 사용해 입력 텐서를 변환한다.
+
+어텐션 스코어를 계산하기 위해 Query와 Key의 행렬곱을 수행한다. 그 후 하삼각행렬을 생성해 마스킹을 적용한다. 이는 각 토큰들만 참조할 수 있게 한다.

@@ -119,7 +119,7 @@ output_tensor
 
 셀프 어텐션 메커니즘을 구현하기 위해 세 개의 선형 변환 key_transform, query_transform, value_transform 을 정의한다. 각각에 대해 nn.Linear를 활용해 입력 차원을 head_size로 변환하는데, 여기서 head_size는 16으로 설정한다.
 
-이 선현 변환을 input_tensor에 적용해 keys, queries, values 표현을 얻는다. queries와 keys 표현의 내적을 통해 `attention_scores` 를 계산한다. 이 scores는 미래의 시퀀스 정보를 차단하기 위해 하위 삼각 행렬 `mask_lower_triangle` 로 마스킹 처리 한다. 마스킹 처리한 scores는 `float('-inf')` 로 설정한 미래의 위치를 포함하며, 이는 소프트맥스 적용 시 해당 위치의 가중치를 0으로 만든다.
+이 선현 변환을 input_tensor에 적용해 keys, queries, values 표현을 얻는다. queries와 keys 표현의 내적을 통해 `attention_scores` 를 계산한다. 이 scores는 미래의 시퀀스 정보를 차단하기 위해 하위 삼각 행렬 `mask_lower_triangle` 로 마스킹 처리 한다. 마스킹 처리한 scores는 `float('-inf')` 로 설정한 미래의 위치를 포함하며, 이는 소프트맥스 적용 시 해당 위치의 가중치를 0으로 만든다. 
 
 F.softmax 함수를 사용해 정규화된 attention_scores인 normalized_scores를 계산한다. 이렇게 정규화된 어텐션 가중치를 최종적으로 values에 적용해 셀프 어텐션의 결과인 output_tensor를 얻는다.
 
@@ -154,7 +154,7 @@ wei.var()
 
 >  실행 결과: tensor(4.7005)
 
-이렇게 큰 값이 소프트맥스 함수로 들어가면 특정 위치의 값만 1에 가까워지고 나머지들은 0에 가까워지는 현상이 발생한다. 마치 여러 선택지 중에서 하나의 선택지만 극단적으로 선택되는 것과 같다.
+이렇게 큰 값이 소프트맥스 함수로 들어가면 특정 위치의 값만 1에 가까워지고 나머지들은 0에 가까워지는 현상이 발생한다. 마치 여러 선택지 중에서 하나의 선택지만 극단적으로 선택되는 것과 같다. 
 
 다음 코드는 내적 연산 후에 임베딩 차원의 제곱근√dk 으로 나눴다. 
 ```python

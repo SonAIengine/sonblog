@@ -1,0 +1,10 @@
+nav:
+  - Home: index.md
+  - Portfolio: portfolio
+  - PoC: poc
+  - Python: python
+  - AI: ai
+  - Search Engine: search-engine
+  - XGEN: xgen
+  - Infra: infra
+  - Etc: etc

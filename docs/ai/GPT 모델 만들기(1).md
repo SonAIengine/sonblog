@@ -1,11 +1,15 @@
-텍스트 데이터들이 필요하다.
+# GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조
+
+## 1. 텍스트 데이터 전처리
+
+텍스트 데이터가 필요하다.
 
 data 딕셔너리의 train 키에서 document 값을 가져와 모든 문서를 하나의 문자열로 합친다.
 이렇게 만들어진 전체 텍스트에서 중복을 제거하고 정렬된 고유한 문자 목록을 생성한다.
 
 이 과정을 통해 데이터셋에 존재하는 모든 고유한 한국어 문자를 파악할 수 있다.
 
-그 다음, 이 고유 문자 목록의 길이를 계산해 전체 어휘 크기를 구하고, 총 글자 수를 출력해 데이터셋의 어휘 다양성을 확인합니다.
+그 다음, 이 고유 문자 목록의 길이를 계산해 전체 어휘 크기를 구하고, 총 글자 수를 출력해 데이터셋의 어휘 다양성을 확인한다.
 
 다음으로, 문자와 인덱스를 매핑하는 딕셔너리를 생성한다. 이러한 매핑은 텍스트 데이터를 숫자로 변환하고 다시 텍스트로 복원하는 데 사용된다.
 
@@ -33,7 +37,7 @@ data 딕셔너리의 train 키에서 document 값을 가져와 모든 문서를 
 또한 무작위 샘플링을 통해 모델이 데이터의 특정 부분에 과적합되는 것을 방지하고, 전체 데이터셋에 대해 고르게 학습할 수 있도록 한다.
 
 `block_size` 를 8로 설정하고 데이터가 하나씩 언어 모델의 입력으로 어떻게 전달되는지 살펴보겠다.
-흔히 `block_size` 를 컨텍스트 길이(context length)라고 부른다. 즉, 모데링 한 번에 처리할 수 있는 토큰의 최대 길이를 의미하며, 이는 모델의 성능과 효율성에 큰 영향을 미친다. 이 값을 적절히 설정하는 것은 모델의 학습과 추론 과정에서 매우 중요하다. 큰 `block_size` 는 모델이 더 긴 문맥을 이해할 수 있게 해주지만, 동시에 더 많은 계산 자원을 필요로 한다. 반면 작은 `block_size` 는 계산 효율성은 높일 수 있지만, 모델의 문맥 이해 능력을 제한할 수 있다. 따라서 주어진 사용 가능한 자원을 고려해 적절한 `block_size` 를 선택하는 것이 중요하다.
+흔히 `block_size` 를 컨텍스트 길이(context length)라고 부른다. 즉, 모델이 한 번에 처리할 수 있는 토큰의 최대 길이를 의미하며, 이는 모델의 성능과 효율성에 큰 영향을 미친다. 이 값을 적절히 설정하는 것은 모델의 학습과 추론 과정에서 매우 중요하다. 큰 `block_size` 는 모델이 더 긴 문맥을 이해할 수 있게 해주지만, 동시에 더 많은 계산 자원을 필요로 한다. 반면 작은 `block_size` 는 계산 효율성은 높일 수 있지만, 모델의 문맥 이해 능력을 제한할 수 있다. 따라서 주어진 사용 가능한 자원을 고려해 적절한 `block_size` 를 선택하는 것이 중요하다.
 
 **train_dataset[:block_size]** 이런 식으로 훈련 데이터셋의 처음 8개 글자를 텐서 형태로 보여줄 수 있다. 이 텐서는 숫자 배열이며 각 숫자는 특정 글자를 나타낸다. **학습 과정에 이런 블록은 트랜스포머 모델이 각 글자 뒤에 나타날 글자를 예측하도록 돕니다.** 모델은 각 위치에서 글자를 예측하며, 이 과정을 통해 문장 구조와 언어 패턴을 학습한다. 예를 들어 모델에 1928이라고 인코딩된 텍스트 정보를 입력했다고 가정해보자, 모델은 1928이라는 숫자로 인코딩된 텍스트를 봤다면 다음 글자 2315를 예측할 때 1928을 사용하고, 그 다음 글자인 0을 예측할 때는 1928과 2315를 함께 사용해 예측하도록 훈련한다.
 
@@ -63,14 +67,14 @@ for time in range(block_size):
 ### PyTorch 언어 모델 학습을 위한 배치 생성 예제
 
 ```python
-torch.maunal_seed(1234)
+torch.manual_seed(1234)
 
-batch_size = 4
-block_size = 8
+batch_size = 4  # 한 번에 처리할 시퀀스 개수
+block_size = 8  # 각 시퀀스의 길이 (컨텍스트 길이)
 
 def batch_function(mode):
 	dataset = train_dataset if mode == "train" else test_dataset
-	idx = torch.randint(len(dataset) - block_size, (batch_size))
+	idx = torch.randint(len(dataset) - block_size, (batch_size,))
 	x = torch.stack([dataset[index:index+block_size] for index in idx])
 	y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 	return x, y
@@ -100,7 +104,7 @@ for size in range(batch_size):
 dataset = train_dataset if mode == "train" else test_dataset
 ```
 
-- `mode`에 따라 사용할 데이터셋을 선택합니다.
+- `mode`에 따라 사용할 데이터셋을 선택한다.
 
 
 ```python
@@ -121,11 +125,11 @@ y = torch.stack([dataset[index+1:index+block_size+1] for index in idx])
 **예시**
 - x: `[1, 2, 3, 4, 5, 6, 7, 8]`
 - y: `[2, 3, 4, 5, 6, 7, 8, 9]`  
-    → 언어 모델에서는 주어진 context로 다음 단어를 예측하므로 이렇게 한 칸씩 이동시킵니다.
+    → 언어 모델에서는 주어진 context로 다음 단어를 예측하므로 이렇게 한 칸씩 이동시킨다.
 
  `example_x, example_y = batch_function("train")`
 
-- 학습용 미니 배치를 하나 생성합니다.
+- 학습용 미니 배치를 하나 생성한다.
 
 #### 2. context와 target을 하나씩 출력
 
@@ -180,17 +184,18 @@ semiGPT 클래스를 만드는 과정은 객체 지향 프로그래밍의 기본
 
 ```python
 import torch
-import torch.nn
+import torch.nn as nn
 from torch.nn import functional as F
 
-class semiGPT(nn.Moudle):
+class semiGPT(nn.Module):
 	def __init__(self, vocab_length):
 		super().__init__()
-		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+		# 토큰 임베딩 테이블: vocab_length x vocab_length 크기의 행렬
+		self.embedding_token_table = nn.Embedding(vocab_length, vocab_length)
 	
-	def forward(self, inputs, targets):
+	def forward(self, inputs, targets=None):
+		# 입력 토큰을 임베딩 벡터로 변환
 		logits = self.embedding_token_table(inputs)
-		
 		return logits
 
 model = semiGPT(ko_vocab_size)
@@ -251,23 +256,27 @@ Loss를 사용할 때 2가지 중요한 가정이 있다.
 
 ```python
 import torch
-import torch.nn
+import torch.nn as nn
 from torch.nn import functional as F
 
-class semiGPT(nn.Moudle):
+class semiGPT(nn.Module):
 	def __init__(self, vocab_length):
 		super().__init__()
-		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+		self.embedding_token_table = nn.Embedding(vocab_length, vocab_length)
 	
-	def forward(self, inputs, targets):
+	def forward(self, inputs, targets=None):
 		logits = self.embedding_token_table(inputs)
-
-		loss = F.cross_entropy(logits, targets)
-		return logits, loss
+		
+		# 손실 계산 (targets가 제공된 경우에만)
+		if targets is not None:
+			loss = F.cross_entropy(logits, targets)
+			return logits, loss
+		else:
+			return logits
 
 model = semiGPT(ko_vocab_size)
-outputm loss = model(example_x, example_y)
-print(output)
+output, loss = model(example_x, example_y)
+print(f"Output shape: {output.shape}, Loss: {loss}")
 ```
 
 코드를 실행하면 에러를 발생하는 것이 정상이다. 이는 `shape` 가 맞지 않기 때문이다.
@@ -288,25 +297,31 @@ example_x, example_y는 각각 [4, 8] 크기이므로 모델에서 크로스엔�
 
 ```python
 import torch
-import torch.nn
+import torch.nn as nn
 from torch.nn import functional as F
 
-class semiGPT(nn.Moudle):
+class semiGPT(nn.Module):
 	def __init__(self, vocab_length):
 		super().__init__()
-		self.embedding_token_table == nn.Embedding(vocab_lengthm vocab_length)
+		self.embedding_token_table = nn.Embedding(vocab_length, vocab_length)
 	
-	def forward(self, inputs, targets):
+	def forward(self, inputs, targets=None):
+		# 입력을 임베딩으로 변환
 		logits = self.embedding_token_table(inputs)
-		batch, seq_length, vecab_length = logits.shape
-		logits = logits.view(batch * seq_length, vocab_length)
-		targets = targets.view(batch*seq_length)
-		loss = F.cross_entropy(logits, targets)
-		return logits, loss
+		
+		if targets is not None:
+			# 손실 계산을 위해 shape 조정
+			batch, seq_length, vocab_length = logits.shape
+			logits_reshaped = logits.view(batch * seq_length, vocab_length)
+			targets_reshaped = targets.view(batch * seq_length)
+			loss = F.cross_entropy(logits_reshaped, targets_reshaped)
+			return logits, loss
+		else:
+			return logits
 
 model = semiGPT(ko_vocab_size)
-outputm loss = model(example_x, example_y)
-print(loss)
+output, loss = model(example_x, example_y)
+print(f"Loss: {loss}")
 ```
 
 > 실행 결과

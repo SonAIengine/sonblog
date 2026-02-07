@@ -1,4 +1,6 @@
 
+# 목적에 맞는 OpenSearch Docker Compose 구성
+
 ## 1. 개발/PoC 용 단일 노드 (`docker-compose-poc.yml`)
 
 ```yaml
@@ -123,7 +125,7 @@ services:
       memlock: { soft: -1, hard: -1 }
 ```
 
-**설명**: 역할 분리를 통해 안정성과 처리가능 성능 확보 가능하다.
+**설명**: 역할 분리를 통해 안정성과 처리 가능 성능 확보가 가능하다.
 
 
 ## 6. 중규모 운영: 다중 데이터 노드 + Dashboards

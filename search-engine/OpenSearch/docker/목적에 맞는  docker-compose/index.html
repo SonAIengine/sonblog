@@ -20,7 +20,7 @@
     
     
       
-        <title>목적에 맞는 docker compose - SON BLOG</title>
+        <title>목적에 맞는 OpenSearch Docker Compose 구성 - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-poc-docker-compose-pocyml" class="md-skip">
+        <a href="#opensearch-docker-compose" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              목적에 맞는  docker compose
+              목적에 맞는 OpenSearch Docker Compose 구성
             
           </span>
         </div>
@@ -1197,7 +1197,7 @@
   <span class="md-ellipsis">
     
   
-    1. Class의 enter과 exit
+    파이썬 클래스의 __enter__와 __exit__ 메서드
   
 
     
@@ -1225,7 +1225,7 @@
   <span class="md-ellipsis">
     
   
-    2. multiprocessing
+    파이썬 multiprocessing - 병렬 처리로 성능 향상하기
   
 
     
@@ -1578,7 +1578,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(1)
+    GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조
   
 
     
@@ -1606,7 +1606,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(2)
+    GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘
   
 
     
@@ -3306,6 +3306,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -3314,7 +3316,7 @@
   <span class="md-ellipsis">
     
   
-    목적에 맞는  docker compose
+    목적에 맞는 OpenSearch Docker Compose 구성
   
 
     
@@ -3332,7 +3334,7 @@
   <span class="md-ellipsis">
     
   
-    목적에 맞는  docker compose
+    목적에 맞는 OpenSearch Docker Compose 구성
   
 
     
@@ -3347,6 +3349,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -5868,6 +5872,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -6348,8 +6354,7 @@
 
 
 
-  <h1>목적에 맞는  docker compose</h1>
-
+<h1 id="opensearch-docker-compose">목적에 맞는 OpenSearch Docker Compose 구성</h1>
 <h2 id="1-poc-docker-compose-pocyml">1. 개발/PoC 용 단일 노드 (<code>docker-compose-poc.yml</code>)</h2>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.8"</span>
 <span class="nt">services</span><span class="p">:</span>
@@ -6451,7 +6456,7 @@
 <span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">memlock</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> soft</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="p p-Indicator">,</span><span class="nt"> hard</span><span class="p">:</span><span class="w"> </span><span class="nv">-1</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<p><strong>설명</strong>: 역할 분리를 통해 안정성과 처리가능 성능 확보 가능하다.</p>
+<p><strong>설명</strong>: 역할 분리를 통해 안정성과 처리 가능 성능 확보가 가능하다.</p>
 <h2 id="6-dashboards">6. 중규모 운영: 다중 데이터 노드 + Dashboards</h2>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.8"</span>
 <span class="nt">services</span><span class="p">:</span>

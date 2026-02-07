@@ -20,7 +20,7 @@
     
     
       
-        <title>GPT 모델 만들기(1) - SON BLOG</title>
+        <title>GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조 - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pytorch" class="md-skip">
+        <a href="#gpt-1-" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GPT 모델 만들기(1)
+              GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조
             
           </span>
         </div>
@@ -1193,7 +1193,7 @@
   <span class="md-ellipsis">
     
   
-    1. Class의 enter과 exit
+    파이썬 클래스의 __enter__와 __exit__ 메서드
   
 
     
@@ -1221,7 +1221,7 @@
   <span class="md-ellipsis">
     
   
-    2. multiprocessing
+    파이썬 multiprocessing - 병렬 처리로 성능 향상하기
   
 
     
@@ -1578,6 +1578,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1586,7 +1588,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(1)
+    GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조
   
 
     
@@ -1604,7 +1606,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(1)
+    GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조
   
 
     
@@ -1620,6 +1622,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1628,6 +1632,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 텍스트 데이터 전처리
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 텍스트 데이터 전처리">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#pytorch" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1658,6 +1674,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1744,7 +1765,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(2)
+    GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘
   
 
     
@@ -3439,7 +3460,7 @@
   <span class="md-ellipsis">
     
   
-    목적에 맞는  docker compose
+    목적에 맞는 OpenSearch Docker Compose 구성
   
 
     
@@ -5600,6 +5621,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5608,6 +5631,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 텍스트 데이터 전처리
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 텍스트 데이터 전처리">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#pytorch" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5638,6 +5673,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5766,13 +5806,13 @@
 
 
 
-  <h1>GPT 모델 만들기(1)</h1>
-
-<p>텍스트 데이터들이 필요하다.</p>
+<h1 id="gpt-1-">GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조</h1>
+<h2 id="1">1. 텍스트 데이터 전처리</h2>
+<p>텍스트 데이터가 필요하다.</p>
 <p>data 딕셔너리의 train 키에서 document 값을 가져와 모든 문서를 하나의 문자열로 합친다.
 이렇게 만들어진 전체 텍스트에서 중복을 제거하고 정렬된 고유한 문자 목록을 생성한다.</p>
 <p>이 과정을 통해 데이터셋에 존재하는 모든 고유한 한국어 문자를 파악할 수 있다.</p>
-<p>그 다음, 이 고유 문자 목록의 길이를 계산해 전체 어휘 크기를 구하고, 총 글자 수를 출력해 데이터셋의 어휘 다양성을 확인합니다.</p>
+<p>그 다음, 이 고유 문자 목록의 길이를 계산해 전체 어휘 크기를 구하고, 총 글자 수를 출력해 데이터셋의 어휘 다양성을 확인한다.</p>
 <p>다음으로, 문자와 인덱스를 매핑하는 딕셔너리를 생성한다. 이러한 매핑은 텍스트 데이터를 숫자로 변환하고 다시 텍스트로 복원하는 데 사용된다.</p>
 <blockquote>
 <p>데이터를 텐서로 변환하고 데이터 타입을 long으로 지정하는 과정은 딥러닝 모델의 효율적인 학습과 처리를 위해서 중요하다. 텐서는 딥러닝에서 데이터를 표현하는 기본 단위로, 다차원 배열 형태로 데이터를 저장하고 처리한다. 문자열을 숫자로 인코딩하고 이를 텐서로 변환하는 과정은 모델이 텍스트 데이터를 이해하고 학습할 수 있도록 하는 필수적인 전처리 단계이다.</p>
@@ -5790,7 +5830,7 @@
 <p>이러한 방식으로 데이터를 처리함으로써 모델은 <strong>다양한 문맥에서 언어를 이해하고 생성하는 능력</strong>을 키울 수 있다. </p>
 <p>또한 무작위 샘플링을 통해 모델이 데이터의 특정 부분에 과적합되는 것을 방지하고, 전체 데이터셋에 대해 고르게 학습할 수 있도록 한다.</p>
 <p><code>block_size</code> 를 8로 설정하고 데이터가 하나씩 언어 모델의 입력으로 어떻게 전달되는지 살펴보겠다.
-흔히 <code>block_size</code> 를 컨텍스트 길이(context length)라고 부른다. 즉, 모데링 한 번에 처리할 수 있는 토큰의 최대 길이를 의미하며, 이는 모델의 성능과 효율성에 큰 영향을 미친다. 이 값을 적절히 설정하는 것은 모델의 학습과 추론 과정에서 매우 중요하다. 큰 <code>block_size</code> 는 모델이 더 긴 문맥을 이해할 수 있게 해주지만, 동시에 더 많은 계산 자원을 필요로 한다. 반면 작은 <code>block_size</code> 는 계산 효율성은 높일 수 있지만, 모델의 문맥 이해 능력을 제한할 수 있다. 따라서 주어진 사용 가능한 자원을 고려해 적절한 <code>block_size</code> 를 선택하는 것이 중요하다.</p>
+흔히 <code>block_size</code> 를 컨텍스트 길이(context length)라고 부른다. 즉, 모델이 한 번에 처리할 수 있는 토큰의 최대 길이를 의미하며, 이는 모델의 성능과 효율성에 큰 영향을 미친다. 이 값을 적절히 설정하는 것은 모델의 학습과 추론 과정에서 매우 중요하다. 큰 <code>block_size</code> 는 모델이 더 긴 문맥을 이해할 수 있게 해주지만, 동시에 더 많은 계산 자원을 필요로 한다. 반면 작은 <code>block_size</code> 는 계산 효율성은 높일 수 있지만, 모델의 문맥 이해 능력을 제한할 수 있다. 따라서 주어진 사용 가능한 자원을 고려해 적절한 <code>block_size</code> 를 선택하는 것이 중요하다.</p>
 <p><strong>train_dataset[:block_size]</strong> 이런 식으로 훈련 데이터셋의 처음 8개 글자를 텐서 형태로 보여줄 수 있다. 이 텐서는 숫자 배열이며 각 숫자는 특정 글자를 나타낸다. <strong>학습 과정에 이런 블록은 트랜스포머 모델이 각 글자 뒤에 나타날 글자를 예측하도록 돕니다.</strong> 모델은 각 위치에서 글자를 예측하며, 이 과정을 통해 문장 구조와 언어 패턴을 학습한다. 예를 들어 모델에 1928이라고 인코딩된 텍스트 정보를 입력했다고 가정해보자, 모델은 1928이라는 숫자로 인코딩된 텍스트를 봤다면 다음 글자 2315를 예측할 때 1928을 사용하고, 그 다음 글자인 0을 예측할 때는 1928과 2315를 함께 사용해 예측하도록 훈련한다.</p>
 <div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[:</span><span class="n">block_size</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">block_size</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
@@ -5808,14 +5848,14 @@
 <p><code>block_size</code> 는 각 텐서의 길이를 결정하고, <code>batch_size</code> 는 한 번에 처리할 텐서의 개수를 설정한다.
 이 두 매개변수를 적절히 조절하면 모델의 학습 속도와 성능을 최적화할 수 있다.</p>
 <h3 id="pytorch">PyTorch 언어 모델 학습을 위한 배치 생성 예제</h3>
-<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">maunal_seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
 
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">block_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># 한 번에 처리할 시퀀스 개수</span>
+<span class="n">block_size</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># 각 시퀀스의 길이 (컨텍스트 길이)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">batch_function</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">train_dataset</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"train"</span> <span class="k">else</span> <span class="n">test_dataset</span>
-    <span class="n">idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">block_size</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">))</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">block_size</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">,))</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">dataset</span><span class="p">[</span><span class="n">index</span><span class="p">:</span><span class="n">index</span><span class="o">+</span><span class="n">block_size</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">dataset</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">index</span><span class="o">+</span><span class="n">block_size</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
@@ -5838,7 +5878,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">dataset</span> <span class="o">=</span> <span class="n">train_dataset</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"train"</span> <span class="k">else</span> <span class="n">test_dataset</span>
 </code></pre></div>
 <ul>
-<li><code>mode</code>에 따라 사용할 데이터셋을 선택합니다.</li>
+<li><code>mode</code>에 따라 사용할 데이터셋을 선택한다.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">idx</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">block_size</span><span class="p">,</span> <span class="p">(</span><span class="n">batch_size</span><span class="p">))</span>
 </code></pre></div>
@@ -5855,10 +5895,10 @@
 <p><strong>예시</strong>
 - x: <code>[1, 2, 3, 4, 5, 6, 7, 8]</code>
 - y: <code>[2, 3, 4, 5, 6, 7, 8, 9]</code><br>
-    → 언어 모델에서는 주어진 context로 다음 단어를 예측하므로 이렇게 한 칸씩 이동시킵니다.</p>
+    → 언어 모델에서는 주어진 context로 다음 단어를 예측하므로 이렇게 한 칸씩 이동시킨다.</p>
 <p><code>example_x, example_y = batch_function("train")</code></p>
 <ul>
-<li>학습용 미니 배치를 하나 생성합니다.</li>
+<li>학습용 미니 배치를 하나 생성한다.</li>
 </ul>
 <h4 id="2-context-target">2. context와 target을 하나씩 출력</h4>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
@@ -5896,17 +5936,18 @@ input : tensor([10, 20, 30, 40, 50, 60, 70, 80]), target : 90
 - 두 번째는 <code>forward</code> 메서드로, 모델 실제 연산을 수행한다. <code>__init__</code> 메서드에서는 모델의 구조와 초기 파라미터를 설정하고, <code>forward</code> 메서드에서는 입력 데이터를 받아 모델을 통과시켜 출력을 생성한다.</p>
 <p>이러한 구조는 파이토치와 같은 딥러닝 프레임워크에서 일반적으로 사용되는 방식으로, 모델의 구조를 명확하게 정의하고 사용하기 쉽게 만든다. 이렇게 설계된 semiGPT 클래스는 다양한 언어 모델링 작업에 활용될 수 있으며, 필요에 따라 쉽게 확장하거나 수정이 가능하다.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">semiGPT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Moudle</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">semiGPT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span> <span class="o">==</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_lengthm</span> <span class="n">vocab_length</span><span class="p">)</span>
+        <span class="c1"># 토큰 임베딩 테이블: vocab_length x vocab_length 크기의 행렬</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_length</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># 입력 토큰을 임베딩 벡터로 변환</span>
         <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">logits</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">semiGPT</span><span class="p">(</span><span class="n">ko_vocab_size</span><span class="p">)</span>
@@ -5957,23 +5998,27 @@ semiGPT는 <code>__init__</code> 함수에서 <code>vocab_length</code> 를 (매
 <p>손실이 낮을수록 모델의 예측이 실제 레이블에 더 가깝다는 것을 의미한다. 이러한 손실 계산은 모델이 학습 과정에서 자신의 성능을 평가하고 개선할 수 있게 해주는 중요한 지표가 된다. 손실 함수를 통해 모델은 자신의 예측과 실제 정답 사이의 오차를 인식하고, 이를 최소화하는 방향으로 파라미터를 조정할 수 있다.</p>
 <p>손실 함수를 설정하고 다시 한번 코드를 실행해보겠다.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">semiGPT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Moudle</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">semiGPT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span> <span class="o">==</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_lengthm</span> <span class="n">vocab_length</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_length</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">loss</span>
+        <span class="c1"># 손실 계산 (targets가 제공된 경우에만)</span>
+        <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">loss</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logits</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">semiGPT</span><span class="p">(</span><span class="n">ko_vocab_size</span><span class="p">)</span>
-<span class="n">outputm</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">example_x</span><span class="p">,</span> <span class="n">example_y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">output</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">example_x</span><span class="p">,</span> <span class="n">example_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Output shape: </span><span class="si">{</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, Loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <p>코드를 실행하면 에러를 발생하는 것이 정상이다. 이는 <code>shape</code> 가 맞지 않기 때문이다.
 이 또한 다양한 연구를 하다 보면 자주 만나는 오류여서 예제로 가져왔다.</p>
@@ -5989,25 +6034,31 @@ semiGPT는 <code>__init__</code> 함수에서 <code>vocab_length</code> 를 (매
 <p>이렇게 shape을 변경함으로써 각 토큰에 대한 예측과 실제 값을 일대일로 비교할 수 있게 된다.</p>
 <p>수정된 코드는 다음과 같다.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">semiGPT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Moudle</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">semiGPT</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span> <span class="o">==</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_lengthm</span> <span class="n">vocab_length</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_length</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># 입력을 임베딩으로 변환</span>
         <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_token_table</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-        <span class="n">batch</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">vecab_length</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">shape</span>
-        <span class="n">logits</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch</span> <span class="o">*</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">)</span>
-        <span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch</span><span class="o">*</span><span class="n">seq_length</span><span class="p">)</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">loss</span>
+
+        <span class="k">if</span> <span class="n">targets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># 손실 계산을 위해 shape 조정</span>
+            <span class="n">batch</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">vocab_length</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">shape</span>
+            <span class="n">logits_reshaped</span> <span class="o">=</span> <span class="n">logits</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch</span> <span class="o">*</span> <span class="n">seq_length</span><span class="p">,</span> <span class="n">vocab_length</span><span class="p">)</span>
+            <span class="n">targets_reshaped</span> <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch</span> <span class="o">*</span> <span class="n">seq_length</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span><span class="n">logits_reshaped</span><span class="p">,</span> <span class="n">targets_reshaped</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">loss</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">logits</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">semiGPT</span><span class="p">(</span><span class="n">ko_vocab_size</span><span class="p">)</span>
-<span class="n">outputm</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">example_x</span><span class="p">,</span> <span class="n">example_y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+<span class="n">output</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">example_x</span><span class="p">,</span> <span class="n">example_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>실행 결과

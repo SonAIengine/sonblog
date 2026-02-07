@@ -20,7 +20,7 @@
     
     
       
-        <title>2. multiprocessing - SON BLOG</title>
+        <title>파이썬 multiprocessing - 병렬 처리로 성능 향상하기 - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#multiprocessing-" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2. multiprocessing
+              파이썬 multiprocessing - 병렬 처리로 성능 향상하기
             
           </span>
         </div>
@@ -1205,7 +1205,7 @@
   <span class="md-ellipsis">
     
   
-    1. Class의 enter과 exit
+    파이썬 클래스의 __enter__와 __exit__ 메서드
   
 
     
@@ -1232,6 +1232,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1240,7 +1242,7 @@
   <span class="md-ellipsis">
     
   
-    2. multiprocessing
+    파이썬 multiprocessing - 병렬 처리로 성능 향상하기
   
 
     
@@ -1258,7 +1260,7 @@
   <span class="md-ellipsis">
     
   
-    2. multiprocessing
+    파이썬 multiprocessing - 병렬 처리로 성능 향상하기
   
 
     
@@ -1273,6 +1275,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1311,6 +1315,34 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chunksize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 최적화: chunksize 매개변수
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="성능 최적화: chunksize 매개변수">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chunksize_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chunksize 설정 가이드
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1665,7 +1697,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(1)
+    GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조
   
 
     
@@ -1693,7 +1725,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(2)
+    GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘
   
 
     
@@ -3382,7 +3414,7 @@
   <span class="md-ellipsis">
     
   
-    목적에 맞는  docker compose
+    목적에 맞는 OpenSearch Docker Compose 구성
   
 
     
@@ -5543,6 +5575,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5580,6 +5614,34 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chunksize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 최적화: chunksize 매개변수
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="성능 최적화: chunksize 매개변수">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chunksize_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chunksize 설정 가이드
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5674,13 +5736,12 @@
 
 
 
-  <h1>2. multiprocessing</h1>
-
-<p>프로세스와 스레드 기반의 병렬화를 위한 저수준 인터페이스를 제공한다.</p>
-<p>먼저 프로세스나 스레프 풀을 활용하는 몬테 카를로 방식을 사용해 원주율을 추정할 것이다.
+<h1 id="multiprocessing-">파이썬 multiprocessing - 병렬 처리로 성능 향상하기</h1>
+<p>파이썬의 <code>multiprocessing</code> 모듈은 프로세스와 스레드 기반의 병렬화를 위한 저수준 인터페이스를 제공한다.</p>
+<p>먼저 프로세스나 스레드 풀을 활용하는 몬테 카를로 방식을 사용해 원주율을 추정할 것이다.
 이 문제는 단순하며 복잡도도 잘 알려져 있으므로 병렬화가 쉽다.
 또한 numpy를 사용할 때 예기치 못한 결과를 볼 수 있다.</p>
-<p>그 다음에는 Pool 방식을 사용해서 소수를 찾는다. 소수를 찾는 과정의 예측 불가능한 복잡성을 살펴보고, 어떻게해야 부하를 효율적으로(또는 비효율적으로!) 분산시켜서 계산 자원을 가장 잘 활용할 수 있는지 살펴본다.
+<p>그 다음에는 Pool 방식을 사용해서 소수를 찾는다. 소수를 찾는 과정의 예측 불가능한 복잡성을 살펴보고, 어떻게 해야 부하를 효율적으로(또는 비효율적으로!) 분산시켜서 계산 자원을 가장 잘 활용할 수 있는지 살펴본다.
 큐를 다루면서 소수 검색을 마칠 것이다. 그 과정에서 Pool 대신 Process 객체를 사용하고, 작업 목록과 포이즌 필을 활용해서 각 작업자의 생명주기를 조정해보자.</p>
 <hr>
 <h2 id="_1">몬테 카를로 방식을 사용해 원주율 추정하기</h2>
@@ -5693,61 +5754,61 @@
 프로세스를 둘 이상 사용하면 실행 시간을 더 짧게 만들 수 있다.</p>
 <p>2개나 4개의 코어를 활용할 때 선형적인 속도 향상을 얻었지만, 노트북에 물리적 코어가 4개밖에 없으므로 프로세스를 8개 사용하더라도 추가로 얻는 속도 향상은 거의 없다.</p>
 <p>스레드를 사용하면 각 명령은 GIL 때문에 제약이 걸린다. 따라서 각 스레드를 별도의 CPU에 실행할 수 있음에도 불구하고, 다른 스레드가 실행 중이지 않을 때만 실행한다.</p>
-<p>프로세스를 사용하는 버번은 이런 제약이 없다. 각 프로세스가 단일 스레드를 싱행하는 별도의 파이썬 인터프리터이니 공유 객체로 인한 GIL 경쟁이 없다.</p>
-<p></p><div class="highlight"><pre><span></span><code><span class="kr">from</span><span class="w"> </span><span class="nx">random</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="nx">uniform</span>
-<span class="kr">from</span><span class="w"> </span><span class="nx">multiprocessing</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="nx">Pool</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">time</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">matplotlib</span><span class="p">.</span><span class="nx">pyplot</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">plt</span>
+<p>프로세스를 사용하는 버전은 이런 제약이 없다. 각 프로세스가 단일 스레드를 실행하는 별도의 파이썬 인터프리터이니 공유 객체로 인한 GIL 경쟁이 없다.</p>
+<p></p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">uniform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="nx">def</span><span class="w"> </span><span class="nx">estimate_circle</span><span class="p">(</span><span class="nx">nbr_estimates</span><span class="p">)</span><span class="o">:</span>
-<span class="w">    </span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="kr">int</span><span class="p">(</span><span class="nx">nbr_estimates</span><span class="p">))</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">uniform</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">uniform</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">is_in_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1.0</span>
-<span class="w">        </span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">is_in_unit_circle</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_circle</span><span class="p">(</span><span class="n">nbr_estimates</span><span class="p">):</span>
+    <span class="n">nbr_trials_in_quarter_unit_circle</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">nbr_estimates</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">is_in_unit_circle</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mf">1.0</span>
+        <span class="n">nbr_trials_in_quarter_unit_circle</span> <span class="o">+=</span> <span class="n">is_in_unit_circle</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">nbr_trials_in_quarter_unit_circle</span>
+    <span class="k">return</span> <span class="n">nbr_trials_in_quarter_unit_circle</span>
 
-<span class="nx">def</span><span class="w"> </span><span class="nx">run_simulation</span><span class="p">(</span><span class="nx">nbr_parallel_blocks</span><span class="p">,</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span><span class="o">=</span><span class="mf">1e8</span><span class="p">)</span><span class="o">:</span>
-<span class="w">    </span><span class="nx">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Pool</span><span class="p">(</span><span class="nx">processes</span><span class="o">=</span><span class="nx">nbr_parallel_blocks</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">nbr_samples_per_worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">nbr_parallel_blocks</span>
-<span class="w">    </span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pool</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">estimate_circle</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">nbr_samples_per_worker</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">nbr_parallel_blocks</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_simulation</span><span class="p">(</span><span class="n">nbr_parallel_blocks</span><span class="p">,</span> <span class="n">nbr_samples_in_total</span><span class="o">=</span><span class="mf">1e8</span><span class="p">):</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">nbr_parallel_blocks</span><span class="p">)</span>
+    <span class="n">nbr_samples_per_worker</span> <span class="o">=</span> <span class="n">nbr_samples_in_total</span> <span class="o">/</span> <span class="n">nbr_parallel_blocks</span>
+    <span class="n">nbr_trials_in_quarter_unit_circle</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">estimate_circle</span><span class="p">,</span> <span class="p">[</span><span class="n">nbr_samples_per_worker</span><span class="p">]</span> <span class="o">*</span> <span class="n">nbr_parallel_blocks</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">pool</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
-<span class="w">    </span><span class="nx">pool</span><span class="p">.</span><span class="nx">join</span><span class="p">()</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">병렬로</span><span class="w"> </span><span class="nx">실행된</span><span class="w"> </span><span class="nx">결과를</span><span class="w"> </span><span class="nx">종합해서</span><span class="w"> </span><span class="nx">총</span><span class="w"> </span><span class="nx">원</span><span class="w"> </span><span class="nx">안에</span><span class="w"> </span><span class="nx">있는</span><span class="w"> </span><span class="nx">점들의</span><span class="w"> </span><span class="nx">개수</span><span class="w"> </span><span class="nx">계산</span>
-<span class="w">    </span><span class="nx">total_nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="p">)</span>
+    <span class="c1"># 병렬로 실행된 결과를 종합해서 총 원 안에 있는 점들의 개수 계산</span>
+    <span class="n">total_nbr_trials_in_quarter_unit_circle</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">nbr_trials_in_quarter_unit_circle</span><span class="p">)</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">원주율</span><span class="w"> </span><span class="nx">추정</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="o">/</span><span class="mf">4</span><span class="w"> </span><span class="nx">원에</span><span class="w"> </span><span class="nx">해당하므로</span><span class="w"> </span><span class="mf">4</span><span class="nx">배</span><span class="w"> </span><span class="nx">곱</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">estimated_pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">total_nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">estimated_pi</span>
+    <span class="c1"># 원주율 추정 (1/4 원에 해당하므로 4배 곱)</span>
+    <span class="n">estimated_pi</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">total_nbr_trials_in_quarter_unit_circle</span> <span class="o">/</span> <span class="n">nbr_samples_in_total</span>
+    <span class="k">return</span> <span class="n">estimated_pi</span>
 
-<span class="k">if</span><span class="w"> </span><span class="nx">__name__</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"__main__"</span><span class="o">:</span>
-<span class="w">    </span><span class="nx">nbr_samples_in_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e8</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">총</span><span class="w"> </span><span class="nx">시뮬레이션</span><span class="w"> </span><span class="nx">샘플</span><span class="w"> </span><span class="nx">수</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">nbr_samples_in_total</span> <span class="o">=</span> <span class="mf">1e8</span>  <span class="c1"># 총 시뮬레이션 샘플 수</span>
 
-<span class="w">    </span><span class="nx">process_counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">11</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="mf">1</span><span class="nx">부터</span><span class="w"> </span><span class="mf">10</span><span class="nx">까지의</span><span class="w"> </span><span class="nx">프로세스</span><span class="w"> </span><span class="nx">수</span>
-<span class="w">    </span><span class="nx">computation_times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">각</span><span class="w"> </span><span class="nx">프로세스</span><span class="w"> </span><span class="nx">수에</span><span class="w"> </span><span class="nx">따른</span><span class="w"> </span><span class="nx">계산</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">저장</span>
+    <span class="n">process_counts</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>  <span class="c1"># 1부터 10까지의 프로세스 수</span>
+    <span class="n">computation_times</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 각 프로세스 수에 따른 계산 시간 저장</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">nbr_parallel_blocks</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">process_counts</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">time</span><span class="p">()</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">시작</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">기록</span>
-<span class="w">        </span><span class="nx">estimated_pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">run_simulation</span><span class="p">(</span><span class="nx">nbr_parallel_blocks</span><span class="p">,</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">time</span><span class="p">()</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">종료</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">기록</span>
+    <span class="k">for</span> <span class="n">nbr_parallel_blocks</span> <span class="ow">in</span> <span class="n">process_counts</span><span class="p">:</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  <span class="c1"># 시작 시간 기록</span>
+        <span class="n">estimated_pi</span> <span class="o">=</span> <span class="n">run_simulation</span><span class="p">(</span><span class="n">nbr_parallel_blocks</span><span class="p">,</span> <span class="n">nbr_samples_in_total</span><span class="p">)</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>    <span class="c1"># 종료 시간 기록</span>
 
-<span class="w">        </span><span class="nx">total_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start_time</span>
-<span class="w">        </span><span class="nx">computation_times</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">total_time</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">계산</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">저장</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">computation_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_time</span><span class="p">)</span>  <span class="c1"># 계산 시간 저장</span>
 
-<span class="w">        </span><span class="nx">print</span><span class="p">(</span><span class="nx">f</span><span class="s2">"Processes: {nbr_parallel_blocks}, Estimated Pi: {estimated_pi}, Time: {total_time:.2f} seconds"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Processes: </span><span class="si">{</span><span class="n">nbr_parallel_blocks</span><span class="si">}</span><span class="s2">, Estimated Pi: </span><span class="si">{</span><span class="n">estimated_pi</span><span class="si">}</span><span class="s2">, Time: </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">계산</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">그래프</span><span class="w"> </span><span class="nx">출력</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">figure</span><span class="p">(</span><span class="nx">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">))</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">plot</span><span class="p">(</span><span class="nx">process_counts</span><span class="p">,</span><span class="w"> </span><span class="nx">computation_times</span><span class="p">,</span><span class="w"> </span><span class="nx">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span><span class="w"> </span><span class="nx">linestyle</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">"Computation Time vs Number of Processes"</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">xlabel</span><span class="p">(</span><span class="s2">"Number of Processes"</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">ylabel</span><span class="p">(</span><span class="s2">"Computation Time (seconds)"</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">grid</span><span class="p">(</span><span class="nx">True</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
+    <span class="c1"># 계산 시간 그래프 출력</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">process_counts</span><span class="p">,</span> <span class="n">computation_times</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Computation Time vs Number of Processes"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Number of Processes"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Computation Time (seconds)"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://ifh.cc/g/Zp0qNF.png" data-desc-position="bottom"><img alt="Image" src="https://ifh.cc/g/Zp0qNF.png"></a><p></p>
 <hr>
@@ -5760,59 +5821,59 @@
 <li>출력을 디스크에 저장해 세션과 세션 사이에 결과를 캐시할 수 있는데도, 부작용없이 비용이 많이 드는 함수를 호출한다.</li>
 <li>프로세스 사이에 넘파이를 공유할 수 있지만 어떻게 하는지를 모른다.</li>
 </ul>
-<p></p><div class="highlight"><pre><span></span><code><span class="kr">from</span><span class="w"> </span><span class="nx">random</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="nx">uniform</span>
-<span class="kr">from</span><span class="w"> </span><span class="nx">joblib</span><span class="w"> </span><span class="k">import</span><span class="w"> </span><span class="nx">Parallel</span><span class="p">,</span><span class="w"> </span><span class="nx">delayed</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">time</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">matplotlib</span><span class="p">.</span><span class="nx">pyplot</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">plt</span>
+<p></p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">uniform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="nx">def</span><span class="w"> </span><span class="nx">estimate_circle</span><span class="p">(</span><span class="nx">nbr_estimates</span><span class="p">)</span><span class="o">:</span>
-<span class="w">    </span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="kr">int</span><span class="p">(</span><span class="nx">nbr_estimates</span><span class="p">))</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">uniform</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">uniform</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">is_in_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1.0</span>
-<span class="w">        </span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">is_in_unit_circle</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_circle</span><span class="p">(</span><span class="n">nbr_estimates</span><span class="p">):</span>
+    <span class="n">nbr_trials_in_quarter_unit_circle</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">nbr_estimates</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">is_in_unit_circle</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mf">1.0</span>
+        <span class="n">nbr_trials_in_quarter_unit_circle</span> <span class="o">+=</span> <span class="n">is_in_unit_circle</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">nbr_trials_in_quarter_unit_circle</span>
+    <span class="k">return</span> <span class="n">nbr_trials_in_quarter_unit_circle</span>
 
-<span class="nx">def</span><span class="w"> </span><span class="nx">run_simulation</span><span class="p">(</span><span class="nx">nbr_parallel_blocks</span><span class="p">,</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span><span class="o">=</span><span class="mf">1e8</span><span class="p">)</span><span class="o">:</span>
-<span class="w">    </span><span class="nx">nbr_samples_per_worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">nbr_parallel_blocks</span>
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">Parallel과</span><span class="w"> </span><span class="nx">delayed를</span><span class="w"> </span><span class="nx">사용하여</span><span class="w"> </span><span class="nx">작업</span><span class="w"> </span><span class="nx">병렬화</span>
-<span class="w">    </span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Parallel</span><span class="p">(</span><span class="nx">n_jobs</span><span class="o">=</span><span class="nx">nbr_parallel_blocks</span><span class="p">)(</span>
-<span class="w">        </span><span class="nx">delayed</span><span class="p">(</span><span class="nx">estimate_circle</span><span class="p">)(</span><span class="nx">nbr_samples_per_worker</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="nx">nbr_parallel_blocks</span><span class="p">)</span>
-<span class="w">    </span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_simulation</span><span class="p">(</span><span class="n">nbr_parallel_blocks</span><span class="p">,</span> <span class="n">nbr_samples_in_total</span><span class="o">=</span><span class="mf">1e8</span><span class="p">):</span>
+    <span class="n">nbr_samples_per_worker</span> <span class="o">=</span> <span class="n">nbr_samples_in_total</span> <span class="o">/</span> <span class="n">nbr_parallel_blocks</span>
+    <span class="c1"># Parallel과 delayed를 사용하여 작업 병렬화</span>
+    <span class="n">nbr_trials_in_quarter_unit_circle</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">nbr_parallel_blocks</span><span class="p">)(</span>
+        <span class="n">delayed</span><span class="p">(</span><span class="n">estimate_circle</span><span class="p">)(</span><span class="n">nbr_samples_per_worker</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nbr_parallel_blocks</span><span class="p">)</span>
+    <span class="p">)</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">병렬로</span><span class="w"> </span><span class="nx">실행된</span><span class="w"> </span><span class="nx">결과를</span><span class="w"> </span><span class="nx">종합해서</span><span class="w"> </span><span class="nx">총</span><span class="w"> </span><span class="nx">원</span><span class="w"> </span><span class="nx">안에</span><span class="w"> </span><span class="nx">있는</span><span class="w"> </span><span class="nx">점들의</span><span class="w"> </span><span class="nx">개수</span><span class="w"> </span><span class="nx">계산</span>
-<span class="w">    </span><span class="nx">total_nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="nx">nbr_trials_in_quarter_unit_circle</span><span class="p">)</span>
+    <span class="c1"># 병렬로 실행된 결과를 종합해서 총 원 안에 있는 점들의 개수 계산</span>
+    <span class="n">total_nbr_trials_in_quarter_unit_circle</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">nbr_trials_in_quarter_unit_circle</span><span class="p">)</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">원주율</span><span class="w"> </span><span class="nx">추정</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="o">/</span><span class="mf">4</span><span class="w"> </span><span class="nx">원에</span><span class="w"> </span><span class="nx">해당하므로</span><span class="w"> </span><span class="mf">4</span><span class="nx">배</span><span class="w"> </span><span class="nx">곱</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">estimated_pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">total_nbr_trials_in_quarter_unit_circle</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">estimated_pi</span>
+    <span class="c1"># 원주율 추정 (1/4 원에 해당하므로 4배 곱)</span>
+    <span class="n">estimated_pi</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">total_nbr_trials_in_quarter_unit_circle</span> <span class="o">/</span> <span class="n">nbr_samples_in_total</span>
+    <span class="k">return</span> <span class="n">estimated_pi</span>
 
-<span class="k">if</span><span class="w"> </span><span class="nx">__name__</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"__main__"</span><span class="o">:</span>
-<span class="w">    </span><span class="nx">nbr_samples_in_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e8</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">총</span><span class="w"> </span><span class="nx">시뮬레이션</span><span class="w"> </span><span class="nx">샘플</span><span class="w"> </span><span class="nx">수</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">nbr_samples_in_total</span> <span class="o">=</span> <span class="mf">1e8</span>  <span class="c1"># 총 시뮬레이션 샘플 수</span>
 
-<span class="w">    </span><span class="nx">process_counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">range</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">11</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="mf">1</span><span class="nx">부터</span><span class="w"> </span><span class="mf">10</span><span class="nx">까지의</span><span class="w"> </span><span class="nx">프로세스</span><span class="w"> </span><span class="nx">수</span>
-<span class="w">    </span><span class="nx">computation_times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">각</span><span class="w"> </span><span class="nx">프로세스</span><span class="w"> </span><span class="nx">수에</span><span class="w"> </span><span class="nx">따른</span><span class="w"> </span><span class="nx">계산</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">저장</span>
+    <span class="n">process_counts</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>  <span class="c1"># 1부터 10까지의 프로세스 수</span>
+    <span class="n">computation_times</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 각 프로세스 수에 따른 계산 시간 저장</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">nbr_parallel_blocks</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">process_counts</span><span class="o">:</span>
-<span class="w">        </span><span class="nx">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">time</span><span class="p">()</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">시작</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">기록</span>
-<span class="w">        </span><span class="nx">estimated_pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">run_simulation</span><span class="p">(</span><span class="nx">nbr_parallel_blocks</span><span class="p">,</span><span class="w"> </span><span class="nx">nbr_samples_in_total</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">time</span><span class="p">()</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">종료</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">기록</span>
+    <span class="k">for</span> <span class="n">nbr_parallel_blocks</span> <span class="ow">in</span> <span class="n">process_counts</span><span class="p">:</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  <span class="c1"># 시작 시간 기록</span>
+        <span class="n">estimated_pi</span> <span class="o">=</span> <span class="n">run_simulation</span><span class="p">(</span><span class="n">nbr_parallel_blocks</span><span class="p">,</span> <span class="n">nbr_samples_in_total</span><span class="p">)</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>    <span class="c1"># 종료 시간 기록</span>
 
-<span class="w">        </span><span class="nx">total_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start_time</span>
-<span class="w">        </span><span class="nx">computation_times</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">total_time</span><span class="p">)</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">계산</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">저장</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">computation_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_time</span><span class="p">)</span>  <span class="c1"># 계산 시간 저장</span>
 
-<span class="w">        </span><span class="nx">print</span><span class="p">(</span><span class="nx">f</span><span class="s2">"Processes: {nbr_parallel_blocks}, Estimated Pi: {estimated_pi}, Time: {total_time:.2f} seconds"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Processes: </span><span class="si">{</span><span class="n">nbr_parallel_blocks</span><span class="si">}</span><span class="s2">, Estimated Pi: </span><span class="si">{</span><span class="n">estimated_pi</span><span class="si">}</span><span class="s2">, Time: </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">계산</span><span class="w"> </span><span class="nx">시간</span><span class="w"> </span><span class="nx">그래프</span><span class="w"> </span><span class="nx">출력</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">figure</span><span class="p">(</span><span class="nx">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">))</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">plot</span><span class="p">(</span><span class="nx">process_counts</span><span class="p">,</span><span class="w"> </span><span class="nx">computation_times</span><span class="p">,</span><span class="w"> </span><span class="nx">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span><span class="w"> </span><span class="nx">linestyle</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">title</span><span class="p">(</span><span class="s2">"Computation Time vs Number of Processes (joblib)"</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">xlabel</span><span class="p">(</span><span class="s2">"Number of Processes"</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">ylabel</span><span class="p">(</span><span class="s2">"Computation Time (seconds)"</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">grid</span><span class="p">(</span><span class="nx">True</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">plt</span><span class="p">.</span><span class="nx">show</span><span class="p">()</span>
+    <span class="c1"># 계산 시간 그래프 출력</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">process_counts</span><span class="p">,</span> <span class="n">computation_times</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Computation Time vs Number of Processes (joblib)"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Number of Processes"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Computation Time (seconds)"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://ifh.cc/g/SzKWya.png" data-desc-position="bottom"><img alt="Image" src="https://ifh.cc/g/SzKWya.png"></a><p></p>
 <p>함수 호출 결과를 똑똑하게 캐시하기</p>
@@ -5872,7 +5933,14 @@
 그중 일부는 검사 비용이 적게 들지만 나머지는 여러 가지 인수를 검사해야만 한다.</p>
 <p>작업을 프로세스 풀에 분산하면 얼마나 많은 작업이 각 작업자에 넘어갔는지를 정확히 알 수 없다. 모든 작업을 균등하게 배분해서 한 번에 넘겨 처리하거나, 작업을 수많은 단위로 구분해서 빈 코어에 전달할 수 있을 것이다.</p>
 <p>이를 <code>chunksize</code> 매개변수를 사용해 제어한다. 작업 단위를 크게 만들면 통신 부가비용이 줄고, 작업 단위를 작게 만들면 자원 할당을 더 세밀하게 제어할 수 있다.</p>
-<p>소수 검색 프로그램의 작업 단위는 check_prime으로 검사할 수 n개다. chunksize을 10으로 설정하면 각 프로세스 정수 10개로 이뤄진 목록을 한 번에 하나씩 처리한다.</p>
+<h2 id="chunksize">성능 최적화: chunksize 매개변수</h2>
+<p>소수 검색 프로그램의 작업 단위는 <code>check_prime</code>으로 검사할 수 n개다. <code>chunksize</code>을 10으로 설정하면 각 프로세스가 정수 10개로 이뤄진 목록을 한 번에 하나씩 처리한다.</p>
+<h3 id="chunksize_1">chunksize 설정 가이드</h3>
+<ul>
+<li><strong>큰 chunksize</strong>: 통신 오버헤드 감소, 하지만 부하 분산 효율성 저하</li>
+<li><strong>작은 chunksize</strong>: 세밀한 부하 제어 가능, 하지만 통신 오버헤드 증가</li>
+</ul>
+<p>적절한 <code>chunksize</code> 선택은 작업의 특성과 시스템 환경에 따라 달라진다.</p>
 
 
 

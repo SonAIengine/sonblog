@@ -20,7 +20,7 @@
     
     
       
-        <title>GPT 모델 만들기(2) - SON BLOG</title>
+        <title>GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘 - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#gpt-2-" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GPT 모델 만들기(2)
+              GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘
             
           </span>
         </div>
@@ -1193,7 +1193,7 @@
   <span class="md-ellipsis">
     
   
-    1. Class의 enter과 exit
+    파이썬 클래스의 __enter__와 __exit__ 메서드
   
 
     
@@ -1221,7 +1221,7 @@
   <span class="md-ellipsis">
     
   
-    2. multiprocessing
+    파이썬 multiprocessing - 병렬 처리로 성능 향상하기
   
 
     
@@ -1579,7 +1579,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(1)
+    GPT 모델 만들기 (1) - 데이터 전처리와 기본 모델 구조
   
 
     
@@ -1606,6 +1606,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1614,7 +1616,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(2)
+    GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘
   
 
     
@@ -1632,7 +1634,7 @@
   <span class="md-ellipsis">
     
   
-    GPT 모델 만들기(2)
+    GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘
   
 
     
@@ -1647,6 +1649,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -3401,7 +3405,7 @@
   <span class="md-ellipsis">
     
   
-    목적에 맞는  docker compose
+    목적에 맞는 OpenSearch Docker Compose 구성
   
 
     
@@ -5562,6 +5566,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5690,8 +5696,7 @@
 
 
 
-  <h1>GPT 모델 만들기(2)</h1>
-
+<h1 id="gpt-2-">GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘</h1>
 <h2 id="_1">셀프 어텐션 추가하기</h2>
 <p>어텐션 메커니즘은 간단히 말해 문자나 단어 사이의 관계를 파악하고, 특정 정보의 중요성을 인식하는 메커니즘이다. 이 메커니즘을 이해하려면 두 가지 핵심 질문을 고민해야 한다.</p>
 <ol>
@@ -5702,22 +5707,22 @@
 <p>먼저 문자들 간의 정보를 주고받는 방법을 생각해보겠다.</p>
 <h3 id="_2">문자들 간에 정보를 주고받는 방식(평균 방식)</h3>
 <p>간단한 숫자 데이터를 가지고, 문자들 간에 정보를 주고받는 방법을 살펴보겠다.</p>
-<p>배치(batch) 크기가 2이고, 시퀀스(sequence) 길이가 4, 그리고 임베딩(embedding) 차원이 6인 데이터를 생성한다. 데이터의 내용은 중요하지 않기 떄문에 <code>torch.randn</code> 함수를 사용해 랜덤한 값으로 데이터를 만듭니다. 이렇게 생성된 4개의 시퀀스는 서로 연관성이 없는 랜덤한 숫자들로 구성된다.</p>
+<p>배치(batch) 크기가 2이고, 시퀀스(sequence) 길이가 4, 그리고 임베딩(embedding) 차원이 6인 데이터를 생성한다. 데이터의 내용은 중요하지 않기 때문에 <code>torch.randn</code> 함수를 사용해 랜덤한 값으로 데이터를 만든다. 이렇게 생성된 4개의 시퀀스는 서로 연관성이 없는 랜덤한 숫자들로 구성된다.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1441</span><span class="p">)</span>
 
-<span class="n">num_batches</span><span class="p">,</span> <span class="n">seqence_length</span><span class="p">,</span> <span class="n">embedding_dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span>
+<span class="n">num_batches</span><span class="p">,</span> <span class="n">sequence_length</span><span class="p">,</span> <span class="n">embedding_dim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span>
 <span class="n">embeddings_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">num_batches</span><span class="p">,</span>
-                                <span class="n">seqence_length</span><span class="p">,</span>
+                                <span class="n">sequence_length</span><span class="p">,</span>
                                 <span class="n">embedding_dim</span><span class="p">)</span>
 
-<span class="n">embeddings_tensor</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">embeddings_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>torch.Size([2, 4, 6])</p>
 </blockquote>
 <p>이 코드의 목표는 더 나은 예측을 위해 시퀀스들이 서로 어떻게 정보를 주고받을 수 있는지를 알아보는 것이다. 여기서 주목할 점은 4개의 시퀀스가 순차적으로 입력된다는 것이다. 시퀀스들끼리 정보를 주고받는 방법은 코사인 유사도 등 다양하지만, 여기서는 가장 쉬운 방법인 평균을 구하는 방식으로 설명하겠다.</p>
-<p>다음으로, embeddings_tensor 를 활용해 averaged_embeddings 라는 변수를 생성한다.
+<p>다음으로, embeddings_tensor를 활용해 averaged_embeddings라는 변수를 생성한다.
 이 변수는 다음 시퀀스로 넘어갈 때마다 평균값을 사용하도록 설계된다.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 이전 임베딩의 평균을 저장할 텐서 초기화 </span>
 <span class="n">averaged_embeddings</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_batches</span><span class="p">,</span> <span class="n">sequence_length</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">))</span>
@@ -5735,7 +5740,7 @@
         <span class="p">)</span>
 </code></pre></div>
 <p>이 과정에서 각 시퀀스의 정보를 압축해 다음 시퀀스로 전달할 수 있다. 임베딩의 중요성이 여기서 드러난다.
-임베딩은 단어나 문자를 숫자 벡터로 표현하는 방법이다. 왕을 나타내는 입베딩과 여자를 나타내는 임베딩을 더하면 여왕의 임베딩이 나오는 것을 의미한다. 이러한 임베딩 벡터들의 평균을 사용하면 이전 정보의 특성을 효과적으로 요약할 수 있다. 시퀀스 내 각 시점에서 이전의 모든 문자의 정보를 모아 평균을 계산함으로써 정보를 집계하고 문맥을 반영한다. </p>
+임베딩은 단어나 문자를 숫자 벡터로 표현하는 방법이다. 왕을 나타내는 임베딩과 여자를 나타내는 임베딩을 더하면 여왕의 임베딩이 나오는 것을 의미한다. 이러한 임베딩 벡터들의 평균을 사용하면 이전 정보의 특성을 효과적으로 요약할 수 있다. 시퀀스 내 각 시점에서 이전의 모든 문자의 정보를 모아 평균을 계산함으로써 정보를 집계하고 문맥을 반영한다. </p>
 <p>예를 들어, "나는 학교에 간다"라는 문장에서 '간다'를 해석할 때 이전 단어들의 임베딩 벡터의 평균은 '나', '는', '학교', '에'의 의미를 포함한 새로운 벡터가 된다. 이 평균 벡터는 문장의 전반적인 문맥을 나타내며, 모델이 '간다'와 같은 다음 단어를 더 정확하게 예측하거나 이해하는 데 도움을 준다.</p>
 <p>이 방법은 간단하지만 시퀀스 내에서 이전 정보를 현재에 효과적으로 전달하는 방법으로 사용된다.</p>
 <p><code>averaged_embeddings[0]</code> 의 값은 시퀀스가 증가함에 따라 변화한다. 하지만 for 문을 사용하는 방식은 시간 복잡도 문제로 인해 효율적이지 않다. 대신 <strong>행렬곱</strong>을 활용해 이 과정을 더욱 간단하고 효율적으로 수행할 수 있다.</p>

@@ -6,10 +6,10 @@
       
       
       
-        <link rel="prev" href="../OJT-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B3%BC-Kotaemon-RAG-%EA%B5%AC%ED%98%84%EA%B8%B0/">
+        <link rel="prev" href="../KoBERT/">
       
       
-        <link rel="next" href="../Tokenization/">
+        <link rel="next" href="../Thompson%20Sampling/">
       
       
         
@@ -20,7 +20,7 @@
     
     
       
-        <title>Thompson Sampling - SON BLOG</title>
+        <title>OJT 리팩토링과 Kotaemon RAG 구현기 - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#ojt-kotaemon-rag" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Thompson Sampling
+              OJT 리팩토링과 Kotaemon RAG 구현기
             
           </span>
         </div>
@@ -1747,34 +1747,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../OJT-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B3%BC-Kotaemon-RAG-%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OJT 리팩토링과 Kotaemon RAG 구현기
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1784,6 +1756,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1792,7 +1766,7 @@
   <span class="md-ellipsis">
     
   
-    Thompson Sampling
+    OJT 리팩토링과 Kotaemon RAG 구현기
   
 
     
@@ -1810,7 +1784,7 @@
   <span class="md-ellipsis">
     
   
-    Thompson Sampling
+    OJT 리팩토링과 Kotaemon RAG 구현기
   
 
     
@@ -1826,6 +1800,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1837,19 +1813,30 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        핵심 개념 한 줄 요약
+        기존 시스템의 한계
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="핵심 개념 한 줄 요약">
+    <nav class="md-nav" aria-label="기존 시스템의 한계">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#multi-armed-bandit" class="md-nav__link">
+  <a href="#ojt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        예시: 슬롯머신 게임 (Multi-Armed Bandit 문제)
+        OJT 플랫폼 문제점
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAG 시스템 한계
       
     </span>
   </a>
@@ -1862,73 +1849,185 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#thompson-sampling" class="md-nav__link">
+  <a href="#kotaemon-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Thompson Sampling 동작 방식
+        Kotaemon RAG 프레임워크 도입
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kotaemon RAG 프레임워크 도입">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kotaemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kotaemon 선택 이유
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#beta" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Beta 분포란?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        탐색과 활용의 균형
+        새로운 아키텍처 설계
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 의사 코드 예시
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        어디에 사용할 수 있을까?
+        고급 청킹 전략
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        장점 요약
+        개인화된 학습 경로
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시스템 통합 및 배포
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="시스템 통합 및 배포">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastAPI 기반 서비스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실시간 모니터링
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 평가 및 결과
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="성능 평가 및 결과">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A/B 테스트 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        주요 개선 사항
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        운영 중 마주친 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="운영 중 마주친 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 토큰 길이 제한
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 실시간 평가의 오버헤드
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         마무리
@@ -1942,6 +2041,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Thompson%20Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thompson Sampling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -5856,6 +5983,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5867,19 +5996,30 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        핵심 개념 한 줄 요약
+        기존 시스템의 한계
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="핵심 개념 한 줄 요약">
+    <nav class="md-nav" aria-label="기존 시스템의 한계">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#multi-armed-bandit" class="md-nav__link">
+  <a href="#ojt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        예시: 슬롯머신 게임 (Multi-Armed Bandit 문제)
+        OJT 플랫폼 문제점
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAG 시스템 한계
       
     </span>
   </a>
@@ -5892,73 +6032,185 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#thompson-sampling" class="md-nav__link">
+  <a href="#kotaemon-rag" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Thompson Sampling 동작 방식
+        Kotaemon RAG 프레임워크 도입
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kotaemon RAG 프레임워크 도입">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kotaemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kotaemon 선택 이유
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#beta" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Beta 분포란?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        탐색과 활용의 균형
+        새로운 아키텍처 설계
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Python 의사 코드 예시
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        어디에 사용할 수 있을까?
+        고급 청킹 전략
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        장점 요약
+        개인화된 학습 경로
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시스템 통합 및 배포
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="시스템 통합 및 배포">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastAPI 기반 서비스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실시간 모니터링
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 평가 및 결과
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="성능 평가 및 결과">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A/B 테스트 설정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        주요 개선 사항
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        운영 중 마주친 챌린지
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="운영 중 마주친 챌린지">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 토큰 길이 제한
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 실시간 평가의 오버헤드
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         마무리
@@ -6033,112 +6285,608 @@
 
 
 
-  <h1>Thompson Sampling</h1>
-
-<p>A/B 테스트, 추천 시스템, 광고 최적화처럼 실시간으로 결과를 보면서 "무엇이 더 좋을까?"를 판단해야 할 때 사용하는 방법이다.</p>
-<p>그냥 무작위로 고르기엔 아깝고, 한 가지만 고집하기엔 불확실하다.</p>
-<p>이럴 때 유용하게 쓰이는 방법이 바로 <strong>Thompson Sampling</strong>이다.</p>
-<h2 id="_1">핵심 개념 한 줄 요약</h2>
-<p><strong>확률적으로 잘 될 것 같은 선택지를 고른다.</strong></p>
-<p>Thompson Sampling은 <strong>베이지안 확률 모델</strong>을 이용해서, 여러 선택지 중에서 <strong>성공 확률이 높아 보이는 것</strong>을 <strong>무작위로 뽑아 실험</strong>하고, 결과를 반영해 점점 더 좋은 선택을 할 수 있도록 돕는 방식이다.</p>
-<h3 id="multi-armed-bandit">예시: 슬롯머신 게임 (Multi-Armed Bandit 문제)</h3>
-<p>당신 앞에 슬롯머신(뽑기 기계)이 3대 있다.</p>
+<h1 id="ojt-kotaemon-rag">OJT 리팩토링과 Kotaemon RAG 구현기</h1>
+<blockquote>
+<p>2025년 1월, 기존 OJT 시스템의 한계를 해결하고자 전면 리팩토링을 진행했다. 특히 Kotaemon RAG 프레임워크를 도입하여 문서 기반 질의응답 성능을 대폭 개선한 과정을 공유한다.</p>
+</blockquote>
+<h2 id="_1">기존 시스템의 한계</h2>
+<h3 id="ojt">OJT 플랫폼 문제점</h3>
+<p>기존 OJT(On-the-Job Training) 시스템은 단순한 문서 저장소에 불과했다:</p>
 <ul>
-<li>A 슬롯머신: 성공률 10%</li>
-<li>B 슬롯머신: 성공률 30%</li>
-<li>C 슬롯머신: 성공률 50%</li>
+<li><strong>검색 정확도 부족</strong>: 키워드 기반 검색으로 맥락 이해 불가</li>
+<li><strong>문서 파편화</strong>: PDF, Word, PowerPoint 등 다양한 형식 지원 미흡  </li>
+<li><strong>학습 추적 한계</strong>: 개별 학습자의 진도와 이해도 파악 어려움</li>
+<li><strong>확장성 문제</strong>: 문서 추가 시마다 수동 인덱싱 필요</li>
 </ul>
-<p>하지만 당신은 이 확률들을 모른다.<br>
-당첨/실패 결과를 보면서, 점점 더 나은 선택을 해야 한다.</p>
-<h2 id="thompson-sampling">Thompson Sampling 동작 방식</h2>
-<ol>
-<li><strong>각 선택지(arm)에 대해 성공률을 추정하는 분포</strong>를 초기화한다.<ul>
-<li>초기에는 모두 <code>Beta(1, 1)</code>로 시작한다. (완전 랜덤한 상태)</li>
-</ul>
-</li>
-<li><strong>각 선택지에서 하나씩 확률 값을 샘플링한다.</strong><ul>
-<li>예: A=0.12, B=0.37, C=0.42</li>
-</ul>
-</li>
-<li>
-<p><strong>가장 높은 값을 가진 선택지를 선택한다.</strong></p>
-</li>
-<li>
-<p><strong>결과에 따라 분포를 업데이트한다.</strong></p>
-<ul>
-<li>성공 시: α (성공 횟수) += 1</li>
-<li>실패 시: β (실패 횟수) += 1</li>
-</ul>
-</li>
-<li><strong>이 과정을 반복하면서</strong>, 잘 되는 선택지는 더 자주 뽑히고, 확신 없는 선택지는 가끔씩 탐색한다.</li>
-</ol>
-<h2 id="beta">Beta 분포란?</h2>
-<p><code>Beta(α, β)</code>는 "이 선택지는 성공률이 이 정도일 것이다"라는 <strong>믿음</strong>을 나타낸다.</p>
-<ul>
-<li>α: 성공한 횟수 + 1</li>
-<li>β: 실패한 횟수 + 1</li>
-</ul>
-<p>예를 들어, 어떤 버튼이 3번 성공하고 2번 실패했다면 → <code>Beta(4, 3)</code><br>
-샘플링을 통해 "이 버튼의 실제 클릭률이 얼마일까?"를 계속 추정하는 거다.</p>
-<h2 id="_2">탐색과 활용의 균형</h2>
-<p>Thompson Sampling의 가장 큰 특징은, 탐색(explore)과 활용(exploit) 사이의 균형을 자동으로 맞춰준다는 점이다.</p>
-<ul>
-<li>아직 정보가 부족한 선택지는 <strong>분포의 분산이 커서</strong> 샘플링 값이 요동치기 때문에 탐색 대상이 된다.</li>
-<li>정보가 충분히 쌓인 선택지는 <strong>분포가 날카로워져서</strong> 거의 확정적으로 선택된다.</li>
-</ul>
-<p>따라서 별도의 파라미터 없이도 자연스럽게 효율적인 선택을 하게 됩니다.</p>
-<h2 id="python">Python 의사 코드 예시</h2>
-<div class="highlight"><pre><span></span><code><span class="n">alpha</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># 각 선택지의 성공 횟수</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>   <span class="c1"># 각 선택지의 실패 횟수</span>
+<p>특히 신입 개발자들이 "이 기술을 어떻게 사용하는지" 같은 맥락적 질문에 대해 적절한 답변을 얻기 어려웠다.</p>
+<h3 id="rag">RAG 시스템 한계</h3>
+<p>기존에 구축한 RAG도 문제가 있었다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 기존 RAG 구조의 문제점</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SimpleRAG</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vectordb</span> <span class="o">=</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embeddings</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">sampled_probs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)]</span>
-    <span class="n">chosen</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sampled_probs</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># 1. 단순 유사도 검색만 사용</span>
+        <span class="n">docs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectordb</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="n">reward</span> <span class="o">=</span> <span class="n">pull</span><span class="p">(</span><span class="n">chosen</span><span class="p">)</span>  <span class="c1"># 실제 클릭 여부 (1 또는 0)</span>
+        <span class="c1"># 2. 컨텍스트 길이 제한 없이 모든 문서 연결</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">])</span>
 
-    <span class="k">if</span> <span class="n">reward</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">alpha</span><span class="p">[</span><span class="n">chosen</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">beta</span><span class="p">[</span><span class="n">chosen</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># 3. 단순 프롬프트</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Context: </span><span class="si">{</span><span class="n">context</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Question: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="se">\n</span><span class="s2">Answer:"</span>
+        <span class="k">return</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="_3">어디에 사용할 수 있을까?</h2>
+<p>문제점들:
+- <strong>청킹 전략 부재</strong>: 문서를 무작정 1000자씩 나누기만 함
+- <strong>메타데이터 미활용</strong>: 문서 타입, 작성일, 난이도 등 정보 무시
+- <strong>재랭킹 없음</strong>: 단순 벡터 유사도만으로 문서 선택
+- <strong>멀티턴 지원 부족</strong>: 이전 대화 맥락 고려 안됨</p>
+<h2 id="kotaemon-rag">Kotaemon RAG 프레임워크 도입</h2>
+<h3 id="kotaemon">Kotaemon 선택 이유</h3>
+<p>여러 RAG 프레임워크를 검토한 결과 Kotaemon을 선택했다:</p>
 <table>
 <thead>
 <tr>
-<th>분야</th>
-<th>예시</th>
+<th>프레임워크</th>
+<th>장점</th>
+<th>단점</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>A/B 테스트</td>
-<td>어떤 버튼 디자인이 더 나은가</td>
+<td>LangChain</td>
+<td>생태계 풍부</td>
+<td>복잡도 높음, 버전 호환성 문제</td>
 </tr>
 <tr>
-<td>광고 최적화</td>
-<td>어떤 문구가 클릭률이 높은가</td>
+<td>LlamaIndex</td>
+<td>인덱싱 최적화</td>
+<td>커스터마이징 어려움</td>
 </tr>
 <tr>
-<td>추천 시스템</td>
-<td>어떤 상품을 먼저 보여줄까</td>
+<td><strong>Kotaemon</strong></td>
+<td><strong>모듈러 설계, 쉬운 확장</strong></td>
+<td><strong>상대적으로 작은 커뮤니티</strong></td>
 </tr>
 <tr>
-<td>게임 설계</td>
-<td>어떤 보상이 효과적인가</td>
+<td>Haystack</td>
+<td>검색 엔진 통합</td>
+<td>학습 곡선 가파름</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">장점 요약</h2>
-<ul>
-<li>탐색과 활용의 균형을 자동으로 조절</li>
-<li>수학적으로 안정성과 성능이 검증됨</li>
-<li>코드 구현이 간단함</li>
-<li>실제 서비스에서 성능이 우수함</li>
-</ul>
-<h2 id="_5">마무리</h2>
-<p>Thompson Sampling은 "성공 확률이 높아 보이는 선택을 확률적으로 뽑아 실험하고, 그 결과를 반영하여 더 나은 선택으로 진화해가는" 방법이다. 
-A/B 테스트나 추천 시스템처럼 사용자 행동을 기반으로 최적의 선택을 찾아야 할 때 매우 유용한 전략이며, 구현도 간단하기 때문에 실무에 쉽게 적용할 수 있다.</p>
+<p>Kotaemon의 핵심 강점:</p>
+<ol>
+<li><strong>플러그인 아키텍처</strong>: 각 구성요소를 독립적으로 교체 가능</li>
+<li><strong>멀티모달 지원</strong>: 텍스트, 이미지, 표 등 다양한 형식 처리</li>
+<li><strong>실시간 평가</strong>: 답변 품질을 즉시 측정 가능</li>
+<li><strong>쉬운 배포</strong>: Docker 컨테이너로 바로 운영 환경 배포</li>
+</ol>
+<h3 id="_2">새로운 아키텍처 설계</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># kotaemon 기반 새로운 RAG 아키�ecture</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kotaemon.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Document</span><span class="p">,</span> <span class="n">BaseComponent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kotaemon.retrievers</span><span class="w"> </span><span class="kn">import</span> <span class="n">HybridRetriever</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kotaemon.generators</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReActAgent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kotaemon.evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">RAGEvaluator</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AdvancedOJTRAG</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 1. 멀티 레벨 임베딩 전략</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dense_retriever</span> <span class="o">=</span> <span class="n">DenseRetriever</span><span class="p">(</span>
+            <span class="n">model_name</span><span class="o">=</span><span class="s2">"intfloat/multilingual-e5-large"</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sparse_retriever</span> <span class="o">=</span> <span class="n">BM25Retriever</span><span class="p">()</span>
+
+        <span class="c1"># 2. 하이브리드 검색</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hybrid_retriever</span> <span class="o">=</span> <span class="n">HybridRetriever</span><span class="p">(</span>
+            <span class="n">retrievers</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dense_retriever</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparse_retriever</span><span class="p">],</span>
+            <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 3. 재랭킹 모델</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reranker</span> <span class="o">=</span> <span class="n">CrossEncoderReranker</span><span class="p">(</span>
+            <span class="n">model_name</span><span class="o">=</span><span class="s2">"cross-encoder/ms-marco-MiniLM-L-12-v2"</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 4. 멀티턴 대화 관리</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conversation_manager</span> <span class="o">=</span> <span class="n">ConversationManager</span><span class="p">()</span>
+
+        <span class="c1"># 5. 실시간 평가</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">RAGEvaluator</span><span class="p">(</span>
+            <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">,</span> <span class="s2">"answer_relevancy"</span><span class="p">,</span> <span class="s2">"context_precision"</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_query</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> 
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+        <span class="n">conversation_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">user_level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"beginner"</span>
+    <span class="p">):</span>
+        <span class="c1"># 1. 대화 컨텍스트 가져오기</span>
+        <span class="n">conversation_context</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">conversation_manager</span><span class="o">.</span><span class="n">get_context</span><span class="p">(</span>
+            <span class="n">conversation_id</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 2. 쿼리 확장 및 재작성</span>
+        <span class="n">enhanced_query</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_enhance_query</span><span class="p">(</span>
+            <span class="n">query</span><span class="p">,</span> <span class="n">conversation_context</span><span class="p">,</span> <span class="n">user_level</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 3. 하이브리드 검색</span>
+        <span class="n">candidate_docs</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">hybrid_retriever</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+            <span class="n">enhanced_query</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">20</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 4. 재랭킹</span>
+        <span class="n">relevant_docs</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">reranker</span><span class="o">.</span><span class="n">rerank</span><span class="p">(</span>
+            <span class="n">enhanced_query</span><span class="p">,</span> <span class="n">candidate_docs</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 5. 답변 생성</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_answer</span><span class="p">(</span>
+            <span class="n">enhanced_query</span><span class="p">,</span> <span class="n">relevant_docs</span><span class="p">,</span> <span class="n">user_level</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 6. 실시간 평가</span>
+        <span class="n">evaluation</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+            <span class="n">query</span><span class="p">,</span> <span class="n">relevant_docs</span><span class="p">,</span> <span class="n">answer</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 7. 대화 저장</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">conversation_manager</span><span class="o">.</span><span class="n">save_turn</span><span class="p">(</span>
+            <span class="n">conversation_id</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">evaluation</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">"answer"</span><span class="p">:</span> <span class="n">answer</span><span class="p">,</span>
+            <span class="s2">"sources"</span><span class="p">:</span> <span class="n">relevant_docs</span><span class="p">,</span>
+            <span class="s2">"confidence"</span><span class="p">:</span> <span class="n">evaluation</span><span class="p">[</span><span class="s2">"faithfulness"</span><span class="p">],</span>
+            <span class="s2">"suggestions"</span><span class="p">:</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_suggestions</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">user_level</span><span class="p">)</span>
+        <span class="p">}</span>
+</code></pre></div>
+<h3 id="_3">고급 청킹 전략</h3>
+<p>기존의 단순 고정 길이 청킹을 대체하여 의미 기반 청킹을 구현했다:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">kotaemon.parsers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SemanticChunker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SmartDocumentProcessor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">semantic_chunker</span> <span class="o">=</span> <span class="n">SemanticChunker</span><span class="p">(</span>
+            <span class="n">chunk_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+            <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+            <span class="n">separator_type</span><span class="o">=</span><span class="s2">"semantic"</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 문서 타입별 전용 파서</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parsers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">'pdf'</span><span class="p">:</span> <span class="n">PDFParser</span><span class="p">(),</span>
+            <span class="s1">'docx'</span><span class="p">:</span> <span class="n">DocxParser</span><span class="p">(),</span> 
+            <span class="s1">'pptx'</span><span class="p">:</span> <span class="n">PowerPointParser</span><span class="p">(),</span>
+            <span class="s1">'py'</span><span class="p">:</span> <span class="n">CodeParser</span><span class="p">(),</span>
+            <span class="s1">'md'</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="c1"># 난이도 분석기</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">difficulty_classifier</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
+            <span class="s2">"text-classification"</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="s2">"textbook-difficulty-classifier"</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metadata</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}):</span>
+<span class="w">        </span><span class="sd">"""문서를 의미 단위로 청킹하고 메타데이터 추가"""</span>
+
+        <span class="c1"># 1. 파일 타입별 파싱</span>
+        <span class="n">file_extension</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">parser</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parsers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_extension</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parsers</span><span class="p">[</span><span class="s1">'pdf'</span><span class="p">])</span>
+
+        <span class="n">content</span> <span class="o">=</span> <span class="k">await</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+        <span class="c1"># 2. 의미 기반 청킹</span>
+        <span class="n">chunks</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">semantic_chunker</span><span class="o">.</span><span class="n">chunk</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+        <span class="c1"># 3. 각 청크에 메타데이터 추가</span>
+        <span class="n">enriched_chunks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+            <span class="c1"># 난이도 분석</span>
+            <span class="n">difficulty</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">difficulty_classifier</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">content</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># 키워드 추출</span>
+            <span class="n">keywords</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_keywords</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+            <span class="c1"># 코드 블록 감지</span>
+            <span class="n">has_code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_detect_code_blocks</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+
+            <span class="n">enriched_chunk</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">chunk</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+                    <span class="o">**</span><span class="n">metadata</span><span class="p">,</span>
+                    <span class="s1">'difficulty_level'</span><span class="p">:</span> <span class="n">difficulty</span><span class="p">[</span><span class="s1">'label'</span><span class="p">],</span>
+                    <span class="s1">'difficulty_score'</span><span class="p">:</span> <span class="n">difficulty</span><span class="p">[</span><span class="s1">'score'</span><span class="p">],</span>
+                    <span class="s1">'keywords'</span><span class="p">:</span> <span class="n">keywords</span><span class="p">,</span>
+                    <span class="s1">'has_code'</span><span class="p">:</span> <span class="n">has_code</span><span class="p">,</span>
+                    <span class="s1">'chunk_index'</span><span class="p">:</span> <span class="n">chunk</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                    <span class="s1">'source_file'</span><span class="p">:</span> <span class="n">file_path</span><span class="p">,</span>
+                    <span class="s1">'created_at'</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+            <span class="n">enriched_chunks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">enriched_chunk</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">enriched_chunks</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_extract_keywords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""TF-IDF 기반 키워드 추출"""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">jieba</span>  <span class="c1"># 한국어 토크나이징</span>
+
+        <span class="c1"># 형태소 분석</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">processed_text</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+        <span class="c1"># TF-IDF</span>
+        <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
+            <span class="n">max_features</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">stop_words</span><span class="o">=</span><span class="s1">'english'</span><span class="p">,</span>  <span class="c1"># 영어 불용어</span>
+            <span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">processed_text</span><span class="p">])</span>
+        <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+
+        <span class="c1"># 상위 키워드 반환</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">tfidf_matrix</span><span class="o">.</span><span class="n">toarray</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">keywords</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">scores</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[</span><span class="o">-</span><span class="mi">5</span><span class="p">:][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">keywords</span>
+</code></pre></div>
+<h3 id="_4">개인화된 학습 경로</h3>
+<p>사용자 레벨에 따른 맞춤형 답변을 제공하도록 구현했다:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PersonalizedLearningAgent</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_profiles</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_learning_graph</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_generate_answer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> 
+        <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+        <span class="n">docs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">],</span> 
+        <span class="n">user_level</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">"""사용자 레벨에 맞춘 답변 생성"""</span>
+
+        <span class="c1"># 레벨별 프롬프트 템플릿</span>
+        <span class="n">prompts</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"beginner"</span><span class="p">:</span> <span class="s2">"""</span>
+<span class="s2">당신은 친절한 시니어 개발자입니다. 신입 개발자가 이해하기 쉽게 설명해주세요.</span>
+
+<span class="s2">규칙:</span>
+<span class="s2">1. 전문 용어가 나오면 쉬운 말로 풀어서 설명</span>
+<span class="s2">2. 구체적인 예시 코드 제공</span>
+<span class="s2">3. 단계별로 차근차근 설명</span>
+<span class="s2">4. 관련된 기초 개념도 함께 언급</span>
+
+<span class="s2">컨텍스트: </span><span class="si">{context}</span>
+<span class="s2">질문: </span><span class="si">{question}</span>
+<span class="s2">답변:"""</span><span class="p">,</span>
+
+            <span class="s2">"intermediate"</span><span class="p">:</span> <span class="s2">"""</span>
+<span class="s2">당신은 숙련된 개발자입니다. 실무 경험이 있는 개발자에게 적절한 수준으로 답변하세요.</span>
+
+<span class="s2">규칙:</span>
+<span class="s2">1. 핵심 포인트를 명확하게 전달</span>
+<span class="s2">2. 베스트 프랙티스와 주의사항 포함</span>
+<span class="s2">3. 대안적 접근법도 제시</span>
+<span class="s2">4. 성능이나 보안 관점에서의 고려사항 언급</span>
+
+<span class="s2">컨텍스트: </span><span class="si">{context}</span>
+<span class="s2">질문: </span><span class="si">{question}</span>
+<span class="s2">답변:"""</span><span class="p">,</span>
+
+            <span class="s2">"advanced"</span><span class="p">:</span> <span class="s2">"""</span>
+<span class="s2">당신은 시니어 아키텍트입니다. 고급 개발자에게 심도 있는 답변을 제공하세요.</span>
+
+<span class="s2">규칙:</span>
+<span class="s2">1. 아키텍처 관점에서의 분석</span>
+<span class="s2">2. 트레이드오프와 설계 결정 근거 제시</span>
+<span class="s2">3. 확장성, 유지보수성 고려사항</span>
+<span class="s2">4. 최신 트렌드나 발전 방향 언급</span>
+
+<span class="s2">컨텍스트: </span><span class="si">{context}</span>
+<span class="s2">질문: </span><span class="si">{question}</span>
+<span class="s2">답변:"""</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># 컨텍스트 구성</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_context</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">user_level</span><span class="p">)</span>
+
+        <span class="c1"># 프롬프트 생성</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="n">prompts</span><span class="p">[</span><span class="n">user_level</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+            <span class="n">question</span><span class="o">=</span><span class="n">query</span>
+        <span class="p">)</span>
+
+        <span class="c1"># LLM 호출</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">agenerate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_format_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">],</span> <span class="n">user_level</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""사용자 레벨에 맞춰 컨텍스트 포맷팅"""</span>
+
+        <span class="c1"># 난이도별 문서 필터링</span>
+        <span class="k">if</span> <span class="n">user_level</span> <span class="o">==</span> <span class="s2">"beginner"</span><span class="p">:</span>
+            <span class="n">filtered_docs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">doc</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span> 
+                <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'difficulty_level'</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'beginner'</span><span class="p">,</span> <span class="s1">'intermediate'</span><span class="p">]</span>
+            <span class="p">]</span>
+        <span class="k">elif</span> <span class="n">user_level</span> <span class="o">==</span> <span class="s2">"intermediate"</span><span class="p">:</span>
+            <span class="n">filtered_docs</span> <span class="o">=</span> <span class="n">docs</span>  <span class="c1"># 모든 레벨</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># advanced</span>
+            <span class="n">filtered_docs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">doc</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span> 
+                <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'difficulty_level'</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'intermediate'</span><span class="p">,</span> <span class="s1">'advanced'</span><span class="p">]</span>
+            <span class="p">]</span>
+
+        <span class="c1"># 컨텍스트 구성</span>
+        <span class="n">context_parts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">filtered_docs</span><span class="p">:</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'source_file'</span><span class="p">,</span> <span class="s1">'unknown'</span><span class="p">)</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">content</span>
+            <span class="n">keywords</span> <span class="o">=</span> <span class="s1">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'keywords'</span><span class="p">,</span> <span class="p">[]))</span>
+
+            <span class="n">context_parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"""</span>
+<span class="s2">[출처: </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">]</span>
+<span class="s2">[키워드: </span><span class="si">{</span><span class="n">keywords</span><span class="si">}</span><span class="s2">]</span>
+<span class="si">{</span><span class="n">content</span><span class="si">}</span>
+<span class="s2">"""</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">context_parts</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_5">시스템 통합 및 배포</h2>
+<h3 id="fastapi">FastAPI 기반 서비스</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">BackgroundTasks</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"OJT RAG API v2.0"</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">QueryRequest</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">conversation_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">user_level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"beginner"</span>
+    <span class="n">include_sources</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">QueryResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">sources</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>
+    <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">suggestions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">conversation_id</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/query"</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">QueryResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_query</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">QueryRequest</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">rag_system</span><span class="o">.</span><span class="n">process_query</span><span class="p">(</span>
+            <span class="n">query</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+            <span class="n">conversation_id</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">conversation_id</span><span class="p">,</span>
+            <span class="n">user_level</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user_level</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">QueryResponse</span><span class="p">(</span>
+            <span class="n">answer</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">"answer"</span><span class="p">],</span>
+            <span class="n">sources</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">"sources"</span><span class="p">]</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">include_sources</span> <span class="k">else</span> <span class="p">[],</span>
+            <span class="n">confidence</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">"confidence"</span><span class="p">],</span>
+            <span class="n">suggestions</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s2">"suggestions"</span><span class="p">],</span>
+            <span class="n">conversation_id</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"conversation_id"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Query processing failed: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/upload-document"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">upload_document</span><span class="p">(</span>
+    <span class="n">file</span><span class="p">:</span> <span class="n">UploadFile</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+    <span class="n">metadata</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+    <span class="n">background_tasks</span><span class="p">:</span> <span class="n">BackgroundTasks</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""문서 업로드 및 비동기 처리"""</span>
+
+    <span class="c1"># 파일 저장</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"./uploads/</span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">filename</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">buffer</span><span class="p">:</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">file</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+
+    <span class="c1"># 백그라운드에서 문서 처리</span>
+    <span class="n">background_tasks</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span>
+        <span class="n">process_new_document</span><span class="p">,</span>
+        <span class="n">file_path</span><span class="p">,</span>
+        <span class="n">metadata</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Document upload initiated"</span><span class="p">,</span> <span class="s2">"file"</span><span class="p">:</span> <span class="n">file</span><span class="o">.</span><span class="n">filename</span><span class="p">}</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_new_document</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">metadata</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""백그라운드 문서 처리"""</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 문서 파싱 및 청킹</span>
+        <span class="n">chunks</span> <span class="o">=</span> <span class="k">await</span> <span class="n">doc_processor</span><span class="o">.</span><span class="n">process_document</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+
+        <span class="c1"># 벡터 DB에 추가</span>
+        <span class="k">await</span> <span class="n">rag_system</span><span class="o">.</span><span class="n">add_documents</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+
+        <span class="c1"># 처리 완료 로그</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Document processed successfully: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Document processing failed: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">, Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_6">실시간 모니터링</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">prometheus_client</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">prometheus_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Histogram</span><span class="p">,</span> <span class="n">Gauge</span>
+
+<span class="c1"># 메트릭 정의</span>
+<span class="n">QUERY_COUNT</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">'rag_queries_total'</span><span class="p">,</span> <span class="s1">'Total RAG queries'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'user_level'</span><span class="p">])</span>
+<span class="n">QUERY_LATENCY</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="s1">'rag_query_duration_seconds'</span><span class="p">,</span> <span class="s1">'Query processing time'</span><span class="p">)</span>
+<span class="n">RETRIEVAL_ACCURACY</span> <span class="o">=</span> <span class="n">Gauge</span><span class="p">(</span><span class="s1">'rag_retrieval_accuracy'</span><span class="p">,</span> <span class="s1">'Retrieval accuracy score'</span><span class="p">)</span>
+<span class="n">ANSWER_CONFIDENCE</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="s1">'rag_answer_confidence'</span><span class="p">,</span> <span class="s1">'Answer confidence scores'</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">RAGMonitor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">'query_count'</span><span class="p">:</span> <span class="n">QUERY_COUNT</span><span class="p">,</span>
+            <span class="s1">'query_latency'</span><span class="p">:</span> <span class="n">QUERY_LATENCY</span><span class="p">,</span>
+            <span class="s1">'retrieval_accuracy'</span><span class="p">:</span> <span class="n">RETRIEVAL_ACCURACY</span><span class="p">,</span>
+            <span class="s1">'answer_confidence'</span><span class="p">:</span> <span class="n">ANSWER_CONFIDENCE</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_level</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">latency</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""쿼리 메트릭 기록"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">'query_count'</span><span class="p">]</span><span class="o">.</span><span class="n">labels</span><span class="p">(</span><span class="n">user_level</span><span class="o">=</span><span class="n">user_level</span><span class="p">)</span><span class="o">.</span><span class="n">inc</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">'query_latency'</span><span class="p">]</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">latency</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">'answer_confidence'</span><span class="p">]</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">confidence</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""검색 정확도 업데이트"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[</span><span class="s1">'retrieval_accuracy'</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">)</span>
+
+<span class="c1"># 메트릭 엔드포인트</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/metrics"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">metrics</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span>
+        <span class="n">prometheus_client</span><span class="o">.</span><span class="n">generate_latest</span><span class="p">(),</span>
+        <span class="n">media_type</span><span class="o">=</span><span class="s2">"text/plain"</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h2 id="_7">성능 평가 및 결과</h2>
+<h3 id="ab">A/B 테스트 설정</h3>
+<p>기존 시스템과 새 시스템을 3주간 병렬 운영하며 비교했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># A/B 테스트 결과</span>
+<span class="n">test_results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"기존_RAG"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"정확도"</span><span class="p">:</span> <span class="mf">0.67</span><span class="p">,</span>
+        <span class="s2">"응답시간"</span><span class="p">:</span> <span class="s2">"2.3초"</span><span class="p">,</span>
+        <span class="s2">"사용자_만족도"</span><span class="p">:</span> <span class="mf">3.2</span><span class="p">,</span>
+        <span class="s2">"재질문_비율"</span><span class="p">:</span> <span class="mf">0.45</span>
+    <span class="p">},</span>
+    <span class="s2">"Kotaemon_RAG"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"정확도"</span><span class="p">:</span> <span class="mf">0.89</span><span class="p">,</span>
+        <span class="s2">"응답시간"</span><span class="p">:</span> <span class="s2">"1.1초"</span><span class="p">,</span>
+        <span class="s2">"사용자_만족도"</span><span class="p">:</span> <span class="mf">4.6</span><span class="p">,</span>
+        <span class="s2">"재질문_비율"</span><span class="p">:</span> <span class="mf">0.18</span>
+    <span class="p">},</span>
+    <span class="s2">"개선율"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"정확도"</span><span class="p">:</span> <span class="s2">"+33%"</span><span class="p">,</span>
+        <span class="s2">"응답시간"</span><span class="p">:</span> <span class="s2">"-52%"</span><span class="p">,</span>
+        <span class="s2">"사용자_만족도"</span><span class="p">:</span> <span class="s2">"+44%"</span><span class="p">,</span>
+        <span class="s2">"재질문_비율"</span><span class="p">:</span> <span class="s2">"-60%"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_8">주요 개선 사항</h3>
+<ol>
+<li><strong>검색 정확도</strong>: </li>
+<li>하이브리드 검색으로 맥락 이해 능력 향상</li>
+<li>
+<p>재랭킹 모델로 노이즈 문서 제거</p>
+</li>
+<li>
+<p><strong>답변 품질</strong>:</p>
+</li>
+<li>사용자 레벨별 맞춤 설명</li>
+<li>
+<p>코드 예시와 단계별 가이드 제공</p>
+</li>
+<li>
+<p><strong>학습 추적</strong>:</p>
+</li>
+<li>개인별 대화 기록 저장</li>
+<li>학습 진도와 이해도 분석</li>
+</ol>
+<h2 id="_9">운영 중 마주친 챌린지</h2>
+<h3 id="1">1. 토큰 길이 제한</h3>
+<p>GPT-4의 컨텍스트 윈도우 제한으로 긴 문서 처리가 어려웠다:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">smart_context_truncation</span><span class="p">(</span><span class="n">docs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">],</span> <span class="n">max_tokens</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""중요도 기반 컨텍스트 단축"""</span>
+
+    <span class="c1"># 1. 문서별 중요도 점수 계산</span>
+    <span class="n">scored_docs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'relevance_score'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.4</span> <span class="o">+</span>
+            <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'recency_score'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span> <span class="o">+</span>
+            <span class="n">doc</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'authority_score'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.3</span>
+        <span class="p">)</span>
+        <span class="n">scored_docs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">score</span><span class="p">,</span> <span class="n">doc</span><span class="p">))</span>
+
+    <span class="c1"># 2. 점수순 정렬 후 토큰 제한까지 선택</span>
+    <span class="n">sorted_docs</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scored_docs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">selected_docs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">sorted_docs</span><span class="p">:</span>
+        <span class="n">doc_tokens</span> <span class="o">=</span> <span class="n">estimate_tokens</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">current_tokens</span> <span class="o">+</span> <span class="n">doc_tokens</span> <span class="o">&lt;=</span> <span class="n">max_tokens</span><span class="p">:</span>
+            <span class="n">selected_docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+            <span class="n">current_tokens</span> <span class="o">+=</span> <span class="n">doc_tokens</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">selected_docs</span>
+</code></pre></div>
+<h3 id="2">2. 실시간 평가의 오버헤드</h3>
+<p>모든 답변에 대해 실시간 평가를 수행하니 지연시간이 증가했다:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AdaptiveEvaluator</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">should_evaluate_realtime</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_evaluate_realtime</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">conditional_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">docs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Document</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">"""조건부 실시간 평가"""</span>
+
+        <span class="c1"># 실시간 평가 조건</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_evaluate_realtime</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">answer</span><span class="p">):</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluator</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">docs</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 백그라운드 평가 큐에 추가</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_queue</span><span class="o">.</span><span class="n">put</span><span class="p">({</span>
+                <span class="s1">'query'</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+                <span class="s1">'answer'</span><span class="p">:</span> <span class="n">answer</span><span class="p">,</span>
+                <span class="s1">'docs'</span><span class="p">:</span> <span class="n">docs</span><span class="p">,</span>
+                <span class="s1">'timestamp'</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="p">})</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"confidence"</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span>  <span class="c1"># 기본값 반환</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_should_evaluate_realtime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">answer</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""실시간 평가 필요 여부 판단"""</span>
+
+        <span class="c1"># 1. 중요한 질문 (보안, 설정 등)</span>
+        <span class="n">important_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"보안"</span><span class="p">,</span> <span class="s2">"설정"</span><span class="p">,</span> <span class="s2">"배포"</span><span class="p">,</span> <span class="s2">"권한"</span><span class="p">,</span> <span class="s2">"에러"</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">keyword</span> <span class="ow">in</span> <span class="n">query</span> <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">important_keywords</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># 2. 짧은 답변 (빠른 평가 가능)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># 3. 확신도가 낮은 답변</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estimate_uncertainty</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+<h2 id="_10">마무리</h2>
+<p>이번 OJT 리팩토링 프로젝트는 단순히 기술적 개선을 넘어서 학습자 중심의 사고를 하게 된 계기였다. </p>
+<p><strong>핵심 깨달음:</strong>
+1. <strong>사용자 레벨 고려</strong>: 같은 질문이라도 경험에 따라 답변 방식이 달라야 함
+2. <strong>점진적 개선</strong>: 완벽한 시스템을 한 번에 구축하기보다는 측정-개선-반복
+3. <strong>도메인 특화</strong>: 범용 RAG보다는 OJT에 특화된 커스터마이징이 더 효과적</p>
+<p>Kotaemon 프레임워크의 모듈러 설계 덕분에 빠르게 프로토타이핑할 수 있었고, 실제 사용자 피드백을 통해 지속적으로 개선해 나갈 수 있었다.</p>
+<p>다음 단계로는 멀티모달 지원(이미지, 영상 기반 튜토리얼)과 실시간 학습 경로 추천 기능을 계획하고 있다. 개발자의 학습 여정을 돕는 AI의 가능성은 무궁무진하다! 🎯</p>
 
 
 

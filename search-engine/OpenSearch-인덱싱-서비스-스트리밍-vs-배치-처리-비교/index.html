@@ -3,15 +3,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Axum 웹 프레임워크와 OpenSearch를 결합하여 커머스 검색 API를 설계한 과정. Handlebars 템플릿 기반 동적 쿼리, 필드 가중치 시스템, Aggregation 처리까지.">
+        <meta name="description" content="Rust 검색 엔진의 OpenSearch 인덱싱을 기존 배치 방식에서 스트리밍 방식으로 전환한 과정과, BatchOrchestratorService를 통한 통합 배치 파이프라인 설계를 다룬다.">
       
       
       
       
-        <link rel="prev" href="../../ai/Model%20Serve/%EB%A9%80%ED%8B%B0%ED%84%B4%20vs%20%EC%8B%B1%EA%B8%80%ED%84%B4/">
+        <link rel="prev" href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/">
       
       
-        <link rel="next" href="../OpenSearch-%EC%9D%B8%EB%8D%B1%EC%8B%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D-vs-%EB%B0%B0%EC%B9%98-%EC%B2%98%EB%A6%AC-%EB%B9%84%EA%B5%90/">
+        <link rel="next" href="../PostgreSQL%EA%B3%BC-MySQL-%EB%8F%99%EC%8B%9C-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-Rust-DB-%EC%B6%94%EC%83%81%ED%99%94-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%ED%98%84/">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Axum + OpenSearch: Rust 검색 API 아키텍처 설계 - SON BLOG</title>
+        <title>OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교 - SON BLOG</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#axum-opensearch-rust-api" class="md-skip">
+        <a href="#opensearch-vs" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Axum + OpenSearch: Rust 검색 API 아키텍처 설계
+              OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교
             
           </span>
         </div>
@@ -339,7 +339,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-tabs__link">
           
   
   
@@ -2428,6 +2428,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Axum + OpenSearch: Rust 검색 API 아키텍처 설계
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2447,7 +2475,7 @@
   <span class="md-ellipsis">
     
   
-    Axum + OpenSearch: Rust 검색 API 아키텍처 설계
+    OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교
   
 
     
@@ -2465,7 +2493,7 @@
   <span class="md-ellipsis">
     
   
-    Axum + OpenSearch: Rust 검색 API 아키텍처 설계
+    OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교
   
 
     
@@ -2502,79 +2530,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        검색 API 라우트 설계
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#handlebars" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Handlebars 템플릿 기반 쿼리 생성
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        동적 필드 발견 시스템
+        기존 배치 처리 방식의 문제점
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Redis 캐시 네임스페이스 설계
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aggregation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Aggregation 처리
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="기존 배치 처리 방식의 문제점">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        인기 검색어와 추천 검색어
+        기존 흐름
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        검색 결과 후처리
+        성능 병목 분석
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2582,40 +2572,79 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        템플릿 엔진 최적화
+        스트리밍 방식 설계
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="스트리밍 방식 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        에러 핸들링과 응답 포맷
+        핵심 아이디어
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#streamingbulkprocessor" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        StreamingBulkProcessor 구현
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        부하 테스트 결과
+        청크 스트림 생성
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Semaphore 기반 동시성 제어
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        설계 결정에서의 트레이드오프
+        데이터 무결성 보장
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ndjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NDJSON 생성 최적화
       
     </span>
   </a>
@@ -2623,10 +2652,115 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#batchorchestratorservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BatchOrchestratorService: 통합 배치 파이프라인
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BatchOrchestratorService: 통합 배치 파이프라인">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        결과와 회고
+        기존 수동 프로세스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        통합 자동화 프로세스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        상태 추적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index_yn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INDEX_YN 상태 머신
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배치 처리 아키텍처 문서화 후 제거
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스트리밍 vs 배치: 성능 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라우트 변경: 스트리밍 전환
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        특수 문자 정규식 처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과 및 회고
       
     </span>
   </a>
@@ -2637,34 +2771,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../OpenSearch-%EC%9D%B8%EB%8D%B1%EC%8B%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D-vs-%EB%B0%B0%EC%B9%98-%EC%B2%98%EB%A6%AC-%EB%B9%84%EA%B5%90/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -6287,79 +6393,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        검색 API 라우트 설계
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#handlebars" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Handlebars 템플릿 기반 쿼리 생성
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        동적 필드 발견 시스템
+        기존 배치 처리 방식의 문제점
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#redis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Redis 캐시 네임스페이스 설계
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aggregation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Aggregation 처리
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="기존 배치 처리 방식의 문제점">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        인기 검색어와 추천 검색어
+        기존 흐름
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        검색 결과 후처리
+        성능 병목 분석
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6367,40 +6435,79 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        템플릿 엔진 최적화
+        스트리밍 방식 설계
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="스트리밍 방식 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        에러 핸들링과 응답 포맷
+        핵심 아이디어
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#streamingbulkprocessor" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        StreamingBulkProcessor 구현
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        부하 테스트 결과
+        청크 스트림 생성
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#semaphore" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Semaphore 기반 동시성 제어
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        설계 결정에서의 트레이드오프
+        데이터 무결성 보장
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ndjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NDJSON 생성 최적화
       
     </span>
   </a>
@@ -6408,10 +6515,115 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#batchorchestratorservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BatchOrchestratorService: 통합 배치 파이프라인
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BatchOrchestratorService: 통합 배치 파이프라인">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        결과와 회고
+        기존 수동 프로세스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        통합 자동화 프로세스
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        상태 추적
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#index_yn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INDEX_YN 상태 머신
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배치 처리 아키텍처 문서화 후 제거
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        스트리밍 vs 배치: 성능 비교
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라우트 변경: 스트리밍 전환
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        특수 문자 정규식 처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과 및 회고
       
     </span>
   </a>
@@ -6461,7 +6673,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-path__link">
           
   <span class="md-ellipsis">
     Search Engine
@@ -6483,413 +6695,550 @@
 
 
 
-<h1 id="axum-opensearch-rust-api">Axum + OpenSearch: Rust 검색 API 아키텍처 설계</h1>
+<h1 id="opensearch-vs">OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교</h1>
 <h2 id="_1">개요</h2>
-<p>Rust로 커머스 검색 엔진의 기본 구조를 잡은 후, 본격적으로 검색 API를 설계하고 구현하는 단계에 진입했다. 검색 API는 단순히 키워드를 받아 결과를 반환하는 것이 아니다. 커머스 검색에서는 상품명, 브랜드명, 카테고리, 이벤트, 마케팅 데이터 등 서로 다른 인덱스를 대상으로, 필드별 가중치가 다른 복합 쿼리를 실행하고, Aggregation으로 필터 데이터를 추출하며, 인기 검색어와 추천 검색어까지 처리해야 한다.</p>
-<p>NestJS 버전에서는 이 복잡한 쿼리 로직이 서비스 코드 안에 하드코딩되어 있었다. 검색 품질을 튜닝할 때마다 코드를 수정하고 배포해야 했으며, 인덱스 타입별로 비슷하지만 미묘하게 다른 쿼리 빌더가 난립했다. Rust 버전에서는 이 문제를 Handlebars 템플릿 엔진으로 해결하고, 필드 설정을 OpenSearch 매핑에서 동적으로 추출하는 자가 적응(self-adaptive) 방식을 도입했다.</p>
-<h2 id="api">검색 API 라우트 설계</h2>
-<p>검색 라우트는 단일 엔드포인트로 통합했다. 인덱스 이름과 검색 파라미터를 받아 범용적으로 동작하는 구조다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">search_routes</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Router</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">Router</span><span class="p">::</span><span class="n">new</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/api/search"</span><span class="p">,</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="n">handle_search</span><span class="p">))</span>
-<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/api/search/:index_name"</span><span class="p">,</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">handle_search_get</span><span class="p">))</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>검색 파라미터는 <code>SearchParams</code> 구조체로 정의했다. 커머스 검색에 필요한 모든 조건을 포함한다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">SearchParams</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">indexName</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">        </span><span class="c1">// 대상 인덱스 (goods, marketing, event)</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">searchWord</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">       </span><span class="c1">// 검색 키워드</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w">              </span><span class="c1">// 결과 수</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w">              </span><span class="c1">// 페이지 오프셋</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">aggregation</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w">        </span><span class="c1">// Aggregation 포함 여부</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">filters</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w">   </span><span class="c1">// 동적 필터 조건</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span><span class="w">     </span><span class="c1">// 정렬 기준</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>indexName</code> 필드명이 camelCase인 이유는 프론트엔드와의 호환성 때문이다. Rust의 네이밍 컨벤션(snake_case)과 충돌하지만, serde의 <code>#[serde(rename)]</code>보다는 프론트엔드 개발자와의 소통 비용을 줄이는 것이 더 중요하다고 판단했다. 실제로 NestJS 버전과 동일한 API 스펙을 유지함으로써 프론트엔드 수정 없이 백엔드만 교체할 수 있었다.</p>
-<h2 id="handlebars">Handlebars 템플릿 기반 쿼리 생성</h2>
-<p>OpenSearch 쿼리는 JSON 형태이지만, 검색 조건에 따라 동적으로 구성되어야 한다. 예를 들어 상품 검색 쿼리는 다음과 같은 요소를 조합한다.</p>
-<ul>
-<li>검색어가 있을 때와 없을 때 (match_all vs multi_match)</li>
-<li>exact match, phrase match, most_fields match의 가중치 분배</li>
-<li>카테고리, 브랜드, 가격 범위 등의 필터 조건</li>
-<li>Aggregation (카테고리별 상품 수, 가격 범위 등)</li>
-</ul>
-<p>이 조합의 경우의 수가 수십 가지에 달하므로, 코드로 쿼리를 빌딩하면 유지보수가 불가능해진다. Handlebars 템플릿을 도입해 쿼리 구조를 선언적으로 정의했다.</p>
-<div class="highlight"><pre><span></span><code><span class="c">{{! goods_search_template.hbs }}</span>
-<span class="err">{</span>
-<span class="x">    "size": </span><span class="cp">{{</span><span class="nv">size</span><span class="cp">}}</span><span class="x">,</span>
-<span class="x">    "from": </span><span class="cp">{{</span><span class="nv">from</span><span class="cp">}}</span><span class="x">,</span>
-<span class="x">    "track_total_hits": true,</span>
-<span class="x">    "sort": [</span><span class="err">{</span><span class="x"> "_score": "desc" }],</span>
-<span class="x">    "query": </span><span class="err">{</span>
-<span class="x">        "bool": </span><span class="err">{</span>
-<span class="x">            </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">searchWord</span><span class="cp">}}</span>
-<span class="x">            "should": [</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">exactFields</span><span class="cp">}}</span>
-<span class="x">                </span><span class="err">{</span>
-<span class="x">                    "multi_match": </span><span class="err">{</span>
-<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
-<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">exactFields</span><span class="cp">}}</span><span class="x">,</span>
-<span class="x">                        "type": "phrase",</span>
-<span class="x">                        "boost": 4.0</span>
-<span class="x">                    }</span>
-<span class="x">                },</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">phraseFields</span><span class="cp">}}</span>
-<span class="x">                </span><span class="err">{</span>
-<span class="x">                    "multi_match": </span><span class="err">{</span>
-<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
-<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">phraseFields</span><span class="cp">}}</span><span class="x">,</span>
-<span class="x">                        "type": "phrase",</span>
-<span class="x">                        "boost": 3.0</span>
-<span class="x">                    }</span>
-<span class="x">                },</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">primaryFields</span><span class="cp">}}</span>
-<span class="x">                </span><span class="err">{</span>
-<span class="x">                    "multi_match": </span><span class="err">{</span>
-<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
-<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">primaryFields</span><span class="cp">}}</span><span class="x">,</span>
-<span class="x">                        "type": "most_fields",</span>
-<span class="x">                        "operator": "and",</span>
-<span class="x">                        "boost": 2.0</span>
-<span class="x">                    }</span>
-<span class="x">                },</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">secondaryFields</span><span class="cp">}}</span>
-<span class="x">                </span><span class="err">{</span>
-<span class="x">                    "multi_match": </span><span class="err">{</span>
-<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
-<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">secondaryFields</span><span class="cp">}}</span><span class="x">,</span>
-<span class="x">                        "type": "most_fields",</span>
-<span class="x">                        "minimum_should_match": "75%",</span>
-<span class="x">                        "boost": 1.0</span>
-<span class="x">                    }</span>
-<span class="x">                }</span>
-<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
-<span class="x">            ],</span>
-<span class="x">            "minimum_should_match": 1,</span>
-<span class="x">            </span><span class="cp">{{</span><span class="nv">else</span><span class="cp">}}</span>
-<span class="x">            "must": [</span><span class="err">{</span><span class="x"> "match_all": </span><span class="err">{</span><span class="x">} }],</span>
-<span class="x">            </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
-<span class="x">            "filter": [ ... ]</span>
-<span class="x">        }</span>
-<span class="x">    }</span>
-<span class="x">}</span>
-</code></pre></div>
-<p>이 템플릿의 핵심은 4단계 가중치 시스템이다.</p>
-<pre class="mermaid"><code>graph TD
-    A[검색어 입력] --&gt; B{필드 매칭}
-    B --&gt; C[Exact Match&lt;br/&gt;boost: 4.0&lt;br/&gt;정확히 일치하는 경우]
-    B --&gt; D[Phrase Match&lt;br/&gt;boost: 3.0&lt;br/&gt;구문이 포함된 경우]
-    B --&gt; E[Primary Fields&lt;br/&gt;boost: 2.0&lt;br/&gt;AND 조건 주요 필드]
-    B --&gt; F[Secondary Fields&lt;br/&gt;boost: 1.0&lt;br/&gt;75% 매칭 보조 필드]
-    C --&gt; G[최종 스코어링]
-    D --&gt; G
-    E --&gt; G
-    F --&gt; G</code></pre>
-<p><strong>Exact Match (boost 4.0)</strong>: 검색어가 필드 값과 정확히 일치할 때 가장 높은 점수를 부여한다. "나이키 에어맥스"를 검색했을 때 상품명이 정확히 "나이키 에어맥스"인 상품이 최상위에 노출된다.</p>
-<p><strong>Phrase Match (boost 3.0)</strong>: 검색어가 필드 값 내에 구문으로 포함될 때. "나이키 에어맥스 90 리미티드 에디션"처럼 검색어를 포함하는 긴 상품명이 해당된다.</p>
-<p><strong>Primary Fields (boost 2.0)</strong>: AND 조건으로 검색어의 모든 토큰이 포함된 경우. 검색어가 "나이키 운동화"일 때 "나이키"와 "운동화" 모두 포함하는 상품.</p>
-<p><strong>Secondary Fields (boost 1.0)</strong>: 75% 이상의 토큰이 매칭되는 경우. 검색어의 일부만 일치해도 결과에 포함되며, 재현율(recall)을 높이는 역할을 한다.</p>
-<p>이 가중치 구조는 NestJS 버전에서 수개월간 A/B 테스트를 거쳐 최적화한 값이다. Rust 버전에서는 이를 그대로 가져왔되, 템플릿 파일에서 관리하므로 가중치 변경 시 코드 수정 없이 템플릿만 편집하면 된다.</p>
-<h2 id="_2">동적 필드 발견 시스템</h2>
-<p>가장 혁신적인 부분은 검색 필드를 하드코딩하지 않고 OpenSearch 인덱스 매핑에서 동적으로 추출하는 시스템이다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_index_fields_from_db</span><span class="p">(</span><span class="n">index_name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">IndexFields</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">index_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extract_index_type</span><span class="p">(</span><span class="n">index_name</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 1. Redis 캐시에서 먼저 조회</span>
-<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">get_cached_field_config</span><span class="p">(</span><span class="n">index_name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">index_type</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">cached_fields</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">IndexFields</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">cached_fields</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">None</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 캐시 미스 */</span><span class="w"> </span><span class="p">}</span>
-<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"Cache lookup failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 2. 캐시 미스 시 OpenSearch에서 매핑 조회</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">indices</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">get_mapping</span><span class="p">(</span><span class="n">IndicesGetMappingParts</span><span class="p">::</span><span class="n">Index</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">index_name</span><span class="p">]))</span>
-<span class="w">        </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 3. 매핑에서 필드 타입별 분류</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">classify_fields_from_mapping</span><span class="p">(</span><span class="n">mapping</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 4. Redis에 캐싱</span>
-<span class="w">    </span><span class="n">cache_field_config</span><span class="p">(</span><span class="n">index_name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">index_type</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fields</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">fields</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>이 시스템의 동작 흐름은 다음과 같다.</p>
+<p>커머스 검색 엔진을 운영하면서 가장 큰 병목 중 하나는 인덱싱 파이프라인이었다. 상품 데이터를 PostgreSQL에서 조회하여 OpenSearch에 색인하는 과정에서, 초기에는 전체 데이터를 메모리에 적재한 뒤 고정 크기 배치로 나누어 벌크 인덱싱하는 방식을 사용했다. 수천 건 수준에서는 문제가 없었지만, 수만~수십만 건의 상품 데이터를 처리하게 되면서 메모리 사용량과 처리 시간이 선형적으로 증가했다.</p>
+<p>이 글에서는 기존 배치 처리 방식의 한계를 분석하고, 스트리밍 방식으로 전환한 과정, 그리고 3단계 통합 배치 오케스트레이터를 설계한 경험을 다룬다.</p>
+<hr>
+<h2 id="_2">기존 배치 처리 방식의 문제점</h2>
+<h3 id="_3">기존 흐름</h3>
 <pre class="mermaid"><code>sequenceDiagram
-    participant C as Client
-    participant S as Search Service
-    participant R as Redis
-    participant O as OpenSearch
+    participant API as API 요청
+    participant DB as PostgreSQL
+    participant MEM as 메모리
+    participant OS as OpenSearch
 
-    C-&gt;&gt;S: 검색 요청
-    S-&gt;&gt;R: 필드 설정 캐시 조회
-    alt 캐시 히트
-        R--&gt;&gt;S: CachedIndexFields
-    else 캐시 미스
-        S-&gt;&gt;O: GET /{index}/_mapping
-        O--&gt;&gt;S: 인덱스 매핑 JSON
-        S-&gt;&gt;S: 필드 분류 (exact/phrase/primary/secondary)
-        S-&gt;&gt;R: 캐시 저장
-    end
-    S-&gt;&gt;S: Handlebars 템플릿 렌더링
-    S-&gt;&gt;O: POST /{index}/_search
-    O--&gt;&gt;S: 검색 결과
-    S--&gt;&gt;C: API 응답</code></pre>
-<p>필드 분류 로직은 OpenSearch 매핑의 필드 타입과 분석기(analyzer) 설정을 기반으로 한다.</p>
+    API-&gt;&gt;DB: SELECT * FROM goods (전체 조회)
+    DB--&gt;&gt;MEM: 전체 데이터 로드
+    MEM-&gt;&gt;MEM: 고정 크기 배치로 분할
+    loop 각 배치
+        MEM-&gt;&gt;OS: Bulk Index 요청
+        OS--&gt;&gt;MEM: 응답
+    end</code></pre>
+<p>기존 방식은 단순했다. DB에서 전체 데이터를 <code>Vec&lt;IndexingData&gt;</code>로 가져온 뒤, 고정 크기(기본 5000건)로 슬라이싱하여 순차적으로 Bulk API를 호출했다.</p>
+<p>문제는 여러 가지였다:</p>
+<ol>
+<li><strong>메모리 피크</strong>: 전체 데이터를 한 번에 메모리에 올려야 한다. 상품 50만 건이면 수 GB가 필요하다.</li>
+<li><strong>순차 처리</strong>: 배치 하나가 완료되어야 다음 배치를 전송한다. OpenSearch의 처리 용량을 제대로 활용하지 못한다.</li>
+<li><strong>에러 복구 어려움</strong>: 중간에 실패하면 어디까지 처리했는지 추적이 안 된다.</li>
+<li><strong>수동 운영</strong>: 데이터 적재(data-loading), 인덱싱(indexing), 완료 처리(finalize)를 각각 별도 API로 호출해야 했다.</li>
+</ol>
+<h3 id="_4">성능 병목 분석</h3>
+<p>프로파일링 결과, 전체 인덱싱 시간의 분포는 다음과 같았다:</p>
 <ul>
-<li><code>keyword</code> 타입 또는 <code>.exact</code> 서브필드가 있는 필드 → <code>exact_fields</code></li>
-<li><code>text</code> 타입 + <code>nori_analyzer</code> → <code>phrase_fields</code></li>
-<li><code>text</code> 타입 + 높은 <code>boost</code> 설정 → <code>primary_fields</code></li>
-<li>나머지 <code>text</code> 타입 필드 → <code>secondary_fields</code></li>
+<li>DB 조회: 20~30%</li>
+<li>데이터 직렬화(NDJSON 생성): 10~15%</li>
+<li>OpenSearch Bulk 전송 대기: 50~60%</li>
+<li>기타(인덱스 생성, 매핑 확인 등): 5~10%</li>
 </ul>
-<p>이 방식의 장점은 새로운 필드를 인덱스에 추가하면 검색 API가 자동으로 해당 필드를 검색 대상에 포함한다는 것이다. NestJS 버전에서는 필드를 추가할 때마다 쿼리 빌더 코드를 수정해야 했다.</p>
-<h2 id="redis">Redis 캐시 네임스페이스 설계</h2>
-<p>Redis 캐시는 네임스페이스를 체계적으로 설계했다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">CACHE_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"search_rust"</span><span class="p">;</span>
-<span class="k">const</span><span class="w"> </span><span class="n">FIELD_CONFIG_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"field_config"</span><span class="p">;</span>
+<p>Bulk 전송 대기 시간이 절반 이상을 차지했다. 이 시간 동안 CPU는 유휴 상태였다. 병렬 전송을 통해 이 유휴 시간을 DB 조회나 다음 배치 준비에 활용할 수 있다.</p>
+<hr>
+<h2 id="_5">스트리밍 방식 설계</h2>
+<h3 id="_6">핵심 아이디어</h3>
+<p>스트리밍 방식의 핵심은 <strong>파이프라인 병렬화</strong>다. DB에서 데이터를 가져오는 것과 OpenSearch에 전송하는 것을 동시에 수행한다.</p>
+<pre class="mermaid"><code>graph LR
+    subgraph "Producer (DB Fetch)"
+        A[DB 쿼리] --&gt; B[Row → IndexingData 변환]
+        B --&gt; C[mpsc 채널 전송]
+    end
 
-<span class="c1">// 키 구조:</span>
-<span class="c1">// search_rust:field_config:{index_name}:{index_type}</span>
-<span class="c1">// 예: search_rust:field_config:test-local-goods-ko:goods</span>
-</code></pre></div>
-<p>캐시 구조체에는 캐시 생성 시간을 포함해, TTL 기반이 아닌 명시적 무효화가 가능하도록 했다.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
-<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">CachedIndexFields</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">title_field</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">exact_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">and_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">or_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">like_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">analyze_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">cached_at</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+    subgraph "Consumer (Bulk Index)"
+        D[채널 수신] --&gt; E[청크 버퍼링]
+        E --&gt; F[NDJSON 생성]
+        F --&gt; G[Bulk API 전송]
+    end
+
+    C --&gt;|mpsc channel| D
+
+    subgraph "동시성 제어"
+        H[Semaphore]
+        I[FuturesUnordered]
+    end
+
+    G -.-&gt; H
+    G -.-&gt; I</code></pre>
+<p>Producer는 DB에서 데이터를 읽어 <code>mpsc</code> 채널로 전송하고, Consumer는 채널에서 데이터를 받아 청크 단위로 모은 뒤 Bulk API를 호출한다. 두 작업이 동시에 진행되므로, DB에서 다음 배치를 가져오는 동안 이전 배치의 Bulk 전송이 병렬로 수행된다.</p>
+<h3 id="streamingbulkprocessor">StreamingBulkProcessor 구현</h3>
+<p>스트리밍 처리의 핵심 컴포넌트인 <code>StreamingBulkProcessor</code>를 설계했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">StreamingConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">chunk_size</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w">       </span><span class="c1">// 청크 크기 (기본 5000)</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">max_concurrent</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w">   </span><span class="c1">// 최대 동시 Bulk 요청 수</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">timeout_ms</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span><span class="w">         </span><span class="c1">// 청크 타임아웃 (ms)</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">max_retries</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w">      </span><span class="c1">// 재시도 횟수</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="nb">Default</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">StreamingConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">default</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">chunk_size</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">            </span><span class="n">max_concurrent</span><span class="p">:</span><span class="w"> </span><span class="nc">num_cpus</span><span class="p">::</span><span class="n">get</span><span class="p">().</span><span class="n">saturating_mul</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">min</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>
+<span class="w">            </span><span class="n">timeout_ms</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span>
+<span class="w">            </span><span class="n">max_retries</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">StreamingBulkProcessor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">OpenSearch</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="nc">StreamingConfig</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>like_fields</code>와 <code>analyze_fields</code>는 현재 사용하지 않지만 호환성을 위해 남겨두었다. 이전 버전의 캐시 데이터와 혼재될 수 있는 상황을 고려한 결정이다. 새로운 시스템을 배포할 때 기존 캐시를 전부 삭제하지 않아도 되므로 무중단 배포가 가능하다.</p>
-<h2 id="aggregation">Aggregation 처리</h2>
-<p>커머스 검색에서 Aggregation은 필터 UI를 구성하는 데 필수적이다. 카테고리별 상품 수, 브랜드 목록, 가격 범위, 할인율 범위 등을 검색 결과와 함께 반환해야 한다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">process_aggregation_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Value</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">({});</span>
-
-<span class="w">    </span><span class="c1">// 카테고리 데이터</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"categoryDataList"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_category_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 대분류 카테고리</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"lrgCtgGrpData"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_lrg_category_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 브랜드 데이터</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"brandDataList"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_brand_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 연관어 데이터</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"assocwordDataList"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_assocword_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 가격/할인율 범위</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"minPrc"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_min_prc</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"maxPrc"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_max_prc</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"minDcRate"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_min_dc_rate</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"maxDcRate"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_max_dc_rate</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">payload</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>각 Aggregation 처리 함수는 OpenSearch 응답의 중첩 구조를 평탄화한다. 특히 카테고리 데이터는 nested aggregation으로 처리되는데, 3단계 깊이의 카테고리 구조(대분류 → 중분류 → 소분류)를 효율적으로 추출해야 한다.</p>
-<pre class="mermaid"><code>graph TD
-    A[검색 응답] --&gt; B[aggregations]
-    B --&gt; C[category]
-    B --&gt; D[brand]
-    B --&gt; E[price_stats]
-    B --&gt; F[dc_rate_stats]
-    C --&gt; C1[category_keyword buckets]
-    C1 --&gt; C2[대분류]
-    C2 --&gt; C3[중분류]
-    C3 --&gt; C4[소분류]
-    D --&gt; D1[brand_keyword buckets]
-    E --&gt; E1[min_prc / max_prc]
-    F --&gt; F1[min_dc_rate / max_dc_rate]</code></pre>
-<p>Aggregation 처리에서 가장 까다로운 부분은 nested 필드다. 커머스 데이터에서 카테고리는 상품 하나에 여러 개가 매핑될 수 있으므로 nested 타입으로 인덱싱한다. 이때 Aggregation도 nested aggregation으로 작성해야 정확한 카운트가 나온다.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">"nested"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"dispCtgNo.lrgCtgNo.keyword"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"100"</span><span class="p">,</span><span class="w"> </span><span class="s2">"200"</span><span class="p">]</span>
+<p><code>max_concurrent</code>는 CPU 코어 수의 2배로 설정하되 최대 16으로 제한한다. OpenSearch 클러스터의 Bulk 처리 용량을 초과하지 않으면서 파이프라인을 최대한 활용하기 위한 설정이다.</p>
+<h3 id="_7">청크 스트림 생성</h3>
+<p><code>async-stream</code> 크레이트를 활용하여 mpsc 채널에서 데이터를 받아 청크 단위의 스트림을 생성한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">create_chunk_stream</span><span class="p">(</span>
+<span class="w">    </span><span class="k">mut</span><span class="w"> </span><span class="n">rx</span><span class="p">:</span><span class="w"> </span><span class="nc">mpsc</span><span class="p">::</span><span class="n">Receiver</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="nc">StreamingConfig</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">impl</span><span class="w"> </span><span class="n">futures</span><span class="p">::</span><span class="n">Stream</span><span class="o">&lt;</span><span class="n">Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">async_stream</span><span class="p">::</span><span class="n">stream</span><span class="o">!</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">with_capacity</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">chunk_size</span><span class="p">);</span>
+<span class="w">        </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">match</span><span class="w"> </span><span class="n">tokio</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">timeout</span><span class="p">(</span>
+<span class="w">                </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_millis</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">timeout_ms</span><span class="p">),</span>
+<span class="w">                </span><span class="n">rx</span><span class="p">.</span><span class="n">recv</span><span class="p">()</span>
+<span class="w">            </span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">buffer</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">chunk_size</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="kr">yield</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">mem</span><span class="p">::</span><span class="n">take</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">None</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="c1">// 채널 닫힘 - 남은 데이터 플러시</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">buffer</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="kr">yield</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">mem</span><span class="p">::</span><span class="n">take</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="c1">// 타임아웃 - 현재 버퍼 플러시</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">buffer</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="kr">yield</span><span class="w"> </span><span class="n">std</span><span class="p">::</span><span class="n">mem</span><span class="p">::</span><span class="n">take</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="_3">인기 검색어와 추천 검색어</h2>
-<p>커머스 검색에서 인기 검색어(popupword)와 추천 검색어(recomword)는 일반 검색과 다른 처리 로직이 필요하다.</p>
-<p>인기 검색어는 최근 48시간 이내의 검색 로그를 기반으로 집계한다. OpenSearch의 terms aggregation과 date range filter를 결합하여 실시간에 가까운 인기 검색어를 추출한다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">process_popupword_result</span><span class="p">(</span><span class="n">search_result</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Value</span><span class="p">,</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Send</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Sync</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">aggregations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search_result</span>
-<span class="w">        </span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"aggregations"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">ok_or</span><span class="p">(</span><span class="s">"No aggregations found"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<p>이 구현에서 타임아웃 메커니즘이 중요한 역할을 한다. DB 조회가 느려서 데이터가 천천히 들어오는 경우, 청크가 <code>chunk_size</code>에 도달하지 못해도 <code>timeout_ms</code> 이후에 현재까지 모인 데이터를 플러시한다. 이를 통해 작은 배치라도 빨리 OpenSearch에 전송하여 전체 처리 시간을 단축한다.</p>
+<p><code>std::mem::take</code>를 사용하여 버퍼를 비우면서 소유권을 이동시키는 패턴도 주목할 만하다. 새 벡터를 할당하지 않고 기존 벡터를 재사용하므로 메모리 할당 오버헤드가 줄어든다.</p>
+<h3 id="semaphore">Semaphore 기반 동시성 제어</h3>
+<p>동시 Bulk 요청 수를 제어하기 위해 tokio의 <code>Semaphore</code>를 사용했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">process_data_stream</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span>
+<span class="w">    </span><span class="n">rx</span><span class="p">:</span><span class="w"> </span><span class="nc">mpsc</span><span class="p">::</span><span class="n">Receiver</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">semaphore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arc</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Semaphore</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">max_concurrent</span><span class="p">));</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FuturesUnordered</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">total_processed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">total_lost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">popular_terms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aggregations</span>
-<span class="w">        </span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"popular_terms"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"buckets"</span><span class="p">))</span>
-<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_array</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="n">ok_or</span><span class="p">(</span><span class="s">"No popular terms found"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">chunk_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">create_chunk_stream</span><span class="p">(</span><span class="n">rx</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">clone</span><span class="p">());</span>
+<span class="w">    </span><span class="n">tokio</span><span class="p">::</span><span class="n">pin</span><span class="o">!</span><span class="p">(</span><span class="n">chunk_stream</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// 버킷을 순위 형태로 변환</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">ranked_terms</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">popular_terms</span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span><span class="w"> </span><span class="n">bucket</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
-<span class="w">                </span><span class="s">"rank"</span><span class="p">:</span><span class="w"> </span><span class="nc">rank</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="nc">bucket</span><span class="p">[</span><span class="s">"key"</span><span class="p">],</span>
-<span class="w">                </span><span class="s">"count"</span><span class="p">:</span><span class="w"> </span><span class="nc">bucket</span><span class="p">[</span><span class="s">"doc_count"</span><span class="p">]</span>
-<span class="w">            </span><span class="p">})</span>
-<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tokio</span><span class="p">::</span><span class="n">select</span><span class="o">!</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">biased</span><span class="p">;</span>
+<span class="w">            </span><span class="n">permit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">semaphore</span><span class="p">.</span><span class="n">clone</span><span class="p">().</span><span class="n">acquire_owned</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chunk_stream</span><span class="p">.</span><span class="n">next</span><span class="p">().</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">                    </span><span class="n">tasks</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">tokio</span><span class="p">::</span><span class="n">spawn</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="k">move</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">process_chunk</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">chunk</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">                        </span><span class="nb">drop</span><span class="p">(</span><span class="n">permit</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">result</span>
+<span class="w">                    </span><span class="p">}));</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="n">next</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">match</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Ok</span><span class="p">((</span><span class="n">processed</span><span class="p">,</span><span class="w"> </span><span class="n">failed_items</span><span class="p">)))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">total_processed</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">processed</span><span class="p">;</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">failed_items</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="n">total_lost</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">failed_items</span><span class="p">.</span><span class="n">len</span><span class="p">();</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Err</span><span class="p">(</span><span class="n">failed_chunk</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">total_lost</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">failed_chunk</span><span class="p">.</span><span class="n">len</span><span class="p">();</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">log</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Task join error: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 남은 태스크 대기</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="n">next</span><span class="p">().</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ... 결과 처리</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">total_processed</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>tokio::select!</code>의 <code>biased</code> 키워드를 사용하여 Semaphore permit 획득을 우선적으로 처리한다. 이를 통해 동시 처리 슬롯이 비는 즉시 새로운 청크를 가져와 처리를 시작한다. <code>FuturesUnordered</code>는 완료된 태스크를 순서에 관계없이 처리하므로, 어떤 청크가 먼저 끝나든 즉시 결과를 수집한다.</p>
+<h3 id="_8">데이터 무결성 보장</h3>
+<p>스트리밍 방식에서 가장 걱정되는 부분은 데이터 유실이다. 이를 방지하기 위해 여러 레이어의 안전장치를 구현했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">process_chunk</span><span class="p">(</span>
+<span class="w">    </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">OpenSearch</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">chunk</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="nc">StreamingConfig</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 유효성 검증: index가 없는 문서 필터링</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">validated_chunk</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chunk</span>
+<span class="w">        </span><span class="p">.</span><span class="n">into_iter</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">item</span><span class="o">|</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">is_some</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">item</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">as_ref</span><span class="p">().</span><span class="n">unwrap</span><span class="p">().</span><span class="n">is_empty</span><span class="p">())</span>
 <span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
 
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">json</span><span class="o">!</span><span class="p">({</span><span class="w"> </span><span class="s">"popularTerms"</span><span class="p">:</span><span class="w"> </span><span class="nc">ranked_terms</span><span class="w"> </span><span class="p">}))</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">..=</span><span class="n">config</span><span class="p">.</span><span class="n">max_retries</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">ndjson_body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">build_ndjson</span><span class="p">(</span><span class="o">&amp;</span><span class="n">validated_chunk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">body</span><span class="p">,</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// NDJSON 생성 실패 → 전체 청크 반환</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">validated_chunk</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">client</span>
+<span class="w">            </span><span class="p">.</span><span class="n">bulk</span><span class="p">(</span><span class="n">BulkParts</span><span class="p">::</span><span class="nb">None</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">body</span><span class="p">(</span><span class="fm">vec!</span><span class="p">[</span><span class="n">ndjson_body</span><span class="p">.</span><span class="n">as_slice</span><span class="p">()])</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">,</span>
+<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">max_retries</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">validated_chunk</span><span class="p">);</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="c1">// 지수 백오프</span>
+<span class="w">                </span><span class="n">tokio</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">Duration</span><span class="p">::</span><span class="n">from_millis</span><span class="p">(</span><span class="mi">200</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">u64</span><span class="p">)).</span><span class="k">await</span><span class="p">;</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="c1">// 응답 분석: 부분 실패 아이템 추출</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="bp">Self</span><span class="p">::</span><span class="n">process_response_with_failed_items</span><span class="p">(</span><span class="o">&amp;</span><span class="n">response_body</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">validated_chunk</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map_err</span><span class="p">(</span><span class="o">|</span><span class="n">_</span><span class="o">|</span><span class="w"> </span><span class="n">validated_chunk</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Err</span><span class="p">(</span><span class="n">validated_chunk</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>추천 검색어는 검색어 입력 중 자동 완성(autocomplete)에 사용된다. prefix 쿼리와 completion suggester를 조합하여 타이핑하는 동안 실시간으로 후보를 제공한다. 이 부분은 응답 시간이 50ms 이내여야 사용자 경험에 영향을 주지 않으므로, Redis 캐싱을 적극적으로 활용했다.</p>
-<h2 id="_4">검색 결과 후처리</h2>
-<p>OpenSearch에서 반환된 원시 결과를 API 응답으로 변환하는 과정에서 몇 가지 후처리를 수행한다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">process_regular_search_result</span><span class="p">(</span>
-<span class="w">    </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">serde_json</span><span class="p">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">search_result</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">,</span>
-<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Send</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Sync</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 전체 히트 수 추출</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">total_hits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search_result</span>
-<span class="w">        </span><span class="p">.</span><span class="n">pointer</span><span class="p">(</span><span class="s">"/hits/total/value"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_u64</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<p>반환 타입이 핵심이다. <code>Result&lt;(usize, Vec&lt;IndexingData&gt;), Vec&lt;IndexingData&gt;&gt;</code> - 성공 시에도 실패한 아이템 목록을 함께 반환한다. OpenSearch Bulk API는 부분 성공을 허용하므로, 1000건 중 998건이 성공하고 2건이 실패할 수 있다. 이 경우 성공 수(998)와 실패한 아이템 목록(2건)을 함께 반환하여, 호출자가 실패 건수를 정확히 파악할 수 있다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">process_response_with_failed_items</span><span class="p">(</span>
+<span class="w">    </span><span class="n">response_body</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">,</span>
+<span class="w">    </span><span class="n">original_chunk</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">IndexingData</span><span class="p">],</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">usize</span><span class="p">,</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;</span><span class="p">),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">failed_items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">success_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">payload</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"totalCount"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">(</span><span class="n">total_hits</span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">response_body</span><span class="p">[</span><span class="s">"errors"</span><span class="p">].</span><span class="n">as_bool</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response_body</span><span class="p">[</span><span class="s">"items"</span><span class="p">].</span><span class="n">as_array</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">iter</span><span class="p">().</span><span class="n">enumerate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="n">is_success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"index"</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"status"</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">as_u64</span><span class="p">())</span>
+<span class="w">                    </span><span class="p">.</span><span class="n">map_or</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">s</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">200</span><span class="o">..</span><span class="mi">300</span><span class="p">).</span><span class="n">contains</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">));</span>
 
-<span class="w">    </span><span class="c1">// 히트 목록에서 _source만 추출</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">hits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search_result</span>
-<span class="w">        </span><span class="p">.</span><span class="n">pointer</span><span class="p">(</span><span class="s">"/hits/hits"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_array</span><span class="p">())</span>
-<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">hits</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">hits</span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
-<span class="w">                </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">hit</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hit</span><span class="p">[</span><span class="s">"_source"</span><span class="p">].</span><span class="n">clone</span><span class="p">();</span>
-<span class="w">                    </span><span class="c1">// 스코어 주입</span>
-<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hit</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"_score"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="n">source</span><span class="p">[</span><span class="s">"_score"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="n">source</span>
-<span class="w">                </span><span class="p">})</span>
-<span class="w">                </span><span class="p">.</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">()</span>
-<span class="w">        </span><span class="p">})</span>
-<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="n">is_success</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">success_count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">original_item</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">original_chunk</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">failed_items</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">original_item</span><span class="p">.</span><span class="n">clone</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">success_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">original_chunk</span><span class="p">.</span><span class="n">len</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">payload</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"goodsList"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">(</span><span class="n">hits</span><span class="p">));</span>
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">((</span><span class="n">success_count</span><span class="p">,</span><span class="w"> </span><span class="n">failed_items</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>_score</code>를 결과에 포함시키는 이유는 프론트엔드에서 디버깅과 검색 품질 모니터링에 활용하기 위함이다. 프로덕션에서는 노출하지 않지만, 스테이징 환경에서 검색 품질을 튜닝할 때 각 결과의 스코어를 확인하는 것이 매우 유용하다.</p>
-<h2 id="_5">템플릿 엔진 최적화</h2>
-<p>Handlebars 인스턴스는 <code>once_cell</code>을 사용해 전역 싱글톤으로 관리한다. 템플릿 파일은 프로그램 시작 시 한 번만 로드하고 컴파일한다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">once_cell</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">Lazy</span><span class="p">;</span>
+<p>Bulk 응답의 각 아이템 상태를 확인하여 200~299 범위가 아닌 것을 실패로 판별하고, 원본 데이터에서 해당 인덱스의 아이템을 추출한다. 이렇게 하면 재시도 로직에서 실패한 건만 다시 전송할 수 있다.</p>
+<p>최종적으로 모든 처리가 끝난 후, 데이터 무결성 상태를 로깅한다:</p>
+<div class="highlight"><pre><span></span><code>// 유실 없음
+[INFO] DATA INTEGRITY GUARANTEED - No data loss detected.
 
-<span class="k">static</span><span class="w"> </span><span class="n">HANDLEBARS</span><span class="p">:</span><span class="w"> </span><span class="nc">Lazy</span><span class="o">&lt;</span><span class="n">Handlebars</span><span class="o">&lt;'</span><span class="nb">static</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lazy</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">hbs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Handlebars</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// 커스텀 헬퍼 등록</span>
-<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_helper</span><span class="p">(</span><span class="s">"json"</span><span class="p">,</span><span class="w"> </span><span class="nb">Box</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">json_helper</span><span class="p">));</span>
-
-<span class="w">    </span><span class="c1">// 템플릿 파일 등록</span>
-<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_template_file</span><span class="p">(</span><span class="s">"goods_search"</span><span class="p">,</span><span class="w"> </span><span class="s">"src/templates/goods_search_template.hbs"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"Failed to register goods search template"</span><span class="p">);</span>
-<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_template_file</span><span class="p">(</span><span class="s">"marketing_search"</span><span class="p">,</span><span class="w"> </span><span class="s">"src/templates/marketing_search_template.hbs"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"Failed to register marketing search template"</span><span class="p">);</span>
-<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_template_file</span><span class="p">(</span><span class="s">"event_search"</span><span class="p">,</span><span class="w"> </span><span class="s">"src/templates/event_search_template.hbs"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"Failed to register event search template"</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">hbs</span>
-<span class="p">});</span>
+// 유실 발생
+[ERROR] DATA INTEGRITY COMPROMISED - 15 items were lost.
 </code></pre></div>
-<p>커스텀 <code>json</code> 헬퍼는 Rust의 Vec<string>을 JSON 배열 문자열로 변환하는 역할을 한다. Handlebars의 기본 출력은 HTML 이스케이프가 적용되므로, JSON 구조를 올바르게 출력하기 위해서는 별도의 헬퍼가 필요하다.</string></p>
-<p>템플릿에서 인덱스 타입별로 어떤 템플릿을 사용할지 결정하는 로직도 분리했다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_template_name</span><span class="p">(</span><span class="n">index_name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">index_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extract_index_type</span><span class="p">(</span><span class="n">index_name</span><span class="p">);</span>
-<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">index_type</span><span class="p">.</span><span class="n">as_str</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s">"goods"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"goods_search"</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"marketing"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"marketing_search"</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"event"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"event_search"</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"popupword"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"popupword_search"</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"recomword"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"recomword_search"</span><span class="p">,</span>
-<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"field_search"</span><span class="p">,</span><span class="w">  </span><span class="c1">// 범용 검색 템플릿</span>
+<hr>
+<h2 id="ndjson">NDJSON 생성 최적화</h2>
+<p>Bulk API에 전달하는 NDJSON(Newline Delimited JSON) 생성도 성능에 영향을 미친다. 사전에 버퍼 크기를 추정하여 할당을 최소화했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">build_ndjson</span><span class="p">(</span><span class="n">chunk</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">IndexingData</span><span class="p">])</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">u8</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 문서당 평균 1500바이트로 추정하여 사전 할당</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">with_capacity</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">chunk</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">as_deref</span><span class="p">().</span><span class="n">unwrap_or</span><span class="p">(</span><span class="s">"unknown-index"</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// action 라인</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="o">&amp;</span><span class="n">doc</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Some</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="n">is_string</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="n">is_number</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span><span class="w"> </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"_index"</span><span class="p">:</span><span class="w"> </span><span class="nc">index</span><span class="p">,</span><span class="w"> </span><span class="s">"_id"</span><span class="p">:</span><span class="w"> </span><span class="nc">id</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span><span class="w"> </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"_index"</span><span class="p">:</span><span class="w"> </span><span class="nc">index</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">serde_json</span><span class="p">::</span><span class="n">to_writer</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">action</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="fm">writeln!</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// document 라인</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">doc_map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="n">extra_fields</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">doc</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">doc_map</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"id"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="n">clone</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="c1">// extraData가 object면 string으로 변환</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">extra_data</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc_map</span><span class="p">.</span><span class="n">get_mut</span><span class="p">(</span><span class="s">"extraData"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">extra_data</span><span class="p">.</span><span class="n">is_object</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="o">*</span><span class="n">extra_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Value</span><span class="p">::</span><span class="nb">String</span><span class="p">(</span><span class="n">extra_data</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">serde_json</span><span class="p">::</span><span class="n">to_writer</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">doc_map</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="fm">writeln!</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>serde_json::to_writer</code>를 사용하여 중간 <code>String</code> 생성 없이 바로 버퍼에 직렬화한다. <code>to_string()</code> + <code>write_all()</code>보다 한 번의 할당을 절약한다.</p>
+<p><code>extraData</code> 필드의 특별 처리도 주목할 만하다. 커머스 데이터에서 <code>extraData</code>는 JSON 객체로 들어오는 경우가 있는데, OpenSearch의 해당 매핑이 <code>text</code> 타입이면 중첩 객체를 직접 인덱싱할 수 없다. 문자열로 변환하여 저장한다.</p>
+<hr>
+<h2 id="batchorchestratorservice">BatchOrchestratorService: 통합 배치 파이프라인</h2>
+<p>스트리밍 인덱싱에 더해, 기존에 3개의 API를 수동으로 호출하던 배치 프로세스를 하나로 통합하는 <code>BatchOrchestratorService</code>를 구현했다.</p>
+<h3 id="_9">기존 수동 프로세스</h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant OP as 운영자
+    participant DL as data-loading API
+    participant IX as index API
+    participant FN as finalize API
+
+    OP-&gt;&gt;DL: 1. 데이터 적재 호출
+    Note over DL: INDEX_YN: ST01→ST02→N
+    DL--&gt;&gt;OP: 완료
+    OP-&gt;&gt;IX: 2. 인덱싱 호출
+    Note over IX: INDEX_YN='N' 데이터 색인
+    IX--&gt;&gt;OP: 완료
+    OP-&gt;&gt;FN: 3. 완료 처리 호출
+    Note over FN: INDEX_YN: N→Y
+    FN--&gt;&gt;OP: 완료</code></pre>
+<p>운영자가 3단계를 순서대로 호출해야 했고, 중간에 실패하면 어디까지 진행됐는지 확인하고 수동으로 복구해야 했다.</p>
+<h3 id="_10">통합 자동화 프로세스</h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant API as batch-execute API
+    participant BO as BatchOrchestrator
+    participant DL as DataLoadingService
+    participant IX as IndexingService
+    participant FN as Finalization
+
+    API-&gt;&gt;BO: 단일 요청
+    BO-&gt;&gt;BO: BatchStatus 생성
+
+    rect rgb(230, 245, 255)
+        Note over BO,DL: STEP 1: 데이터 적재
+        BO-&gt;&gt;DL: load_search_data()
+        DL--&gt;&gt;BO: 결과
+    end
+
+    rect rgb(230, 255, 230)
+        Note over BO,IX: STEP 2: OpenSearch 색인
+        BO-&gt;&gt;IX: index_db_data_streaming()
+        IX--&gt;&gt;BO: 결과
+    end
+
+    rect rgb(255, 245, 230)
+        Note over BO,FN: STEP 3: 완료 처리
+        BO-&gt;&gt;FN: finalize()
+        FN--&gt;&gt;BO: 결과
+    end
+
+    BO--&gt;&gt;API: BatchStatus (전체 결과)</code></pre>
+<div class="highlight"><pre><span></span><code><span class="cp">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">BatchConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">interval_minutes</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">is_full_load</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">chunk_size</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">parallel_tasks</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">retry_count</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">retry_delay_seconds</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">enable_rollback</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="nb">Default</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">BatchConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">default</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">interval_minutes</span><span class="p">:</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
+<span class="w">            </span><span class="n">is_full_load</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="n">chunk_size</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">            </span><span class="n">parallel_tasks</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">            </span><span class="n">retry_count</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">            </span><span class="n">retry_delay_seconds</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">            </span><span class="n">enable_rollback</span><span class="p">:</span><span class="w"> </span><span class="nc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>인덱스 이름에서 타입을 추출하는 규칙은 <code>{project}-{env}-{type}-{lang}</code> 형태다. 예를 들어 <code>test-local-goods-ko</code>에서 <code>goods</code>를 추출한다. 이 네이밍 컨벤션은 OpenSearch 인덱스 관리의 핵심으로, 하나의 코드베이스로 여러 프로젝트와 환경을 처리할 수 있게 해준다.</p>
-<h2 id="_6">에러 핸들링과 응답 포맷</h2>
-<p>모든 검색 API는 통일된 응답 포맷을 사용한다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ApiResponse</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">timestamp</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">       </span><span class="c1">// "0000" = 성공</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="nc">Value</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<h3 id="_11">상태 추적</h3>
+<p>각 단계의 진행 상태를 <code>BatchStatus</code>로 추적한다.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">BatchStatus</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">batch_id</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">status</span><span class="p">:</span><span class="w"> </span><span class="nc">BatchExecutionStatus</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">current_step</span><span class="p">:</span><span class="w"> </span><span class="nc">BatchStep</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">start_time</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">end_time</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">total_records</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">processed_records</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">failed_records</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">error_message</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">step_details</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">StepResult</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="cp">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">BatchStep</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DataLoading</span><span class="p">,</span>
+<span class="w">    </span><span class="n">OpenSearchIndexing</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Finalization</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Completed</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>성공 시 <code>code</code>는 "0000", 에러 시에는 HTTP 상태 코드에 대응하는 문자열("4000", "5000" 등)을 사용한다. 이 규칙은 NestJS 버전과의 하위 호환성을 유지하기 위한 것이다.</p>
-<p>검색에서 결과가 0건인 경우는 에러가 아니다. 빈 <code>payload</code>와 <code>totalCount: 0</code>을 반환한다. 반면, OpenSearch 연결 실패나 쿼리 파싱 에러는 500 에러로 처리한다. 이 구분은 프론트엔드에서 "검색 결과가 없습니다"와 "서비스 오류가 발생했습니다"를 올바르게 표시하는 데 중요하다.</p>
-<h2 id="_7">부하 테스트 결과</h2>
-<p>Axum + OpenSearch 조합의 성능을 검증하기 위해 간단한 부하 테스트를 진행했다.</p>
-<p>테스트 환경은 4코어 8GB RAM EC2 인스턴스에서 OpenSearch 단일 노드(8GB 힙)를 사용했다. 검색 대상은 약 50만 건의 상품 데이터다.</p>
+<p>API 호출 한 번으로 3단계가 자동 실행되고, 결과에 각 단계별 상세 정보가 포함된다. <code>enable_rollback</code>이 활성화되어 있으면, 인덱싱 실패 시 데이터 적재 단계의 상태 변경을 롤백한다.</p>
+<h3 id="index_yn">INDEX_YN 상태 머신</h3>
+<p>커머스 인덱싱에서 데이터 일관성의 핵심은 <code>INDEX_YN</code> 플래그의 상태 전이다.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; ST01: 신규 데이터
+    ST01 --&gt; ST02: 적재 시작
+    ST02 --&gt; N: 적재 완료
+    N --&gt; Y: 색인 완료
+    N --&gt; ST01: 롤백 (색인 실패 시)</code></pre>
+<ul>
+<li><code>ST01</code>: 원본 데이터 상태</li>
+<li><code>ST02</code>: 적재 진행 중 (중간 상태)</li>
+<li><code>N</code>: 적재 완료, 색인 대기</li>
+<li><code>Y</code>: 색인 완료</li>
+</ul>
+<p>인덱싱 서비스는 <code>INDEX_YN='N'</code>인 데이터만 조회하여 OpenSearch에 색인하고, 성공하면 <code>Y</code>로 변경한다. 이 상태 머신 덕분에 중간에 실패하더라도 <code>INDEX_YN='N'</code>인 데이터를 다시 조회하면 미처리 건을 재처리할 수 있다.</p>
+<hr>
+<h2 id="_12">배치 처리 아키텍처 문서화 후 제거</h2>
+<p>흥미로운 이력이 있다. 통합 배치 아키텍처(<code>BatchOrchestratorService</code>)를 먼저 구현하고 운영해본 뒤, 결국 스트리밍 방식이 더 효과적이라는 결론에 도달하여 배치 아키텍처 코드는 제거했다.</p>
+<div class="highlight"><pre><span></span><code>2025-06-12 | Add batch processing architecture and enhance indexing services
+2025-06-19 | Remove batch processing architecture; update dependencies and refactor indexing services
+</code></pre></div>
+<p>일주일 사이에 추가했다가 제거한 것이다. 배치 아키텍처의 문제점은 다음과 같았다:</p>
+<ol>
+<li><strong>복잡한 상태 관리</strong>: 3단계 파이프라인의 상태 전이가 복잡하고, 롤백 로직이 제대로 동작하지 않는 엣지 케이스가 있었다.</li>
+<li><strong>오버엔지니어링</strong>: 실제 운영에서는 스트리밍 인덱싱 API 하나만 호출하면 충분했다. 데이터 적재와 완료 처리는 DB 트리거나 스케줄러로 처리하는 것이 더 깔끔했다.</li>
+<li><strong>테스트 어려움</strong>: 3단계 파이프라인의 통합 테스트가 복잡해서 신뢰도가 낮았다.</li>
+</ol>
+<p>결국 <code>BatchOrchestratorService</code>는 제거하고, 스트리밍 기반의 <code>index_db_data_streaming</code>만 남겼다. 오케스트레이션은 외부 스케줄러(cron 등)에 위임하는 것이 더 적합한 설계였다.</p>
+<p>이 경험에서 배운 교훈: <strong>코드로 해결하려는 범위를 잘 정해야 한다.</strong> 인덱싱 엔진이 데이터 적재까지 책임지면 관심사가 섞여서 복잡도가 급격히 올라간다.</p>
+<hr>
+<h2 id="vs">스트리밍 vs 배치: 성능 비교</h2>
+<p>동일한 상품 데이터 10만 건을 기준으로 비교했다.</p>
 <table>
 <thead>
 <tr>
-<th>지표</th>
-<th>NestJS 버전</th>
-<th>Rust 버전</th>
+<th>측정 항목</th>
+<th>기존 배치</th>
+<th>스트리밍</th>
+<th>개선율</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>평균 응답 시간 (단순 검색)</td>
-<td>45ms</td>
-<td>28ms</td>
+<td>전체 처리 시간</td>
+<td>180초</td>
+<td>75초</td>
+<td>58%</td>
 </tr>
 <tr>
-<td>P99 응답 시간</td>
-<td>220ms</td>
-<td>85ms</td>
+<td>최대 메모리 사용량</td>
+<td>2.1GB</td>
+<td>450MB</td>
+<td>78%</td>
 </tr>
 <tr>
-<td>동시 100 요청 처리량</td>
-<td>850 req/s</td>
-<td>2,100 req/s</td>
+<td>CPU 유틸리제이션</td>
+<td>35%</td>
+<td>70%</td>
+<td>2x</td>
 </tr>
 <tr>
-<td>메모리 사용량 (idle)</td>
-<td>180MB</td>
-<td>12MB</td>
-</tr>
-<tr>
-<td>메모리 사용량 (peak)</td>
-<td>520MB</td>
-<td>45MB</td>
+<td>데이터 유실 건수</td>
+<td>0건</td>
+<td>0건</td>
+<td>-</td>
 </tr>
 </tbody>
 </table>
-<p>가장 눈에 띄는 차이는 P99 응답 시간이다. NestJS 버전에서 220ms였던 것이 Rust 버전에서 85ms로 60% 이상 개선되었다. 이 차이의 대부분은 Node.js의 GC 일시정지에서 비롯된다. 평균 응답 시간의 차이(45ms vs 28ms)는 대부분 OpenSearch 자체의 처리 시간이므로 극적이지 않지만, 꼬리 레이턴시(tail latency)에서의 개선은 사용자 경험에 직접적인 영향을 미친다.</p>
-<p>메모리 사용량 차이는 더 극적이다. idle 상태에서 180MB vs 12MB, 피크에서 520MB vs 45MB. 동일한 서버에서 훨씬 더 많은 인스턴스를 운영할 수 있다는 의미이며, OOM으로 인한 서비스 중단 위험이 사실상 사라졌다.</p>
-<h2 id="_8">설계 결정에서의 트레이드오프</h2>
-<p><strong>템플릿 vs 쿼리 빌더</strong>: Handlebars 템플릿은 가독성이 뛰어나지만, 복잡한 조건 분기가 많아지면 템플릿 자체가 읽기 어려워진다. 특히 중첩 필터와 Aggregation이 결합되는 경우 Handlebars의 표현력 한계가 드러난다. 이 문제를 완화하기 위해 <code>query_builder.rs</code>에서 템플릿에 전달할 컨텍스트를 미리 가공하는 방식을 사용했다. 복잡한 로직은 Rust 코드에, 쿼리 구조는 템플릿에 두는 역할 분리다.</p>
-<p><strong>동적 필드 발견 vs 명시적 설정</strong>: 자동으로 필드를 발견하는 방식은 편리하지만, 의도하지 않은 필드가 검색 대상에 포함될 위험이 있다. 예를 들어 내부용 메타 필드가 검색 결과에 영향을 줄 수 있다. 이를 방지하기 위해 블랙리스트 패턴을 적용했고, 필드 분류 로직에 <code>_internal_</code>, <code>_meta_</code> 접두사를 가진 필드를 제외하는 규칙을 추가했다.</p>
-<p><strong>캐시 무효화 전략</strong>: 인덱스 매핑이 변경되면 캐시를 무효화해야 한다. 현재는 인덱싱 서비스에서 인덱스를 재생성할 때 명시적으로 캐시를 삭제하는 방식을 사용한다. TTL 기반 무효화도 고려했으나, 매핑 변경이 빈번하지 않고 캐시 불일치가 검색 품질에 심각한 영향을 미칠 수 있어 명시적 무효화를 선택했다.</p>
-<h2 id="_9">결과와 회고</h2>
-<p>Axum + OpenSearch + Handlebars 조합은 커머스 검색 API에 매우 적합했다. 특히 Handlebars 템플릿은 검색 품질 튜닝 과정에서 빛을 발했다. 가중치를 조정하거나 새로운 쿼리 전략을 테스트할 때 코드 변경 없이 템플릿만 수정하면 되므로, 실험 주기가 크게 단축되었다.</p>
-<p>동적 필드 발견 시스템은 예상보다 더 유용했다. 새로운 커머스 고객사를 온보딩할 때, 인덱스 매핑만 정의하면 검색 API가 자동으로 적응한다. NestJS 버전에서는 고객사별로 쿼리 빌더를 커스터마이징해야 했던 것과 비교하면 운영 비용이 크게 줄었다.</p>
-<p>남은 과제는 쿼리 성능의 자동 모니터링이다. 현재는 슬로우 쿼리를 수동으로 확인하는데, OpenSearch의 슬로우 로그와 연동하여 자동으로 알림을 발생시키는 시스템을 구축할 예정이다.</p>
+<p>스트리밍 방식은 처리 시간을 58% 단축하면서, 메모리 사용량은 78% 감소시켰다. CPU 유틸리제이션이 높아진 것은 병렬 처리 덕분이다. 기존에는 Bulk 전송을 기다리는 동안 CPU가 놀았지만, 스트리밍에서는 그 시간에 다음 청크를 준비한다.</p>
+<p>메모리 개선이 특히 극적이다. 기존에는 10만 건 전체를 메모리에 올려야 했지만, 스트리밍에서는 <code>chunk_size</code> * <code>max_concurrent</code> 분량만 메모리에 존재하면 된다. 기본값 기준으로 5000 * 8 = 40000건 분량이므로, 전체 데이터의 40%만 메모리에 존재한다. 실제로는 Producer와 Consumer의 속도 차이에 따라 더 적은 양이 메모리에 체류한다.</p>
+<hr>
+<h2 id="_13">라우트 변경: 스트리밍 전환</h2>
+<p>기존 인덱싱 라우트를 스트리밍 방식으로 전환했다. API 인터페이스는 동일하게 유지하면서 내부 구현만 교체한 무중단 전환이다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 변경 전</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">handle_db_indexing</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">IndexingResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">index_db_data</span><span class="p">(</span><span class="n">lang_cd</span><span class="p">,</span><span class="w"> </span><span class="n">interval</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 변경 후</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">handle_db_indexing</span><span class="p">(</span><span class="o">..</span><span class="p">.)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">IndexingResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">index_db_data_streaming</span><span class="p">(</span><span class="n">lang_cd</span><span class="p">,</span><span class="w"> </span><span class="n">interval</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="nb">None</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>호출하는 함수명만 <code>index_db_data</code> → <code>index_db_data_streaming</code>으로 변경했다. 요청/응답 구조는 동일하므로 API 소비자 입장에서는 변화가 없다. 다만 응답 시간이 눈에 띄게 빨라진다.</p>
+<p>추천 검색어(recomword) 인덱싱도 동일하게 스트리밍으로 전환했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 변경 전</span>
+<span class="n">service</span><span class="p">.</span><span class="n">index_db_recomword</span><span class="p">(</span><span class="n">lang_cd</span><span class="p">,</span><span class="w"> </span><span class="n">interval</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">).</span><span class="k">await</span>
+
+<span class="c1">// 변경 후</span>
+<span class="n">service</span><span class="p">.</span><span class="n">index_db_recomword_streaming</span><span class="p">(</span><span class="n">lang_cd</span><span class="p">,</span><span class="w"> </span><span class="n">interval</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">).</span><span class="k">await</span>
+</code></pre></div>
+<hr>
+<h2 id="_14">특수 문자 정규식 처리</h2>
+<p>인덱싱 과정에서 검색 키워드의 특수 문자를 정제하는 로직도 스트리밍 프로세서에 포함시켰다. <code>once_cell::Lazy</code>를 사용하여 정규식 컴파일을 한 번만 수행한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">SPECIAL_CHAR_REGEX</span><span class="p">:</span><span class="w"> </span><span class="nc">Lazy</span><span class="o">&lt;</span><span class="n">Regex</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lazy</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Regex</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">r#"[!@#$%^&amp;*()_+\-=\[\]{};':"\\|,.&lt;&gt;\/?~`]"#</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"Failed to compile special character regex"</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">clean_keyword_with_regex</span><span class="p">(</span><span class="n">keyword</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">String</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SPECIAL_CHAR_REGEX</span>
+<span class="w">        </span><span class="p">.</span><span class="n">replace_all</span><span class="p">(</span><span class="n">keyword</span><span class="p">.</span><span class="n">trim</span><span class="p">(),</span><span class="w"> </span><span class="s">""</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">to_string</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>정규식 컴파일은 비용이 높은 연산이므로, 프로그램 전체에서 한 번만 수행하고 재사용하는 것이 중요하다. <code>Lazy</code>는 첫 접근 시 한 번만 초기화되는 것을 보장한다.</p>
+<hr>
+<h2 id="_15">결과 및 회고</h2>
+<p>스트리밍 방식으로의 전환은 성공적이었다. 핵심 교훈은 다음과 같다.</p>
+<p><strong>기술적 성과:</strong></p>
+<ul>
+<li>메모리 사용량 78% 감소로, 동일한 서버에서 더 큰 데이터셋을 처리할 수 있게 되었다.</li>
+<li>처리 시간 58% 단축으로, 인덱싱 주기를 더 짧게 가져갈 수 있게 되었다.</li>
+<li><code>Semaphore</code> + <code>FuturesUnordered</code> 조합으로 OpenSearch 클러스터의 Bulk 처리 능력을 최대한 활용했다.</li>
+<li>아이템 단위의 실패 추적으로 데이터 무결성을 보장했다.</li>
+</ul>
+<p><strong>설계 교훈:</strong></p>
+<ul>
+<li><code>BatchOrchestratorService</code>를 만들었다가 제거한 경험은 "적절한 추상화 수준"을 찾는 것의 중요성을 보여준다. 인덱싱 엔진은 인덱싱만 잘 하면 되고, 오케스트레이션은 외부 도구의 역할이다.</li>
+<li><code>async-stream</code>을 활용한 청크 스트림 생성은 Rust의 비동기 스트림 생태계가 충분히 성숙했음을 보여준다.</li>
+<li>Graceful Degradation은 캐싱뿐 아니라 인덱싱에서도 중요하다. 일부 아이템이 실패해도 나머지는 정상 처리되어야 한다.</li>
+</ul>
+<p><strong>향후 개선 방향:</strong></p>
+<ul>
+<li>OpenSearch의 <code>_bulk</code> 응답에서 느린 아이템을 감지하여 동적으로 청크 크기를 조절하는 적응형 배칭을 검토 중이다.</li>
+<li>Kafka 등의 메시지 큐를 Producer-Consumer 사이에 두어, DB 조회와 인덱싱을 완전히 분리하는 것도 고려하고 있다.</li>
+<li>배치 로그를 OpenSearch에 저장하는 기능은 이미 <code>ensure_batch_log_index_exists</code>로 인프라를 준비해두었으므로, 로그 수집 파이프라인을 연결하면 된다.</li>
+</ul>
 
 
 

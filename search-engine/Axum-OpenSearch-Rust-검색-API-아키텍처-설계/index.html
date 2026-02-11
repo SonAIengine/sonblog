@@ -3,11 +3,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Axum 웹 프레임워크와 OpenSearch를 결합하여 커머스 검색 API를 설계한 과정. Handlebars 템플릿 기반 동적 쿼리, 필드 가중치 시스템, Aggregation 처리까지.">
       
       
       
-        <link rel="prev" href="../../infra/XGEN-2.0-%EC%9D%B8%ED%94%84%EB%9D%BC-K8s-ArgoCD-%EC%9A%B4%EC%98%81-%EB%B0%B0%ED%8F%AC/">
       
+        <link rel="prev" href="../../ai/Model%20Serve/%EB%A9%80%ED%8B%B0%ED%84%B4%20vs%20%EC%8B%B1%EA%B8%80%ED%84%B4/">
+      
+      
+        <link rel="next" href="../PostgreSQL%EA%B3%BC-MySQL-%EB%8F%99%EC%8B%9C-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-Rust-DB-%EC%B6%94%EC%83%81%ED%99%94-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%ED%98%84/">
       
       
         
@@ -18,7 +22,7 @@
     
     
       
-        <title>macOS에서 USB 포맷 실패 시 해결 방법 - SON BLOG</title>
+        <title>Axum + OpenSearch: Rust 검색 API 아키텍처 설계 - SON BLOG</title>
       
     
     
@@ -81,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1" class="md-skip">
+        <a href="#axum-opensearch-rust-api" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              macOS에서 USB 포맷 실패 시 해결 방법
+              Axum + OpenSearch: Rust 검색 API 아키텍처 설계
             
           </span>
         </div>
@@ -329,11 +333,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../search-engine/Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -395,13 +401,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../etc/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
           
   
   
@@ -2341,8 +2345,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -2368,19 +2374,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -2398,7 +2407,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2413,10 +2422,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../search-engine/Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Axum + OpenSearch: Rust 검색 API 아키텍처 설계
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2432,6 +2468,169 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개요
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 API 라우트 설계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handlebars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handlebars 템플릿 기반 쿼리 생성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        동적 필드 발견 시스템
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redis 캐시 네임스페이스 설계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation 처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인기 검색어와 추천 검색어
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 결과 후처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        템플릿 엔진 최적화
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러 핸들링과 응답 포맷
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        부하 테스트 결과
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계 결정에서의 트레이드오프
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과와 회고
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2444,7 +2643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/PostgreSQL%EA%B3%BC-MySQL-%EB%8F%99%EC%8B%9C-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-Rust-DB-%EC%B6%94%EC%83%81%ED%99%94-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%ED%98%84/" class="md-nav__link">
+      <a href="../PostgreSQL%EA%B3%BC-MySQL-%EB%8F%99%EC%8B%9C-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-Rust-DB-%EC%B6%94%EC%83%81%ED%99%94-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%ED%98%84/" class="md-nav__link">
         
   
   
@@ -2472,7 +2671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Rust%EB%A1%9C-%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%84-%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="md-nav__link">
+      <a href="../Rust%EB%A1%9C-%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%84-%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2500,7 +2699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/%EB%B2%A1%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
+      <a href="../%EB%B2%A1%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2528,7 +2727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2580,17 +2779,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6">
         
           
-          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="">
             
   
   
@@ -2684,7 +2886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
+      <a href="../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -2712,7 +2914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2804,7 +3006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
+      <a href="../OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
         
   
   
@@ -2896,7 +3098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
+      <a href="../OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -2988,7 +3190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
+      <a href="../OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
         
   
   
@@ -3098,7 +3300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
         
   
   
@@ -3126,7 +3328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -3154,7 +3356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
         
   
   
@@ -3182,7 +3384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3210,7 +3412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -3238,7 +3440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
         
   
   
@@ -3266,7 +3468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3294,7 +3496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3322,7 +3524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
         
   
   
@@ -3350,7 +3552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3500,7 +3702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -3594,7 +3796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -3622,7 +3824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -3732,7 +3934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
         
   
   
@@ -3760,7 +3962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
         
   
   
@@ -3788,7 +3990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
         
   
   
@@ -3816,7 +4018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -3844,7 +4046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
         
   
   
@@ -3872,7 +4074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20-%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20-%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
         
   
   
@@ -3964,7 +4166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
+      <a href="../OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
         
   
   
@@ -4024,17 +4226,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
         
           
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="">
             
   
   
@@ -4070,7 +4275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/LangChain%EA%B3%BC%20Qdrant/" class="md-nav__link">
+      <a href="../Qdrant/LangChain%EA%B3%BC%20Qdrant/" class="md-nav__link">
         
   
   
@@ -4098,7 +4303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/Qdrant%EC%9D%98%20Semantic%20Chunk/" class="md-nav__link">
+      <a href="../Qdrant/Qdrant%EC%9D%98%20Semantic%20Chunk/" class="md-nav__link">
         
   
   
@@ -4126,7 +4331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../Qdrant/%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
         
   
   
@@ -4258,7 +4463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
         
   
   
@@ -4286,7 +4491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
         
   
   
@@ -4314,7 +4519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
         
   
   
@@ -4342,7 +4547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
         
   
   
@@ -4370,7 +4575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
         
   
   
@@ -4398,7 +4603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
         
   
   
@@ -4426,7 +4631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
         
   
   
@@ -4454,7 +4659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
         
   
   
@@ -4482,7 +4687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
         
   
   
@@ -4510,7 +4715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
         
   
   
@@ -4538,7 +4743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
         
   
   
@@ -4566,7 +4771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
         
   
   
@@ -4594,7 +4799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
         
   
   
@@ -4622,7 +4827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
         
   
   
@@ -4650,7 +4855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
         
   
   
@@ -4678,7 +4883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
         
   
   
@@ -4706,7 +4911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -4734,7 +4939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
         
   
   
@@ -4762,7 +4967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
         
   
   
@@ -4790,7 +4995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
         
   
   
@@ -4818,7 +5023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
         
   
   
@@ -4846,7 +5051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
         
   
   
@@ -4874,7 +5079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
         
   
   
@@ -4902,7 +5107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
         
   
   
@@ -4930,7 +5135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
         
   
   
@@ -4988,17 +5193,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8">
         
           
-          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="">
             
   
   
@@ -5096,7 +5304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Chunker/" class="md-nav__link">
+      <a href="../RAG/LangChain/Chunker/" class="md-nav__link">
         
   
   
@@ -5124,7 +5332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/%EB%8C%80%ED%99%94%20%EA%B8%B0%EB%A1%9D%20%EC%9C%A0%EC%A7%80/" class="md-nav__link">
+      <a href="../RAG/LangChain/%EB%8C%80%ED%99%94%20%EA%B8%B0%EB%A1%9D%20%EC%9C%A0%EC%A7%80/" class="md-nav__link">
         
   
   
@@ -5152,7 +5360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/%EC%9D%BC%EA%B4%80%EB%90%9C%20output%20%28PydanticOutputParser%29/" class="md-nav__link">
+      <a href="../RAG/LangChain/%EC%9D%BC%EA%B4%80%EB%90%9C%20output%20%28PydanticOutputParser%29/" class="md-nav__link">
         
   
   
@@ -5240,7 +5448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
+      <a href="../RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
         
   
   
@@ -5268,7 +5476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Document%20Loader/Morphik%20-%20%ED%8C%8C%EC%8B%B1%20%EC%97%86%EC%9D%B4%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A7%8C%EC%9C%BC%EB%A1%9C%20RAG%EB%A5%BC%20%EC%8B%A4%ED%98%84/" class="md-nav__link">
+      <a href="../RAG/LangChain/Document%20Loader/Morphik%20-%20%ED%8C%8C%EC%8B%B1%20%EC%97%86%EC%9D%B4%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A7%8C%EC%9C%BC%EB%A1%9C%20RAG%EB%A5%BC%20%EC%8B%A4%ED%98%84/" class="md-nav__link">
         
   
   
@@ -5296,7 +5504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
+      <a href="../RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
         
   
   
@@ -5396,7 +5604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
+      <a href="../RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -5490,7 +5698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/Intro/" class="md-nav__link">
+      <a href="../RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/Intro/" class="md-nav__link">
         
   
   
@@ -5518,7 +5726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/%EC%B2%AD%ED%82%B9%20%EC%A0%84%EB%9E%B5/" class="md-nav__link">
+      <a href="../RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/%EC%B2%AD%ED%82%B9%20%EC%A0%84%EB%9E%B5/" class="md-nav__link">
         
   
   
@@ -5572,17 +5780,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9">
         
           
-          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
             
   
   
@@ -5618,7 +5829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -5861,10 +6072,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -5874,22 +6083,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -5907,7 +6113,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -5922,35 +6128,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    macOS에서 USB 포맷 실패 시 해결 방법
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../etc/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
         
   
   
@@ -5966,107 +6147,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 실패 증상
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 터미널을 통한 포맷 절차
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 터미널을 통한 포맷 절차">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (1) 디스크 목록 확인
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (2) 디스크 언마운트
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (3) 디스크 포맷
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 포맷 성공 여부 확인
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 마무리
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6096,6 +6176,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -6104,10 +6186,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 실패 증상
+        개요
       
     </span>
   </a>
@@ -6115,60 +6197,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 터미널을 통한 포맷 절차
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 터미널을 통한 포맷 절차">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (1) 디스크 목록 확인
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (2) 디스크 언마운트
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (3) 디스크 포맷
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 포맷 성공 여부 확인
+        검색 API 라우트 설계
       
     </span>
   </a>
@@ -6176,10 +6208,120 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#handlebars" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 마무리
+        Handlebars 템플릿 기반 쿼리 생성
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        동적 필드 발견 시스템
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redis 캐시 네임스페이스 설계
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation 처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인기 검색어와 추천 검색어
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 결과 후처리
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        템플릿 엔진 최적화
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러 핸들링과 응답 포맷
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        부하 테스트 결과
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설계 결정에서의 트레이드오프
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과와 회고
       
     </span>
   </a>
@@ -6232,7 +6374,7 @@
         <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    Etc
+    Search Engine
   </span>
 
         </a>
@@ -6251,64 +6393,422 @@
 
 
 
-  <h1>macOS에서 USB 포맷 실패 시 해결 방법</h1>
-
-<p>macOS의 디스크 유틸리티(Disk Utility)를 이용해 USB를 포맷하려고 할 때, 간혹 포맷이 실패하는 경우가 있다. 특히 “파티션 맵을 수정할 수 없습니다. (-69874)”라는 오류와 함께 디스크가 정상적으로 초기화되지 않는 상황이 발생할 수 있다. 이러한 경우 터미널을 통해 문제를 해결할 수 있다.</p>
-<h2 id="1">1. 실패 증상</h2>
-<p>디스크 유틸리티에서 "디스크 지우기"를 실행했지만 다음과 같은 오류가 발생했다.</p>
-<div class="highlight"><pre><span></span><code>'디스크 지우고 생성 중'
-지우기 작업에 실패했습니다. 계속하려면 완료를 클릭하십시오.
-파티션 맵을 수정할 수 없습니다. (-69874)
+<h1 id="axum-opensearch-rust-api">Axum + OpenSearch: Rust 검색 API 아키텍처 설계</h1>
+<h2 id="_1">개요</h2>
+<p>Rust로 커머스 검색 엔진의 기본 구조를 잡은 후, 본격적으로 검색 API를 설계하고 구현하는 단계에 진입했다. 검색 API는 단순히 키워드를 받아 결과를 반환하는 것이 아니다. 커머스 검색에서는 상품명, 브랜드명, 카테고리, 이벤트, 마케팅 데이터 등 서로 다른 인덱스를 대상으로, 필드별 가중치가 다른 복합 쿼리를 실행하고, Aggregation으로 필터 데이터를 추출하며, 인기 검색어와 추천 검색어까지 처리해야 한다.</p>
+<p>NestJS 버전에서는 이 복잡한 쿼리 로직이 서비스 코드 안에 하드코딩되어 있었다. 검색 품질을 튜닝할 때마다 코드를 수정하고 배포해야 했으며, 인덱스 타입별로 비슷하지만 미묘하게 다른 쿼리 빌더가 난립했다. Rust 버전에서는 이 문제를 Handlebars 템플릿 엔진으로 해결하고, 필드 설정을 OpenSearch 매핑에서 동적으로 추출하는 자가 적응(self-adaptive) 방식을 도입했다.</p>
+<h2 id="api">검색 API 라우트 설계</h2>
+<p>검색 라우트는 단일 엔드포인트로 통합했다. 인덱스 이름과 검색 파라미터를 받아 범용적으로 동작하는 구조다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">search_routes</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Router</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Router</span><span class="p">::</span><span class="n">new</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/api/search"</span><span class="p">,</span><span class="w"> </span><span class="n">post</span><span class="p">(</span><span class="n">handle_search</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/api/search/:index_name"</span><span class="p">,</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">handle_search_get</span><span class="p">))</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>이 경우 GUI 방식으로는 더 이상 진행할 수 없으므로, 터미널에서 수동으로 디스크를 포맷하는 방식으로 해결할 수 있다.</p>
-<h2 id="2">2. 터미널을 통한 포맷 절차</h2>
-<h3 id="1_1">(1) 디스크 목록 확인</h3>
-<p>먼저 터미널을 열고 연결된 디스크 목록을 확인한다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>list
+<p>검색 파라미터는 <code>SearchParams</code> 구조체로 정의했다. 커머스 검색에 필요한 모든 조건을 포함한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">SearchParams</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">indexName</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">        </span><span class="c1">// 대상 인덱스 (goods, marketing, event)</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">searchWord</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">       </span><span class="c1">// 검색 키워드</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w">              </span><span class="c1">// 결과 수</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="kt">usize</span><span class="p">,</span><span class="w">              </span><span class="c1">// 페이지 오프셋</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">aggregation</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w">        </span><span class="c1">// Aggregation 포함 여부</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">filters</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w">   </span><span class="c1">// 동적 필터 조건</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">sort</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span><span class="w">     </span><span class="c1">// 정렬 기준</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>이 명령을 실행하면 <code>/dev/disk4</code>, <code>/dev/disk5</code> 등 다양한 디스크가 출력되며, USB 장치에 해당하는 디스크 번호를 확인할 수 있다. 용량이나 이름 등을 보고 판단한다.</p>
-<h3 id="2_1">(2) 디스크 언마운트</h3>
-<p>디스크가 마운트된 상태에서는 포맷이 되지 않으므로, 우선 언마운트를 수행한다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>unmountDisk<span class="w"> </span>/dev/disk4
-</code></pre></div>
-<p><code>Unmount of all volumes on disk4 was successful</code> 메시지가 출력되면 성공적으로 언마운트된 것이다.</p>
-<h3 id="3">(3) 디스크 포맷</h3>
-<p>이제 해당 디스크를 FAT32 형식(MS-DOS)과 MBR 파티션 맵으로 포맷한다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>eraseDisk<span class="w"> </span>MS-DOS<span class="w"> </span><span class="s2">"USB"</span><span class="w"> </span>MBR<span class="w"> </span>/dev/disk4
-</code></pre></div>
+<p><code>indexName</code> 필드명이 camelCase인 이유는 프론트엔드와의 호환성 때문이다. Rust의 네이밍 컨벤션(snake_case)과 충돌하지만, serde의 <code>#[serde(rename)]</code>보다는 프론트엔드 개발자와의 소통 비용을 줄이는 것이 더 중요하다고 판단했다. 실제로 NestJS 버전과 동일한 API 스펙을 유지함으로써 프론트엔드 수정 없이 백엔드만 교체할 수 있었다.</p>
+<h2 id="handlebars">Handlebars 템플릿 기반 쿼리 생성</h2>
+<p>OpenSearch 쿼리는 JSON 형태이지만, 검색 조건에 따라 동적으로 구성되어야 한다. 예를 들어 상품 검색 쿼리는 다음과 같은 요소를 조합한다.</p>
 <ul>
-<li>
-<p><code>"USB"</code>는 포맷 후 디스크에 표시될 이름이다. 자유롭게 변경 가능하다.</p>
-</li>
-<li>
-<p><code>MS-DOS</code>는 FAT32 파일 시스템을 의미하며, <code>MBR</code>은 마스터 부트 레코드 방식의 파티션이다.</p>
-</li>
+<li>검색어가 있을 때와 없을 때 (match_all vs multi_match)</li>
+<li>exact match, phrase match, most_fields match의 가중치 분배</li>
+<li>카테고리, 브랜드, 가격 범위 등의 필터 조건</li>
+<li>Aggregation (카테고리별 상품 수, 가격 범위 등)</li>
 </ul>
-<p>작업이 완료되면 다음과 같은 메시지가 출력된다.</p>
-<div class="highlight"><pre><span></span><code>Finished erase on disk4
+<p>이 조합의 경우의 수가 수십 가지에 달하므로, 코드로 쿼리를 빌딩하면 유지보수가 불가능해진다. Handlebars 템플릿을 도입해 쿼리 구조를 선언적으로 정의했다.</p>
+<div class="highlight"><pre><span></span><code><span class="c">{{! goods_search_template.hbs }}</span>
+<span class="err">{</span>
+<span class="x">    "size": </span><span class="cp">{{</span><span class="nv">size</span><span class="cp">}}</span><span class="x">,</span>
+<span class="x">    "from": </span><span class="cp">{{</span><span class="nv">from</span><span class="cp">}}</span><span class="x">,</span>
+<span class="x">    "track_total_hits": true,</span>
+<span class="x">    "sort": [</span><span class="err">{</span><span class="x"> "_score": "desc" }],</span>
+<span class="x">    "query": </span><span class="err">{</span>
+<span class="x">        "bool": </span><span class="err">{</span>
+<span class="x">            </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">searchWord</span><span class="cp">}}</span>
+<span class="x">            "should": [</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">exactFields</span><span class="cp">}}</span>
+<span class="x">                </span><span class="err">{</span>
+<span class="x">                    "multi_match": </span><span class="err">{</span>
+<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
+<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">exactFields</span><span class="cp">}}</span><span class="x">,</span>
+<span class="x">                        "type": "phrase",</span>
+<span class="x">                        "boost": 4.0</span>
+<span class="x">                    }</span>
+<span class="x">                },</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">phraseFields</span><span class="cp">}}</span>
+<span class="x">                </span><span class="err">{</span>
+<span class="x">                    "multi_match": </span><span class="err">{</span>
+<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
+<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">phraseFields</span><span class="cp">}}</span><span class="x">,</span>
+<span class="x">                        "type": "phrase",</span>
+<span class="x">                        "boost": 3.0</span>
+<span class="x">                    }</span>
+<span class="x">                },</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">primaryFields</span><span class="cp">}}</span>
+<span class="x">                </span><span class="err">{</span>
+<span class="x">                    "multi_match": </span><span class="err">{</span>
+<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
+<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">primaryFields</span><span class="cp">}}</span><span class="x">,</span>
+<span class="x">                        "type": "most_fields",</span>
+<span class="x">                        "operator": "and",</span>
+<span class="x">                        "boost": 2.0</span>
+<span class="x">                    }</span>
+<span class="x">                },</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">#if</span> <span class="nv">secondaryFields</span><span class="cp">}}</span>
+<span class="x">                </span><span class="err">{</span>
+<span class="x">                    "multi_match": </span><span class="err">{</span>
+<span class="x">                        "query": "</span><span class="cp">{{</span><span class="nv">searchWord</span><span class="cp">}}</span><span class="x">",</span>
+<span class="x">                        "fields": </span><span class="cp">{{</span><span class="nv">json</span> <span class="nv">secondaryFields</span><span class="cp">}}</span><span class="x">,</span>
+<span class="x">                        "type": "most_fields",</span>
+<span class="x">                        "minimum_should_match": "75%",</span>
+<span class="x">                        "boost": 1.0</span>
+<span class="x">                    }</span>
+<span class="x">                }</span>
+<span class="x">                </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
+<span class="x">            ],</span>
+<span class="x">            "minimum_should_match": 1,</span>
+<span class="x">            </span><span class="cp">{{</span><span class="nv">else</span><span class="cp">}}</span>
+<span class="x">            "must": [</span><span class="err">{</span><span class="x"> "match_all": </span><span class="err">{</span><span class="x">} }],</span>
+<span class="x">            </span><span class="cp">{{</span><span class="m m-Attribute">/if</span><span class="cp">}}</span>
+<span class="x">            "filter": [ ... ]</span>
+<span class="x">        }</span>
+<span class="x">    }</span>
+<span class="x">}</span>
 </code></pre></div>
-<p>이로써 USB 포맷이 성공적으로 완료된 것이다.</p>
-<h2 id="3_1">3. 포맷 성공 여부 확인</h2>
-<p>Finder에서 USB가 <code>"USB"</code>라는 이름으로 자동 마운트되며 정상적으로 인식되는 것을 확인할 수 있다. 터미널에서 다음 명령어로도 확인할 수 있다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>info<span class="w"> </span>/Volumes/USB
+<p>이 템플릿의 핵심은 4단계 가중치 시스템이다.</p>
+<pre class="mermaid"><code>graph TD
+    A[검색어 입력] --&gt; B{필드 매칭}
+    B --&gt; C[Exact Match&lt;br/&gt;boost: 4.0&lt;br/&gt;정확히 일치하는 경우]
+    B --&gt; D[Phrase Match&lt;br/&gt;boost: 3.0&lt;br/&gt;구문이 포함된 경우]
+    B --&gt; E[Primary Fields&lt;br/&gt;boost: 2.0&lt;br/&gt;AND 조건 주요 필드]
+    B --&gt; F[Secondary Fields&lt;br/&gt;boost: 1.0&lt;br/&gt;75% 매칭 보조 필드]
+    C --&gt; G[최종 스코어링]
+    D --&gt; G
+    E --&gt; G
+    F --&gt; G</code></pre>
+<p><strong>Exact Match (boost 4.0)</strong>: 검색어가 필드 값과 정확히 일치할 때 가장 높은 점수를 부여한다. "나이키 에어맥스"를 검색했을 때 상품명이 정확히 "나이키 에어맥스"인 상품이 최상위에 노출된다.</p>
+<p><strong>Phrase Match (boost 3.0)</strong>: 검색어가 필드 값 내에 구문으로 포함될 때. "나이키 에어맥스 90 리미티드 에디션"처럼 검색어를 포함하는 긴 상품명이 해당된다.</p>
+<p><strong>Primary Fields (boost 2.0)</strong>: AND 조건으로 검색어의 모든 토큰이 포함된 경우. 검색어가 "나이키 운동화"일 때 "나이키"와 "운동화" 모두 포함하는 상품.</p>
+<p><strong>Secondary Fields (boost 1.0)</strong>: 75% 이상의 토큰이 매칭되는 경우. 검색어의 일부만 일치해도 결과에 포함되며, 재현율(recall)을 높이는 역할을 한다.</p>
+<p>이 가중치 구조는 NestJS 버전에서 수개월간 A/B 테스트를 거쳐 최적화한 값이다. Rust 버전에서는 이를 그대로 가져왔되, 템플릿 파일에서 관리하므로 가중치 변경 시 코드 수정 없이 템플릿만 편집하면 된다.</p>
+<h2 id="_2">동적 필드 발견 시스템</h2>
+<p>가장 혁신적인 부분은 검색 필드를 하드코딩하지 않고 OpenSearch 인덱스 매핑에서 동적으로 추출하는 시스템이다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_index_fields_from_db</span><span class="p">(</span><span class="n">index_name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">IndexFields</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">index_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extract_index_type</span><span class="p">(</span><span class="n">index_name</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1. Redis 캐시에서 먼저 조회</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">get_cached_field_config</span><span class="p">(</span><span class="n">index_name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">index_type</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">cached_fields</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">IndexFields</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="n">cached_fields</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">None</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 캐시 미스 */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"Cache lookup failed: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 2. 캐시 미스 시 OpenSearch에서 매핑 조회</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">indices</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">get_mapping</span><span class="p">(</span><span class="n">IndicesGetMappingParts</span><span class="p">::</span><span class="n">Index</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="n">index_name</span><span class="p">]))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 3. 매핑에서 필드 타입별 분류</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">classify_fields_from_mapping</span><span class="p">(</span><span class="n">mapping</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. Redis에 캐싱</span>
+<span class="w">    </span><span class="n">cache_field_config</span><span class="p">(</span><span class="n">index_name</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">index_type</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fields</span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">fields</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>출력 결과에서 다음과 같은 항목을 확인하면 된다.</p>
+<p>이 시스템의 동작 흐름은 다음과 같다.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant C as Client
+    participant S as Search Service
+    participant R as Redis
+    participant O as OpenSearch
+
+    C-&gt;&gt;S: 검색 요청
+    S-&gt;&gt;R: 필드 설정 캐시 조회
+    alt 캐시 히트
+        R--&gt;&gt;S: CachedIndexFields
+    else 캐시 미스
+        S-&gt;&gt;O: GET /{index}/_mapping
+        O--&gt;&gt;S: 인덱스 매핑 JSON
+        S-&gt;&gt;S: 필드 분류 (exact/phrase/primary/secondary)
+        S-&gt;&gt;R: 캐시 저장
+    end
+    S-&gt;&gt;S: Handlebars 템플릿 렌더링
+    S-&gt;&gt;O: POST /{index}/_search
+    O--&gt;&gt;S: 검색 결과
+    S--&gt;&gt;C: API 응답</code></pre>
+<p>필드 분류 로직은 OpenSearch 매핑의 필드 타입과 분석기(analyzer) 설정을 기반으로 한다.</p>
 <ul>
-<li>
-<p><code>File System: MS-DOS (FAT32)</code></p>
-</li>
-<li>
-<p><code>Writable: Yes</code></p>
-</li>
+<li><code>keyword</code> 타입 또는 <code>.exact</code> 서브필드가 있는 필드 → <code>exact_fields</code></li>
+<li><code>text</code> 타입 + <code>nori_analyzer</code> → <code>phrase_fields</code></li>
+<li><code>text</code> 타입 + 높은 <code>boost</code> 설정 → <code>primary_fields</code></li>
+<li>나머지 <code>text</code> 타입 필드 → <code>secondary_fields</code></li>
 </ul>
-<h2 id="4">4. 마무리</h2>
-<p>macOS에서 디스크 유틸리티를 통한 포맷이 실패하더라도, 터미널을 활용하면 대부분의 문제를 해결할 수 있다. 특히 <code>diskutil</code> 명령어는 디스크 관리에 매우 강력한 도구이므로 익숙해두면 다양한 상황에 유용하게 활용할 수 있다.</p>
+<p>이 방식의 장점은 새로운 필드를 인덱스에 추가하면 검색 API가 자동으로 해당 필드를 검색 대상에 포함한다는 것이다. NestJS 버전에서는 필드를 추가할 때마다 쿼리 빌더 코드를 수정해야 했다.</p>
+<h2 id="redis">Redis 캐시 네임스페이스 설계</h2>
+<p>Redis 캐시는 네임스페이스를 체계적으로 설계했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">CACHE_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"search_rust"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">FIELD_CONFIG_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"field_config"</span><span class="p">;</span>
+
+<span class="c1">// 키 구조:</span>
+<span class="c1">// search_rust:field_config:{index_name}:{index_type}</span>
+<span class="c1">// 예: search_rust:field_config:test-local-goods-ko:goods</span>
+</code></pre></div>
+<p>캐시 구조체에는 캐시 생성 시간을 포함해, TTL 기반이 아닌 명시적 무효화가 가능하도록 했다.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">CachedIndexFields</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">title_field</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">exact_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">and_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">or_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">like_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">analyze_fields</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">cached_at</span><span class="p">:</span><span class="w"> </span><span class="kt">u64</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>like_fields</code>와 <code>analyze_fields</code>는 현재 사용하지 않지만 호환성을 위해 남겨두었다. 이전 버전의 캐시 데이터와 혼재될 수 있는 상황을 고려한 결정이다. 새로운 시스템을 배포할 때 기존 캐시를 전부 삭제하지 않아도 되므로 무중단 배포가 가능하다.</p>
+<h2 id="aggregation">Aggregation 처리</h2>
+<p>커머스 검색에서 Aggregation은 필터 UI를 구성하는 데 필수적이다. 카테고리별 상품 수, 브랜드 목록, 가격 범위, 할인율 범위 등을 검색 결과와 함께 반환해야 한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">process_aggregation_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Value</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">({});</span>
+
+<span class="w">    </span><span class="c1">// 카테고리 데이터</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"categoryDataList"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_category_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 대분류 카테고리</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"lrgCtgGrpData"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_lrg_category_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 브랜드 데이터</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"brandDataList"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_brand_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 연관어 데이터</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"assocwordDataList"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_assocword_data</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 가격/할인율 범위</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"minPrc"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_min_prc</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"maxPrc"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_max_prc</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"minDcRate"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_min_dc_rate</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">[</span><span class="s">"maxDcRate"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_max_dc_rate</span><span class="p">(</span><span class="n">aggregations</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">payload</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>각 Aggregation 처리 함수는 OpenSearch 응답의 중첩 구조를 평탄화한다. 특히 카테고리 데이터는 nested aggregation으로 처리되는데, 3단계 깊이의 카테고리 구조(대분류 → 중분류 → 소분류)를 효율적으로 추출해야 한다.</p>
+<pre class="mermaid"><code>graph TD
+    A[검색 응답] --&gt; B[aggregations]
+    B --&gt; C[category]
+    B --&gt; D[brand]
+    B --&gt; E[price_stats]
+    B --&gt; F[dc_rate_stats]
+    C --&gt; C1[category_keyword buckets]
+    C1 --&gt; C2[대분류]
+    C2 --&gt; C3[중분류]
+    C3 --&gt; C4[소분류]
+    D --&gt; D1[brand_keyword buckets]
+    E --&gt; E1[min_prc / max_prc]
+    F --&gt; F1[min_dc_rate / max_dc_rate]</code></pre>
+<p>Aggregation 처리에서 가장 까다로운 부분은 nested 필드다. 커머스 데이터에서 카테고리는 상품 하나에 여러 개가 매핑될 수 있으므로 nested 타입으로 인덱싱한다. 이때 Aggregation도 nested aggregation으로 작성해야 정확한 카운트가 나온다.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"nested"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"dispCtgNo.lrgCtgNo.keyword"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"100"</span><span class="p">,</span><span class="w"> </span><span class="s2">"200"</span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_3">인기 검색어와 추천 검색어</h2>
+<p>커머스 검색에서 인기 검색어(popupword)와 추천 검색어(recomword)는 일반 검색과 다른 처리 로직이 필요하다.</p>
+<p>인기 검색어는 최근 48시간 이내의 검색 로그를 기반으로 집계한다. OpenSearch의 terms aggregation과 date range filter를 결합하여 실시간에 가까운 인기 검색어를 추출한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">process_popupword_result</span><span class="p">(</span><span class="n">search_result</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Value</span><span class="p">,</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Send</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Sync</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">aggregations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search_result</span>
+<span class="w">        </span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"aggregations"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or</span><span class="p">(</span><span class="s">"No aggregations found"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">popular_terms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aggregations</span>
+<span class="w">        </span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"popular_terms"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"buckets"</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_array</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">ok_or</span><span class="p">(</span><span class="s">"No popular terms found"</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 버킷을 순위 형태로 변환</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">ranked_terms</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">popular_terms</span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span><span class="w"> </span><span class="n">bucket</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">                </span><span class="s">"rank"</span><span class="p">:</span><span class="w"> </span><span class="nc">rank</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="nc">bucket</span><span class="p">[</span><span class="s">"key"</span><span class="p">],</span>
+<span class="w">                </span><span class="s">"count"</span><span class="p">:</span><span class="w"> </span><span class="nc">bucket</span><span class="p">[</span><span class="s">"doc_count"</span><span class="p">]</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">json</span><span class="o">!</span><span class="p">({</span><span class="w"> </span><span class="s">"popularTerms"</span><span class="p">:</span><span class="w"> </span><span class="nc">ranked_terms</span><span class="w"> </span><span class="p">}))</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>추천 검색어는 검색어 입력 중 자동 완성(autocomplete)에 사용된다. prefix 쿼리와 completion suggester를 조합하여 타이핑하는 동안 실시간으로 후보를 제공한다. 이 부분은 응답 시간이 50ms 이내여야 사용자 경험에 영향을 주지 않으므로, Redis 캐싱을 적극적으로 활용했다.</p>
+<h2 id="_4">검색 결과 후처리</h2>
+<p>OpenSearch에서 반환된 원시 결과를 API 응답으로 변환하는 과정에서 몇 가지 후처리를 수행한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">process_regular_search_result</span><span class="p">(</span>
+<span class="w">    </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">serde_json</span><span class="p">::</span><span class="n">Map</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">search_result</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Send</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Sync</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 전체 히트 수 추출</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">total_hits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search_result</span>
+<span class="w">        </span><span class="p">.</span><span class="n">pointer</span><span class="p">(</span><span class="s">"/hits/total/value"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_u64</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">payload</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"totalCount"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">(</span><span class="n">total_hits</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// 히트 목록에서 _source만 추출</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">hits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">search_result</span>
+<span class="w">        </span><span class="p">.</span><span class="n">pointer</span><span class="p">(</span><span class="s">"/hits/hits"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_array</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">hits</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">hits</span><span class="p">.</span><span class="n">iter</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="n">hit</span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hit</span><span class="p">[</span><span class="s">"_source"</span><span class="p">].</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">                    </span><span class="c1">// 스코어 주입</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hit</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"_score"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">source</span><span class="p">[</span><span class="s">"_score"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">clone</span><span class="p">();</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">source</span>
+<span class="w">                </span><span class="p">})</span>
+<span class="w">                </span><span class="p">.</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">()</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or_default</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">payload</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="s">"goodsList"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">(</span><span class="n">hits</span><span class="p">));</span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>_score</code>를 결과에 포함시키는 이유는 프론트엔드에서 디버깅과 검색 품질 모니터링에 활용하기 위함이다. 프로덕션에서는 노출하지 않지만, 스테이징 환경에서 검색 품질을 튜닝할 때 각 결과의 스코어를 확인하는 것이 매우 유용하다.</p>
+<h2 id="_5">템플릿 엔진 최적화</h2>
+<p>Handlebars 인스턴스는 <code>once_cell</code>을 사용해 전역 싱글톤으로 관리한다. 템플릿 파일은 프로그램 시작 시 한 번만 로드하고 컴파일한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">use</span><span class="w"> </span><span class="n">once_cell</span><span class="p">::</span><span class="n">sync</span><span class="p">::</span><span class="n">Lazy</span><span class="p">;</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">HANDLEBARS</span><span class="p">:</span><span class="w"> </span><span class="nc">Lazy</span><span class="o">&lt;</span><span class="n">Handlebars</span><span class="o">&lt;'</span><span class="nb">static</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lazy</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">hbs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Handlebars</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 커스텀 헬퍼 등록</span>
+<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_helper</span><span class="p">(</span><span class="s">"json"</span><span class="p">,</span><span class="w"> </span><span class="nb">Box</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">json_helper</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// 템플릿 파일 등록</span>
+<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_template_file</span><span class="p">(</span><span class="s">"goods_search"</span><span class="p">,</span><span class="w"> </span><span class="s">"src/templates/goods_search_template.hbs"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"Failed to register goods search template"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_template_file</span><span class="p">(</span><span class="s">"marketing_search"</span><span class="p">,</span><span class="w"> </span><span class="s">"src/templates/marketing_search_template.hbs"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"Failed to register marketing search template"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">hbs</span><span class="p">.</span><span class="n">register_template_file</span><span class="p">(</span><span class="s">"event_search"</span><span class="p">,</span><span class="w"> </span><span class="s">"src/templates/event_search_template.hbs"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">expect</span><span class="p">(</span><span class="s">"Failed to register event search template"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">hbs</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>커스텀 <code>json</code> 헬퍼는 Rust의 Vec<string>을 JSON 배열 문자열로 변환하는 역할을 한다. Handlebars의 기본 출력은 HTML 이스케이프가 적용되므로, JSON 구조를 올바르게 출력하기 위해서는 별도의 헬퍼가 필요하다.</string></p>
+<p>템플릿에서 인덱스 타입별로 어떤 템플릿을 사용할지 결정하는 로직도 분리했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_template_name</span><span class="p">(</span><span class="n">index_name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">index_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">extract_index_type</span><span class="p">(</span><span class="n">index_name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">index_type</span><span class="p">.</span><span class="n">as_str</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"goods"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"goods_search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"marketing"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"marketing_search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"event"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"event_search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"popupword"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"popupword_search"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"recomword"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"recomword_search"</span><span class="p">,</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"field_search"</span><span class="p">,</span><span class="w">  </span><span class="c1">// 범용 검색 템플릿</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>인덱스 이름에서 타입을 추출하는 규칙은 <code>{project}-{env}-{type}-{lang}</code> 형태다. 예를 들어 <code>test-local-goods-ko</code>에서 <code>goods</code>를 추출한다. 이 네이밍 컨벤션은 OpenSearch 인덱스 관리의 핵심으로, 하나의 코드베이스로 여러 프로젝트와 환경을 처리할 수 있게 해준다.</p>
+<h2 id="_6">에러 핸들링과 응답 포맷</h2>
+<p>모든 검색 API는 통일된 응답 포맷을 사용한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ApiResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">timestamp</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w">       </span><span class="c1">// "0000" = 성공</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="nc">Value</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>성공 시 <code>code</code>는 "0000", 에러 시에는 HTTP 상태 코드에 대응하는 문자열("4000", "5000" 등)을 사용한다. 이 규칙은 NestJS 버전과의 하위 호환성을 유지하기 위한 것이다.</p>
+<p>검색에서 결과가 0건인 경우는 에러가 아니다. 빈 <code>payload</code>와 <code>totalCount: 0</code>을 반환한다. 반면, OpenSearch 연결 실패나 쿼리 파싱 에러는 500 에러로 처리한다. 이 구분은 프론트엔드에서 "검색 결과가 없습니다"와 "서비스 오류가 발생했습니다"를 올바르게 표시하는 데 중요하다.</p>
+<h2 id="_7">부하 테스트 결과</h2>
+<p>Axum + OpenSearch 조합의 성능을 검증하기 위해 간단한 부하 테스트를 진행했다.</p>
+<p>테스트 환경은 4코어 8GB RAM EC2 인스턴스에서 OpenSearch 단일 노드(8GB 힙)를 사용했다. 검색 대상은 약 50만 건의 상품 데이터다.</p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>NestJS 버전</th>
+<th>Rust 버전</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>평균 응답 시간 (단순 검색)</td>
+<td>45ms</td>
+<td>28ms</td>
+</tr>
+<tr>
+<td>P99 응답 시간</td>
+<td>220ms</td>
+<td>85ms</td>
+</tr>
+<tr>
+<td>동시 100 요청 처리량</td>
+<td>850 req/s</td>
+<td>2,100 req/s</td>
+</tr>
+<tr>
+<td>메모리 사용량 (idle)</td>
+<td>180MB</td>
+<td>12MB</td>
+</tr>
+<tr>
+<td>메모리 사용량 (peak)</td>
+<td>520MB</td>
+<td>45MB</td>
+</tr>
+</tbody>
+</table>
+<p>가장 눈에 띄는 차이는 P99 응답 시간이다. NestJS 버전에서 220ms였던 것이 Rust 버전에서 85ms로 60% 이상 개선되었다. 이 차이의 대부분은 Node.js의 GC 일시정지에서 비롯된다. 평균 응답 시간의 차이(45ms vs 28ms)는 대부분 OpenSearch 자체의 처리 시간이므로 극적이지 않지만, 꼬리 레이턴시(tail latency)에서의 개선은 사용자 경험에 직접적인 영향을 미친다.</p>
+<p>메모리 사용량 차이는 더 극적이다. idle 상태에서 180MB vs 12MB, 피크에서 520MB vs 45MB. 동일한 서버에서 훨씬 더 많은 인스턴스를 운영할 수 있다는 의미이며, OOM으로 인한 서비스 중단 위험이 사실상 사라졌다.</p>
+<h2 id="_8">설계 결정에서의 트레이드오프</h2>
+<p><strong>템플릿 vs 쿼리 빌더</strong>: Handlebars 템플릿은 가독성이 뛰어나지만, 복잡한 조건 분기가 많아지면 템플릿 자체가 읽기 어려워진다. 특히 중첩 필터와 Aggregation이 결합되는 경우 Handlebars의 표현력 한계가 드러난다. 이 문제를 완화하기 위해 <code>query_builder.rs</code>에서 템플릿에 전달할 컨텍스트를 미리 가공하는 방식을 사용했다. 복잡한 로직은 Rust 코드에, 쿼리 구조는 템플릿에 두는 역할 분리다.</p>
+<p><strong>동적 필드 발견 vs 명시적 설정</strong>: 자동으로 필드를 발견하는 방식은 편리하지만, 의도하지 않은 필드가 검색 대상에 포함될 위험이 있다. 예를 들어 내부용 메타 필드가 검색 결과에 영향을 줄 수 있다. 이를 방지하기 위해 블랙리스트 패턴을 적용했고, 필드 분류 로직에 <code>_internal_</code>, <code>_meta_</code> 접두사를 가진 필드를 제외하는 규칙을 추가했다.</p>
+<p><strong>캐시 무효화 전략</strong>: 인덱스 매핑이 변경되면 캐시를 무효화해야 한다. 현재는 인덱싱 서비스에서 인덱스를 재생성할 때 명시적으로 캐시를 삭제하는 방식을 사용한다. TTL 기반 무효화도 고려했으나, 매핑 변경이 빈번하지 않고 캐시 불일치가 검색 품질에 심각한 영향을 미칠 수 있어 명시적 무효화를 선택했다.</p>
+<h2 id="_9">결과와 회고</h2>
+<p>Axum + OpenSearch + Handlebars 조합은 커머스 검색 API에 매우 적합했다. 특히 Handlebars 템플릿은 검색 품질 튜닝 과정에서 빛을 발했다. 가중치를 조정하거나 새로운 쿼리 전략을 테스트할 때 코드 변경 없이 템플릿만 수정하면 되므로, 실험 주기가 크게 단축되었다.</p>
+<p>동적 필드 발견 시스템은 예상보다 더 유용했다. 새로운 커머스 고객사를 온보딩할 때, 인덱스 매핑만 정의하면 검색 API가 자동으로 적응한다. NestJS 버전에서는 고객사별로 쿼리 빌더를 커스터마이징해야 했던 것과 비교하면 운영 비용이 크게 줄었다.</p>
+<p>남은 과제는 쿼리 성능의 자동 모니터링이다. 현재는 슬로우 쿼리를 수동으로 확인하는데, OpenSearch의 슬로우 로그와 연동하여 자동으로 알림을 발생시키는 시스템을 구축할 예정이다.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 

@@ -6,10 +6,10 @@
       
       
       
-        <link rel="prev" href="../GliNER%EA%B3%BC%20DPO-LoRA%EB%A5%BC%20%ED%99%9C%EC%9A%A9%ED%95%9C%20%EB%AA%A8%EB%8D%B8%20%ED%8C%8C%EC%9D%B8%ED%8A%9C%EB%8B%9D/">
+        <link rel="prev" href="../XGEN-1.0-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0-%EC%97%94%EC%A7%84%EA%B3%BC-Qdrant-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EA%B2%80%EC%83%89/">
       
       
-        <link rel="next" href="../OJT-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81%EA%B3%BC-Kotaemon-RAG-%EA%B5%AC%ED%98%84%EA%B8%B0/">
+        <link rel="next" href="../XGEN-2.0-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%99%80-IO-%EB%A1%9C%EA%B9%85-%EC%8B%9C%EC%8A%A4%ED%85%9C/">
       
       
         
@@ -20,7 +20,7 @@
     
     
       
-        <title>KoBERT - SON BLOG</title>
+        <title>XGEN 2.0 모델 서빙 통합 아키텍처 리팩토링 - SON BLOG</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kobert" class="md-skip">
+        <a href="#xgen-20" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              KoBERT
+              XGEN 2.0 모델 서빙 통합 아키텍처 리팩토링
             
           </span>
         </div>
@@ -1757,35 +1757,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    KoBERT
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../KoBERT/" class="md-nav__link">
         
   
   
@@ -1801,46 +1776,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#kobert" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        KoBERT 학습모델 만들기
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6kobert" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.KoBERT 모델 학습시키기
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2018,10 +1953,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../XGEN-2.0-%EB%AA%A8%EB%8D%B8-%EC%84%9C%EB%B9%99-%ED%86%B5%ED%95%A9-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XGEN 2.0 모델 서빙 통합 아키텍처 리팩토링
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2037,6 +1999,226 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배경
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        아키텍처 변화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="아키텍처 변화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-vllm-ray-serve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before: vLLM Ray Serve 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-xgen-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After: xgen-model 통합 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 구현 내용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="핵심 구현 내용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 서비스 통합 및 컨테이너 변경
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kubernetes-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kubernetes DNS 내부 통신 최적화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 추론 모듈 명칭 정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 및 운영 개선 효과
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="성능 및 운영 개선 효과">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 메모리 사용량 최적화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 시작 시간 단축
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 로그 통합 및 모니터링
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마이그레이션 과정에서의 도전
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="마이그레이션 과정에서의 도전">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. GPU 메모리 관리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 동시성 처리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결론
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5953,6 +6135,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5961,10 +6145,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kobert" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        KoBERT 학습모델 만들기
+        배경
       
     </span>
   </a>
@@ -5972,10 +6156,188 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6kobert" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.KoBERT 모델 학습시키기
+        아키텍처 변화
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="아키텍처 변화">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-vllm-ray-serve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before: vLLM Ray Serve 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-xgen-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After: xgen-model 통합 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        핵심 구현 내용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="핵심 구현 내용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 서비스 통합 및 컨테이너 변경
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kubernetes-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kubernetes DNS 내부 통신 최적화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 추론 모듈 명칭 정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성능 및 운영 개선 효과
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="성능 및 운영 개선 효과">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 메모리 사용량 최적화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 시작 시간 단축
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 로그 통합 및 모니터링
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마이그레이션 과정에서의 도전
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="마이그레이션 과정에서의 도전">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. GPU 메모리 관리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 동시성 처리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결론
       
     </span>
   </a>
@@ -6047,160 +6409,107 @@
 
 
 
-  <h1>KoBERT</h1>
-
-<p>KoBERT는 BERT 모델에서 한국어 데이터를 추가로 학습시킨 모델로, 한국어 위키에서 5백만개의 문장과 54백만개의 단어를 학습시킨 모델이다. 따라서 한국어 데이터에 대해서도 높은 정확도를 낼 수 있다고 한다.</p>
-<p>이러한 BERT의 큰 특징은 방대한 양의 데이터(약 33억개 단어)로 먼저 학습(pretrain)되었다는 것과, 자신의 사용 목적에 따라 파인튜닝(finetuning)이 가능하다는 점이다. 따라서 output layer만 추가로 달아주면 원하는 결과를 출력해내는 기계번역 모델을 만들어 낼 수 있다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BERTDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">sent_idx</span><span class="p">,</span> <span class="n">label_idx</span><span class="p">,</span> <span class="n">bert_tokenizer</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span>
-                 <span class="n">pad</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
-        <span class="n">transform</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">BERTSentenceTransform</span><span class="p">(</span>
-            <span class="n">bert_tokenizer</span><span class="p">,</span> <span class="n">max_seq_length</span><span class="o">=</span><span class="n">max_len</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">pair</span><span class="o">=</span><span class="n">pair</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span><span class="n">transform</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="n">sent_idx</span><span class="p">]])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">label_idx</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sentences</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">))</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">))</span>
-</code></pre></div>
-<p>하이퍼 파라미터들을 조정해준다.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Setting parameters</span>
-<span class="n">max_len</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="n">warmup_ratio</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">max_grad_norm</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">log_interval</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">learning_rate</span> <span class="o">=</span>  <span class="mf">5e-5</span>
-</code></pre></div>
-<p>이제 버트토크나이저와 위에서 정의한 클래스를 적용해 토큰화와 패딩을 해준다.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#토큰화</span>
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">get_tokenizer</span><span class="p">()</span>
-<span class="n">tok</span> <span class="o">=</span> <span class="n">nlp</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">BERTSPTokenizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">vocab</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">data_train</span> <span class="o">=</span> <span class="n">BERTDataset</span><span class="p">(</span><span class="n">dataset_train</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tok</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">data_test</span> <span class="o">=</span> <span class="n">BERTDataset</span><span class="p">(</span><span class="n">dataset_test</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tok</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
+<h1 id="xgen-20">XGEN 2.0 모델 서빙 통합 아키텍처 리팩토링</h1>
 <blockquote>
-<p>print(data_train[0]) 실행</p>
+<p>2026.01 | vLLM Ray Serve에서 통합 xgen-model 서비스로의 마이그레이션</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">array</span><span class="p">([</span>   <span class="mi">2</span><span class="p">,</span> <span class="mi">1189</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span> <span class="mi">6188</span><span class="p">,</span> <span class="mi">7245</span><span class="p">,</span> <span class="mi">7063</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span>  <span class="mi">463</span><span class="p">,</span> <span class="mi">3486</span><span class="p">,</span> <span class="mi">7836</span><span class="p">,</span> <span class="mi">5966</span><span class="p">,</span>
-        <span class="mi">1698</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span> <span class="mi">6188</span><span class="p">,</span> <span class="mi">7245</span><span class="p">,</span> <span class="mi">7063</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span>  <span class="mi">463</span><span class="p">,</span> <span class="mi">1281</span><span class="p">,</span> <span class="mi">7870</span><span class="p">,</span> <span class="mi">1801</span><span class="p">,</span> <span class="mi">6885</span><span class="p">,</span>
-        <span class="mi">7088</span><span class="p">,</span> <span class="mi">5966</span><span class="p">,</span> <span class="mi">1698</span><span class="p">,</span> <span class="mi">5837</span><span class="p">,</span> <span class="mi">5837</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span> <span class="mi">6188</span><span class="p">,</span> <span class="mi">7245</span><span class="p">,</span> <span class="mi">6398</span><span class="p">,</span> <span class="mi">6037</span><span class="p">,</span> <span class="mi">7063</span><span class="p">,</span>
-         <span class="mi">517</span><span class="p">,</span>  <span class="mi">463</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span>  <span class="mi">463</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span>  <span class="mi">364</span><span class="p">,</span>  <span class="mi">517</span><span class="p">,</span>  <span class="mi">364</span><span class="p">,</span>    <span class="mi">3</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>
-           <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>
-           <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">,</span>    <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">),</span>
- <span class="n">array</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">),</span>
-
- <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-       <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<h2 id="_1">배경</h2>
+<p>XGEN 1.0에서는 GPU 모델 서빙을 위해 vLLM과 Ray Serve를 조합한 분산 처리 아키텍처를 사용했다. 하지만 운영 과정에서 몇 가지 문제점이 드러났다:</p>
+<ul>
+<li><strong>복잡한 의존성</strong>: Ray Serve 클러스터 관리와 vLLM 엔진 간의 복잡한 연동</li>
+<li><strong>리소스 오버헤드</strong>: Ray 클러스터 자체가 상당한 메모리와 CPU를 소모</li>
+<li><strong>배포 복잡성</strong>: Docker 환경과 Kubernetes 간의 서로 다른 설정 관리</li>
+<li><strong>모니터링 어려움</strong>: 여러 레이어에 걸친 로그와 메트릭 수집의 복잡성</li>
+</ul>
+<p>XGEN 2.0에서는 이러한 문제를 해결하기 위해 <strong>xgen-model</strong> 단일 서비스로 통합하는 대규모 리팩토링을 진행했다.</p>
+<h2 id="_2">아키텍처 변화</h2>
+<h3 id="before-vllm-ray-serve">Before: vLLM Ray Serve 구조</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 기존 구조</span>
+<span class="l l-Scalar l-Scalar-Plain">┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐</span>
+<span class="l l-Scalar l-Scalar-Plain">│   API Gateway   │ -&gt; │   Ray Serve      │ -&gt; │    vLLM Engine  │</span>
+<span class="l l-Scalar l-Scalar-Plain">│  (Rust/Axum)   │    │   (Distribute)   │    │   (GPU Serve)   │</span>
+<span class="l l-Scalar l-Scalar-Plain">└─────────────────┘    └──────────────────┘    └─────────────────┘</span>
 </code></pre></div>
-<p>출력값들을 보면 3개의 array가 출력되는데, 
-첫 번째는 <strong>패딩된 시퀀스</strong>, 
-두 번째는 <strong>길이와 타입에 대한 내용</strong>, 
-세 번재는 <strong>어텐션 마스크 시퀀스</strong>이다.</p>
-<p>어텐션 마스크는 BERT에 데이터가 입력되었을 때 어텐션 함수가 적용되어 연산이 된다.
-이때 1로 패딩된 값들은 연산할 필요가 없기 때문에 연산을 하지 않아도 된다고 알려주는 데이터가 있어야 하는데 그게 바로 어텐션 마스크 시퀀스인 것이다.
-이렇게 BERT나 KoBERT에는 어텐션 마스크 데이터도 함께 입력되어야 한다</p>
-<p>torch 형식의 dataset을 만들어준다.</p>
-<div class="highlight"><pre><span></span><code><span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">test_dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<h3 id="after-xgen-model">After: xgen-model 통합 구조</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 새로운 구조</span>
+<span class="l l-Scalar l-Scalar-Plain">┌─────────────────┐    ┌──────────────────────────────────┐</span>
+<span class="l l-Scalar l-Scalar-Plain">│   API Gateway   │ -&gt; │        xgen-model                │</span>
+<span class="l l-Scalar l-Scalar-Plain">│  (Rust/Axum)   │    │  ┌─────────────┐ ┌─────────────┐ │</span>
+<span class="l l-Scalar l-Scalar-Plain">└─────────────────┘    │  │  FastAPI    │ │ vLLM Engine │ │</span>
+<span class="w">                       </span><span class="l l-Scalar l-Scalar-Plain">│  │  Controller │ │   Direct    │ │</span>
+<span class="w">                       </span><span class="l l-Scalar l-Scalar-Plain">│  └─────────────┘ └─────────────┘ │</span>
+<span class="w">                       </span><span class="l l-Scalar l-Scalar-Plain">└──────────────────────────────────┘</span>
 </code></pre></div>
-<h3 id="kobert">KoBERT 학습모델 만들기</h3>
-<p>학습시킬 KoBERT 모델을 만들어야 하는데, 아래 코드에서 다중분류할 클래스 수 만큼 num_classes 변수를 수정해주어야 한다. 이번 프로젝트에서는 7가지의 class를 분류하기 때문에 7로 입력해주었다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BERTClassifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bert</span><span class="p">,</span>
-                 <span class="n">hidden_size</span> <span class="o">=</span> <span class="mi">768</span><span class="p">,</span>
-                 <span class="n">num_classes</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>   <span class="c1">##클래스 수 조정##</span>
-                 <span class="n">dr_rate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">BERTClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bert</span> <span class="o">=</span> <span class="n">bert</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dr_rate</span> <span class="o">=</span> <span class="n">dr_rate</span>
+<h2 id="_3">핵심 구현 내용</h2>
+<h3 id="1">1. 서비스 통합 및 컨테이너 변경</h3>
+<p>가장 먼저 Docker Compose와 Kubernetes 배포 설정에서 vLLM Ray Serve를 제거하고 xgen-model로 교체했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># services.docker.yaml (Before)</span>
+<span class="nt">vllm-ray-serve</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm/vllm-openai:latest</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">RAY_SERVE_ENABLE_EXPERIMENTAL_STREAMING</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span> <span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">dr_rate</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">dr_rate</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">gen_attention_mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token_ids</span><span class="p">,</span> <span class="n">valid_length</span><span class="p">):</span>
-        <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">token_ids</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valid_length</span><span class="p">):</span>
-            <span class="n">attention_mask</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">return</span> <span class="n">attention_mask</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token_ids</span><span class="p">,</span> <span class="n">valid_length</span><span class="p">,</span> <span class="n">segment_ids</span><span class="p">):</span>
-        <span class="n">attention_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen_attention_mask</span><span class="p">(</span><span class="n">token_ids</span><span class="p">,</span> <span class="n">valid_length</span><span class="p">)</span>
-
-        <span class="n">_</span><span class="p">,</span> <span class="n">pooler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bert</span><span class="p">(</span><span class="n">input_ids</span> <span class="o">=</span> <span class="n">token_ids</span><span class="p">,</span> <span class="n">token_type_ids</span> <span class="o">=</span> <span class="n">segment_ids</span><span class="o">.</span><span class="n">long</span><span class="p">(),</span> <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">attention_mask</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">token_ids</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dr_rate</span><span class="p">:</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">pooler</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="c1"># services.docker.yaml (After)  </span>
+<span class="nt">xgen-model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.x2bee.com/xgen-model:latest</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">MODEL_CONFIG_PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"/app/config/models.yaml"</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">#BERT 모델 불러오기</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">BERTClassifier</span><span class="p">(</span><span class="n">bertmodel</span><span class="p">,</span>  <span class="n">dr_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<p>이 변경으로 Ray 클러스터 초기화에 필요한 30-45초의 시작 시간이 5-10초로 단축되었다.</p>
+<h3 id="2-kubernetes-dns">2. Kubernetes DNS 내부 통신 최적화</h3>
+<p>기존에는 외부 도메인을 통해 모델 서빙에 접근했지만, K3s 클러스터 내부에서는 Kubernetes DNS를 활용한 직접 통신으로 개선했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># config.yml (Before)</span>
+<span class="nt">model_service_url</span><span class="p">:</span><span class="w"> </span><span class="s">"https://xgen.x2bee.com/model"</span>
 
-<span class="c1">#optimizer와 schedule 설정</span>
-<span class="n">no_decay</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'bias'</span><span class="p">,</span> <span class="s1">'LayerNorm.weight'</span><span class="p">]</span>
-<span class="n">optimizer_grouped_parameters</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s1">'params'</span><span class="p">:</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">nd</span> <span class="ow">in</span> <span class="n">n</span> <span class="k">for</span> <span class="n">nd</span> <span class="ow">in</span> <span class="n">no_decay</span><span class="p">)],</span> <span class="s1">'weight_decay'</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">'params'</span><span class="p">:</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">nd</span> <span class="ow">in</span> <span class="n">n</span> <span class="k">for</span> <span class="n">nd</span> <span class="ow">in</span> <span class="n">no_decay</span><span class="p">)],</span> <span class="s1">'weight_decay'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
-<span class="p">]</span>
-
-<span class="n">optimizer</span> <span class="o">=</span> <span class="n">AdamW</span><span class="p">(</span><span class="n">optimizer_grouped_parameters</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
-<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
-
-<span class="n">t_total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_dataloader</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_epochs</span>
-<span class="n">warmup_step</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_total</span> <span class="o">*</span> <span class="n">warmup_ratio</span><span class="p">)</span>
-
-<span class="n">scheduler</span> <span class="o">=</span> <span class="n">get_cosine_schedule_with_warmup</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">num_warmup_steps</span><span class="o">=</span><span class="n">warmup_step</span><span class="p">,</span> <span class="n">num_training_steps</span><span class="o">=</span><span class="n">t_total</span><span class="p">)</span>
-
-<span class="c1">#정확도 측정을 위한 함수 정의</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">calc_accuracy</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-    <span class="n">max_vals</span><span class="p">,</span> <span class="n">max_indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">train_acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_indices</span> <span class="o">==</span> <span class="n">Y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="n">max_indices</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">train_acc</span>
-
-<span class="n">train_dataloader</span>
+<span class="c1"># config.yml (After)</span>
+<span class="nt">model_service_url</span><span class="p">:</span><span class="w"> </span><span class="s">"http://xgen-model.xgen.svc.cluster.local:8000"</span>
 </code></pre></div>
-<h3 id="6kobert">6.KoBERT 모델 학습시키기</h3>
-<p>학습 데이터셋과 학습 모델 준비가 다 끝났다면 이제 아래 코드 실행을 통해 KoBERT 모델을 학습시켜준다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
-    <span class="n">train_acc</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">test_acc</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">batch_id</span><span class="p">,</span> <span class="p">(</span><span class="n">token_ids</span><span class="p">,</span> <span class="n">valid_length</span><span class="p">,</span> <span class="n">segment_ids</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">train_dataloader</span><span class="p">)):</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-        <span class="n">token_ids</span> <span class="o">=</span> <span class="n">token_ids</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">segment_ids</span> <span class="o">=</span> <span class="n">segment_ids</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">valid_length</span><span class="o">=</span> <span class="n">valid_length</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">token_ids</span><span class="p">,</span> <span class="n">valid_length</span><span class="p">,</span> <span class="n">segment_ids</span><span class="p">)</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">clip_grad_norm_</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">max_grad_norm</span><span class="p">)</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-        <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>  <span class="c1"># Update learning rate schedule</span>
-        <span class="n">train_acc</span> <span class="o">+=</span> <span class="n">calc_accuracy</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">batch_id</span> <span class="o">%</span> <span class="n">log_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"epoch </span><span class="si">{}</span><span class="s2"> batch id </span><span class="si">{}</span><span class="s2"> loss </span><span class="si">{}</span><span class="s2"> train acc </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_id</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">train_acc</span> <span class="o">/</span> <span class="p">(</span><span class="n">batch_id</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"epoch </span><span class="si">{}</span><span class="s2"> train acc </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_acc</span> <span class="o">/</span> <span class="p">(</span><span class="n">batch_id</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+<p>이 변경으로:
+- <strong>레이턴시 개선</strong>: 외부 로드밸런서를 거치지 않아 5-10ms 단축
+- <strong>보안 강화</strong>: 클러스터 내부 통신으로 SSL 오버헤드 제거
+- <strong>안정성 향상</strong>: 외부 네트워크 의존성 제거</p>
+<h3 id="3">3. 추론 모듈 명칭 정리</h3>
+<p>기존 코드에서 <code>vllm</code> 모듈명을 <code>inference</code>로 변경하여 구현체에 독립적인 추상화를 구현했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Before</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">xgen_backend.services.vllm</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelService</span>
 
-    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">batch_id</span><span class="p">,</span> <span class="p">(</span><span class="n">token_ids</span><span class="p">,</span> <span class="n">valid_length</span><span class="p">,</span> <span class="n">segment_ids</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">test_dataloader</span><span class="p">)):</span>
-        <span class="n">token_ids</span> <span class="o">=</span> <span class="n">token_ids</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">segment_ids</span> <span class="o">=</span> <span class="n">segment_ids</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">valid_length</span><span class="o">=</span> <span class="n">valid_length</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">long</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">token_ids</span><span class="p">,</span> <span class="n">valid_length</span><span class="p">,</span> <span class="n">segment_ids</span><span class="p">)</span>
-        <span class="n">test_acc</span> <span class="o">+=</span> <span class="n">calc_accuracy</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"epoch </span><span class="si">{}</span><span class="s2"> test acc </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">/</span> <span class="p">(</span><span class="n">batch_id</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+<span class="c1"># After  </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">xgen_backend.services.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelService</span>
 </code></pre></div>
+<p>이는 향후 다른 추론 엔진(TensorRT-LLM, TGI 등)으로의 교체 가능성을 고려한 설계다.</p>
+<h2 id="_4">성능 및 운영 개선 효과</h2>
+<h3 id="1_1">1. 메모리 사용량 최적화</h3>
+<p>Ray Serve 제거로 인한 메모리 사용량 변화:
+- <strong>Before</strong>: 기본 Ray 클러스터 2-3GB + vLLM 엔진 8GB = 10-11GB
+- <strong>After</strong>: xgen-model 단일 프로세스 8.5GB</p>
+<p>약 <strong>20% 메모리 절약</strong> 효과를 달성했다.</p>
+<h3 id="2">2. 시작 시간 단축</h3>
+<p>컨테이너 시작부터 API 응답 가능까지의 시간:
+- <strong>Before</strong>: Ray 클러스터 초기화(30s) + vLLM 로딩(15s) = 45s
+- <strong>After</strong>: FastAPI 시작(3s) + vLLM 로딩(12s) = 15s</p>
+<p><strong>3배 빠른</strong> 서비스 시작이 가능해졌다.</p>
+<h3 id="3_1">3. 로그 통합 및 모니터링</h3>
+<p>이전에는 Ray Serve, vLLM Engine, Gateway가 각각 다른 로그 포맷을 사용했지만, 통합 후에는 단일 FastAPI 로그로 일원화되어 트러블슈팅이 크게 개선되었다.</p>
+<h2 id="_5">마이그레이션 과정에서의 도전</h2>
+<h3 id="1-gpu">1. GPU 메모리 관리</h3>
+<p>Ray Serve에서는 워커 프로세스별 GPU 메모리 할당을 자동 관리했지만, 직접 vLLM을 사용할 때는 수동 관리가 필요했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># GPU 메모리 사전 할당 및 해제 로직 추가</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="2_1">2. 동시성 처리</h3>
+<p>Ray Serve의 자동 스케일링 대신 FastAPI의 비동기 처리와 vLLM의 내장 배치 처리를 활용했다:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AsyncAPI와 vLLM 배치 처리 조합</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/v1/completions"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">completions</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">CompletionRequest</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">model_service</span><span class="o">.</span><span class="n">generate_async</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_6">결론</h2>
+<p>XGEN 2.0의 모델 서빙 통합 리팩토링은 단순히 기술 스택을 변경한 것이 아니라, <strong>운영 복잡성을 대폭 줄이고 성능을 개선한 아키텍처 혁신</strong>이었다.</p>
+<p>특히 Kubernetes 환경에서의 내부 DNS 활용과 단일 서비스 통합은, 마이크로서비스의 복잡성과 단일 서비스의 단순함 사이에서 적절한 균형점을 찾은 사례로 평가된다.</p>
+<p>이러한 변화로 XGEN 2.0는 더욱 안정적이고 빠른 AI 에이전트 플랫폼으로 발전할 수 있는 기반을 마련했다.</p>
+<hr>
+<p><strong>주요 키워드</strong>: vLLM, Ray Serve, Kubernetes DNS, 모델 서빙, 아키텍처 리팩토링, FastAPI, GPU 최적화</p>
 
 
 

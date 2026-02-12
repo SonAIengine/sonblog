@@ -3,15 +3,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Rust 검색 엔진에서 ssh2 크레이트를 활용하여 OpenSearch 서버에 동의어 사전을 SSH/SFTP로 업로드하고, 분석기를 실시간 재로드하는 파이프라인을 구현한 과정을 다룬다.">
+        <meta name="description" content="Rust 기반 커머스 검색 엔진에서 OpenSearch Aggregation을 활용한 카테고리/브랜드/가격대 집계 검색과, 세마포어 기반 동시성 제한 및 타임아웃 에러 핸들링 전략을 다룬다.">
       
       
       
       
-        <link rel="prev" href="../Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%97%90-Redis-%EC%BA%90%EC%8B%B1-%EC%A0%81%EC%9A%A9%EA%B8%B0/">
+        <link rel="prev" href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/">
       
       
-        <link rel="next" href="../Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%98-CI-CD-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EA%B5%AC%EC%B6%95/">
+        <link rel="next" href="../OpenSearch-%EC%9D%B8%EB%8D%B1%EC%8B%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D-vs-%EB%B0%B0%EC%B9%98-%EC%B2%98%EB%A6%AC-%EB%B9%84%EA%B5%90/">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Rust 검색 엔진에서 SSH 터널링으로 원격 DB 접근하기 - SON BLOG</title>
+        <title>OpenSearch Aggregation 검색 구현 및 에러 핸들링 전략 - SON BLOG</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rust-ssh-db" class="md-skip">
+        <a href="#opensearch-aggregation" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rust 검색 엔진에서 SSH 터널링으로 원격 DB 접근하기
+              OpenSearch Aggregation 검색 구현 및 에러 핸들링 전략
             
           </span>
         </div>
@@ -2462,10 +2462,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../OpenSearch-Aggregation-%EA%B2%80%EC%83%89-%EA%B5%AC%ED%98%84-%EB%B0%8F-%EC%97%90%EB%9F%AC-%ED%95%B8%EB%93%A4%EB%A7%81-%EC%A0%84%EB%9E%B5/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenSearch Aggregation 검색 구현 및 에러 핸들링 전략
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2481,6 +2508,326 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개요
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        아키텍처 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="아키텍처 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        전체 검색 파이프라인
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 파라미터 통합 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation 쿼리 구현
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregation 쿼리 구현">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handlebars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handlebars 템플릿 기반 동적 쿼리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nested-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested Aggregation의 함정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        대분류/중분류/소분류 계층 집계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러 핸들링 전략
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="에러 핸들링 전략">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        에러 코드 체계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        세마포어 기반 동시성 제한
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        타임아웃 계층화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opensearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenSearch 클라이언트 커넥션 풀 최적화
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 서비스 리팩토링
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="검색 서비스 리팩토링">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모듈 분리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation 결과 후처리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 검색 실행 함수 통합
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        트러블슈팅
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="트러블슈팅">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nested-aggregation-doc_count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested Aggregation에서 doc_count가 예상과 다른 문제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        세마포어 크기와 OOM의 관계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        타임아웃 값 튜닝
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과 및 회고
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="결과 및 회고">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성과
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배운 점
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2574,37 +2921,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Rust 검색 엔진에서 SSH 터널링으로 원격 DB 접근하기
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%97%90%EC%84%9C-SSH-%ED%84%B0%EB%84%90%EB%A7%81%EC%9C%BC%EB%A1%9C-%EC%9B%90%EA%B2%A9-DB-%EC%A0%91%EA%B7%BC%ED%95%98%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2620,381 +2940,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        개요
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        동의어 사전 관리의 필요성
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="동의어 사전 관리의 필요성">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#opensearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenSearch의 동의어 처리 방식
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        전체 파이프라인
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        프로젝트 설정
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="프로젝트 설정">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        의존성 추가
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH 설정
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        동의어 데이터 모델
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="동의어 데이터 모델">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DB 스키마
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repository 구현
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#synonymservice" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SynonymService 구현
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SynonymService 구현">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        서비스 구조
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        동의어 포맷 변환
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        로컬 파일 저장
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sshsftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH/SFTP 파일 업로드
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH/SFTP 파일 업로드">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH 연결 및 인증
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SFTP 업로드
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH 명령 실행
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opensearch_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenSearch 분석기 재로드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        전체 파이프라인 조립
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        트러블슈팅
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="트러블슈팅">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#libssh2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        libssh2 빌드 의존성
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sftp_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SFTP 권한 문제
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        디렉터리 부재
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH 채널 출력 버퍼
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        한글 동의어 인코딩
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opensearch_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenSearch 인덱스 분석기 설정
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        다중 프로젝트 지원
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        결과 및 회고
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6592,19 +6537,19 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        동의어 사전 관리의 필요성
+        아키텍처 설계
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="동의어 사전 관리의 필요성">
+    <nav class="md-nav" aria-label="아키텍처 설계">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#opensearch" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OpenSearch의 동의어 처리 방식
+        전체 검색 파이프라인
       
     </span>
   </a>
@@ -6612,10 +6557,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        전체 파이프라인
+        검색 파라미터 통합 설계
       
     </span>
   </a>
@@ -6628,22 +6573,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#aggregation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        프로젝트 설정
+        Aggregation 쿼리 구현
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="프로젝트 설정">
+    <nav class="md-nav" aria-label="Aggregation 쿼리 구현">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#handlebars" class="md-nav__link">
     <span class="md-ellipsis">
       
-        의존성 추가
+        Handlebars 템플릿 기반 동적 쿼리
       
     </span>
   </a>
@@ -6651,10 +6596,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
+  <a href="#nested-aggregation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SSH 설정
+        Nested Aggregation의 함정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        대분류/중분류/소분류 계층 집계
       
     </span>
   </a>
@@ -6670,58 +6626,19 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        동의어 데이터 모델
+        에러 핸들링 전략
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="동의어 데이터 모델">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DB 스키마
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repository 구현
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#synonymservice" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SynonymService 구현
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SynonymService 구현">
+    <nav class="md-nav" aria-label="에러 핸들링 전략">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        서비스 구조
+        에러 코드 체계
       
     </span>
   </a>
@@ -6732,7 +6649,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        동의어 포맷 변환
+        세마포어 기반 동시성 제한
       
     </span>
   </a>
@@ -6743,7 +6660,18 @@
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        로컬 파일 저장
+        타임아웃 계층화
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opensearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenSearch 클라이언트 커넥션 풀 최적화
       
     </span>
   </a>
@@ -6752,67 +6680,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sshsftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH/SFTP 파일 업로드
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH/SFTP 파일 업로드">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssh_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH 연결 및 인증
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SFTP 업로드
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH 명령 실행
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#opensearch_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenSearch 분석기 재로드
-      
-    </span>
-  </a>
   
 </li>
       
@@ -6820,7 +6687,46 @@
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        전체 파이프라인 조립
+        검색 서비스 리팩토링
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="검색 서비스 리팩토링">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        모듈 분리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregation 결과 후처리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        공통 검색 실행 함수 통합
       
     </span>
   </a>
@@ -6828,7 +6734,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         트러블슈팅
@@ -6840,10 +6746,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#libssh2" class="md-nav__link">
+  <a href="#nested-aggregation-doc_count" class="md-nav__link">
     <span class="md-ellipsis">
       
-        libssh2 빌드 의존성
+        Nested Aggregation에서 doc_count가 예상과 다른 문제
       
     </span>
   </a>
@@ -6851,10 +6757,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sftp_1" class="md-nav__link">
+  <a href="#oom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SFTP 권한 문제
+        세마포어 크기와 OOM의 관계
       
     </span>
   </a>
@@ -6862,32 +6768,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        디렉터리 부재
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSH 채널 출력 버퍼
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        한글 동의어 인코딩
+        타임아웃 값 튜닝
       
     </span>
   </a>
@@ -6900,28 +6784,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#opensearch_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OpenSearch 인덱스 분석기 설정
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        다중 프로젝트 지원
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6929,6 +6791,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="결과 및 회고">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성과
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배운 점
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6997,567 +6887,481 @@
 
 
 
-<h1 id="rust-ssh-db">Rust 검색 엔진에서 SSH 터널링으로 원격 DB 접근하기</h1>
+<h1 id="opensearch-aggregation">OpenSearch Aggregation 검색 구현 및 에러 핸들링 전략</h1>
 <h2 id="_1">개요</h2>
-<p>커머스 검색 엔진에서 동의어 사전(Synonym Dictionary) 관리는 검색 품질에 직접적인 영향을 미치는 핵심 기능이다. "노트북"을 검색했을 때 "랩탑"도 함께 검색되어야 하고, "아이폰"을 검색했을 때 "iPhone"도 매칭되어야 한다. 이런 동의어 매핑은 DB에서 관리되지만, 실제로 검색에 반영되려면 OpenSearch 서버의 분석기(Analyzer) 설정에 동의어 파일이 배치되어야 한다.</p>
-<p>문제는 OpenSearch 서버가 별도의 네트워크에 있어서, 검색 엔진 애플리케이션에서 직접 파일을 복사할 수 없다는 것이었다. SSH를 통한 접근만 가능한 환경이다. 수동으로 SSH 접속하여 파일을 복사하던 기존 방식을 자동화하기 위해, Rust에서 SSH/SFTP 클라이언트를 구현하여 동의어 사전 배포 파이프라인을 완전 자동화했다.</p>
-<p>이 글에서는 Rust의 <code>ssh2</code> 크레이트를 활용한 SSH/SFTP 구현, 동의어 데이터 변환, OpenSearch 분석기 재로드까지의 전체 파이프라인을 다룬다.</p>
-<hr>
-<h2 id="_2">동의어 사전 관리의 필요성</h2>
-<h3 id="opensearch">OpenSearch의 동의어 처리 방식</h3>
-<p>OpenSearch에서 동의어를 적용하는 방법은 크게 두 가지다:</p>
-<ol>
-<li><strong>인라인 동의어</strong>: 인덱스 설정에 직접 동의어 목록을 포함</li>
-<li><strong>파일 기반 동의어</strong>: 서버의 파일 시스템에 동의어 파일을 배치</li>
-</ol>
-<p>인라인 방식은 인덱스를 닫았다 열어야(close/open) 동의어가 반영되므로 서비스 중단이 발생한다. 파일 기반 방식은 <code>_plugins/_refresh_search_analyzers</code> API로 무중단 재로드가 가능하다. 당연히 파일 기반을 선택했다.</p>
-<h3 id="_3">전체 파이프라인</h3>
-<pre class="mermaid"><code>sequenceDiagram
-    participant APP as Rust 검색 엔진
-    participant DB as PostgreSQL
-    participant LOCAL as 로컬 파일시스템
-    participant SSH as SSH/SFTP
-    participant OS as OpenSearch 서버
+<p>커머스 검색 엔진을 운영하다 보면 단순한 키워드 검색만으로는 부족한 순간이 온다. 사용자가 "원피스"를 검색했을 때, 검색 결과와 함께 "여성의류 &gt; 원피스/미니" 같은 카테고리 필터, "S/M/L" 같은 사이즈 필터, 가격대별 분포를 함께 제공해야 한다. 이것이 바로 Aggregation(집계) 검색이다.</p>
+<p>이 글에서는 Rust로 만든 검색 엔진에 OpenSearch Aggregation을 도입한 과정과, 그 과정에서 설계한 에러 핸들링 전략을 상세히 다룬다. 특히 동시성 제한을 위한 세마포어 패턴, 타임아웃 계층화, 에러 코드 체계까지 실전에서 겪은 문제와 해결 과정을 담았다.</p>
+<h2 id="_2">아키텍처 설계</h2>
+<h3 id="_3">전체 검색 파이프라인</h3>
+<p>기존 검색 파이프라인에 Aggregation 레이어를 추가하면서, 검색과 집계를 하나의 요청으로 처리할지, 별도 엔드포인트로 분리할지 결정해야 했다. 결론부터 말하면, 별도 엔드포인트로 분리했다.</p>
+<pre class="mermaid"><code>graph TD
+    Client[클라이언트] --&gt; GoodsSearch[/api/search/v1/search/goods]
+    Client --&gt; GoodsAgg[/api/search/v1/search/goods-aggregation]
+    Client --&gt; MarketingSearch[/api/search/v1/search/marketing-search]
 
-    APP-&gt;&gt;DB: 동의어 데이터 조회
-    DB--&gt;&gt;APP: ST_SYN_INFO 테이블 데이터
-    APP-&gt;&gt;APP: OpenSearch 형식으로 변환
-    APP-&gt;&gt;LOCAL: synonym.txt 저장
-    APP-&gt;&gt;SSH: SFTP로 /tmp/synonym.txt 업로드
-    SSH-&gt;&gt;OS: sudo mv /tmp/synonym.txt → conf/analysis/
-    SSH-&gt;&gt;OS: sudo chmod 644 synonym.txt
-    APP-&gt;&gt;OS: POST /_plugins/_refresh_search_analyzers/{index}
-    OS--&gt;&gt;APP: 분석기 재로드 완료</code></pre>
-<p>하나의 API 호출로 DB 조회 → 파일 생성 → SSH 업로드 → 분석기 재로드까지 자동 실행된다.</p>
-<hr>
-<h2 id="_4">프로젝트 설정</h2>
-<h3 id="_5">의존성 추가</h3>
-<div class="highlight"><pre><span></span><code><span class="k">[dependencies]</span>
-<span class="n">ssh2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.9.5"</span>
-<span class="n">lazy_static</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.4.0"</span>
-<span class="n">tempfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.8.0"</span>
-</code></pre></div>
-<p><code>ssh2</code>는 libssh2의 Rust 바인딩이다. libssh2 자체가 C 라이브러리이므로 빌드 시 <code>libssh2-sys</code>, <code>libz-sys</code>, <code>openssl-sys</code> 등의 시스템 의존성이 필요하다. Linux 환경에서는 보통 <code>libssl-dev</code>, <code>pkg-config</code> 패키지가 설치되어 있으면 문제없다.</p>
-<h3 id="ssh">SSH 설정</h3>
-<div class="highlight"><pre><span></span><code><span class="k">[package.metadata.config.local]</span>
-<span class="n">ssh_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"192.168.2.171"</span>
-<span class="n">ssh_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span>
-<span class="n">ssh_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tech"</span>
-<span class="n">ssh_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tech"</span>
-<span class="n">synonym_output_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"./synonym.txt"</span>
-</code></pre></div>
-<p>SSH 접속 정보를 프로필별 설정에 포함시켰다. 로컬/스테이징/프로덕션 환경마다 다른 OpenSearch 서버를 사용하므로, 프로필 전환만으로 대상 서버를 변경할 수 있다.</p>
-<p>AppConfig 구조체에도 SSH 관련 필드를 추가했다:</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">AppConfig</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ... 기존 필드</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">ssh_host</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">ssh_port</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">u16</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">ssh_user</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">ssh_password</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">synonym_output_path</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">opensearch_synonym_index</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+    GoodsSearch --&gt; Semaphore[세마포어 동시성 제한]
+    GoodsAgg --&gt; Semaphore
+    MarketingSearch --&gt; Semaphore
+
+    Semaphore --&gt; QueryBuilder[Handlebars 쿼리 빌더]
+    QueryBuilder --&gt; OpenSearch[(OpenSearch)]
+
+    OpenSearch --&gt; ResponseParser[응답 파서]
+    ResponseParser --&gt; AggProcessor{Aggregation 포함?}
+    AggProcessor --&gt;|Yes| AggDataProcessor[집계 데이터 가공]
+    AggProcessor --&gt;|No| HitsProcessor[히트 데이터 가공]
+
+    AggDataProcessor --&gt; ApiResponse[API 응답]
+    HitsProcessor --&gt; ApiResponse</code></pre>
+<p>분리한 이유는 명확하다. 집계 검색은 일반 검색보다 OpenSearch 클러스터에 훨씬 큰 부하를 준다. Nested Aggregation이 들어가면 메모리 사용량이 급격히 증가하고, 응답 시간도 길어진다. 같은 세마포어 풀을 공유하되, 엔드포인트를 분리해서 클라이언트가 필요한 것만 호출하도록 했다.</p>
+<h3 id="_4">검색 파라미터 통합 설계</h3>
+<p>모든 검색 엔드포인트가 공통 파라미터 구조를 사용하도록 <code>SearchParams</code> 구조체를 설계했다.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#[derive(Debug, Clone, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">SearchParams</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">search_word</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="kt">u32</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">aggregation</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">index_name</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>모든 SSH 필드를 <code>Option</code>으로 선언하여, SSH를 사용하지 않는 환경에서는 설정을 생략할 수 있도록 했다.</p>
-<hr>
-<h2 id="_6">동의어 데이터 모델</h2>
-<h3 id="db">DB 스키마</h3>
-<p>동의어 데이터는 <code>ST_SYN_INFO</code> 테이블에 저장된다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
-<span class="w">    </span><span class="n">SYN_SEQ</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
-<span class="w">    </span><span class="n">STD_WRD</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">std_wrd</span><span class="p">,</span><span class="w">      </span><span class="c1">-- 표준어</span>
-<span class="w">    </span><span class="n">SYN_NM</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">syn_nm</span><span class="p">,</span><span class="w">        </span><span class="c1">-- 동의어</span>
-<span class="w">    </span><span class="n">USE_YN</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">use_yn</span><span class="p">,</span><span class="w">        </span><span class="c1">-- 사용 여부</span>
-<span class="w">    </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">SSI</span><span class="p">.</span><span class="n">USE_YN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'N'</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'D'</span>
-<span class="w">         </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">'A'</span>
-<span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">send_gb</span><span class="w">           </span><span class="c1">-- 상태 (A: 활성, D: 삭제)</span>
-<span class="k">FROM</span><span class="w"> </span><span class="n">ST_SYN_INFO</span><span class="w"> </span><span class="n">SSI</span>
-<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SYN_SEQ</span>
-</code></pre></div>
-<h3 id="repository">Repository 구현</h3>
-<p>동의어 전용 Repository를 <code>BaseRepository</code>를 상속하여 구현했다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">SynonymRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">base</span><span class="p">:</span><span class="w"> </span><span class="nc">BaseRepository</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="k">impl</span><span class="w"> </span><span class="n">SynonymRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">pg_client</span><span class="p">:</span><span class="w"> </span><span class="nc">PostgresClient</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">base</span><span class="p">:</span><span class="w"> </span><span class="nc">BaseRepository</span><span class="p">::</span><span class="n">new</span><span class="p">(</span>
-<span class="w">                </span><span class="n">pg_client</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"synonym"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
-<span class="w">                </span><span class="s">"./src/repositories/indexing/columns_map/synonym_map.json"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
-<span class="w">            </span><span class="p">),</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="cp">#[async_trait]</span>
-<span class="k">impl</span><span class="w"> </span><span class="n">IndexingRepository</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">SynonymRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">fetch_data</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">interval</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">r#"</span>
-<span class="s">            SELECT</span>
-<span class="s">                SYN_SEQ AS id,</span>
-<span class="s">                STD_WRD AS std_wrd,</span>
-<span class="s">                SYN_NM AS syn_nm,</span>
-<span class="s">                USE_YN AS use_yn,</span>
-<span class="s">                CASE WHEN SSI.USE_YN = 'N' THEN 'D'</span>
-<span class="s">                     ELSE 'A'</span>
-<span class="s">                END AS send_gb</span>
-<span class="s">            FROM ST_SYN_INFO SSI</span>
-<span class="s">            ORDER BY SYN_SEQ</span>
-<span class="s">        "#</span><span class="p">;</span>
-<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">base</span><span class="p">.</span><span class="n">fetch_data_with_query</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">).</span><span class="k">await</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">fn</span><span class="w"> </span><span class="nf">transform_to_indexing_data</span><span class="p">(</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span>
-<span class="w">        </span><span class="n">rows</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">tokio_postgres</span><span class="p">::</span><span class="n">Row</span><span class="p">],</span>
-<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">IndexingData</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">base</span><span class="p">.</span><span class="n">transform_to_indexing_data_impl</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>컬럼 매핑은 JSON 파일로 관리한다:</p>
+<p><code>aggregation</code> 플래그 하나로 일반 검색과 집계 검색을 구분한다. 쿼리 템플릿에서 이 플래그를 참조해 Aggregation 블록을 동적으로 포함하거나 제외한다.</p>
+<h2 id="aggregation">Aggregation 쿼리 구현</h2>
+<h3 id="handlebars">Handlebars 템플릿 기반 동적 쿼리</h3>
+<p>OpenSearch 쿼리를 Rust 코드에 하드코딩하면 유지보수가 어려워진다. Handlebars 템플릿 엔진을 사용해 쿼리를 외부 파일로 분리했다.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">"standardWord"</span><span class="p">:</span><span class="w"> </span><span class="s2">"std_wrd"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"synonym"</span><span class="p">:</span><span class="w"> </span><span class="s2">"syn_nm"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"useYn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"use_yn"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"sendGb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"send_gb"</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>이 매핑 파일을 통해 DB 컬럼명(<code>std_wrd</code>)과 애플리케이션 필드명(<code>standardWord</code>)을 분리한다. DB 스키마가 변경되어도 매핑 파일만 수정하면 된다.</p>
-<hr>
-<h2 id="synonymservice">SynonymService 구현</h2>
-<h3 id="_7">서비스 구조</h3>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">SynonymService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">OpenSearch</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">db_fetch_service</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">DbFetchService</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">    </span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">AppConfig</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>OpenSearch 클라이언트(분석기 재로드용), DB 페치 서비스(동의어 조회용), 설정(SSH 정보 등)을 주입받는다.</p>
-<h3 id="_8">동의어 포맷 변환</h3>
-<p>DB에서 가져온 동의어 데이터를 OpenSearch 동의어 파일 형식으로 변환한다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">convert_to_synonym_format</span><span class="p">(</span>
-<span class="w">    </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span>
-<span class="w">    </span><span class="n">synonym_data</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="p">[</span><span class="n">IndexingData</span><span class="p">],</span>
-<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">synonym_lines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">synonym_data</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// USE_YN이 'Y'인 것만 포함</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">use_yn</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">extra_fields</span>
-<span class="w">            </span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"useYn"</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="n">or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">extra_fields</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"useyn"</span><span class="p">))</span>
-<span class="w">            </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_str</span><span class="p">())</span>
+<span class="w">    </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"bool"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"must"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{{</span><span class="err">#i</span><span class="kc">f</span><span class="w"> </span><span class="err">search_word</span><span class="p">}}</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"match"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"goodsNm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{search_word}}"</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="p">{{</span><span class="err">else</span><span class="p">}}</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"match_all"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="p">{{</span><span class="err">/i</span><span class="kc">f</span><span class="p">}}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="p">{{</span><span class="kc">fr</span><span class="err">om</span><span class="p">}},</span>
+<span class="w">    </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="p">{{</span><span class="err">size</span><span class="p">}},</span>
+<span class="w">    </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">use_yn</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">"Y"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="nt">"_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"desc"</span>
 <span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="nb">Some</span><span class="p">(</span><span class="n">std_word</span><span class="p">),</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">synonym</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-<span class="w">            </span><span class="n">item</span><span class="p">.</span><span class="n">extra_fields</span>
-<span class="w">                </span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"standardWord"</span><span class="p">)</span>
-<span class="w">                </span><span class="p">.</span><span class="n">or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">extra_fields</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"standardword"</span><span class="p">))</span>
-<span class="w">                </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_str</span><span class="p">()),</span>
-<span class="w">            </span><span class="n">item</span><span class="p">.</span><span class="n">extra_fields</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"synonym"</span><span class="p">).</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">v</span><span class="o">|</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">as_str</span><span class="p">()),</span>
-<span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">std_word_clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_word</span><span class="p">.</span><span class="n">trim</span><span class="p">();</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="n">synonym_clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">synonym</span><span class="p">.</span><span class="n">trim</span><span class="p">();</span>
-
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">std_word_clean</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">synonym_clean</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">synonym_lines</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{},{}"</span><span class="p">,</span><span class="w"> </span><span class="n">std_word_clean</span><span class="p">,</span><span class="w"> </span><span class="n">synonym_clean</span><span class="p">));</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">synonym_lines</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">))</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>OpenSearch 동의어 파일 형식은 한 줄에 하나의 동의어 쌍을 쉼표로 구분하여 나열한다:</p>
-<div class="highlight"><pre><span></span><code>노트북,랩탑
-아이폰,iPhone
-삼성,Samsung
-</code></pre></div>
-<p>필드명의 대소문자가 환경에 따라 다를 수 있어서, <code>get("useYn").or_else(|| get("useyn"))</code> 패턴으로 양쪽 모두 확인한다. PostgreSQL의 결과 컬럼명은 기본적으로 소문자로 변환되는데, 애플리케이션 레이어에서 camelCase로 변환하는 과정에서 불일치가 발생할 수 있다.</p>
-<h3 id="_9">로컬 파일 저장</h3>
-<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">write_to_file</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">synonym_content</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">project_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">project_name</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">default_filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}_synonym.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">project_name</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">default_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"./dictionary/{}"</span><span class="p">,</span><span class="w"> </span><span class="n">default_filename</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">output_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span>
-<span class="w">        </span><span class="p">.</span><span class="n">synonym_output_path</span>
-<span class="w">        </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">default_path</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 디렉터리 자동 생성</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">output_path</span><span class="p">).</span><span class="n">parent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">parent</span><span class="p">.</span><span class="n">exists</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">std</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">create_dir_all</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">::</span><span class="n">create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">output_path</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="n">file</span><span class="p">.</span><span class="n">write_all</span><span class="p">(</span><span class="n">synonym_content</span><span class="p">.</span><span class="n">as_bytes</span><span class="p">())</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="n">file</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>프로젝트 이름을 포함한 파일명으로 저장하여, 여러 프로젝트의 동의어 사전이 충돌하지 않도록 한다. <code>dictionary/</code> 디렉터리에 백업용 사본도 함께 저장한다.</p>
-<hr>
-<h2 id="sshsftp">SSH/SFTP 파일 업로드</h2>
-<p>이 글의 핵심 부분이다. <code>ssh2</code> 크레이트를 사용하여 로컬에서 생성한 동의어 파일을 원격 OpenSearch 서버에 업로드한다.</p>
-<h3 id="ssh_1">SSH 연결 및 인증</h3>
-<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">upload_via_ssh</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">local_path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">remote_path</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">ssh_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">ssh_host</span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"192.168.2.171"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">ssh_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">ssh_port</span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="mi">22</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">ssh_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">ssh_user</span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"tech"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">ssh_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">ssh_password</span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="s">"tech"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
-
-<span class="w">    </span><span class="c1">// TCP 연결</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">tcp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TcpStream</span><span class="p">::</span><span class="n">connect</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}:{}"</span><span class="p">,</span><span class="w"> </span><span class="n">ssh_host</span><span class="p">,</span><span class="w"> </span><span class="n">ssh_port</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// SSH 세션 생성</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">sess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Session</span><span class="p">::</span><span class="n">new</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="n">sess</span><span class="p">.</span><span class="n">set_tcp_stream</span><span class="p">(</span><span class="n">tcp</span><span class="p">);</span>
-<span class="w">    </span><span class="n">sess</span><span class="p">.</span><span class="n">handshake</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 패스워드 인증</span>
-<span class="w">    </span><span class="n">sess</span><span class="p">.</span><span class="n">userauth_password</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ssh_user</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ssh_password</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// ...</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>ssh2::Session</code>은 <code>TcpStream</code> 위에 SSH 프로토콜을 구현한다. <code>set_tcp_stream</code> → <code>handshake</code> → <code>userauth_password</code> 순서로 연결을 설정한다. 키 기반 인증도 지원하지만, 현재 환경에서는 패스워드 인증을 사용했다.</p>
-<h3 id="sftp">SFTP 업로드</h3>
-<p>직접 대상 경로에 파일을 쓰면 권한 문제가 발생할 수 있다. OpenSearch의 설정 디렉터리는 보통 root 소유이므로, 일반 사용자로는 직접 쓸 수 없다. 따라서 <code>/tmp</code>에 먼저 업로드한 뒤, <code>sudo mv</code>로 이동하는 2단계 전략을 사용한다.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 1단계: SFTP로 /tmp에 업로드</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">sftp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sess</span><span class="p">.</span><span class="n">sftp</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">remote_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sftp</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Path</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">temp_remote_path</span><span class="p">))</span><span class="o">?</span><span class="p">;</span>
-<span class="n">remote_file</span><span class="p">.</span><span class="n">write_all</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file_contents</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
-<span class="c1">// 2단계: sudo mv로 최종 위치 이동</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">mv_command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span>
-<span class="w">    </span><span class="s">"echo '{}' | sudo -S mv {} {}"</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ssh_password</span><span class="p">,</span><span class="w"> </span><span class="n">temp_remote_path</span><span class="p">,</span><span class="w"> </span><span class="n">remote_path</span>
-<span class="p">);</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">execute_ssh_command</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sess</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mv_command</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
-<span class="c1">// 3단계: 파일 권한 설정</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">chmod_cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span>
-<span class="w">    </span><span class="s">"echo '{}' | sudo -S chmod 644 {}"</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ssh_password</span><span class="p">,</span><span class="w"> </span><span class="n">remote_path</span>
-<span class="p">);</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">execute_ssh_command</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sess</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">chmod_cmd</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-</code></pre></div>
-<pre class="mermaid"><code>graph TD
-    A[로컬 파일 읽기] --&gt; B[SFTP: /tmp/synonym.txt 업로드]
-    B --&gt; C[sudo mkdir -p 대상 디렉터리]
-    C --&gt; D[sudo mv /tmp/synonym.txt → conf/analysis/]
-    D --&gt; E[sudo chmod 644 synonym.txt]
-    E --&gt; F[ls -la로 파일 존재 확인]</code></pre>
-<p><code>echo 'password' | sudo -S</code> 패턴으로 stdin을 통해 sudo 패스워드를 전달한다. <code>sudo -S</code> 옵션은 stdin에서 패스워드를 읽도록 지정한다.</p>
-<h3 id="ssh_2">SSH 명령 실행</h3>
-<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">execute_ssh_command</span><span class="p">(</span>
-<span class="w">    </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span>
-<span class="w">    </span><span class="n">session</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Session</span><span class="p">,</span>
-<span class="w">    </span><span class="n">command</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span>
-<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">channel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">session</span><span class="p">.</span><span class="n">channel_session</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 보안: 패스워드가 포함된 명령은 로그에서 마스킹</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">safe_command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"echo"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s">"echo '***' | sudo -S command"</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">command</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">    </span><span class="n">log</span><span class="p">::</span><span class="n">debug</span><span class="o">!</span><span class="p">(</span><span class="s">"Executing SSH command: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">safe_command</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">channel</span><span class="p">.</span><span class="n">exec</span><span class="p">(</span><span class="n">command</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 출력 읽기 (EOF까지)</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
-<span class="w">    </span><span class="n">channel</span><span class="p">.</span><span class="n">read_to_end</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">channel</span><span class="p">.</span><span class="n">wait_close</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">exit_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">channel</span><span class="p">.</span><span class="n">exit_status</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">exit_status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">new</span><span class="p">(</span>
-<span class="w">            </span><span class="s">"500"</span><span class="p">,</span>
-<span class="w">            </span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"Command failed with exit code: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">exit_status</span><span class="p">),</span>
-<span class="w">        </span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>보안을 위해 <code>echo</code> 명령이 포함된 경우(패스워드가 들어있으므로) 로그에서 마스킹 처리한다. 실제 명령은 그대로 실행하되, 로그에는 <code>echo '***' | sudo -S command</code>로 출력한다.</p>
-<p><code>channel.read_to_end</code>로 출력을 모두 읽어야 <code>wait_close</code>가 정상적으로 동작한다. SSH 채널에서 출력을 읽지 않으면 버퍼가 차서 채널이 블록될 수 있다.</p>
-<hr>
-<h2 id="opensearch_1">OpenSearch 분석기 재로드</h2>
-<p>동의어 파일을 배치한 후, OpenSearch에 분석기를 재로드하도록 요청한다. 이 API는 인덱스를 닫지 않고도 동의어를 반영할 수 있게 해주는 핵심 기능이다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">reload_search_analyzers</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">index_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span>
-<span class="w">        </span><span class="p">.</span><span class="n">opensearch_synonym_index</span>
-<span class="w">        </span><span class="p">.</span><span class="n">clone</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="n">unwrap_or_else</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="fm">vec!</span><span class="p">[</span><span class="s">"test-ab"</span><span class="p">.</span><span class="n">to_string</span><span class="p">()]);</span>
-
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">success_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">error_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">index_name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">&amp;</span><span class="n">index_names</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">refresh_single_index</span><span class="p">(</span><span class="n">index_name</span><span class="p">).</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">success_count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">error_count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">                </span><span class="n">errors</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"Index {}: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">index_name</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">));</span>
-<span class="w">                </span><span class="c1">// 하나 실패해도 나머지 계속 처리</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 전부 실패한 경우에만 에러 반환</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">success_count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">index_names</span><span class="p">.</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">"500"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">errors</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="s">"; "</span><span class="p">)));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
-<span class="p">}</span>
-
-<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">refresh_single_index</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">index_name</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">transport</span><span class="p">();</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">refresh_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span>
-<span class="w">        </span><span class="s">"/_plugins/_refresh_search_analyzers/{}"</span><span class="p">,</span>
-<span class="w">        </span><span class="n">index_name</span>
-<span class="w">    </span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transport</span>
-<span class="w">        </span><span class="p">.</span><span class="n">send</span><span class="p">(</span>
-<span class="w">            </span><span class="n">Method</span><span class="p">::</span><span class="n">Post</span><span class="p">,</span>
-<span class="w">            </span><span class="o">&amp;</span><span class="n">refresh_url</span><span class="p">,</span>
-<span class="w">            </span><span class="n">HeaderMap</span><span class="p">::</span><span class="n">new</span><span class="p">(),</span>
-<span class="w">            </span><span class="nb">None</span><span class="p">::</span><span class="o">&lt;&amp;</span><span class="p">()</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">            </span><span class="nb">None</span><span class="p">::</span><span class="o">&lt;&amp;</span><span class="p">[</span><span class="kt">u8</span><span class="p">]</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="w">            </span><span class="nb">None</span><span class="p">,</span>
-<span class="w">        </span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">response</span><span class="p">.</span><span class="n">status_code</span><span class="p">().</span><span class="n">is_success</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">error_body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">"500"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">error_body</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>여러 인덱스에 동의어가 적용될 수 있으므로, 설정에서 인덱스 목록을 받아 순차적으로 재로드한다. 부분 실패 전략을 적용하여, 하나의 인덱스에서 실패해도 나머지는 계속 처리한다. 전부 실패한 경우에만 에러를 반환한다.</p>
-<p><code>_plugins/_refresh_search_analyzers</code>는 OpenSearch의 플러그인 API다. Elasticsearch에서는 <code>_cache/clear</code> + close/open이 필요하지만, OpenSearch에서는 이 단일 API로 분석기 설정을 핫 리로드할 수 있다.</p>
-<hr>
-<h2 id="_10">전체 파이프라인 조립</h2>
-<p>모든 단계를 조립한 <code>index_synonym_data</code> 메서드:</p>
-<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">index_synonym_data</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 1. DB에서 동의어 데이터 조회</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">synonym_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">db_fetch_service</span>
-<span class="w">        </span><span class="p">.</span><span class="n">fetch_data_for_indexing</span><span class="p">(</span><span class="s">"synonym"</span><span class="p">,</span><span class="w"> </span><span class="s">"1"</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Fetched {} synonym entries"</span><span class="p">,</span><span class="w"> </span><span class="n">synonym_data</span><span class="p">.</span><span class="n">len</span><span class="p">());</span>
-
-<span class="w">    </span><span class="c1">// 2. OpenSearch 형식으로 변환</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">synonym_txt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">convert_to_synonym_format</span><span class="p">(</span><span class="o">&amp;</span><span class="n">synonym_data</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 빈 사전이면 스킵</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">synonym_txt</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">is_empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Empty synonym dictionary, skipping"</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(());</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 3. 로컬 파일 저장</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">local_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">write_to_file</span><span class="p">(</span><span class="o">&amp;</span><span class="n">synonym_txt</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 4. SSH/SFTP로 원격 서버에 업로드</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">remote_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/data/opensearch-dir/docker-file/conf/analysis/synonym.txt"</span><span class="p">;</span>
-<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">upload_via_ssh</span><span class="p">(</span><span class="o">&amp;</span><span class="n">local_path</span><span class="p">,</span><span class="w"> </span><span class="n">remote_path</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Successfully uploaded synonym"</span><span class="p">),</span>
-<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Failed to upload synonym: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">),</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 5. dictionary 폴더에 백업 저장</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">dictionary_filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span>
-<span class="w">        </span><span class="s">"{}_{}_synonym.txt"</span><span class="p">,</span>
-<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">project_name</span><span class="p">,</span>
-<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">env</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">save_to_dictionary</span><span class="p">(</span><span class="o">&amp;</span><span class="n">synonym_txt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dictionary_filename</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">log</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"Failed to save to dictionary folder: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 6. OpenSearch 분석기 재로드</span>
-<span class="w">    </span><span class="bp">self</span><span class="p">.</span><span class="n">reload_search_analyzers</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Successfully synonym indexing"</span><span class="p">);</span>
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
-<span class="p">}</span>
-</code></pre></div>
-<pre class="mermaid"><code>graph TD
-    A[index_synonym_data 호출] --&gt; B[DB에서 동의어 조회]
-    B --&gt; C{데이터 있음?}
-    C --&gt;|없음| D[스킵]
-    C --&gt;|있음| E[OpenSearch 형식 변환]
-    E --&gt; F[로컬 파일 저장]
-    F --&gt; G[SSH/SFTP 업로드]
-    G --&gt;|성공| H[dictionary 백업 저장]
-    G --&gt;|실패| I[에러 로그]
-    I --&gt; H
-    H --&gt; J[분석기 재로드]
-    J --&gt; K[완료]</code></pre>
-<p>SSH 업로드가 실패해도 로그만 남기고 분석기 재로드는 시도한다. 이전에 업로드한 파일이 남아있을 수 있으므로, 재로드가 의미 있을 수 있다.</p>
-<hr>
-<h2 id="_11">트러블슈팅</h2>
-<h3 id="libssh2">libssh2 빌드 의존성</h3>
-<p><code>ssh2</code> 크레이트는 libssh2의 Rust 바인딩이므로, 빌드 시 시스템 라이브러리가 필요하다. CI/CD 환경에서 빌드가 실패하는 경우가 있었다.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Ubuntu/Debian</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libssl-dev<span class="w"> </span>pkg-config
-
-<span class="c1"># CentOS/RHEL</span>
-sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>openssl-devel<span class="w"> </span>pkgconfig
-</code></pre></div>
-<p>Docker 빌드 시에도 이 패키지들을 설치 단계에 포함시켜야 한다.</p>
-<h3 id="sftp_1">SFTP 권한 문제</h3>
-<p>OpenSearch Docker 컨테이너의 설정 디렉터리는 root 소유인 경우가 많다. 일반 사용자로 SFTP 접속하면 해당 디렉터리에 직접 파일을 생성할 수 없다.</p>
-<p>처음에는 SFTP로 직접 대상 경로에 쓰려고 시도했지만 권한 에러가 발생했다. 해결책으로 <code>/tmp</code>에 먼저 업로드한 뒤 <code>sudo mv</code>로 이동하는 2단계 방식을 채택했다. <code>/tmp</code>는 모든 사용자가 쓸 수 있으므로 SFTP 업로드가 성공하고, <code>sudo mv</code>는 SSH 채널 명령으로 실행하여 root 권한으로 파일을 이동시킨다.</p>
-<h3 id="_12">디렉터리 부재</h3>
-<p>원격 서버에 대상 디렉터리(<code>conf/analysis/</code>)가 존재하지 않을 수 있다. 파일 이동 전에 <code>sudo mkdir -p</code>로 디렉터리를 먼저 생성한다.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">mkdir_cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span>
-<span class="w">    </span><span class="s">"echo '{}' | sudo -S mkdir -p {}"</span><span class="p">,</span>
-<span class="w">    </span><span class="n">ssh_password</span><span class="p">,</span><span class="w"> </span><span class="n">remote_dir</span>
-<span class="p">);</span>
-<span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">execute_ssh_command</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sess</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mkdir_cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="p">::</span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">"Directory created or already exists"</span><span class="p">),</span>
-<span class="w">    </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="p">::</span><span class="n">warn</span><span class="o">!</span><span class="p">(</span><span class="s">"Failed to create directory, proceeding anyway: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">),</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>mkdir -p</code>는 이미 존재해도 에러를 발생시키지 않으므로 안전하다. 디렉터리 생성 실패 시에도 <code>warn</code>만 남기고 진행한다. 이미 존재하는 디렉터리일 확률이 높기 때문이다.</p>
-<h3 id="ssh_3">SSH 채널 출력 버퍼</h3>
-<p>SSH 채널에서 명령을 실행한 후 출력을 읽지 않으면, 출력 버퍼가 차서 채널이 블록되고 결국 타임아웃이 발생한다. 반드시 <code>read_to_end</code>로 출력을 모두 소비해야 한다.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Vec</span><span class="p">::</span><span class="n">new</span><span class="p">();</span>
-<span class="n">channel</span><span class="p">.</span><span class="n">read_to_end</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w">  </span><span class="c1">// 반드시 호출</span>
-
-<span class="n">channel</span><span class="p">.</span><span class="n">wait_close</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
-</code></pre></div>
-<p>이 순서가 중요하다. <code>read_to_end</code> → <code>wait_close</code> → <code>exit_status</code>. <code>read_to_end</code>를 건너뛰면 <code>wait_close</code>에서 무한 대기할 수 있다.</p>
-<h3 id="_13">한글 동의어 인코딩</h3>
-<p>동의어 파일에 한글이 포함되므로 UTF-8 인코딩을 보장해야 한다. Rust의 <code>String</code>은 기본적으로 UTF-8이고, <code>write_all(content.as_bytes())</code>는 UTF-8 바이트 시퀀스를 그대로 쓰므로 별도 인코딩 처리가 필요 없다. 다만 OpenSearch 서버 측에서 파일을 읽을 때 UTF-8로 해석하는지 확인이 필요했다.</p>
-<hr>
-<h2 id="opensearch_2">OpenSearch 인덱스 분석기 설정</h2>
-<p>동의어가 실제로 검색에 반영되려면, 인덱스의 분석기 설정에 동의어 필터가 포함되어야 한다. 인덱스 생성 시 설정하는 분석기 구성은 다음과 같다.</p>
-<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">create_multi_analyzer_settings</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Value</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
-<span class="w">        </span><span class="s">"analysis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s">"filter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="s">"oneway_synonym_filter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"synonym"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"synonyms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">"애플,apple"</span><span class="p">],</span>
-<span class="w">                    </span><span class="s">"expand"</span><span class="p">:</span><span class="w"> </span><span class="nc">true</span>
-<span class="w">                </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="p">{{</span><span class="err">#i</span><span class="kc">f</span><span class="w"> </span><span class="err">aggrega</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">}}</span>
+<span class="w">    </span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"nested"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo"</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s">"tokenizer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="s">"nori_tokenizer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"nori_tokenizer"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"decompound_mode"</span><span class="p">:</span><span class="w"> </span><span class="s">"mixed"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"user_dictionary_rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">"애플"</span><span class="p">,</span><span class="w"> </span><span class="s">"펜슬"</span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="s">"analyzer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="s">"index_analyzer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="s">"tokenizer"</span><span class="p">:</span><span class="w"> </span><span class="s">"nori_tokenizer"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"filter"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s">"lowercase"</span><span class="p">,</span>
-<span class="w">                        </span><span class="s">"oneway_synonym_filter"</span><span class="p">,</span>
-<span class="w">                        </span><span class="s">"custom_shingle"</span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="s">"search_analyzer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="s">"tokenizer"</span><span class="p">:</span><span class="w"> </span><span class="s">"nori_tokenizer"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"filter"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s">"lowercase"</span><span class="p">,</span>
-<span class="w">                        </span><span class="s">"oneway_synonym_filter"</span>
-<span class="w">                    </span><span class="p">]</span>
+<span class="w">            </span><span class="nt">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"category_keyword"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"multi_terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.dispCtgNo.keyword"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.ctgFullPath.keyword"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                            </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.ctgFullPathNm.keyword"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"brand"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brandNm.keyword"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"price_ranges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salePrc"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"ranges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w"> </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w"> </span><span class="nt">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{{</span><span class="err">/i</span><span class="kc">f</span><span class="p">}}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>핵심은 <code>{{#if aggregation}}</code> 블록이다. <code>aggregation</code> 플래그가 <code>false</code>이면 이 블록 전체가 렌더링되지 않으므로, 일반 검색에서는 불필요한 집계 오버헤드가 발생하지 않는다.</p>
+<h3 id="nested-aggregation">Nested Aggregation의 함정</h3>
+<p>커머스 데이터에서 카테고리 정보는 보통 Nested 타입으로 저장된다. 상품 하나에 여러 카테고리가 매핑될 수 있기 때문이다. Nested Aggregation을 사용하면 각 Nested 문서를 별도로 집계할 수 있지만, 주의할 점이 있다.</p>
+<pre class="mermaid"><code>graph LR
+    subgraph "상품 문서"
+        Product[goodsNo: 12345]
+        Product --&gt; Cat1["dispCtgNo[0]: 여성의류 &gt; 원피스"]
+        Product --&gt; Cat2["dispCtgNo[1]: 시즌 &gt; 봄신상"]
+    end
+
+    subgraph "Nested Aggregation"
+        NA[nested path: dispCtgNo] --&gt; MT[multi_terms]
+        MT --&gt; Result1["여성의류 &gt; 원피스: 150건"]
+        MT --&gt; Result2["시즌 &gt; 봄신상: 80건"]
+    end</code></pre>
+<p><code>multi_terms</code> Aggregation을 사용한 이유는 카테고리 번호(<code>dispCtgNo</code>), 전체 경로(<code>ctgFullPath</code>), 경로명(<code>ctgFullPathNm</code>)을 한 번의 집계로 묶어서 가져오기 위해서다. 별도의 <code>terms</code> Aggregation 3개를 사용하면 결과를 클라이언트에서 다시 매핑해야 하는데, <code>multi_terms</code>를 쓰면 이미 묶인 상태로 받을 수 있다.</p>
+<p>단, <code>multi_terms</code>는 OpenSearch 2.x 이상에서만 지원된다. 이전 버전을 사용하고 있다면 <code>composite</code> Aggregation으로 대체해야 한다.</p>
+<h3 id="_5">대분류/중분류/소분류 계층 집계</h3>
+<p>카테고리를 대분류, 중분류, 소분류로 계층화해서 집계하는 것도 구현했다. 프론트엔드에서 카테고리 드릴다운 UI를 제공하려면 각 레벨별 집계가 필요하다.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">"lrgCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"nested"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"lrg_terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"multi_terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.lrgCtgNo.keyword"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.lrgCtgNm.keyword"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">},</span>
+<span class="nt">"midCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"nested"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"mid_terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"multi_terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.lrgCtgNo.keyword"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.midCtgNo.keyword"</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span><span class="w"> </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dispCtgNo.midCtgNm.keyword"</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>대분류에 <code>lrgCtgNo</code>와 <code>lrgCtgNm</code>을 묶고, 중분류에는 <code>lrgCtgNo</code>를 함께 포함시켜 상위 카테고리와의 관계를 유지한다. 프론트엔드에서 "여성의류" 대분류를 클릭하면, 중분류 결과에서 <code>lrgCtgNo</code>가 같은 항목만 필터링하면 된다.</p>
+<h2 id="_6">에러 핸들링 전략</h2>
+<h3 id="_7">에러 코드 체계</h3>
+<p>기존 검색 API는 에러 처리가 단순했다. 실패하면 빈 배열을 반환하는 수준이었다. 이걸 체계적인 에러 코드 시스템으로 개선했다.</p>
+<div class="highlight"><pre><span></span><code><span class="sd">/// API 응답 구조체</span>
+<span class="cp">#[derive(Debug, Serialize, Deserialize)]</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">ApiResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">timestamp</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="nc">Value</span><span class="p">,</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이전에는 <code>SearchResponse</code>라는 이름으로 검색 결과만 담았다. <code>ProductItem</code> 배열, <code>total</code>, <code>from</code>, <code>size</code>, <code>aggregations</code>를 직접 필드로 가지고 있었다. 문제는 에러가 발생했을 때 이 구조로는 에러 정보를 전달할 방법이 없다는 것이었다.</p>
+<p><code>ApiResponse</code>로 전환하면서 <code>code</code>, <code>message</code>, <code>error</code> 필드를 추가했다. <code>payload</code>는 <code>serde_json::Value</code> 타입으로, 성공 시 검색 결과를, 실패 시 빈 <code>{"hits": []}</code> 를 담는다.</p>
+<p>에러 코드 상수를 정의해서 일관성을 유지했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">ERR_SEMAPHORE_FAILED</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1001"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">ERR_TOO_MANY_REQUESTS</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1002"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">ERR_SEARCH_TIMEOUT</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1003"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">ERR_INTERNAL</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"9999"</span><span class="p">;</span>
+</code></pre></div>
+<p>각 에러 코드의 의미는 다음과 같다.</p>
+<ul>
+<li><strong>1001</strong>: 세마포어 내부 오류. 세마포어가 닫혔거나 시스템 리소스 문제</li>
+<li><strong>1002</strong>: 동시 요청 과다. 세마포어 획득 대기 시간 초과 (2초)</li>
+<li><strong>1003</strong>: 검색 타임아웃. OpenSearch 쿼리 실행 시간 초과 (5초)</li>
+<li><strong>9999</strong>: 내부 서버 오류. 분류되지 않은 에러</li>
+</ul>
+<p>공통 에러 응답 생성 함수도 만들었다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">create_error_response</span><span class="p">(</span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Json</span><span class="p">(</span><span class="n">ApiResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="p">:</span><span class="w"> </span><span class="nc">chrono</span><span class="p">::</span><span class="n">Utc</span><span class="p">::</span><span class="n">now</span><span class="p">().</span><span class="n">format</span><span class="p">(</span><span class="s">"%Y-%m-%dT%H:%M:%S"</span><span class="p">).</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="nc">code</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="nc">message</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">payload</span><span class="p">:</span><span class="w"> </span><span class="nc">serde_json</span><span class="p">::</span><span class="n">json</span><span class="o">!</span><span class="p">({</span><span class="w"> </span><span class="s">"hits"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">        </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="nc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>oneway_synonym_filter</code>는 인라인으로 기본 동의어를 포함하고, 파일 기반 동의어는 <code>synonyms_path</code> 옵션으로 별도 지정한다. <code>_refresh_search_analyzers</code> API를 호출하면 파일에서 동의어를 다시 읽어 분석기를 갱신한다.</p>
-<p><code>nori_tokenizer</code>는 한국어 형태소 분석기로, <code>decompound_mode: "mixed"</code>를 사용하면 복합어를 원형과 분해된 형태 모두로 인덱싱한다. <code>user_dictionary_rules</code>에는 기본 사전에 없는 단어(신조어, 브랜드명 등)를 등록한다.</p>
-<pre class="mermaid"><code>graph LR
-    subgraph "인덱싱 시점"
-        A[원본 텍스트] --&gt; B[nori_tokenizer]
-        B --&gt; C[lowercase]
-        C --&gt; D[synonym_filter]
-        D --&gt; E[shingle]
-        E --&gt; F[인덱스 저장]
+<h3 id="_8">세마포어 기반 동시성 제한</h3>
+<p>검색 엔진에서 가장 위험한 상황은 OpenSearch 클러스터가 과부하로 다운되는 것이다. 특히 Aggregation 쿼리는 리소스를 많이 사용하므로, 동시 요청 수를 제한해야 한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">SearchLimiter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">semaphore</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="o">&lt;</span><span class="n">Semaphore</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">SEARCH_LIMITER</span><span class="p">:</span><span class="w"> </span><span class="nc">OnceCell</span><span class="o">&lt;</span><span class="n">SearchLimiter</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OnceCell</span><span class="p">::</span><span class="n">const_new</span><span class="p">();</span>
+
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">get_search_limiter</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">'</span><span class="nb">static</span><span class="w"> </span><span class="nc">SearchLimiter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SEARCH_LIMITER</span>
+<span class="w">        </span><span class="p">.</span><span class="n">get_or_init</span><span class="p">(</span><span class="o">||</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">SearchLimiter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">semaphore</span><span class="p">:</span><span class="w"> </span><span class="nc">Arc</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">Semaphore</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>OnceCell</code>로 싱글턴 패턴을 구현했다. 세마포어 크기를 10으로 설정해서 동시에 최대 10개의 검색 요청만 OpenSearch로 전달된다. 이 숫자는 OpenSearch 클러스터의 노드 수, CPU 코어, 힙 메모리를 고려해서 결정했다.</p>
+<h3 id="_9">타임아웃 계층화</h3>
+<p>타임아웃을 한 군데만 걸면 어디서 문제가 발생했는지 파악하기 어렵다. 세 단계로 계층화했다.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Client as 클라이언트
+    participant Handler as 검색 핸들러
+    participant Semaphore as 세마포어
+    participant OS as OpenSearch
+
+    Client-&gt;&gt;Handler: GET /api/search/v1/search/goods
+
+    Handler-&gt;&gt;Semaphore: acquire() with 2s timeout
+
+    alt 세마포어 획득 실패 (2초 초과)
+        Semaphore--&gt;&gt;Handler: Timeout
+        Handler--&gt;&gt;Client: 1002 Too many concurrent requests
     end
 
-    subgraph "검색 시점"
-        G[검색 쿼리] --&gt; H[nori_tokenizer]
-        H --&gt; I[lowercase]
-        I --&gt; J[synonym_filter]
-        J --&gt; K[검색 실행]
+    alt 세마포어 내부 오류
+        Semaphore--&gt;&gt;Handler: Error
+        Handler--&gt;&gt;Client: 1001 Semaphore error
+    end
+
+    Semaphore--&gt;&gt;Handler: Permit acquired
+
+    Handler-&gt;&gt;OS: search query with 5s timeout
+
+    alt 검색 타임아웃 (5초 초과)
+        OS--&gt;&gt;Handler: Timeout
+        Handler--&gt;&gt;Client: 1003 Search operation timed out
+    end
+
+    alt 검색 에러
+        OS--&gt;&gt;Handler: Error
+        Handler--&gt;&gt;Client: 9999 Internal server error
+    end
+
+    OS--&gt;&gt;Handler: Search results
+    Handler-&gt;&gt;Semaphore: drop(permit)
+    Handler--&gt;&gt;Client: 0000 Success + payload</code></pre>
+<p>실제 구현 코드는 다음과 같다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">goods_search</span><span class="p">(</span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">SearchRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">to_search_params</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="s">"goods"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">limiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_search_limiter</span><span class="p">().</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 1단계: 세마포어 획득 타임아웃 (2초)</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">permit_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timeout</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">        </span><span class="n">limiter</span><span class="p">.</span><span class="n">semaphore</span><span class="p">.</span><span class="n">acquire</span><span class="p">()</span>
+<span class="w">    </span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">permit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">permit_result</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(</span><span class="n">permit</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">permit</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span>
+<span class="w">                </span><span class="n">ERR_SEMAPHORE_FAILED</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="s">"Search limiter error"</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span>
+<span class="w">                </span><span class="n">ERR_TOO_MANY_REQUESTS</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                </span><span class="s">"Too many concurrent requests"</span>
+<span class="w">            </span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// 2단계: 검색 실행 타임아웃 (5초)</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timeout</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="w">        </span><span class="n">search_service</span><span class="p">::</span><span class="n">search</span><span class="p">(</span><span class="o">&amp;</span><span class="n">search_params</span><span class="p">),</span>
+<span class="w">    </span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 세마포어 즉시 해제</span>
+<span class="w">    </span><span class="nb">drop</span><span class="p">(</span><span class="n">permit</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3단계: 결과 처리</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">search_result</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(</span><span class="n">api_response</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Json</span><span class="p">(</span><span class="n">api_response</span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span>
+<span class="w">            </span><span class="n">ERR_INTERNAL</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">"Internal server error"</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span>
+<span class="w">            </span><span class="n">ERR_SEARCH_TIMEOUT</span><span class="p">,</span><span class="w"> </span>
+<span class="w">            </span><span class="s">"Search operation timed out"</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>drop(permit)</code>을 검색 결과 처리 전에 호출하는 것이 중요하다. 응답 직렬화나 후처리 시간까지 세마포어를 점유하면 불필요하게 다른 요청을 블로킹하게 된다.</p>
+<h3 id="opensearch">OpenSearch 클라이언트 커넥션 풀 최적화</h3>
+<p>에러 핸들링과 함께 OpenSearch 클라이언트의 커넥션 풀도 최적화했다. CPU 코어 수에 따라 동적으로 풀 크기를 결정한다.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">available_cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num_cpus</span><span class="p">::</span><span class="n">get</span><span class="p">();</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">default_pool_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">available_cpus</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">available_cpus</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w">      </span><span class="c1">// 소규모: 코어 x 2</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">available_cpus</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">available_cpus</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="w">      </span><span class="c1">// 중규모: 코어 x 3</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="p">::</span><span class="n">cmp</span><span class="p">::</span><span class="n">min</span><span class="p">(</span><span class="n">available_cpus</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w">  </span><span class="c1">// 대규모: 코어 x 4 (최대 32)</span>
+<span class="p">};</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">pool_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">opensearch_pool_size</span>
+<span class="w">    </span><span class="p">.</span><span class="n">unwrap_or</span><span class="p">(</span><span class="n">default_pool_size</span><span class="p">);</span>
+</code></pre></div>
+<p>설정 파일에 명시적으로 지정하면 그 값을 사용하고, 없으면 시스템 리소스에 맞게 자동 계산한다. 대규모 시스템에서 무한정 늘리면 OS의 파일 디스크립터 제한에 걸릴 수 있어 최대 32로 제한했다.</p>
+<p>로깅도 <code>println!</code>에서 <code>log</code> 크레이트로 전환했다.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span>
+<span class="w">    </span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">SearchParts</span><span class="p">::</span><span class="n">Index</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="n">index</span><span class="p">]))</span>
+<span class="w">    </span><span class="p">.</span><span class="n">body</span><span class="p">(</span><span class="n">query_json</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">status_code</span><span class="p">();</span>
+<span class="n">log</span><span class="p">::</span><span class="n">debug</span><span class="o">!</span><span class="p">(</span><span class="s">"OpenSearch response status: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">status</span><span class="p">.</span><span class="n">is_success</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">error_text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="n">log</span><span class="p">::</span><span class="n">error</span><span class="o">!</span><span class="p">(</span><span class="s">"OpenSearch error: {} - {}"</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">error_text</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">"OpenSearch error: {} - {}"</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">error_text</span><span class="p">).</span><span class="n">into</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="kd">let</span><span class="w"> </span><span class="n">response_body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">::</span><span class="o">&lt;</span><span class="n">Value</span><span class="o">&gt;</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">total</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">response_body</span><span class="p">[</span><span class="s">"hits"</span><span class="p">][</span><span class="s">"total"</span><span class="p">][</span><span class="s">"value"</span><span class="p">].</span><span class="n">as_u64</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">log</span><span class="p">::</span><span class="n">debug</span><span class="o">!</span><span class="p">(</span><span class="s">"OpenSearch query returned {} hits"</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>운영 환경에서는 <code>debug</code> 레벨 로그를 끄고, 에러만 출력하도록 설정한다. 장애 상황에서는 <code>debug</code> 레벨을 켜서 쿼리 내용과 응답 상태까지 추적할 수 있다.</p>
+<h2 id="_10">검색 서비스 리팩토링</h2>
+<h3 id="_11">모듈 분리</h3>
+<p>초기에는 <code>search_service.rs</code> 하나에 모든 로직이 들어 있었다. Handlebars 초기화, 쿼리 빌드, OpenSearch 실행, 결과 파싱까지 한 파일에 500줄 이상이었다. 이걸 역할별로 분리했다.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph "리팩토링 전"
+        Old[search_service.rs 500+ lines]
+    end
+
+    subgraph "리팩토링 후"
+        SS[search_service.rs] --&gt; SU[search_util.rs]
+        SS --&gt; QB[query_builder.rs]
+        SU --&gt; Client[opensearch/client.rs]
+        QB --&gt; Templates[templates/*.hbs]
     end</code></pre>
-<p>인덱싱 시점과 검색 시점 모두에서 동의어 필터를 적용한다. 인덱싱 시점에 적용하면 "노트북"으로 인덱싱된 문서에 "랩탑"으로도 검색할 수 있고, 검색 시점에 적용하면 "랩탑"을 검색했을 때 "노트북"도 함께 검색된다. 양쪽 모두 적용하면 최대한의 재현율(recall)을 확보할 수 있다.</p>
-<hr>
-<h2 id="_14">다중 프로젝트 지원</h2>
-<p>하나의 OpenSearch 클러스터에서 여러 프로젝트의 동의어를 관리해야 하는 상황도 고려했다. 프로젝트명과 환경을 파일명에 포함시켜 충돌을 방지한다.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// dictionary 폴더에도 프로젝트별 백업</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">dictionary_filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span>
-<span class="w">    </span><span class="s">"{}_{}_synonym.txt"</span><span class="p">,</span>
-<span class="w">    </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">project_name</span><span class="p">,</span>
-<span class="w">    </span><span class="bp">self</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">env</span>
-<span class="p">);</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">save_to_dictionary</span><span class="p">(</span><span class="o">&amp;</span><span class="n">synonym_txt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dictionary_filename</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// search_service.rs - 진입점만 담당</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="k">crate</span><span class="p">::</span><span class="n">util</span><span class="p">::</span><span class="n">search</span><span class="p">::</span><span class="n">search_util</span><span class="p">::{</span><span class="n">ApiResponse</span><span class="p">,</span><span class="w"> </span><span class="n">SearchParams</span><span class="p">};</span>
+
+<span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span>
+<span class="w">    </span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">SearchParams</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="p">,</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Send</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Sync</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_search_query</span><span class="p">(</span><span class="n">params</span><span class="p">);</span>
+<span class="w">    </span><span class="n">log</span><span class="p">::</span><span class="n">debug</span><span class="o">!</span><span class="p">(</span><span class="s">"Generated query: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">query</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">execute_opensearch_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">params</span><span class="p">.</span><span class="n">index_name</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Utc</span><span class="p">::</span><span class="n">now</span><span class="p">().</span><span class="n">format</span><span class="p">(</span><span class="s">"%Y-%m-%dT%H:%M:%S"</span><span class="p">).</span><span class="n">to_string</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process_search_result</span><span class="p">(</span><span class="n">params</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">search_result</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">ApiResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">timestamp</span><span class="p">,</span>
+<span class="w">        </span><span class="n">code</span><span class="p">:</span><span class="w"> </span><span class="s">"0000"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">message</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">        </span><span class="n">payload</span><span class="p">,</span>
+<span class="w">        </span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="nc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>실제 파일 구조:</p>
-<div class="highlight"><pre><span></span><code>./dictionary/
-  ├── osstem_local_synonym.txt
-  ├── osstem_stg_synonym.txt
-  └── osstem_prd_synonym.txt
+<p><code>search_service.rs</code>는 흐름만 정의하고, 실제 구현은 <code>search_util.rs</code>와 <code>query_builder.rs</code>에 위임한다. 타입 재사용을 위해 <code>pub use</code>로 re-export하는 패턴을 사용했다.</p>
+<h3 id="aggregation_1">Aggregation 결과 후처리</h3>
+<p>Aggregation 응답은 검색 히트와 다른 구조를 가진다. 응답 타입에 따라 분기 처리가 필요하다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">process_search_result</span><span class="p">(</span>
+<span class="w">    </span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">SearchParams</span><span class="p">,</span>
+<span class="w">    </span><span class="n">search_result</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Value</span><span class="p">,</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Send</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Sync</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="n">index_name</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"recomword"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 추천 검색어: terms aggregation 결과 추출</span>
+<span class="w">        </span><span class="n">process_recomword_result</span><span class="p">(</span><span class="n">search_result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="n">aggregation</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 집계 검색: aggregation 데이터 가공</span>
+<span class="w">        </span><span class="n">process_aggregation_data</span><span class="p">(</span><span class="n">search_result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 일반 검색: hits 추출</span>
+<span class="w">        </span><span class="n">process_hits_result</span><span class="p">(</span><span class="n">search_result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>이 백업 파일은 SSH 업로드가 실패했을 때 수동 복구에 활용할 수 있고, 동의어 변경 이력을 추적하는 데에도 유용하다.</p>
-<hr>
+<p><code>process_aggregation_data</code> 함수에서는 OpenSearch가 반환한 원시 Aggregation 데이터를 프론트엔드가 바로 사용할 수 있는 형태로 가공한다. Nested Aggregation의 <code>buckets</code>를 순회하면서 카테고리 트리, 브랜드 목록, 가격대 분포 등으로 정리한다.</p>
+<h2 id="_12">공통 검색 실행 함수 통합</h2>
+<p>엔드포인트가 늘어나면서 각 핸들러에 세마포어 획득-검색-해제 코드가 중복되었다. <code>execute_search</code> 함수로 통합했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">execute_search</span><span class="p">(</span><span class="n">search_params</span><span class="p">:</span><span class="w"> </span><span class="nc">SearchParams</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">limiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_search_limiter</span><span class="p">().</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">permit_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timeout</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">        </span><span class="n">limiter</span><span class="p">.</span><span class="n">semaphore</span><span class="p">.</span><span class="n">acquire</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">permit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">permit_result</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(</span><span class="n">permit</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">permit</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span><span class="n">ERR_SEMAPHORE_FAILED</span><span class="p">,</span><span class="w"> </span><span class="s">"Search limiter error"</span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span><span class="n">ERR_TOO_MANY_REQUESTS</span><span class="p">,</span><span class="w"> </span><span class="s">"Too many concurrent requests"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timeout</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="w">        </span><span class="n">search_service</span><span class="p">::</span><span class="n">search</span><span class="p">(</span><span class="o">&amp;</span><span class="n">search_params</span><span class="p">),</span>
+<span class="w">    </span><span class="p">).</span><span class="k">await</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nb">drop</span><span class="p">(</span><span class="n">permit</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">search_result</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Ok</span><span class="p">(</span><span class="n">api_response</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">Json</span><span class="p">(</span><span class="n">api_response</span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">))</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span><span class="n">ERR_INTERNAL</span><span class="p">,</span><span class="w"> </span><span class="s">"Internal server error"</span><span class="p">),</span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">create_error_response</span><span class="p">(</span><span class="n">ERR_SEARCH_TIMEOUT</span><span class="p">,</span><span class="w"> </span><span class="s">"Search operation timed out"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이제 각 엔드포인트 핸들러는 파라미터 변환만 담당한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">goods_search</span><span class="p">(</span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">SearchRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lang_cd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">get_lang_cd</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">to_search_params</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"goods-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">lang_cd</span><span class="p">));</span>
+<span class="w">    </span><span class="n">execute_search</span><span class="p">(</span><span class="n">search_params</span><span class="p">).</span><span class="k">await</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">goods_aggregation</span><span class="p">(</span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">SearchRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lang_cd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">get_lang_cd</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">to_search_params</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"goods-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">lang_cd</span><span class="p">));</span>
+<span class="w">    </span><span class="n">execute_search</span><span class="p">(</span><span class="n">search_params</span><span class="p">).</span><span class="k">await</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">marketing_search</span><span class="p">(</span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">SearchRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lang_cd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">get_lang_cd</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">to_search_params</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"marketing-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">lang_cd</span><span class="p">));</span>
+<span class="w">    </span><span class="n">execute_search</span><span class="p">(</span><span class="n">search_params</span><span class="p">).</span><span class="k">await</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>to_search_params</code>의 첫 번째 인자가 <code>aggregation</code> 플래그다. <code>goods_aggregation</code>만 <code>true</code>를 전달한다.</p>
+<h2 id="_13">트러블슈팅</h2>
+<h3 id="nested-aggregation-doc_count">Nested Aggregation에서 doc_count가 예상과 다른 문제</h3>
+<p>Nested Aggregation의 <code>doc_count</code>는 상위 문서(상품) 수가 아니라 Nested 문서(카테고리 매핑) 수를 반환한다. 상품 하나에 카테고리가 3개 매핑되어 있으면, 해당 상품은 doc_count에 3으로 카운트된다.</p>
+<p>이 문제는 <code>reverse_nested</code> Aggregation을 추가해서 해결할 수 있다. 하지만 프론트엔드에서 "이 카테고리에 몇 개의 상품이 있는지" 정확한 수를 보여줄 필요가 없었기 때문에, 카테고리 목록만 추출하는 방식으로 타협했다.</p>
+<h3 id="oom">세마포어 크기와 OOM의 관계</h3>
+<p>초기에 세마포어 크기를 20으로 설정했더니, Aggregation 요청이 몰릴 때 OpenSearch 노드의 힙 메모리가 90%를 넘어갔다. 특히 <code>multi_terms</code> Aggregation은 terms 수가 많을수록 메모리를 많이 사용한다.</p>
+<p>세마포어를 10으로 줄이고, Aggregation의 <code>size</code>를 100에서 50으로 조정해서 해결했다. 카테고리가 100개 이상 나오는 경우는 드물고, 프론트엔드에서도 상위 50개만 보여주면 충분했다.</p>
+<h3 id="_14">타임아웃 값 튜닝</h3>
+<p>세마포어 획득 타임아웃 2초, 검색 실행 타임아웃 5초는 여러 번의 부하 테스트를 거쳐 결정한 값이다. 정상 상태에서 검색은 100ms 이내, Aggregation은 300ms 이내에 완료된다. 5초가 걸린다는 것은 OpenSearch 클러스터에 심각한 문제가 있다는 신호이므로, 빠르게 실패시키고 클러스터가 복구될 시간을 주는 것이 낫다.</p>
 <h2 id="_15">결과 및 회고</h2>
-<p>SSH/SFTP를 활용한 동의어 사전 자동 배포 파이프라인을 구현함으로써, 기존에 수동으로 수행하던 작업을 API 호출 하나로 자동화했다.</p>
-<p><strong>정량적 성과:</strong></p>
-<ul>
-<li>동의어 반영 시간: 30분+ (수동) → 30초 (자동)</li>
-<li>운영자 개입: 필요 → 불필요</li>
-<li>실수로 인한 장애: 간헐적 발생 → 0건</li>
-</ul>
-<p><strong>설계 원칙:</strong></p>
-<ul>
-<li>2단계 업로드 전략(/tmp → sudo mv)으로 권한 문제를 깔끔하게 해결했다.</li>
-<li>부분 실패 허용: 여러 인덱스 중 일부 재로드가 실패해도 나머지는 정상 처리된다.</li>
-<li>보안 고려: 로그에서 패스워드를 마스킹하여, 로그 유출 시에도 SSH 크레덴셜이 노출되지 않는다.</li>
-<li>백업 전략: 로컬 dictionary 폴더에 프로젝트/환경별 백업을 유지한다.</li>
-</ul>
-<p><strong>개선 여지:</strong></p>
-<ul>
-<li>현재 패스워드 인증을 사용하고 있는데, SSH 키 기반 인증으로 전환하면 보안이 강화된다. <code>ssh2</code> 크레이트는 <code>userauth_pubkey_file</code> 메서드를 제공하므로 전환이 용이하다.</li>
-<li>동의어 파일의 diff를 계산하여 변경이 없으면 업로드를 건너뛰는 최적화가 가능하다. 동의어가 수천 건이 넘어가면 매번 전체를 업로드하는 것보다 변경 감지가 효율적이다.</li>
-<li><code>ssh2</code>는 동기 API 기반(내부적으로 블로킹 I/O)이므로, <code>tokio::task::spawn_blocking</code>으로 감싸서 비동기 컨텍스트에서 안전하게 사용하는 것이 바람직하다. 현재는 동의어 배포가 빈번하지 않아 실용적 문제는 없지만, 원칙적으로는 개선해야 할 부분이다.</li>
-</ul>
-<p>Rust에서 SSH를 다루는 것은 Python의 paramiko나 Node.js의 ssh2에 비해 초기 설정(빌드 의존성 등)이 다소 번거롭지만, 한번 셋업하면 타입 안전성과 에러 핸들링의 명시성 덕분에 안정적인 구현을 유지할 수 있다.</p>
+<h3 id="_16">성과</h3>
+<p>Aggregation 검색 도입 후 프론트엔드에서 카테고리 드릴다운, 브랜드 필터, 가격대 필터를 제공할 수 있게 되었다. 에러 핸들링 개선으로 장애 상황에서도 클라이언트에 의미 있는 에러 정보를 전달할 수 있게 되었고, 세마포어 기반 동시성 제한으로 OpenSearch 클러스터의 안정성이 크게 향상되었다.</p>
+<p>정량적으로 보면, 에러 핸들링 도입 전에는 OpenSearch 과부하 시 검색 API가 30초 이상 응답을 기다리다 커넥션 타임아웃이 발생했다. 도입 후에는 최악의 경우에도 7초(세마포어 2초 + 검색 5초) 이내에 에러 응답을 반환한다. 사용자 경험 측면에서 큰 차이다.</p>
+<h3 id="_17">배운 점</h3>
+<p>에러 핸들링은 처음부터 설계해야 한다. 나중에 추가하면 응답 구조체를 통째로 바꿔야 하고, 모든 클라이언트 코드도 함께 수정해야 한다. <code>SearchResponse</code>에서 <code>ApiResponse</code>로 전환하면서 프론트엔드 코드도 전부 수정해야 했다.</p>
+<p>타임아웃은 계층화해야 한다. 하나의 타임아웃만 있으면 "어디서 느려진 건지" 파악할 수 없다. 세마포어 획득, 검색 실행, 전체 요청 각 단계에 타임아웃을 걸면 에러 코드만으로 병목 지점을 특정할 수 있다.</p>
+<p>Aggregation 쿼리는 반드시 별도로 모니터링해야 한다. 일반 검색과 같은 메트릭으로 보면 평균 응답 시간이 올라간 것처럼 보여서, 실제로 어떤 유형의 쿼리가 문제인지 파악하기 어렵다. 엔드포인트를 분리한 것이 모니터링 측면에서도 도움이 되었다.</p>
 
 
 

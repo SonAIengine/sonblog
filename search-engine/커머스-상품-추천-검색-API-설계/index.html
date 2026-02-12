@@ -3,11 +3,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Rust 검색 엔진에서 상품, 마케팅, 이벤트 데이터에 대한 추천 검색어(recomword) API를 설계하고 구현한 과정. 인덱싱 파이프라인부터 Terms Aggregation 기반 자동완성, 문자열 길이 정렬까지.">
       
       
       
-        <link rel="prev" href="../../infra/XGEN-2.0-%EC%9D%B8%ED%94%84%EB%9D%BC-K8s-ArgoCD-%EC%9A%B4%EC%98%81-%EB%B0%B0%ED%8F%AC/">
       
+        <link rel="prev" href="../%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EA%B8%B0/">
+      
+      
+        <link rel="next" href="../OpenSearch/Hybrid%20Search/Hybrid%20Search/">
       
       
         
@@ -18,7 +22,7 @@
     
     
       
-        <title>macOS에서 USB 포맷 실패 시 해결 방법 - SON BLOG</title>
+        <title>커머스 상품 추천 검색 API 설계 (goods + marketing) - SON BLOG</title>
       
     
     
@@ -81,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1" class="md-skip">
+        <a href="#api-goods-marketing" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              macOS에서 USB 포맷 실패 시 해결 방법
+              커머스 상품 추천 검색 API 설계 (goods + marketing)
             
           </span>
         </div>
@@ -329,11 +333,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../search-engine/Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-tabs__link">
           
   
   
@@ -395,13 +401,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../etc/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-tabs__link">
           
   
   
@@ -2341,8 +2345,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -2380,19 +2386,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   
@@ -2410,7 +2419,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2428,7 +2437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-nav__link">
+      <a href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-nav__link">
         
   
   
@@ -2456,7 +2465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch-Aggregation-%EA%B2%80%EC%83%89-%EA%B5%AC%ED%98%84-%EB%B0%8F-%EC%97%90%EB%9F%AC-%ED%95%B8%EB%93%A4%EB%A7%81-%EC%A0%84%EB%9E%B5/" class="md-nav__link">
+      <a href="../OpenSearch-Aggregation-%EA%B2%80%EC%83%89-%EA%B5%AC%ED%98%84-%EB%B0%8F-%EC%97%90%EB%9F%AC-%ED%95%B8%EB%93%A4%EB%A7%81-%EC%A0%84%EB%9E%B5/" class="md-nav__link">
         
   
   
@@ -2484,7 +2493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch-%EC%9D%B8%EB%8D%B1%EC%8B%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D-vs-%EB%B0%B0%EC%B9%98-%EC%B2%98%EB%A6%AC-%EB%B9%84%EA%B5%90/" class="md-nav__link">
+      <a href="../OpenSearch-%EC%9D%B8%EB%8D%B1%EC%8B%B1-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D-vs-%EB%B0%B0%EC%B9%98-%EC%B2%98%EB%A6%AC-%EB%B9%84%EA%B5%90/" class="md-nav__link">
         
   
   
@@ -2512,7 +2521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/PostgreSQL%EA%B3%BC-MySQL-%EB%8F%99%EC%8B%9C-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-Rust-DB-%EC%B6%94%EC%83%81%ED%99%94-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%ED%98%84/" class="md-nav__link">
+      <a href="../PostgreSQL%EA%B3%BC-MySQL-%EB%8F%99%EC%8B%9C-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-Rust-DB-%EC%B6%94%EC%83%81%ED%99%94-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%ED%98%84/" class="md-nav__link">
         
   
   
@@ -2540,7 +2549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%97%90-Redis-%EC%BA%90%EC%8B%B1-%EC%A0%81%EC%9A%A9%EA%B8%B0/" class="md-nav__link">
+      <a href="../Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%97%90-Redis-%EC%BA%90%EC%8B%B1-%EC%A0%81%EC%9A%A9%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2568,7 +2577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%97%90%EC%84%9C-SSH-%ED%84%B0%EB%84%90%EB%A7%81%EC%9C%BC%EB%A1%9C-%EC%9B%90%EA%B2%A9-DB-%EC%A0%91%EA%B7%BC%ED%95%98%EA%B8%B0/" class="md-nav__link">
+      <a href="../Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%97%90%EC%84%9C-SSH-%ED%84%B0%EB%84%90%EB%A7%81%EC%9C%BC%EB%A1%9C-%EC%9B%90%EA%B2%A9-DB-%EC%A0%91%EA%B7%BC%ED%95%98%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2596,7 +2605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%98-CI-CD-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EA%B5%AC%EC%B6%95/" class="md-nav__link">
+      <a href="../Rust-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%98-CI-CD-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8-%EA%B5%AC%EC%B6%95/" class="md-nav__link">
         
   
   
@@ -2624,7 +2633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Rust%EB%A1%9C-%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%84-%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="md-nav__link">
+      <a href="../Rust%EB%A1%9C-%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%84-%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2652,7 +2661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/%EB%B2%A1%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
+      <a href="../%EB%B2%A1%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2680,7 +2689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
+      <a href="../%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B2%80%EC%83%89-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -2705,10 +2714,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../search-engine/%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EC%83%81%ED%92%88-%EC%B6%94%EC%B2%9C-%EA%B2%80%EC%83%89-API-%EC%84%A4%EA%B3%84/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    커머스 상품 추천 검색 API 설계 (goods + marketing)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2724,6 +2760,332 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개요
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        아키텍처 설계
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="아키텍처 설계">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천 검색어 시스템 전체 구조
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인덱스 네이밍 규칙
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        인덱싱 파이프라인
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="인덱싱 파이프라인">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-marketing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event에서 Marketing으로의 전환
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천 검색어 자동 추출
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천어 인덱스 자동 생성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마케팅 인덱스 매핑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="마케팅 인덱스 매핑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        필드 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 쿼리 필드 매핑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천 검색어 API 구현
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="추천 검색어 API 구현">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 엔드포인트
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천어 검색 쿼리 템플릿
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천어 응답 후처리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라우팅 통합
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="라우팅 통합">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 라우터 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        트러블슈팅
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="트러블슈팅">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        와일드카드 쿼리 성능 문제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        recomword 문서 관리 이슈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다국어 인덱스 네이밍 충돌
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과 및 회고
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="결과 및 회고">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성과
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배운 점
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2760,17 +3122,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12">
         
           
-          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
             
   
   
@@ -2864,7 +3229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
+      <a href="../OpenSearch/Hybrid%20Search/Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -2892,7 +3257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Hybrid%20Search/OpenAI%20API%20%EC%9E%84%EB%B2%A0%EB%94%A9%20%EB%AA%A8%EB%8D%B8%20%EB%93%B1%EB%A1%9D%20%EB%B0%8F%20%EC%82%AC%EC%9A%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -2984,7 +3349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
+      <a href="../OpenSearch/Learning%20to%20Rank/What%20is%20LTR/" class="md-nav__link">
         
   
   
@@ -3076,7 +3441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
+      <a href="../OpenSearch/ML/ml%20%EB%AA%A8%EB%8D%B8%20deploy%20%EC%8B%9C%20%EB%A9%94%EB%AA%A8%EB%A6%AC%2099%25%20%EC%B0%A8%EC%A7%80%20%EC%9B%90%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -3168,7 +3533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
+      <a href="../OpenSearch/Plugin/UBI%20Schema/" class="md-nav__link">
         
   
   
@@ -3278,7 +3643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Approximate%20k-NN/" class="md-nav__link">
         
   
   
@@ -3306,7 +3671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Embeddings%20model/" class="md-nav__link">
         
   
   
@@ -3334,7 +3699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Exact%20k-NN%20Seach/" class="md-nav__link">
         
   
   
@@ -3362,7 +3727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/GPU%20%EA%B8%B0%EB%B0%98%20%EC%9B%90%EA%B2%A9%20%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EA%B5%AC%EC%B6%95%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3390,7 +3755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Nested%20Field%EB%A1%9C%20%EB%8B%A4%EC%A4%91%20%EB%B2%A1%ED%84%B0%20%EB%8B%A4%EB%A3%A8%EA%B8%B0/" class="md-nav__link">
         
   
   
@@ -3418,7 +3783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Radial%20Search/" class="md-nav__link">
         
   
   
@@ -3446,7 +3811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/Vector%20Sech%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3474,7 +3839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/%EA%B2%80%EC%83%89%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3502,7 +3867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9C%A0%EC%82%AC%EB%8F%84%20%EA%B3%84%EC%82%B0%EC%9D%84%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C%28Painless%20Scripting%20Extension%29/" class="md-nav__link">
         
   
   
@@ -3530,7 +3895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
+      <a href="../OpenSearch/Vector%20Search/%EB%B2%A1%ED%84%B0%20%EC%9D%B8%EB%8D%B1%EC%8B%B1%20%EC%84%B1%EB%8A%A5%20%EC%B5%9C%EC%A0%81%ED%99%94%20%EA%B0%80%EC%9D%B4%EB%93%9C/" class="md-nav__link">
         
   
   
@@ -3680,7 +4045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../OpenSearch/Version%20history/3.0.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -3774,7 +4139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
+      <a href="../OpenSearch/Version%20history/3.1.0/Star-tree%20Index/" class="md-nav__link">
         
   
   
@@ -3802,7 +4167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
+      <a href="../OpenSearch/Version%20history/3.1.0/%EC%9A%94%EC%95%BD/" class="md-nav__link">
         
   
   
@@ -3912,7 +4277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EB%AA%A9%EC%A0%81%EC%97%90%20%EB%A7%9E%EB%8A%94%20%20docker-compose/" class="md-nav__link">
         
   
   
@@ -3940,7 +4305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%83%A4%EB%93%9C%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
         
   
   
@@ -3968,7 +4333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%84%B1%EB%8A%A5%20%EC%B2%B4%ED%81%AC/" class="md-nav__link">
         
   
   
@@ -3996,7 +4361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EC%84%A4%EC%B9%98%20%EC%A0%84%20%EC%82%AC%EC%96%91%20%ED%99%95%EC%9D%B8/" class="md-nav__link">
         
   
   
@@ -4024,7 +4389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%EC%B5%9C%EC%A0%81%EC%9D%98%20%EB%8B%A8%EC%9D%BC%20%EC%84%9C%EB%B2%84%20%EC%98%A4%ED%94%88%EC%84%9C%EC%B9%98%20%EB%B0%B0%ED%8F%AC/" class="md-nav__link">
         
   
   
@@ -4052,7 +4417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20-%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
+      <a href="../OpenSearch/docker/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%20%EA%B5%AC%EC%84%B1%20%EC%A0%84%EB%9E%B5%20-%20%EC%83%A4%EB%93%9C%20%EB%B6%84%EC%82%B0%20%EC%84%A4%EA%B3%84/" class="md-nav__link">
         
   
   
@@ -4144,7 +4509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
+      <a href="../OpenSearch/indexing/vector%20indexing/" class="md-nav__link">
         
   
   
@@ -4204,17 +4569,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13">
         
           
-          <label class="md-nav__link" for="__nav_6_13" id="__nav_6_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_13" id="__nav_6_13_label" tabindex="">
             
   
   
@@ -4250,7 +4618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/LangChain%EA%B3%BC%20Qdrant/" class="md-nav__link">
+      <a href="../Qdrant/LangChain%EA%B3%BC%20Qdrant/" class="md-nav__link">
         
   
   
@@ -4278,7 +4646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/Qdrant%EC%9D%98%20Semantic%20Chunk/" class="md-nav__link">
+      <a href="../Qdrant/Qdrant%EC%9D%98%20Semantic%20Chunk/" class="md-nav__link">
         
   
   
@@ -4306,7 +4674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
+      <a href="../Qdrant/%EB%AC%B8%EC%84%9C%20%EA%B8%B0%EB%B0%98%20RAG%20%EA%B5%AC%EC%84%B1/" class="md-nav__link">
         
   
   
@@ -4438,7 +4806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Capacity%20Planning/" class="md-nav__link">
         
   
   
@@ -4466,7 +4834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Codebase%20with%20Semantic%20Search/" class="md-nav__link">
         
   
   
@@ -4494,7 +4862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Collection/" class="md-nav__link">
         
   
   
@@ -4522,7 +4890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Distributed%20deployment/" class="md-nav__link">
         
   
   
@@ -4550,7 +4918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Explore%20the%20Data/" class="md-nav__link">
         
   
   
@@ -4578,7 +4946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/FastEmbed/" class="md-nav__link">
         
   
   
@@ -4606,7 +4974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Filtering/" class="md-nav__link">
         
   
   
@@ -4634,7 +5002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Hybrid%20Queries/" class="md-nav__link">
         
   
   
@@ -4662,7 +5030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Indexing/" class="md-nav__link">
         
   
   
@@ -4690,7 +5058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Load%20and%20Search%20Hugging%20Face%20Datasets/" class="md-nav__link">
         
   
   
@@ -4718,7 +5086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Multivector%20Reranking/" class="md-nav__link">
         
   
   
@@ -4746,7 +5114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Payload/" class="md-nav__link">
         
   
   
@@ -4774,7 +5142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Points/" class="md-nav__link">
         
   
   
@@ -4802,7 +5170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20Async%20API/" class="md-nav__link">
         
   
   
@@ -4830,7 +5198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Qdrant%20LangChain/" class="md-nav__link">
         
   
   
@@ -4858,7 +5226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Qptimizer/" class="md-nav__link">
         
   
   
@@ -4886,7 +5254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Reranking%20Hybrid%20Search/" class="md-nav__link">
         
   
   
@@ -4914,7 +5282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Running%20with%20GPU/" class="md-nav__link">
         
   
   
@@ -4942,7 +5310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Scaling%20PDF%20Retrieval/" class="md-nav__link">
         
   
   
@@ -4970,7 +5338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Semantic%20Search%20Tutorials/" class="md-nav__link">
         
   
   
@@ -4998,7 +5366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Similarity%20Search/" class="md-nav__link">
         
   
   
@@ -5026,7 +5394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Static%20Embedding%20%EB%8B%A4%EC%8B%9C%20%EC%A3%BC%EB%AA%A9%ED%95%B4%EC%95%BC%20%ED%95%A0%EA%B9%8C/" class="md-nav__link">
         
   
   
@@ -5054,7 +5422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Storage/" class="md-nav__link">
         
   
   
@@ -5082,7 +5450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/Vectors/" class="md-nav__link">
         
   
   
@@ -5110,7 +5478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/Qdrant/%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
+      <a href="../Qdrant/%EC%9D%B4%EB%A1%A0/%EA%B0%9C%EB%B0%9C%20%EB%B0%8F%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%ED%99%98%EA%B2%BD%20%EC%84%A4%EC%A0%95/" class="md-nav__link">
         
   
   
@@ -5168,17 +5536,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14">
         
           
-          <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="">
             
   
   
@@ -5276,7 +5647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Chunker/" class="md-nav__link">
+      <a href="../RAG/LangChain/Chunker/" class="md-nav__link">
         
   
   
@@ -5304,7 +5675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/%EB%8C%80%ED%99%94%20%EA%B8%B0%EB%A1%9D%20%EC%9C%A0%EC%A7%80/" class="md-nav__link">
+      <a href="../RAG/LangChain/%EB%8C%80%ED%99%94%20%EA%B8%B0%EB%A1%9D%20%EC%9C%A0%EC%A7%80/" class="md-nav__link">
         
   
   
@@ -5332,7 +5703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/%EC%9D%BC%EA%B4%80%EB%90%9C%20output%20%28PydanticOutputParser%29/" class="md-nav__link">
+      <a href="../RAG/LangChain/%EC%9D%BC%EA%B4%80%EB%90%9C%20output%20%28PydanticOutputParser%29/" class="md-nav__link">
         
   
   
@@ -5420,7 +5791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
+      <a href="../RAG/LangChain/Document%20Loader/Docx/" class="md-nav__link">
         
   
   
@@ -5448,7 +5819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Document%20Loader/Morphik%20-%20%ED%8C%8C%EC%8B%B1%20%EC%97%86%EC%9D%B4%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A7%8C%EC%9C%BC%EB%A1%9C%20RAG%EB%A5%BC%20%EC%8B%A4%ED%98%84/" class="md-nav__link">
+      <a href="../RAG/LangChain/Document%20Loader/Morphik%20-%20%ED%8C%8C%EC%8B%B1%20%EC%97%86%EC%9D%B4%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A7%8C%EC%9C%BC%EB%A1%9C%20RAG%EB%A5%BC%20%EC%8B%A4%ED%98%84/" class="md-nav__link">
         
   
   
@@ -5476,7 +5847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
+      <a href="../RAG/LangChain/Document%20Loader/PDF/" class="md-nav__link">
         
   
   
@@ -5576,7 +5947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
+      <a href="../RAG/LangGraph/LangGraph%20%ED%99%9C%EC%9A%A9%EC%B2%98/" class="md-nav__link">
         
   
   
@@ -5670,7 +6041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/Intro/" class="md-nav__link">
+      <a href="../RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/Intro/" class="md-nav__link">
         
   
   
@@ -5698,7 +6069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/%EC%B2%AD%ED%82%B9%20%EC%A0%84%EB%9E%B5/" class="md-nav__link">
+      <a href="../RAG/RAG%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EA%B3%A0%EB%8F%84%ED%99%94/%EC%B2%AD%ED%82%B9%20%EC%A0%84%EB%9E%B5/" class="md-nav__link">
         
   
   
@@ -5752,17 +6123,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_15">
         
           
-          <label class="md-nav__link" for="__nav_6_15" id="__nav_6_15_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_15" id="__nav_6_15_label" tabindex="">
             
   
   
@@ -5798,7 +6172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../search-engine/%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
+      <a href="../%EA%B2%80%EC%A6%9D/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%B0%A9%EC%8B%9D%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%8B%9C%EC%8A%A4%ED%85%9C%20%EB%B6%80%ED%95%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC/" class="md-nav__link">
         
   
   
@@ -6041,10 +6415,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -6054,22 +6426,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -6087,7 +6456,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -6102,35 +6471,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    macOS에서 USB 포맷 실패 시 해결 방법
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../etc/macOS%EC%97%90%EC%84%9C%20USB%20%ED%8F%AC%EB%A7%B7%20%EC%8B%A4%ED%8C%A8%20%EC%8B%9C%20%ED%95%B4%EA%B2%B0%20%EB%B0%A9%EB%B2%95/" class="md-nav__link">
         
   
   
@@ -6146,107 +6490,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 실패 증상
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 터미널을 통한 포맷 절차
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 터미널을 통한 포맷 절차">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (1) 디스크 목록 확인
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (2) 디스크 언마운트
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (3) 디스크 포맷
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 포맷 성공 여부 확인
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 마무리
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6276,6 +6519,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -6284,10 +6529,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 실패 증상
+        개요
       
     </span>
   </a>
@@ -6295,22 +6540,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 터미널을 통한 포맷 절차
+        아키텍처 설계
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. 터미널을 통한 포맷 절차">
+    <nav class="md-nav" aria-label="아키텍처 설계">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        (1) 디스크 목록 확인
+        추천 검색어 시스템 전체 구조
       
     </span>
   </a>
@@ -6318,21 +6563,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        (2) 디스크 언마운트
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        (3) 디스크 포맷
+        인덱스 네이밍 규칙
       
     </span>
   </a>
@@ -6345,24 +6579,258 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. 포맷 성공 여부 확인
+        인덱싱 파이프라인
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="인덱싱 파이프라인">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-marketing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event에서 Marketing으로의 전환
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. 마무리
+        추천 검색어 자동 추출
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천어 인덱스 자동 생성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마케팅 인덱스 매핑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="마케팅 인덱스 매핑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        필드 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 쿼리 필드 매핑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천 검색어 API 구현
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="추천 검색어 API 구현">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 엔드포인트
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천어 검색 쿼리 템플릿
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천어 응답 후처리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        라우팅 통합
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="라우팅 통합">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        검색 라우터 구성
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        트러블슈팅
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="트러블슈팅">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        와일드카드 쿼리 성능 문제
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        recomword 문서 관리 이슈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다국어 인덱스 네이밍 충돌
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과 및 회고
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="결과 및 회고">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        성과
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        배운 점
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6409,10 +6877,10 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../Axum-OpenSearch-Rust-%EA%B2%80%EC%83%89-API-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%84%A4%EA%B3%84/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Etc
+    Search Engine
   </span>
 
         </a>
@@ -6431,64 +6899,404 @@
 
 
 
-  <h1>macOS에서 USB 포맷 실패 시 해결 방법</h1>
+<h1 id="api-goods-marketing">커머스 상품 추천 검색 API 설계 (goods + marketing)</h1>
+<h2 id="_1">개요</h2>
+<p>커머스 검색에서 "추천 검색어"는 사용자가 검색어를 입력하는 도중에 관련 키워드를 제안하는 기능이다. "원피"까지 입력하면 "원피스", "원피스 여름", "원피스 세일" 같은 추천어를 보여준다. 단순한 자동완성처럼 보이지만, 상품 데이터와 마케팅 데이터를 기반으로 추천어를 생성하고, 검색 빈도와 연관도를 반영해야 한다는 점에서 꽤 복잡한 문제다.</p>
+<p>이 글에서는 Rust 검색 엔진에 추천 검색어 시스템을 구축한 과정을 다룬다. 상품(goods), 마케팅(marketing), 이벤트(event) 세 가지 도메인별로 별도 인덱스를 설계하고, 인덱싱 파이프라인에서 추천어를 자동 추출하는 구조를 만들었다.</p>
+<h2 id="_2">아키텍처 설계</h2>
+<h3 id="_3">추천 검색어 시스템 전체 구조</h3>
+<pre class="mermaid"><code>graph TD
+    subgraph "인덱싱 파이프라인"
+        DB[(PostgreSQL)] --&gt; FetchService[DB Fetch Service]
+        FetchService --&gt; Processor[Document Processor]
+        Processor --&gt; RecomExtractor[Recomword Extractor]
+        RecomExtractor --&gt; MainIndex["메인 인덱스&lt;br/&gt;goods-ko, marketing-ko"]
+        RecomExtractor --&gt; RecomIndex["추천어 인덱스&lt;br/&gt;goods-recomword-ko&lt;br/&gt;marketing-recomword-ko"]
+    end
 
-<p>macOS의 디스크 유틸리티(Disk Utility)를 이용해 USB를 포맷하려고 할 때, 간혹 포맷이 실패하는 경우가 있다. 특히 “파티션 맵을 수정할 수 없습니다. (-69874)”라는 오류와 함께 디스크가 정상적으로 초기화되지 않는 상황이 발생할 수 있다. 이러한 경우 터미널을 통해 문제를 해결할 수 있다.</p>
-<h2 id="1">1. 실패 증상</h2>
-<p>디스크 유틸리티에서 "디스크 지우기"를 실행했지만 다음과 같은 오류가 발생했다.</p>
-<div class="highlight"><pre><span></span><code>'디스크 지우고 생성 중'
-지우기 작업에 실패했습니다. 계속하려면 완료를 클릭하십시오.
-파티션 맵을 수정할 수 없습니다. (-69874)
+    subgraph "검색 API"
+        Client[클라이언트] --&gt; GoodsRecom[/goods-recomword]
+        Client --&gt; MarketingRecom[/marketing-recomword]
+        Client --&gt; EventRecom[/event-recomword]
+
+        GoodsRecom --&gt; QueryBuilder[쿼리 빌더]
+        MarketingRecom --&gt; QueryBuilder
+        EventRecom --&gt; QueryBuilder
+
+        QueryBuilder --&gt; Template[recomword_search_template.hbs]
+        Template --&gt; OS[(OpenSearch)]
+        OS --&gt; AggProcessor[Terms Agg 후처리]
+        AggProcessor --&gt; Response[추천어 응답]
+    end</code></pre>
+<p>핵심 설계 결정은 추천 검색어를 별도 인덱스에 저장하는 것이었다. 메인 상품 인덱스에서 직접 추천어를 검색할 수도 있지만, 두 가지 이유로 분리했다.</p>
+<p>첫째, 성능이다. 메인 인덱스는 수십만~수백만 건의 상품 문서를 가지고 있다. 자동완성을 위해 매번 이 인덱스를 쿼리하면 응답 시간이 길어진다. 추천어 인덱스는 고유 키워드만 저장하므로 문서 수가 훨씬 적고, 쿼리도 단순하다.</p>
+<p>둘째, 독립적인 데이터 관리다. 추천어에 가중치를 부여하거나, 금칙어를 필터링하거나, 인기 검색어를 별도로 관리할 때 분리된 인덱스가 유리하다.</p>
+<h3 id="_4">인덱스 네이밍 규칙</h3>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">INDEX_GOODS</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"goods"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">INDEX_MARKETING</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"marketing"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">INDEX_EVENT</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"event"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">INDEX_GOODS_RECOMWORD</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"goods-recomword"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">INDEX_MARKETING_RECOMWORD</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"marketing-recomword"</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="n">INDEX_EVENT_RECOMWORD</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"event-recomword"</span><span class="p">;</span>
 </code></pre></div>
-<p>이 경우 GUI 방식으로는 더 이상 진행할 수 없으므로, 터미널에서 수동으로 디스크를 포맷하는 방식으로 해결할 수 있다.</p>
-<h2 id="2">2. 터미널을 통한 포맷 절차</h2>
-<h3 id="1_1">(1) 디스크 목록 확인</h3>
-<p>먼저 터미널을 열고 연결된 디스크 목록을 확인한다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>list
+<p>다국어를 지원하기 위해 언어 코드를 인덱스명에 붙인다. <code>goods-recomword-ko</code>, <code>goods-recomword-en</code> 식이다. 검색 API에서 <code>lang_cd</code> 파라미터를 받아 해당 언어의 인덱스를 조회한다.</p>
+<h2 id="_5">인덱싱 파이프라인</h2>
+<h3 id="event-marketing">Event에서 Marketing으로의 전환</h3>
+<p>초기에는 이벤트(event) 데이터를 별도로 인덱싱했다. <code>EventRepository</code>가 이벤트 테이블에서 데이터를 가져와 <code>event-ko</code> 인덱스에 저장하는 구조였다. 그런데 실제 데이터를 분석해보니, "이벤트"라고 분류된 데이터의 대부분이 마케팅 프로모션이었다. 기획전, 할인 이벤트, 시즌 세일 등 마케팅 성격의 데이터였다.</p>
+<p>도메인 용어를 "event"에서 "marketing"으로 변경했다. 단순한 네이밍 변경이 아니라 데이터 모델도 함께 수정했다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">MarketingRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">base</span><span class="p">:</span><span class="w"> </span><span class="nc">BaseRepository</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">MarketingRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">pg_client</span><span class="p">:</span><span class="w"> </span><span class="nc">PostgresClient</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">base</span><span class="p">:</span><span class="w"> </span><span class="nc">BaseRepository</span><span class="p">::</span><span class="n">new</span><span class="p">(</span>
+<span class="w">                </span><span class="n">pg_client</span><span class="p">,</span>
+<span class="w">                </span><span class="s">"marketing"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">                </span><span class="s">"./src/repositories/indexing/columns_map/marketing_map.json"</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>이 명령을 실행하면 <code>/dev/disk4</code>, <code>/dev/disk5</code> 등 다양한 디스크가 출력되며, USB 장치에 해당하는 디스크 번호를 확인할 수 있다. 용량이나 이름 등을 보고 판단한다.</p>
-<h3 id="2_1">(2) 디스크 언마운트</h3>
-<p>디스크가 마운트된 상태에서는 포맷이 되지 않으므로, 우선 언마운트를 수행한다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>unmountDisk<span class="w"> </span>/dev/disk4
+<p><code>EventRepository</code>를 <code>MarketingRepository</code>로 변경하면서 컬럼 매핑 파일도 <code>event_map.json</code>에서 <code>marketing_map.json</code>으로 교체했다. 마케팅 데이터에는 <code>title</code>, <code>description</code>, <code>schKwdNm</code>(검색 키워드명) 같은 필드가 있어, 상품 데이터와는 다른 매핑이 필요하다.</p>
+<p>팩토리 패턴으로 레포지토리를 생성하고 있었기 때문에, 팩토리만 수정하면 되었다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">create_repository</span><span class="p">(</span>
+<span class="w">    </span><span class="n">index_type</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span>
+<span class="w">    </span><span class="n">pg_client</span><span class="p">:</span><span class="w"> </span><span class="nc">PostgresClient</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">IndexingRepository</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">index_type</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">"goods"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Box</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">GoodsRepository</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">pg_client</span><span class="p">))),</span>
+<span class="w">        </span><span class="s">"ranking"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Box</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">RankingRepository</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">pg_client</span><span class="p">))),</span>
+<span class="w">        </span><span class="s">"marketing"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="nb">Box</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">MarketingRepository</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="n">pg_client</span><span class="p">))),</span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">AppError</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="s">"404"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"Unknown index type: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">index_type</span><span class="p">))),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<p><code>Unmount of all volumes on disk4 was successful</code> 메시지가 출력되면 성공적으로 언마운트된 것이다.</p>
-<h3 id="3">(3) 디스크 포맷</h3>
-<p>이제 해당 디스크를 FAT32 형식(MS-DOS)과 MBR 파티션 맵으로 포맷한다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>eraseDisk<span class="w"> </span>MS-DOS<span class="w"> </span><span class="s2">"USB"</span><span class="w"> </span>MBR<span class="w"> </span>/dev/disk4
+<h3 id="_6">추천 검색어 자동 추출</h3>
+<p>인덱싱 과정에서 각 문서로부터 추천 검색어를 자동으로 추출한다. 상품 문서에서는 상품명, 브랜드명, 검색 키워드에서 추천어를 뽑아내고, 마케팅 문서에서는 타이틀과 검색 키워드에서 추출한다.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant IS as IndexingService
+    participant Doc as Document
+    participant RE as RecomExtractor
+    participant IU as IndexUtil
+    participant OS as OpenSearch
+
+    IS-&gt;&gt;Doc: fetch_data(interval)
+    loop 각 문서마다
+        IS-&gt;&gt;RE: should_process_recomword(index_type, item)
+        RE--&gt;&gt;IS: true/false
+
+        alt 추천어 처리 대상
+            IS-&gt;&gt;RE: process_recomword(item, index_type)
+            RE--&gt;&gt;IS: additional_docs (추천어 문서들)
+        end
+    end
+
+    IS-&gt;&gt;IU: bulk_index(main_docs + additional_docs)
+    IU-&gt;&gt;OS: Bulk API
+
+    Note over IS,OS: 추천어 인덱스가 없으면 자동 생성</code></pre>
+<p><code>should_process_recomword</code> 함수는 해당 인덱스 타입이 추천어 처리 대상인지 확인한다. 모든 인덱스에 추천어가 필요한 것은 아니다. <code>IndexUtil::MULTI_RECOMWORD_USE_INDEX</code> 상수에 정의된 인덱스만 추천어를 생성한다.</p>
+<p><code>process_recomword</code> 함수는 문서의 특정 필드에서 키워드를 추출하고, 추천어 전용 문서를 생성한다. 이 문서들은 <code>additional_docs</code> 벡터에 추가되어, 메인 문서와 함께 Bulk API로 인덱싱된다.</p>
+<h3 id="_7">추천어 인덱스 자동 생성</h3>
+<p>추천어 인덱스가 존재하지 않으면 자동으로 생성한다. 매핑을 코드에서 정의하고 있어, 인덱스 구조가 버전 관리된다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">ensure_recomword_index_exists</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span>
+<span class="w">    </span><span class="n">index_type</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lang_cd</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="kt">str</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="n">AppError</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">recomword_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}-recomword-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">index_type</span><span class="p">,</span><span class="w"> </span><span class="n">lang_cd</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">exists_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span>
+<span class="w">        </span><span class="p">.</span><span class="n">client</span>
+<span class="w">        </span><span class="p">.</span><span class="n">indices</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">IndicesExistsParts</span><span class="p">::</span><span class="n">Index</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[</span><span class="o">&amp;</span><span class="n">recomword_index</span><span class="p">]))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">exists_response</span><span class="p">.</span><span class="n">status_code</span><span class="p">().</span><span class="n">is_success</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">            </span><span class="s">"number_of_shards"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"number_of_replicas"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">mappings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">            </span><span class="s">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="s">"recomword"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"text"</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="s">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"keyword"</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">"ignore_above"</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">request_body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">!</span><span class="p">({</span>
+<span class="w">            </span><span class="s">"settings"</span><span class="p">:</span><span class="w"> </span><span class="nc">settings</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"mappings"</span><span class="p">:</span><span class="w"> </span><span class="nc">mappings</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">client</span>
+<span class="w">            </span><span class="p">.</span><span class="n">indices</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">IndicesCreateParts</span><span class="p">::</span><span class="n">Index</span><span class="p">(</span><span class="o">&amp;</span><span class="n">recomword_index</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">body</span><span class="p">(</span><span class="n">request_body</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(())</span>
+<span class="p">}</span>
 </code></pre></div>
-<ul>
-<li>
-<p><code>"USB"</code>는 포맷 후 디스크에 표시될 이름이다. 자유롭게 변경 가능하다.</p>
-</li>
-<li>
-<p><code>MS-DOS</code>는 FAT32 파일 시스템을 의미하며, <code>MBR</code>은 마스터 부트 레코드 방식의 파티션이다.</p>
-</li>
-</ul>
-<p>작업이 완료되면 다음과 같은 메시지가 출력된다.</p>
-<div class="highlight"><pre><span></span><code>Finished erase on disk4
+<p><code>recomword</code> 필드는 <code>text</code> 타입과 <code>keyword</code> 서브필드를 동시에 가진다. <code>text</code> 타입은 와일드카드 검색(<code>*원피*</code>)에 사용하고, <code>keyword</code> 서브필드는 Terms Aggregation에서 정확한 문자열을 기준으로 집계할 때 사용한다. <code>ignore_above: 256</code>으로 비정상적으로 긴 문자열은 keyword 인덱싱에서 제외한다.</p>
+<p>샤드 수를 1로, 레플리카를 0으로 설정한 이유는 추천어 인덱스의 크기가 작기 때문이다. 수만 건 수준의 추천어는 단일 샤드로 충분하고, 개발/스테이징 환경에서는 레플리카가 필요 없다. 운영 환경에서는 별도로 레플리카를 추가한다.</p>
+<h2 id="_8">마케팅 인덱스 매핑</h2>
+<h3 id="_9">필드 설계</h3>
+<p>마케팅 데이터는 상품 데이터와 다른 필드 구조를 가진다. OpenSearch에서 검색 품질을 높이기 위해 각 필드에 맞는 분석기를 설정했다.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"similarity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scripted_no_idf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"norms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"similarity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scripted_no_idf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"norms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"schKwdNm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"similarity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scripted_no_idf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"norms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"titleAnaly"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"similarity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scripted_no_idf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"norms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"analyzer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nori_custom"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"descriptionAnaly"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"similarity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scripted_no_idf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"norms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"analyzer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nori_custom"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"schKwdNmAnaly"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"similarity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scripted_no_idf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"norms"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"analyzer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nori_custom"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>이로써 USB 포맷이 성공적으로 완료된 것이다.</p>
-<h2 id="3_1">3. 포맷 성공 여부 확인</h2>
-<p>Finder에서 USB가 <code>"USB"</code>라는 이름으로 자동 마운트되며 정상적으로 인식되는 것을 확인할 수 있다. 터미널에서 다음 명령어로도 확인할 수 있다.</p>
-<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>info<span class="w"> </span>/Volumes/USB
+<p>각 텍스트 필드는 원본 필드와 분석 필드(<code>*Analy</code>)를 쌍으로 가진다. 원본 필드는 <code>text</code> 타입의 기본 분석기(standard)를 사용하고, 분석 필드는 <code>nori_custom</code> 분석기를 사용한다. Nori는 한국어 형태소 분석기로, "원피스 여름 신상"을 "원피스", "여름", "신상"으로 분리한다.</p>
+<p><code>similarity: "scripted_no_idf"</code>를 설정한 이유가 있다. 일반적인 BM25 스코어링에서 IDF(Inverse Document Frequency)는 "드문 단어일수록 높은 점수"를 부여한다. 하지만 마케팅 데이터에서는 "세일", "할인" 같은 고빈도 단어가 오히려 중요하다. IDF를 비활성화해서 단어 빈도에 관계없이 일관된 스코어링을 적용한다.</p>
+<p><code>norms: false</code>는 필드 길이 정규화를 비활성화한다. 긴 문서일수록 점수가 낮아지는 효과를 제거해서, 짧은 타이틀과 긴 설명문이 공정하게 경쟁하도록 한다.</p>
+<h3 id="_10">검색 쿼리 필드 매핑</h3>
+<p>인덱스 유형에 따라 검색 대상 필드가 달라진다. <code>get_index_fields</code> 함수에서 인덱스별 필드 구성을 반환한다.</p>
+<pre class="mermaid"><code>graph LR
+    subgraph "goods 인덱스"
+        G1[goodsNm - 상품명]
+        G2[brandNm - 브랜드명]
+        G3[goodsNmAnaly - 형태소분석]
+    end
+
+    subgraph "marketing 인덱스"
+        M1[title - 제목]
+        M2[description - 설명]
+        M3[schKwdNm - 검색키워드]
+        M4[titleAnaly - 형태소분석]
+    end
+
+    subgraph "recomword 인덱스"
+        R1[recomword - 추천어]
+    end</code></pre>
+<h2 id="api">추천 검색어 API 구현</h2>
+<h3 id="_11">검색 엔드포인트</h3>
+<p>세 가지 도메인에 대해 각각 추천 검색어 엔드포인트를 제공한다.</p>
+<div class="highlight"><pre><span></span><code><span class="sd">/// 상품 추천 검색 API</span>
+<span class="cp">#[utoipa::path(</span>
+<span class="cp">    get,</span>
+<span class="cp">    path = </span><span class="s">"/api/search/v1/search/goods-recomword"</span><span class="cp">,</span>
+<span class="cp">    params(</span>
+<span class="cp">        (</span><span class="s">"search_word"</span><span class="cp"> = Option&lt;String&gt;, Query, description = </span><span class="s">"검색어"</span><span class="cp">),</span>
+<span class="cp">        (</span><span class="s">"from"</span><span class="cp"> = Option&lt;u32&gt;, Query, description = </span><span class="s">"검색 시작 위치"</span><span class="cp">),</span>
+<span class="cp">        (</span><span class="s">"size"</span><span class="cp"> = Option&lt;u32&gt;, Query, description = </span><span class="s">"결과 개수"</span><span class="cp">),</span>
+<span class="cp">        (</span><span class="s">"lang_cd"</span><span class="cp"> = Option&lt;String&gt;, Query, description = </span><span class="s">"언어 코드"</span><span class="cp">)</span>
+<span class="cp">    ),</span>
+<span class="cp">    responses(</span>
+<span class="cp">        (status = 200, description = </span><span class="s">"상품 추천 검색 결과를 성공적으로 반환"</span><span class="cp">, body = SearchResponse)</span>
+<span class="cp">    ),</span>
+<span class="cp">    tag = </span><span class="s">"search"</span>
+<span class="cp">)]</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">goods_recomword</span><span class="p">(</span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">SearchRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lang_cd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">get_lang_cd</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span>
+<span class="w">        </span><span class="p">.</span><span class="mi">0</span>
+<span class="w">        </span><span class="p">.</span><span class="n">to_search_params</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">INDEX_GOODS_RECOMWORD</span><span class="p">,</span><span class="w"> </span><span class="n">lang_cd</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">execute_search</span><span class="p">(</span><span class="n">search_params</span><span class="p">).</span><span class="k">await</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>출력 결과에서 다음과 같은 항목을 확인하면 된다.</p>
-<ul>
-<li>
-<p><code>File System: MS-DOS (FAT32)</code></p>
-</li>
-<li>
-<p><code>Writable: Yes</code></p>
-</li>
-</ul>
-<h2 id="4">4. 마무리</h2>
-<p>macOS에서 디스크 유틸리티를 통한 포맷이 실패하더라도, 터미널을 활용하면 대부분의 문제를 해결할 수 있다. 특히 <code>diskutil</code> 명령어는 디스크 관리에 매우 강력한 도구이므로 익숙해두면 다양한 상황에 유용하게 활용할 수 있다.</p>
+<p><code>utoipa</code> 매크로로 Swagger 문서를 자동 생성한다. 프론트엔드 개발자가 API 문서를 보고 바로 연동할 수 있다. <code>lang_cd</code>를 통해 <code>goods-recomword-ko</code>, <code>goods-recomword-en</code> 등 언어별 인덱스를 선택한다.</p>
+<p>마케팅과 이벤트도 동일한 패턴이다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">marketing_recomword</span><span class="p">(</span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">SearchRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lang_cd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">get_lang_cd</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span>
+<span class="w">        </span><span class="p">.</span><span class="mi">0</span>
+<span class="w">        </span><span class="p">.</span><span class="n">to_search_params</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">INDEX_MARKETING_RECOMWORD</span><span class="p">,</span><span class="w"> </span><span class="n">lang_cd</span><span class="p">));</span>
+<span class="w">    </span><span class="n">execute_search</span><span class="p">(</span><span class="n">search_params</span><span class="p">).</span><span class="k">await</span>
+<span class="p">}</span>
+
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">event_recomword</span><span class="p">(</span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="nc">Query</span><span class="o">&lt;</span><span class="n">SearchRequest</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Json</span><span class="o">&lt;</span><span class="n">ApiResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">lang_cd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="mf">0.</span><span class="n">get_lang_cd</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span>
+<span class="w">        </span><span class="p">.</span><span class="mi">0</span>
+<span class="w">        </span><span class="p">.</span><span class="n">to_search_params</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}-{}"</span><span class="p">,</span><span class="w"> </span><span class="n">INDEX_EVENT_RECOMWORD</span><span class="p">,</span><span class="w"> </span><span class="n">lang_cd</span><span class="p">));</span>
+<span class="w">    </span><span class="n">execute_search</span><span class="p">(</span><span class="n">search_params</span><span class="p">).</span><span class="k">await</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_12">추천어 검색 쿼리 템플릿</h3>
+<p>추천 검색어 쿼리는 일반 검색과 다른 템플릿을 사용한다.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="p">{{</span><span class="kc">fr</span><span class="err">om</span><span class="p">}},</span>
+<span class="w">    </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="p">{{</span><span class="err">size</span><span class="p">}},</span>
+<span class="w">    </span><span class="nt">"track_total_hits"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"bool"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"should"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"query_string"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"recomword"</span><span class="p">],</span>
+<span class="w">                        </span><span class="nt">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*{{search_word}}*"</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"terms_agg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"recomword.keyword"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="p">{{</span><span class="err">size</span><span class="p">}}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"aggs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"avg_length"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"avg"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"script"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"doc['recomword.keyword'].value.length()"</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">"bucket_sort"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"bucket_sort"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">"sort"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                            </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">"avg_length"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"asc"</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">}</span>
+<span class="w">                        </span><span class="p">]</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>이 쿼리에는 세 가지 핵심 설계가 담겨 있다.</p>
+<p><strong>와일드카드 검색</strong>: <code>*{{search_word}}*</code>로 부분 문자열 매칭을 한다. "원피"를 입력하면 "원피스", "원피스 여름", "미니 원피스" 등 "원피"가 포함된 모든 추천어를 찾는다. <code>query_string</code>의 와일드카드는 <code>text</code> 필드의 분석된 토큰에 대해 적용된다.</p>
+<p><strong>Terms Aggregation으로 중복 제거</strong>: 같은 추천어가 여러 문서에서 추출될 수 있다. Terms Aggregation은 자동으로 고유한 키워드만 추출하고, 각 키워드의 문서 빈도(<code>doc_count</code>)도 함께 제공한다. 빈도가 높은 추천어가 상위에 노출된다.</p>
+<p><strong>문자열 길이 기반 정렬</strong>: <code>avg_length</code> 스크립트로 각 추천어의 문자열 길이를 계산하고, <code>bucket_sort</code>로 짧은 것부터 정렬한다. "원피스"(3글자)가 "원피스 여름 신상품"(9글자)보다 먼저 나와야 한다. 사용자가 "원피"를 입력했을 때, 더 짧고 직관적인 추천어가 상위에 올라야 사용성이 좋다.</p>
+<h3 id="_13">추천어 응답 후처리</h3>
+<p>추천어 검색 결과는 일반 검색과 다른 후처리를 거친다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span><span class="w"> </span><span class="nf">process_search_result</span><span class="p">(</span>
+<span class="w">    </span><span class="n">params</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">SearchParams</span><span class="p">,</span>
+<span class="w">    </span><span class="n">search_result</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Value</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="n">Value</span><span class="p">,</span><span class="w"> </span><span class="nb">Box</span><span class="o">&lt;</span><span class="k">dyn</span><span class="w"> </span><span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Send</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Sync</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="n">index_name</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"recomword"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">process_recomword_result</span><span class="p">(</span><span class="n">search_result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">params</span><span class="p">.</span><span class="n">aggregation</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">process_aggregation_data</span><span class="p">(</span><span class="n">search_result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">process_hits_result</span><span class="p">(</span><span class="n">search_result</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>process_recomword_result</code>에서는 Terms Aggregation의 <code>buckets</code>를 순회하면서 추천어 목록을 추출한다. <code>doc_count</code>(빈도)는 이미 <code>bucket_sort</code>로 길이 기준 정렬이 되어 있으므로, 그 순서를 유지한다.</p>
+<h2 id="_14">라우팅 통합</h2>
+<h3 id="_15">검색 라우터 구성</h3>
+<p>새로운 엔드포인트를 라우터에 등록한다.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">search_routes</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">Router</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">search_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/api/search/v1/search"</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Router</span><span class="p">::</span><span class="n">new</span><span class="p">()</span>
+<span class="w">        </span><span class="c1">// 기본 검색</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/goods"</span><span class="p">,</span><span class="w"> </span><span class="n">search_path</span><span class="p">),</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">goods_search</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/marketing-search"</span><span class="p">,</span><span class="w"> </span><span class="n">search_path</span><span class="p">),</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">marketing_search</span><span class="p">))</span>
+<span class="w">        </span><span class="c1">// 집계 검색</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/goods-aggregation"</span><span class="p">,</span><span class="w"> </span><span class="n">search_path</span><span class="p">),</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">goods_aggregation</span><span class="p">))</span>
+<span class="w">        </span><span class="c1">// 추천 검색</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/goods-recomword"</span><span class="p">,</span><span class="w"> </span><span class="n">search_path</span><span class="p">),</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">goods_recomword</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/marketing-recomword"</span><span class="p">,</span><span class="w"> </span><span class="n">search_path</span><span class="p">),</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">marketing_recomword</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="o">&amp;</span><span class="fm">format!</span><span class="p">(</span><span class="s">"{}/event-recomword"</span><span class="p">,</span><span class="w"> </span><span class="n">search_path</span><span class="p">),</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="n">event_recomword</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>URL 패턴을 <code>{도메인}-recomword</code>로 통일해서, 클라이언트가 도메인 이름만 바꾸면 된다. Swagger에서도 <code>search</code> 태그로 묶여 있어 한눈에 확인 가능하다.</p>
+<h2 id="_16">트러블슈팅</h2>
+<h3 id="_17">와일드카드 쿼리 성능 문제</h3>
+<p><code>*원피*</code> 같은 양쪽 와일드카드 쿼리는 OpenSearch에서 성능이 좋지 않다. 인덱스의 모든 토큰을 순회해야 하기 때문이다. 추천어 인덱스의 문서 수가 적어서 현재는 괜찮지만, 문서 수가 증가하면 문제가 될 수 있다.</p>
+<p>대안으로 <code>edge_ngram</code> 토크나이저를 고려했다. "원피스"를 인덱싱할 때 "원", "원피", "원피스"로 분할해서 저장하면 와일드카드 없이도 접두어 매칭이 가능하다. 하지만 중위 매칭("피스" → "원피스")은 지원하지 않으므로, 현재는 와일드카드를 유지하되 추천어 인덱스의 크기를 관리하는 방향으로 결정했다.</p>
+<h3 id="recomword">recomword 문서 관리 이슈</h3>
+<p>초기 구현에서는 인덱싱 시마다 기존 추천어 문서를 삭제하고 새로 생성했다. <code>manage_recomword_documents</code> 함수로 기존 문서를 찾아 삭제하는 로직이 있었는데, 대량 인덱싱 시 삭제 오버헤드가 컸다.</p>
+<p>리팩토링 후에는 삭제 로직을 제거하고, 추천어 추출 시 <code>additional_docs</code>에 추가하는 방식으로 변경했다. Terms Aggregation이 자동으로 중복을 제거하므로, 같은 추천어가 여러 번 인덱싱되어도 검색 결과에는 영향이 없다.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 리팩토링 전: 매번 삭제 후 재생성</span>
+<span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">data_to_index</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">extra_fields</span><span class="p">.</span><span class="n">keys</span><span class="p">().</span><span class="n">cloned</span><span class="p">().</span><span class="n">collect</span><span class="p">::</span><span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"id"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">id</span><span class="p">.</span><span class="n">clone</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">id_str</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">.</span><span class="n">as_str</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="bp">self</span><span class="p">.</span><span class="n">manage_recomword_documents</span><span class="p">(</span><span class="n">index_type</span><span class="p">,</span><span class="w"> </span><span class="n">id_str</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// ... 추천어 처리</span>
+<span class="p">}</span>
+
+<span class="c1">// 리팩토링 후: 추가만 수행</span>
+<span class="k">for</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">data_to_index</span><span class="p">.</span><span class="n">iter_mut</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">should_process_recomword</span><span class="p">(</span><span class="n">index_type</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">self</span><span class="p">.</span><span class="n">process_recomword</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">index_type</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="n">additional_docs</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>불필요한 삭제 연산을 제거하면서 인덱싱 속도가 상당히 개선되었다. 추천어 인덱스의 문서 수가 시간이 지나면서 증가할 수 있지만, 주기적으로 인덱스를 재생성(reindex)하면 된다.</p>
+<h3 id="_18">다국어 인덱스 네이밍 충돌</h3>
+<p>초기에는 추천어 인덱스에 언어 코드를 붙이지 않았다. <code>goods-recomword</code> 하나로 모든 언어의 추천어를 저장했더니, 한국어와 영어 추천어가 섞여서 나왔다. "원피스"를 검색했는데 "dress"가 함께 나오는 문제였다.</p>
+<p>언어별로 인덱스를 분리하면서 해결했다. <code>ensure_recomword_index_exists</code> 함수에 <code>lang_cd</code> 파라미터를 추가하고, 인덱스명을 <code>{index_type}-recomword-{lang_cd}</code> 형식으로 변경했다.</p>
+<h2 id="_19">결과 및 회고</h2>
+<h3 id="_20">성과</h3>
+<p>추천 검색어 API 도입 후 프론트엔드에서 검색 자동완성 기능을 구현할 수 있게 되었다. 상품, 마케팅, 이벤트 세 가지 도메인의 추천어를 독립적으로 제공하면서, 각 도메인의 특성에 맞는 추천을 할 수 있다.</p>
+<p>Terms Aggregation + 문자열 길이 정렬 방식은 별도의 랭킹 모델 없이도 합리적인 추천 순서를 제공한다. 빈도가 높고 짧은 키워드가 상위에 노출되므로, 사용자 입장에서 직관적이다.</p>
+<p>인덱싱 파이프라인에서 추천어를 자동 추출하는 구조 덕분에, 새로운 상품이나 마케팅 데이터가 추가되면 추천어도 자동으로 갱신된다. 별도의 추천어 관리 작업이 필요 없다.</p>
+<h3 id="_21">배운 점</h3>
+<p>도메인 모델의 네이밍은 처음부터 신중하게 결정해야 한다. "event"에서 "marketing"으로 변경하면서 레포지토리, 라우트, 인덱스, 테스트까지 전부 수정해야 했다. 코드 자체의 변경량은 크지 않았지만, 팩토리 패턴 덕분에 영향 범위를 최소화할 수 있었다. 도메인 용어가 확정되지 않은 상태에서 코드를 작성할 때는, 팩토리 패턴이나 전략 패턴으로 변경 비용을 낮추는 것이 중요하다.</p>
+<p>와일드카드 쿼리의 성능 한계는 인덱스 크기가 작을 때는 문제가 되지 않지만, 스케일이 커지면 반드시 대안을 고려해야 한다. <code>edge_ngram</code> 토크나이저, Completion Suggester, 또는 별도의 Trie 기반 자동완성 서버 등 선택지가 있다. 현재 규모에서는 과도한 최적화지만, 트래픽이 증가하면 전환할 준비를 해두었다.</p>
+<p>인덱싱 파이프라인에서 부수 데이터(추천어)를 함께 생성하는 패턴은 데이터 일관성을 유지하는 데 효과적이다. 하지만 인덱싱 실패 시 메인 데이터와 추천어 데이터의 불일치가 발생할 수 있으므로, 주기적인 전체 재인덱싱 스케줄을 운영하는 것이 안전하다.</p>
 
 
 
 
 
 
+
+  
+  
 
 
 

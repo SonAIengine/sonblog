@@ -35,9 +35,9 @@
 - 기술 블로그 글 링크를 레퍼런스로 연결하여 깊이 있는 포트폴리오 구성
 
 ## 마지막 작성
-- 날짜: 2026-02-11
-- 작성 완료 시기: 2024.03~2026.01 (글 1~13)
-- 다음 작성 시기: 2026.02 (글 14~120, Agent Tool Ecosystem + Tauri 데스크톱 앱)
+- 날짜: 2026-02-17
+- 작성 완료 시기: 2024.03~2026.01 (글 1~13), 검색엔진 #1~#12
+- 다음 작성 대상: 검색엔진 #13 (Rate Limiting이 적용된 검색 API 설계)
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -64,3 +64,6 @@
 - docs/search-engine/OpenSearch-Aggregation-검색-구현-및-에러-핸들링-전략.md (#7)
 - docs/search-engine/커머스-상품-추천-검색-API-설계.md (#8)
 - docs/search-engine/Rust-검색-엔진의-CI-CD-파이프라인-구축.md (#9)
+- docs/search-engine/Rust 검색 엔진/OpenSearch-동의어-사전-관리-자동화.md (#10)
+- docs/search-engine/Rust 검색 엔진/Handlebars-템플릿으로-동적-검색-쿼리-생성하기.md (#11)
+- docs/search-engine/Rust 검색 엔진/커서-기반-인덱싱-vs-전체-인덱싱-성능-비교.md (#12)

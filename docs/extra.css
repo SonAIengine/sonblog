@@ -816,11 +816,18 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 /* ── 페이지 레이아웃 ────────────────────────────────────────────────────────── */
 
-/* MkDocs content 영역 padding 제거 */
+/* MkDocs content 영역 padding 제거 + 우주 배경 전파 */
 .md-content:has(.graph-page) .md-content__inner {
   padding: 0 !important;
   margin: 0 !important;
   max-width: 100% !important;
+  background: #070b18 !important;
+}
+
+.md-content:has(.graph-page),
+.md-main:has(.graph-page),
+.md-main__inner:has(.graph-page) {
+  background: #070b18 !important;
 }
 
 .graph-page {

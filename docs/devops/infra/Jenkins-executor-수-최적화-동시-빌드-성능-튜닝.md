@@ -1,7 +1,7 @@
 ---
 title: "Jenkins executor 수 최적화: 6개 서비스 동시 빌드를 위한 성능 튜닝"
 description: "numExecutors 2에서 6으로 증가, K3s 노드 리소스 계획, 빌드 큐 병목 해소 과정"
-date: 2026-02-17
+date: 2026-01-20
 tags:
   - Jenkins
   - DevOps

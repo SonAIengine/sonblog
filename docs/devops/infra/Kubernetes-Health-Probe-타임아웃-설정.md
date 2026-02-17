@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes Health Probe 타임아웃 설정으로 Pod 재시작 방지"
 description: "initialDelaySeconds, timeoutSeconds, failureThreshold 조정으로 무거운 AI 서비스의 불필요한 Pod 재시작을 방지한 실전 사례"
-date: 2026-02-17
+date: 2026-01-14
 tags:
   - Kubernetes
   - Health Probe

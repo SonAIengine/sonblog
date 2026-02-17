@@ -1,7 +1,7 @@
 ---
 title: "Istio Gateway HTTPS 설정과 TLS 인증서 관리"
 description: "Istio Gateway에서 HTTPS 서버 설정, HTTP→HTTPS 리다이렉트, credentialName 기반 TLS 관리 구현 과정"
-date: 2026-02-17
+date: 2026-01-20
 tags:
   - Istio
   - Gateway

@@ -1,7 +1,7 @@
 ---
 title: "Docker BuildKit 캐시 전략과 NO_CACHE 옵션"
 description: "Jenkins CI에서 Docker 빌드 캐시가 오히려 독이 된 상황, NO_CACHE 파라미터와 builder prune 자동화로 해결한 과정"
-date: 2026-02-17
+date: 2026-01-18
 tags:
   - Docker
   - BuildKit

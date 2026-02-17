@@ -1,7 +1,7 @@
 ---
 title: "Jenkins RBAC: Kubernetes watch 권한 누락으로 인한 배포 실패 삽질기"
 description: "kubectl rollout status가 내부적으로 watch 권한을 요구한다는 사실을 몰라서 겪은 Jenkins RBAC 트러블슈팅"
-date: 2026-02-17
+date: 2026-01-18
 tags:
   - Jenkins
   - RBAC

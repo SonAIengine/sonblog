@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes Downward API로 멀티 Pod 세션 라우팅 구현"
 description: "POD_NAME과 POD_IP를 컨테이너 환경변수로 주입해 멀티 Pod 환경에서 세션 스티키니스와 분산 추적을 구현한 방법"
-date: 2026-02-17
+date: 2026-01-17
 tags:
   - Kubernetes
   - Downward API

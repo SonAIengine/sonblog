@@ -42,11 +42,8 @@
 
 </div>
 
-<!-- 그래프 데이터 인라인 삽입 (fetch 불필요) -->
+<!-- 그래프 데이터 인라인 삽입 -->
 <script>
   window.__GRAPH_DATA__ = {{ graph_data | tojson }};
 </script>
-
-<!-- sigma.js 번들 -->
-<script src="{{ config.site_url }}assets/graph/graph-viz.iife.js"></script>
 {% endblock %}

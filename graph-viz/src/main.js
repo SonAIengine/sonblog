@@ -3,19 +3,26 @@ import Sigma from "sigma";
 import forceAtlas2 from "graphology-layout-forceatlas2";
 import { circular } from "graphology-layout";
 
-// DOM이 준비된 후 실행
+// 기존 renderer 정리용
+let currentRenderer = null;
+
+// DOM이 준비된 후 실행 (외부에서 재호출 가능)
 function init() {
   const container = document.getElementById("sigma-container");
-  if (!container) {
-    console.error("sigma-container not found");
-    return;
-  }
+  if (!container) return;
 
   const rawData = window.__GRAPH_DATA__;
   if (!rawData) {
-    console.error("__GRAPH_DATA__ not found");
+    console.error("graph-viz: __GRAPH_DATA__ not found");
     return;
   }
+
+  // 기존 renderer 정리 (instant navigation 재진입 시)
+  if (currentRenderer) {
+    try { currentRenderer.kill(); } catch (_) {}
+    currentRenderer = null;
+  }
+  container.innerHTML = "";
 
   // ── 엣지 색상 매핑 ──────────────────────────────────────────────────────────
 
@@ -194,10 +201,15 @@ function init() {
     });
   }
 
-  console.log(`graph-viz: ${graph.order} nodes, ${graph.size} edges rendered`);
+  currentRenderer = renderer;
+
+  console.log(`graph-viz: ${graph.order} nodes, ${graph.size} edges`);
 }
 
-// DOM 준비 완료 후 실행
+// 외부 노출 (graph.html에서 instant navigation 이후 재호출)
+window.initGraphViz = init;
+
+// 첫 로드 시 실행
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {

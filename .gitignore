@@ -1,4 +1,4 @@
 .obsidian/
 site/
 .venv/
-.cache/graph-viz/node_modules/
+graph-viz/node_modules/

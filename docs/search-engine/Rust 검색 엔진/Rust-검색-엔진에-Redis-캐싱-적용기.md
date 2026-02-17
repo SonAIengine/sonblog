@@ -2,13 +2,25 @@
 title: "Rust 검색 엔진에 Redis 캐싱 적용기"
 description: "Axum 기반 Rust 검색 엔진에 Redis 캐싱 레이어를 추가하여 OpenSearch 필드 설정 조회 성능을 개선한 과정을 다룬다."
 date: 2025-06-07
+series: "Rust 커머스 검색 엔진"
+series_order: 4
+difficulty: intermediate
 tags:
   - Rust
   - Redis
   - 캐싱
   - 검색엔진
+  - Axum
+  - 성능최적화
+  - OpenSearch
+  - 비동기
+  - 백엔드
+  - 인프라
+depends_on:
+  - search-engine/Rust 검색 엔진/Axum-OpenSearch-Rust-검색-API-아키텍처-설계.md
+related:
+  - search-engine/Rust 검색 엔진/PostgreSQL과-MySQL-동시-지원하는-Rust-DB-추상화-레이어-구현.md
 ---
-
 # Rust 검색 엔진에 Redis 캐싱 적용기
 
 ## 개요

@@ -1,11 +1,27 @@
 ---
+title: "XGEN 2.0 모델 서빙 통합 아키텍처 리팩토링"
+description: "vLLM Ray Serve 분산 구조에서 통합 xgen-model 서비스로 마이그레이션한 과정. UnifiedBackendManager 설계, 백엔드 스위칭, llama.cpp와 vLLM 통합까지."
+date: 2026-01-22
+series: "XGEN 개발기"
+series_order: 4
+difficulty: advanced
 tags:
   - 모델서빙
   - 리팩토링
   - vLLM
   - XGEN
+  - llama.cpp
+  - FastAPI
+  - 아키텍처
+  - 마이그레이션
+  - LLM
+  - 백엔드스위칭
+depends_on:
+  - ai/XGEN/XGEN-1.0-GPU-모델-서빙-구현기.md
+related:
+  - ai/XGEN/XGEN-2.0-임베딩-전용-서버와-배치-처리-최적화.md
+  - devops/infra/XGEN-2.0-인프라-K8s-ArgoCD-운영-배포.md
 ---
-
 # XGEN 2.0 모델 서빙 통합 아키텍처 리팩토링
 
 > 2026.01 | vLLM Ray Serve에서 통합 xgen-model 서비스로의 마이그레이션

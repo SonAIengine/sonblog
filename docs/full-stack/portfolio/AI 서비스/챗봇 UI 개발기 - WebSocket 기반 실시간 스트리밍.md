@@ -1,11 +1,25 @@
 ---
+title: "챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍"
+description: "WebSocket을 활용한 LLM 스트리밍 챗봇 UI 개발 과정. Next.js 프론트엔드와 FastAPI 백엔드 간 실시간 토큰 스트리밍, 대화 히스토리 관리까지."
+date: 2024-08-01
+series: "AI 서비스 개발"
+series_order: 1
+difficulty: intermediate
 tags:
   - WebSocket
   - 챗봇
   - 프론트엔드
   - 실시간
+  - Next.js
+  - FastAPI
+  - LLM
+  - 스트리밍
+  - React
+  - UI개발
+related:
+  - full-stack/portfolio/AI 서비스/상품-리뷰-분석-API-개발기.md
+  - full-stack/portfolio/AI 서비스/XGEN-1.0-프론트엔드-모델-관리-UI-구현.md
 ---
-
 # 챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍
 
 ## 개요

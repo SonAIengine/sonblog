@@ -1,11 +1,24 @@
 ---
+title: "상품 리뷰 분석 API 개발기 - 형태소 분석기 성능 최적화"
+description: "상품 리뷰 텍스트 분석의 정확도를 높이기 위한 형태소 분석기 교체 작업. Elasticsearch nori 분석기 전환, 한국어 NLP 처리 최적화 과정을 정리한다."
+date: 2024-05-01
+series: "AI 서비스 개발"
+series_order: 2
+difficulty: beginner
 tags:
   - NLP
   - API
   - 리뷰분석
   - Python
+  - Elasticsearch
+  - 형태소분석
+  - 한국어NLP
+  - nori
+  - FastAPI
+  - 텍스트분석
+related:
+  - full-stack/portfolio/AI 서비스/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
 ---
-
 # 상품 리뷰 분석 API 개발기 - 형태소 분석기 성능 최적화
 
 > 2024년 5월, 상품 리뷰 텍스트 분석의 정확도를 높이기 위한 형태소 분석기 교체 작업을 진행했다. Elasticsearch의 기본 분석기에서 한국어 전용 nori 분석기로 변경하며 겪은 과정을 정리한다.

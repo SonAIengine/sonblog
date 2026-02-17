@@ -2,14 +2,25 @@
 title: "Rate Limiting이 적용된 검색 API 설계"
 description: "Tokio Semaphore 기반 동시성 제어로 OpenSearch 과부하를 방어하는 Rust 검색 API Rate Limiting 구현기."
 date: 2025-04-01
+series: "Rust 커머스 검색 엔진"
+series_order: 12
+difficulty: intermediate
 tags:
   - Rust
   - Axum
   - Rate Limiting
   - Semaphore
   - OpenSearch
+  - Tokio
+  - 동시성제어
+  - 과부하방어
+  - 검색엔진
+  - 백엔드
+depends_on:
+  - search-engine/Rust 검색 엔진/Axum-OpenSearch-Rust-검색-API-아키텍처-설계.md
+related:
+  - search-engine/Rust 검색 엔진/OpenSearch-Aggregation-검색-구현-및-에러-핸들링-전략.md
 ---
-
 # Rate Limiting이 적용된 검색 API 설계
 
 커머스 검색 API는 트래픽 폭증에 취약하다. 특가 이벤트, 타임세일, 마케팅 캠페인이 겹치면 수초 안에 요청이 수십 배로 급증한다. 이때 아무런 제어 없이 요청을 받으면 OpenSearch 클러스터가 응답 불능 상태에 빠지고, 한 번 무너진 검색 서비스는 복구까지 시간이 걸린다.

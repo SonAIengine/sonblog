@@ -2,13 +2,26 @@
 title: "PostgreSQL과 MySQL 동시 지원하는 Rust DB 추상화 레이어 구현"
 description: "커머스 검색 엔진에서 고객사별로 다른 DB를 사용하는 문제를 Rust의 트레잇 기반 추상화로 해결한 과정. 동적 디스패치, 스트리밍 쿼리, 커넥션 풀 캐싱까지."
 date: 2025-06-01
+series: "Rust 커머스 검색 엔진"
+series_order: 3
+difficulty: intermediate
 tags:
   - Rust
   - PostgreSQL
   - MySQL
   - DB추상화
+  - 트레잇
+  - 동적디스패치
+  - 검색엔진
+  - 커넥션풀
+  - sqlx
+  - 백엔드
+depends_on:
+  - search-engine/Rust 검색 엔진/Axum-OpenSearch-Rust-검색-API-아키텍처-설계.md
+related:
+  - search-engine/Rust 검색 엔진/Rust-검색-엔진에-Redis-캐싱-적용기.md
+  - search-engine/Rust 검색 엔진/OpenSearch-인덱싱-서비스-스트리밍-vs-배치-처리-비교.md
 ---
-
 # PostgreSQL과 MySQL 동시 지원하는 Rust DB 추상화 레이어 구현
 
 ## 개요

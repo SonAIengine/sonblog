@@ -2,11 +2,25 @@
 title: "Axum + OpenSearch: Rust 검색 API 아키텍처 설계"
 description: "Axum 웹 프레임워크와 OpenSearch를 결합하여 커머스 검색 API를 설계한 과정. Handlebars 템플릿 기반 동적 쿼리, 필드 가중치 시스템, Aggregation 처리까지."
 date: 2025-04-02
+series: "Rust 커머스 검색 엔진"
+series_order: 2
+difficulty: intermediate
 tags:
   - Rust
   - Axum
   - OpenSearch
   - API설계
+  - 검색엔진
+  - 아키텍처
+  - Handlebars
+  - 라우터
+  - 미들웨어
+  - 백엔드
+depends_on:
+  - search-engine/Rust 검색 엔진/Rust로-커머스-검색-엔진을-처음부터-만들기.md
+related:
+  - search-engine/Rust 검색 엔진/Handlebars-템플릿으로-동적-검색-쿼리-생성하기.md
+  - search-engine/Rust 검색 엔진/PostgreSQL과-MySQL-동시-지원하는-Rust-DB-추상화-레이어-구현.md
 ---
 
 # Axum + OpenSearch: Rust 검색 API 아키텍처 설계

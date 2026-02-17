@@ -2,13 +2,26 @@
 title: "Rust 검색 엔진에서 SSH 터널링으로 원격 DB 접근하기"
 description: "Rust 검색 엔진에서 ssh2 크레이트를 활용하여 OpenSearch 서버에 동의어 사전을 SSH/SFTP로 업로드하고, 분석기를 실시간 재로드하는 파이프라인을 구현한 과정을 다룬다."
 date: 2025-04-04
+series: "Rust 커머스 검색 엔진"
+series_order: 6
+difficulty: intermediate
 tags:
   - Rust
   - SSH
+  - SFTP
   - 터널링
   - 검색엔진
+  - OpenSearch
+  - 동의어사전
+  - 자동화
+  - DevOps
+  - 인프라
+depends_on:
+  - search-engine/Rust 검색 엔진/Axum-OpenSearch-Rust-검색-API-아키텍처-설계.md
+related:
+  - search-engine/Rust 검색 엔진/OpenSearch-동의어-사전-관리-자동화.md
+  - search-engine/Rust 검색 엔진/Rust-검색-엔진의-CI-CD-파이프라인-구축.md
 ---
-
 # Rust 검색 엔진에서 SSH 터널링으로 원격 DB 접근하기
 
 ## 개요

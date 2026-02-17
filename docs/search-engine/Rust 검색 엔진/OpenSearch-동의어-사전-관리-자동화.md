@@ -2,14 +2,25 @@
 title: "OpenSearch 동의어(Synonym) 사전 관리 자동화"
 description: "Rust 검색 엔진에서 DB 기반 동의어 사전을 OpenSearch에 자동 반영하는 파이프라인을 구축한 과정. SSH 업로드, 분석기 재로드, 멀티 인덱스 지원까지."
 date: 2025-04-10
+series: "Rust 커머스 검색 엔진"
+series_order: 11
+difficulty: intermediate
 tags:
   - Rust
   - OpenSearch
   - 동의어
   - 검색엔진
   - 자동화
+  - SSH
+  - 분석기
+  - 한국어검색
+  - 인덱싱
+  - DevOps
+depends_on:
+  - search-engine/Rust 검색 엔진/Rust-검색-엔진에서-SSH-터널링으로-원격-DB-접근하기.md
+related:
+  - search-engine/Rust 검색 엔진/Rust-검색-엔진의-CI-CD-파이프라인-구축.md
 ---
-
 # OpenSearch 동의어(Synonym) 사전 관리 자동화
 
 ## 개요

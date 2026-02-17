@@ -1,12 +1,24 @@
 ---
+title: "GliNER과 DPO-LoRA를 활용한 모델 파인튜닝"
+description: "GliNER NER 모델과 DPO, LoRA를 결합한 파인튜닝 파이프라인 구축 과정. 데이터 수집부터 학습, 평가, 배포까지 실전 경험을 정리한다."
+date: 2024-11-01
+series: "LLM 파인튜닝"
+series_order: 1
+difficulty: advanced
 tags:
   - GliNER
   - DPO
   - LoRA
   - 파인튜닝
   - LLM
+  - NER
+  - HuggingFace
+  - PEFT
+  - 모델학습
+  - NLP
+related:
+  - ai/파인튜닝/OJT-리팩토링과-Kotaemon-RAG-구현기.md
 ---
-
 # GliNER과 DPO-LoRA를 활용한 모델 파인튜닝
 
 ## 프로젝트 배경

@@ -1,11 +1,26 @@
 ---
+title: "XGEN 1.0 프론트엔드 모델 관리 UI 구현"
+description: "Next.js와 TypeScript로 GPU 모델 관리, 실시간 모니터링, 워크플로우 관리 UI를 구현한 과정. XGEN 1.0 플랫폼의 관리자 대시보드 설계까지."
+date: 2025-12-20
+series: "AI 서비스 개발"
+series_order: 3
+difficulty: intermediate
 tags:
   - React
   - 프론트엔드
   - 모델관리
   - XGEN
+  - Next.js
+  - TypeScript
+  - 대시보드
+  - 실시간모니터링
+  - UI개발
+  - GPU관리
+depends_on:
+  - full-stack/portfolio/AI 서비스/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
+related:
+  - ai/XGEN/XGEN-1.0-GPU-모델-서빙-구현기.md
 ---
-
 # XGEN 1.0 프론트엔드 모델 관리 UI 구현
 
 > 2025.12 | Next.js, TypeScript, GPU 관리, 실시간 모니터링

@@ -1,11 +1,26 @@
 ---
+title: "XGEN 2.0 임베딩 전용 서버와 배치 처리 최적화"
+description: "XGEN 2.0에서 임베딩 모델을 전용 서버로 분리하고, switch-backend 기반 멀티모드 서빙과 대용량 문서 배치 처리를 최적화한 과정."
+date: 2026-01-30
+series: "XGEN 개발기"
+series_order: 5
+difficulty: advanced
 tags:
   - 임베딩
   - 배치처리
   - 최적화
   - XGEN
+  - llama.cpp
+  - AMD GPU
+  - batch size
+  - 모델서빙
+  - LLM
+  - 성능튜닝
+depends_on:
+  - ai/XGEN/XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
+related:
+  - ai/XGEN/XGEN-2.0-워크플로우-접근-제어와-IO-로깅-시스템.md
 ---
-
 # XGEN 2.0 임베딩 전용 서버와 배치 처리 최적화
 
 > 2026.01 | switch-backend 기반 멀티모드 서빙과 대용량 문서 처리 최적화

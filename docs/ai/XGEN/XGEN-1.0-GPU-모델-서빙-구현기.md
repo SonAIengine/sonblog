@@ -1,12 +1,27 @@
 ---
+title: "XGEN 1.0 GPU 모델 서빙 구현기 - vLLM과 llama.cpp 최적화"
+description: "XGEN 1.0 플랫폼에서 대규모 언어 모델의 효율적인 서빙을 위해 vLLM과 llama.cpp 기반 추론 엔진을 구축했다. GPU 리소스 최적화부터 동적 배칭까지 프로덕션 경험을 공유한다."
+date: 2025-12-01
+series: "XGEN 개발기"
+series_order: 2
+difficulty: advanced
 tags:
   - vLLM
   - llama.cpp
   - GPU
   - 모델서빙
   - XGEN
+  - LLM
+  - 동적배칭
+  - CUDA
+  - 성능최적화
+  - 프로덕션
+depends_on:
+  - ai/XGEN/Code-Assistant-개발기.md
+related:
+  - ai/XGEN/XGEN-1.0-워크플로우-엔진과-Qdrant-하이브리드-검색.md
+  - ai/XGEN/XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
 ---
-
 # XGEN 1.0 GPU 모델 서빙 구현기 - vLLM과 llama.cpp 최적화
 
 > 2025년 12월, XGEN 1.0 플랫폼에서 대규모 언어 모델의 효율적인 서빙을 위해 vLLM과 llama.cpp 기반 추론 엔진을 구축했다. GPU 리소스 최적화부터 동적 배칭까지, 프로덕션 환경에서의 LLM 서빙 경험을 공유한다.

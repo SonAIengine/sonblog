@@ -1,11 +1,24 @@
 ---
+title: "Search API와 LLMOps Docker 구성기"
+description: "검색 API 성능 최적화와 LLMOps 파이프라인의 Docker 환경 구성을 진행했다. 아키텍처 설계와 컨테이너화 전략, docker-compose 멀티 서비스 구성까지."
+date: 2024-11-01
+series: "DevOps 실전"
+series_order: 1
+difficulty: intermediate
 tags:
   - Docker
   - LLMOps
   - 인프라
   - CI/CD
+  - docker-compose
+  - 컨테이너
+  - 검색API
+  - 마이크로서비스
+  - DevOps
+  - 배포
+related:
+  - devops/infra/XGEN-2.0-인프라-K8s-ArgoCD-운영-배포.md
 ---
-
 # Search API와 LLMOps Docker 구성기
 
 > 2024년 11월 프로젝트에서 검색 API 성능 최적화와 LLMOps 파이프라인의 Docker 환경 구성을 진행했다. 이 과정에서 마주친 아키텍처 설계와 컨테이너화 전략을 공유한다.

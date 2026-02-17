@@ -1,11 +1,24 @@
 ---
+title: "Code Assistant 개발기 - AI 기반 개발 도우미 시스템 구축"
+description: "OpenAI API와 로컬 모델을 결합하여 개발자의 생산성을 높이는 AI 코드 어시스턴트를 구축한 경험담. RAG 기반 코드베이스 검색, VSCode 플러그인 연동까지."
+date: 2024-10-01
+series: "XGEN 개발기"
+series_order: 1
+difficulty: intermediate
 tags:
   - Code Assistant
   - RAG
   - LLM
   - VSCode
+  - OpenAI
+  - Python
+  - FastAPI
+  - 개발도구
+  - AI개발
+  - 코드검색
+related:
+  - ai/XGEN/XGEN-1.0-GPU-모델-서빙-구현기.md
 ---
-
 # Code Assistant 개발기 - AI 기반 개발 도우미 시스템 구축
 
 > 2024년 8월부터 10월까지 진행한 AI 기반 코드 어시스턴트 개발 과정을 정리한다. OpenAI API와 로컬 모델을 결합하여 개발자의 생산성을 높이는 시스템을 구축한 경험담이다.

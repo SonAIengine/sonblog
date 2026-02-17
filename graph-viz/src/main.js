@@ -27,10 +27,13 @@ function init() {
   // ── 엣지 색상 매핑 ──────────────────────────────────────────────────────────
 
   const EDGE_COLORS = {
-    inCategory: "#9E9E9E",
+    inCategory:    "#9E9E9E",
     inSubcategory: "#BDBDBD",
-    hasTag: "#80CBC4",
-    tagCooccurs: "#FFD54F",
+    inSeries:      "#FF7043",
+    hasTag:        "#80CBC4",
+    related:       "#AB47BC",
+    dependsOn:     "#42A5F5",
+    tagCooccurs:   "#FFD54F",
   };
 
   // 초기 hidden 여부

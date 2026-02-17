@@ -2,14 +2,25 @@
 title: "커서 기반 인덱싱 vs 전체 인덱싱: 성능 비교"
 description: "Rust 검색 엔진에서 INDEX_YN 커서 패턴과 전체 인덱싱의 차이를 구현 코드와 함께 분석한다."
 date: 2025-04-01
+series: "Rust 커머스 검색 엔진"
+series_order: 13
+difficulty: beginner
 tags:
   - Rust
   - OpenSearch
-  - Indexing
-  - Performance
+  - 인덱싱
+  - 성능비교
+  - 커서
   - PostgreSQL
+  - 검색엔진
+  - 배치처리
+  - 최적화
+  - 데이터파이프라인
+depends_on:
+  - search-engine/Rust 검색 엔진/Axum-OpenSearch-Rust-검색-API-아키텍처-설계.md
+related:
+  - search-engine/Rust 검색 엔진/OpenSearch-인덱싱-서비스-스트리밍-vs-배치-처리-비교.md
 ---
-
 # 커서 기반 인덱싱 vs 전체 인덱싱: 성능 비교
 
 커머스 검색 시스템에서 인덱싱은 단순한 데이터 동기화 작업이 아니다. 수십만 건의 상품 데이터를 실시간에 가깝게 OpenSearch에 반영하면서도, 서버 리소스를 최소화하고 DB 부하를 줄여야 한다. search-rust 프로젝트에서는 세 가지 인덱싱 모드를 구현했다: **전체 인덱싱**, **증분 인덱싱**, **커서 기반 인덱싱**. 이 글에서는 각 방식의 구현 세부사항과 실제 운영 중 성능 차이를 정리한다.

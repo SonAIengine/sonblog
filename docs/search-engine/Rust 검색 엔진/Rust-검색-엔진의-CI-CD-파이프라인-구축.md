@@ -2,13 +2,25 @@
 title: "Rust 검색 엔진의 CI/CD 파이프라인 구축 (GitLab + EC2)"
 description: "GitLab CI/CD로 Rust 검색 엔진의 동의어 사전 파일을 EC2에 자동 배포하고, 애플리케이션 내부에서 파이프라인을 트리거하는 구조를 설계한 과정."
 date: 2025-04-10
+series: "Rust 커머스 검색 엔진"
+series_order: 9
+difficulty: intermediate
 tags:
   - Rust
   - CI/CD
   - GitLab
   - 검색엔진
+  - EC2
+  - 자동배포
+  - DevOps
+  - 파이프라인
+  - 인프라
+  - 자동화
+depends_on:
+  - search-engine/Rust 검색 엔진/Rust-검색-엔진에서-SSH-터널링으로-원격-DB-접근하기.md
+related:
+  - search-engine/Rust 검색 엔진/Rust로-커머스-검색-엔진을-처음부터-만들기.md
 ---
-
 # Rust 검색 엔진의 CI/CD 파이프라인 구축 (GitLab + EC2)
 
 ## 개요

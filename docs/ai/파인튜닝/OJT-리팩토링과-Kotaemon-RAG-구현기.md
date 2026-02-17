@@ -1,11 +1,26 @@
 ---
+title: "OJT 리팩토링과 Kotaemon RAG 구현기"
+description: "기존 OJT 시스템의 한계를 해결하고자 전면 리팩토링을 진행했다. Kotaemon RAG 프레임워크를 도입하여 문서 기반 질의응답 성능을 대폭 개선한 과정을 공유한다."
+date: 2025-01-15
+series: "LLM 파인튜닝"
+series_order: 2
+difficulty: intermediate
 tags:
   - RAG
   - Kotaemon
   - 리팩토링
   - LLM
+  - FastAPI
+  - Python
+  - 문서검색
+  - 벡터DB
+  - 프레임워크
+  - AI개발
+depends_on:
+  - ai/파인튜닝/GliNER과 DPO-LoRA를 활용한 모델 파인튜닝.md
+related:
+  - ai/XGEN/XGEN-1.0-GPU-모델-서빙-구현기.md
 ---
-
 # OJT 리팩토링과 Kotaemon RAG 구현기
 
 > 2025년 1월, 기존 OJT 시스템의 한계를 해결하고자 전면 리팩토링을 진행했다. 특히 Kotaemon RAG 프레임워크를 도입하여 문서 기반 질의응답 성능을 대폭 개선한 과정을 공유한다.

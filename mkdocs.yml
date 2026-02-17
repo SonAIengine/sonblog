@@ -63,6 +63,7 @@ hooks:
 
 plugins:
   - awesome-pages
+  - graph
   - search:
       separator: '[\s\-\.]+'
       lang:

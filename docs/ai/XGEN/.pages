@@ -1,5 +1,20 @@
 title: XGEN
 nav:
+  - llama.cpp-서버-운영기-ROCm-GPU에서의-삽질과-해결.md
+  - AMD-GPU에서-LLM-돌리기-Vulkan-vs-ROCm-비교.md
+  - 멀티-GPU-LLM-배포-GPU-선택-및-레이어-오프로딩-전략.md
+  - vLLM-vs-llama.cpp-백엔드-스위칭-아키텍처-설계.md
+  - OpenAI-호환-API-서버-직접-만들기.md
+  - 로컬-LLM-모델-관리-시스템-로드-언로드-활성화-라이프사이클.md
+  - Embedding-모델-서빙-batch-size-최적화.md
+  - HuggingFace-모델-검색-및-다운로드-자동화.md
+  - Late-Chunking과-Sparse-Embedding-차세대-검색-파이프라인.md
+  - Iterative-RAG-검색-엔진-구현.md
+  - Qdrant-하이브리드-검색-Sparse-Dense-벡터-통합.md
+  - RAG-서비스-토큰-관리와-컨텍스트-윈도우-최적화.md
+  - 워크플로우-실행-메모리-최적화-SearchCache-싱글턴-풀-패턴.md
+  - SSE-스트리밍으로-대규모-배치-워크플로우-결과-전달하기.md
+  - 문서-임베딩-파이프라인-청킹-옵션과-전처리-전략.md
   - XGEN-1.0-GPU-모델-서빙-구현기.md
   - XGEN-1.0-워크플로우-엔진과-Qdrant-하이브리드-검색.md
   - XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md

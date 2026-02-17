@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-17
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#27
-- 다음 작성 대상: AI/ML #30 (OpenAI 호환 API 서버 직접 만들기)
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40
+- 다음 작성 대상: AI/ML #41 (다음 주제 확인 필요)
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -72,3 +72,14 @@
 - docs/ai/XGEN/AMD-GPU에서-LLM-돌리기-Vulkan-vs-ROCm-비교.md (AI/ML #27)
 - docs/ai/XGEN/멀티-GPU-LLM-배포-GPU-선택-및-레이어-오프로딩-전략.md (AI/ML #28)
 - docs/ai/XGEN/vLLM-vs-llama.cpp-백엔드-스위칭-아키텍처-설계.md (AI/ML #29)
+- docs/ai/XGEN/OpenAI-호환-API-서버-직접-만들기.md (AI/ML #30)
+- docs/ai/XGEN/로컬-LLM-모델-관리-시스템-로드-언로드-활성화-라이프사이클.md (AI/ML #31)
+- docs/ai/XGEN/Embedding-모델-서빙-batch-size-최적화.md (AI/ML #32)
+- docs/ai/XGEN/HuggingFace-모델-검색-및-다운로드-자동화.md (AI/ML #33)
+- docs/ai/XGEN/Late-Chunking과-Sparse-Embedding-차세대-검색-파이프라인.md (AI/ML #34)
+- docs/ai/XGEN/Iterative-RAG-검색-엔진-구현.md (AI/ML #35)
+- docs/ai/XGEN/Qdrant-하이브리드-검색-Sparse-Dense-벡터-통합.md (AI/ML #36)
+- docs/ai/XGEN/RAG-서비스-토큰-관리와-컨텍스트-윈도우-최적화.md (AI/ML #37)
+- docs/ai/XGEN/워크플로우-실행-메모리-최적화-SearchCache-싱글턴-풀-패턴.md (AI/ML #38)
+- docs/ai/XGEN/SSE-스트리밍으로-대규모-배치-워크플로우-결과-전달하기.md (AI/ML #39)
+- docs/ai/XGEN/문서-임베딩-파이프라인-청킹-옵션과-전처리-전략.md (AI/ML #40)

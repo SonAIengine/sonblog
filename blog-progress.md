@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-17
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40
-- 다음 작성 대상: AI/ML #41 (다음 주제 확인 필요)
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40, DevOps #77~#86
+- 다음 작성 대상: AI/ML #41~#45 또는 DevOps #87~#95
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -83,3 +83,13 @@
 - docs/ai/XGEN/워크플로우-실행-메모리-최적화-SearchCache-싱글턴-풀-패턴.md (AI/ML #38)
 - docs/ai/XGEN/SSE-스트리밍으로-대규모-배치-워크플로우-결과-전달하기.md (AI/ML #39)
 - docs/ai/XGEN/문서-임베딩-파이프라인-청킹-옵션과-전처리-전략.md (AI/ML #40)
+- docs/devops/infra/Jenkins-JCasC로-6개-서비스-빌드-Job-자동-생성.md (DevOps #77)
+- docs/devops/infra/Lets-Encrypt-cert-manager로-K3s-HTTPS-자동화.md (DevOps #78)
+- docs/devops/infra/Istio-Gateway-HTTPS-설정-TLS-인증서-관리.md (DevOps #79)
+- docs/devops/infra/Jenkins-RBAC-Kubernetes-권한-설정-삽질기.md (DevOps #80)
+- docs/devops/infra/Docker-BuildKit-캐시-전략과-NO_CACHE-옵션.md (DevOps #81)
+- docs/devops/infra/Dockerfile-최적화-COPY-chown-vs-chown-R.md (DevOps #82)
+- docs/devops/infra/Kubernetes-Health-Probe-타임아웃-설정.md (DevOps #83)
+- docs/devops/infra/Kubernetes-Downward-API로-멀티-POD-세션-라우팅.md (DevOps #84)
+- docs/devops/infra/pyproject-toml-dependencies-추출로-Docker-빌드-최적화.md (DevOps #85)
+- docs/devops/infra/Jenkins-executor-수-최적화-동시-빌드-성능-튜닝.md (DevOps #86)

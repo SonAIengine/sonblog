@@ -48,6 +48,7 @@ theme:
         name: Switch to light mode
   font: false  # CSS에서 Pretendard 직접 로드
   logo: assets/icons/s-logo.svg
+  favicon: assets/icons/s-logo.svg
   icon:
     repo: fontawesome/brands/github
 

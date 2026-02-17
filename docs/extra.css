@@ -816,11 +816,19 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 /* ── 페이지 레이아웃 ────────────────────────────────────────────────────────── */
 
-/* MkDocs content 영역 padding / width 제거 */
-.md-content:has(.graph-page) .md-content__inner {
+/* MkDocs content 영역 padding / width / margin 완전 제거 */
+/* .md-main__inner는 .md-grid 클래스도 겸하므로 max-width:61rem 제거 필요 */
+.md-content:has(.graph-page) .md-content__inner,
+.md-content:has(.graph-page),
+.md-main__inner:has(.graph-page),
+.md-grid:has(.graph-page),
+.md-main:has(.graph-page) .md-main__inner,
+.md-main:has(.graph-page) .md-grid {
   padding: 0 !important;
   margin: 0 !important;
   max-width: 100% !important;
+  width: 100% !important;
+  flex: 1 1 auto;
 }
 
 .graph-page {
@@ -837,15 +845,8 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   color: var(--md-default-fg-color);
 }
 
-.md-content .graph-page {
-  max-width: 100%;
-}
-
 /* ── dark 모드: 우주 테마 배경 ──────────────────────────────────────────────── */
-[data-md-color-scheme="slate"] .md-content:has(.graph-page) .md-content__inner {
-  background: #070b18 !important;
-}
-
+[data-md-color-scheme="slate"] .md-content:has(.graph-page) .md-content__inner,
 [data-md-color-scheme="slate"] .md-content:has(.graph-page),
 [data-md-color-scheme="slate"] .md-main:has(.graph-page),
 [data-md-color-scheme="slate"] .md-main__inner:has(.graph-page) {
@@ -1092,7 +1093,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   flex: 1;
   min-width: 0;
   position: relative;
-  background: #f8fafc;
+  background: var(--md-default-bg-color);
 }
 
 [data-md-color-scheme="slate"] #sigma-container {
@@ -1107,18 +1108,26 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   position: absolute;
   pointer-events: none;
   z-index: 1000;
-  background: #1a1a2e;
-  color: #e8eaf6;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 8px;
   padding: 0.55rem 0.8rem;
   font-size: 0.78rem;
   font-family: var(--md-text-font);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   max-width: 220px;
   opacity: 0;
   transform: translateY(4px);
   transition: opacity 0.12s, transform 0.12s;
   line-height: 1.4;
+}
+
+[data-md-color-scheme="slate"] .graph-tooltip {
+  background: #1a1a2e;
+  color: #e8eaf6;
+  border-color: #1e293b;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
 .graph-tooltip.is-visible {
@@ -1137,11 +1146,17 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   margin-bottom: 0.35rem;
 }
 
-.gt-type--category    { background: rgba(124,58,237,0.3); color: #c4b5fd; }
-.gt-type--subcategory { background: rgba(37,99,235,0.3);  color: #93c5fd; }
-.gt-type--series      { background: rgba(234,88,12,0.3);  color: #fed7aa; }
-.gt-type--tag         { background: rgba(13,148,136,0.3); color: #99f6e4; }
-.gt-type--post        { background: rgba(220,38,38,0.3);  color: #fca5a5; }
+.gt-type--category    { background: #ede9fe; color: #6d28d9; }
+.gt-type--subcategory { background: #dbeafe; color: #1d4ed8; }
+.gt-type--series      { background: #ffedd5; color: #c2410c; }
+.gt-type--tag         { background: #ccfbf1; color: #0f766e; }
+.gt-type--post        { background: #fee2e2; color: #b91c1c; }
+
+[data-md-color-scheme="slate"] .gt-type--category    { background: rgba(124,58,237,0.3); color: #c4b5fd; }
+[data-md-color-scheme="slate"] .gt-type--subcategory { background: rgba(37,99,235,0.3);  color: #93c5fd; }
+[data-md-color-scheme="slate"] .gt-type--series      { background: rgba(234,88,12,0.3);  color: #fed7aa; }
+[data-md-color-scheme="slate"] .gt-type--tag         { background: rgba(13,148,136,0.3); color: #99f6e4; }
+[data-md-color-scheme="slate"] .gt-type--post        { background: rgba(220,38,38,0.3);  color: #fca5a5; }
 
 .gt-label {
   font-weight: 600;
@@ -1152,15 +1167,18 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 .gt-meta {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.55);
+  color: var(--md-default-fg-color--light);
   margin-top: 0.15rem;
 }
 
 .gt-hint {
   margin-top: 0.35rem;
   font-size: 0.7rem;
-  color: #a5b4fc;
+  color: var(--md-primary-fg-color);
 }
+
+[data-md-color-scheme="slate"] .gt-meta { color: rgba(255,255,255,0.55); }
+[data-md-color-scheme="slate"] .gt-hint { color: #a5b4fc; }
 
 /* ── 우측 정보 패널 ─────────────────────────────────────────────────────────── */
 

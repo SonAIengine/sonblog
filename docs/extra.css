@@ -307,7 +307,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 .home-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
   margin-bottom: 1.5rem;
   padding: 0;

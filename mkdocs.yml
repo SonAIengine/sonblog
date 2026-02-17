@@ -2,8 +2,8 @@ site_name: SON BLOG
 site_url: https://sonaiengine.github.io/sonblog/
 site_description: "AI 개발자 손성준의 기술 블로그"
 site_author: "손성준"
-repo_url: https://github.com/SonAIengine/sonblog
-repo_name: SonAIengine/sonblog
+repo_url: https://github.com/SonAIengine
+repo_name: SonAIengine
 
 theme:
   name: material

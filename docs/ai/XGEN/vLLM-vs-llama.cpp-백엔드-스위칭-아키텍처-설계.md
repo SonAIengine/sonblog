@@ -1,7 +1,7 @@
 ---
 title: "vLLM vs llama.cpp: 백엔드 스위칭 아키텍처 설계"
 description: "XGEN 모델 서버에서 vLLM과 llama-server를 런타임에 전환하는 UnifiedBackendManager 설계, switch-backend API, model_type에 따른 분기 전략, 리팩토링 과정 기록"
-date: 2026-02-17
+date: 2026-01-22
 tags:
   - LLM
   - vLLM

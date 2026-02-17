@@ -1,7 +1,7 @@
 ---
 title: "SSE 스트리밍으로 대규모 배치 워크플로우 결과 전달하기"
 description: "xgen-workflow에서 100개 이상 테스트 케이스를 배치 처리하며 진행상황을 SSE로 실시간 전달하는 아키텍처 - batch_results에서 progress-only 방식으로의 전환, 취소 구현, Redis 세션 관리까지"
-date: 2026-02-17
+date: 2025-12-24
 tags:
   - SSE
   - 스트리밍

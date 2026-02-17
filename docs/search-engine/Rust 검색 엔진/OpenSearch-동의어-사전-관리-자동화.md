@@ -1,7 +1,7 @@
 ---
 title: "OpenSearch 동의어(Synonym) 사전 관리 자동화"
 description: "Rust 검색 엔진에서 DB 기반 동의어 사전을 OpenSearch에 자동 반영하는 파이프라인을 구축한 과정. SSH 업로드, 분석기 재로드, 멀티 인덱스 지원까지."
-date: 2026-02-17
+date: 2025-04-10
 tags:
   - Rust
   - OpenSearch

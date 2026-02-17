@@ -1,7 +1,7 @@
 ---
 title: "워크플로우 실행 메모리 최적화: SearchCache 싱글턴 풀 패턴"
 description: "xgen-workflow에서 반복 실행 시 메모리 누수와 과도한 객체 생성을 막기 위한 SearchCache, LLMPool, RAGServicePool 싱글턴 패턴 구현 - 캐시 비활성화의 역설적 결정과 그 이유"
-date: 2026-02-17
+date: 2025-12-24
 tags:
   - 싱글턴
   - 메모리 최적화

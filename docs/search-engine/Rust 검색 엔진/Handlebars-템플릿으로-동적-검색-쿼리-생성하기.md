@@ -1,7 +1,7 @@
 ---
 title: "Handlebars 템플릿으로 동적 검색 쿼리 생성하기"
 description: "Rust 검색 엔진에서 Handlebars 템플릿을 활용해 OpenSearch 쿼리를 동적으로 생성하는 방법. once_cell 싱글톤 레지스트리, 커스텀 헬퍼, DB 기반 필드 설정까지."
-date: 2026-02-17
+date: 2025-04-01
 tags:
   - Rust
   - Handlebars

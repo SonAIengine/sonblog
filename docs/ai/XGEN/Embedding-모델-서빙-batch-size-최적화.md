@@ -1,7 +1,7 @@
 ---
 title: "Embedding 모델 서빙: batch size 최적화로 긴 문서 처리"
 description: "XGEN 모델 서버에서 임베딩 모델을 서빙할 때 batch size 512→2048 증가로 긴 문서 임베딩을 지원하고, n_ubatch와 n_batch 차이, CPU 전용 처리 결정까지의 실전 기록"
-date: 2026-02-17
+date: 2026-01-30
 tags:
   - Embedding
   - LLM

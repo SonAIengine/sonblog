@@ -1,7 +1,7 @@
 ---
 title: "RAG 서비스의 토큰 관리와 컨텍스트 윈도우 최적화"
 description: "xgen-workflow Iterative RAG에서 vLLM 32K 컨텍스트 한계를 관리하는 TokenBudgetManager 구현 - 한글/영문 토큰 추정, 배치 필터링 토큰 제한, 압축 단계 토큰 예산 관리"
-date: 2026-02-17
+date: 2025-12-24
 tags:
   - RAG
   - 토큰 관리

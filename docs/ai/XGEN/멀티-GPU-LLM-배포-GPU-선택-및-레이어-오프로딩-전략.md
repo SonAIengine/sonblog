@@ -1,7 +1,7 @@
 ---
 title: "멀티 GPU LLM 배포: GPU 선택 및 레이어 오프로딩 전략"
 description: "XGEN 모델 서버에서 멀티 GPU 환경을 지원하는 방법 - main_gpu, split_mode, tensor_split, n_gpu_layers를 통한 레이어 오프로딩 설계와 ProcessManager의 백엔드 자동 선택 구조"
-date: 2026-02-17
+date: 2026-01-31
 tags:
   - LLM
   - GPU

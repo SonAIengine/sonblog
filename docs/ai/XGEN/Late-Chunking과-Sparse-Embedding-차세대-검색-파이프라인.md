@@ -1,7 +1,7 @@
 ---
 title: "Late Chunking과 Sparse Embedding: 차세대 검색 파이프라인"
 description: "xgen-workflow에서 Late Chunking 기법으로 문서 컨텍스트를 보존하는 청킹과, Sparse Embedding을 결합한 차세대 RAG 검색 파이프라인 설계 및 구현"
-date: 2026-02-17
+date: 2026-01-05
 tags:
   - Late Chunking
   - Sparse Embedding

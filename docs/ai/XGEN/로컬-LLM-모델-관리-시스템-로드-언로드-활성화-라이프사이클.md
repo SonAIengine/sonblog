@@ -1,7 +1,7 @@
 ---
 title: "로컬 LLM 모델 관리 시스템: 로드/언로드/활성화 라이프사이클"
 description: "XGEN 모델 서버에서 LLM 모델의 로드, 언로드, 활성화 상태를 관리하는 ProcessManager 라이프사이클 설계 - ModelState, auto activate, loading_status API 구현"
-date: 2026-02-17
+date: 2026-01-25
 tags:
   - LLM
   - 모델 관리

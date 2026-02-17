@@ -1,7 +1,7 @@
 ---
 title: "OpenAI 호환 API 서버 직접 만들기"
 description: "XGEN 모델 서버에서 /v1/chat/completions, /v1/embeddings 등 OpenAI 호환 엔드포인트를 FastAPI로 구현하고, llama-server와 vLLM 백엔드를 프록시하는 구조 설계 기록"
-date: 2026-02-17
+date: 2026-01-25
 tags:
   - LLM
   - OpenAI API

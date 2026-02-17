@@ -1,7 +1,7 @@
 ---
 title: "Qdrant 하이브리드 검색: Sparse + Dense 벡터 통합"
 description: "xgen-retrieval에서 Qdrant의 Prefetch+Fusion API로 BM25 Sparse Vector와 Dense Embedding을 결합하는 하이브리드 검색 구현, Full-Text Index 추가, 컬렉션 설정까지"
-date: 2026-02-17
+date: 2025-12-29
 tags:
   - Qdrant
   - 하이브리드 검색

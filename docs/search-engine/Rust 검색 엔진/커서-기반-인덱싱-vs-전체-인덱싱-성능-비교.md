@@ -1,7 +1,7 @@
 ---
 title: "커서 기반 인덱싱 vs 전체 인덱싱: 성능 비교"
 description: "Rust 검색 엔진에서 INDEX_YN 커서 패턴과 전체 인덱싱의 차이를 구현 코드와 함께 분석한다."
-date: 2026-02-17
+date: 2025-04-01
 tags:
   - Rust
   - OpenSearch

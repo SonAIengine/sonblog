@@ -1,7 +1,7 @@
 ---
 title: "Rate Limiting이 적용된 검색 API 설계"
 description: "Tokio Semaphore 기반 동시성 제어로 OpenSearch 과부하를 방어하는 Rust 검색 API Rate Limiting 구현기."
-date: 2026-02-17
+date: 2025-04-01
 tags:
   - Rust
   - Axum

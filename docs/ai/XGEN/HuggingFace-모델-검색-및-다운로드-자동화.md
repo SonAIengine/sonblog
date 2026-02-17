@@ -1,7 +1,7 @@
 ---
 title: "HuggingFace 모델 검색 및 다운로드 자동화"
 description: "XGEN 모델 서버에서 HuggingFace Hub API로 모델을 검색하고, 백그라운드로 다운로드하며 진행상황을 추적하는 DownloadService 구현과 xgen-app(Tauri)과의 연동"
-date: 2026-02-17
+date: 2026-01-25
 tags:
   - HuggingFace
   - 모델 다운로드

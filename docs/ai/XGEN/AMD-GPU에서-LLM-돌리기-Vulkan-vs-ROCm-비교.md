@@ -1,7 +1,7 @@
 ---
 title: "AMD GPU에서 LLM 돌리기: Vulkan vs ROCm 비교"
 description: "XGEN 모델 서버에서 AMD GPU로 LLM을 서빙할 때 Vulkan과 ROCm 백엔드를 선택하는 기준, mlock 설정, GPU 감지 fallback chain 구현까지 실전 비교"
-date: 2026-02-17
+date: 2026-01-31
 tags:
   - LLM
   - AMD GPU

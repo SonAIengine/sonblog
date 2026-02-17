@@ -1,7 +1,7 @@
 ---
 title: "Iterative RAG: 반복 검색으로 복잡한 질문 답변하기"
 description: "xgen-workflow에서 단순 RAG의 한계를 넘어 Iterative 방식으로 반복 검색하며 컨텍스트를 보완하는 4단계 파이프라인 구현 - Query Expansion, Large-Scale Search, Iterative Filtering, Compression"
-date: 2026-02-17
+date: 2025-12-31
 tags:
   - RAG
   - Iterative RAG

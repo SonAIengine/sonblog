@@ -340,12 +340,12 @@ self.execute_ssh_command(&sess, &chmod_cmd)?;
 ```
 
 ```mermaid
-graph TD
-    A[로컬 파일 읽기] --> B[SFTP: /tmp/synonym.txt 업로드]
-    B --> C[sudo mkdir -p 대상 디렉터리]
-    C --> D[sudo mv /tmp/synonym.txt → conf/analysis/]
-    D --> E[sudo chmod 644 synonym.txt]
-    E --> F[ls -la로 파일 존재 확인]
+flowchart TD
+    A[로컬 파일 읽기] --> B["SFTP: /tmp/synonym.txt 업로드"]
+    B --> C["sudo mkdir -p 대상 디렉터리"]
+    C --> D["sudo mv /tmp/synonym.txt to conf/analysis/"]
+    D --> E["sudo chmod 644 synonym.txt"]
+    E --> F["ls -la로 파일 존재 확인"]
 ```
 
 `echo 'password' | sudo -S` 패턴으로 stdin을 통해 sudo 패스워드를 전달한다. `sudo -S` 옵션은 stdin에서 패스워드를 읽도록 지정한다.
@@ -514,13 +514,13 @@ pub async fn index_synonym_data(&self) -> Result<(), AppError> {
 ```
 
 ```mermaid
-graph TD
+flowchart TD
     A[index_synonym_data 호출] --> B[DB에서 동의어 조회]
-    B --> C{데이터 있음?}
+    B --> C{"데이터 있음?"}
     C -->|없음| D[스킵]
     C -->|있음| E[OpenSearch 형식 변환]
     E --> F[로컬 파일 저장]
-    F --> G[SSH/SFTP 업로드]
+    F --> G["SSH/SFTP 업로드"]
     G -->|성공| H[dictionary 백업 저장]
     G -->|실패| I[에러 로그]
     I --> H
@@ -639,16 +639,16 @@ fn create_multi_analyzer_settings(&self) -> Value {
 `nori_tokenizer`는 한국어 형태소 분석기로, `decompound_mode: "mixed"`를 사용하면 복합어를 원형과 분해된 형태 모두로 인덱싱한다. `user_dictionary_rules`에는 기본 사전에 없는 단어(신조어, 브랜드명 등)를 등록한다.
 
 ```mermaid
-graph LR
-    subgraph "인덱싱 시점"
+flowchart LR
+    subgraph 인덱싱_시점["인덱싱 시점"]
         A[원본 텍스트] --> B[nori_tokenizer]
         B --> C[lowercase]
         C --> D[synonym_filter]
         D --> E[shingle]
         E --> F[인덱스 저장]
     end
-    
-    subgraph "검색 시점"
+
+    subgraph 검색_시점["검색 시점"]
         G[검색 쿼리] --> H[nori_tokenizer]
         H --> I[lowercase]
         I --> J[synonym_filter]

@@ -123,12 +123,12 @@ OpenSearch 쿼리는 JSON 형태이지만, 검색 조건에 따라 동적으로 
 이 템플릿의 핵심은 4단계 가중치 시스템이다.
 
 ```mermaid
-graph TD
-    A[검색어 입력] --> B{필드 매칭}
-    B --> C[Exact Match<br/>boost: 4.0<br/>정확히 일치하는 경우]
-    B --> D[Phrase Match<br/>boost: 3.0<br/>구문이 포함된 경우]
-    B --> E[Primary Fields<br/>boost: 2.0<br/>AND 조건 주요 필드]
-    B --> F[Secondary Fields<br/>boost: 1.0<br/>75% 매칭 보조 필드]
+flowchart TD
+    A[검색어 입력] --> B{"필드 매칭"}
+    B --> C["Exact Match boost 4.0 정확히 일치하는 경우"]
+    B --> D["Phrase Match boost 3.0 구문이 포함된 경우"]
+    B --> E["Primary Fields boost 2.0 AND 조건 주요 필드"]
+    B --> F["Secondary Fields boost 1.0 75% 매칭 보조 필드"]
     C --> G[최종 스코어링]
     D --> G
     E --> G
@@ -275,19 +275,19 @@ pub fn process_aggregation_data(aggregations: &Value) -> Value {
 각 Aggregation 처리 함수는 OpenSearch 응답의 중첩 구조를 평탄화한다. 특히 카테고리 데이터는 nested aggregation으로 처리되는데, 3단계 깊이의 카테고리 구조(대분류 → 중분류 → 소분류)를 효율적으로 추출해야 한다.
 
 ```mermaid
-graph TD
+flowchart TD
     A[검색 응답] --> B[aggregations]
     B --> C[category]
     B --> D[brand]
     B --> E[price_stats]
     B --> F[dc_rate_stats]
-    C --> C1[category_keyword buckets]
+    C --> C1["category_keyword buckets"]
     C1 --> C2[대분류]
     C2 --> C3[중분류]
     C3 --> C4[소분류]
-    D --> D1[brand_keyword buckets]
-    E --> E1[min_prc / max_prc]
-    F --> F1[min_dc_rate / max_dc_rate]
+    D --> D1["brand_keyword buckets"]
+    E --> E1["min_prc / max_prc"]
+    F --> F1["min_dc_rate / max_dc_rate"]
 ```
 
 Aggregation 처리에서 가장 까다로운 부분은 nested 필드다. 커머스 데이터에서 카테고리는 상품 하나에 여러 개가 매핑될 수 있으므로 nested 타입으로 인덱싱한다. 이때 Aggregation도 nested aggregation으로 작성해야 정확한 카운트가 나온다.

@@ -85,11 +85,11 @@ let pool_size = config.opensearch_pool_size.unwrap_or(default_pool_size);
 이 숫자는 곧 **서버가 동시에 처리할 수 있는 최대 검색 요청 수**가 된다.
 
 ```mermaid
-graph LR
-    A[요청 1] --> B{Semaphore\npermit 획득}
+flowchart LR
+    A[요청 1] --> B{"Semaphore permit 획득"}
     C[요청 2] --> B
     D[요청 3] --> B
-    B -->|permit 있음| E[OpenSearch 검색]
+    B -->|"permit 있음"| E[OpenSearch 검색]
     B -->|타임아웃| F[1002 Too Many Requests]
     E --> G[응답 반환]
     G --> H[permit 반환]

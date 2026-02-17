@@ -70,11 +70,11 @@ pub trait DatabaseClient: Send + Sync {
 스트리밍 쿼리의 반환 타입이 복잡해 보이지만, 풀어서 설명하면 이렇다.
 
 ```mermaid
-graph LR
+flowchart LR
     A[stream_query] --> B[Pin]
     B --> C[Box]
-    C --> D[dyn Stream]
-    D --> E[Item = Result]
+    C --> D["dyn Stream"]
+    D --> E["Item = Result"]
     E --> F[DatabaseRow]
     E --> G[Error]
 ```
@@ -450,19 +450,19 @@ pub fn create_database_client(config: &AppConfig) -> Box<dyn DatabaseClient> {
 반환 타입이 `Box<dyn DatabaseClient>`인 것은 이 함수의 호출자가 구체적인 DB 타입을 알 필요가 없도록 하기 위함이다. 서비스 계층에서는 오직 `DatabaseClient` 트레잇의 메서드만 사용한다.
 
 ```mermaid
-graph TD
+flowchart TD
     A[DbFetchService] -->|calls| B[create_database_client]
-    B -->|config.database_type| C{DB Type?}
+    B -->|"config.database_type"| C{"DB Type?"}
     C -->|PostgreSQL| D[POSTGRES_CLIENT_CACHE]
     C -->|MySQL| E[MYSQL_CLIENT_CACHE]
-    D -->|cache hit| F[PostgreSQLDatabase]
-    D -->|cache miss| G[새 PostgresClient 생성]
+    D -->|"cache hit"| F[PostgreSQLDatabase]
+    D -->|"cache miss"| G["새 PostgresClient 생성"]
     G --> F
-    E -->|cache hit| H[MySQLDatabase]
-    E -->|cache miss| I[새 MysqlClient 생성]
+    E -->|"cache hit"| H[MySQLDatabase]
+    E -->|"cache miss"| I["새 MysqlClient 생성"]
     I --> H
-    F -->|Box dyn DatabaseClient| A
-    H -->|Box dyn DatabaseClient| A
+    F -->|"Box dyn DatabaseClient"| A
+    H -->|"Box dyn DatabaseClient"| A
 ```
 
 ## DbFetchService: 추상화 계층 사용

@@ -23,23 +23,23 @@ tags:
 기존 검색 파이프라인에 Aggregation 레이어를 추가하면서, 검색과 집계를 하나의 요청으로 처리할지, 별도 엔드포인트로 분리할지 결정해야 했다. 결론부터 말하면, 별도 엔드포인트로 분리했다.
 
 ```mermaid
-graph TD
-    Client[클라이언트] --> GoodsSearch[/api/search/v1/search/goods]
-    Client --> GoodsAgg[/api/search/v1/search/goods-aggregation]
-    Client --> MarketingSearch[/api/search/v1/search/marketing-search]
-    
+flowchart TD
+    Client[클라이언트] --> GoodsSearch["/api/search/v1/search/goods"]
+    Client --> GoodsAgg["/api/search/v1/search/goods-aggregation"]
+    Client --> MarketingSearch["/api/search/v1/search/marketing-search"]
+
     GoodsSearch --> Semaphore[세마포어 동시성 제한]
     GoodsAgg --> Semaphore
     MarketingSearch --> Semaphore
-    
+
     Semaphore --> QueryBuilder[Handlebars 쿼리 빌더]
     QueryBuilder --> OpenSearch[(OpenSearch)]
-    
+
     OpenSearch --> ResponseParser[응답 파서]
-    ResponseParser --> AggProcessor{Aggregation 포함?}
+    ResponseParser --> AggProcessor{"Aggregation 포함?"}
     AggProcessor -->|Yes| AggDataProcessor[집계 데이터 가공]
     AggProcessor -->|No| HitsProcessor[히트 데이터 가공]
-    
+
     AggDataProcessor --> ApiResponse[API 응답]
     HitsProcessor --> ApiResponse
 ```
@@ -145,17 +145,17 @@ OpenSearch 쿼리를 Rust 코드에 하드코딩하면 유지보수가 어려워
 커머스 데이터에서 카테고리 정보는 보통 Nested 타입으로 저장된다. 상품 하나에 여러 카테고리가 매핑될 수 있기 때문이다. Nested Aggregation을 사용하면 각 Nested 문서를 별도로 집계할 수 있지만, 주의할 점이 있다.
 
 ```mermaid
-graph LR
-    subgraph "상품 문서"
-        Product[goodsNo: 12345]
-        Product --> Cat1["dispCtgNo[0]: 여성의류 > 원피스"]
-        Product --> Cat2["dispCtgNo[1]: 시즌 > 봄신상"]
+flowchart LR
+    subgraph 상품_문서["상품 문서"]
+        Product["goodsNo: 12345"]
+        Product --> Cat1["dispCtgNo 0: 여성의류 - 원피스"]
+        Product --> Cat2["dispCtgNo 1: 시즌 - 봄신상"]
     end
-    
-    subgraph "Nested Aggregation"
-        NA[nested path: dispCtgNo] --> MT[multi_terms]
-        MT --> Result1["여성의류 > 원피스: 150건"]
-        MT --> Result2["시즌 > 봄신상: 80건"]
+
+    subgraph Nested_Agg["Nested Aggregation"]
+        NA["nested path: dispCtgNo"] --> MT[multi_terms]
+        MT --> Result1["여성의류 - 원피스: 150건"]
+        MT --> Result2["시즌 - 봄신상: 80건"]
     end
 ```
 
@@ -436,16 +436,16 @@ if let Some(total) = response_body["hits"]["total"]["value"].as_u64() {
 초기에는 `search_service.rs` 하나에 모든 로직이 들어 있었다. Handlebars 초기화, 쿼리 빌드, OpenSearch 실행, 결과 파싱까지 한 파일에 500줄 이상이었다. 이걸 역할별로 분리했다.
 
 ```mermaid
-graph TD
-    subgraph "리팩토링 전"
-        Old[search_service.rs 500+ lines]
+flowchart TD
+    subgraph 리팩토링_전["리팩토링 전"]
+        Old["search_service.rs 500+ lines"]
     end
-    
-    subgraph "리팩토링 후"
+
+    subgraph 리팩토링_후["리팩토링 후"]
         SS[search_service.rs] --> SU[search_util.rs]
         SS --> QB[query_builder.rs]
-        SU --> Client[opensearch/client.rs]
-        QB --> Templates[templates/*.hbs]
+        SU --> Client["opensearch/client.rs"]
+        QB --> Templates["templates/*.hbs"]
     end
 ```
 

@@ -82,7 +82,7 @@ search_rust/
 이 구조에서 가장 중요하게 생각한 원칙은 **의존성 방향의 단방향성**이다. routes는 services를 호출하고, services는 repositories와 util을 사용하며, 역방향 참조는 존재하지 않는다. Rust의 모듈 시스템(`mod.rs`)은 이 규칙을 자연스럽게 강제한다.
 
 ```mermaid
-graph TD
+flowchart TD
     A[Routes Layer] --> B[Services Layer]
     B --> C[Repositories Layer]
     B --> D[Util Layer]
@@ -289,12 +289,12 @@ pub struct StreamingConfig {
 핵심 아이디어는 `mpsc` 채널을 통해 DB에서 읽은 데이터를 실시간으로 수신하면서, Semaphore로 동시 처리 수를 제한하는 것이다. DB 페치와 OpenSearch 인덱싱이 파이프라인처럼 병렬로 동작한다.
 
 ```mermaid
-graph LR
-    A[DB Fetch] -->|mpsc channel| B[Chunk Buffer]
-    B -->|5000건 단위| C[Semaphore]
-    C --> D[Bulk Request 1]
-    C --> E[Bulk Request 2]
-    C --> F[Bulk Request N]
+flowchart LR
+    A[DB Fetch] -->|"mpsc channel"| B[Chunk Buffer]
+    B -->|"5000건 단위"| C[Semaphore]
+    C --> D["Bulk Request 1"]
+    C --> E["Bulk Request 2"]
+    C --> F["Bulk Request N"]
     D --> G[OpenSearch]
     E --> G
     F --> G

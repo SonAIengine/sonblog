@@ -22,24 +22,24 @@ tags:
 ### 추천 검색어 시스템 전체 구조
 
 ```mermaid
-graph TD
-    subgraph "인덱싱 파이프라인"
+flowchart TD
+    subgraph 인덱싱_파이프라인["인덱싱 파이프라인"]
         DB[(PostgreSQL)] --> FetchService[DB Fetch Service]
         FetchService --> Processor[Document Processor]
         Processor --> RecomExtractor[Recomword Extractor]
-        RecomExtractor --> MainIndex["메인 인덱스<br/>goods-ko, marketing-ko"]
-        RecomExtractor --> RecomIndex["추천어 인덱스<br/>goods-recomword-ko<br/>marketing-recomword-ko"]
+        RecomExtractor --> MainIndex["메인 인덱스 goods-ko, marketing-ko"]
+        RecomExtractor --> RecomIndex["추천어 인덱스 goods-recomword-ko, marketing-recomword-ko"]
     end
-    
-    subgraph "검색 API"
+
+    subgraph 검색_API["검색 API"]
         Client[클라이언트] --> GoodsRecom[/goods-recomword]
         Client --> MarketingRecom[/marketing-recomword]
         Client --> EventRecom[/event-recomword]
-        
+
         GoodsRecom --> QueryBuilder[쿼리 빌더]
         MarketingRecom --> QueryBuilder
         EventRecom --> QueryBuilder
-        
+
         QueryBuilder --> Template[recomword_search_template.hbs]
         Template --> OS[(OpenSearch)]
         OS --> AggProcessor[Terms Agg 후처리]
@@ -258,21 +258,21 @@ pub async fn ensure_recomword_index_exists(
 인덱스 유형에 따라 검색 대상 필드가 달라진다. `get_index_fields` 함수에서 인덱스별 필드 구성을 반환한다.
 
 ```mermaid
-graph LR
-    subgraph "goods 인덱스"
+flowchart LR
+    subgraph goods_index["goods 인덱스"]
         G1[goodsNm - 상품명]
         G2[brandNm - 브랜드명]
         G3[goodsNmAnaly - 형태소분석]
     end
-    
-    subgraph "marketing 인덱스"
+
+    subgraph marketing_index["marketing 인덱스"]
         M1[title - 제목]
         M2[description - 설명]
         M3[schKwdNm - 검색키워드]
         M4[titleAnaly - 형태소분석]
     end
-    
-    subgraph "recomword 인덱스"
+
+    subgraph recomword_index["recomword 인덱스"]
         R1[recomword - 추천어]
     end
 ```

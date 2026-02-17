@@ -50,10 +50,10 @@ search_rust:
 `search_rust`라는 최상위 네임스페이스를 두고, 그 아래에 데이터 유형별 접두사를 붙이는 구조다. 현재 Phase 1에서는 `field_config`만 구현하고, 나머지는 향후 확장 포인트로 남겨두었다.
 
 ```mermaid
-graph TD
-    A[검색 요청] --> B{Redis 캐시 조회}
-    B -->|Cache Hit| C[캐시된 필드 설정 반환]
-    B -->|Cache Miss| D[OpenSearch 매핑 조회]
+flowchart TD
+    A[검색 요청] --> B{"Redis 캐시 조회"}
+    B -->|"Cache Hit"| C[캐시된 필드 설정 반환]
+    B -->|"Cache Miss"| D[OpenSearch 매핑 조회]
     D --> E[필드 설정 파싱]
     E --> F[Redis에 캐시 저장]
     F --> C
@@ -351,19 +351,19 @@ pub async fn invalidate_all_search_rust_cache(
 캐싱 레이어 설계에서 가장 중요하게 생각한 원칙은 **Graceful Degradation**이다. Redis가 어떤 이유로든 사용 불가능한 상황에서도 검색 서비스는 정상 동작해야 한다.
 
 ```mermaid
-graph TD
+flowchart TD
     A[Redis 초기화] -->|성공| B[캐싱 활성화]
-    A -->|실패| C[캐싱 비활성화, 서비스 정상 운영]
-    
-    D[캐시 조회] -->|성공 + Hit| E[캐시 데이터 사용]
-    D -->|성공 + Miss| F[OpenSearch 조회 → 캐시 저장]
-    D -->|실패| G[OpenSearch 조회, 캐시 저장 스킵]
-    
+    A -->|실패| C["캐싱 비활성화, 서비스 정상 운영"]
+
+    D[캐시 조회] -->|"성공 + Hit"| E[캐시 데이터 사용]
+    D -->|"성공 + Miss"| F["OpenSearch 조회, 캐시 저장"]
+    D -->|실패| G["OpenSearch 조회, 캐시 저장 스킵"]
+
     H[캐시 저장] -->|성공| I[정상]
-    H -->|실패| J[warn 로그만 남기고 계속]
-    
+    H -->|실패| J["warn 로그만 남기고 계속"]
+
     K[캐시 무효화] -->|성공| L[정상]
-    K -->|실패| M[다음 TTL 만료 시 자동 갱신]
+    K -->|실패| M["다음 TTL 만료 시 자동 갱신"]
 ```
 
 이 전략을 코드 전반에 일관되게 적용했다:
@@ -463,21 +463,21 @@ Err(e) => {
 현재 Phase 1에서는 필드 설정 캐싱만 구현했지만, 캐시 인프라가 갖춰졌으므로 다음 단계 확장이 용이하다.
 
 ```mermaid
-graph LR
-    subgraph "Phase 1 (현재)"
+flowchart LR
+    subgraph Phase1["Phase 1 (현재)"]
         A[필드 설정 캐시]
     end
-    
-    subgraph "Phase 2 (계획)"
+
+    subgraph Phase2["Phase 2 (계획)"]
         B[검색 결과 캐시]
         C[집계 결과 캐시]
     end
-    
-    subgraph "Phase 3 (계획)"
+
+    subgraph Phase3["Phase 3 (계획)"]
         D[동의어 사전 캐시]
         E[사용자 사전 캐시]
     end
-    
+
     A --> B
     A --> C
     B --> D

@@ -23,18 +23,18 @@ OpenSearch 쿼리는 JSON이다. 그리고 검색 요청마다 쿼리가 달라�
 ### 전체 쿼리 생성 흐름
 
 ```mermaid
-graph TD
-    Request["검색 요청<br/>SearchParams"] --> QB["query_builder.rs<br/>build_search_query()"]
+flowchart TD
+    Request["검색 요청 SearchParams"] --> QB["query_builder.rs build_search_query()"]
 
-    QB --> TN["get_template_name()<br/>인덱스명으로 템플릿 결정"]
-    QB --> Fields["get_index_fields_from_db()<br/>OpenSearch에서 필드 설정 조회"]
+    QB --> TN["get_template_name() 인덱스명으로 템플릿 결정"]
+    QB --> Fields["get_index_fields_from_db() OpenSearch에서 필드 설정 조회"]
 
-    Fields --> Redis["Redis 캐시<br/>TTL: 5분"]
-    Redis -->|"캐시 히트"| Fields2["CachedIndexFields → IndexFields 변환"]
-    Redis -->|"캐시 미스"| OS["OpenSearch<br/>{index_type}-field 인덱스 조회"]
+    Fields --> Redis["Redis 캐시 TTL: 5분"]
+    Redis -->|"캐시 히트"| Fields2["CachedIndexFields to IndexFields 변환"]
+    Redis -->|"캐시 미스"| OS["OpenSearch index_type-field 인덱스 조회"]
     OS --> Fields2
 
-    TN --> HBS["HANDLEBARS 싱글톤<br/>once_cell::Lazy"]
+    TN --> HBS["HANDLEBARS 싱글톤 once_cell::Lazy"]
     Fields2 --> HBS
 
     HBS --> JSON["OpenSearch 쿼리 JSON 완성"]

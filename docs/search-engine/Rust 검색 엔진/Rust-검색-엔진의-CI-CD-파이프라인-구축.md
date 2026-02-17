@@ -22,27 +22,27 @@ tags:
 ### 전체 파이프라인 구조
 
 ```mermaid
-graph TD
-    subgraph "트리거"
-        Manual["수동 커밋<br/>(run 접두어)"]
-        API["Rust API<br/>POST /pipeline/trigger"]
+flowchart TD
+    subgraph 트리거
+        Manual["수동 커밋 run 접두어"]
+        API["Rust API POST /pipeline/trigger"]
     end
-    
-    subgraph "GitLab CI/CD"
-        CheckVars[1. 변수 확인]
-        MkDir[2. 대상 디렉토리 생성]
-        SCP[3. SCP 파일 전송]
-        Confirm[4. 파일 확인]
-        
+
+    subgraph GitLab_CICD["GitLab CI/CD"]
+        CheckVars["1. 변수 확인"]
+        MkDir["2. 대상 디렉토리 생성"]
+        SCP["3. SCP 파일 전송"]
+        Confirm["4. 파일 확인"]
+
         CheckVars --> MkDir --> SCP --> Confirm
     end
-    
-    subgraph "EC2 (OpenSearch)"
+
+    subgraph EC2["EC2 OpenSearch"]
         ConfDir["/data/opensearch-dir/docker-file/conf"]
         OS[(OpenSearch)]
         ConfDir --> OS
     end
-    
+
     Manual --> CheckVars
     API --> CheckVars
     SCP --> ConfDir
@@ -433,7 +433,7 @@ OpenSearch를 EC2에서 직접 실행하다가 Docker로 전환하면서 파일 
 현재 파이프라인은 파일 배포까지만 자동화했다. 동의어가 실제로 적용되려면 OpenSearch 인덱스를 close/open해야 한다. 이 단계를 파이프라인에 추가하면 완전 자동화가 된다.
 
 ```mermaid
-graph LR
+flowchart LR
     SCP[SCP 전송] --> Close[인덱스 Close]
     Close --> Open[인덱스 Open]
     Open --> Verify[동의어 적용 검증]

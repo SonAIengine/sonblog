@@ -68,25 +68,25 @@ Bulk 전송 대기 시간이 절반 이상을 차지했다. 이 시간 동안 CP
 스트리밍 방식의 핵심은 **파이프라인 병렬화**다. DB에서 데이터를 가져오는 것과 OpenSearch에 전송하는 것을 동시에 수행한다.
 
 ```mermaid
-graph LR
-    subgraph "Producer (DB Fetch)"
-        A[DB 쿼리] --> B[Row → IndexingData 변환]
+flowchart LR
+    subgraph Producer["Producer (DB Fetch)"]
+        A[DB 쿼리] --> B["Row to IndexingData 변환"]
         B --> C[mpsc 채널 전송]
     end
-    
-    subgraph "Consumer (Bulk Index)"
+
+    subgraph Consumer["Consumer (Bulk Index)"]
         D[채널 수신] --> E[청크 버퍼링]
         E --> F[NDJSON 생성]
         F --> G[Bulk API 전송]
     end
-    
-    C -->|mpsc channel| D
-    
-    subgraph "동시성 제어"
+
+    C -->|"mpsc channel"| D
+
+    subgraph 동시성_제어["동시성 제어"]
         H[Semaphore]
         I[FuturesUnordered]
     end
-    
+
     G -.-> H
     G -.-> I
 ```

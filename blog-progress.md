@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-17
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40, DevOps #77~#91
-- 다음 작성 대상: DevOps #92~#95 또는 AI/ML #41~#45
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40, DevOps #77~#95
+- 다음 작성 대상: AI/ML #41~#45 또는 검색엔진 #14~#25
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -98,3 +98,7 @@
 - docs/devops/infra/CLAUDE-md로-AI-코딩-어시스턴트-가이드라인-작성하기.md (DevOps #89)
 - docs/devops/infra/롯데홈쇼핑-폐쇄망-서버-SSH-터널링-접속-구성.md (DevOps #90)
 - docs/devops/infra/XGEN-도메인-마이그레이션-xgen-stg에서-jeju-xgen으로.md (DevOps #91)
+- docs/devops/infra/GitLab-CI-CD에서-EC2-배포-자동화-SCP-SSH.md (DevOps #92)
+- docs/devops/infra/Docker-Compose-개발환경-구성-env-기반-설정-관리.md (DevOps #93)
+- docs/devops/infra/Tauri-앱-빌드-Linux-deb-rpm-패키지-설정.md (DevOps #94)
+- docs/devops/infra/Sidecar-패턴-Tauri-앱에서-xgen-workflow-자동-시작.md (DevOps #95)

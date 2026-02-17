@@ -12,6 +12,7 @@ theme:
   features:
     # Navigation
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.path
     - navigation.indexes
@@ -19,6 +20,9 @@ theme:
     - navigation.footer
     - navigation.instant
     - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.prune
     # TOC
     - toc.follow
     # Search

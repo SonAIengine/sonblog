@@ -1,3 +1,12 @@
+---
+tags:
+  - GliNER
+  - DPO
+  - LoRA
+  - 파인튜닝
+  - LLM
+---
+
 # GliNER과 DPO-LoRA를 활용한 모델 파인튜닝
 
 ## 프로젝트 배경

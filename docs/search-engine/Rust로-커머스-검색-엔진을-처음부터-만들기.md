@@ -4,10 +4,9 @@ description: "NestJS 기반 검색 서비스의 한계를 넘어, Rust로 이커
 date: 2025-03-25
 tags:
   - Rust
-  - OpenSearch
   - 검색엔진
-  - Axum
-  - 이커머스
+  - OpenSearch
+  - 커머스
 ---
 
 # Rust로 커머스 검색 엔진을 처음부터 만들기

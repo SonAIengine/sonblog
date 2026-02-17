@@ -6,8 +6,7 @@ tags:
   - Rust
   - Axum
   - OpenSearch
-  - 검색API
-  - Handlebars
+  - API설계
 ---
 
 # Axum + OpenSearch: Rust 검색 API 아키텍처 설계

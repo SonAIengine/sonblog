@@ -1,3 +1,11 @@
+---
+tags:
+  - 모델서빙
+  - 리팩토링
+  - vLLM
+  - XGEN
+---
+
 # XGEN 2.0 모델 서빙 통합 아키텍처 리팩토링
 
 > 2026.01 | vLLM Ray Serve에서 통합 xgen-model 서비스로의 마이그레이션

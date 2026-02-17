@@ -1,3 +1,12 @@
+---
+tags:
+  - Kubernetes
+  - ArgoCD
+  - K3s
+  - 인프라
+  - XGEN
+---
+
 # XGEN 2.0 인프라: K8s + ArgoCD 운영 배포
 
 > 2026.01 | K3s, ArgoCD, Istio, Grafana, Prometheus, GitOps

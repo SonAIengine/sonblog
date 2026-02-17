@@ -5,9 +5,7 @@ date: 2025-04-04
 tags:
   - Rust
   - SSH
-  - SFTP
-  - OpenSearch
-  - 동의어
+  - 터널링
   - 검색엔진
 ---
 

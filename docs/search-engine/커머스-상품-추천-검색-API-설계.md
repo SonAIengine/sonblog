@@ -3,10 +3,9 @@ title: "커머스 상품 추천 검색 API 설계 (goods + marketing)"
 description: "Rust 검색 엔진에서 상품, 마케팅, 이벤트 데이터에 대한 추천 검색어(recomword) API를 설계하고 구현한 과정. 인덱싱 파이프라인부터 Terms Aggregation 기반 자동완성, 문자열 길이 정렬까지."
 date: 2025-05-12
 tags:
-  - Rust
-  - OpenSearch
-  - 추천 검색
-  - Aggregation
+  - 검색엔진
+  - 추천검색
+  - API설계
   - 커머스
 ---
 

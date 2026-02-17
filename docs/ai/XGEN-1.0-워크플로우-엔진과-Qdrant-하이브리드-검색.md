@@ -1,3 +1,11 @@
+---
+tags:
+  - Qdrant
+  - 하이브리드검색
+  - 워크플로우
+  - XGEN
+---
+
 # XGEN 1.0 워크플로우 엔진과 Qdrant 하이브리드 검색
 
 > 2025.12 | FastAPI, Qdrant, MCP Station, Circuit Breaker

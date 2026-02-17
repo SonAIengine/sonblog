@@ -6,9 +6,7 @@ tags:
   - Rust
   - Redis
   - 캐싱
-  - OpenSearch
   - 검색엔진
-  - 성능최적화
 ---
 
 # Rust 검색 엔진에 Redis 캐싱 적용기

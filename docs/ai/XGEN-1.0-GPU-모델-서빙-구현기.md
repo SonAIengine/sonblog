@@ -1,3 +1,12 @@
+---
+tags:
+  - vLLM
+  - llama.cpp
+  - GPU
+  - 모델서빙
+  - XGEN
+---
+
 # XGEN 1.0 GPU 모델 서빙 구현기 - vLLM과 llama.cpp 최적화
 
 > 2025년 12월, XGEN 1.0 플랫폼에서 대규모 언어 모델의 효율적인 서빙을 위해 vLLM과 llama.cpp 기반 추론 엔진을 구축했다. GPU 리소스 최적화부터 동적 배칭까지, 프로덕션 환경에서의 LLM 서빙 경험을 공유한다.

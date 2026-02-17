@@ -1,10 +1,16 @@
 nav:
   - Home: index.md
-  - Portfolio: portfolio
-  - PoC: poc
-  - Python: python
-  - AI: ai
+  - Blog: blog
   - Search Engine: search-engine
-  - XGEN: xgen
+  - AI: ai
+  - Agent: agent
+  - Frontend: frontend
   - Infra: infra
+  - Backend: backend
+  - Desktop: desktop
+  - Workflow: workflow
+  - Portfolio: portfolio
+  - Python: python
+  - PoC: poc
   - Etc: etc
+  - Tags: tags.md

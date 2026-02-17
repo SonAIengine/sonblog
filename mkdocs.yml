@@ -1,48 +1,81 @@
 site_name: SON BLOG
+site_url: https://sonaiengine.github.io/sonblog/
+site_description: "AI 개발자 손성준의 기술 블로그"
+site_author: "손성준"
+repo_url: https://github.com/SonAIengine/sonblog
+repo_name: SonAIengine/sonblog
+
 theme:
   name: material
+  language: ko
   features:
+    # Navigation
+    - navigation.tabs
     - navigation.sections
     - navigation.path
     - navigation.indexes
     - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.preview
+    # TOC
     - toc.follow
-    - navigation.tabs
-  language: en
+    # Search
+    - search.suggest
+    - search.highlight
+    - search.share
+    # Content
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
   palette:
-    # 라이트 모드 팔레트 토글
     - scheme: default
       primary: black
-      background: white
       toggle:
-        icon: material/brightness-7  # 태양 아이콘
+        icon: material/brightness-7
         name: Switch to dark mode
-
-    # 다크 모드 팔레트 토글
     - scheme: slate
       primary: black
       toggle:
-        icon: material/brightness-4  # 달 아이콘
+        icon: material/brightness-4
         name: Switch to light mode
-
-
+  font: false  # CSS에서 Pretendard 직접 로드
+  icon:
+    repo: fontawesome/brands/github
 
 extra_css:
-  - 'extra.css'
+  - extra.css
 
 extra_javascript:
-  - 'custom.js'
-
+  - custom.js
 
 plugins:
   - awesome-pages
-  - search
+  - search:
+      separator: '[\s\-\.]+'
+      lang:
+        - ko
+        - en
   - glightbox
-
+  - tags
+  - blog:
+      blog_dir: blog
+      post_url_format: "{slug}"
+      post_excerpt_separator: "<!-- more -->"
+      post_readtime: true
+      archive: true
+      categories: true
+  - social:
+      cards_layout: default/variant
+  - git-revision-date-localized:
+      type: date
+      locale: ko
+      enable_creation_date: true
+      fallback_to_build_date: true
 
 markdown_extensions:
-  - pymdownx.superfences
-  - attr_list
   - admonition
   - pymdownx.details
   - pymdownx.superfences:
@@ -50,4 +83,24 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.mark
+  - pymdownx.keys
+  - attr_list
   - md_in_html
+  - toc:
+      permalink: true
+  - footnotes
+  - tables
+  - def_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

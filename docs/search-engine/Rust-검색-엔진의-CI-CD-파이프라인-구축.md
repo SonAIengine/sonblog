@@ -4,10 +4,9 @@ description: "GitLab CI/CD로 Rust 검색 엔진의 동의어 사전 파일을 E
 date: 2025-04-10
 tags:
   - Rust
-  - GitLab CI/CD
-  - EC2
-  - DevOps
-  - 파이프라인
+  - CI/CD
+  - GitLab
+  - 검색엔진
 ---
 
 # Rust 검색 엔진의 CI/CD 파이프라인 구축 (GitLab + EC2)

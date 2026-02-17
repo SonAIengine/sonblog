@@ -1,91 +1,216 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
-  /* === Light Mode Code Block Style (GitHub-like) === */
+/* === Font Import === */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* === Base Typography === */
+:root {
+  --md-text-font: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --md-code-font: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+body {
+  font-family: var(--md-text-font);
+  line-height: 1.8;
+}
+
+.md-grid {
+  max-width: 1440px;
+}
+
+/* === Content Spacing === */
+p {
+  margin-bottom: 1.4em;
+  line-height: 1.8;
+}
+
+li {
+  margin-bottom: 0.6em;
+  line-height: 1.5;
+}
+
+/* === Headings === */
+h2 {
+  font-size: 1.8em;
+  font-weight: 600;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid #eaecef;
+  margin-top: 2.4em;
+  margin-bottom: 1.2em;
+}
+
+h3 {
+  font-size: 1.4em;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 8px;
+  margin-top: 1.2em;
+  margin-bottom: 0.8em;
+}
+
+/* === Links === */
+a:hover {
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* === Inline Code === */
+p code,
+li code {
+  background-color: #eff2f5;
+  margin: 0 2px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.85em;
+  box-shadow: 0 1px 3px rgba(129, 127, 127, 0.06);
+  padding: 2px 6px;
+  color: #24292e;
+  font-family: var(--md-code-font);
+}
+
+p em {
+  color: #57606a;
+}
+
+/* === Code Blocks (Light Mode - GitHub style) === */
 pre code {
-    background-color: #fdfdfd !important;
-    color: #2c3e50 !important;
-    border: 1px solid #dcdfe3 !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
-    padding: 1.2em 1.5em !important;
-    margin: 1.5em 0 !important;
-    border-radius: 8px !important;
-    font-size: 0.9em !important;
-    line-height: 1.6 !important;
-    white-space: pre-wrap !important;
-    word-break: break-word !important;
-    overflow-x: auto !important;
-    font-family: 'IBM Plex Mono', monospace !important;
+  background-color: #fdfdfd;
+  color: #2c3e50;
+  border: 1px solid #dcdfe3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 1.2em 1.5em;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  font-size: 0.9em;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+  font-family: var(--md-code-font);
 }
 
+/* Light Mode Syntax Highlighting */
+pre code .c, pre code .c1, pre code .cs { color: #6a737d; }
+pre code .k, pre code .kd, pre code .kn, pre code .kp, pre code .kr, pre code .nt { color: #d73a49; }
+pre code .s, pre code .s1, pre code .s2, pre code .sh, pre code .si, pre code .sx { color: #032f62; }
+pre code .nc, pre code .nf { color: #6f42c1; }
+pre code .bp, pre code .nb { color: #005cc5; }
+pre code .m, pre code .mi { color: #005cc5; }
+pre code .o, pre code .ow { color: #d73a49; }
 
-/* --- Light Mode Syntax Highlighting --- */
-pre code .c,
-pre code .c1,
-pre code .cs {
-    color: #6a737d !important;
+/* === Blockquote === */
+blockquote p:last-child {
+  margin-bottom: 0;
 }
 
-/* 주석 */
-pre code .k,
-pre code .kd,
-pre code .kn,
-pre code .kp,
-pre code .kr,
-pre code .nt {
-    color: #d73a49 !important;
+/* === Sidebar === */
+nav.md-nav[data-md-level="1"] {
+  padding-left: 10px;
 }
 
-/* 키워드 */
-pre code .s,
-pre code .s1,
-pre code .s2,
-pre code .sh,
-pre code .si,
-pre code .sx {
-    color: #032f62 !important;
+body > div.md-container > main > div > div.md-sidebar.md-sidebar--primary > div > div > nav ul li a > span::before {
+  padding-left: 10px;
+  content: "-";
+  margin-right: 5px;
 }
 
-/* 문자열 */
-pre code .nc,
-pre code .nf {
-    color: #6f42c1 !important;
+.md-ellipsis {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
-/* 클래스/함수 이름 */
-pre code .bp,
-pre code .nb {
-    color: #005cc5 !important;
+/* === Admonition (Light Mode) === */
+.admonition.info {
+  background-color: #f0f7ff;
+  border-left: 5px solid #4a90e2;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* 빌트인 */
-pre code .m,
-pre code .mi {
-    color: #005cc5 !important;
+.admonition.info .admonition-title {
+  font-weight: bold;
+  color: #4a90e2;
+  font-size: 1.0em;
+  margin-bottom: 0.5em;
 }
 
-/* 숫자 */
-pre code .o,
-pre code .ow {
-    color: #d73a49 !important;
+/* === TOC Sidebar === */
+nav.md-nav--secondary > ul.md-nav__list > li.md-nav__item {
+  padding-left: 0.8em;
 }
 
-/* 연산자 */
+nav.md-nav--secondary ul.md-nav__list > li.md-nav__item > nav > ul.md-nav__list > li.md-nav__item {
+  padding-left: 1.2em;
+}
 
+nav.md-nav--secondary ul.md-nav__list ul.md-nav__list ul.md-nav__list li.md-nav__item {
+  padding-left: 1.6em;
+}
 
-/* === Dark Mode Code Block Style Override === */
+nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::before {
+  content: "\2022";
+  margin-right: 6px;
+  color: #999;
+  font-size: 0.75em;
+}
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+
+[data-md-color-scheme="slate"] body {
+  color: #adbac7;
+}
+
+/* Dark Mode Headings */
+[data-md-color-scheme="slate"] h1,
+[data-md-color-scheme="slate"] h2,
+[data-md-color-scheme="slate"] h3,
+[data-md-color-scheme="slate"] h4 {
+  color: #e6edf3;
+}
+
+[data-md-color-scheme="slate"] h2 {
+  border-bottom-color: #444c56;
+}
+
+/* Dark Mode Links */
+[data-md-color-scheme="slate"] a {
+  color: #58a6ff;
+}
+
+[data-md-color-scheme="slate"] a:hover {
+  color: #79c0ff;
+}
+
+/* Dark Mode Inline Code */
+[data-md-color-scheme="slate"] p code,
+[data-md-color-scheme="slate"] li code {
+  background-color: #373e47;
+  color: #cdd9e5;
+  border: 1px solid #4d555e;
+}
+
+/* Dark Mode Code Blocks (Atom One Dark) */
 [data-md-color-scheme="slate"] pre code {
-    background-color: #282c34 !important;
-    color: #abb2bf !important;
-    border: 1px solid #181a1f !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35) !important;
-    font-family: 'IBM Plex Mono', monospace !important;
+  background-color: #282c34;
+  color: #abb2bf;
+  border: 1px solid #181a1f;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  font-family: var(--md-code-font);
 }
 
-/* --- Dark Mode Syntax Highlighting (Atom One Dark) --- */
 [data-md-color-scheme="slate"] pre code .c,
 [data-md-color-scheme="slate"] pre code .c1,
 [data-md-color-scheme="slate"] pre code .cs {
-    color: #5c6370 !important;
-    font-style: italic;
+  color: #5c6370;
+  font-style: italic;
 }
 
 [data-md-color-scheme="slate"] pre code .k,
@@ -96,7 +221,7 @@ pre code .ow {
 [data-md-color-scheme="slate"] pre code .kr,
 [data-md-color-scheme="slate"] pre code .kt,
 [data-md-color-scheme="slate"] pre code .nt {
-    color: #c678dd !important;
+  color: #c678dd;
 }
 
 [data-md-color-scheme="slate"] pre code .s,
@@ -112,17 +237,17 @@ pre code .ow {
 [data-md-color-scheme="slate"] pre code .sx,
 [data-md-color-scheme="slate"] pre code .sr,
 [data-md-color-scheme="slate"] pre code .ss {
-    color: #98c379 !important;
+  color: #98c379;
 }
 
 [data-md-color-scheme="slate"] pre code .nc,
 [data-md-color-scheme="slate"] pre code .nf {
-    color: #61afef !important;
+  color: #61afef;
 }
 
 [data-md-color-scheme="slate"] pre code .bp,
 [data-md-color-scheme="slate"] pre code .nb {
-    color: #d19a66 !important;
+  color: #d19a66;
 }
 
 [data-md-color-scheme="slate"] pre code .m,
@@ -131,232 +256,45 @@ pre code .ow {
 [data-md-color-scheme="slate"] pre code .mi,
 [data-md-color-scheme="slate"] pre code .mo,
 [data-md-color-scheme="slate"] pre code .il {
-    color: #d19a66 !important;
+  color: #d19a66;
 }
 
 [data-md-color-scheme="slate"] pre code .o,
 [data-md-color-scheme="slate"] pre code .ow {
-    color: #56b6c2 !important;
+  color: #56b6c2;
 }
 
-
-p code,
-li code {
-    background-color: #eff2f5;
-    /* 밝은 회색 배경 */
-    margin: 0 2px !important;
-    /* 코드 간의 적당한 간격 */
-    border-radius: 8px !important;
-    font-weight: 500;
-    /* 살짝 굵은 글씨 */
-    font-size: 0.85em !important;
-    /* 살짝 큰 폰트 사이즈 */
-    box-shadow: 0 1px 3px rgba(129, 127, 127, 0.06) !important;
-    padding: 2px 5px !important;
-    /* 텍스트와 테두리 사이의 최소한의 여백 */
-    color: #24292e;
-    font-family: 'RixXladywatermelonR', sans-serif;
-}
-
-p em {
-    color: #57606a;
-    /* 기존보다 약간 어둡게 하여 가독성 향상 */
-}
-
-p {
-    margin-bottom: 1.4em;
-    line-height: 2.0;
-    /* 단락 간 간격 추가 */
-}
-
-li {
-    margin-bottom: 0.6em;
-    line-height: 1.4;
-    /* 목록 항목 간 간격 추가 */
-}
-
-/* 제목(Header) 스타일 */
-h2 {
-    font-size: 1.8em;
-    font-weight: 600;
-    padding-bottom: 0.4em;
-    border-bottom: 2px solid #eaecef;
-    margin-top: 2.4em;
-    margin-bottom: 1.2em;
-}
-
-h3 {
-    font-size: 1.4em;
-    font-weight: 500;
-    text-decoration: underline;
-    text-decoration-thickness: 0.5px;
-    text-underline-offset: 8px;
-    margin-top: 1.2em;
-    margin-bottom: 0.8em;
-}
-
-a:hover {
-    text-decoration: underline;
-    /* 마우스를 올리면 밑줄 표시 */
-    font-weight: 600;
-    /* 호버 시 약간 더 진한 색상 */
-}
-
-
-blockquote p:last-child {
-    margin-bottom: 0;
-}
-
-
-nav.md-nav[data-md-level="1"] {
-    padding-left: 10px;
-}
-
-body>div.md-container>main>div>div.md-sidebar.md-sidebar--primary>div>div>nav ul li a>span::before {
-    padding-left: 10px;
-    content: "-";
-    margin-right: 5px;
-}
-
-.md-ellipsis {
-    -webkit-user-select: none;
-    /* Safari */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, for modern browsers */
-    cursor: pointer;
-}
-
-/* note 타입의 admonition 스타일 개선 */
-.admonition.info {
-    background-color: #f0f7ff;
-    border-left: 5px solid #4a90e2;
-    padding: 15px 20px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    font-size: 0.9em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.admonition.info .admonition-title {
-    font-weight: bold;
-    color: #4a90e2;
-    font-size: 1.0em;
-    margin-bottom: 0.5em;
-}
-
-@font-face {
-    font-family: 'RixXladywatermelonR';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-4@1.0/RixXladywatermelonR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    font-family: 'RixXladywatermelonR', sans-serif;
-    line-height: 1.8;
-}
-
-.md-grid {
-    max-width: 1440px;
-}
-
-/* --- Dark Mode Overrides --- */
-[data-md-color-scheme="slate"] body {
-    color: #adbac7;
-}
-
-[data-md-color-scheme="slate"] h2 {
-    border-bottom-color: #444c56;
-}
-
-[data-md-color-scheme="slate"] a {
-    color: #58a6ff;
-}
-
-[data-md-color-scheme="slate"] a:hover {
-    color: #79c0ff;
-}
-
-[data-md-color-scheme="slate"] p code,
-[data-md-color-scheme="slate"] li code {
-    background-color: #373e47;
-    color: #cdd9e5;
-    border: 1px solid #4d555e;
-}
-
+/* Dark Mode Blockquote */
 [data-md-color-scheme="slate"] blockquote {
-    background-color: #2d333b;
-    border-left-color: #484f58;
-    color: #a0a8b4;
+  background-color: #2d333b;
+  border-left-color: #484f58;
+  color: #a0a8b4;
 }
 
 [data-md-color-scheme="slate"] body hr {
-    background-color: #444c56;
+  background-color: #444c56;
 }
 
+/* Dark Mode Admonition */
 [data-md-color-scheme="slate"] .admonition.info {
-    background-color: #2d333b;
-    border-left-color: #58a6ff;
+  background-color: #2d333b;
+  border-left-color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-left-width: 5px;
 }
 
 [data-md-color-scheme="slate"] .admonition.info .admonition-title {
-    color: #58a6ff;
+  color: #58a6ff;
 }
 
-/* === Dark Mode Refinements based on Image === */
-
-/* Brighter Headings for Dark Mode */
-[data-md-color-scheme="slate"] h1,
-[data-md-color-scheme="slate"] h2,
-[data-md-color-scheme="slate"] h3,
-[data-md-color-scheme="slate"] h4 {
-    color: #e6edf3;
-}
-
-/* Refined Admonition Box for Dark Mode */
-[data-md-color-scheme="slate"] .admonition.info {
-    border: 1px solid #58a6ff;
-    border-left-width: 5px;
-}
-
-/* Header Tabs Style for Dark Mode */
+/* Dark Mode Tabs */
 [data-md-color-scheme="slate"] .md-tabs__link {
-    color: #adbac7;
-    opacity: 0.7;
+  color: #adbac7;
+  opacity: 0.7;
 }
 
 [data-md-color-scheme="slate"] .md-tabs__link:hover,
 [data-md-color-scheme="slate"] .md-tabs__link--active {
-    opacity: 1;
-    color: white;
+  opacity: 1;
+  color: white;
 }
-
-/* ===== 사이드바 계층별 들여쓰기 개선 (가독성 향상) ===== */
-
-
-/* TOC 최상위 항목 */
-nav.md-nav--secondary > ul.md-nav__list > li.md-nav__item {
-    padding-left: 0.8em;
-  }
-  
-  /* TOC 하위 항목 (한 단계 중첩) */
-  nav.md-nav--secondary ul.md-nav__list > li.md-nav__item > nav > ul.md-nav__list > li.md-nav__item {
-    padding-left: 1.2em;
-  }
-  
-  /* TOC 더 깊은 중첩 항목 */
-  nav.md-nav--secondary ul.md-nav__list ul.md-nav__list ul.md-nav__list li.md-nav__item {
-    padding-left: 1.6em;
-  }
-  
-  /* TOC 항목의 기호 스타일 (선택 사항) */
-  nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::before {
-    content: "•";
-    margin-right: 6px;
-    color: #999;
-    font-size: 0.75em;
-  }

@@ -3,12 +3,10 @@ title: "OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교"
 description: "Rust 검색 엔진의 OpenSearch 인덱싱을 기존 배치 방식에서 스트리밍 방식으로 전환한 과정과, BatchOrchestratorService를 통한 통합 배치 파이프라인 설계를 다룬다."
 date: 2025-06-12
 tags:
-  - Rust
   - OpenSearch
   - 인덱싱
   - 스트리밍
   - 배치처리
-  - 검색엔진
 ---
 
 # OpenSearch 인덱싱 서비스: 스트리밍 vs 배치 처리 비교

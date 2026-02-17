@@ -1,3 +1,11 @@
+---
+tags:
+  - React
+  - 프론트엔드
+  - 모델관리
+  - XGEN
+---
+
 # XGEN 1.0 프론트엔드 모델 관리 UI 구현
 
 > 2025.12 | Next.js, TypeScript, GPU 관리, 실시간 모니터링

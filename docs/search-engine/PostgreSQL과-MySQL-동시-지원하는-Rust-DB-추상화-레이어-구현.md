@@ -6,8 +6,7 @@ tags:
   - Rust
   - PostgreSQL
   - MySQL
-  - 추상화
-  - 트레잇
+  - DB추상화
 ---
 
 # PostgreSQL과 MySQL 동시 지원하는 Rust DB 추상화 레이어 구현

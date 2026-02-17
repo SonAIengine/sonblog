@@ -3,11 +3,9 @@ title: "OpenSearch Aggregation 검색 구현 및 에러 핸들링 전략"
 description: "Rust 기반 커머스 검색 엔진에서 OpenSearch Aggregation을 활용한 카테고리/브랜드/가격대 집계 검색과, 세마포어 기반 동시성 제한 및 타임아웃 에러 핸들링 전략을 다룬다."
 date: 2025-04-21
 tags:
-  - Rust
   - OpenSearch
   - Aggregation
-  - Error Handling
-  - Axum
+  - 에러핸들링
 ---
 
 # OpenSearch Aggregation 검색 구현 및 에러 핸들링 전략

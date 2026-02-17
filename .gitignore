@@ -1,2 +1,4 @@
 .obsidian/
 site/
+.venv/
+.cache/

@@ -89,16 +89,28 @@ function init() {
 
   // ── ForceAtlas2 레이아웃 ────────────────────────────────────────────────────
 
-  circular.assign(graph);
+  // 초기 위치: 랜덤 원형 배치로 시작 (노드 타입별 반경 분리)
+  const TYPE_RADIUS = { category: 1, subcategory: 0.7, tag: 0.5, post: 0.3 };
+  let idx = 0;
+  graph.nodes().forEach((n) => {
+    const type = graph.getNodeAttribute(n, "nodeType");
+    const r = (TYPE_RADIUS[type] || 0.5) * 300;
+    const angle = (idx / graph.order) * 2 * Math.PI;
+    graph.setNodeAttribute(n, "x", r * Math.cos(angle));
+    graph.setNodeAttribute(n, "y", r * Math.sin(angle));
+    idx++;
+  });
+
   forceAtlas2.assign(graph, {
-    iterations: 200,
+    iterations: 300,
     settings: {
-      gravity: 0.5,
-      scalingRatio: 10,
+      gravity: 1,
+      scalingRatio: 20,
       barnesHutOptimize: true,
       barnesHutTheta: 0.5,
-      strongGravityMode: false,
-      linLogMode: false,
+      strongGravityMode: true,
+      linLogMode: true,
+      adjustSizes: false,
     },
   });
 

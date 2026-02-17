@@ -104,49 +104,43 @@ blockquote p:last-child {
 
 /* === Sidebar === */
 
-/* 사이드바 항목 기본 스타일 */
-.md-nav__link {
-  font-size: 0.78rem;
-  padding: 0.35rem 0.6rem;
+/* 사이드바 항목 기본 스타일 — 간격 compact */
+.md-sidebar--primary .md-nav__link {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.6rem;
   border-radius: 4px;
   transition: all 0.15s ease;
+  border-left: 2px solid transparent;
 }
 
-/* 활성 페이지 하이라이트 */
-.md-nav__link--active {
+/* 활성 페이지 — 왼쪽 인디고 바 + 배경 */
+.md-sidebar--primary .md-nav__link--active {
   font-weight: 600;
   color: var(--md-primary-fg-color) !important;
   background: #e8eaf6;
-  border-radius: 4px;
+  border-left: 2px solid #3f51b5;
+  border-radius: 0 4px 4px 0;
 }
 
-[data-md-color-scheme="slate"] .md-nav__link--active {
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link--active {
   background: rgba(99, 102, 241, 0.12);
   color: #9fa8da !important;
-}
-
-/* 사이드바 섹션 헤더 */
-.md-nav__item--section > .md-nav__link {
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.03em;
-  color: #5f6368;
-  text-transform: uppercase;
-  margin-top: 0.5rem;
-}
-
-[data-md-color-scheme="slate"] .md-nav__item--section > .md-nav__link {
-  color: #8b949e;
+  border-left-color: #7986cb;
 }
 
 /* 호버 효과 */
-.md-nav__link:hover {
+.md-sidebar--primary .md-nav__link:hover {
   background: #f5f5f5;
   text-decoration: none;
 }
 
-[data-md-color-scheme="slate"] .md-nav__link:hover {
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__link:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+/* 사이드바 항목 간격 줄이기 */
+.md-sidebar--primary .md-nav__item {
+  padding: 0;
 }
 
 .md-ellipsis {

@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-17
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40, DevOps #77~#86
-- 다음 작성 대상: AI/ML #41~#45 또는 DevOps #87~#95
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40, DevOps #77~#91
+- 다음 작성 대상: DevOps #92~#95 또는 AI/ML #41~#45
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -93,3 +93,8 @@
 - docs/devops/infra/Kubernetes-Downward-API로-멀티-POD-세션-라우팅.md (DevOps #84)
 - docs/devops/infra/pyproject-toml-dependencies-추출로-Docker-빌드-최적화.md (DevOps #85)
 - docs/devops/infra/Jenkins-executor-수-최적화-동시-빌드-성능-튜닝.md (DevOps #86)
+- docs/devops/infra/XGEN-인프라-디렉토리-구조-재편성-dockerfiles-compose-k3s-분리.md (DevOps #87)
+- docs/devops/infra/Redis-인증-설정과-K3s-분산-환경-관리.md (DevOps #88)
+- docs/devops/infra/CLAUDE-md로-AI-코딩-어시스턴트-가이드라인-작성하기.md (DevOps #89)
+- docs/devops/infra/롯데홈쇼핑-폐쇄망-서버-SSH-터널링-접속-구성.md (DevOps #90)
+- docs/devops/infra/XGEN-도메인-마이그레이션-xgen-stg에서-jeju-xgen으로.md (DevOps #91)

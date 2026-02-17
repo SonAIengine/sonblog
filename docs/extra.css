@@ -102,23 +102,22 @@ blockquote p:last-child {
   margin-bottom: 0;
 }
 
-/* === Sidebar === */
+/* === Left Sidebar (Navigation) === */
 
-/* 사이드바 항목 기본 스타일 — 간격 compact */
 .md-sidebar--primary .md-nav__link {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 4px;
   transition: all 0.15s ease;
-  border-left: 2px solid transparent;
+  line-height: 1.4;
 }
 
-/* 활성 페이지 — 왼쪽 인디고 바 + 배경 */
+/* 활성 페이지 */
 .md-sidebar--primary .md-nav__link--active {
   font-weight: 600;
   color: var(--md-primary-fg-color) !important;
   background: #e8eaf6;
-  border-left: 2px solid #3f51b5;
+  border-left: 3px solid #3f51b5;
   border-radius: 0 4px 4px 0;
 }
 
@@ -128,7 +127,7 @@ blockquote p:last-child {
   border-left-color: #7986cb;
 }
 
-/* 호버 효과 */
+/* 호버 */
 .md-sidebar--primary .md-nav__link:hover {
   background: #f5f5f5;
   text-decoration: none;
@@ -138,7 +137,6 @@ blockquote p:last-child {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* 사이드바 항목 간격 줄이기 */
 .md-sidebar--primary .md-nav__item {
   padding: 0;
 }
@@ -165,25 +163,33 @@ blockquote p:last-child {
   margin-bottom: 0.5em;
 }
 
-/* === TOC Sidebar === */
+/* === TOC Sidebar (Right) === */
+.md-sidebar--secondary .md-nav__link {
+  font-size: 0.68rem;
+  padding: 0.2rem 0.4rem;
+  line-height: 1.35;
+}
+
+.md-sidebar--secondary .md-nav__item {
+  padding: 0;
+}
+
+/* 1단계 들여쓰기 */
 nav.md-nav--secondary > ul.md-nav__list > li.md-nav__item {
+  padding-left: 0;
+}
+
+/* 2단계 들여쓰기 */
+nav.md-nav--secondary ul.md-nav__list > li.md-nav__item > nav > ul.md-nav__list > li.md-nav__item {
   padding-left: 0.8em;
 }
 
-nav.md-nav--secondary ul.md-nav__list > li.md-nav__item > nav > ul.md-nav__list > li.md-nav__item {
+/* 3단계 들여쓰기 */
+nav.md-nav--secondary ul.md-nav__list ul.md-nav__list ul.md-nav__list li.md-nav__item {
   padding-left: 1.2em;
 }
 
-nav.md-nav--secondary ul.md-nav__list ul.md-nav__list ul.md-nav__list li.md-nav__item {
-  padding-left: 1.6em;
-}
-
-nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::before {
-  content: "\2022";
-  margin-right: 6px;
-  color: #999;
-  font-size: 0.75em;
-}
+/* 불릿 제거 — 깔끔한 목차 */
 
 /* === Footer === */
 .md-footer {

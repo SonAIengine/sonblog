@@ -766,3 +766,181 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 [data-md-color-scheme="slate"] .recent-date {
   color: #6e7681;
 }
+
+/* ── Knowledge Graph ──────────────────────────────────────────────────────── */
+
+/* 홈 - 그래프 링크 카드 */
+.home-graph {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+}
+
+.graph-link-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.graph-link-card:hover {
+  border-color: var(--md-primary-fg-color);
+  background: var(--md-default-fg-color--lightest);
+}
+
+.graph-link-icon svg {
+  width: 120px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.graph-link-text h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+}
+
+.graph-link-text p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* 그래프 전용 페이지 */
+.graph-page {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+  padding: 1rem 1.5rem 0;
+}
+
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.graph-title h1 {
+  margin: 0 0 0.2rem;
+  font-size: 1.4rem;
+}
+
+.graph-subtitle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.graph-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.graph-search-wrap input {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-size: 0.85rem;
+  width: 180px;
+  outline: none;
+}
+
+.graph-search-wrap input:focus {
+  border-color: var(--md-primary-fg-color);
+}
+
+.graph-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.graph-btn {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.graph-btn:hover {
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-primary-fg-color);
+}
+
+/* 범례 */
+.graph-legend {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-category::before  { background: #5C6BC0; }
+.legend-subcategory::before { background: #7986CB; }
+.legend-tag::before       { background: #26A69A; }
+.legend-post::before      { background: #EF5350; }
+
+/* sigma 컨테이너 */
+#sigma-container {
+  flex: 1;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--md-default-bg-color);
+}
+
+/* 다크모드 */
+[data-md-color-scheme="slate"] .graph-link-card {
+  border-color: #30363d;
+}
+
+[data-md-color-scheme="slate"] .graph-link-card:hover {
+  background: #161b22;
+  border-color: #58a6ff;
+}
+
+[data-md-color-scheme="slate"] .graph-search-wrap input {
+  background: #0d1117;
+  border-color: #30363d;
+  color: #c9d1d9;
+}
+
+[data-md-color-scheme="slate"] #sigma-container {
+  border-color: #30363d;
+  background: #0d1117;
+}

@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+<meta name="site-url" content="{{ config.site_url }}">
+
+<div class="graph-page">
+
+  <div class="graph-header">
+    <div class="graph-title">
+      <h1>Knowledge Graph</h1>
+      <p class="graph-subtitle">
+        {{ graph_metadata.total_posts }} posts &middot;
+        {{ graph_metadata.total_tags }} tags &middot;
+        {{ graph_metadata.total_categories }} categories
+      </p>
+    </div>
+
+    <div class="graph-controls">
+      <div class="graph-search-wrap">
+        <input type="text" id="graph-search" placeholder="노드 검색..." autocomplete="off">
+      </div>
+      <label class="graph-toggle">
+        <input type="checkbox" id="show-posts">
+        <span>포스트 표시</span>
+      </label>
+      <button id="graph-reset" class="graph-btn">뷰 초기화</button>
+    </div>
+  </div>
+
+  <div class="graph-legend">
+    <span class="legend-item legend-category">카테고리</span>
+    <span class="legend-item legend-subcategory">서브카테고리</span>
+    <span class="legend-item legend-tag">태그</span>
+    <span class="legend-item legend-post">포스트</span>
+  </div>
+
+  <div id="sigma-container"></div>
+
+</div>
+
+<!-- 그래프 데이터 인라인 삽입 (fetch 불필요) -->
+<script>
+  window.__GRAPH_DATA__ = {{ graph_data | tojson }};
+</script>
+
+<!-- sigma.js 번들 -->
+<script src="{{ config.site_url }}assets/graph/graph-viz.iife.js"></script>
+{% endblock %}

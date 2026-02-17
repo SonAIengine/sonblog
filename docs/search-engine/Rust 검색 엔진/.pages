@@ -1,0 +1,10 @@
+title: Rust 검색 엔진
+nav:
+  - Rust로-커머스-검색-엔진을-처음부터-만들기.md
+  - Axum-OpenSearch-Rust-검색-API-아키텍처-설계.md
+  - PostgreSQL과-MySQL-동시-지원하는-Rust-DB-추상화-레이어-구현.md
+  - Rust-검색-엔진에-Redis-캐싱-적용기.md
+  - OpenSearch-인덱싱-서비스-스트리밍-vs-배치-처리-비교.md
+  - Rust-검색-엔진에서-SSH-터널링으로-원격-DB-접근하기.md
+  - OpenSearch-Aggregation-검색-구현-및-에러-핸들링-전략.md
+  - Rust-검색-엔진의-CI-CD-파이프라인-구축.md

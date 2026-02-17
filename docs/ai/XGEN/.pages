@@ -1,0 +1,8 @@
+title: XGEN
+nav:
+  - XGEN-1.0-GPU-모델-서빙-구현기.md
+  - XGEN-1.0-워크플로우-엔진과-Qdrant-하이브리드-검색.md
+  - XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
+  - XGEN-2.0-임베딩-전용-서버와-배치-처리-최적화.md
+  - XGEN-2.0-워크플로우-접근-제어와-IO-로깅-시스템.md
+  - Code-Assistant-개발기.md

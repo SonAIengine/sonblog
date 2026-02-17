@@ -161,11 +161,11 @@ nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::befor
 
 /* === Footer === */
 .md-footer {
-  background-color: #1a237e;
+  background-color: #283593;
 }
 
 .md-footer-meta {
-  background-color: #0d1242;
+  background-color: #1a237e;
 }
 
 [data-md-color-scheme="slate"] .md-footer {
@@ -182,9 +182,9 @@ nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::befor
 
 .hero {
   background: linear-gradient(135deg, #1a237e 0%, #283593 30%, #3949ab 60%, #5c6bc0 100%);
-  padding: 2.5rem 2rem 2rem;
+  padding: 2rem 2rem 1.5rem;
   text-align: center;
-  margin: -1.2rem -1.2rem 1.5rem -1.2rem;
+  margin: -1.2rem -1.2rem 1.2rem -1.2rem;
   border-radius: 0 0 0.8rem 0.8rem;
   position: relative;
   overflow: hidden;
@@ -211,9 +211,9 @@ nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::befor
 
 .hero h1 {
   color: #ffffff;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 0 0.3rem 0;
+  margin: 0 0 0.2rem 0;
   letter-spacing: -0.02em;
   border: none;
   padding: 0;
@@ -221,15 +221,15 @@ nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::befor
 
 .hero-subtitle {
   color: rgba(255, 255, 255, 0.85);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  margin: 0 0 0.3rem 0;
+  margin: 0 0 0.2rem 0;
   line-height: 1.4;
 }
 
 .hero-desc {
   color: rgba(255, 255, 255, 0.55);
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   margin: 0;
   line-height: 1.5;
 }
@@ -320,9 +320,9 @@ nav.md-nav--secondary li.md-nav__item > a.md-nav__link > span.md-ellipsis::befor
 }
 
 .home-recent h2 {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  margin: 0 0 0.6rem 0;
+  margin: 0 0 0.5rem 0;
   padding: 0;
   border: none;
   color: #1a237e;

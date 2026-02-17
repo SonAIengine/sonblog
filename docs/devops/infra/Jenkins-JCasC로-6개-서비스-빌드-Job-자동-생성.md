@@ -1,7 +1,7 @@
 ---
 title: "Jenkins JCasC로 6개 서비스 빌드 Job 자동 생성하기"
 description: "Configuration as Code와 seed job Groovy DSL로 Jenkins 파이프라인 수동 클릭 없이 자동 생성하는 과정"
-date: 2026-01-15
+date: 2026-02-17
 tags:
   - Jenkins
   - JCasC

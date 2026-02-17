@@ -1,7 +1,7 @@
 ---
 title: "pyproject.toml dependencies 추출로 Docker 빌드 레이어 캐시 최적화"
 description: "requirements.txt 없는 pyproject.toml 프로젝트에서 Docker 레이어 캐시를 최대한 활용하기 위해 의존성만 선별 추출하는 방법"
-date: 2026-01-23
+date: 2026-02-17
 tags:
   - Docker
   - Python

@@ -1,7 +1,7 @@
 ---
 title: "Let's Encrypt + cert-manager로 K3s HTTPS 자동화"
 description: "K3s 환경에서 cert-manager와 Istio를 연동해 TLS 인증서를 자동 발급/갱신하는 과정과 iptables 포트 포워딩 삽질기"
-date: 2026-01-16
+date: 2026-02-17
 tags:
   - cert-manager
   - Let's Encrypt

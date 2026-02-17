@@ -1,7 +1,7 @@
 ---
 title: "Dockerfile 최적화: COPY --chown vs chown -R 레이어 중복 제거"
 description: "Frontend Dockerfile에서 불필요한 chown -R 레이어를 COPY --chown으로 통합해 이미지 크기와 빌드 시간을 줄인 최적화 사례"
-date: 2026-01-20
+date: 2026-02-17
 tags:
   - Docker
   - Dockerfile

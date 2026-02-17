@@ -146,38 +146,40 @@ blockquote p:last-child {
   cursor: pointer;
 }
 
-/* 모바일 사이드바 토글 아이콘 개선 */
-.md-nav__icon {
-  width: 1.6rem;
-  height: 1.6rem;
-  background: rgba(63, 81, 181, 0.08);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s ease, transform 0.2s ease;
-}
+/* 모바일 사이드바 토글 아이콘 개선 (모바일/태블릿 전용) */
+@media (max-width: 76.1875em) {
+  .md-nav__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: rgba(63, 81, 181, 0.08);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, transform 0.2s ease;
+  }
 
-.md-nav__icon:hover {
-  background: rgba(63, 81, 181, 0.15);
-}
+  .md-nav__icon:hover {
+    background: rgba(63, 81, 181, 0.15);
+  }
 
-/* 펼쳐진 상태 표시 */
-.md-nav__toggle:checked ~ .md-nav__link .md-nav__icon {
-  background: rgba(63, 81, 181, 0.15);
-  transform: rotate(180deg);
-}
+  /* 펼쳐진 상태 표시 */
+  .md-nav__toggle:checked ~ .md-nav__link .md-nav__icon {
+    background: rgba(63, 81, 181, 0.15);
+    transform: rotate(180deg);
+  }
 
-[data-md-color-scheme="slate"] .md-nav__icon {
-  background: rgba(121, 134, 203, 0.1);
-}
+  [data-md-color-scheme="slate"] .md-nav__icon {
+    background: rgba(121, 134, 203, 0.1);
+  }
 
-[data-md-color-scheme="slate"] .md-nav__icon:hover {
-  background: rgba(121, 134, 203, 0.2);
-}
+  [data-md-color-scheme="slate"] .md-nav__icon:hover {
+    background: rgba(121, 134, 203, 0.2);
+  }
 
-[data-md-color-scheme="slate"] .md-nav__toggle:checked ~ .md-nav__link .md-nav__icon {
-  background: rgba(121, 134, 203, 0.2);
+  [data-md-color-scheme="slate"] .md-nav__toggle:checked ~ .md-nav__link .md-nav__icon {
+    background: rgba(121, 134, 203, 0.2);
+  }
 }
 
 /* 펼쳐진 1레벨 폴더 라벨만 강조 */

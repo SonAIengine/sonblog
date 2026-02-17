@@ -305,6 +305,11 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
    HOME CARDS
    ============================================ */
 
+/* 홈 페이지에서 md-content 너비 제한 해제 */
+.md-content__inner:has(.home-cards) {
+  max-width: none;
+}
+
 .home-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

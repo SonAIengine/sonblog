@@ -56,6 +56,9 @@ extra_css:
 extra_javascript:
   - custom.js
 
+hooks:
+  - hooks/recent_posts.py
+
 plugins:
   - awesome-pages
   - search:

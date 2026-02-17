@@ -437,6 +437,14 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   font-size: 0.82rem;
   color: #202124;
   font-weight: 400;
+  flex: 1;
+}
+
+.recent-date {
+  font-size: 0.7rem;
+  color: #9e9e9e;
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 /* ============================================
@@ -659,4 +667,8 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 [data-md-color-scheme="slate"] .recent-title {
   color: #c9d1d9;
+}
+
+[data-md-color-scheme="slate"] .recent-date {
+  color: #6e7681;
 }

@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-17
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#40, DevOps #77~#95
-- 다음 작성 대상: AI/ML #41~#45 또는 검색엔진 #14~#25
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#45, DevOps #77~#95
+- 다음 작성 대상: 검색엔진 #14~#25 또는 AI Agent #46~#60
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -83,6 +83,11 @@
 - docs/ai/XGEN/워크플로우-실행-메모리-최적화-SearchCache-싱글턴-풀-패턴.md (AI/ML #38)
 - docs/ai/XGEN/SSE-스트리밍으로-대규모-배치-워크플로우-결과-전달하기.md (AI/ML #39)
 - docs/ai/XGEN/문서-임베딩-파이프라인-청킹-옵션과-전처리-전략.md (AI/ML #40)
+- docs/ai/XGEN/벡터DB-컬렉션-문서-요약-및-페이지네이션-API-설계.md (AI/ML #41)
+- docs/ai/XGEN/Sparse-Vector와-Full-Text-Index-하이브리드-검색-구현.md (AI/ML #42)
+- docs/ai/XGEN/CustomHTTPEmbedding-클라이언트-타임아웃과-배치-처리.md (AI/ML #43)
+- docs/ai/XGEN/vLLM-모델-배포-샘플링-파라미터-튜닝-가이드.md (AI/ML #44)
+- docs/ai/XGEN/GPU-상태-모니터링-및-자동-모델-배포-시스템.md (AI/ML #45)
 - docs/devops/infra/Jenkins-JCasC로-6개-서비스-빌드-Job-자동-생성.md (DevOps #77)
 - docs/devops/infra/Lets-Encrypt-cert-manager로-K3s-HTTPS-자동화.md (DevOps #78)
 - docs/devops/infra/Istio-Gateway-HTTPS-설정-TLS-인증서-관리.md (DevOps #79)

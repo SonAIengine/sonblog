@@ -11,3 +11,4 @@ nav:
   - OpenSearch-동의어-사전-관리-자동화.md
   - Handlebars-템플릿으로-동적-검색-쿼리-생성하기.md
   - 커서-기반-인덱싱-vs-전체-인덱싱-성능-비교.md
+  - Rate-Limiting이-적용된-검색-API-설계.md

@@ -144,6 +144,6 @@ def build_recent_posts_html(posts: list) -> str:
 def on_env(env, config, files, **kwargs):
     """Jinja2 환경에 recent_posts 전역 변수를 주입한다."""
     docs_dir = config["docs_dir"]
-    posts = collect_posts(docs_dir, limit=8)
+    posts = collect_posts(docs_dir, limit=5)
     env.globals["recent_posts"] = posts
     return env

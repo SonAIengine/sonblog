@@ -9,10 +9,11 @@
 
 <div class="graph-page">
 
+  <!-- ── 상단 헤더 ── -->
   <div class="graph-header">
     <div class="graph-title">
       <h1>Knowledge Graph</h1>
-      <p class="graph-subtitle">
+      <p class="graph-subtitle" id="graph-stats">
         {{ graph_metadata.total_posts }} posts &middot;
         {{ graph_metadata.total_tags }} tags &middot;
         {{ graph_metadata.total_categories }} categories
@@ -20,27 +21,110 @@
     </div>
 
     <div class="graph-controls">
+
+      <!-- 검색 -->
       <div class="graph-search-wrap">
+        <svg class="graph-search-icon" viewBox="0 0 20 20" fill="none">
+          <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
         <input type="text" id="graph-search" placeholder="노드 검색..." autocomplete="off">
+        <button id="graph-search-clear" class="graph-search-clear" aria-label="검색 초기화">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
-      <label class="graph-toggle">
-        <input type="checkbox" id="show-posts">
-        <span>포스트 표시</span>
-      </label>
-      <button id="graph-reset" class="graph-btn">뷰 초기화</button>
+
+      <!-- 뷰 초기화 -->
+      <button id="graph-reset" class="graph-btn">
+        <svg viewBox="0 0 20 20" fill="none" width="14" height="14">
+          <path d="M4 10a6 6 0 1 0 1.5-3.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M4 5.5V10h4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        초기화
+      </button>
+
     </div>
   </div>
 
-  <div class="graph-legend">
-    <span class="legend-item legend-category">카테고리</span>
-    <span class="legend-item legend-subcategory">서브카테고리</span>
-    <span class="legend-item legend-tag">태그</span>
-    <span class="legend-item legend-post">포스트</span>
+  <!-- ── 필터 바 ── -->
+  <div class="graph-filter-bar">
+    <span class="graph-filter-label">표시:</span>
+
+    <label class="graph-filter-chip graph-filter-chip--category">
+      <input type="checkbox" class="graph-filter-cb" data-type="category" checked>
+      <span class="chip-dot"></span>
+      카테고리
+    </label>
+
+    <label class="graph-filter-chip graph-filter-chip--subcategory">
+      <input type="checkbox" class="graph-filter-cb" data-type="subcategory" checked>
+      <span class="chip-dot"></span>
+      서브카테고리
+    </label>
+
+    <label class="graph-filter-chip graph-filter-chip--series">
+      <input type="checkbox" class="graph-filter-cb" data-type="series" checked>
+      <span class="chip-dot"></span>
+      시리즈
+    </label>
+
+    <label class="graph-filter-chip graph-filter-chip--tag">
+      <input type="checkbox" class="graph-filter-cb" data-type="tag" checked>
+      <span class="chip-dot"></span>
+      태그
+    </label>
+
+    <label class="graph-filter-chip graph-filter-chip--post">
+      <input type="checkbox" class="graph-filter-cb" data-type="post">
+      <span class="chip-dot"></span>
+      포스트
+    </label>
+
+    <span class="graph-filter-hint">노드를 클릭하면 연관 문서를 확인할 수 있습니다</span>
   </div>
 
-  <div id="sigma-container"></div>
+  <!-- ── 메인 레이아웃: 그래프 + 패널 ── -->
+  <div class="graph-layout">
 
-</div>
+    <!-- 그래프 캔버스 -->
+    <div id="sigma-container"></div>
+
+    <!-- 우측 정보 패널 -->
+    <aside id="graph-info-panel" class="graph-info-panel">
+      <div class="gp-header">
+        <span class="gp-header-title">노드 정보</span>
+        <button id="graph-panel-close" class="gp-close" aria-label="패널 닫기">
+          <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
+            <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div id="graph-panel-body" class="gp-body">
+        <div class="gp-empty">
+          <svg viewBox="0 0 48 48" fill="none" width="48" height="48">
+            <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="8"  cy="12" r="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="40" cy="12" r="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="8"  cy="36" r="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="40" cy="36" r="4" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+            <line x1="16" y1="20" x2="12" y2="14" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="32" y1="20" x2="36" y2="14" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="16" y1="28" x2="12" y2="34" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            <line x1="32" y1="28" x2="36" y2="34" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+          </svg>
+          <p>노드를 클릭하면<br>상세 정보가 표시됩니다</p>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.graph-layout -->
+
+</div><!-- /.graph-page -->
+
+<!-- 툴팁 -->
+<div id="graph-tooltip" class="graph-tooltip"></div>
 
 <!-- 그래프 데이터 인라인 삽입 -->
 <script>

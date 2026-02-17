@@ -816,22 +816,25 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 /* ── 페이지 레이아웃 ────────────────────────────────────────────────────────── */
 
+/* MkDocs content 영역 padding 제거 */
+.md-content:has(.graph-page) .md-content__inner {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
 .graph-page {
   display: flex;
   flex-direction: column;
-  padding: 1rem 1.5rem 0;
-  height: calc(100vh - 180px);
+  /* 탭(48px) + 헤더(56px) = 104px */
+  height: calc(100dvh - 104px);
   min-height: 600px;
+  padding: 0.75rem 1.25rem 0.5rem;
+  box-sizing: border-box;
 }
 
 .md-content .graph-page {
   max-width: 100%;
-}
-
-/* 그래프 페이지에서 MkDocs 기본 padding 제거 */
-.md-content:has(.graph-page) .md-content__inner {
-  padding: 0 !important;
-  margin: 0 !important;
 }
 
 /* ── 헤더 ──────────────────────────────────────────────────────────────────── */
@@ -877,9 +880,11 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   left: 0.6rem;
   width: 15px;
   height: 15px;
+  min-width: 15px;
+  min-height: 15px;
   color: var(--md-default-fg-color--light);
   pointer-events: none;
-  flex-shrink: 0;
+  display: block;
 }
 
 .graph-search-wrap input {
@@ -1020,10 +1025,11 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   display: flex;
   gap: 0;
   flex: 1;
-  min-height: 0;
+  overflow: hidden;
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 10px;
-  overflow: hidden;
+  /* graph-page가 fixed height이므로 남은 공간 = graph-page height - header - filter */
+  min-height: 0;
 }
 
 /* ── sigma 컨테이너 ─────────────────────────────────────────────────────────── */
@@ -1031,7 +1037,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 #sigma-container {
   flex: 1;
   min-width: 0;
-  min-height: 500px;
+  /* height는 부모 flex가 결정 — 명시하지 않음 */
   background: #fafafa;
 }
 

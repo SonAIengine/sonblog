@@ -93,6 +93,8 @@
 
     <!-- 우측 정보 패널 -->
     <aside id="graph-info-panel" class="graph-info-panel">
+      <!-- 리사이즈 핸들 -->
+      <div id="graph-panel-resizer" class="gp-resizer" aria-hidden="true"></div>
       <div class="gp-header">
         <span class="gp-header-title">노드 정보</span>
         <button id="graph-panel-close" class="gp-close" aria-label="패널 닫기">
@@ -129,5 +131,61 @@
 <!-- 그래프 데이터 인라인 삽입 -->
 <script>
   window.__GRAPH_DATA__ = {{ graph_data | tojson }};
+</script>
+
+<!-- 패널 리사이즈 -->
+<script>
+(function() {
+  const MIN_W = 220, MAX_W = 600, DEFAULT_W = 300;
+  let dragging = false, startX = 0, startW = 0;
+
+  function init() {
+    const resizer = document.getElementById('graph-panel-resizer');
+    const panel   = document.getElementById('graph-info-panel');
+    if (!resizer || !panel) return;
+
+    resizer.addEventListener('mousedown', function(e) {
+      if (!panel.classList.contains('is-open')) return;
+      dragging = true;
+      startX   = e.clientX;
+      startW   = panel.offsetWidth;
+      document.body.style.cursor    = 'col-resize';
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!dragging) return;
+      const delta = startX - e.clientX;           // 왼쪽으로 끌면 +
+      const newW  = Math.min(MAX_W, Math.max(MIN_W, startW + delta));
+      panel.style.width = newW + 'px';
+    });
+
+    document.addEventListener('mouseup', function() {
+      if (!dragging) return;
+      dragging = false;
+      document.body.style.cursor    = '';
+      document.body.style.userSelect = '';
+    });
+
+    // 패널 닫힐 때 width 초기화
+    const observer = new MutationObserver(function(muts) {
+      muts.forEach(function(m) {
+        if (m.type === 'attributes' && m.attributeName === 'class') {
+          if (!panel.classList.contains('is-open')) {
+            panel.style.width = '';
+          }
+        }
+      });
+    });
+    observer.observe(panel, { attributes: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 {% endblock %}

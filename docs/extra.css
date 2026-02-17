@@ -1192,11 +1192,37 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.25s;
   flex-shrink: 0;
+  position: relative;
 }
 
 .graph-info-panel.is-open {
   width: 300px;
   border-left-color: var(--md-default-fg-color--lightest);
+}
+
+/* 리사이즈 핸들 */
+.gp-resizer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 10;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.graph-info-panel.is-open .gp-resizer:hover,
+.graph-info-panel.is-open .gp-resizer:active {
+  background: var(--md-primary-fg-color);
+  opacity: 0.35;
+}
+
+[data-md-color-scheme="slate"] .graph-info-panel.is-open .gp-resizer:hover,
+[data-md-color-scheme="slate"] .graph-info-panel.is-open .gp-resizer:active {
+  background: #a78bfa;
+  opacity: 0.45;
 }
 
 .gp-header {
@@ -1510,6 +1536,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   }
 
   .graph-filter-hint { display: none; }
+  .gp-resizer { display: none; }
 
   .graph-search-wrap input { width: 150px; }
   .graph-search-wrap input:focus { width: 180px; }

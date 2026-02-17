@@ -71,69 +71,100 @@ function init() {
     searchMatches: new Set(),
   };
 
-  // ── graphology 그래프 구성 ──────────────────────────────────────────────────
+  // ── 연결 수 사전 계산 (노드 크기 비례용) ──────────────────────────────────
 
-  const graph = new Graph({ multi: false, type: "undirected" });
+  // 각 노드의 총 엣지 수를 미리 계산
+  const degreeMap = {};
+  rawData.nodes.forEach(n => { degreeMap[n.id] = 0; });
+  rawData.edges.forEach(e => {
+    if (degreeMap[e.source] !== undefined) degreeMap[e.source]++;
+    if (degreeMap[e.target] !== undefined) degreeMap[e.target]++;
+  });
+
+  function computeNodeSize(node) {
+    const type = node.type;
+    const deg  = degreeMap[node.id] || 0;
+    switch (type) {
+      case "category":    return 28;
+      case "subcategory": return 18 + Math.min(deg * 0.3, 8);
+      case "series":      return 16 + Math.min(deg * 0.5, 10);
+      case "tag":         return Math.max(9, Math.min(28, 8 + deg * 1.2));
+      case "post":        return Math.max(7, Math.min(22, 6 + deg * 1.8));
+      default:            return 10;
+    }
+  }
+
+  // ── graphology 그래프 구성 (directed) ────────────────────────────────────
+
+  const graph = new Graph({ multi: false, type: "directed" });
 
   rawData.nodes.forEach((node) => {
     graph.addNode(node.id, {
-      label:    node.label,
-      size:     node.size,
-      color:    NODE_COLORS[node.type] || node.color,
-      nodeType: node.type,
-      url:      node.url   || null,
-      date:     node.date  || null,
-      series:   node.series || null,
+      label:      node.label,
+      size:       computeNodeSize(node),
+      color:      NODE_COLORS[node.type] || node.color,
+      nodeType:   node.type,
+      url:        node.url   || null,
+      date:       node.date  || null,
+      series:     node.series || null,
       difficulty: node.difficulty || null,
-      hidden:   NODE_HIDDEN_BY_TYPE[node.type] ?? false,
+      hidden:     NODE_HIDDEN_BY_TYPE[node.type] ?? false,
       x: Math.random() * 100,
       y: Math.random() * 100,
     });
   });
 
-  // 중복 엣지 방지
+  // 중복 엣지 방지 (directed 그래프: source→target 방향 유지)
   const edgeSet = new Set();
   rawData.edges.forEach((edge) => {
-    const key = [edge.source, edge.target].sort().join("--");
+    // directed이므로 순서 유지 (dependsOn은 단방향)
+    const key = `${edge.source}--${edge.target}`;
+    const reverseKey = `${edge.target}--${edge.source}`;
     if (
       edgeSet.has(key) ||
+      edgeSet.has(reverseKey) ||
       !graph.hasNode(edge.source) ||
       !graph.hasNode(edge.target) ||
       edge.source === edge.target
     ) return;
     edgeSet.add(key);
 
-    graph.addEdge(edge.source, edge.target, {
-      edgeType: edge.type,
-      weight:   edge.weight,
-      color:    EDGE_COLORS[edge.type] || "#BDBDBD",
-      size:     edge.type === "tagCooccurs" ? Math.min(edge.weight * 0.5, 3) : 0.8,
+    const isDirected = edge.type === "dependsOn" || edge.type === "related";
+    graph.addDirectedEdge(edge.source, edge.target, {
+      edgeType:  edge.type,
+      weight:    edge.weight,
+      color:     EDGE_COLORS[edge.type] || "#BDBDBD",
+      size:      edge.type === "tagCooccurs" ? Math.min(edge.weight * 0.5, 3) : 0.8,
+      // dependsOn/related만 화살표 표시
+      type:      isDirected ? "arrow" : "line",
     });
   });
 
   // ── ForceAtlas2 레이아웃 ────────────────────────────────────────────────────
 
+  // 타입별 동심원 초기 배치 (레이아웃 수렴 가속)
   const TYPE_RADIUS = { category: 1, subcategory: 0.75, series: 0.6, tag: 0.45, post: 0.25 };
   let idx = 0;
   graph.nodes().forEach((n) => {
     const type = graph.getNodeAttribute(n, "nodeType");
-    const r    = (TYPE_RADIUS[type] || 0.5) * 300;
+    const r    = (TYPE_RADIUS[type] || 0.5) * 400;
     const angle = (idx / graph.order) * 2 * Math.PI;
-    graph.setNodeAttribute(n, "x", r * Math.cos(angle));
-    graph.setNodeAttribute(n, "y", r * Math.sin(angle));
+    graph.setNodeAttribute(n, "x", r * Math.cos(angle) + (Math.random() - 0.5) * 20);
+    graph.setNodeAttribute(n, "y", r * Math.sin(angle) + (Math.random() - 0.5) * 20);
     idx++;
   });
 
   forceAtlas2.assign(graph, {
-    iterations: 300,
+    iterations: 400,
     settings: {
-      gravity:          1,
-      scalingRatio:     20,
+      gravity:           0.8,
+      scalingRatio:      25,
       barnesHutOptimize: true,
-      barnesHutTheta:   0.5,
-      strongGravityMode: true,
-      linLogMode:       true,
-      adjustSizes:      false,
+      barnesHutTheta:    0.5,
+      strongGravityMode: false,   // 너무 뭉치지 않게
+      linLogMode:        true,    // 허브-위성 구조 강조
+      adjustSizes:       true,    // 노드 크기 기반 충돌 회피
+      slowDown:          5,
     },
   });
 
@@ -147,45 +178,52 @@ function init() {
     defaultNodeColor:       "#999",
     defaultEdgeColor:       "#BDBDBD",
     labelFont:              "Pretendard, sans-serif",
-    labelSize:              13,
+    labelSize:              12,
     labelWeight:            "600",
     labelColor:             { color: "#1a1a2e" },
-    minCameraRatio:         0.04,
-    maxCameraRatio:         6,
+    labelRenderedSizeThreshold: 8,   // 화면상 px 8 이상인 노드만 라벨 표시
+    minCameraRatio:         0.03,
+    maxCameraRatio:         8,
+    // 화살표 크기
+    defaultEdgeType:        "line",
+    defaultArrowHeadLength: 6,
 
     nodeReducer: (node, data) => {
       const res = { ...data };
       const isSelected = graphState.selectedNode === node;
       const isHovered  = graphState.hoveredNode  === node;
       const neighbors  = graphState.hoveredNode
-        ? graph.neighbors(graphState.hoveredNode)
-        : (graphState.selectedNode ? graph.neighbors(graphState.selectedNode) : null);
+        ? new Set(graph.neighbors(graphState.hoveredNode))
+        : (graphState.selectedNode ? new Set(graph.neighbors(graphState.selectedNode)) : null);
 
       // 검색 필터
       if (graphState.searchQuery && graphState.searchMatches.size > 0) {
         if (!graphState.searchMatches.has(node)) {
           res.color = "#e0e0e0";
           res.label = "";
-          res.size  = data.size * 0.5;
+          res.size  = data.size * 0.45;
           return res;
         } else {
           res.highlighted = true;
+          res.size = data.size * 1.2;
         }
       }
 
       // hover / select 하이라이트
       if ((graphState.hoveredNode || graphState.selectedNode) && !isHovered && !isSelected) {
-        if (!neighbors || !neighbors.includes(node)) {
+        if (!neighbors || !neighbors.has(node)) {
           res.color = "#d8d8d8";
           res.label = "";
-          res.size  = data.size * 0.6;
+          res.size  = data.size * 0.55;
           return res;
         }
+        // 이웃 노드는 약간 밝게
+        res.size = data.size * 1.1;
       }
 
       // 선택된 노드 강조
       if (isSelected) {
-        res.size  = data.size * 1.4;
+        res.size   = data.size * 1.5;
         res.zIndex = 10;
       }
 
@@ -201,8 +239,10 @@ function init() {
         if (src !== active && tgt !== active) {
           res.color = "#eeeeee";
           res.size  = 0.2;
+          res.hidden = false;
         } else {
-          res.size  = (data.size || 0.8) * 1.5;
+          res.size  = (data.size || 0.8) * 2;
+          res.color = EDGE_COLORS[data.edgeType] || data.color;
         }
       }
 
@@ -235,6 +275,8 @@ function init() {
     html += `<div class="gt-meta">연결: ${deg}개</div>`;
     if (attrs.nodeType === "post") {
       html += `<div class="gt-hint">클릭하여 열기</div>`;
+    } else {
+      html += `<div class="gt-hint">클릭하여 상세 보기</div>`;
     }
 
     tooltip.innerHTML = html;
@@ -386,7 +428,7 @@ function init() {
     const nodePos = renderer.getNodeDisplayedCoordinates(nodeId);
     if (!nodePos) return;
     renderer.getCamera().animate(
-      { x: nodePos.x, y: nodePos.y, ratio: 0.3 },
+      { x: nodePos.x, y: nodePos.y, ratio: 0.25 },
       { duration: 500 }
     );
   }

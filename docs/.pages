@@ -2,6 +2,6 @@ nav:
   - Home: index.md
   - Full Stack: full-stack
   - Search Engine: search-engine
-  - AI: ai
+  - AI/ML: ai
   - DevOps: devops
   - Tags: tags.md

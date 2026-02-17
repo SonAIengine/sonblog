@@ -1,0 +1,4 @@
+title: 모델 파인튜닝
+nav:
+  - GliNER과 DPO-LoRA를 활용한 모델 파인튜닝.md
+  - OJT-리팩토링과-Kotaemon-RAG-구현기.md

@@ -37,7 +37,7 @@
 ## 마지막 작성
 - 날짜: 2026-02-17
 - 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#13, AI/ML #26~#27
-- 다음 작성 대상: AI/ML #28 (멀티 GPU LLM 배포: GPU 선택 및 레이어 오프로딩 전략)
+- 다음 작성 대상: AI/ML #29 (vLLM vs llama.cpp: 백엔드 스위칭 아키텍처 설계)
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -70,3 +70,4 @@
 - docs/search-engine/Rust 검색 엔진/Rate-Limiting이-적용된-검색-API-설계.md (#13)
 - docs/ai/XGEN/llama.cpp-서버-운영기-ROCm-GPU에서의-삽질과-해결.md (AI/ML #26)
 - docs/ai/XGEN/AMD-GPU에서-LLM-돌리기-Vulkan-vs-ROCm-비교.md (AI/ML #27)
+- docs/ai/XGEN/멀티-GPU-LLM-배포-GPU-선택-및-레이어-오프로딩-전략.md (AI/ML #28)

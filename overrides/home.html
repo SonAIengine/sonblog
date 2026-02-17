@@ -10,6 +10,7 @@
     <h1>SON BLOG</h1>
     <p class="hero-subtitle">AI Engineer · 손성준</p>
     <p class="hero-desc">LLM Serving · RAG · Rust Search Engine · K8s · Embedding Optimization</p>
+    <p class="hero-stats">{{ post_counts.total }} posts</p>
   </div>
 </section>
 
@@ -17,22 +18,22 @@
   <a href="full-stack/" class="home-card">
     <h2>Full Stack</h2>
     <p>포트폴리오, Python, PoC, 프론트엔드, 백엔드 개발</p>
-    <span class="home-card-count">posts</span>
+    <span class="home-card-count">{{ post_counts.full_stack }} posts</span>
   </a>
   <a href="search-engine/" class="home-card">
     <h2>Search Engine</h2>
     <p>Rust 커머스 검색 엔진, OpenSearch, Qdrant, 시맨틱 검색</p>
-    <span class="home-card-count">posts</span>
+    <span class="home-card-count">{{ post_counts.search_engine }} posts</span>
   </a>
   <a href="ai/" class="home-card">
     <h2>AI</h2>
     <p>GPU 모델 서빙, 임베딩 최적화, 파인튜닝, XGEN 플랫폼</p>
-    <span class="home-card-count">posts</span>
+    <span class="home-card-count">{{ post_counts.ai }} posts</span>
   </a>
   <a href="devops/" class="home-card">
     <h2>DevOps</h2>
     <p>K8s, ArgoCD, Jenkins, Docker, 인프라 구성</p>
-    <span class="home-card-count">posts</span>
+    <span class="home-card-count">{{ post_counts.devops }} posts</span>
   </a>
 </section>
 

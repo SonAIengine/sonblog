@@ -121,6 +121,39 @@ def collect_posts(docs_dir: str, limit: int = 8) -> list:
     return posts[:limit]
 
 
+# 카테고리 폴더 → 카드 키 매핑
+CATEGORY_FOLDER_MAP = {
+    "full-stack": "full_stack",
+    "search-engine": "search_engine",
+    "ai": "ai",
+    "devops": "devops",
+}
+
+
+def count_posts_by_category(docs_dir: str) -> dict:
+    """카테고리별 글 수를 집계한다 (index.md 제외한 모든 .md 파일)."""
+    counts = {key: 0 for key in CATEGORY_FOLDER_MAP.values()}
+    counts["total"] = 0
+
+    for root, dirs, files in os.walk(docs_dir):
+        dirs[:] = [d for d in dirs if not d.startswith(".") and d != "blog"]
+
+        for fname in files:
+            if fname in EXCLUDE_FILES or not fname.endswith(".md"):
+                continue
+
+            fpath = os.path.join(root, fname)
+            rel = os.path.relpath(fpath, docs_dir).replace("\\", "/")
+            top_folder = rel.split("/")[0]
+
+            key = CATEGORY_FOLDER_MAP.get(top_folder)
+            if key:
+                counts[key] += 1
+            counts["total"] += 1
+
+    return counts
+
+
 def build_recent_posts_html(posts: list) -> str:
     """Recent Posts HTML 조각을 생성한다."""
     if not posts:
@@ -142,8 +175,10 @@ def build_recent_posts_html(posts: list) -> str:
 
 # MkDocs hook: on_env
 def on_env(env, config, files, **kwargs):
-    """Jinja2 환경에 recent_posts 전역 변수를 주입한다."""
+    """Jinja2 환경에 recent_posts, post_counts 전역 변수를 주입한다."""
     docs_dir = config["docs_dir"]
     posts = collect_posts(docs_dir, limit=5)
+    counts = count_posts_by_category(docs_dir)
     env.globals["recent_posts"] = posts
+    env.globals["post_counts"] = counts
     return env

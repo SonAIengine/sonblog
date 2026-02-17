@@ -189,7 +189,15 @@ nav.md-nav--secondary ul.md-nav__list ul.md-nav__list ul.md-nav__list li.md-nav_
   padding-left: 1.2em;
 }
 
-/* 불릿 제거 — 깔끔한 목차 */
+/* 불릿 제거 */
+nav.md-nav--secondary .md-nav__list {
+  list-style: none;
+}
+
+nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
+  display: none !important;
+  content: none !important;
+}
 
 /* === Footer === */
 .md-footer {

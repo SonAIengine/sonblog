@@ -12,15 +12,18 @@ from pathlib import Path
 
 # 카테고리 폴더 → 표시 이름 매핑
 CATEGORY_LABELS = {
+    "full-stack": "Full Stack",
     "search-engine": "Search Engine",
     "ai": "AI",
-    "infra": "Infra",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "agent": "Agent",
-    "desktop": "Desktop",
-    "workflow": "Workflow",
-    "portfolio": "Projects",
+    "devops": "DevOps",
+    # 하위 폴더도 매핑 (full-stack 하위)
+    "portfolio": "Full Stack",
+    "python": "Full Stack",
+    "poc": "Full Stack",
+    # devops 하위
+    "infra": "DevOps",
+    "xgen": "DevOps",
+    "etc": "DevOps",
 }
 
 # 제외할 파일 패턴

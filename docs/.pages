@@ -1,11 +1,7 @@
 nav:
   - Home: index.md
+  - Full Stack: full-stack
   - Search Engine: search-engine
   - AI: ai
-  - Projects:
-    - Portfolio: portfolio
-    - Infra: infra
-    - Python: python
-    - PoC: poc
-    - Etc: etc
+  - DevOps: devops
   - Tags: tags.md

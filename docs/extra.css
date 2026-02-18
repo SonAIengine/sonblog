@@ -1290,15 +1290,15 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem 0.6rem;
+  padding: 0.45rem 0.75rem 0.4rem;
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
   flex-shrink: 0;
 }
 
 .gp-header-title {
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  color: var(--md-default-fg-color--light);
+  color: var(--md-default-fg-color--lighter);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -1547,24 +1547,29 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 /* ── 노드 헤더 영역 ── */
 .gp-node-header {
-  padding: 0.85rem 1rem 0.75rem;
+  padding: 0.55rem 0.75rem 0.5rem;
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
 }
 
-.gp-node-meta {
+.gp-header-row {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.25rem;
 }
 
-/* gp-type: 기존 스타일 유지 */
+.gp-inline-stats {
+  font-size: 0.65rem;
+  color: var(--md-default-fg-color--light);
+  white-space: nowrap;
+}
+[data-md-color-scheme="slate"] .gp-inline-stats { color: #64748b; }
 
 .gp-title {
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.3;
-  margin: 0 0 0.4rem;
+  margin: 0;
   color: var(--md-default-fg-color);
   border: none;
   padding: 0;
@@ -1573,86 +1578,52 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 [data-md-color-scheme="slate"] .gp-title { color: #e2e8f0; }
 
-/* 시리즈 배지 */
-.gp-series-badge {
+/* 메타 라인: 시리즈 · 날짜 · 난이도 인라인 */
+.gp-meta-line {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+  font-size: 0.68rem;
+  color: var(--md-default-fg-color--light);
+  flex-wrap: wrap;
+}
+.gp-meta-series {
   color: #EA580C;
-  margin: 0 0 0.25rem;
   font-weight: 500;
 }
-.gp-series-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #EA580C;
-  flex-shrink: 0;
-}
-[data-md-color-scheme="slate"] .gp-series-badge { color: #fb923c; }
-[data-md-color-scheme="slate"] .gp-series-dot { background: #fb923c; }
-
-.gp-date {
-  font-size: 0.72rem;
+.gp-meta-date {
   color: var(--md-default-fg-color--light);
-  margin: 0 0 0.55rem;
 }
-[data-md-color-scheme="slate"] .gp-date { color: #64748b; }
-
-/* stat row */
-.gp-stat-row {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.6rem;
-}
-
-.gp-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.gp-meta-diff {
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
   background: var(--md-default-fg-color--lightest);
-  border-radius: 8px;
-  padding: 0.3rem 0.65rem;
-  min-width: 52px;
 }
-
-.gp-stat-val {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--md-default-fg-color);
-  line-height: 1.2;
-}
-
-.gp-stat-lbl {
-  font-size: 0.62rem;
-  color: var(--md-default-fg-color--light);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-top: 0.05rem;
-}
-
-[data-md-color-scheme="slate"] .gp-stat { background: #1e293b; }
-[data-md-color-scheme="slate"] .gp-stat-val { color: #e2e8f0; }
-[data-md-color-scheme="slate"] .gp-stat-lbl { color: #64748b; }
+[data-md-color-scheme="slate"] .gp-meta-line { color: #64748b; }
+[data-md-color-scheme="slate"] .gp-meta-series { color: #fb923c; }
+[data-md-color-scheme="slate"] .gp-meta-date { color: #475569; }
+[data-md-color-scheme="slate"] .gp-meta-diff { background: #1e293b; color: #94a3b8; }
 
 /* ── 섹션 공통 ── */
 .gp-section {
-  padding: 0 1rem 0.5rem;
-  margin-top: 0.65rem;
+  padding: 0 0.75rem 0.35rem;
+  margin-top: 0.4rem;
 }
 
 .gp-section-title {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.7rem;
+  gap: 0.35rem;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--md-default-fg-color--light);
-  margin: 0 0 0.5rem;
-  padding-bottom: 0.3rem;
+  margin: 0 0 0.3rem;
+  padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
 }
 
@@ -1684,41 +1655,37 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 }
 
 .gp-post-item {
-  padding: 0.35rem 0.4rem;
-  border-radius: 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.3rem 0.35rem;
+  border-radius: 5px;
   transition: background 0.12s;
 }
 
 .gp-post-item:hover { background: var(--md-default-fg-color--lightest); }
 [data-md-color-scheme="slate"] .gp-post-item:hover { background: #1e293b; }
 
-.gp-post-row { display: flex; align-items: flex-start; }
-
 .gp-post-link {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 500;
   color: var(--md-default-fg-color) !important;
   text-decoration: none !important;
-  line-height: 1.35;
+  line-height: 1.3;
   flex: 1;
+  min-width: 0;
 }
 .gp-post-link:hover { color: var(--md-primary-fg-color) !important; text-decoration: underline !important; }
 [data-md-color-scheme="slate"] .gp-post-link { color: #c8d6e8 !important; }
 [data-md-color-scheme="slate"] .gp-post-link:hover { color: #c4b5fd !important; }
 
 .gp-post-label {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: var(--md-default-fg-color);
   flex: 1;
+  min-width: 0;
 }
 [data-md-color-scheme="slate"] .gp-post-label { color: #94a3b8; }
-
-.gp-post-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.15rem;
-}
 
 .gp-post-series {
   font-size: 0.65rem;
@@ -1734,8 +1701,10 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 }
 
 .gp-post-date {
-  font-size: 0.65rem;
-  color: var(--md-default-fg-color--light);
+  font-size: 0.6rem;
+  color: var(--md-default-fg-color--lighter);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 [data-md-color-scheme="slate"] .gp-post-date { color: #475569; }
 
@@ -1808,7 +1777,6 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   z-index: 10;
   background: var(--md-default-bg-color);
   border-left: 3px solid transparent;
-  transition: border-color 0.2s;
 }
 
 .gp-node-header--category    { border-left-color: #7C3AED; }

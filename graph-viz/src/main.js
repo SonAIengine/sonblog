@@ -451,53 +451,46 @@ function init() {
 
     const base = document.querySelector('meta[name="site-url"]')?.content || "/";
 
-    // ── 상단 헤더 영역 (sticky)
+    const deg = graph.degree(node);
+
+    // ── 컴팩트 헤더: 타입 + 제목 + 인라인 메타
     let headerHtml = `<div class="gp-node-header gp-node-header--${attrs.nodeType}">`;
-    headerHtml += `<div class="gp-node-meta"><div class="gp-type gp-type--${attrs.nodeType}">${typeLabel}</div>`;
-    if (attrs.difficulty) {
-      const diff = { beginner: "입문", intermediate: "중급", advanced: "고급" }[attrs.difficulty] || attrs.difficulty;
-      headerHtml += `<span class="gp-difficulty gp-difficulty--${attrs.difficulty}">${diff}</span>`;
-    }
+    headerHtml += `<div class="gp-header-row">`;
+    headerHtml += `<div class="gp-type gp-type--${attrs.nodeType}">${typeLabel}</div>`;
+    // 인라인 stat
+    const stats = [`${deg} 연결`];
+    if (posts.length) stats.push(`${posts.length} 포스트`);
+    if (otherNeighbors.length) stats.push(`${otherNeighbors.length} 노드`);
+    headerHtml += `<span class="gp-inline-stats">${stats.join(" · ")}</span>`;
     headerHtml += `</div>`;
     headerHtml += `<h2 class="gp-title">${attrs.label}</h2>`;
-    if (attrs.series) {
-      headerHtml += `<div class="gp-series-badge"><span class="gp-series-dot"></span>${attrs.series}</div>`;
+    // 시리즈·날짜·난이도를 한 줄 메타로
+    const metaParts = [];
+    if (attrs.series) metaParts.push(`<span class="gp-meta-series">${attrs.series}</span>`);
+    if (attrs.date) metaParts.push(`<span class="gp-meta-date">${attrs.date}</span>`);
+    if (attrs.difficulty) {
+      const diff = { beginner: "입문", intermediate: "중급", advanced: "고급" }[attrs.difficulty] || attrs.difficulty;
+      metaParts.push(`<span class="gp-meta-diff gp-meta-diff--${attrs.difficulty}">${diff}</span>`);
     }
-    if (attrs.date) headerHtml += `<p class="gp-date">${attrs.date}</p>`;
-
-    // stat row
-    headerHtml += `<div class="gp-stat-row">`;
-    headerHtml += `<div class="gp-stat"><span class="gp-stat-val">${graph.degree(node)}</span><span class="gp-stat-lbl">연결</span></div>`;
-    if (posts.length) {
-      headerHtml += `<div class="gp-stat"><span class="gp-stat-val">${posts.length}</span><span class="gp-stat-lbl">포스트</span></div>`;
-    }
-    if (otherNeighbors.length) {
-      headerHtml += `<div class="gp-stat"><span class="gp-stat-val">${otherNeighbors.length}</span><span class="gp-stat-lbl">노드</span></div>`;
-    }
+    if (metaParts.length) headerHtml += `<div class="gp-meta-line">${metaParts.join("")}</div>`;
     headerHtml += `</div>`;
-    headerHtml += `</div>`; // .gp-node-header
 
     // ── 스크롤 가능한 본문
     let bodyHtml = `<div class="gp-scroll-body">`;
 
-    // 포스트 리스트
+    // 포스트 리스트 — 전체 표시 (스크롤로 탐색)
     if (posts.length > 0) {
       bodyHtml += `<div class="gp-section">`;
       bodyHtml += `<div class="gp-section-title">연관 포스트<span class="gp-section-count">${posts.length}</span></div>`;
       bodyHtml += `<ul class="gp-post-list">`;
-      posts.slice(0, 10).forEach(p => {
+      posts.forEach(p => {
+        const dateStr = p.date ? `<span class="gp-post-date">${p.date}</span>` : "";
         bodyHtml += `<li class="gp-post-item">`;
-        bodyHtml += `<div class="gp-post-row">`;
         bodyHtml += p.url
-          ? `<a href="${base}${p.url}" class="gp-post-link">${p.label}</a>`
-          : `<span class="gp-post-label">${p.label}</span>`;
-        bodyHtml += `</div>`;
-        if (p.date) bodyHtml += `<div class="gp-post-meta-row"><span class="gp-post-date">${p.date}</span></div>`;
+          ? `<a href="${base}${p.url}" class="gp-post-link">${p.label}</a>${dateStr}`
+          : `<span class="gp-post-label">${p.label}</span>${dateStr}`;
         bodyHtml += `</li>`;
       });
-      if (posts.length > 10) {
-        bodyHtml += `<li class="gp-post-more">+${posts.length - 10}개 더</li>`;
-      }
       bodyHtml += `</ul></div>`;
     }
 
@@ -518,7 +511,7 @@ function init() {
         bodyHtml += `<div class="gp-conn-group">`;
         bodyHtml += `<span class="gp-conn-group-label gp-type--${t}">${typeLabels[t]}</span>`;
         bodyHtml += `<div class="gp-tags">`;
-        grouped[t].slice(0, 15).forEach(n => {
+        grouped[t].forEach(n => {
           bodyHtml += `<span class="gp-tag gp-tag--${n.type}" data-node-id="${n.id}">${n.label}</span>`;
         });
         bodyHtml += `</div></div>`;

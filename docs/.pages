@@ -5,5 +5,7 @@ nav:
   - Search Engine: search-engine
   - AI/ML: ai
   - AI Agent: agent
+  - Frontend: frontend
+  - Backend: backend
   - DevOps: devops
   - Tags: tags.md

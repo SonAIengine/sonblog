@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-18
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, Frontend #61~#63, DevOps #77~#95
-- 다음 작성 대상: 인프라/DevOps #76~#95 (이미 완료), Backend #96~#105
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, Frontend #61~#75, DevOps #76~#95
+- 다음 작성 대상: Desktop #106~#115, Workflow #116~#120
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -100,6 +100,7 @@
 - docs/ai/XGEN/CustomHTTPEmbedding-클라이언트-타임아웃과-배치-처리.md (AI/ML #43)
 - docs/ai/XGEN/vLLM-모델-배포-샘플링-파라미터-튜닝-가이드.md (AI/ML #44)
 - docs/ai/XGEN/GPU-상태-모니터링-및-자동-모델-배포-시스템.md (AI/ML #45)
+- docs/devops/infra/K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md (DevOps #76)
 - docs/devops/infra/Jenkins-JCasC로-6개-서비스-빌드-Job-자동-생성.md (DevOps #77)
 - docs/devops/infra/Lets-Encrypt-cert-manager로-K3s-HTTPS-자동화.md (DevOps #78)
 - docs/devops/infra/Istio-Gateway-HTTPS-설정-TLS-인증서-관리.md (DevOps #79)
@@ -149,3 +150,13 @@
 - docs/frontend/데이터셋-컬럼-관리-삭제-치환-연산-모달-컴포넌트-설계.md (Frontend #73)
 - docs/frontend/인증-플로우-개선-토큰-검증과-리프레시-처리.md (Frontend #74)
 - docs/frontend/HuggingFace-업로드-모달-파라미터-검증과-에러-핸들링.md (Frontend #75)
+- docs/backend/Rust로-API-Gateway-만들기-JWT-검증-CORS-프록시.md (Backend #96)
+- docs/backend/YAML-환경변수-이중-설정-파싱-시스템.md (Backend #97)
+- docs/backend/2GB-파일-업로드를-위한-프록시-body-size-설정.md (Backend #98)
+- docs/backend/마이크로서비스-라우팅-통합-session-station에서-core-병합.md (Backend #99)
+- docs/backend/Redis-기반-SSE-세션-상태-공유-멀티-POD-환경.md (Backend #100)
+- docs/backend/LocalConfigManager-분산-환경-전환-파일에서-API-기반으로.md (Backend #101)
+- docs/backend/UploadProgressManager-Redis-기반-분산-진행률-관리.md (Backend #102)
+- docs/backend/레포지토리-스케줄러의-분산-환경-전환.md (Backend #103)
+- docs/backend/Gateway-서비스-매핑-LLM-Crawler-ML-통합-구성.md (Backend #104)
+- docs/backend/문서-처리-서비스에-DeepSeek-지시문-적용하기.md (Backend #105)

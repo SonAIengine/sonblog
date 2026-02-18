@@ -1651,25 +1651,138 @@ a.hero-portfolio-link:hover {
 
 @media (max-width: 768px) {
   .graph-page {
-    padding: 0.75rem 0.75rem 0;
-    height: calc(100vh - 140px);
+    padding: 0.5rem 0.5rem 0;
+    height: calc(100dvh - 120px);
+    min-height: 400px;
+  }
+
+  /* 툴바: 줄바꿈 허용, 컴팩트 간격 */
+  .graph-toolbar {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .graph-toolbar-title {
+    font-size: 0.78rem;
+  }
+
+  .graph-toolbar-stats {
+    display: none;
+  }
+
+  .graph-toolbar-sep {
+    display: none;
+  }
+
+  .graph-toolbar-spacer {
+    display: none;
+  }
+
+  .graph-filter-chip {
+    font-size: 0.62rem;
+    padding: 0.12rem 0.35rem;
+  }
+
+  .graph-search-wrap {
+    order: 99;
+  }
+
+  .graph-search-wrap input {
+    width: 80px;
+    font-size: 0.72rem;
+  }
+
+  .graph-search-wrap input:focus {
+    width: 120px;
+  }
+
+  .graph-btn {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  /* sigma 컨테이너: 모바일에서는 transition 제거, 풀 너비 */
+  #sigma-container {
+    width: 100% !important;
+    transition: none;
+  }
+
+  /* graph-layout: 세로 스택 */
+  .graph-layout {
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* 패널: 하단 시트 오버레이 */
+  .graph-info-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    height: 0;
+    width: 100% !important;
+    border-left: none;
+    border-top: 1px solid transparent;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s;
   }
 
   .graph-info-panel.is-open {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 280px;
+    height: 55%;
+    width: 100% !important;
+    border-left: none;
+    border-top-color: var(--md-default-fg-color--lightest);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 30px rgba(0,0,0,0.25);
     z-index: 100;
-    box-shadow: -4px 0 30px rgba(0,0,0,0.6);
+  }
+
+  [data-md-color-scheme="slate"] .graph-info-panel.is-open {
+    border-top-color: #1e293b;
+    box-shadow: 0 -4px 30px rgba(0,0,0,0.6);
+  }
+
+  /* 하단 시트 drag handle 표시 */
+  .graph-info-panel.is-open::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--md-default-fg-color--lighter);
+    margin: 8px auto 4px;
+    flex-shrink: 0;
+  }
+
+  [data-md-color-scheme="slate"] .graph-info-panel.is-open::before {
+    background: #334155;
   }
 
   .graph-filter-hint { display: none; }
   .gp-resizer { display: none; }
 
-  .graph-search-wrap input { width: 100px; }
-  .graph-search-wrap input:focus { width: 130px; }
+  /* 닫기 버튼 더 접근성 좋게 */
+  .gp-close {
+    top: 0.5rem;
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+  }
+
+  /* 패널 내부 콘텐츠 모바일 조정 */
+  .gp-node-header {
+    padding: 0.3rem 0.65rem 0.25rem;
+  }
+
+  .gp-title {
+    font-size: 0.82rem;
+  }
+
+  .gp-section {
+    padding: 0 0.65rem 0.25rem;
+  }
 }
 
 /* ════════════════════════════════════════════════════════════════════════════

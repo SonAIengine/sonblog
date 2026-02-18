@@ -85,12 +85,17 @@
   const MIN_W = 260, MAX_W = 700, DEFAULT_W = 380;
   let dragging = false, startX = 0, startW = 0;
 
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
   function init() {
     const resizer = document.getElementById('graph-panel-resizer');
     const panel   = document.getElementById('graph-info-panel');
     if (!resizer || !panel) return;
 
     resizer.addEventListener('mousedown', function(e) {
+      if (isMobile()) return;
       if (!panel.classList.contains('is-open')) return;
       dragging = true;
       startX   = e.clientX;
@@ -102,7 +107,7 @@
 
     document.addEventListener('mousemove', function(e) {
       if (!dragging) return;
-      const delta = startX - e.clientX;           // 왼쪽으로 끌면 +
+      const delta = startX - e.clientX;
       const newW  = Math.min(MAX_W, Math.max(MIN_W, startW + delta));
       panel.style.width = newW + 'px';
     });
@@ -114,12 +119,13 @@
       document.body.style.userSelect = '';
     });
 
-    // 패널 닫힐 때 width 초기화
+    // 패널 닫힐 때 width/height 초기화
     const observer = new MutationObserver(function(muts) {
       muts.forEach(function(m) {
         if (m.type === 'attributes' && m.attributeName === 'class') {
           if (!panel.classList.contains('is-open')) {
             panel.style.width = '';
+            panel.style.height = '';
           }
         }
       });

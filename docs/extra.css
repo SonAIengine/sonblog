@@ -925,14 +925,13 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 }
 
 .graph-toolbar-title {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 0.95rem !important;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--md-default-fg-color);
   white-space: nowrap;
   line-height: 1.2;
-  border: none !important;
 }
 
 .graph-toolbar-stats {

@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-18
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, DevOps #77~#95
-- 다음 작성 대상: Frontend #61~#75
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, Frontend #61~#63, DevOps #77~#95
+- 다음 작성 대상: Frontend #64~#75
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -134,3 +134,6 @@
 - docs/agent/Agent-채팅-UI-도구-메시지-정리와-액션-배지-디자인.md (AI Agent #58)
 - docs/agent/시나리오-배치-실행-엔진-selector-fallback과-excel-loop.md (AI Agent #59)
 - docs/agent/LLM-텍스트-우선-표시-Agent-UX에서의-응답-순서-최적화.md (AI Agent #60)
+- docs/frontend/Next.js-기반-AI-워크플로우-에디터-만들기.md (Frontend #61)
+- docs/frontend/커스텀-노드-에디터-드래그-앤-드롭과-엣지-스냅핑-구현.md (Frontend #62)
+- docs/frontend/React에서-Undo-Redo-구현-워크플로우-에디터-히스토리-관리.md (Frontend #63)

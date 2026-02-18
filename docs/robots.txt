@@ -58,4 +58,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://sonaiengine.github.io/sonblog/sitemap.xml
+Sitemap: https://infoedu.co.kr/sitemap.xml

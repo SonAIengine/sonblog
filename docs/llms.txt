@@ -3,7 +3,7 @@
 > AI Engineer 손성준의 기술 블로그. 221개 포스트.
 > LLM Serving, RAG, Hybrid Search, Rust Search Engine, Kubernetes, Embedding Optimization 등
 > 실전 AI 엔지니어링 경험을 커밋 기반으로 기록한다.
-> 사이트: https://sonaiengine.github.io/sonblog/
+> 사이트: https://infoedu.co.kr/
 
 ## AI / LLM (56 posts)
 

@@ -2,7 +2,7 @@
 
 ## 프로젝트 정보
 - GitHub: https://github.com/SonAIengine/sonblog
-- 배포: https://sonaiengine.github.io/sonblog/
+- 배포: https://infoedu.co.kr/
 - 플랫폼: MkDocs Material + GitHub Pages (main 푸시 → 자동 배포)
 - Git: main 직접 push 가능
 

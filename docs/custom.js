@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (title) {
     title.style.cursor = "pointer";
     title.addEventListener("click", function () {
-      window.location.href = "/sonblog/";
+      window.location.href = "/";
     });
   }
 
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // MkDocs Material의 document$ observable은 instant navigation 때마다 emit한다.
 // graph 페이지에서만 번들을 로드하고 initGraphViz()를 호출한다.
 (function () {
-  var GRAPH_PATH = "/sonblog/graph/";
+  var GRAPH_PATH = "/graph/";
   var bundleLoaded = false;
 
   function maybeInitGraph() {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (!bundleLoaded) {
       bundleLoaded = true;
       var s = document.createElement("script");
-      s.src = "/sonblog/assets/graph/graph-viz.iife.js";
+      s.src = "/assets/graph/graph-viz.iife.js";
       document.body.appendChild(s);
       // IIFE 자체가 init()를 실행하므로 onload 불필요
     }

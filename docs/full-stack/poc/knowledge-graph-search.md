@@ -25,22 +25,23 @@ MkDocs Material은 기본으로 lunr.js 기반 검색을 제공한다. 한국어
 두 시스템 모두 클라이언트 사이드에서 동작하며, MkDocs가 빌드 시 생성하는 `search_index.json`을 인덱스 소스로 공유한다.
 
 ```mermaid
-flowchart TB
-    subgraph Build["빌드 타임 (MkDocs)"]
+flowchart LR
+    subgraph Build["빌드 타임"]
         MD["Markdown 파일"] --> MKDOCS["MkDocs Build"]
-        MKDOCS --> IDX["search_index.json<br/>title + text + location"]
+        MKDOCS --> IDX["search_index.json"]
     end
 
-    subgraph GraphSearch["그래프 검색 (graph-viz)"]
-        IDX --> GS_IDX["Orama 인덱스 구축<br/>노드 + 본문 2,000자"]
-        GS_IDX --> GS_UI["리치 드롭다운<br/>타입 뱃지 + teaser + 태그"]
-        GS_IDX --> GS_HL["그래프 하이라이트<br/>nodeReducer / edgeReducer"]
+    IDX --> GS_IDX
+    IDX --> SS_IDX
+
+    subgraph GraphSearch["그래프 검색"]
+        GS_IDX["Orama 인덱스<br/>노드 + 본문"] --> GS_UI["리치 드롭다운"]
+        GS_IDX --> GS_HL["그래프 하이라이트"]
     end
 
-    subgraph SiteSearch["사이트 전체 검색 (orama-search.js)"]
-        IDX --> SS_IDX["Orama 인덱스 구축<br/>title + text"]
-        SS_IDX --> SS_MO["MutationObserver<br/>lunr 결과 덮어쓰기"]
-        SS_MO --> SS_UI["커스텀 결과 UI<br/>빵크럼 + 섹션 그룹핑"]
+    subgraph SiteSearch["사이트 전체 검색"]
+        SS_IDX["Orama 인덱스<br/>title + text"] --> SS_MO["MutationObserver"]
+        SS_MO --> SS_UI["커스텀 결과 UI"]
     end
 
     style Build fill:#1e293b,color:#e2e8f0

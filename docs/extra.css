@@ -1613,13 +1613,12 @@ a.hero-portfolio-link:hover {
 
 .gp-tag {
   display: inline-block;
-  font-size: 0.68rem;
-  padding: 0.15rem 0.45rem;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 20px;
   cursor: pointer;
   transition: opacity 0.15s, transform 0.1s;
   font-weight: 500;
-  line-height: 1.3;
 }
 
 .gp-tag:hover { opacity: 0.8; transform: scale(1.04); }
@@ -2044,28 +2043,18 @@ a.hero-portfolio-link:hover {
 
 /* ── 연결 노드 타입 그룹 ── */
 .gp-conn-group {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.55rem;
 }
 
 .gp-conn-group-label {
   display: inline-block;
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.08rem 0.35rem;
+  padding: 0.1rem 0.4rem;
   border-radius: 3px;
-  flex-shrink: 0;
-}
-
-.gp-conn-group .gp-tags {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
+  margin-bottom: 0.3rem;
 }
 
 /* gp-type--* 색상 재사용 */

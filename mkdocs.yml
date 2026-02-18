@@ -53,7 +53,7 @@ theme:
     logo: material/alpha-s-circle
 
 extra_css:
-  - extra.css?v=13
+  - extra.css?v=14
 
 extra_javascript:
   - custom.js

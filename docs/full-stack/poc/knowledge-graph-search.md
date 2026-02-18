@@ -26,27 +26,14 @@ MkDocs Material은 기본으로 lunr.js 기반 검색을 제공한다. 한국어
 
 ```mermaid
 flowchart LR
-    subgraph Build["빌드 타임"]
-        MD["Markdown 파일"] --> MKDOCS["MkDocs Build"]
-        MKDOCS --> IDX["search_index.json"]
-    end
-
-    IDX --> GS_IDX
-    IDX --> SS_IDX
-
-    subgraph GraphSearch["그래프 검색"]
-        GS_IDX["Orama 인덱스<br/>노드 + 본문"] --> GS_UI["리치 드롭다운"]
-        GS_IDX --> GS_HL["그래프 하이라이트"]
-    end
-
-    subgraph SiteSearch["사이트 전체 검색"]
-        SS_IDX["Orama 인덱스<br/>title + text"] --> SS_MO["MutationObserver"]
-        SS_MO --> SS_UI["커스텀 결과 UI"]
-    end
-
-    style Build fill:#1e293b,color:#e2e8f0
-    style GraphSearch fill:#1e3a5f,color:#e2e8f0
-    style SiteSearch fill:#1a2e1a,color:#e2e8f0
+    MD["Markdown 파일"] --> MKDOCS["MkDocs Build"]
+    MKDOCS --> IDX["search_index.json"]
+    IDX --> GS["그래프 검색\n(graph-viz)"]
+    IDX --> SS["사이트 전체 검색\n(orama-search.js)"]
+    GS --> GS_UI["리치 드롭다운"]
+    GS --> GS_HL["그래프 하이라이트"]
+    SS --> SS_MO["MutationObserver\nlunr 결과 덮어쓰기"]
+    SS_MO --> SS_UI["커스텀 결과 UI\n빵크럼 + 섹션 그룹핑"]
 ```
 
 ## Knowledge Graph 노드 검색

@@ -58,9 +58,6 @@ flowchart TB
 
     LAZY["custom.js<br/>Lazy Loading"] -->|"/graph/ 접근 시"| IIFE
 
-    style Build fill:#1e293b,color:#e2e8f0
-    style Bundle fill:#1e3a5f,color:#e2e8f0
-    style Runtime fill:#1a2e1a,color:#e2e8f0
 ```
 
 빌드 타임에 Python 훅이 모든 Markdown 파일의 front matter를 파싱하여 그래프 데이터(JSON)를 생성한다. 이 데이터는 Jinja2 템플릿을 통해 HTML에 인라인으로 삽입된다. 런타임에는 Vite로 번들링한 IIFE 파일이 Sigma.js WebGL 렌더러를 초기화한다.

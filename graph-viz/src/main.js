@@ -769,10 +769,39 @@ function init() {
     dropdown.innerHTML = hits.slice(0, 10).map(hit => {
       const doc = hit.document;
       const score = hit.score.toFixed(2);
+      const attrs = graph.hasNode(doc.nodeId) ? graph.getNodeAttributes(doc.nodeId) : {};
+      const deg = graph.hasNode(doc.nodeId) ? graph.degree(doc.nodeId) : 0;
+
+      let metaHtml = "";
+      if (doc.nodeType === "post") {
+        // 포스트: 날짜 + teaser
+        const parts = [];
+        if (attrs.date) parts.push(attrs.date);
+        if (attrs.series) parts.push(attrs.series);
+        if (parts.length) metaHtml += `<span class="gsd-meta">${parts.join(" · ")}</span>`;
+        if (doc.content) {
+          const teaser = doc.content.slice(0, 80).replace(/\s+/g, " ").trim();
+          metaHtml += `<span class="gsd-teaser">${teaser}${doc.content.length > 80 ? "..." : ""}</span>`;
+        }
+        // 태그
+        if (doc.tags) {
+          const tagList = doc.tags.split(" ").filter(Boolean).slice(0, 5);
+          if (tagList.length) {
+            metaHtml += `<span class="gsd-tags">${tagList.map(t => `<span class="gsd-tag">${t}</span>`).join("")}</span>`;
+          }
+        }
+      } else {
+        // 비-포스트: 연결 수
+        metaHtml += `<span class="gsd-meta">${deg}개 연결</span>`;
+      }
+
       return `<div class="gsd-item" data-node-id="${doc.nodeId}">
-        <span class="gsd-type gsd-type--${doc.nodeType}">${typeLabelsSearch[doc.nodeType] || doc.nodeType}</span>
-        <span class="gsd-label">${doc.label}</span>
-        <span class="gsd-score">${score}</span>
+        <div class="gsd-item-head">
+          <span class="gsd-type gsd-type--${doc.nodeType}">${typeLabelsSearch[doc.nodeType] || doc.nodeType}</span>
+          <span class="gsd-label">${doc.label}</span>
+          <span class="gsd-score">${score}</span>
+        </div>
+        ${metaHtml ? `<div class="gsd-item-body">${metaHtml}</div>` : ""}
       </div>`;
     }).join("");
 

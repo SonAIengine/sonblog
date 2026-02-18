@@ -68,19 +68,13 @@ Knowledge Graph의 핵심은 온톨로지 — 즉 노드와 엣지의 타입 체
 
 ```mermaid
 graph LR
-    CAT["category<br/>최상위 카테고리"] --- SUBCAT["subcategory<br/>서브카테고리"]
-    SUBCAT --- POST["post<br/>개별 글"]
-    POST --- TAG["tag<br/>태그"]
-    POST --- SERIES["series<br/>시리즈"]
-    TAG -.-|"tagCooccurs"| TAG2["tag"]
-    POST -.-|"related"| POST2["post"]
-    POST -.-|"dependsOn"| POST3["post"]
-
-    style CAT fill:#7C3AED,color:white
-    style SUBCAT fill:#2563EB,color:white
-    style POST fill:#DC2626,color:white
-    style TAG fill:#0D9488,color:white
-    style SERIES fill:#EA580C,color:white
+    CAT[category] --- SUBCAT[subcategory]
+    SUBCAT --- POST[post]
+    POST --- TAG[tag]
+    POST --- SERIES[series]
+    TAG -.-|tagCooccurs| TAG2[tag]
+    POST -.-|related| POST2[post]
+    POST -.-|dependsOn| POST3[post]
 ```
 
 **노드 타입**:

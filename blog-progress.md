@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-18
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#54, DevOps #77~#95
-- 다음 작성 대상: AI Agent #55~#60
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#57, DevOps #77~#95
+- 다음 작성 대상: AI Agent #58~#60
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -128,3 +128,6 @@
 - docs/agent/CSS-셀렉터-대체-전략-selector-alternatives로-안정성-확보.md (AI Agent #52)
 - docs/agent/엑셀-루프-자동화-Agent-스토리지-연동으로-반복-작업-처리.md (AI Agent #53)
 - docs/agent/Agent-실시간-상태-바-메시지-큐와-즉각-피드백-UX.md (AI Agent #54)
+- docs/agent/Playwright-스크롤바-강제-표시-headless-환경의-UI-트릭.md (AI Agent #55)
+- docs/agent/시나리오-검증-자동화-녹화-실행-검증-파이프라인.md (AI Agent #56)
+- docs/agent/새-탭-감지-및-자동-전환-브라우저-자동화의-까다로운-문제.md (AI Agent #57)

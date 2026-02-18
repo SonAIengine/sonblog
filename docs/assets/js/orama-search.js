@@ -36,6 +36,35 @@
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
+  /** 검색어를 <mark>로 감싸서 하이라이팅 */
+  function highlight(text, query) {
+    if (!text || !query) return esc(text);
+    var escaped = esc(text);
+    var words = query.split(/\s+/).filter(Boolean);
+    words.forEach(function (w) {
+      var re = new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+      escaped = escaped.replace(re, "<mark>$1</mark>");
+    });
+    return escaped;
+  }
+
+  /** 검색어 주변 컨텍스트 스니펫 추출 (앞뒤 60자) */
+  function contextSnippet(text, query, maxLen) {
+    if (!text || !query) return (text || "").slice(0, maxLen);
+    var lower = text.toLowerCase();
+    var words = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var bestIdx = -1;
+    for (var i = 0; i < words.length; i++) {
+      var idx = lower.indexOf(words[i]);
+      if (idx !== -1) { bestIdx = idx; break; }
+    }
+    if (bestIdx === -1) return text.slice(0, maxLen);
+    var start = Math.max(0, bestIdx - 60);
+    var end = Math.min(text.length, start + maxLen);
+    var snippet = text.slice(start, end);
+    return (start > 0 ? "..." : "") + snippet + (end < text.length ? "..." : "");
+  }
+
   // ── Orama 로드 + 인덱스 구축 (즉시 시작) ──
   var indexPromise = (async function initIndex() {
     try {
@@ -96,6 +125,12 @@
     if (results) renderResults(results, resultList);
   }
 
+  /** 태그·블로그 인덱스 등 집계 페이지 판별 */
+  function isIndexPage(loc) {
+    var base = (loc || "").split("#")[0];
+    return /^(tags\/|blog\/|$)/.test(base);
+  }
+
   // ── 결과 렌더링 (Material 형식 호환) ──
   function renderResults(results, list) {
     if (!list) return;
@@ -116,7 +151,7 @@
       var doc = hit.document;
       var baseLoc = (doc.location || "").split("#")[0];
       if (!grouped.has(baseLoc)) {
-        grouped.set(baseLoc, { location: baseLoc, title: "", sections: [], topScore: hit.score });
+        grouped.set(baseLoc, { location: baseLoc, title: "", sections: [], topScore: hit.score, isIndex: isIndexPage(baseLoc) });
       }
       var entry = grouped.get(baseLoc);
       if (!doc.location.includes("#") && doc.title) {
@@ -125,16 +160,26 @@
       entry.sections.push({
         location: doc.location,
         title: doc.title,
-        text: (doc.text || "").slice(0, 200),
+        text: doc.text || "",
         score: hit.score,
       });
     });
 
-    var pageCount = grouped.size;
+    // 인덱스 페이지를 뒤로 보내기
+    var sorted = [];
+    grouped.forEach(function (entry) { sorted.push(entry); });
+    sorted.sort(function (a, b) {
+      if (a.isIndex !== b.isIndex) return a.isIndex ? 1 : -1;
+      return b.topScore - a.topScore;
+    });
+
+    var pageCount = sorted.length;
     if (metaEl) metaEl.textContent = pageCount + "개 페이지에서 " + results.count + "개 결과 (BM25)";
 
+    var query = lastQuery;
     var html = "";
-    grouped.forEach(function (entry, baseLoc) {
+    sorted.forEach(function (entry) {
+      var baseLoc = entry.location;
       var pageTitle = entry.title || (entry.sections[0] ? entry.sections[0].title : baseLoc) || baseLoc;
       var pageUrl = SITE_BASE + baseLoc;
 
@@ -142,16 +187,21 @@
       html += '<a href="' + esc(pageUrl) + '" class="md-search-result__link" tabindex="-1">';
       html += '<article class="md-search-result__article md-search-result__article--document">';
       html += '<div class="md-search-result__icon md-icon"></div>';
-      html += '<h1 class="md-search-result__title">' + esc(pageTitle) + "</h1>";
+      html += '<h1 class="md-search-result__title">' + highlight(pageTitle, query) + "</h1>";
       html += "</article></a>";
 
+      // 섹션 결과 (최대 4개)
+      var secCount = 0;
       entry.sections.forEach(function (sec) {
         if (sec.location === baseLoc && !sec.location.includes("#")) return;
+        if (secCount >= 4) return;
+        secCount++;
         var secUrl = SITE_BASE + sec.location;
+        var snippet = contextSnippet(sec.text, query, 120);
         html += '<a href="' + esc(secUrl) + '" class="md-search-result__link" tabindex="-1">';
         html += '<article class="md-search-result__article">';
-        if (sec.title) html += '<h2 class="md-search-result__title">' + esc(sec.title) + "</h2>";
-        if (sec.text) html += '<p class="md-search-result__teaser">' + esc(sec.text) + "</p>";
+        if (sec.title) html += '<h2 class="md-search-result__title">' + highlight(sec.title, query) + "</h2>";
+        if (snippet) html += '<p class="md-search-result__teaser">' + highlight(snippet, query) + "</p>";
         html += "</article></a>";
       });
 

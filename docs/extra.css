@@ -3378,18 +3378,25 @@ a.pf-footer-btn:hover {
 }
 
 /* === GoatCounter: Page Views & Total Views === */
-.gc-counter {
-  display: inline-block;
-  margin-left: 0.8em;
-  font-size: 0.64rem;
-  color: #666;
-  vertical-align: middle;
+
+/* 게시물 상단 조회수 */
+.gc-page-views {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: -0.3rem;
+  margin-bottom: 1rem;
 }
 
-[data-md-color-scheme="slate"] .gc-counter {
+[data-md-color-scheme="slate"] .gc-page-views {
   color: #999;
 }
 
+/* HOME hero 전체 방문자수 */
+.gc-home-total:empty {
+  display: none;
+}
+
+/* 푸터 전체 방문자수 */
 .gc-total-counter {
   display: block;
   text-align: center;

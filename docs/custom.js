@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // 페이지별 조회수 표시 (글 하단 작성일/수정일 옆)
+  // 페이지별 조회수 표시 (글 상단 h1 아래)
   function showPageViews() {
-    var sourceFile = document.querySelector(".md-source-file");
-    if (!sourceFile) return;
+    var h1 = document.querySelector(".md-content__inner h1");
+    if (!h1) return;
     // 이미 삽입된 경우 제거 후 다시 삽입
-    var existing = sourceFile.querySelector(".gc-counter");
+    var existing = h1.parentElement.querySelector(".gc-page-views");
     if (existing) existing.remove();
 
     var p = location.pathname.replace(/\/$/, "") || "/";
@@ -47,29 +47,37 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
         if (!data || !data.count) return;
-        var span = document.createElement("span");
-        span.className = "gc-counter";
-        span.textContent = "Views: " + data.count;
-        sourceFile.appendChild(span);
+        var div = document.createElement("div");
+        div.className = "gc-page-views";
+        div.textContent = data.count + " views";
+        h1.insertAdjacentElement("afterend", div);
       })
       .catch(function () {});
   }
 
-  // 전체 방문자 수 표시 (푸터)
+  // 전체 방문자 수 표시 (HOME hero + 푸터)
   function showTotalViews() {
-    var footer = document.querySelector(".md-footer-meta__inner");
-    if (!footer) return;
-    var existing = footer.querySelector(".gc-total-counter");
-    if (existing) existing.remove();
-
     fetch(GC_ENDPOINT + "/counter/TOTAL.json")
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
         if (!data || !data.count) return;
-        var span = document.createElement("span");
-        span.className = "gc-total-counter";
-        span.textContent = "Total Views: " + data.count;
-        footer.appendChild(span);
+
+        // HOME hero 영역
+        var heroTotal = document.querySelector(".gc-home-total");
+        if (heroTotal) {
+          heroTotal.textContent = data.count + " views";
+        }
+
+        // 푸터
+        var footer = document.querySelector(".md-footer-meta__inner");
+        if (footer) {
+          var existing = footer.querySelector(".gc-total-counter");
+          if (existing) existing.remove();
+          var span = document.createElement("span");
+          span.className = "gc-total-counter";
+          span.textContent = "Total " + data.count + " views";
+          footer.appendChild(span);
+        }
       })
       .catch(function () {});
   }

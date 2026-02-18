@@ -58,7 +58,7 @@ extra:
     property: G-9XJ8HP1L17
 
 extra_css:
-  - extra.css?v=22
+  - extra.css?v=23
 
 extra_javascript:
   - custom.js

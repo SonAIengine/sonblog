@@ -56,92 +56,79 @@ tags:
 - 뻔한 서론/결론 금지 ("이번 포스트에서는~", "감사합니다")
 - AI가 쓴 티 나는 표현 금지 ("살펴보겠습니다", "알아보겠습니다")
 
-## 블로그 작성 참조 파일
+## 블로그 주제 발굴 워크플로우
 
-- 진행 상황: /home/son/sonblog/blog-progress.md (완료 글 목록, Phase 2 계획)
-- 주제 전체 목록 (120개, 커밋 키워드 포함): /home/son/sonblog/blog-topics-full.md
+사용자가 "블로그 글 써줘" 등 블로그 작성을 요청하면, 아래 절차로 주제를 발굴하고 제안한다.
 
-## 블로그 작성 진행 상황
+### 1단계: 최신 커밋 조회 (GitLab + GitHub)
 
-### 완료 (24개)
-1. ✅ 챗봇 UI 개발 (WebSocket 스트리밍)
-2. ✅ GliNER/DPO/LoRA 모델 파인튜닝
-3. ✅ 벡터 기반 시맨틱 검색
-4. ✅ 상품 리뷰 분석 API
-5. ✅ 이미지 검색 기능 구현
-6. ✅ Code Assistant 개발
-7. ✅ Search API / LLMOps Docker 구성
-8. ✅ OJT 리팩토링 / Kotaemon RAG
-9. ✅ XGEN 1.0 GPU 모델 서빙
-10. ✅ XGEN 1.0 워크플로우 엔진 + Qdrant 하이브리드 검색
-11. ✅ XGEN 1.0 프론트엔드 (모델 관리 UI)
-12. ✅ XGEN 2.0 인프라 (K8s, ArgoCD)
-13. ✅ XGEN 2.0 모델 서빙 리팩토링
-14. ✅ XGEN 2.0 임베딩 전용 서버와 배치 처리 최적화
-15. ✅ XGEN 2.0 워크플로우 접근 제어와 IO 로깅 시스템
-16. ✅ 검색엔진 #1: Rust로 커머스 검색 엔진을 처음부터 만들기
-17. ✅ 검색엔진 #2: Axum + OpenSearch Rust 검색 API 아키텍처 설계
-18. ✅ 검색엔진 #3: PostgreSQL과 MySQL 동시 지원하는 Rust DB 추상화 레이어
-19. ✅ 검색엔진 #4: Rust 검색 엔진에 Redis 캐싱 적용기
-20. ✅ 검색엔진 #5: OpenSearch 인덱싱 서비스 스트리밍 vs 배치 처리
-21. ✅ 검색엔진 #6: Rust 검색 엔진에서 SSH 터널링으로 원격 DB 접근
-22. ✅ 검색엔진 #7: OpenSearch Aggregation 검색 구현 및 에러 핸들링 전략
-23. ✅ 검색엔진 #8: 커머스 상품 추천 검색 API 설계
-24. ✅ 검색엔진 #9: Rust 검색 엔진의 CI/CD 파이프라인 구축
+GitLab과 GitHub 모두에서 최근 커밋을 가져온다.
 
-### 다음 작성 대상 (#10~#120, 96개 남음)
+**GitLab** (회사 프로젝트):
+```bash
+# 프로젝트 ID 조회
+curl --header "PRIVATE-TOKEN: $TOKEN" \
+  "https://gitlab.x2bee.com/api/v4/projects?search=프로젝트명"
 
-검색 엔진 / AI Search (#10~#25):
-- #10: OpenSearch 동의어(Synonym) 사전 관리 자동화
-- #11: Handlebars 템플릿으로 동적 검색 쿼리 생성하기
-- #12: 커서 기반 인덱싱 vs 전체 인덱싱: 성능 비교
-- #13: Rate Limiting이 적용된 검색 API 설계
-- #14: NestJS 기반 이커머스 검색 엔진 개발기 (x2bee-nest-search)
-- #15: 시맨틱 검색과 키워드 검색의 하이브리드 전략
-- #16: GPT를 활용한 검색 쿼리 의도 분석 및 키워드 추출
-- #17: 검색 품질 개선: 성별/색상/카테고리 필터링 최적화
-- #18: 벡터 검색 유사도 임계값 동적 조정 (토큰 수 기반)
-- #19: Reranker 모델 도입으로 검색 정확도 향상하기
-- #20: FAISS 벡터 인덱스 적용과 GPU 디바이스 최적화
-- #21: 시맨틱 검색 API: 요약(Summary) 기능 온/오프 전략
-- #22: OpenSearch Nori 분석기 커스터마이징 및 형태소 분석
-- #23: 이미지 기반 상품 검색 구현기
-- #24: 검색 결과 랭킹 스코어링 시스템 설계
-- #25: Cosine Similarity 직접 구현으로 검색 재순위화
+# 최근 커밋 조회 (기본 최근 1~3개월, 사용자가 기간 지정 가능)
+curl --header "PRIVATE-TOKEN: $TOKEN" \
+  "https://gitlab.x2bee.com/api/v4/projects/{ID}/repository/commits?per_page=100&since=시작일&until=종료일&author=sonsj97"
+```
 
-AI/ML & LLM (#26~#45):
-- #26~#45: blog-topics-full.md 참조
+**GitHub** (개인 프로젝트):
+```bash
+# 사용자의 모든 레포 목록 조회
+gh repo list SonAIengine --limit 50 --json name,pushedAt,description
 
-AI Agent / 브라우저 자동화 (#46~#60):
-- #46~#60: blog-topics-full.md 참조
+# 특정 레포의 최근 커밋 조회
+gh api repos/SonAIengine/{레포명}/commits --paginate -q '.[].commit | {message, date: .author.date}'
 
-Frontend (#61~#75):
-- #61~#75: blog-topics-full.md 참조
+# 또는 날짜 필터링
+gh api "repos/SonAIengine/{레포명}/commits?since=시작일&until=종료일&per_page=100"
+```
 
-인프라 / DevOps (#76~#95):
-- #76~#95: blog-topics-full.md 참조
+조회 대상: GitLab은 아래 "GitLab 실제 작업 프로젝트" 섹션, GitHub은 SonAIengine 계정의 활성 레포.
 
-Backend / Gateway (#96~#105):
-- #96~#105: blog-topics-full.md 참조
+### 2단계: 커밋 분석 및 주제 그룹핑
 
-데스크톱 앱 / Tauri (#106~#115):
-- #106~#115: blog-topics-full.md 참조
+- 커밋 메시지를 분석하여 **주제별로 그룹핑**
+- feat/fix/refactor 등 커밋 타입과 키워드로 의미 있는 작업 단위를 묶음
+- 단순 typo fix, merge commit, version bump 등은 제외
+- **시행착오 → 해결 패턴**이 있는 커밋 그룹이 블로그 소재로 가치가 높음
 
-워크플로우 (#116~#120):
-- #116~#120: blog-topics-full.md 참조
+### 3단계: 중복 체크
 
-## 카테고리 구조 (120개)
+- `docs/` 폴더의 기존 블로그 글 제목/내용과 비교
+- 이미 작성된 주제는 제외하거나, 후속편/심화 글로 제안
 
-| 카테고리 | 폴더 | 주제 수 |
-|----------|-------|---------|
-| 검색 엔진 / AI Search | `search-engine/` | 25개 (#1~#25) |
-| AI/ML & LLM | `ai/` | 20개 (#26~#45) |
-| AI Agent / 브라우저 자동화 | `agent/` | 15개 (#46~#60) |
-| Frontend | `frontend/` | 15개 (#61~#75) |
-| 인프라 / DevOps | `infra/` | 20개 (#76~#95) |
-| Backend / Gateway | `backend/` | 10개 (#96~#105) |
-| 데스크톱 앱 / Tauri | `desktop/` | 10개 (#106~#115) |
-| 워크플로우 | `workflow/` | 5개 (#116~#120) |
+### 4단계: 주제 제안 (3~5개)
+
+각 주제를 아래 형식으로 제안:
+
+```
+**주제 N: [제목]**
+- 프로젝트: [레포명]
+- 기간: YYYY-MM-DD ~ YYYY-MM-DD
+- 관련 커밋: N개 (주요 커밋 메시지 2~3개 인용)
+- 카테고리: [search-engine / ai / devops / full-stack 등]
+- 블로그 가치: [왜 이 주제가 글로 쓸 만한지 한 줄 설명]
+```
+
+### 5단계: 사용자 선택 → 글 작성
+
+사용자가 주제를 선택하면:
+1. 해당 주제 관련 커밋을 상세 조회 (diff, 파일 변경 내역)
+2. GitLab API / GitHub API(`gh`) 또는 로컬 클론으로 실제 소스코드 읽기
+3. 블로그 스타일 가이드에 따라 글 작성
+
+## 카테고리 구조
+
+| 카테고리 | 폴더 경로 |
+|----------|-----------|
+| 검색 엔진 / AI Search | `docs/search-engine/` |
+| AI/ML & LLM | `docs/ai/` |
+| DevOps / 인프라 | `docs/devops/` |
+| Full Stack (Frontend, Backend, Desktop 등) | `docs/full-stack/` |
 
 ## 접속 정보
 

@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // HOME hero 영역
         var heroTotal = document.querySelector(".gc-home-total");
         if (heroTotal) {
-          heroTotal.textContent = data.count + " views";
+          heroTotal.textContent = " · " + data.count + " views";
         }
 
         // 푸터

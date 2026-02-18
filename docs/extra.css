@@ -2077,44 +2077,55 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   color: #b0b8ff;
 }
 
+/* ── 결과 링크 밑줄 제거 ── */
+.md-search-result__link,
+.md-search-result__link:hover {
+  text-decoration: none !important;
+}
+
 /* ── 섹션 컴팩트 링크 리스트 ── */
 .md-search-result__sections {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  padding: 0 0.8em 0.4em 2.2em;
-  border-left: 2px solid rgba(63, 81, 181, 0.18);
-  margin-left: 1.2em;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1px !important;
+  padding: 0.2em 0.8em 0.5em 1.4em !important;
+  margin: 0 0 0 1.6em !important;
+  border-left: 2.5px solid rgba(63, 81, 181, 0.3) !important;
+  background: rgba(0, 0, 0, 0.015);
+  border-radius: 0 4px 4px 0;
 }
 [data-md-color-scheme="slate"] .md-search-result__sections {
-  border-left-color: rgba(139, 148, 255, 0.2);
+  border-left-color: rgba(139, 148, 255, 0.35) !important;
+  background: rgba(255, 255, 255, 0.02);
 }
 .md-search-result__section-link {
-  display: flex;
-  align-items: center;
-  gap: 0.35em;
-  padding: 0.22em 0.5em;
-  font-size: 0.7rem;
-  color: var(--md-default-fg-color--light);
-  text-decoration: none;
+  display: block !important;
+  padding: 0.3em 0.5em !important;
+  font-size: 0.7rem !important;
+  color: var(--md-default-fg-color--light) !important;
+  text-decoration: none !important;
   border-radius: 3px;
   transition: background 0.15s, color 0.15s;
-  line-height: 1.4;
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .md-search-result__section-link:hover {
-  background: var(--md-accent-fg-color--transparent);
-  color: var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color--transparent) !important;
+  color: var(--md-accent-fg-color) !important;
 }
 .md-search-result__section-hash {
-  color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--lighter);
   font-size: 0.62rem;
   font-weight: 700;
-  flex-shrink: 0;
+  margin-right: 0.3em;
 }
 .md-search-result__section-link:hover .md-search-result__section-hash {
   color: var(--md-accent-fg-color);
 }
 .md-search-result__section-more {
+  display: block !important;
   font-size: 0.6rem;
   color: var(--md-default-fg-color--lighter);
   padding: 0.15em 0.5em;

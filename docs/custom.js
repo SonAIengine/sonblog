@@ -31,8 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // 페이지별 조회수 표시 (글 상단 h1 아래)
+  // 페이지별 조회수 표시 (글 상단 h1 아래, HOME 제외)
   function showPageViews() {
+    if (location.pathname === "/") return;
     var h1 = document.querySelector(".md-content__inner h1");
     if (!h1) return;
     // 이미 삽입된 경우 제거 후 다시 삽입

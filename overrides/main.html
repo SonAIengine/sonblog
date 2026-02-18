@@ -4,9 +4,22 @@
 <!-- SEO Meta Tags -->
 <meta name="keywords" content="AI Engineer, LLM Serving, RAG, Rust, Kubernetes, 검색엔진, 임베딩, DevOps, Full Stack">
 
-<!-- Open Graph -->
+<!-- Open Graph: social 플러그인이 og:title/description/url/image/twitter:* 자동 생성 -->
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="SON BLOG">
+
+<!-- Open Graph: Article (블로그 글에만 og:type=article 오버라이드 + article 메타) -->
+{% if page and page.meta and page.meta.date %}
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ page.meta.date }}">
+<meta property="article:modified_time" content="{{ page.meta.git_revision_date_localized_raw_iso_date | default(page.meta.date) }}">
+<meta property="article:author" content="손성준">
+{% if page.meta.tags %}
+{% for tag in page.meta.tags %}
+<meta property="article:tag" content="{{ tag }}">
+{% endfor %}
+{% endif %}
+{% endif %}
 
 <!-- Naver -->
 <meta name="naver-site-verification" content="528536846c48af3a337f2c4596e0d5ff6619e560">
@@ -33,7 +46,7 @@
 </script>
 
 <!-- JSON-LD: TechArticle (per page) -->
-{% if page and page.meta and page.meta.title and page.meta.title != "Home" %}
+{% if page and page.meta and page.meta.title and not page.is_homepage %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,14 +59,52 @@
     "url": "https://github.com/SonAIengine"
   },
   "datePublished": "{{ page.meta.date | default('') }}",
+  "dateModified": "{{ page.meta.git_revision_date_localized_raw_iso_date | default(page.meta.date) | default('') }}",
   "url": "{{ page.canonical_url }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.canonical_url }}"
+  },
+  "image": "{{ config.site_url }}assets/images/social/{{ page.url[:-1] }}.png",
   "inLanguage": "ko",
   "publisher": {
     "@type": "Person",
     "name": "손성준"
   }
+  {% if page.meta.tags %},
+  "keywords": "{{ page.meta.tags | join(', ') }}"
+  {% endif %}
 }
 </script>
+{% endif %}
+
+<!-- JSON-LD: BreadcrumbList -->
+{% if page and not page.is_homepage %}
+{% set parts = page.url.split('/') | reject('equalto', '') | list %}
+{% if parts %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ config.site_url }}"
+    }
+    {% for part in parts %}
+    ,{
+      "@type": "ListItem",
+      "position": {{ loop.index + 1 }},
+      "name": "{% if loop.last %}{{ page.meta.title | default(page.title) }}{% else %}{{ part | replace('-', ' ') | title }}{% endif %}",
+      "item": "{{ config.site_url }}{{ parts[:loop.index] | join('/') }}/"
+    }
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
 {% endif %}
 {% endblock %}
 

@@ -37,7 +37,7 @@
 ## 마지막 작성
 - 날짜: 2026-02-18
 - 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, Frontend #61~#63, DevOps #77~#95
-- 다음 작성 대상: Frontend #67~#75
+- 다음 작성 대상: Frontend #70~#75
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -140,3 +140,6 @@
 - docs/frontend/데이터-프로세서-UI-파일-업로드-내보내기-통계-대시보드.md (Frontend #64)
 - docs/frontend/워크플로우-공유-권한-시스템-읽기-전용-vs-편집-모드.md (Frontend #65)
 - docs/frontend/SSE-기반-파일-업로드-진행률-표시와-취소-기능.md (Frontend #66)
+- docs/frontend/문서-디렉토리-트리-UI-파일-카운트와-컴팩트-레이아웃.md (Frontend #67)
+- docs/frontend/React-Hot-Toast로-알림-시스템-개선하기.md (Frontend #68)
+- docs/frontend/DocumentsGraph-문서-관계-시각화-컴포넌트.md (Frontend #69)

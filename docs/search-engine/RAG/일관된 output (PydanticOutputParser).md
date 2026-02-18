@@ -1,3 +1,12 @@
+---
+title: "일관된 output (PydanticOutputParser)"
+description: "PydanticOutputParser는 LangChain에서 제공하는 도구로, 대형 언어 모델(LLM)의 출력 결과를 Pydantic 모델 기반의 구조화된 데이터로 파싱하기 위해 사용된다."
+date: 2025-07-20
+tags:
+  - 검색엔진
+  - RAG
+---
+
 `PydanticOutputParser`는 LangChain에서 제공하는 도구로, 대형 언어 모델(LLM)의 출력 결과를 Pydantic 모델 기반의 구조화된 데이터로 파싱하기 위해 사용된다. 이를 통해 자연어 혹은 JSON 형태로 생성된 LLM의 응답을 타입이 명확한 데이터로 변환할 수 있다.
 
 

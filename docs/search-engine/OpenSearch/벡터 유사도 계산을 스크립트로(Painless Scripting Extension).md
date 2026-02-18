@@ -1,3 +1,13 @@
+---
+title: "벡터 유사도 계산을 스크립트로(Painless Scripting Extension)"
+description: "OpenSearch는 knnvector 필드에 대해 벡터 거리 계산 함수를 Painless 스크립트 내에서 직접 사용할 수 있도록 확장 기능을 제공한다."
+date: 2025-07-11
+tags:
+  - OpenSearch
+  - 검색엔진
+  - 벡터 검색
+---
+
 
 OpenSearch는 `knn_vector` 필드에 대해 벡터 거리 계산 함수를 **Painless 스크립트** 내에서 직접 사용할 수 있도록 확장 기능을 제공한다. 
 

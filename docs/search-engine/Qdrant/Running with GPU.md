@@ -1,3 +1,14 @@
+---
+title: "Running with GPU"
+description: "Qdrant v1.13.0부터 GPU 인덱싱 가속을 공식 지원한다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+  - GPU
+---
+
 ### 1. 개요
 
 Qdrant v1.13.0부터 **GPU 인덱싱 가속**을 공식 지원한다. 

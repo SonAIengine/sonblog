@@ -1,3 +1,14 @@
+---
+title: "SGLang vs vLLM"
+description: "대형 언어 모델(LLM)의 활용이 확산됨에 따라, 효율적인 추론(inference) 및 서빙을 위한 인프라 선택이 점점 더 중요해지고 있다."
+date: 2025-07-19
+tags:
+  - LLM Serving
+  - AI
+  - SGLang
+  - vLLM
+---
+
 
 대형 언어 모델(LLM)의 활용이 확산됨에 따라, 효율적인 추론(inference) 및 서빙을 위한 인프라 선택이 점점 더 중요해지고 있다. 
 

@@ -1,3 +1,13 @@
+---
+title: "RxDB 란 무엇인가? (opensearch 연동)"
+description: "RxDB(Reactive Database)는 NoSQL 데이터베이스로, UI 중심의 실시간 상태 변경 감지가 중요한 Frontend 애플리케이션에 최적화된 데이터베이스입니다."
+date: 2025-02-03
+tags:
+  - Full Stack
+  - RxDB
+  - PoC
+---
+
 # RxDB 란 무엇인가? (opensearch 연동)
 
 ## RxDB가 Frontend에 적합한 이유

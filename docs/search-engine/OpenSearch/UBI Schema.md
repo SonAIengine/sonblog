@@ -1,3 +1,12 @@
+---
+title: "OpenSearch UBI Schema 정리"
+description: "UBI(Universal Business Insights)는 사용자 행동 데이터를 구조화하고 검색에 활용할 수 있도록 정의된 공통 스키마 체계입니다."
+date: 2025-07-04
+tags:
+  - OpenSearch
+  - 검색엔진
+---
+
 
 # OpenSearch UBI Schema 정리
 

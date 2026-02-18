@@ -1,3 +1,12 @@
+---
+title: "Star-tree Index"
+description: "집계(Aggregation)는 데이터 규모가 커질수록 집계 성능은 급격히 저하되며, 이로 인해 쿼리 지연(latency)과 리소스 소비가 증가하는 문제가 있습니다. 이를 해결하기 위해 OpenSearch 2.18부터 신규 기능인 Star-tree Index가 실험적으로 도입되었습니다."
+date: 2025-06-30
+tags:
+  - OpenSearch
+  - 검색엔진
+---
+
 집계(Aggregation)는 데이터 규모가 커질수록 집계 성능은 급격히 저하되며, 이로 인해 쿼리 지연(latency)과 리소스 소비가 증가하는 문제가 있습니다. 이를 해결하기 위해 OpenSearch 2.18부터 **신규 기능인 Star-tree Index**가 실험적으로 도입되었습니다.
 
 ## Star-tree Index란?

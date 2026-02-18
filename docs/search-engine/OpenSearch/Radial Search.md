@@ -1,3 +1,12 @@
+---
+title: "Radial Search"
+description: "OpenSearch는 벡터 검색에서 일반적으로 사용하는 Top-k 검색 방식 외에도, 특정 거리나 유사도 임계값 기준으로 검색하는 Radial Search(반경 검색) 기능을 지원한다,"
+date: 2025-07-11
+tags:
+  - OpenSearch
+  - 검색엔진
+---
+
 OpenSearch는 벡터 검색에서 일반적으로 사용하는 **Top-k 검색** 방식 외에도, **특정 거리나 유사도 임계값 기준으로 검색하는 Radial Search(반경 검색)** 기능을 지원한다,
 
 이는 **공간적 근접성**이나 **유사도 임계값 기반 필터링**이 필요한 경우에 매우 유용하다.

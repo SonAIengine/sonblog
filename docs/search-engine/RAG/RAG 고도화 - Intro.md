@@ -1,3 +1,12 @@
+---
+title: "RAG 고도화 - Intro"
+description: "RAG 고도화 - Intro에 대한 기술 문서."
+date: 2025-07-20
+tags:
+  - 검색엔진
+  - RAG
+---
+
 ## Retrieval (문서 검색)
 
 ### 1. 청킹 전략 (전처리)

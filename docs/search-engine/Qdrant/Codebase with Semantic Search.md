@@ -1,3 +1,13 @@
+---
+title: "Codebase with Semantic Search"
+description: "1. 자연어 질의 → 시맨틱 검색"
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 ### 1. 목표 및 접근 방식
 
 1. **자연어 질의 → 시맨틱 검색**

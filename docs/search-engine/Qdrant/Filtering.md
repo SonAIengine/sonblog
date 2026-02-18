@@ -1,3 +1,13 @@
+---
+title: "Filtering"
+description: "Qdrant는 벡터 기반 유사도 검색 외에도, 포인트(point)의 payload나 ID에 기반한 다양한 필터링 조건을 지원한다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 
 Qdrant는 벡터 기반 유사도 검색 외에도, 포인트(point)의 **payload**나 **ID**에 기반한 다양한 필터링 조건을 지원한다. 
 

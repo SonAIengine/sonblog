@@ -1,3 +1,13 @@
+---
+title: "Approximate k-NN"
+description: "OpenSearch는 기본적으로 정확한 k-NN 검색을 지원하지만, 데이터 양이 많고 벡터의 차원이 높아질수록 성능 저하 문제가 발생합니다. 이 문제를 해결하기 위한 대안으로 Approximate k-NN 검색 기능이 제공된다."
+date: 2025-07-11
+tags:
+  - OpenSearch
+  - 검색엔진
+  - k-NN
+---
+
 OpenSearch는 기본적으로 **정확한 k-NN 검색**을 지원하지만, 데이터 양이 많고 벡터의 차원이 높아질수록 성능 저하 문제가 발생합니다. 이 문제를 해결하기 위한 대안으로 **Approximate k-NN 검색** 기능이 제공된다.
 
 Approximate k-NN 검색은 일부 정확성을 희생하는 대신, 검색 속도를 획기적으로 높이는 방식으로 **수십만 개 이상의 벡터 데이터를 다룰 때 특히 유용**하다.

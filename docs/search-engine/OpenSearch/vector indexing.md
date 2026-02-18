@@ -1,3 +1,13 @@
+---
+title: "vector indexing"
+description: "OpenSearch는 벡터 기반의 검색 기능을 지원하며, 이를 위해 k-NN(k-nearest neighbor) 인덱스를 생성할 수 있다."
+date: 2025-07-17
+tags:
+  - OpenSearch
+  - 검색엔진
+  - 벡터 검색
+---
+
 OpenSearch는 벡터 기반의 검색 기능을 지원하며, 이를 위해 k-NN(k-nearest neighbor) 인덱스를 생성할 수 있다. 
 
 벡터 인덱스는 다양한 검색 방식에 따라 약간의 설정 차이는 있지만, 공통된 핵심 요소를 기반으로 구성된다.

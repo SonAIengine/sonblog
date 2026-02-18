@@ -1,3 +1,13 @@
+---
+title: "Exact k-NN Seach"
+description: "대규모 벡터 기반 검색에서 대부분은 속도를 위해 Approximate k-NN(근사 최근접 이웃) 검색을 사용한다."
+date: 2025-07-11
+tags:
+  - OpenSearch
+  - 검색엔진
+  - k-NN
+---
+
 대규모 벡터 기반 검색에서 대부분은 속도를 위해 **Approximate k-NN(근사 최근접 이웃)** 검색을 사용한다.
 
 하지만 필터링이 필요하거나 더 높은 정확도가 요구되는 경우에는 OpenSearch의 **Scoring Script 기반 Exact k-NN 검색**을 활용할 수 있다.

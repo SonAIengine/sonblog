@@ -67,6 +67,7 @@ extra_javascript:
 hooks:
   - hooks/recent_posts.py
   - hooks/graph_builder.py
+  - hooks/related_posts.py
 
 plugins:
   - awesome-pages

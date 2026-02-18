@@ -1,3 +1,14 @@
+---
+title: "Qdrant Async API"
+description: "Python 생태계는 비동기 프로그래밍(async/await) 을 표준으로 빠르게 받아들이고 있다."
+date: 2025-07-15
+tags:
+  - 비동기
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 Python 생태계는 **비동기 프로그래밍(async/await)** 을 표준으로 빠르게 받아들이고 있다. 
 
 FastAPI·Quart 같은 현대적 웹 프레임워크나 Cohere SDK 등 SaaS ML 모델 클라이언트도 모두 비동기 API를 제공한다. 

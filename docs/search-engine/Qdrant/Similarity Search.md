@@ -1,3 +1,13 @@
+---
+title: "Similarity Search"
+description: "Qdrant에서의 유사도 검색(Similarity Search)은 벡터 유사도 기반 검색의 핵심 기능이다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 Qdrant에서의 유사도 검색(Similarity Search)은 벡터 유사도 기반 검색의 핵심 기능이다. 
 
 신경망 기반 임베딩 모델이 입력 데이터를 벡터로 변환한 뒤, 해당 벡터 간의 유사도를 비교하여 가장 가까운 객체를 찾아낸다. 

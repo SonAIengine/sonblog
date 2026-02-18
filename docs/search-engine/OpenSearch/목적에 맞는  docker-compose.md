@@ -1,3 +1,13 @@
+---
+title: "목적에 맞는 OpenSearch Docker Compose 구성"
+description: "설명: 최소 구성으로 빠르게 기능 시연, 테스트에 적합하다."
+date: 2025-07-17
+tags:
+  - OpenSearch
+  - Docker
+  - 검색엔진
+---
+
 
 # 목적에 맞는 OpenSearch Docker Compose 구성
 

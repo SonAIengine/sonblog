@@ -1,3 +1,14 @@
+---
+title: "Qdrant LangChain"
+description: "Qdrant는 벡터 유사도 검색을 위한 엔진으로, 고성능의 검색 기능과 편리한 API를 제공한다."
+date: 2025-07-15
+tags:
+  - LangChain
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 ## 1. 개요
 
 Qdrant는 벡터 유사도 검색을 위한 엔진으로, 고성능의 검색 기능과 편리한 API를 제공한다. 벡터 데이터 외에도 JSON 기반의 payload와 확장된 필터링 기능을 제공하므로, 의미 기반 검색(semantic search)이나 facet 검색, 추천 시스템 등 다양한 애플리케이션에 활용할 수 있다.

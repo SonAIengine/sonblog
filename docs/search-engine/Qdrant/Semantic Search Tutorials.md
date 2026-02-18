@@ -1,3 +1,13 @@
+---
+title: "Semantic Search Tutorials"
+description: "NeuralSearcher 클래스는 Sentence Transformer로 쿼리를 임베딩하고 client.querypoints로 검색한다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 ## 1. 5 분 만에 만드는 간단한 시맨틱 검색 엔진
 
 ### 1.1 준비 사항

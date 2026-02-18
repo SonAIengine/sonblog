@@ -1,3 +1,13 @@
+---
+title: "Tauri - 크로스 플랫폼 앱 개발 프레임워크"
+description: "Backend: Rust Frontend: webview를 통한 HTML, CSS, JS (React.js, Next.js 등) 지원"
+date: 2025-02-03
+tags:
+  - Full Stack
+  - Tauri
+  - PoC
+---
+
 # Tauri - 크로스 플랫폼 앱 개발 프레임워크
 
 ## 개요

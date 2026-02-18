@@ -1,3 +1,14 @@
+---
+title: "LangChain과 Qdrant"
+description: "Qdrant는 고성능의 벡터 유사도 검색 엔진으로, REST 및 gRPC API를 통해 벡터 저장, 검색, 필터링을 제공한다. LangChain은 대형 언어 모델(LLM)의 응용을 위한 프레임워크로, 다양한 벡터 저장소(Vector Store)와의 통합을 지원한다."
+date: 2025-07-16
+tags:
+  - LangChain
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 ## 1. 개요
 
 Qdrant는 고성능의 벡터 유사도 검색 엔진으로, REST 및 gRPC API를 통해 벡터 저장, 검색, 필터링을 제공한다. LangChain은 대형 언어 모델(LLM)의 응용을 위한 프레임워크로, 다양한 벡터 저장소(Vector Store)와의 통합을 지원한다. 

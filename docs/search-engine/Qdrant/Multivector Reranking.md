@@ -1,3 +1,14 @@
+---
+title: "Multivector Reranking"
+description: "멀티벡터(multivector) 기능은 Qdrant가 제공하는 핵심 특징 가운데 하나이다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+  - Reranker
+---
+
 멀티벡터(multivector) 기능은 Qdrant가 제공하는 핵심 특징 가운데 하나이다. 
 
 그러나 문서-수준이 아닌 토큰-수준 벡터를 다루는 특성상, 무작정 활용하면 **RAM 급증·삽입 지연·계산 낭비**로 이어지기 쉽다. 

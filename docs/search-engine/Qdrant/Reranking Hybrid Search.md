@@ -1,3 +1,15 @@
+---
+title: "Reranking Hybrid Search"
+description: "본 문서는 Dense + Sparse + Late-Interaction 임베딩을 한 컬렉션에 저장하고, 하이브리드 검색 후 ColBERT로 재랭킹하는 전 과정을 예시 코드와 함께 설명한다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+  - 하이브리드 검색
+  - Reranker
+---
+
 본 문서는 **Dense + Sparse + Late-Interaction** 임베딩을 한 컬렉션에 저장하고,  
 하이브리드 검색 후 ColBERT로 재랭킹하는 전 과정을 예시 코드와 함께 설명한다.  
 

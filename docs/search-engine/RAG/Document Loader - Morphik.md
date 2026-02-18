@@ -1,3 +1,12 @@
+---
+title: "Document Loader - Morphik"
+description: "Morphik은 복잡한 문서를 정확히 검색할 수 있도록 설계된 RAG(Retrieval-Augmented Generation) 도구를 개발하고 있다. 많은 시스템이 OCR 및 파싱에 의존하는 반면, Morphik은 '페이지 이미지' 자체를 정보의 원천으로 활용하는 방식을 선택하였다."
+date: 2025-07-25
+tags:
+  - 검색엔진
+  - RAG
+---
+
 Morphik은 복잡한 문서를 정확히 검색할 수 있도록 설계된 RAG(Retrieval-Augmented Generation) 도구를 개발하고 있다. 많은 시스템이 OCR 및 파싱에 의존하는 반면, Morphik은 '페이지 이미지' 자체를 정보의 원천으로 활용하는 방식을 선택하였다. 이 글에서는 왜 시각적 접근이 기존 방식보다 우수한지, 그리고 이를 통해 어떻게 정확도와 속도를 모두 확보할 수 있었는지를 설명한다.
 
 ## 파싱의 한계: 왜 텍스트만으로는 부족한가

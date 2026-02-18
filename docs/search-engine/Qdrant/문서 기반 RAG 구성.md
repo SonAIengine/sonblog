@@ -1,3 +1,14 @@
+---
+title: "문서 기반 RAG 구성"
+description: "아래는 FastAPI를 이용해 “파일 업로드 → 로드(확장자별) → 청크(split) → Qdrant에 색인(index) → 검색(일반·희소·하이브리드)”까지 전 과정을 보여주는 예제 코드이다."
+date: 2025-07-16
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+  - RAG
+---
+
 아래는 FastAPI를 이용해 “파일 업로드 → 로드(확장자별) → 청크(split) → Qdrant에 색인(index) → 검색(일반·희소·하이브리드)”까지 전 과정을 보여주는 예제 코드이다.
 
 ```python

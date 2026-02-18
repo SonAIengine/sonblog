@@ -1,3 +1,12 @@
+---
+title: "OpenSearch & Dashboards 3.1.0 릴리즈 노트"
+description: "OpenSearch 3.1은 성능, 검색 품질, AI 에이전트 지원, Observability, 보안 측면에서 대대적인 업그레이드를 제공합니다."
+date: 2025-06-30
+tags:
+  - OpenSearch
+  - 검색엔진
+---
+
 # OpenSearch & Dashboards 3.1.0 릴리즈 노트
 OpenSearch 3.1은 성능, 검색 품질, AI 에이전트 지원, Observability, 보안 측면에서 대대적인 업그레이드를 제공합니다.
 

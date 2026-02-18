@@ -1,3 +1,12 @@
+---
+title: "ml 모델 deploy 시 메모리 99% 차지 원인"
+description: "Hugging Face embedding 모델을 OpenSearch에 배포(deploy)한 후 메모리가 급격히 차오르거나 꽉 차는 현상은 다음과 같은 이유에서 발생할 수 있다."
+date: 2025-07-17
+tags:
+  - OpenSearch
+  - 검색엔진
+---
+
  Hugging Face embedding 모델을 OpenSearch에 배포(deploy)한 후 메모리가 급격히 차오르거나 꽉 차는 현상은 다음과 같은 이유에서 발생할 수 있다. 
  
  특히 **ML Commons 기반 추론** 또는 `text_embedding` processor를 사용할 때 다음 요소들을 반드시 확인해야 한다.

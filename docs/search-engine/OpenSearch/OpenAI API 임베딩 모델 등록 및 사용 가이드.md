@@ -1,3 +1,12 @@
+---
+title: "OpenAI API 임베딩 모델 등록 및 사용 가이드"
+description: "이 가이드는 OpenSearch에서 OpenAI API를 사용하여 임베딩 모델을 등록하고 자동 임베딩 생성을 설정하는 검증된 방법을 설명합니다."
+date: 2025-06-29
+tags:
+  - OpenSearch
+  - 검색엔진
+---
+
 
 이 가이드는 OpenSearch에서 OpenAI API를 사용하여 임베딩 모델을 등록하고 자동 임베딩 생성을 설정하는 검증된 방법을 설명합니다.
 

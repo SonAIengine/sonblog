@@ -1,3 +1,14 @@
+---
+title: "Scaling PDF Retrieval"
+description: "대규모 PDF 검색은 RAG·에이전트형 워크플로우에서 핵심 요소이다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+  - PDF
+---
+
 대규모 PDF 검색은 RAG·에이전트형 워크플로우에서 핵심 요소이다. 
 
 ColPali·ColQwen2와 같은 비전 LLM(VLLM)은 **OCR·룰 기반 파싱 없이** PDF 페이지 이미지를 직접 임베딩하여 최신 벤치마크(예: ViDoRe)에서 뛰어난 성능을 보인다. 

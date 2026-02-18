@@ -1,3 +1,12 @@
+---
+title: "VastAI 인스턴스 관리 API 가이드"
+description: "이 문서는 VastAI 인스턴스를 검색, 생성, 관리하는 API 사용법을 설명합니다."
+date: 2025-07-29
+tags:
+  - LLM Serving
+  - AI
+---
+
 이 문서는 VastAI 인스턴스를 검색, 생성, 관리하는 API 사용법을 설명합니다.
 
 ## 주요 기능

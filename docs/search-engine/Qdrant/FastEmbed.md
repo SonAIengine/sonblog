@@ -1,3 +1,14 @@
+---
+title: "FastEmbed"
+description: "FastEmbed는 경량화·고성능 임베딩 생성을 목표로 개발된 Python 라이브러리이다."
+date: 2025-07-15
+tags:
+  - FastEmbed
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 **FastEmbed**는 경량화·고성능 임베딩 생성을 목표로 개발된 Python 라이브러리이다. 
 
 ONNX Runtime 기반으로 동작하여 의존성이 적고, 서버리스 환경(예: AWS Lambda)에서도 가볍게 실행할 수 있다.

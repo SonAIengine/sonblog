@@ -1,3 +1,13 @@
+---
+title: "Load and Search Hugging Face Datasets"
+description: "Hugging Face는 모델뿐 아니라 다양한 공개 데이터셋을 제공한다. Qdrant 팀 역시 임베딩이 미리 계산된 데이터셋을 업로드해 두었다. 이를 활용하면 임베딩 생성 과정을 생략하고 즉시 벡터 데이터베이스 실습을 시작할 수 있다."
+date: 2025-07-15
+tags:
+  - 검색엔진
+  - 벡터 검색
+  - Qdrant
+---
+
 Hugging Face는 모델뿐 아니라 다양한 공개 데이터셋을 제공한다. Qdrant 팀 역시 **임베딩이 미리 계산된 데이터셋**을 업로드해 두었다. 이를 활용하면 임베딩 생성 과정을 생략하고 즉시 벡터 데이터베이스 실습을 시작할 수 있다.
 
 #### 예시 데이터셋 ― `arxiv-titles-instructorxl-embeddings`

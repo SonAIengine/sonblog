@@ -1,3 +1,12 @@
+---
+title: "What is LTR"
+description: "다음은 OpenSearch의 Learning to Rank (LTR)의 핵심 개념을 설명하는 “ML Ranking Core Concepts” 내용을 정리한 것이다."
+date: 2025-07-04
+tags:
+  - OpenSearch
+  - 검색엔진
+---
+
 다음은 OpenSearch의 Learning to Rank (LTR)의 핵심 개념을 설명하는 “ML Ranking Core Concepts” 내용을 정리한 것이다.
 
 이 가이드는 OpenSearch에서 머신러닝을 이용해 검색 결과의 관련도를 향상시키고자 하는 개발자 및 데이터 과학자를 위한 기초 개념을 담고 있다.

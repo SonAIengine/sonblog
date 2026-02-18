@@ -1031,6 +1031,90 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   height: 12px;
 }
 
+/* ── 검색 드롭다운 (Orama BM25) ──────────────────────────────────────────── */
+
+.graph-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  min-width: 280px;
+  margin-top: 4px;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  scrollbar-width: thin;
+}
+.graph-search-dropdown.is-visible { display: block; }
+
+[data-md-color-scheme="slate"] .graph-search-dropdown {
+  background: #0f172a;
+  border-color: #1e293b;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.gsd-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.12s;
+  font-size: 0.75rem;
+}
+.gsd-item:hover { background: var(--md-default-fg-color--lightest); }
+[data-md-color-scheme="slate"] .gsd-item:hover { background: #1e293b; }
+.gsd-item + .gsd-item { border-top: 1px solid var(--md-default-fg-color--lightest); }
+[data-md-color-scheme="slate"] .gsd-item + .gsd-item { border-top-color: #1e293b; }
+
+.gsd-type {
+  font-size: 0.58rem;
+  font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.gsd-type--category    { background: #ede9fe; color: #6d28d9; }
+.gsd-type--subcategory { background: #dbeafe; color: #1d4ed8; }
+.gsd-type--series      { background: #ffedd5; color: #c2410c; }
+.gsd-type--tag         { background: #ccfbf1; color: #0f766e; }
+.gsd-type--post        { background: #fee2e2; color: #b91c1c; }
+
+[data-md-color-scheme="slate"] .gsd-type--category    { background: rgba(124,58,237,0.25); color: #c4b5fd; }
+[data-md-color-scheme="slate"] .gsd-type--subcategory { background: rgba(37,99,235,0.25);  color: #93c5fd; }
+[data-md-color-scheme="slate"] .gsd-type--series      { background: rgba(234,88,12,0.25);  color: #fed7aa; }
+[data-md-color-scheme="slate"] .gsd-type--tag         { background: rgba(13,148,136,0.25); color: #99f6e4; }
+[data-md-color-scheme="slate"] .gsd-type--post        { background: rgba(220,38,38,0.25);  color: #fca5a5; }
+
+.gsd-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.gsd-score {
+  font-size: 0.58rem;
+  color: var(--md-default-fg-color--lighter);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+[data-md-color-scheme="slate"] .gsd-score { color: #475569; }
+
+.gsd-empty {
+  padding: 0.6rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+
 /* ── 버튼 ──────────────────────────────────────────────────────────────────── */
 
 .graph-btn {

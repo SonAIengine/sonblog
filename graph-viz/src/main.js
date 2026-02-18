@@ -1,6 +1,7 @@
 import Graph from "graphology";
 import Sigma from "sigma";
 import forceAtlas2 from "graphology-layout-forceatlas2";
+import { create, insert, search as oramaSearch } from "@orama/orama";
 
 let currentRenderer = null;
 let starfieldAnimId  = null;
@@ -573,7 +574,7 @@ function init() {
     openPanel(node, graph.getNodeAttributes(node));
   });
 
-  renderer.on("clickStage", () => { closePanel(); hideTooltip(); });
+  renderer.on("clickStage", () => { closePanel(); hideTooltip(); hideSearchDropdown(); });
 
   renderer.on("enterNode", ({ node, event }) => {
     graphState.hoveredNode = node;
@@ -615,7 +616,77 @@ function init() {
 
   applyFilters();
 
-  // ── 검색 ─────────────────────────────────────────────────────────────────────
+  // ── Orama BM25 검색 ──────────────────────────────────────────────────────────
+
+  let oramaDb = null;
+  let oramaReady = false;
+
+  // 노드 → 연결된 태그 라벨 매핑
+  const nodeTagLabels = {};
+  graph.nodes().forEach(n => {
+    if (graph.getNodeAttribute(n, "nodeType") === "post") {
+      const tags = graph.neighbors(n)
+        .filter(nb => graph.getNodeAttribute(nb, "nodeType") === "tag")
+        .map(nb => graph.getNodeAttribute(nb, "label"));
+      nodeTagLabels[n] = tags.join(" ");
+    }
+  });
+
+  // search_index.json에서 포스트 본문 가져와서 Orama 인덱스 구축
+  const siteBase = document.querySelector('meta[name="site-url"]')?.content || "/sonblog/";
+
+  (async function buildOramaIndex() {
+    try {
+      // URL → 본문 텍스트 매핑 (search_index.json 활용)
+      let urlToText = {};
+      try {
+        const resp = await fetch(siteBase + "search/search_index.json");
+        const searchData = await resp.json();
+        searchData.docs.forEach(d => {
+          const loc = (d.location || "").split("#")[0];
+          if (!loc) return;
+          if (!urlToText[loc]) urlToText[loc] = "";
+          urlToText[loc] += " " + (d.text || "");
+        });
+      } catch (e) {
+        console.warn("graph-viz: search_index.json 로드 실패, label만으로 인덱스 구축", e);
+      }
+
+      oramaDb = create({
+        schema: {
+          nodeId: "string",
+          label: "string",
+          nodeType: "string",
+          content: "string",
+          tags: "string",
+          series: "string",
+        },
+      });
+
+      for (const n of graph.nodes()) {
+        const attrs = graph.getNodeAttributes(n);
+        let content = "";
+        if (attrs.nodeType === "post" && attrs.url) {
+          // URL 정규화: 앞 슬래시와 siteBase 제거
+          const cleanUrl = (attrs.url || "").replace(/^\//, "").replace(/^sonblog\//, "");
+          content = (urlToText[cleanUrl] || "").trim().slice(0, 2000);
+        }
+        insert(oramaDb, {
+          nodeId: n,
+          label: attrs.label || "",
+          nodeType: attrs.nodeType || "",
+          content,
+          tags: nodeTagLabels[n] || "",
+          series: attrs.series || "",
+        });
+      }
+
+      oramaReady = true;
+      console.log("graph-viz: Orama BM25 인덱스 준비 완료 (" + graph.order + " nodes)");
+    } catch (e) {
+      console.error("graph-viz: Orama 인덱스 구축 실패", e);
+    }
+  })();
 
   const searchInput = document.getElementById("graph-search");
   const searchClear = document.getElementById("graph-search-clear");
@@ -623,25 +694,131 @@ function init() {
   function doSearch(q) {
     graphState.searchQuery = q;
     graphState.searchMatches.clear();
-    if (q) {
+
+    if (q && oramaReady && oramaDb) {
+      const results = oramaSearch(oramaDb, {
+        term: q,
+        limit: 20,
+        boost: { label: 3, tags: 2, series: 1.5, content: 1 },
+      });
+      results.hits.forEach(hit => {
+        const nodeId = hit.document.nodeId;
+        if (graph.hasNode(nodeId)) {
+          graphState.searchMatches.add(nodeId);
+        }
+      });
+      renderSearchDropdown(results.hits);
+    } else if (q && !oramaReady) {
+      // Orama 로딩 전 폴백: 기존 includes 매칭
       const ql = q.toLowerCase();
       graph.nodes().forEach(n => {
         if ((graph.getNodeAttribute(n, "label") || "").toLowerCase().includes(ql)) {
           graphState.searchMatches.add(n);
         }
       });
-      const first = [...graphState.searchMatches][0];
-      if (first) zoomToNode(first);
+      renderSearchDropdown(null);
+    } else {
+      hideSearchDropdown();
     }
+
     if (searchClear) searchClear.style.display = q ? "flex" : "none";
     renderer.refresh();
   }
 
-  searchInput?.addEventListener("input", e => doSearch(e.target.value.trim()));
+  // ── 검색 드롭다운 ──
+  const typeLabelsSearch = {
+    category: "카테고리", subcategory: "서브", series: "시리즈", tag: "태그", post: "포스트",
+  };
+
+  function renderSearchDropdown(hits) {
+    let dropdown = document.getElementById("graph-search-dropdown");
+    if (!dropdown) {
+      dropdown = document.createElement("div");
+      dropdown.id = "graph-search-dropdown";
+      dropdown.className = "graph-search-dropdown";
+      const wrap = document.querySelector(".graph-search-wrap");
+      if (wrap) wrap.appendChild(dropdown);
+    }
+
+    // 폴백 모드 (hits가 null): searchMatches에서 직접 렌더
+    if (hits === null) {
+      const items = [...graphState.searchMatches].slice(0, 10);
+      if (items.length === 0) {
+        dropdown.innerHTML = '<div class="gsd-empty">결과 없음</div>';
+        dropdown.classList.add("is-visible");
+        return;
+      }
+      dropdown.innerHTML = items.map(nid => {
+        const attrs = graph.getNodeAttributes(nid);
+        return `<div class="gsd-item" data-node-id="${nid}">
+          <span class="gsd-type gsd-type--${attrs.nodeType}">${typeLabelsSearch[attrs.nodeType] || attrs.nodeType}</span>
+          <span class="gsd-label">${attrs.label}</span>
+        </div>`;
+      }).join("");
+      dropdown.classList.add("is-visible");
+      bindDropdownClicks(dropdown);
+      return;
+    }
+
+    if (!hits || hits.length === 0) {
+      dropdown.innerHTML = '<div class="gsd-empty">결과 없음</div>';
+      dropdown.classList.add("is-visible");
+      return;
+    }
+
+    dropdown.innerHTML = hits.slice(0, 10).map(hit => {
+      const doc = hit.document;
+      const score = hit.score.toFixed(2);
+      return `<div class="gsd-item" data-node-id="${doc.nodeId}">
+        <span class="gsd-type gsd-type--${doc.nodeType}">${typeLabelsSearch[doc.nodeType] || doc.nodeType}</span>
+        <span class="gsd-label">${doc.label}</span>
+        <span class="gsd-score">${score}</span>
+      </div>`;
+    }).join("");
+
+    dropdown.classList.add("is-visible");
+    bindDropdownClicks(dropdown);
+  }
+
+  function bindDropdownClicks(dropdown) {
+    dropdown.querySelectorAll(".gsd-item").forEach(el => {
+      el.addEventListener("click", () => {
+        const nid = el.dataset.nodeId;
+        if (graph.hasNode(nid)) {
+          zoomToNode(nid);
+          openPanel(nid, graph.getNodeAttributes(nid));
+        }
+        hideSearchDropdown();
+      });
+    });
+  }
+
+  function hideSearchDropdown() {
+    const dd = document.getElementById("graph-search-dropdown");
+    if (dd) dd.classList.remove("is-visible");
+  }
+
+  // 검색 입력 이벤트 (디바운스)
+  let searchTimer = null;
+  searchInput?.addEventListener("input", e => {
+    clearTimeout(searchTimer);
+    const q = e.target.value.trim();
+    searchTimer = setTimeout(() => doSearch(q), 120);
+  });
+
   if (searchClear) {
     searchClear.style.display = "none";
-    searchClear.addEventListener("click", () => { searchInput.value = ""; doSearch(""); });
+    searchClear.addEventListener("click", () => {
+      searchInput.value = "";
+      doSearch("");
+      hideSearchDropdown();
+    });
   }
+
+  // 그래프 클릭 시 드롭다운 닫기
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".graph-search-wrap")) hideSearchDropdown();
+  });
 
   // ── 리셋 / 통계 ──────────────────────────────────────────────────────────────
 

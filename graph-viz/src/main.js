@@ -104,26 +104,26 @@ function init() {
   };
 
   const EDGE_COLORS = dark ? {
-    inCategory:    "rgba(167,139,250,0.3)",
-    inSubcategory: "rgba(96,165,250,0.25)",
-    inSeries:      "rgba(251,146,60,0.4)",
-    hasTag:        "rgba(52,211,153,0.25)",
-    related:       "rgba(192,132,252,0.4)",
-    dependsOn:     "rgba(96,165,250,0.45)",
-    tagCooccurs:   "rgba(253,224,71,0.2)",
+    inCategory:    "rgba(167,139,250,0.5)",
+    inSubcategory: "rgba(96,165,250,0.4)",
+    inSeries:      "rgba(251,146,60,0.55)",
+    hasTag:        "rgba(52,211,153,0.4)",
+    related:       "rgba(192,132,252,0.55)",
+    dependsOn:     "rgba(96,165,250,0.6)",
+    tagCooccurs:   "rgba(253,224,71,0.3)",
   } : {
-    inCategory:    "rgba(124,58,237,0.3)",
-    inSubcategory: "rgba(37,99,235,0.25)",
-    inSeries:      "rgba(234,88,12,0.35)",
-    hasTag:        "rgba(13,148,136,0.25)",
-    related:       "rgba(139,92,246,0.35)",
-    dependsOn:     "rgba(37,99,235,0.4)",
-    tagCooccurs:   "rgba(161,161,170,0.2)",
+    inCategory:    "rgba(124,58,237,0.5)",
+    inSubcategory: "rgba(37,99,235,0.45)",
+    inSeries:      "rgba(234,88,12,0.55)",
+    hasTag:        "rgba(13,148,136,0.45)",
+    related:       "rgba(139,92,246,0.55)",
+    dependsOn:     "rgba(37,99,235,0.6)",
+    tagCooccurs:   "rgba(100,100,120,0.35)",
   };
 
   const LABEL_COLOR  = dark ? "#e2e8f0" : "#1a1a2e";
-  const LABEL_BG     = dark ? "rgba(7,11,24,0.6)" : "rgba(255,255,255,0.7)";
-  const DEFAULT_EDGE = dark ? "rgba(148,163,184,0.15)" : "rgba(161,161,170,0.3)";
+  const LABEL_BG     = dark ? "rgba(7,11,24,0.7)" : "rgba(255,255,255,0.85)";
+  const DEFAULT_EDGE = dark ? "rgba(148,163,184,0.25)" : "rgba(120,120,140,0.4)";
 
   const NODE_HIDDEN_BY_TYPE = {
     category: false, subcategory: false,
@@ -198,7 +198,7 @@ function init() {
       edgeType: edge.type,
       weight:   edge.weight,
       color:    EDGE_COLORS[edge.type] || DEFAULT_EDGE,
-      size:     edge.type === "tagCooccurs" ? Math.min(edge.weight * 0.4, 1.5) : 0.7,
+      size:     edge.type === "tagCooccurs" ? Math.min(edge.weight * 0.5, 2.0) : 1.2,
       type:     isDirected ? "arrow" : "line",
     });
   });
@@ -278,11 +278,11 @@ function init() {
     labelWeight:                "600",
     labelColor:                 { color: LABEL_COLOR },
     labelBackgroundColor:       LABEL_BG,
-    labelRenderedSizeThreshold: 7,
+    labelRenderedSizeThreshold: 10,
     minCameraRatio:             0.03,
     maxCameraRatio:             8,
     defaultEdgeType:            "line",
-    defaultArrowHeadLength:     6,
+    defaultArrowHeadLength:     10,
 
     nodeReducer: (node, data) => {
       const res = { ...data };
@@ -292,14 +292,26 @@ function init() {
         ? new Set(graph.neighbors(graphState.hoveredNode))
         : (graphState.selectedNode ? new Set(graph.neighbors(graphState.selectedNode)) : null);
 
+      // 기본 테두리 — 타입별 색상으로 노드 구분 강화
+      const nodeType = data.nodeType;
+      if (nodeType === "post" || nodeType === "tag") {
+        res.borderColor = dark
+          ? (nodeType === "post" ? "rgba(244,114,182,0.6)" : "rgba(52,211,153,0.5)")
+          : (nodeType === "post" ? "rgba(220,38,38,0.5)"   : "rgba(13,148,136,0.45)");
+        res.borderSize = 1.5;
+      }
+
       if (graphState.searchQuery && graphState.searchMatches.size > 0) {
         if (!graphState.searchMatches.has(node)) {
           res.color = dark ? "rgba(148,163,184,0.15)" : "rgba(161,161,170,0.25)";
           res.label = "";
           res.size  = data.size * 0.4;
+          res.borderSize = 0;
           return res;
         }
         res.size = data.size * 1.3;
+        res.borderColor = dark ? "#fbbf24" : "#d97706";
+        res.borderSize  = 2.5;
       }
 
       if ((graphState.hoveredNode || graphState.selectedNode) && !isHovered && !isSelected) {
@@ -307,14 +319,22 @@ function init() {
           res.color = dark ? "rgba(148,163,184,0.12)" : "rgba(161,161,170,0.2)";
           res.label = "";
           res.size  = data.size * 0.5;
+          res.borderSize = 0;
           return res;
         }
         res.size = data.size * 1.1;
       }
 
+      if (isHovered) {
+        res.borderColor = dark ? "#f8fafc" : "#1e293b";
+        res.borderSize  = 2;
+      }
+
       if (isSelected) {
-        res.size   = data.size * 1.6;
-        res.zIndex = 10;
+        res.size        = data.size * 1.6;
+        res.zIndex      = 10;
+        res.borderColor = dark ? "#fbbf24" : "#b45309";
+        res.borderSize  = 3;
       }
 
       return res;
@@ -423,48 +443,92 @@ function init() {
         type:  graph.getNodeAttribute(n, "nodeType"),
       }));
 
-    let html = "";
-    html += `<div class="gp-type gp-type--${attrs.nodeType}">${typeLabel}</div>`;
-    html += `<h2 class="gp-title">${attrs.label}</h2>`;
-    if (attrs.date)       html += `<p class="gp-date">${attrs.date}</p>`;
-    if (attrs.series)     html += `<p class="gp-series">시리즈: ${attrs.series}</p>`;
+    const base = document.querySelector('meta[name="site-url"]')?.content || "/";
+
+    // ── 상단 헤더 영역 (sticky)
+    let headerHtml = `<div class="gp-node-header gp-node-header--${attrs.nodeType}">`;
+    headerHtml += `<div class="gp-node-meta"><div class="gp-type gp-type--${attrs.nodeType}">${typeLabel}</div>`;
     if (attrs.difficulty) {
       const diff = { beginner: "입문", intermediate: "중급", advanced: "고급" }[attrs.difficulty] || attrs.difficulty;
-      html += `<p class="gp-difficulty gp-difficulty--${attrs.difficulty}">${diff}</p>`;
+      headerHtml += `<span class="gp-difficulty gp-difficulty--${attrs.difficulty}">${diff}</span>`;
     }
-    html += `<div class="gp-stats"><span>연결 ${graph.degree(node)}개</span>`;
-    if (posts.length) html += `<span>포스트 ${posts.length}개</span>`;
-    html += `</div>`;
-
-    if (attrs.nodeType === "post" && attrs.url) {
-      const base = document.querySelector('meta[name="site-url"]')?.content || "/";
-      html += `<a class="gp-open-btn" href="${base}${attrs.url}">글 읽기</a>`;
+    headerHtml += `</div>`;
+    headerHtml += `<h2 class="gp-title">${attrs.label}</h2>`;
+    if (attrs.series) {
+      headerHtml += `<div class="gp-series-badge"><span class="gp-series-dot"></span>${attrs.series}</div>`;
     }
+    if (attrs.date) headerHtml += `<p class="gp-date">${attrs.date}</p>`;
 
+    // stat row
+    headerHtml += `<div class="gp-stat-row">`;
+    headerHtml += `<div class="gp-stat"><span class="gp-stat-val">${graph.degree(node)}</span><span class="gp-stat-lbl">연결</span></div>`;
+    if (posts.length) {
+      headerHtml += `<div class="gp-stat"><span class="gp-stat-val">${posts.length}</span><span class="gp-stat-lbl">포스트</span></div>`;
+    }
+    if (otherNeighbors.length) {
+      headerHtml += `<div class="gp-stat"><span class="gp-stat-val">${otherNeighbors.length}</span><span class="gp-stat-lbl">노드</span></div>`;
+    }
+    headerHtml += `</div>`;
+    headerHtml += `</div>`; // .gp-node-header
+
+    // ── 스크롤 가능한 본문
+    let bodyHtml = `<div class="gp-scroll-body">`;
+
+    // 포스트 리스트
     if (posts.length > 0) {
-      const base = document.querySelector('meta[name="site-url"]')?.content || "/";
-      html += `<div class="gp-section-title">연관 포스트 (${posts.length})</div><ul class="gp-post-list">`;
+      bodyHtml += `<div class="gp-section">`;
+      bodyHtml += `<div class="gp-section-title">연관 포스트<span class="gp-section-count">${posts.length}</span></div>`;
+      bodyHtml += `<ul class="gp-post-list">`;
       posts.slice(0, 10).forEach(p => {
-        html += `<li class="gp-post-item">`;
-        html += p.url
+        bodyHtml += `<li class="gp-post-item">`;
+        bodyHtml += `<div class="gp-post-row">`;
+        bodyHtml += p.url
           ? `<a href="${base}${p.url}" class="gp-post-link">${p.label}</a>`
           : `<span class="gp-post-label">${p.label}</span>`;
-        if (p.date) html += `<span class="gp-post-date">${p.date}</span>`;
-        html += `</li>`;
+        bodyHtml += `</div>`;
+        if (p.date) bodyHtml += `<div class="gp-post-meta-row"><span class="gp-post-date">${p.date}</span></div>`;
+        bodyHtml += `</li>`;
       });
-      if (posts.length > 10) html += `<li class="gp-post-more">+${posts.length - 10}개 더</li>`;
-      html += `</ul>`;
+      if (posts.length > 10) {
+        bodyHtml += `<li class="gp-post-more">+${posts.length - 10}개 더</li>`;
+      }
+      bodyHtml += `</ul></div>`;
     }
 
+    // 연결 노드 — 타입별 그룹핑
     if (otherNeighbors.length > 0) {
-      html += `<div class="gp-section-title">연결 노드</div><div class="gp-tags">`;
-      otherNeighbors.slice(0, 12).forEach(n => {
-        html += `<span class="gp-tag gp-tag--${n.type}" data-node-id="${n.id}">${n.label}</span>`;
+      const typeOrder = ["category", "subcategory", "series", "tag"];
+      const typeLabels = { category: "카테고리", subcategory: "서브카테고리", series: "시리즈", tag: "태그" };
+      const grouped = {};
+      otherNeighbors.forEach(n => {
+        if (!grouped[n.type]) grouped[n.type] = [];
+        grouped[n.type].push(n);
       });
-      html += `</div>`;
+
+      bodyHtml += `<div class="gp-section">`;
+      bodyHtml += `<div class="gp-section-title">연결 노드<span class="gp-section-count">${otherNeighbors.length}</span></div>`;
+      typeOrder.forEach(t => {
+        if (!grouped[t] || grouped[t].length === 0) return;
+        bodyHtml += `<div class="gp-conn-group">`;
+        bodyHtml += `<span class="gp-conn-group-label gp-type--${t}">${typeLabels[t]}</span>`;
+        bodyHtml += `<div class="gp-tags">`;
+        grouped[t].slice(0, 15).forEach(n => {
+          bodyHtml += `<span class="gp-tag gp-tag--${n.type}" data-node-id="${n.id}">${n.label}</span>`;
+        });
+        bodyHtml += `</div></div>`;
+      });
+      bodyHtml += `</div>`;
     }
 
-    panelBody.innerHTML = html;
+    bodyHtml += `</div>`; // .gp-scroll-body
+
+    // ── post 타입: CTA를 패널 하단 sticky로
+    let footerHtml = "";
+    if (attrs.nodeType === "post" && attrs.url) {
+      footerHtml = `<div class="gp-panel-footer"><a class="gp-open-btn" href="${base}${attrs.url}">글 읽기</a></div>`;
+    }
+
+    panelBody.innerHTML = headerHtml + bodyHtml + footerHtml;
     panel.classList.add("is-open");
 
     panelBody.querySelectorAll(".gp-tag[data-node-id]").forEach(el => {

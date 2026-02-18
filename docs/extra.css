@@ -1149,6 +1149,8 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   min-width: 0;
   position: relative;
   background: var(--md-default-bg-color);
+  will-change: width;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-md-color-scheme="slate"] #sigma-container {
@@ -1319,9 +1321,11 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 .gp-body {
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
   padding: 0;
   scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 빈 상태 */
@@ -1788,3 +1792,117 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 [data-md-color-scheme="slate"] .gp-conn-group-label.gp-type--subcategory { background: rgba(96,165,250,0.15);  color: #93c5fd; }
 [data-md-color-scheme="slate"] .gp-conn-group-label.gp-type--series      { background: rgba(251,146,60,0.15);  color: #fbd38d; }
 [data-md-color-scheme="slate"] .gp-conn-group-label.gp-type--tag         { background: rgba(52,211,153,0.15);  color: #6ee7b7; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   Knowledge Graph UI/UX 개선 v2
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* ── gp-node-header: sticky 고정 + 타입별 left border accent ── */
+.gp-node-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--md-default-bg-color);
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.gp-node-header--category    { border-left-color: #7C3AED; }
+.gp-node-header--subcategory { border-left-color: #2563EB; }
+.gp-node-header--series      { border-left-color: #EA580C; }
+.gp-node-header--tag         { border-left-color: #0D9488; }
+.gp-node-header--post        { border-left-color: #DC2626; }
+
+[data-md-color-scheme="slate"] .gp-node-header {
+  background: rgba(11,17,32,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-md-color-scheme="slate"] .gp-node-header--category    { border-left-color: #a78bfa; }
+[data-md-color-scheme="slate"] .gp-node-header--subcategory { border-left-color: #60a5fa; }
+[data-md-color-scheme="slate"] .gp-node-header--series      { border-left-color: #fb923c; }
+[data-md-color-scheme="slate"] .gp-node-header--tag         { border-left-color: #34d399; }
+[data-md-color-scheme="slate"] .gp-node-header--post        { border-left-color: #f472b6; }
+
+/* ── gp-scroll-body: 패널 내 스크롤 가능 본문 ── */
+.gp-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+}
+
+/* ── 포스트 리스트 아이템 구분선 ── */
+.gp-post-item + .gp-post-item {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+[data-md-color-scheme="slate"] .gp-post-item + .gp-post-item {
+  border-top-color: #1e293b;
+}
+
+/* ── 패널 하단 footer (CTA 버튼 sticky) ── */
+.gp-panel-footer {
+  position: sticky;
+  bottom: 0;
+  padding: 0.65rem 1rem;
+  background: var(--md-default-bg-color);
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  flex-shrink: 0;
+}
+
+[data-md-color-scheme="slate"] .gp-panel-footer {
+  background: rgba(11,17,32,0.95);
+  border-top-color: #1e293b;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── 빈 패널 힌트 리스트 ── */
+.gp-hint-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+  text-align: left;
+  width: 100%;
+  max-width: 180px;
+}
+
+.gp-hint-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gp-hint-key {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  font-size: 0.7rem;
+  font-weight: 600;
+  min-width: 44px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+[data-md-color-scheme="slate"] .gp-hint-list { color: #475569; }
+[data-md-color-scheme="slate"] .gp-hint-key {
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+/* ── stat 박스 다크 개선 ── */
+[data-md-color-scheme="slate"] .gp-stat {
+  background: #111827;
+  border: 1px solid #1e293b;
+}
+

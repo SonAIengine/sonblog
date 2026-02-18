@@ -1994,16 +1994,20 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
    ════════════════════════════════════════════════════════════════════════════ */
 
 /* ── 검색어 하이라이팅 ── */
-.md-search-result mark {
-  background: rgba(255, 235, 59, 0.45);
-  color: inherit;
-  padding: 0.05em 0.1em;
+.md-search-result mark,
+.md-search-result a mark {
+  background: rgba(255, 235, 59, 0.5) !important;
+  color: var(--md-default-fg-color) !important;
+  text-decoration: none !important;
+  padding: 0.05em 0.12em;
   border-radius: 2px;
   font-weight: 600;
+  font-style: normal;
 }
-[data-md-color-scheme="slate"] .md-search-result mark {
-  background: rgba(250, 204, 21, 0.3);
-  color: #fde68a;
+[data-md-color-scheme="slate"] .md-search-result mark,
+[data-md-color-scheme="slate"] .md-search-result a mark {
+  background: rgba(250, 204, 21, 0.35) !important;
+  color: #fef9c3 !important;
 }
 
 /* ── 검색 결과 밀도 높이기 ── */

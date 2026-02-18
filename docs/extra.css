@@ -1989,3 +1989,41 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   border: 1px solid #1e293b;
 }
 
+/* ════════════════════════════════════════════════════════════════════════════
+   사이트 검색 결과 스타일 개선
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 검색어 하이라이팅 ── */
+.md-search-result mark {
+  background: rgba(255, 235, 59, 0.45);
+  color: inherit;
+  padding: 0.05em 0.1em;
+  border-radius: 2px;
+  font-weight: 600;
+}
+[data-md-color-scheme="slate"] .md-search-result mark {
+  background: rgba(250, 204, 21, 0.3);
+  color: #fde68a;
+}
+
+/* ── 검색 결과 밀도 높이기 ── */
+.md-search-result__article {
+  padding: 0.4em 0.8em !important;
+  margin: 0 !important;
+}
+.md-search-result__article--document {
+  padding: 0.6em 0.8em 0.4em !important;
+}
+.md-search-result__teaser {
+  margin: 0.15em 0 0 !important;
+  line-height: 1.4 !important;
+  -webkit-line-clamp: 2 !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+.md-search-result__meta {
+  padding: 0.4em 0.8em !important;
+  font-size: 0.64rem !important;
+}
+

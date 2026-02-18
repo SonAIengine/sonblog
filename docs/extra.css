@@ -3377,3 +3377,24 @@ a.pf-footer-btn:hover {
   border-color: rgba(99, 102, 241, 0.3);
 }
 
+/* === GoatCounter: Page Views & Total Views === */
+.gc-counter {
+  display: inline-block;
+  margin-left: 0.8em;
+  font-size: 0.64rem;
+  color: #666;
+  vertical-align: middle;
+}
+
+[data-md-color-scheme="slate"] .gc-counter {
+  color: #999;
+}
+
+.gc-total-counter {
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 0.5rem;
+}
+

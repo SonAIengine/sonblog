@@ -56,3 +56,10 @@
 </script>
 {% endif %}
 {% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script data-goatcounter="https://sonblog.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"
+          data-goatcounter-settings='{"no_onload": true}'></script>
+{% endblock %}

@@ -20,6 +20,77 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// ── GoatCounter: SPA 대응 + 방문자 수 표시 ──────────────────────────────────
+(function () {
+  var GC_ENDPOINT = "https://sonblog.goatcounter.com";
+
+  // SPA instant navigation 대응: 페이지 이동마다 수동 count
+  function gcCount() {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: location.pathname });
+    }
+  }
+
+  // 페이지별 조회수 표시 (글 하단 작성일/수정일 옆)
+  function showPageViews() {
+    var sourceFile = document.querySelector(".md-source-file");
+    if (!sourceFile) return;
+    // 이미 삽입된 경우 제거 후 다시 삽입
+    var existing = sourceFile.querySelector(".gc-counter");
+    if (existing) existing.remove();
+
+    var p = location.pathname.replace(/\/$/, "") || "/";
+    var apiPath = encodeURIComponent(p);
+    var url = GC_ENDPOINT + "/counter/" + apiPath + ".json";
+
+    fetch(url)
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data || !data.count) return;
+        var span = document.createElement("span");
+        span.className = "gc-counter";
+        span.textContent = "Views: " + data.count;
+        sourceFile.appendChild(span);
+      })
+      .catch(function () {});
+  }
+
+  // 전체 방문자 수 표시 (푸터)
+  function showTotalViews() {
+    var footer = document.querySelector(".md-footer-meta__inner");
+    if (!footer) return;
+    var existing = footer.querySelector(".gc-total-counter");
+    if (existing) existing.remove();
+
+    fetch(GC_ENDPOINT + "/counter/TOTAL.json")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data || !data.count) return;
+        var span = document.createElement("span");
+        span.className = "gc-total-counter";
+        span.textContent = "Total Views: " + data.count;
+        footer.appendChild(span);
+      })
+      .catch(function () {});
+  }
+
+  function onNavigate() {
+    gcCount();
+    showPageViews();
+    showTotalViews();
+  }
+
+  if (window.document$ && window.document$.subscribe) {
+    window.document$.subscribe(onNavigate);
+  } else {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", onNavigate);
+    } else {
+      onNavigate();
+    }
+  }
+})();
+
 // ── Knowledge Graph: instant navigation 대응 ──────────────────────────────────
 // MkDocs Material의 document$ observable은 instant navigation 때마다 emit한다.
 // graph 페이지에서만 번들을 로드하고 initGraphViz()를 호출한다.

@@ -112,18 +112,18 @@ function init() {
     dependsOn:     "rgba(96,165,250,0.6)",
     tagCooccurs:   "rgba(253,224,71,0.3)",
   } : {
-    inCategory:    "rgba(124,58,237,0.5)",
-    inSubcategory: "rgba(37,99,235,0.45)",
-    inSeries:      "rgba(234,88,12,0.55)",
-    hasTag:        "rgba(13,148,136,0.45)",
-    related:       "rgba(139,92,246,0.55)",
-    dependsOn:     "rgba(37,99,235,0.6)",
-    tagCooccurs:   "rgba(100,100,120,0.35)",
+    inCategory:    "#9333ea",   // 보라 (불투명)
+    inSubcategory: "#3b82f6",   // 파랑
+    inSeries:      "#ea580c",   // 주황
+    hasTag:        "#0d9488",   // 청록
+    related:       "#8b5cf6",   // 연보라
+    dependsOn:     "#2563eb",   // 진파랑
+    tagCooccurs:   "#94a3b8",   // 슬레이트 그레이
   };
 
   const LABEL_COLOR  = dark ? "#e2e8f0" : "#1a1a2e";
-  const LABEL_BG     = dark ? "rgba(7,11,24,0.7)" : "rgba(255,255,255,0.85)";
-  const DEFAULT_EDGE = dark ? "rgba(148,163,184,0.25)" : "rgba(120,120,140,0.4)";
+  const LABEL_BG     = dark ? "rgba(7,11,24,0.7)" : "rgba(255,255,255,0)";  // 라이트: 투명 (엣지 가림 방지)
+  const DEFAULT_EDGE = dark ? "rgba(148,163,184,0.25)" : "#94a3b8";          // 라이트: 불투명 회색
 
   const NODE_HIDDEN_BY_TYPE = {
     category: false, subcategory: false,
@@ -303,7 +303,7 @@ function init() {
 
       if (graphState.searchQuery && graphState.searchMatches.size > 0) {
         if (!graphState.searchMatches.has(node)) {
-          res.color = dark ? "rgba(148,163,184,0.15)" : "rgba(161,161,170,0.25)";
+          res.color = dark ? "#1e293b" : "#cbd5e1";
           res.label = "";
           res.size  = data.size * 0.4;
           res.borderSize = 0;
@@ -318,9 +318,9 @@ function init() {
         if (!neighbors || !neighbors.has(node)) {
           // hidden 노드는 그대로 숨김, 보이는 노드는 희미하게 표시
           if (data.hidden) return res;
-          res.color = dark ? "#2d3748" : "#94a3b8";
+          res.color = dark ? "#374151" : "#b0bec5";
           res.label = "";
-          res.size  = data.size * 0.8;
+          res.size  = data.size * 0.7;
           res.borderSize = 0;
           return res;
         }
@@ -353,7 +353,9 @@ function init() {
 
       if (active) {
         if (src !== active && tgt !== active) {
-          res.hidden = true;
+          // 비활성 엣지: 숨기지 않고 연하게 표시
+          res.color = dark ? "#1e293b" : "#d1d5db";
+          res.size  = 0.3;
         } else {
           res.size  = (data.size || 1) * 2.5;
           res.color = EDGE_COLORS[data.edgeType] || DEFAULT_EDGE;
@@ -362,7 +364,8 @@ function init() {
 
       if (graphState.searchQuery && graphState.searchMatches.size > 0) {
         if (!graphState.searchMatches.has(src) && !graphState.searchMatches.has(tgt)) {
-          res.hidden = true;
+          res.color = dark ? "#1e293b" : "#d1d5db";
+          res.size  = 0.2;
         }
       }
 

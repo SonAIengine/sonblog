@@ -1737,62 +1737,14 @@ a.hero-portfolio-link:hover {
     padding: 0.2rem 0.4rem;
   }
 
-  /* sigma 컨테이너: 모바일에서는 transition 제거, 풀 너비 */
+  /* sigma 컨테이너: 모바일에서도 flex 레이아웃 유지 */
   #sigma-container {
-    width: 100% !important;
     transition: none;
   }
 
-  /* graph-layout: 세로 스택 */
-  .graph-layout {
-    flex-direction: column;
-    position: relative;
-  }
-
-  /* 패널: 하단 시트 오버레이 */
-  .graph-info-panel {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: auto;
-    height: 0;
-    width: 100% !important;
-    border-left: none;
-    border-top: 1px solid transparent;
-    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.3s;
-  }
-
+  /* 패널: 모바일에서도 우측 사이드 패널 유지 */
   .graph-info-panel.is-open {
-    height: 55%;
-    width: 100% !important;
-    border-left: none;
-    border-top-color: var(--md-default-fg-color--lightest);
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 -4px 30px rgba(0,0,0,0.25);
-    z-index: 100;
-  }
-
-  [data-md-color-scheme="slate"] .graph-info-panel.is-open {
-    border-top-color: #1e293b;
-    box-shadow: 0 -4px 30px rgba(0,0,0,0.6);
-  }
-
-  /* 하단 시트 drag handle 표시 */
-  .graph-info-panel.is-open::before {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 4px;
-    border-radius: 2px;
-    background: var(--md-default-fg-color--lighter);
-    margin: 8px auto 4px;
-    flex-shrink: 0;
-  }
-
-  [data-md-color-scheme="slate"] .graph-info-panel.is-open::before {
-    background: #334155;
+    width: 280px;
   }
 
   .graph-filter-hint { display: none; }

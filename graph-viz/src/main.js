@@ -1,6 +1,7 @@
 import Graph from "graphology";
 import Sigma from "sigma";
 import forceAtlas2 from "graphology-layout-forceatlas2";
+import louvain from "graphology-communities-louvain";
 import { create, insert, search as oramaSearch } from "@orama/orama";
 
 let currentRenderer = null;
@@ -204,61 +205,85 @@ function init() {
     });
   });
 
-  // ── 초기 배치: 타입별 섹터 ───────────────────────────────────────────────────
+  // ── Louvain 커뮤니티 감지 + 초기 배치 ─────────────────────────────────────────
 
-  const TYPE_RADIUS = {
-    category: 80, subcategory: 220, series: 280, tag: 360, post: 300,
-  };
-
-  const catNodes    = graph.nodes().filter(n => graph.getNodeAttribute(n, "nodeType") === "category");
-  const catAngleMap = {};
-  catNodes.forEach((n, i) => {
-    const angle = (i / Math.max(catNodes.length, 1)) * 2 * Math.PI;
-    catAngleMap[n] = angle;
-    graph.setNodeAttribute(n, "x", TYPE_RADIUS.category * Math.cos(angle));
-    graph.setNodeAttribute(n, "y", TYPE_RADIUS.category * Math.sin(angle));
+  // Louvain은 undirected 그래프가 필요 → 임시 복사본 생성
+  const undirectedGraph = new Graph({ multi: false, type: "undirected" });
+  graph.forEachNode((node, attrs) => {
+    undirectedGraph.addNode(node, { weight: attrs.size || 1 });
+  });
+  graph.forEachEdge((_edge, attrs, source, target) => {
+    if (source !== target && !undirectedGraph.hasEdge(source, target)) {
+      undirectedGraph.addEdge(source, target, { weight: attrs.weight || 1 });
+    }
   });
 
-  const nodeCatAngle = {};
-  graph.nodes()
-    .filter(n => graph.getNodeAttribute(n, "nodeType") === "subcategory")
-    .forEach(n => {
-      const parentCat = graph.neighbors(n).find(nb => graph.getNodeAttribute(nb, "nodeType") === "category");
-      const base = parentCat ? (catAngleMap[parentCat] || 0) : Math.random() * 2 * Math.PI;
-      const jitter = (Math.random() - 0.5) * (Math.PI / Math.max(catNodes.length, 1));
-      nodeCatAngle[n] = base + jitter;
-      graph.setNodeAttribute(n, "x", TYPE_RADIUS.subcategory * Math.cos(base + jitter));
-      graph.setNodeAttribute(n, "y", TYPE_RADIUS.subcategory * Math.sin(base + jitter));
-    });
+  // Louvain 커뮤니티 감지 (resolution > 1 → 더 세분화된 군집)
+  const communities = louvain(undirectedGraph, {
+    resolution: 1.2,
+    getEdgeWeight: "weight",
+  });
 
-  graph.nodes()
-    .filter(n => ["series", "tag", "post"].includes(graph.getNodeAttribute(n, "nodeType")))
-    .forEach(n => {
-      const type = graph.getNodeAttribute(n, "nodeType");
-      const nbs  = graph.neighbors(n);
-      const parentSubcat = nbs.find(nb => graph.getNodeAttribute(nb, "nodeType") === "subcategory");
-      const parentCat    = nbs.find(nb => graph.getNodeAttribute(nb, "nodeType") === "category");
-      let base;
-      if (parentSubcat && nodeCatAngle[parentSubcat] !== undefined) base = nodeCatAngle[parentSubcat];
-      else if (parentCat && catAngleMap[parentCat] !== undefined)    base = catAngleMap[parentCat];
-      else base = Math.random() * 2 * Math.PI;
-      const jitter = (Math.random() - 0.5) * (Math.PI * 0.6);
-      const r = TYPE_RADIUS[type] || 300;
-      graph.setNodeAttribute(n, "x", r * Math.cos(base + jitter) + (Math.random() - 0.5) * 30);
-      graph.setNodeAttribute(n, "y", r * Math.sin(base + jitter) + (Math.random() - 0.5) * 30);
-    });
+  // 커뮤니티별 노드 그룹핑
+  const communityNodes = {};
+  Object.entries(communities).forEach(([node, comm]) => {
+    if (!communityNodes[comm]) communityNodes[comm] = [];
+    communityNodes[comm].push(node);
+    if (graph.hasNode(node)) graph.setNodeAttribute(node, "community", comm);
+  });
+
+  // 커뮤니티 중심점 배치 (원형)
+  const numCommunities = Object.keys(communityNodes).length;
+  const COMMUNITY_RADIUS = 300;
+  const commCenters = {};
+  Object.keys(communityNodes).forEach((comm, i) => {
+    const angle = (i / numCommunities) * 2 * Math.PI;
+    commCenters[comm] = {
+      x: COMMUNITY_RADIUS * Math.cos(angle),
+      y: COMMUNITY_RADIUS * Math.sin(angle),
+    };
+  });
+
+  // 각 노드를 자기 커뮤니티 중심 주변에 배치
+  const catNodes = graph.nodes().filter(n => graph.getNodeAttribute(n, "nodeType") === "category");
+
+  graph.forEachNode((node) => {
+    const comm = communities[node];
+    const center = commCenters[comm] || { x: 0, y: 0 };
+    const communitySize = communityNodes[comm]?.length || 1;
+    const jitterRadius = Math.min(150, 30 + Math.sqrt(communitySize) * 15);
+
+    const angle = Math.random() * 2 * Math.PI;
+    const dist = Math.random() * jitterRadius;
+
+    graph.setNodeAttribute(node, "x", center.x + dist * Math.cos(angle));
+    graph.setNodeAttribute(node, "y", center.y + dist * Math.sin(angle));
+  });
+
+  // category 노드는 커뮤니티 중심에 고정 (앵커)
+  catNodes.forEach((n) => {
+    const comm = communities[n];
+    if (comm !== undefined && commCenters[comm]) {
+      graph.setNodeAttribute(n, "x", commCenters[comm].x);
+      graph.setNodeAttribute(n, "y", commCenters[comm].y);
+    }
+  });
+
+  // ── ForceAtlas2 시뮬레이션 (Louvain 시딩 기반 튜닝) ────────────────────────────
 
   forceAtlas2.assign(graph, {
-    iterations: 600,
+    iterations: 300,
     settings: {
-      gravity:           0.3,
-      scalingRatio:      55,
-      barnesHutOptimize: true,
-      barnesHutTheta:    0.5,
-      strongGravityMode: false,
-      linLogMode:        true,
-      adjustSizes:       true,
-      slowDown:          8,
+      gravity:                        0.05,
+      scalingRatio:                   10,
+      barnesHutOptimize:              true,
+      barnesHutTheta:                 0.5,
+      strongGravityMode:              true,
+      linLogMode:                     false,
+      outboundAttractionDistribution: true,
+      adjustSizes:                    false,
+      edgeWeightInfluence:            1,
+      slowDown:                       1,
     },
   });
 

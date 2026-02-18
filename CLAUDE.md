@@ -157,6 +157,7 @@ gh api "repos/SonAIengine/{레포명}/commits?since=시작일&until=종료일&pe
 1. **frontmatter tags 수정** — 이전 카테고리명 태그 제거, 새 카테고리에 맞는 태그 추가 (예: `DevOps` → `XGEN`, `데스크톱앱` 등)
 2. **중복 글 체크** — 이동 대상 폴더에 동일/유사 주제 글이 이미 있는지 확인. 중복이면 더 상세한 쪽을 남기고 삭제
 3. **description 검토** — 이전 카테고리 맥락에 맞춰 쓴 description이면 새 카테고리에 맞게 수정
+4. **`.pages` 파일 수정** — 출발 폴더의 `.pages` nav 목록에서 해당 파일명 제거. `.pages`가 있는 폴더에서 파일을 빼면 awesome-pages 플러그인이 `NavEntryNotFound` 에러로 빌드 실패함
 
 ## 접속 정보
 

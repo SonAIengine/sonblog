@@ -2666,7 +2666,8 @@ a.pf-hero-btn--primary:visited {
 
 /* ── Projects ── */
 .pf-project {
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding: 1px;
   border-radius: 12px;
   text-decoration: none !important;
@@ -2702,6 +2703,13 @@ a.pf-hero-btn--primary:visited {
   background: #ffffff;
   border-radius: 11px;
   padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pf-project-content .pf-project-desc {
+  flex: 1;
 }
 
 .pf-project:hover {

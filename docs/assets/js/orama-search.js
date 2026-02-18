@@ -31,7 +31,7 @@
   function getSiteBase() {
     var meta = document.querySelector('meta[name="site-url"]');
     if (meta && meta.content) return meta.content.replace(/\/$/, "") + "/";
-    return "/sonblog/";
+    return "/";
   }
 
   var SITE_BASE = null;

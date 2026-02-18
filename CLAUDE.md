@@ -123,12 +123,16 @@ gh api "repos/SonAIengine/{레포명}/commits?since=시작일&until=종료일&pe
 
 ## 카테고리 구조
 
-| 카테고리 | 폴더 경로 |
-|----------|-----------|
-| 검색 엔진 / AI Search | `docs/search-engine/` |
-| AI/ML & LLM | `docs/ai/` |
-| DevOps / 인프라 | `docs/devops/` |
-| Full Stack (Frontend, Backend, Desktop 등) | `docs/full-stack/` |
+| 카테고리 | 폴더 경로 | 성격 |
+|----------|-----------|------|
+| 검색 엔진 / AI Search | `docs/search-engine/` | OpenSearch, Qdrant, NestJS/Rust 검색 엔진, RAG |
+| AI/ML & LLM | `docs/ai/` | 모델 서빙, 임베딩, 파인튜닝, Agent, XGEN 플랫폼 |
+| DevOps / 인프라 | `docs/devops/` | K8s, ArgoCD, Jenkins, Docker 등 **전문 인프라/클라우드 경험** |
+| Full Stack | `docs/full-stack/` | Frontend, Backend, Desktop, Python, **PoC/블로그 기능 개발** |
+
+### 카테고리 분류 기준
+- **devops/infra**: Kubernetes, 클라우드, CI/CD 등 전문 인프라 지식/경험 위주
+- **full-stack/poc**: 블로그 자체 기능(SEO, Knowledge Graph, 검색 등) 개발/설정은 여기에
 
 ## 접속 정보
 

@@ -2394,7 +2394,7 @@ a.hero-portfolio-link:hover {
 }
 
 .pf-hero-name {
-  color: #e2e8f0;
+  color: #e2e8f0 !important;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
   margin: 0 0 0.6rem 0;
@@ -2477,9 +2477,9 @@ a.pf-hero-btn--primary:visited {
 
 /* ── Section Common ── */
 .pf-section {
-  max-width: 960px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 0;
+  padding: 3rem 2rem 0;
 }
 
 .pf-section-header {
@@ -3012,9 +3012,9 @@ a.pf-hero-btn--primary:visited {
 
 /* ── Footer ── */
 .pf-footer {
-  max-width: 960px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 2rem;
+  padding: 3rem 2rem 2rem;
   text-align: center;
 }
 

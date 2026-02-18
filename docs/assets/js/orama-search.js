@@ -46,8 +46,8 @@
         if (!doc.title && !doc.text) continue;
         orama.insert(db, {
           location: doc.location || "",
-          title: doc.title || "",
-          text: doc.text || "",
+          title: stripHtml(doc.title || ""),
+          text: stripHtml(doc.text || ""),
         });
       }
 
@@ -144,6 +144,11 @@
   function esc(str) {
     if (!str) return "";
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function stripHtml(str) {
+    if (!str) return "";
+    return str.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
   }
 
   // ── Material 검색 가로채기 ──

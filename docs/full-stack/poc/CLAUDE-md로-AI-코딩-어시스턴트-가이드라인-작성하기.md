@@ -5,9 +5,9 @@ date: 2026-02-10
 tags:
   - Claude Code
   - AI
-  - DevOps
   - 개발 생산성
   - 코딩 어시스턴트
+  - CLAUDE.md
 ---
 
 ## 배경

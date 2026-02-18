@@ -8,7 +8,7 @@ tags:
   - deb
   - rpm
   - 데스크톱앱
-  - DevOps
+  - XGEN
 ---
 
 ## 배경

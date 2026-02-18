@@ -149,7 +149,14 @@ gh api "repos/SonAIengine/{레포명}/commits?since=시작일&until=종료일&pe
 
 ### 카테고리 분류 기준
 - **devops/infra**: Kubernetes, 클라우드, CI/CD 등 전문 인프라 지식/경험 위주
-- **full-stack/poc**: 블로그 자체 기능(SEO, Knowledge Graph, 검색 등) 개발/설정은 여기에
+- **full-stack/desktop**: Tauri, 데스크톱 앱 개발 (Sidecar, 빌드/패키징 포함)
+- **full-stack/poc**: 블로그 자체 기능(SEO, Knowledge Graph, 검색 등) 개발/설정, 개발 도구/방법론
+
+### 글 카테고리 이동 시 체크리스트
+글을 다른 카테고리로 옮길 때 파일만 mv하면 안 된다. 반드시 아래 항목을 함께 처리할 것:
+1. **frontmatter tags 수정** — 이전 카테고리명 태그 제거, 새 카테고리에 맞는 태그 추가 (예: `DevOps` → `XGEN`, `데스크톱앱` 등)
+2. **중복 글 체크** — 이동 대상 폴더에 동일/유사 주제 글이 이미 있는지 확인. 중복이면 더 상세한 쪽을 남기고 삭제
+3. **description 검토** — 이전 카테고리 맥락에 맞춰 쓴 description이면 새 카테고리에 맞게 수정
 
 ## 접속 정보
 

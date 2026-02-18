@@ -344,24 +344,25 @@ function init() {
 
     edgeReducer: (edge, data) => {
       const res = { ...data };
+
+      // hidden 엣지는 건드리지 않음 (applyFilters에서 이미 처리)
+      if (data.hidden) return res;
+
       const [src, tgt] = graph.extremities(edge);
       const active = graphState.hoveredNode || graphState.selectedNode;
 
       if (active) {
         if (src !== active && tgt !== active) {
-          res.color = dark ? "rgba(148,163,184,0.06)" : "rgba(161,161,170,0.1)";
-          res.size  = 0.2;
+          res.hidden = true;
         } else {
-          res.size  = (data.size || 0.7) * 2.2;
-          res.color = (EDGE_COLORS[data.edgeType] || DEFAULT_EDGE)
-            .replace(/[\d.]+\)$/, "0.75)");
+          res.size  = (data.size || 1) * 2.5;
+          res.color = EDGE_COLORS[data.edgeType] || DEFAULT_EDGE;
         }
       }
 
       if (graphState.searchQuery && graphState.searchMatches.size > 0) {
         if (!graphState.searchMatches.has(src) && !graphState.searchMatches.has(tgt)) {
-          res.color = dark ? "rgba(148,163,184,0.06)" : "rgba(161,161,170,0.1)";
-          res.size  = 0.2;
+          res.hidden = true;
         }
       }
 

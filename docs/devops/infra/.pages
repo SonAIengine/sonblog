@@ -19,3 +19,5 @@ nav:
   - Kubernetes-Health-Probe-타임아웃-설정.md
   - XGEN-2.0-인프라-K8s-ArgoCD-운영-배포.md
   - Search-API와-LLMOps-Docker-구성기.md
+  - ArgoCD-멀티-고객사-배포-아키텍처-ApplicationSet-시행착오와-단일-진입점-설계.md
+  - XGEN-멀티파드-분산-환경-마이그레이션-Redis-분산-락과-직렬화-삽질기.md

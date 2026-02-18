@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-18
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#48, DevOps #77~#95
-- 다음 작성 대상: AI Agent #49~#60
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#51, DevOps #77~#95
+- 다음 작성 대상: AI Agent #52~#60
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -122,3 +122,6 @@
 - docs/agent/AI-Agent-기반-브라우저-자동화-시스템-구축기.md (AI Agent #46)
 - docs/agent/Claude-Code-수준의-Agent-정확도-달성하기.md (AI Agent #47)
 - docs/agent/MCP로-Agent-속도-3-5x-개선.md (AI Agent #48)
+- docs/agent/Human-in-the-Loop-AI-Agent에-사람-개입-지점-설계하기.md (AI Agent #49)
+- docs/agent/시나리오-레코더-사용자-행동-녹화-및-재생-엔진.md (AI Agent #50)
+- docs/agent/브라우저-자동화-시-페이지-네비게이션-생존-전략.md (AI Agent #51)

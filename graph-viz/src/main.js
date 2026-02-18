@@ -635,6 +635,11 @@ function init() {
   // search_index.json에서 포스트 본문 가져와서 Orama 인덱스 구축
   const siteBase = document.querySelector('meta[name="site-url"]')?.content || "/sonblog/";
 
+  function stripHtml(str) {
+    if (!str) return "";
+    return str.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  }
+
   (async function buildOramaIndex() {
     try {
       // URL → 본문 텍스트 매핑 (search_index.json 활용)
@@ -646,7 +651,7 @@ function init() {
           const loc = (d.location || "").split("#")[0];
           if (!loc) return;
           if (!urlToText[loc]) urlToText[loc] = "";
-          urlToText[loc] += " " + (d.text || "");
+          urlToText[loc] += " " + stripHtml(d.text || "");
         });
       } catch (e) {
         console.warn("graph-viz: search_index.json 로드 실패, label만으로 인덱스 구축", e);

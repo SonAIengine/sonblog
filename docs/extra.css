@@ -2077,25 +2077,57 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   color: #b0b8ff;
 }
 
-/* ── 섹션 결과 들여쓰기 ── */
-.md-search-result__link--section .md-search-result__article {
-  padding-left: 1.6em !important;
-  border-left: 2px solid rgba(63, 81, 181, 0.2);
-  margin-left: 0.8em !important;
+/* ── 섹션 컴팩트 링크 리스트 ── */
+.md-search-result__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 0.8em 0.4em 2.2em;
+  border-left: 2px solid rgba(63, 81, 181, 0.18);
+  margin-left: 1.2em;
 }
-[data-md-color-scheme="slate"] .md-search-result__link--section .md-search-result__article {
-  border-left-color: rgba(139, 148, 255, 0.25);
+[data-md-color-scheme="slate"] .md-search-result__sections {
+  border-left-color: rgba(139, 148, 255, 0.2);
 }
-.md-search-result__link--section .md-search-result__title {
-  font-size: 0.72rem !important;
+.md-search-result__section-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.22em 0.5em;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+.md-search-result__section-link:hover {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+}
+.md-search-result__section-hash {
+  color: var(--md-default-fg-color--lightest);
+  font-size: 0.62rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.md-search-result__section-link:hover .md-search-result__section-hash {
+  color: var(--md-accent-fg-color);
+}
+.md-search-result__section-more {
+  font-size: 0.6rem;
+  color: var(--md-default-fg-color--lighter);
+  padding: 0.15em 0.5em;
 }
 
 /* ── 호버 / 키보드 네비게이션 ── */
 .md-search-result__link:hover,
-.md-search-result__link--active {
+.md-search-result__link--active,
+.md-search-result__section-link--active {
   background: var(--md-accent-fg-color--transparent) !important;
 }
-.md-search-result__link--active {
+.md-search-result__link--active,
+.md-search-result__section-link--active {
   outline: 2px solid var(--md-accent-fg-color);
   outline-offset: -2px;
   border-radius: 2px;

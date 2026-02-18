@@ -309,19 +309,24 @@
       }
       html += "</article></a>";
 
-      // 섹션 결과 (스코어순, 최대 3개)
-      var secCount = 0;
-      filteredSections.forEach(function (sec) {
-        if (secCount >= 3) return;
-        secCount++;
-        var secUrl = SITE_BASE + sec.location;
-        var snippet = contextSnippet(sec.text, query, 120);
-        html += '<a href="' + esc(secUrl) + '" class="md-search-result__link md-search-result__link--section" tabindex="-1">';
-        html += '<article class="md-search-result__article">';
-        if (sec.title) html += '<h2 class="md-search-result__title">' + highlight(sec.title, query) + "</h2>";
-        if (snippet) html += '<p class="md-search-result__teaser">' + highlight(snippet, query) + "</p>";
-        html += "</article></a>";
-      });
+      // 섹션 결과 — 컴팩트 링크 리스트 (최대 4개)
+      if (filteredSections.length > 0) {
+        var maxSec = Math.min(filteredSections.length, 4);
+        html += '<div class="md-search-result__sections">';
+        for (var si = 0; si < maxSec; si++) {
+          var sec = filteredSections[si];
+          if (!sec.title) continue;
+          var secUrl = SITE_BASE + sec.location;
+          html += '<a href="' + esc(secUrl) + '" class="md-search-result__section-link" tabindex="-1">';
+          html += '<span class="md-search-result__section-hash">#</span>';
+          html += highlight(sec.title, query);
+          html += '</a>';
+        }
+        if (filteredSections.length > maxSec) {
+          html += '<span class="md-search-result__section-more">+' + (filteredSections.length - maxSec) + '개 더</span>';
+        }
+        html += '</div>';
+      }
 
       html += "</li>";
     });
@@ -355,7 +360,7 @@
     // 키보드 네비게이션 (화살표 위/아래, Enter)
     searchInput.addEventListener("keydown", function (e) {
       if (e.key !== "ArrowDown" && e.key !== "ArrowUp" && e.key !== "Enter") return;
-      var links = resultList.querySelectorAll(".md-search-result__link");
+      var links = resultList.querySelectorAll(".md-search-result__link, .md-search-result__section-link");
       if (links.length === 0) return;
 
       if (e.key === "Enter" && activeResultIdx >= 0 && activeResultIdx < links.length) {
@@ -376,7 +381,11 @@
       }
 
       links.forEach(function (l, i) {
-        l.classList.toggle("md-search-result__link--active", i === activeResultIdx);
+        var cls = l.classList.contains("md-search-result__section-link")
+          ? "md-search-result__section-link--active"
+          : "md-search-result__link--active";
+        l.classList.remove("md-search-result__link--active", "md-search-result__section-link--active");
+        if (i === activeResultIdx) l.classList.add(cls);
       });
 
       if (activeResultIdx >= 0 && links[activeResultIdx]) {

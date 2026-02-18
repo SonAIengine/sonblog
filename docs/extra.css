@@ -771,47 +771,102 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
    KNOWLEDGE GRAPH — Obsidian-style
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* 홈 - 그래프 링크 카드 */
-.home-graph {
-  max-width: 900px;
-  margin: 2rem auto 0;
-  padding: 0 1rem;
-}
-
-.graph-link-card {
-  display: flex;
+/* 홈 - Knowledge Graph 와이드 배너 카드 */
+.home-card--graph {
+  grid-column: 1 / -1;
+  position: relative;
+  min-height: 110px;
+  background: linear-gradient(135deg, #0f0c29 0%, #1a1040 40%, #0d1b3e 100%);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  overflow: hidden;
+  padding: 0;
+  flex-direction: row;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.25rem 1.5rem;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 8px;
+}
+
+.home-card--graph::before {
+  background: linear-gradient(90deg, #7c3aed, #06b6d4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-card--graph:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.25);
+  border-color: rgba(124, 58, 237, 0.7);
   text-decoration: none;
-  color: inherit;
-  transition: border-color 0.2s, background 0.2s;
 }
 
-.graph-link-card:hover {
-  border-color: var(--md-primary-fg-color);
-  background: var(--md-default-fg-color--lightest);
+.home-card--graph:hover::before {
+  opacity: 1;
 }
 
-.graph-link-icon svg {
-  width: 120px;
-  height: 80px;
-  flex-shrink: 0;
+.home-card--graph-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-.graph-link-text h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1rem;
+.graph-bg-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+@keyframes graphPulse {
+  0%, 100% { r: 10; opacity: 0.15; }
+  50% { r: 15; opacity: 0.08; }
+}
+
+.graph-pulse-outer {
+  animation: graphPulse 3s ease-in-out infinite;
+}
+
+.home-card--graph-content {
+  position: relative;
+  z-index: 1;
+  padding: 1.4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.home-card--graph-label {
+  font-size: 0.62rem;
   font-weight: 600;
-  color: var(--md-primary-fg-color);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  margin-bottom: 0.1rem;
 }
 
-.graph-link-text p {
+.home-card--graph h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f0f0ff;
   margin: 0;
-  font-size: 0.85rem;
-  color: var(--md-default-fg-color--light);
+  padding: 0;
+  border: none;
+}
+
+.home-card--graph p {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin: 0;
+  flex-grow: 0;
+}
+
+.home-card--graph-cta {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #c4b5fd;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.home-card--graph:hover .home-card--graph-cta {
+  color: #e9d5ff;
 }
 
 /* ── 페이지 레이아웃 ────────────────────────────────────────────────────────── */
@@ -1392,15 +1447,16 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 [data-md-color-scheme="slate"] .gp-tag--tag         { background: rgba(52,211,153,0.12);  color: #6ee7b7; border: 1px solid rgba(52,211,153,0.3); }
 [data-md-color-scheme="slate"] .gp-tag--post        { background: rgba(244,114,182,0.12); color: #f9a8d4; border: 1px solid rgba(244,114,182,0.3); }
 
-/* ── 다크모드 (graph-link-card 용) ──────────────────────────────────────────── */
+/* ── 다크모드 (home-card--graph) ──────────────────────────────────────────── */
 
-[data-md-color-scheme="slate"] .graph-link-card {
-  border-color: #30363d;
+[data-md-color-scheme="slate"] .home-card--graph {
+  background: linear-gradient(135deg, #0a0717 0%, #130d2e 40%, #080f20 100%);
+  border-color: rgba(124, 58, 237, 0.4);
 }
 
-[data-md-color-scheme="slate"] .graph-link-card:hover {
-  background: #161b22;
-  border-color: #a78bfa;
+[data-md-color-scheme="slate"] .home-card--graph:hover {
+  border-color: rgba(167, 139, 250, 0.8);
+  box-shadow: 0 8px 40px rgba(124, 58, 237, 0.3);
 }
 
 /* ── 반응형 ─────────────────────────────────────────────────────────────────── */

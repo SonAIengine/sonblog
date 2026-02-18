@@ -35,33 +35,57 @@
     <p>K8s, ArgoCD, Jenkins, Docker, 인프라 구성</p>
     <span class="home-card-count">{{ post_counts.devops }} posts</span>
   </a>
-</section>
-
-<section class="home-graph">
-  <a href="graph/" class="graph-link-card">
-    <div class="graph-link-icon">
-      <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="60" cy="40" r="10" fill="#5C6BC0"/>
-        <circle cx="25" cy="20" r="6" fill="#7986CB"/>
-        <circle cx="95" cy="20" r="6" fill="#7986CB"/>
-        <circle cx="20" cy="60" r="5" fill="#26A69A"/>
-        <circle cx="100" cy="60" r="5" fill="#26A69A"/>
-        <circle cx="60" cy="72" r="4" fill="#EF5350"/>
-        <circle cx="38" cy="55" r="4" fill="#EF5350"/>
-        <circle cx="82" cy="55" r="4" fill="#EF5350"/>
-        <line x1="60" y1="40" x2="25" y2="20" stroke="#7986CB" stroke-width="1.5" opacity="0.7"/>
-        <line x1="60" y1="40" x2="95" y2="20" stroke="#7986CB" stroke-width="1.5" opacity="0.7"/>
-        <line x1="60" y1="40" x2="20" y2="60" stroke="#80CBC4" stroke-width="1.2" opacity="0.7"/>
-        <line x1="60" y1="40" x2="100" y2="60" stroke="#80CBC4" stroke-width="1.2" opacity="0.7"/>
-        <line x1="60" y1="40" x2="60" y2="72" stroke="#EF9A9A" stroke-width="1" opacity="0.6"/>
-        <line x1="60" y1="40" x2="38" y2="55" stroke="#EF9A9A" stroke-width="1" opacity="0.6"/>
-        <line x1="60" y1="40" x2="82" y2="55" stroke="#EF9A9A" stroke-width="1" opacity="0.6"/>
-        <line x1="20" y1="60" x2="100" y2="60" stroke="#FFD54F" stroke-width="1" opacity="0.5"/>
+  <a href="graph/" class="home-card home-card--graph">
+    <div class="home-card--graph-bg">
+      <svg class="graph-bg-svg" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- glow halos -->
+        <ellipse cx="200" cy="60" rx="80" ry="50" fill="url(#glow1)" opacity="0.4"/>
+        <ellipse cx="320" cy="40" rx="50" ry="35" fill="url(#glow2)" opacity="0.3"/>
+        <!-- edges -->
+        <line x1="200" y1="60" x2="100" y2="25" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+        <line x1="200" y1="60" x2="300" y2="20" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
+        <line x1="200" y1="60" x2="80" y2="85" stroke="#67e8f9" stroke-width="0.8" opacity="0.4"/>
+        <line x1="200" y1="60" x2="330" y2="90" stroke="#67e8f9" stroke-width="0.8" opacity="0.4"/>
+        <line x1="200" y1="60" x2="200" y2="105" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4"/>
+        <line x1="200" y1="60" x2="155" y2="95" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4"/>
+        <line x1="200" y1="60" x2="250" y2="95" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4"/>
+        <line x1="100" y1="25" x2="300" y2="20" stroke="#a78bfa" stroke-width="0.6" opacity="0.25"/>
+        <line x1="80" y1="85" x2="330" y2="90" stroke="#fbbf24" stroke-width="0.6" opacity="0.25"/>
+        <line x1="60" y1="50" x2="100" y2="25" stroke="#a78bfa" stroke-width="0.6" opacity="0.3"/>
+        <line x1="360" y1="35" x2="300" y2="20" stroke="#67e8f9" stroke-width="0.6" opacity="0.3"/>
+        <!-- satellite nodes -->
+        <circle cx="100" cy="25" r="4.5" fill="#a78bfa" opacity="0.9"/>
+        <circle cx="300" cy="20" r="4.5" fill="#a78bfa" opacity="0.9"/>
+        <circle cx="80" cy="85" r="4" fill="#67e8f9" opacity="0.85"/>
+        <circle cx="330" cy="90" r="4" fill="#67e8f9" opacity="0.85"/>
+        <circle cx="200" cy="105" r="3.5" fill="#f9a8d4" opacity="0.8"/>
+        <circle cx="155" cy="95" r="3.5" fill="#f9a8d4" opacity="0.8"/>
+        <circle cx="250" cy="95" r="3.5" fill="#f9a8d4" opacity="0.8"/>
+        <circle cx="60" cy="50" r="3" fill="#a78bfa" opacity="0.7"/>
+        <circle cx="360" cy="35" r="3" fill="#67e8f9" opacity="0.7"/>
+        <circle cx="40" cy="100" r="2.5" fill="#fbbf24" opacity="0.6"/>
+        <circle cx="370" cy="100" r="2.5" fill="#fbbf24" opacity="0.6"/>
+        <!-- center node (pulse) -->
+        <circle cx="200" cy="60" r="10" fill="#7c3aed" opacity="0.15" class="graph-pulse-outer"/>
+        <circle cx="200" cy="60" r="7" fill="#7c3aed" opacity="0.9"/>
+        <circle cx="200" cy="60" r="3.5" fill="#c4b5fd"/>
       </svg>
     </div>
-    <div class="graph-link-text">
-      <h3>Knowledge Graph</h3>
-      <p>{{ graph_metadata.total_posts }}개 포스트와 {{ graph_metadata.total_tags }}개 태그의 연결 구조를 온톨로지 그래프로 시각화</p>
+    <div class="home-card--graph-content">
+      <div class="home-card--graph-label">Interactive</div>
+      <h2>Knowledge Graph</h2>
+      <p>{{ graph_metadata.total_posts }}개 포스트 &middot; {{ graph_metadata.total_tags }}개 태그</p>
+      <span class="home-card--graph-cta">탐색하기 &rarr;</span>
     </div>
   </a>
 </section>

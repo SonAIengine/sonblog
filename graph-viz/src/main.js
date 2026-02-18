@@ -479,6 +479,17 @@ function init() {
     // ── 스크롤 가능한 본문
     let bodyHtml = `<div class="gp-scroll-body">`;
 
+    // 포스트 테이저 (post 타입만)
+    if (attrs.nodeType === "post") {
+      const rawTeaser = (nodeContentMap[node] || "").trim();
+      if (rawTeaser) {
+        const teaser = rawTeaser.slice(0, 220);
+        bodyHtml += `<div class="gp-section gp-section--teaser">`;
+        bodyHtml += `<p class="gp-post-teaser">${teaser}${rawTeaser.length > 220 ? "..." : ""}</p>`;
+        bodyHtml += `</div>`;
+      }
+    }
+
     // 포스트 리스트 — 전체 표시 (스크롤로 탐색)
     if (posts.length > 0) {
       bodyHtml += `<div class="gp-section">`;
@@ -525,7 +536,7 @@ function init() {
     // ── post 타입: CTA를 패널 하단 sticky로
     let footerHtml = "";
     if (attrs.nodeType === "post" && attrs.url) {
-      footerHtml = `<div class="gp-panel-footer"><a class="gp-open-btn" href="${base}${attrs.url}">글 읽기</a></div>`;
+      footerHtml = `<div class="gp-panel-footer"><a class="gp-open-btn" href="${base}${attrs.url}">글 읽기<svg class="gp-open-btn-icon" viewBox="0 0 16 16" fill="none" width="13" height="13"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>`;
     }
 
     panelBody.innerHTML = headerHtml + bodyHtml + footerHtml;
@@ -632,6 +643,9 @@ function init() {
     }
   });
 
+  // 노드 → 본문 텍스트 매핑 (패널 teaser 표시용)
+  const nodeContentMap = {};
+
   // search_index.json에서 포스트 본문 가져와서 Orama 인덱스 구축
   const siteBase = document.querySelector('meta[name="site-url"]')?.content || "/sonblog/";
 
@@ -656,6 +670,15 @@ function init() {
       } catch (e) {
         console.warn("graph-viz: search_index.json 로드 실패, label만으로 인덱스 구축", e);
       }
+
+      // nodeContentMap 구축: URL → 본문 텍스트 매핑
+      graph.nodes().forEach(n => {
+        const a = graph.getNodeAttributes(n);
+        if (a.nodeType === "post" && a.url) {
+          const cleanUrl = (a.url || "").replace(/^\//, "").replace(/^sonblog\//, "");
+          nodeContentMap[n] = (urlToText[cleanUrl] || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+        }
+      });
 
       oramaDb = create({
         schema: {

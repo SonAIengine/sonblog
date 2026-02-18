@@ -1512,27 +1512,76 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 [data-md-color-scheme="slate"] .gp-difficulty--intermediate { background: rgba(251,191,36,0.12); color: #fcd34d; }
 [data-md-color-scheme="slate"] .gp-difficulty--advanced    { background: rgba(244,114,182,0.12); color: #f9a8d4; }
 
+/* 포스트 테이저 (본문 미리보기) */
+.gp-section--teaser {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.gp-post-teaser {
+  font-size: 0.74rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+[data-md-color-scheme="slate"] .gp-post-teaser {
+  color: #64748b;
+}
+
+/* 글 읽기 버튼 */
 .gp-open-btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   width: 100%;
-  padding: 0.45rem;
+  padding: 0.52rem 1rem;
   text-align: center;
-  background: var(--md-primary-fg-color);
-  color: #fff !important;
+  background: transparent;
+  color: var(--md-primary-fg-color) !important;
+  border: 1.5px solid var(--md-primary-fg-color);
   border-radius: 6px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-decoration: none !important;
-  margin-top: 0.6rem;
-  transition: opacity 0.15s;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.12s;
+  box-sizing: border-box;
+  letter-spacing: 0.01em;
+}
+
+.gp-open-btn:hover {
+  background: var(--md-primary-fg-color);
+  color: #fff !important;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(63, 81, 181, 0.22);
+}
+
+.gp-open-btn-icon {
+  flex-shrink: 0;
+  transition: transform 0.18s;
+}
+
+.gp-open-btn:hover .gp-open-btn-icon {
+  transform: translateX(3px);
 }
 
 [data-md-color-scheme="slate"] .gp-open-btn {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  box-shadow: 0 0 12px rgba(167,139,250,0.3);
+  border-color: #6366f1;
+  color: #a5b4fc !important;
 }
 
-.gp-open-btn:hover { opacity: 0.88; }
+[data-md-color-scheme="slate"] .gp-open-btn:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff !important;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+}
 
 /* 연결 태그/카테고리 칩 */
 .gp-tags {

@@ -8,9 +8,9 @@ tags:
   - ForceAtlas2
   - MkDocs
   - Knowledge Graph
-  - Orama
   - Vite
   - WebGL
+  - Python
 ---
 
 # MkDocs 블로그에 온톨로지 기반 Knowledge Graph 구현하기
@@ -19,13 +19,12 @@ tags:
 
 블로그 글이 20개를 넘어가면서 글 사이의 관계가 점점 보이지 않게 됐다. "검색 엔진 시리즈 9편과 RAG 청킹 글이 어떻게 연결되는가?"를 독자에게 전달할 방법이 필요했다. 태그 페이지나 카테고리 트리로는 한계가 있었다. 글 간 관계를 직관적으로 보여주는 **인터랙티브 지식 그래프**를 직접 만들기로 했다.
 
-최종 결과물은 Sigma.js v3 WebGL 기반의 Knowledge Graph다. 노드를 클릭하면 연관 문서가 사이드패널에 표시되고, 타입별 필터링과 BM25 검색을 지원한다. MkDocs Material 위에 빌드 타임 Python 훅과 런타임 JavaScript 번들 두 레이어로 구현했다.
+최종 결과물은 Sigma.js v3 WebGL 기반의 Knowledge Graph다. 노드를 클릭하면 연관 문서가 사이드패널에 표시되고, 타입별 필터링을 지원한다. MkDocs Material 위에 빌드 타임 Python 훅과 런타임 JavaScript 번들 두 레이어로 구현했다. 검색 기능은 별도 글 [Knowledge Graph 검색 시스템 구현기](knowledge-graph-search.md)에서 다룬다.
 
 핵심 기술 스택:
 
 - **그래프 라이브러리**: Graphology + Sigma.js v3 (WebGL 렌더링)
 - **레이아웃 알고리즘**: ForceAtlas2 (Barnes-Hut 최적화)
-- **검색 엔진**: Orama BM25 (클라이언트 사이드)
 - **빌드 훅**: Python (MkDocs hook)
 - **번들러**: Vite (IIFE 단일 파일)
 
@@ -46,7 +45,6 @@ flowchart TB
         GRAPHO["Graphology"] --> VITE
         SIGMA["Sigma.js v3"] --> VITE
         FA2["ForceAtlas2"] --> VITE
-        ORAMA["Orama BM25"] --> VITE
         VITE --> IIFE["graph-viz.iife.js<br/>단일 IIFE 번들"]
     end
 
@@ -55,7 +53,6 @@ flowchart TB
         IIFE --> INIT["initGraphViz()"]
         DATA --> INIT
         INIT --> WEBGL["Sigma.js WebGL<br/>그래프 렌더링"]
-        INIT --> SEARCH["Orama BM25<br/>노드 검색"]
         INIT --> PANEL["사이드패널<br/>노드 상세 정보"]
     end
 
@@ -301,49 +298,6 @@ const NODE_COLORS = dark ? {
 ```
 
 다크 모드에서는 별 파티클 배경 애니메이션도 추가했다. Canvas 2D API로 200개의 별이 깜빡이는 효과를 구현했다.
-
-## 검색: Orama BM25
-
-그래프에 노드가 100개를 넘으면 시각적 탐색만으로는 한계가 있다. Orama BM25 검색 엔진을 클라이언트 사이드에서 돌려 노드를 빠르게 찾을 수 있게 했다.
-
-### 인덱스 구축
-
-검색 인덱스는 MkDocs가 생성하는 `search_index.json`의 본문 텍스트를 활용한다. 그래프 노드의 label, nodeType에 더해 실제 글 본문을 최대 2,000자까지 인덱싱한다.
-
-```javascript
-oramaDb = create({
-  schema: {
-    nodeId: "string",
-    label: "string",
-    nodeType: "string",
-    content: "string",   // search_index.json의 본문 텍스트
-    tags: "string",
-    series: "string",
-  },
-});
-```
-
-boost 설정으로 label 매치에 3배, tags에 2배 가중치를 두어 정확한 노드 이름 매치가 상위에 오도록 했다.
-
-### 리치 검색 드롭다운
-
-검색 결과는 단순 목록이 아니라 타입 뱃지, teaser, 날짜, 태그, 연결 수를 포함하는 리치 UI로 표시된다.
-
-```javascript
-// 포스트 노드: 날짜 + 시리즈 + 본문 미리보기 + 태그
-let metaHtml = "";
-if (attrs.date) parts.push(attrs.date);
-if (doc.content) {
-  const teaser = doc.content.slice(0, 80).trim();
-  metaHtml += `<span class="gsd-teaser">${teaser}...</span>`;
-}
-if (doc.tags) {
-  const tagList = doc.tags.split(" ").slice(0, 5);
-  metaHtml += tagList.map(t => `<span class="gsd-tag">${t}</span>`).join("");
-}
-```
-
-검색어를 입력하면 매치된 노드가 그래프에서 하이라이트되고, 비매치 노드는 희미해진다. 드롭다운에서 항목을 클릭하면 해당 노드로 카메라가 이동하고 사이드패널이 열린다.
 
 ## UI/UX: 사이드패널과 툴바
 

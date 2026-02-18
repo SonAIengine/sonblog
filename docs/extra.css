@@ -361,30 +361,11 @@ a.hero-portfolio-link:hover {
 }
 
 .hero-emails {
-  margin-top: 0.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.hero-emails a,
-.hero-emails a:link,
-.hero-emails a:visited {
-  color: rgba(255, 255, 255, 0.7) !important;
+  margin: 0.8rem 0 0 0;
+  color: rgba(255, 255, 255, 0.55);
   font-size: 0.75rem;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  text-decoration: none !important;
-}
-
-.hero-emails a:hover {
-  color: #ffffff !important;
-}
-
-.hero-email-sep {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 0.75rem;
+  letter-spacing: 0.01em;
 }
 
 .hero-stats {
@@ -2467,30 +2448,11 @@ a.hero-portfolio-link:hover {
 }
 
 .pf-hero-emails {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.2rem;
-  flex-wrap: wrap;
-}
-
-.pf-hero-emails a,
-.pf-hero-emails a:link,
-.pf-hero-emails a:visited {
-  color: rgba(148, 163, 184, 0.8) !important;
+  margin: 0 0 1.2rem 0;
+  color: rgba(148, 163, 184, 0.7);
   font-size: 0.78rem;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  text-decoration: none !important;
-}
-
-.pf-hero-emails a:hover {
-  color: #e2e8f0 !important;
-}
-
-.pf-hero-email-sep {
-  color: rgba(148, 163, 184, 0.3);
-  font-size: 0.78rem;
+  text-align: center;
 }
 
 .pf-hero-links {

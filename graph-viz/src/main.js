@@ -316,9 +316,11 @@ function init() {
 
       if ((graphState.hoveredNode || graphState.selectedNode) && !isHovered && !isSelected) {
         if (!neighbors || !neighbors.has(node)) {
-          res.color = dark ? "rgba(148,163,184,0.12)" : "rgba(161,161,170,0.2)";
+          // hidden 노드는 그대로 숨김, 보이는 노드는 희미하게 표시
+          if (data.hidden) return res;
+          res.color = dark ? "rgba(148,163,184,0.25)" : "rgba(161,161,170,0.35)";
           res.label = "";
-          res.size  = data.size * 0.5;
+          res.size  = data.size * 0.65;
           res.borderSize = 0;
           return res;
         }
@@ -555,9 +557,16 @@ function init() {
   // ── 줌 ───────────────────────────────────────────────────────────────────────
 
   function zoomToNode(nodeId) {
-    const pos = renderer.getNodeDisplayedCoordinates(nodeId);
-    if (!pos) return;
-    renderer.getCamera().animate({ x: pos.x, y: pos.y, ratio: 0.25 }, { duration: 500 });
+    if (!graph.hasNode(nodeId)) return;
+    const x = graph.getNodeAttribute(nodeId, "x");
+    const y = graph.getNodeAttribute(nodeId, "y");
+    if (x == null || y == null) return;
+    const { x: cx, y: cy } = renderer.graphToViewport({ x, y });
+    const cam = renderer.getCamera();
+    cam.animate(
+      renderer.viewportToFramedGraph({ x: cx, y: cy }),
+      { duration: 500 }
+    );
   }
 
   // ── 이벤트 ───────────────────────────────────────────────────────────────────

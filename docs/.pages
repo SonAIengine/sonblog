@@ -7,5 +7,6 @@ nav:
   - AI Agent: agent
   - Frontend: frontend
   - Backend: backend
+  - Desktop: desktop
   - DevOps: devops
   - Tags: tags.md

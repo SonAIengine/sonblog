@@ -22,10 +22,10 @@
 | 검색 엔진 / AI Search | `search-engine/` | 25개 (#1~#25) |
 | AI/ML & LLM | `ai/` | 20개 (#26~#45) |AI/ML & LLM (20개)
 | AI Agent / 브라우저 자동화 | `agent/` | 15개 (#46~#60) |
-| Frontend | `frontend/` | 15개 (#61~#75) |
+| Frontend | `full-stack/frontend/` | 15개 (#61~#75) |
 | 인프라 / DevOps | `infra/` | 20개 (#76~#95) |
-| Backend / Gateway | `backend/` | 10개 (#96~#105) |
-| 데스크톱 앱 / Tauri | `desktop/` | 10개 (#106~#115) |
+| Backend / Gateway | `full-stack/backend/` | 10개 (#96~#105) |
+| 데스크톱 앱 / Tauri | `full-stack/desktop/` | 10개 (#106~#115) |
 | 워크플로우 | `workflow/` | 5개 (#116~#120) |
 
 ## 🔜 Phase 2 계획 (120개 완료 후)
@@ -37,7 +37,7 @@
 ## 마지막 작성
 - 날짜: 2026-02-18
 - 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, Frontend #61~#75, DevOps #76~#95
-- 다음 작성 대상: Desktop #106~#115, Workflow #116~#120
+- 다음 작성 대상: Desktop #111~#115, Workflow #116~#120
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -160,3 +160,8 @@
 - docs/backend/레포지토리-스케줄러의-분산-환경-전환.md (Backend #103)
 - docs/backend/Gateway-서비스-매핑-LLM-Crawler-ML-통합-구성.md (Backend #104)
 - docs/backend/문서-처리-서비스에-DeepSeek-지시문-적용하기.md (Backend #105)
+- docs/full-stack/desktop/Tauri-2.0으로-AI-데스크톱-앱-만들기.md (Desktop #106)
+- docs/full-stack/desktop/Remote-WebView-아키텍처-로컬-앱과-원격-서버-연동.md (Desktop #107)
+- docs/full-stack/desktop/Bore-프로토콜로-터널-통신-구현하기.md (Desktop #108)
+- docs/full-stack/desktop/Tauri-Sidecar로-Python-워크플로우-엔진-자동-시작.md (Desktop #109)
+- docs/full-stack/desktop/앱-모드-전환-Standalone-vs-Connected-아키텍처.md (Desktop #110)

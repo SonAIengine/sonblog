@@ -292,7 +292,6 @@
       html += '<li class="md-search-result__item">';
       html += '<a href="' + esc(pageUrl) + '" class="md-search-result__link" tabindex="-1">';
       html += '<article class="md-search-result__article md-search-result__article--document">';
-      html += '<div class="md-search-result__icon md-icon"></div>';
 
       // 빵크럼 경로
       if (breadcrumb) {

@@ -338,7 +338,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 .hero-portfolio-link {
   display: inline-block;
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   font-size: 0.7rem;
   font-weight: 500;
   background: rgba(255, 255, 255, 0.12);

@@ -1134,6 +1134,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 8px;
   min-height: 0;
+  position: relative;
 }
 
 [data-md-color-scheme="slate"] .graph-layout {
@@ -1240,6 +1241,10 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 /* ── 우측 정보 패널 ─────────────────────────────────────────────────────────── */
 
 .graph-info-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
   width: 0;
   overflow: hidden;
   display: flex;
@@ -1248,8 +1253,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   border-left: 1px solid transparent;
   transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.25s;
-  flex-shrink: 0;
-  position: relative;
+  z-index: 20;
 }
 
 .graph-info-panel.is-open {

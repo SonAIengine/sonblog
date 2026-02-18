@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-18
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, DevOps #77~#95
-- 다음 작성 대상: AI Agent #46~#60
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#48, DevOps #77~#95
+- 다음 작성 대상: AI Agent #49~#60
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -119,3 +119,6 @@
 - docs/devops/infra/Docker-Compose-개발환경-구성-env-기반-설정-관리.md (DevOps #93)
 - docs/devops/infra/Tauri-앱-빌드-Linux-deb-rpm-패키지-설정.md (DevOps #94)
 - docs/devops/infra/Sidecar-패턴-Tauri-앱에서-xgen-workflow-자동-시작.md (DevOps #95)
+- docs/agent/AI-Agent-기반-브라우저-자동화-시스템-구축기.md (AI Agent #46)
+- docs/agent/Claude-Code-수준의-Agent-정확도-달성하기.md (AI Agent #47)
+- docs/agent/MCP로-Agent-속도-3-5x-개선.md (AI Agent #48)

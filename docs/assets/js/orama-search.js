@@ -1,8 +1,10 @@
 /**
  * Orama BM25 사이트 전체 검색
  * Material for MkDocs의 lunr.js 결과를 Orama BM25 결과로 대체
- * 방식: Material의 검색 UI는 그대로 유지, input 이벤트를 감지하여
- * Orama 결과를 렌더링하고 lunr 결과가 나오면 즉시 덮어씀
+ *
+ * 전략: 페이지 로드 즉시 search_index.json preload + Orama CDN 로드 시작
+ * Orama 준비 완료 후에는 모든 검색을 Orama가 처리하고,
+ * lunr Worker가 DOM을 변경할 때마다 MutationObserver로 덮어씀
  */
 (function () {
   "use strict";
@@ -24,14 +26,29 @@
 
   var SITE_BASE = null;
 
-  // ── Orama 로드 + 인덱스 구축 ──
-  async function initIndex() {
+  function stripHtml(str) {
+    if (!str) return "";
+    return str.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function esc(str) {
+    if (!str) return "";
+    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  // ── Orama 로드 + 인덱스 구축 (즉시 시작) ──
+  var indexPromise = (async function initIndex() {
     try {
       SITE_BASE = getSiteBase();
-      orama = await import(ORAMA_CDN);
 
-      var resp = await fetch(SITE_BASE + "search/search_index.json");
-      var data = await resp.json();
+      // 병렬로 Orama CDN + search_index.json 동시 로드
+      var [oramaModule, indexResp] = await Promise.all([
+        import(ORAMA_CDN),
+        fetch(SITE_BASE + "search/search_index.json"),
+      ]);
+
+      orama = oramaModule;
+      var data = await indexResp.json();
 
       db = orama.create({
         schema: {
@@ -52,20 +69,14 @@
       }
 
       ready = true;
-      console.log("orama-search: 인덱스 준비 완료 (" + data.docs.length + " docs)");
+      console.log("orama-search: BM25 인덱스 준비 완료 (" + data.docs.length + " docs)");
 
-      // 인덱스 준비 완료 후 현재 검색어가 있으면 즉시 렌더
-      if (lastQuery) {
-        var resultList = document.querySelector(".md-search-result__list");
-        if (resultList) {
-          var results = performSearch(lastQuery);
-          if (results) renderResults(results, resultList);
-        }
-      }
+      // 인덱스 준비 후 현재 검색어가 있으면 즉시 렌더
+      triggerOramaRender();
     } catch (err) {
       console.warn("orama-search: 초기화 실패", err);
     }
-  }
+  })();
 
   function performSearch(query) {
     if (!ready || !db || !query.trim()) return null;
@@ -74,6 +85,15 @@
       limit: 30,
       boost: { title: 5, text: 1 },
     });
+  }
+
+  // ── 현재 검색어로 Orama 렌더 강제 실행 ──
+  function triggerOramaRender() {
+    if (!ready || !lastQuery) return;
+    var resultList = document.querySelector(".md-search-result__list");
+    if (!resultList) return;
+    var results = performSearch(lastQuery);
+    if (results) renderResults(results, resultList);
   }
 
   // ── 결과 렌더링 (Material 형식 호환) ──
@@ -86,6 +106,7 @@
     if (!results || results.count === 0) {
       if (metaEl) metaEl.textContent = results ? "검색 결과 없음" : "";
       list.innerHTML = "";
+      list.setAttribute("data-orama", "1");
       return;
     }
 
@@ -138,17 +159,7 @@
     });
 
     list.innerHTML = html;
-    list.setAttribute("data-orama-rendered", "true");
-  }
-
-  function esc(str) {
-    if (!str) return "";
-    return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-  }
-
-  function stripHtml(str) {
-    if (!str) return "";
-    return str.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+    list.setAttribute("data-orama", "1");
   }
 
   // ── Material 검색 가로채기 ──
@@ -159,32 +170,31 @@
     if (!searchInput || !resultList) return;
 
     hooked = true;
-    var debounceTimer = null;
 
-    // 입력 이벤트 — Orama 검색 실행
+    // 입력 이벤트
     searchInput.addEventListener("input", function (e) {
-      clearTimeout(debounceTimer);
       lastQuery = e.target.value.trim();
       if (!lastQuery) {
-        resultList.removeAttribute("data-orama-rendered");
-        return; // Material이 알아서 초기화
+        resultList.removeAttribute("data-orama");
+        return;
       }
-      debounceTimer = setTimeout(function () {
+      // Orama 준비됐으면 즉시 렌더 (lunr보다 빠르게)
+      if (ready) {
         var results = performSearch(lastQuery);
         if (results) renderResults(results, resultList);
-      }, 100); // lunr보다 빠르게
+      }
     });
 
     // MutationObserver: lunr Worker가 결과를 쓸 때마다 Orama로 덮어씀
     if (resultObserver) resultObserver.disconnect();
     resultObserver = new MutationObserver(function () {
       if (!lastQuery || !ready) return;
-      // Orama가 이미 렌더한 결과면 무시
-      if (resultList.getAttribute("data-orama-rendered") === "true") {
-        resultList.removeAttribute("data-orama-rendered");
+      // Orama가 방금 렌더한 것이면 무시
+      if (resultList.getAttribute("data-orama") === "1") {
+        resultList.removeAttribute("data-orama");
         return;
       }
-      // lunr이 결과를 쓴 것이므로 Orama로 덮어씀
+      // lunr이 결과를 쓴 것 → Orama로 덮어쓰기
       var results = performSearch(lastQuery);
       if (results) renderResults(results, resultList);
     });
@@ -195,22 +205,31 @@
     if (form) {
       form.addEventListener("reset", function () {
         lastQuery = "";
-        resultList.removeAttribute("data-orama-rendered");
+        resultList.removeAttribute("data-orama");
+      });
+    }
+
+    // 검색 모달이 열릴 때 — Orama로 기존 검색어 재렌더
+    var searchToggle = document.getElementById("__search");
+    if (searchToggle) {
+      searchToggle.addEventListener("change", function () {
+        if (searchToggle.checked && lastQuery && ready) {
+          setTimeout(triggerOramaRender, 50);
+        }
       });
     }
   }
 
   // ── 초기화 ──
   function setup() {
-    initIndex();
     hookSearch();
 
-    // DOM 변경 감지로 검색 UI가 나중에 삽입될 경우 대응
+    // DOM 변경 감지
     var domObserver = new MutationObserver(function () {
       if (!hooked) hookSearch();
     });
     domObserver.observe(document.body, { childList: true, subtree: true });
-    setTimeout(function () { if (hooked) domObserver.disconnect(); }, 5000);
+    setTimeout(function () { if (hooked) domObserver.disconnect(); }, 8000);
   }
 
   if (document.readyState === "loading") {

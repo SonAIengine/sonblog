@@ -2799,12 +2799,14 @@ a.pf-hero-btn--primary:visited {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+.md-typeset .pf-project-highlights,
 .pf-project-highlights {
   list-style: none !important;
   margin: 0 0 0.8rem 0 !important;
   padding: 0 !important;
 }
 
+.md-typeset .pf-project-highlights li,
 .pf-project-highlights li {
   list-style: none !important;
   font-size: 0.8rem;
@@ -2813,10 +2815,13 @@ a.pf-hero-btn--primary:visited {
   margin-bottom: 0.3rem;
   padding-left: 1rem;
   position: relative;
+  margin-left: 0 !important;
 }
 
+.md-typeset .pf-project-highlights li::marker,
 .pf-project-highlights li::marker {
   content: none !important;
+  font-size: 0 !important;
 }
 
 .pf-project-highlights li::before {

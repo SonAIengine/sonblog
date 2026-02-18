@@ -894,7 +894,6 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   min-height: 600px;
   padding: 0.5rem 0.75rem 0.35rem;
   box-sizing: border-box;
-  overflow: hidden;
   /* light 기본: 기존 테마 배경 */
   background: var(--md-default-bg-color);
   color: var(--md-default-fg-color);

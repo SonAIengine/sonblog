@@ -1,12 +1,16 @@
 ---
 title: "GitHub Pages 블로그에 SEO + GEO 최적화 적용하기"
-description: "MkDocs Material 블로그를 Google, Naver, Bing에 등록하고, AI 크롤러(GPTBot, ClaudeBot, PerplexityBot)를 위한 GEO 최적화까지 적용한 과정"
+description: "MkDocs Material 블로그를 Google Search Console, Naver Search Advisor, Bing Webmaster Tools에 등록하고, robots.txt AI 크롤러 허용, llms.txt 생성, JSON-LD 구조화 데이터 삽입까지 — 정적 사이트에서 검색엔진과 AI(ChatGPT, Claude, Perplexity) 양쪽에 노출되기 위한 SEO + GEO 최적화 전 과정을 정리한다."
 date: 2026-02-18
 tags:
   - SEO
   - GEO
-  - MkDocs
+  - MkDocs Material
   - GitHub Pages
+  - Google Search Console
+  - Naver Search Advisor
+  - JSON-LD
+  - llms.txt
 ---
 
 # GitHub Pages 블로그에 SEO + GEO 최적화 적용하기

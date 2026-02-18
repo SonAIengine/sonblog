@@ -359,11 +359,11 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 .hero-portfolio-link {
   display: inline-block;
-  color: #1a237e;
+  color: #ffffff;
   font-size: 0.72rem;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
   border-radius: 20px;
   padding: 0.2rem 0.8rem;
   text-decoration: none;
@@ -372,8 +372,8 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 }
 
 .hero-portfolio-link:hover {
-  background: #ffffff;
-  color: #1a237e;
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   text-decoration: none;
 }
 

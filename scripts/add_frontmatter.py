@@ -19,6 +19,7 @@ EXCLUDE_FILES = {
     "docs/index.md",
     "docs/blog/index.md",
     "docs/tags.md",
+    "docs/graph.md",
 }
 
 # 제외할 파일명 패턴 (index.md는 카테고리 페이지)

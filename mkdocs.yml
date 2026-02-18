@@ -81,6 +81,12 @@ plugins:
       categories: true
   - social:
       cards_layout: default/variant
+  - rss:
+      match_path: "(search-engine|ai|devops|full-stack)/.*"
+      date_from_meta:
+        as_creation: date
+      categories:
+        - tags
   - git-revision-date-localized:
       type: date
       locale: ko

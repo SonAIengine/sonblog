@@ -1,4 +1,7 @@
 title: Full Stack
 nav:
+  - Frontend: frontend
+  - Backend: backend
+  - Desktop: desktop
   - Python: python
   - PoC: poc

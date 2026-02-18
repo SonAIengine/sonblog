@@ -35,9 +35,9 @@
 - 기술 블로그 글 링크를 레퍼런스로 연결하여 깊이 있는 포트폴리오 구성
 
 ## 마지막 작성
-- 날짜: 2026-02-17
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#18, AI/ML #26~#45, DevOps #77~#95
-- 다음 작성 대상: 검색엔진 #19~#25 또는 AI Agent #46~#60
+- 날짜: 2026-02-18
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#21, AI/ML #26~#45, DevOps #77~#95
+- 다음 작성 대상: 검색엔진 #22~#25 또는 AI Agent #46~#60
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -73,6 +73,9 @@
 - docs/search-engine/NestJS 검색 엔진/GPT를-활용한-검색-쿼리-의도-분석-및-키워드-추출.md (#16)
 - docs/search-engine/NestJS 검색 엔진/검색-품질-개선-성별-색상-카테고리-필터링-최적화.md (#17)
 - docs/search-engine/NestJS 검색 엔진/벡터-검색-유사도-임계값-동적-조정-토큰-수-기반.md (#18)
+- docs/search-engine/NestJS 검색 엔진/Reranker-모델-도입으로-검색-정확도-향상하기.md (#19)
+- docs/search-engine/시맨틱 검색/FAISS-벡터-인덱스-적용과-GPU-디바이스-최적화.md (#20)
+- docs/search-engine/시맨틱 검색/시맨틱-검색-API-요약-기능-온오프-전략.md (#21)
 - docs/ai/XGEN/llama.cpp-서버-운영기-ROCm-GPU에서의-삽질과-해결.md (AI/ML #26)
 - docs/ai/XGEN/AMD-GPU에서-LLM-돌리기-Vulkan-vs-ROCm-비교.md (AI/ML #27)
 - docs/ai/XGEN/멀티-GPU-LLM-배포-GPU-선택-및-레이어-오프로딩-전략.md (AI/ML #28)

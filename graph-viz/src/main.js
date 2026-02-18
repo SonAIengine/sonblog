@@ -318,9 +318,9 @@ function init() {
         if (!neighbors || !neighbors.has(node)) {
           // hidden 노드는 그대로 숨김, 보이는 노드는 희미하게 표시
           if (data.hidden) return res;
-          res.color = dark ? "rgba(148,163,184,0.25)" : "rgba(161,161,170,0.35)";
+          res.color = dark ? "#2d3748" : "#94a3b8";
           res.label = "";
-          res.size  = data.size * 0.65;
+          res.size  = data.size * 0.8;
           res.borderSize = 0;
           return res;
         }
@@ -598,6 +598,12 @@ function init() {
   function applyFilters() {
     graph.nodes().forEach(n => {
       graph.setNodeAttribute(n, "hidden", !activeFilters[graph.getNodeAttribute(n, "nodeType")]);
+    });
+    // 숨겨진 노드에 연결된 엣지도 숨김 처리
+    graph.edges().forEach(e => {
+      const [src, tgt] = graph.extremities(e);
+      const hidden = graph.getNodeAttribute(src, "hidden") || graph.getNodeAttribute(tgt, "hidden");
+      graph.setEdgeAttribute(e, "hidden", hidden);
     });
     renderer.refresh();
   }

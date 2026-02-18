@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-18
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, Frontend #61~#75, DevOps #76~#95
-- 다음 작성 대상: Desktop #111~#115, Workflow #116~#120
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#25, AI/ML #26~#45, AI Agent #46~#60, Frontend #61~#75, DevOps #76~#95, Backend #96~#105, Desktop #106~#115, Workflow #116~#120
+- 전체 120개 블로그 글 작성 완료
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -165,3 +165,13 @@
 - docs/full-stack/desktop/Bore-프로토콜로-터널-통신-구현하기.md (Desktop #108)
 - docs/full-stack/desktop/Tauri-Sidecar로-Python-워크플로우-엔진-자동-시작.md (Desktop #109)
 - docs/full-stack/desktop/앱-모드-전환-Standalone-vs-Connected-아키텍처.md (Desktop #110)
+- docs/full-stack/desktop/Tauri-Docker-데스크톱-앱의-컨테이너화-전략.md (Desktop #111)
+- docs/full-stack/desktop/API-추상화-레이어-로컬-LLM과-원격-서비스-통합.md (Desktop #112)
+- docs/full-stack/desktop/TAURI_DEV_URL-환경변수로-개발-운영-환경-분리.md (Desktop #113)
+- docs/full-stack/desktop/데스크톱-앱에서-터널-URL-표시-UX-개선.md (Desktop #114)
+- docs/full-stack/desktop/camelCase-직렬화로-Rust-Frontend-데이터-통신.md (Desktop #115)
+- docs/workflow/비주얼-워크플로우-에디터-노드-기반-AI-파이프라인-설계.md (Workflow #116)
+- docs/workflow/SSE-기반-워크플로우-테스터-실시간-실행-결과-스트리밍.md (Workflow #117)
+- docs/workflow/워크플로우-실행-취소-Cancellation-메커니즘-구현.md (Workflow #118)
+- docs/workflow/Agent-Xgen-Node-AI-에이전트를-워크플로우-노드로.md (Workflow #119)
+- docs/workflow/클라이언트-연결-끊김에도-워크플로우-실행-유지하기.md (Workflow #120)

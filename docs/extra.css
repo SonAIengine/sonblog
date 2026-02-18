@@ -338,23 +338,23 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 
 .hero-portfolio-link {
   display: inline-block;
-  color: #1a237e;
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: #ffffff;
-  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 20px;
-  padding: 0.3rem 1.2rem;
+  padding: 0.22rem 0.9rem;
   text-decoration: none;
   letter-spacing: 0.02em;
-  transition: opacity 0.2s;
-  margin: 0 0 0.5rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, border-color 0.2s;
+  margin: 0;
 }
 
 .hero-portfolio-link:hover {
-  opacity: 0.85;
-  color: #1a237e;
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
   text-decoration: none;
 }
 

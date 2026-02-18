@@ -9,80 +9,23 @@
 
 <div class="graph-page">
 
-  <!-- ── 상단 헤더 ── -->
-  <div class="graph-header">
-    <div class="graph-title">
-      <h1>Knowledge Graph</h1>
-      <p class="graph-subtitle" id="graph-stats">
-        {{ graph_metadata.total_posts }} posts &middot;
-        {{ graph_metadata.total_tags }} tags &middot;
-        {{ graph_metadata.total_categories }} categories
-      </p>
+  <!-- ── 상단 툴바 (한 줄) ── -->
+  <div class="graph-toolbar">
+    <h1 class="graph-toolbar-title">Knowledge Graph</h1>
+    <span class="graph-toolbar-stats" id="graph-stats">{{ graph_metadata.total_posts }} posts · {{ graph_metadata.total_tags }} tags · {{ graph_metadata.total_categories }} categories</span>
+    <span class="graph-toolbar-sep"></span>
+    <label class="graph-filter-chip graph-filter-chip--category"><input type="checkbox" class="graph-filter-cb" data-type="category" checked><span class="chip-dot"></span>카테고리</label>
+    <label class="graph-filter-chip graph-filter-chip--subcategory"><input type="checkbox" class="graph-filter-cb" data-type="subcategory" checked><span class="chip-dot"></span>서브카테고리</label>
+    <label class="graph-filter-chip graph-filter-chip--series"><input type="checkbox" class="graph-filter-cb" data-type="series" checked><span class="chip-dot"></span>시리즈</label>
+    <label class="graph-filter-chip graph-filter-chip--tag"><input type="checkbox" class="graph-filter-cb" data-type="tag" checked><span class="chip-dot"></span>태그</label>
+    <label class="graph-filter-chip graph-filter-chip--post"><input type="checkbox" class="graph-filter-cb" data-type="post"><span class="chip-dot"></span>포스트</label>
+    <div class="graph-toolbar-spacer"></div>
+    <div class="graph-search-wrap">
+      <svg class="graph-search-icon" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" id="graph-search" placeholder="검색..." autocomplete="off">
+      <button id="graph-search-clear" class="graph-search-clear" aria-label="검색 초기화"><svg viewBox="0 0 16 16" fill="none"><path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
     </div>
-
-    <div class="graph-controls">
-
-      <!-- 검색 -->
-      <div class="graph-search-wrap">
-        <svg class="graph-search-icon" viewBox="0 0 20 20" fill="none">
-          <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <input type="text" id="graph-search" placeholder="노드 검색..." autocomplete="off">
-        <button id="graph-search-clear" class="graph-search-clear" aria-label="검색 초기화">
-          <svg viewBox="0 0 16 16" fill="none">
-            <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
-
-      <!-- 뷰 초기화 -->
-      <button id="graph-reset" class="graph-btn">
-        <svg viewBox="0 0 20 20" fill="none" width="14" height="14">
-          <path d="M4 10a6 6 0 1 0 1.5-3.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M4 5.5V10h4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        초기화
-      </button>
-
-    </div>
-  </div>
-
-  <!-- ── 필터 바 ── -->
-  <div class="graph-filter-bar">
-    <span class="graph-filter-label">표시:</span>
-
-    <label class="graph-filter-chip graph-filter-chip--category">
-      <input type="checkbox" class="graph-filter-cb" data-type="category" checked>
-      <span class="chip-dot"></span>
-      카테고리
-    </label>
-
-    <label class="graph-filter-chip graph-filter-chip--subcategory">
-      <input type="checkbox" class="graph-filter-cb" data-type="subcategory" checked>
-      <span class="chip-dot"></span>
-      서브카테고리
-    </label>
-
-    <label class="graph-filter-chip graph-filter-chip--series">
-      <input type="checkbox" class="graph-filter-cb" data-type="series" checked>
-      <span class="chip-dot"></span>
-      시리즈
-    </label>
-
-    <label class="graph-filter-chip graph-filter-chip--tag">
-      <input type="checkbox" class="graph-filter-cb" data-type="tag" checked>
-      <span class="chip-dot"></span>
-      태그
-    </label>
-
-    <label class="graph-filter-chip graph-filter-chip--post">
-      <input type="checkbox" class="graph-filter-cb" data-type="post">
-      <span class="chip-dot"></span>
-      포스트
-    </label>
-
-    <span class="graph-filter-hint">노드를 클릭하면 연관 문서를 확인할 수 있습니다</span>
+    <button id="graph-reset" class="graph-btn"><svg viewBox="0 0 20 20" fill="none" width="12" height="12"><path d="M4 10a6 6 0 1 0 1.5-3.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 5.5V10h4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>초기화</button>
   </div>
 
   <!-- ── 메인 레이아웃: 그래프 + 패널 ── -->

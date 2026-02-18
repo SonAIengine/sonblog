@@ -2010,7 +2010,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   color: #fef9c3 !important;
 }
 
-/* ── 검색 결과 밀도 높이기 ── */
+/* ── 검색 결과 밀도 + 카드 스타일 ── */
 .md-search-result__article {
   padding: 0.4em 0.8em !important;
   margin: 0 !important;
@@ -2020,14 +2020,91 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 }
 .md-search-result__teaser {
   margin: 0.15em 0 0 !important;
-  line-height: 1.4 !important;
-  -webkit-line-clamp: 2 !important;
+  line-height: 1.45 !important;
+  -webkit-line-clamp: 3 !important;
   display: -webkit-box !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color--light);
 }
 .md-search-result__meta {
-  padding: 0.4em 0.8em !important;
+  padding: 0.5em 0.8em !important;
   font-size: 0.64rem !important;
+  background: var(--md-default-bg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* ── 결과 항목 간 시각적 분리 ── */
+.md-search-result__item {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest) !important;
+  padding-bottom: 0.15em !important;
+  margin-bottom: 0 !important;
+}
+.md-search-result__item:last-child {
+  border-bottom: none !important;
+}
+
+/* ── 빵크럼 경로 ── */
+.md-search-result__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.62rem;
+  color: var(--md-default-fg-color--lighter);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.15em;
+  font-weight: 500;
+}
+
+/* ── 섹션 매치 카운트 뱃지 ── */
+.md-search-result__match-count {
+  display: inline-block;
+  font-size: 0.56rem;
+  padding: 0.05em 0.4em;
+  border-radius: 8px;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+[data-md-color-scheme="slate"] .md-search-result__match-count {
+  background: rgba(139, 148, 255, 0.25);
+  color: #b0b8ff;
+}
+
+/* ── 섹션 결과 들여쓰기 ── */
+.md-search-result__link--section .md-search-result__article {
+  padding-left: 1.6em !important;
+  border-left: 2px solid rgba(63, 81, 181, 0.2);
+  margin-left: 0.8em !important;
+}
+[data-md-color-scheme="slate"] .md-search-result__link--section .md-search-result__article {
+  border-left-color: rgba(139, 148, 255, 0.25);
+}
+.md-search-result__link--section .md-search-result__title {
+  font-size: 0.72rem !important;
+}
+
+/* ── 호버 / 키보드 네비게이션 ── */
+.md-search-result__link:hover,
+.md-search-result__link--active {
+  background: var(--md-accent-fg-color--transparent) !important;
+}
+.md-search-result__link--active {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+/* ── 페이지 제목 스타일 강화 ── */
+.md-search-result__article--document .md-search-result__title {
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35;
 }
 

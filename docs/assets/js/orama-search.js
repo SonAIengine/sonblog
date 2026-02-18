@@ -17,6 +17,16 @@
   var hooked = false;
   var lastQuery = "";
   var resultObserver = null;
+  var activeResultIdx = -1;
+
+  // 카테고리 폴더 → 표시명 매핑
+  var CATEGORY_NAMES = {
+    "search-engine": "Search Engine",
+    "ai": "AI/ML & LLM",
+    "devops": "DevOps",
+    "full-stack": "Full Stack",
+    "blog": "Blog",
+  };
 
   function getSiteBase() {
     var meta = document.querySelector('meta[name="site-url"]');
@@ -114,6 +124,23 @@
     return (start > 0 ? "..." : "") + snippet + (end < text.length ? "..." : "");
   }
 
+  /** URL 경로에서 카테고리 > 서브카테고리 빵크럼 추출 */
+  function getBreadcrumb(location) {
+    if (!location) return "";
+    var base = location.split("#")[0];
+    var parts = base.split("/").filter(Boolean);
+    if (parts.length === 0) return "";
+
+    var top = CATEGORY_NAMES[parts[0]];
+    if (!top) return "";
+
+    if (parts.length <= 2) return top;
+
+    try { var sub = decodeURIComponent(parts[1]); }
+    catch (e) { var sub = parts[1]; }
+    return top + " \u203A " + sub;
+  }
+
   // ── Orama 로드 + 인덱스 구축 (즉시 시작) ──
   var indexPromise = (async function initIndex() {
     try {
@@ -182,6 +209,7 @@
   // ── 결과 렌더링 ──
   function renderResults(results, list) {
     if (!list) return;
+    activeResultIdx = -1;
     var metaEl = list.closest(".md-search-result")
       ? list.closest(".md-search-result").querySelector(".md-search-result__meta")
       : null;
@@ -238,6 +266,19 @@
       var baseLoc = entry.location;
       var pageTitle = entry.title || (entry.sections[0] ? entry.sections[0].title : baseLoc) || baseLoc;
       var pageUrl = SITE_BASE + baseLoc;
+      var breadcrumb = getBreadcrumb(baseLoc);
+
+      // 섹션 필터링 (페이지 레벨/중복 제외)
+      var pageTitleLower = pageTitle.toLowerCase();
+      var filteredSections = entry.sections
+        .filter(function (sec) {
+          if (sec.location === baseLoc && !sec.location.includes("#")) return false;
+          if (sec.title && sec.title.toLowerCase() === pageTitleLower) return false;
+          return true;
+        })
+        .sort(function (a, b) { return b.score - a.score; });
+
+      var sectionCount = filteredSections.length;
 
       // 페이지 레벨 teaser: pageText 또는 첫 섹션 텍스트
       var pageTeaserSrc = entry.pageText;
@@ -246,41 +287,41 @@
           if (entry.sections[i].text) { pageTeaserSrc = entry.sections[i].text; break; }
         }
       }
-      var pageTeaser = pageTeaserSrc ? contextSnippet(pageTeaserSrc, query, 120) : "";
+      var pageTeaser = pageTeaserSrc ? contextSnippet(pageTeaserSrc, query, 160) : "";
 
       html += '<li class="md-search-result__item">';
       html += '<a href="' + esc(pageUrl) + '" class="md-search-result__link" tabindex="-1">';
       html += '<article class="md-search-result__article md-search-result__article--document">';
       html += '<div class="md-search-result__icon md-icon"></div>';
+
+      // 빵크럼 경로
+      if (breadcrumb) {
+        html += '<nav class="md-search-result__breadcrumb">' + esc(breadcrumb);
+        if (sectionCount > 0) {
+          html += '<span class="md-search-result__match-count">' + sectionCount + '개 섹션</span>';
+        }
+        html += '</nav>';
+      }
+
       html += '<h1 class="md-search-result__title">' + highlight(pageTitle, query) + "</h1>";
       if (pageTeaser) {
         html += '<p class="md-search-result__teaser">' + highlight(pageTeaser, query) + "</p>";
       }
       html += "</article></a>";
 
-      // 섹션 결과 (스코어순, 최대 3개, 페이지 제목과 동일한 섹션 스킵)
+      // 섹션 결과 (스코어순, 최대 3개)
       var secCount = 0;
-      var pageTitleLower = pageTitle.toLowerCase();
-      entry.sections
-        .filter(function (sec) {
-          // base location과 동일한 섹션은 이미 페이지 레벨에서 표시
-          if (sec.location === baseLoc && !sec.location.includes("#")) return false;
-          // 페이지 제목과 동일한 섹션 제목 스킵
-          if (sec.title && sec.title.toLowerCase() === pageTitleLower) return false;
-          return true;
-        })
-        .sort(function (a, b) { return b.score - a.score; })
-        .forEach(function (sec) {
-          if (secCount >= 3) return;
-          secCount++;
-          var secUrl = SITE_BASE + sec.location;
-          var snippet = contextSnippet(sec.text, query, 100);
-          html += '<a href="' + esc(secUrl) + '" class="md-search-result__link" tabindex="-1">';
-          html += '<article class="md-search-result__article">';
-          if (sec.title) html += '<h2 class="md-search-result__title">' + highlight(sec.title, query) + "</h2>";
-          if (snippet) html += '<p class="md-search-result__teaser">' + highlight(snippet, query) + "</p>";
-          html += "</article></a>";
-        });
+      filteredSections.forEach(function (sec) {
+        if (secCount >= 3) return;
+        secCount++;
+        var secUrl = SITE_BASE + sec.location;
+        var snippet = contextSnippet(sec.text, query, 120);
+        html += '<a href="' + esc(secUrl) + '" class="md-search-result__link md-search-result__link--section" tabindex="-1">';
+        html += '<article class="md-search-result__article">';
+        if (sec.title) html += '<h2 class="md-search-result__title">' + highlight(sec.title, query) + "</h2>";
+        if (snippet) html += '<p class="md-search-result__teaser">' + highlight(snippet, query) + "</p>";
+        html += "</article></a>";
+      });
 
       html += "</li>";
     });
@@ -300,6 +341,7 @@
 
     searchInput.addEventListener("input", function (e) {
       lastQuery = e.target.value.trim();
+      activeResultIdx = -1;
       if (!lastQuery) {
         resultList.removeAttribute("data-orama");
         return;
@@ -307,6 +349,38 @@
       if (ready) {
         var results = performSearch(lastQuery);
         if (results) renderResults(results, resultList);
+      }
+    });
+
+    // 키보드 네비게이션 (화살표 위/아래, Enter)
+    searchInput.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowDown" && e.key !== "ArrowUp" && e.key !== "Enter") return;
+      var links = resultList.querySelectorAll(".md-search-result__link");
+      if (links.length === 0) return;
+
+      if (e.key === "Enter" && activeResultIdx >= 0 && activeResultIdx < links.length) {
+        e.preventDefault();
+        e.stopPropagation();
+        links[activeResultIdx].click();
+        return;
+      }
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        e.stopPropagation();
+        activeResultIdx = Math.min(activeResultIdx + 1, links.length - 1);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        e.stopPropagation();
+        activeResultIdx = Math.max(activeResultIdx - 1, -1);
+      }
+
+      links.forEach(function (l, i) {
+        l.classList.toggle("md-search-result__link--active", i === activeResultIdx);
+      });
+
+      if (activeResultIdx >= 0 && links[activeResultIdx]) {
+        links[activeResultIdx].scrollIntoView({ block: "nearest" });
       }
     });
 

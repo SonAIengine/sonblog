@@ -57,7 +57,7 @@ extra_css:
 
 extra_javascript:
   - custom.js
-  - assets/js/orama-search.js?v=3
+  - assets/js/orama-search.js?v=4
 
 hooks:
   - hooks/recent_posts.py

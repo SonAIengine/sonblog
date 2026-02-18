@@ -578,7 +578,6 @@ function init() {
   renderer.on("clickNode", ({ node }) => {
     hideTooltip();
     openPanel(node, graph.getNodeAttributes(node));
-    zoomToNode(node);
   });
 
   renderer.on("clickStage", () => { closePanel(); hideTooltip(); });

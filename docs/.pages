@@ -1,5 +1,6 @@
 nav:
   - Home: index.md
+  - Portfolio: portfolio
   - Full Stack: full-stack
   - Search Engine: search-engine
   - AI/ML: ai

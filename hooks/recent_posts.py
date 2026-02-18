@@ -12,12 +12,12 @@ from pathlib import Path
 
 # 카테고리 폴더 → 표시 이름 매핑
 CATEGORY_LABELS = {
+    "portfolio": "Portfolio",
     "full-stack": "Full Stack",
     "search-engine": "Search Engine",
     "ai": "AI",
     "devops": "DevOps",
     # 하위 폴더도 매핑 (full-stack 하위)
-    "portfolio": "Full Stack",
     "python": "Full Stack",
     "poc": "Full Stack",
     # devops 하위
@@ -123,6 +123,7 @@ def collect_posts(docs_dir: str, limit: int = 8) -> list:
 
 # 카테고리 폴더 → 카드 키 매핑
 CATEGORY_FOLDER_MAP = {
+    "portfolio": "portfolio",
     "full-stack": "full_stack",
     "search-engine": "search_engine",
     "ai": "ai",

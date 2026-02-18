@@ -1253,7 +1253,7 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 }
 
 .graph-info-panel.is-open {
-  width: 380px;
+  width: 440px;
   border-left-color: var(--md-default-fg-color--lightest);
 }
 

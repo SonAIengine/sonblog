@@ -13,4 +13,46 @@
 
 <!-- Google -->
 <meta name="google-site-verification" content="uH7pN0ErLBG0NfXTz_VNezwOk-4Ypqf2viBx0SxHfDM">
+
+<!-- JSON-LD: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SON BLOG",
+  "url": "https://sonaiengine.github.io/sonblog/",
+  "description": "AI Engineer 손성준 · LLM Serving, RAG, Rust, K8s",
+  "inLanguage": "ko",
+  "author": {
+    "@type": "Person",
+    "name": "손성준",
+    "jobTitle": "AI Engineer",
+    "url": "https://github.com/SonAIengine"
+  }
+}
+</script>
+
+<!-- JSON-LD: TechArticle (per page) -->
+{% if page and page.meta and page.meta.title and page.meta.title != "Home" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "{{ page.meta.title | default(page.title) }}",
+  "description": "{{ page.meta.description | default('') }}",
+  "author": {
+    "@type": "Person",
+    "name": "손성준",
+    "url": "https://github.com/SonAIengine"
+  },
+  "datePublished": "{{ page.meta.date | default('') }}",
+  "url": "{{ page.canonical_url }}",
+  "inLanguage": "ko",
+  "publisher": {
+    "@type": "Person",
+    "name": "손성준"
+  }
+}
+</script>
+{% endif %}
 {% endblock %}

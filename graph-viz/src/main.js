@@ -804,7 +804,6 @@ function init() {
         <div class="gsd-item-head">
           <span class="gsd-type gsd-type--${doc.nodeType}">${typeLabelsSearch[doc.nodeType] || doc.nodeType}</span>
           <span class="gsd-label">${doc.label}</span>
-          <span class="gsd-score">${score}</span>
         </div>
         ${metaHtml ? `<div class="gsd-item-body">${metaHtml}</div>` : ""}
       </div>`;

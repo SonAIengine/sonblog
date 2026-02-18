@@ -1036,8 +1036,9 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
 .graph-search-dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
-  min-width: 360px;
+  right: 0;
+  width: max(360px, 40vw);
+  max-width: 480px;
   margin-top: 4px;
   background: var(--md-default-bg-color);
   border: 1px solid var(--md-default-fg-color--lightest);

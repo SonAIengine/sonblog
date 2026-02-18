@@ -36,8 +36,8 @@
 
 ## 마지막 작성
 - 날짜: 2026-02-18
-- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#21, AI/ML #26~#45, DevOps #77~#95
-- 다음 작성 대상: 검색엔진 #22~#25 또는 AI Agent #46~#60
+- 작성 완료 시기: 2024.03~2026.02 (글 1~13), 검색엔진 #1~#24, AI/ML #26~#45, DevOps #77~#95
+- 다음 작성 대상: 검색엔진 #25 또는 AI Agent #46~#60
 
 ## 작성 완료 글
 - docs/portfolio/챗봇 UI 개발기 - WebSocket 기반 실시간 스트리밍.md
@@ -76,6 +76,9 @@
 - docs/search-engine/NestJS 검색 엔진/Reranker-모델-도입으로-검색-정확도-향상하기.md (#19)
 - docs/search-engine/시맨틱 검색/FAISS-벡터-인덱스-적용과-GPU-디바이스-최적화.md (#20)
 - docs/search-engine/시맨틱 검색/시맨틱-검색-API-요약-기능-온오프-전략.md (#21)
+- docs/search-engine/NestJS 검색 엔진/OpenSearch-Nori-분석기-커스터마이징-및-형태소-분석.md (#22)
+- docs/search-engine/NestJS 검색 엔진/이미지-기반-상품-검색-NestJS-통합-구현기.md (#23)
+- docs/search-engine/NestJS 검색 엔진/검색-결과-랭킹-스코어링-시스템-설계.md (#24)
 - docs/ai/XGEN/llama.cpp-서버-운영기-ROCm-GPU에서의-삽질과-해결.md (AI/ML #26)
 - docs/ai/XGEN/AMD-GPU에서-LLM-돌리기-Vulkan-vs-ROCm-비교.md (AI/ML #27)
 - docs/ai/XGEN/멀티-GPU-LLM-배포-GPU-선택-및-레이어-오프로딩-전략.md (AI/ML #28)

@@ -336,26 +336,28 @@ nav.md-nav--secondary .md-nav__link .md-ellipsis::before {
   line-height: 1.5;
 }
 
-.hero-portfolio-link {
+a.hero-portfolio-link,
+a.hero-portfolio-link:link,
+a.hero-portfolio-link:visited {
   display: inline-block;
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 0.7rem;
   font-weight: 500;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 20px;
   padding: 0.22rem 0.9rem;
-  text-decoration: none;
+  text-decoration: none !important;
   letter-spacing: 0.02em;
   transition: background 0.2s, border-color 0.2s;
   margin: 0;
 }
 
-.hero-portfolio-link:hover {
+a.hero-portfolio-link:hover {
   background: rgba(255, 255, 255, 0.22);
   border-color: rgba(255, 255, 255, 0.6);
-  color: #ffffff;
-  text-decoration: none;
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
 
 .hero-stats {

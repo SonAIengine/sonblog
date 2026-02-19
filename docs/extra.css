@@ -3078,64 +3078,231 @@ a.pf-footer-btn:hover {
 }
 
 @media screen and (max-width: 600px) {
+  /* Hero */
   .pf-hero {
-    padding: 3rem 1.2rem 2.5rem;
+    padding: 2.5rem 1.2rem 2rem;
+  }
+  .pf-hero-keywords {
+    font-size: 0.78rem;
+    word-spacing: -0.5px;
   }
   .pf-hero-stats {
-    gap: 1.2rem;
+    gap: 1.5rem;
   }
   .pf-hero-stat-num {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+  }
+  .pf-hero-emails {
+    font-size: 0.7rem;
+    word-break: break-all;
   }
   .pf-hero-links {
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
   }
+  a.pf-hero-btn,
+  a.pf-hero-btn:link,
+  a.pf-hero-btn:visited {
+    padding: 0.45rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  /* Section */
   .pf-section {
     padding: 2rem 1rem 0;
+  }
+  .pf-section-header {
+    margin-bottom: 1.2rem;
   }
   .pf-section-line {
     display: none;
   }
+
+  /* About */
+  .pf-about-text {
+    font-size: 0.85rem;
+    line-height: 1.75;
+  }
+  .pf-chips-group {
+    gap: 0.5rem;
+  }
+  .pf-chips-row {
+    gap: 0.3rem;
+  }
+  .pf-chips-label {
+    min-width: 100%;
+    font-size: 0.62rem;
+    margin-bottom: 0.1rem;
+  }
+  .pf-chip {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.55rem;
+  }
+
+  /* Expertise - 1열 레이아웃 */
   .pf-expertise-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
   }
   .pf-expertise-card {
-    padding: 1rem;
+    padding: 1.2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0 0.8rem;
   }
   .pf-expertise-icon {
-    width: 28px;
-    height: 28px;
-    margin-bottom: 0.5rem;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0;
   }
   .pf-expertise-card h3 {
-    font-size: 0.85rem;
+    font-size: 0.92rem;
+    flex: 1;
+    line-height: 32px;
+    margin: 0;
+  }
+  .pf-card-count {
+    font-size: 0.65rem;
+    position: absolute;
+    right: 1.2rem;
+    top: 1.35rem;
+  }
+  .pf-expertise-card {
+    position: relative;
+  }
+  .pf-card-techs {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0;
+    margin-top: 0.4rem;
   }
   .pf-card-techs li {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    width: 50%;
+    box-sizing: border-box;
+    padding-left: 0.7rem;
   }
-  .pf-project-grid {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
+  .pf-card-techs li::before {
+    width: 3px;
+    height: 3px;
+    top: 0.55em;
+  }
+
+  /* Featured Project */
+  .pf-project--featured h3 {
+    font-size: 1.05rem;
   }
   .pf-project-content {
     padding: 1.2rem;
   }
+  .pf-project-desc {
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+  .md-typeset .pf-project-highlights li,
+  .pf-project-highlights li {
+    font-size: 0.76rem;
+    line-height: 1.55;
+    padding-left: 0.8rem;
+    margin-bottom: 0.4rem;
+  }
+  .pf-project-highlights li::before {
+    width: 4px;
+    height: 4px;
+  }
+  .pf-project-stack-row {
+    gap: 0.3rem;
+  }
+  .pf-stack-item {
+    font-size: 0.62rem;
+    padding: 0.12rem 0.4rem;
+  }
+
+  /* Project Grid */
+  .pf-project-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .pf-project h3 {
+    font-size: 0.92rem;
+  }
+
+  /* Tech Stack */
   .pf-stack-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-  .pf-chips-label {
-    min-width: 70px;
-    font-size: 0.62rem;
+  .pf-stack-chip {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
   }
-  .pf-chip {
-    font-size: 0.65rem;
+
+  /* Timeline */
+  .pf-tl-card {
+    padding: 1rem 1.2rem;
   }
+  .pf-tl-list a {
+    font-size: 0.8rem;
+  }
+  .pf-tl-item {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Footer */
   .pf-footer {
     padding: 2rem 1rem 1.5rem;
   }
-  .pf-tl-card {
-    padding: 1rem 1.2rem;
+  .pf-footer-links {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* 아주 좁은 화면 (400px 이하) */
+@media screen and (max-width: 400px) {
+  .pf-hero {
+    padding: 2rem 0.8rem 1.8rem;
+  }
+  .pf-hero-greeting {
+    font-size: 0.78rem;
+  }
+  .pf-hero-keywords {
+    font-size: 0.72rem;
+  }
+  .pf-hero-stats {
+    gap: 1rem;
+  }
+  .pf-hero-stat-num {
+    font-size: 1.1rem;
+  }
+  .pf-hero-stat-label {
+    font-size: 0.65rem;
+  }
+  .pf-section {
+    padding: 1.5rem 0.8rem 0;
+  }
+  .pf-expertise-card {
+    padding: 1rem;
+  }
+  .pf-card-techs li {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+  .pf-project-content {
+    padding: 1rem;
+  }
+  .pf-project--featured h3 {
+    font-size: 0.95rem;
+  }
+  .pf-project-desc {
+    font-size: 0.76rem;
+  }
+  .pf-footer {
+    padding: 1.5rem 0.8rem 1.2rem;
   }
 }
 

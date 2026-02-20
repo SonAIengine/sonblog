@@ -21,3 +21,4 @@ nav:
   - Search-API와-LLMOps-Docker-구성기.md
   - ArgoCD-멀티-고객사-배포-아키텍처-ApplicationSet-시행착오와-단일-진입점-설계.md
   - XGEN-멀티파드-분산-환경-마이그레이션-Redis-분산-락과-직렬화-삽질기.md
+  - XGEN-AWS-EKS-신규-고객사-배포기-온프레미스에서-클라우드로.md

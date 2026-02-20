@@ -76,6 +76,99 @@ flowchart LR
 
 핵심 포인트는 **빌드는 온프레미스, 배포는 AWS**라는 이중 구조다. AWS에 별도 Jenkins가 있었지만 XGEN 전용이 아니어서 사용할 수 없었다. 온프레미스 Jenkins에서 이미지를 빌드하고 AWS Nexus로 push하는 구조를 택했다.
 
+## EKS 환경 부트스트랩
+
+yaml 파일을 만들기 전에, EKS 클러스터에 XGEN이 올라갈 수 있는 기반부터 만들어야 했다. 온프레미스 K3s에서는 클러스터 세팅 스크립트(`setup-k3s.sh`)가 이 과정을 자동화하지만, EKS는 처음이라 하나씩 수작업으로 진행했다.
+
+### kubeconfig 컨텍스트 분리
+
+온프레미스 K3s와 AWS EKS를 동시에 다뤄야 하니, kubeconfig 컨텍스트를 분리하는 게 첫 번째 작업이었다. 실수로 온프레미스 클러스터에 AWW 설정을 배포하면 사고가 나기 때문이다.
+
+```bash
+# EKS 클러스터 kubeconfig 추가
+aws eks update-kubeconfig \
+  --region ap-northeast-2 \
+  --name prd-x2bee-eks-cluster \
+  --alias eks-aww \
+  --profile aww
+
+# 컨텍스트 확인 — 온프레미스와 EKS가 공존
+kubectl config get-contexts
+# CURRENT   NAME       CLUSTER
+#           default    default         ← 온프레미스 K3s (243)
+#           dev        default         ← 온프레미스 K3s (244)
+# *         eks-aww    prd-x2bee-eks   ← AWS EKS
+```
+
+이후 모든 EKS 작업에는 `--context eks-aww`를 명시하거나, `KUBECONFIG`을 분리해서 사용했다.
+
+### 네임스페이스와 Secret 생성
+
+EKS에 XGEN 서비스가 올라갈 네임스페이스와, 서비스가 의존하는 Secret을 먼저 만들어야 한다:
+
+```bash
+# 네임스페이스 생성
+kubectl --context eks-aww create namespace xgen
+
+# 이미지 pull용 Secret (AWS Nexus 인증)
+kubectl --context eks-aww -n xgen create secret docker-registry registry-credentials \
+  --docker-server=<aww-nexus-host>:5000 \
+  --docker-username=admin \
+  --docker-password='<nexus-password>'
+
+# 인프라 접속 정보 Secret (DB, Redis 등)
+kubectl --context eks-aww -n xgen create secret generic xgen-secrets \
+  --from-literal=POSTGRES_USER=<db-user> \
+  --from-literal=POSTGRES_PASSWORD='<db-password>' \
+  --from-literal=REDIS_PASSWORD='<redis-password>' \
+  --from-literal=MINIO_DATA_ACCESS_KEY='<s3-access-key>' \
+  --from-literal=MINIO_DATA_SECRET_KEY='<s3-secret-key>'
+```
+
+이 Secret들은 Git에 없다. `projects/*.yaml`이 아무리 잘 설계되어 있어도, Secret은 배포 시점에 수동으로 넣어야 하는 영역이다.
+
+### 방화벽 IP 화이트리스트
+
+AWS 환경은 화이트리스트 기반 방화벽이었다. 통신이 필요한 구간마다 IP 개방을 요청해야 했다:
+
+| 구간 | 용도 | 포트 |
+|------|------|------|
+| 온프레미스 Jenkins → AWS Nexus | 이미지 push | 5000 |
+| EKS Pod → 관리 서버 | DB, Redis, Qdrant 접속 | 5432, 6379, 6333 |
+| 온프레미스 GitLab → AWS GitLab | Git 미러링 | 8083 |
+
+특히 Jenkins → Nexus 구간이 막혀 있으면 이미지 빌드는 성공하지만 push에서 타임아웃이 난다. 이 부분은 고객사 인프라 담당자에게 개방 요청을 넣고 확인받아야 해서, 코드 작업과 별개로 리드타임이 있었다.
+
+### ArgoCD 연동 — Git 레포 등록과 Root App
+
+EKS에 ArgoCD가 이미 설치되어 있었다. 여기에 XGEN 인프라 레포를 연결하고, Root App을 등록하는 과정:
+
+```bash
+# ArgoCD에 AWS GitLab 레포 등록
+argocd repo add http://<aws-gitlab-host>/xgen/xgen-infra.git \
+  --username root \
+  --password '<gitlab-password>'
+
+# Root App 등록 — 이 한 줄이 6개 서비스 Application을 자동 생성한다
+kubectl --context eks-aww apply -f k3s/argocd/root-apps/aww-root.yaml
+```
+
+Root App이 등록되면 ArgoCD가 `projects/xgen-aww.yaml`을 읽어서 6개 서비스의 Application을 자동으로 만든다. 여기서부터는 기존 아키텍처가 동작하는 영역이다.
+
+### 인프라 연결 확인
+
+마지막으로, EKS Pod에서 관리 서버(PostgreSQL, Redis, Qdrant)에 실제로 접근할 수 있는지 확인했다. VPC Peering이 설정되어 있어도 실제 통신이 되는지는 별개 문제다:
+
+```bash
+# EKS에서 임시 Pod로 관리 서버 연결 테스트
+kubectl --context eks-aww -n xgen run test-conn --rm -it --image=busybox -- sh
+/ # nc -zv <mgmt-server-ip> 5432    # PostgreSQL
+/ # nc -zv <mgmt-server-ip> 6379    # Redis
+/ # nc -zv <mgmt-server-ip> 6333    # Qdrant
+```
+
+여기까지가 "XGEN yaml을 작성하기 전에 해야 하는 일"이다. 온프레미스에서는 스크립트 하나로 끝나는 과정이 AWS에서는 kubeconfig 분리, Secret 생성, 방화벽 개방, ArgoCD 연동, 네트워크 확인까지 수작업으로 이어진다. 클라우드 배포의 진짜 비용은 yaml이 아니라 이 부트스트랩 과정에 있다.
+
 ## 통한 것 — xgen-aww.yaml 단일 진입점
 
 결론부터 말하면, 큰 틀에서는 통했다. `projects/xgen-aww.yaml` 파일 하나에 AWW 환경의 모든 배포 설정을 정의할 수 있었다:
@@ -104,8 +197,6 @@ vars:
   AWS_REGION: "ap-northeast-2"
   S3_BUCKET: "xgen-aww"
   S3_DOCUMENT_BUCKET: "xgen-aww"
-  MINIO_DOCUMENT_BUCKET: "xgen-aww"
-  MINIO_SECURE: "true"
 
 infra:
   postgres:
@@ -115,7 +206,7 @@ infra:
   qdrant:
     host: "<mgmt-server-ip>"
   minio:
-    endpoint: "https://s3.ap-northeast-2.amazonaws.com"
+    endpoint: ""  # S3 사용, MinIO 불필요
 
 environments:
   aww:
@@ -281,17 +372,12 @@ command:
 
 온프레미스 MinIO 인증(`minio / minio123`)과 엔드포인트가 직접 박혀 있었다. 온프레미스에서는 이게 동작했지만, AWS S3에서는 IAM 키가 필요하고 엔드포인트도 다르다. 하드코딩이 환경 전환의 순간에 터진 것이다.
 
-```
-# 커밋: fix: xgen-documents MinIO 하드코딩 제거 + AWW 배포 가이드 재구성
-# 날짜: 2026-02-20 12:26
-```
+### 해결 방안 — 환경변수 참조로 전환 (미적용)
 
-### 해결 — 환경변수 참조로 전환
-
-고정값을 환경변수 참조로 바꿨다:
+해결 방향은 명확하다. 고정값을 환경변수 참조로 바꾸면 된다:
 
 ```yaml
-# k3s/helm-chart/values/xgen-documents.yaml (변경 후)
+# k3s/helm-chart/values/xgen-documents.yaml (변경 계획)
 command:
   - /bin/sh
   - -c
@@ -315,26 +401,22 @@ command:
 1. **ConfigMap** — `projects/xgen-aww.yaml`의 `vars` 섹션에서 `MINIO_DOCUMENT_BUCKET`, `MINIO_SECURE` 주입
 2. **Secret** — `xgen-secrets`에서 `MINIO_DATA_ACCESS_KEY`, `MINIO_DATA_SECRET_KEY` 주입
 
+> **현재 상태**: 이 수정은 아직 적용되지 않았다. AWW 배포에서는 xgen-documents의 파일 스토리지 기능을 사용하지 않아 당장 문제가 되지 않지만, S3 연동 시 반드시 적용해야 한다. `xgen-aww.yaml`의 `vars`에 `MINIO_DOCUMENT_BUCKET`, `MINIO_SECURE`를 추가하고, `infra.minio.endpoint`를 S3 엔드포인트로 설정하는 작업도 함께 필요하다.
+
 ### S3 연동 — MinIO SDK의 호환성
 
-```
-# 커밋: feat: AWW S3 연동 설정 (MinIO → S3 전환)
-# 날짜: 2026-02-20 13:02
-```
-
-xgen-aww.yaml에서 엔드포인트와 관련 변수를 S3용으로 설정한다:
+xgen-documents는 MinIO SDK를 사용하는데, MinIO SDK는 S3 호환이다. 따라서 **코드 수정 없이** 엔드포인트와 인증 정보만 바꾸면 S3와 통신할 수 있다:
 
 ```yaml
+# xgen-aww.yaml에 추가 예정
 infra:
   minio:
     endpoint: "https://s3.ap-northeast-2.amazonaws.com"
 
 vars:
   MINIO_DOCUMENT_BUCKET: "xgen-aww"
-  MINIO_SECURE: "true"
+  MINIO_SECURE: "true"  # 빠뜨리면 HTTP로 S3에 접근하려다 실패
 ```
-
-결과적으로 **xgen-documents 코드는 한 줄도 바꾸지 않았다.** MinIO SDK가 S3 호환이기 때문에, 엔드포인트와 인증 정보만 바꾸면 S3와 통신한다. 단, `MINIO_SECURE: "true"`를 빠뜨리면 HTTP로 S3에 접근하려다 실패하니 주의가 필요하다.
 
 환경변수가 Pod까지 전달되는 흐름:
 
@@ -399,6 +481,92 @@ environments:
 ```
 
 평소에는 1개로 운영하되, 부하 시 2개까지 스케일아웃되는 구조다. 온프레미스 prd(`minReplicas: 2, maxReplicas: 4`)의 절반 수준이다.
+
+## 배포 중 만난 함정
+
+트러블슈팅 1~4는 아키텍처의 구멍이었다. 하지만 실제 배포 과정에서는 아키텍처와 무관한, **환경 차이에서 오는 함정**도 있었다.
+
+### 함정 1 — YAML의 `!`가 태그로 해석된다 (serde_yaml)
+
+가장 디버깅이 어려웠던 문제였다.
+
+**증상**: xgen-backend-gateway가 EKS에서 "Name or service not known" DNS 에러를 냈다. `config.yml`에 인프라 IP(`10.100.1.70`)를 정확히 설정했는데, 마치 K8s 내부 DNS(`postgresql.xgen-system.svc.cluster.local`)를 찾는 것처럼 동작했다.
+
+**원인**: 비밀번호에 `!` 문자가 있었다.
+
+```yaml
+# config/config.yml (문제 코드)
+xgen-aww:
+  development:
+    REDIS_URL: redis://:AwwS0!ution@10.100.1.70:6379   # ← ! 문자
+```
+
+xgen-backend-gateway는 Rust 앱이고, `serde_yaml`로 YAML을 파싱한다. serde_yaml은 YAML 1.1 스펙을 따르는데, **`!`는 YAML 태그(tag) 지시자**다. `AwwS0!ution`의 `!ution`이 태그로 해석되면서 값 파싱이 실패했다.
+
+문제는 **파싱 실패가 에러를 내지 않았다**는 것이다. backend-gateway의 설정 로직은 `APP_SITE`에 해당하는 섹션(`xgen-aww`)이 없으면 `default` 섹션으로 fallback하도록 구현되어 있다. `xgen-aww` 섹션 전체가 파싱 실패 → `default` 섹션(k8s 내부 DNS 주소) 사용 → DNS 에러.
+
+```
+config.yml 파싱 시도
+  → xgen-aww 섹션의 !ution을 YAML 태그로 해석
+  → 파싱 실패 (에러 로그 없음)
+  → default 섹션 fallback
+  → postgresql.xgen-system.svc.cluster.local로 접속 시도
+  → DNS 에러
+```
+
+**해결**: URL 값을 따옴표로 감싸면 `!`가 문자열 리터럴로 처리된다.
+
+```yaml
+# config/config.yml (수정 후)
+xgen-aww:
+  development:
+    REDIS_URL: "redis://:AwwS0!ution@10.100.1.70:6379"     # 따옴표로 감싸기
+    DATABASE_URL: "postgresql://aww:AwwS0!ution@10.100.1.70:5432/plateerag"
+```
+
+이 문제는 온프레미스에서는 절대 발생하지 않는다. 온프레미스 비밀번호(`ailab123`, `redis_secure_password123!`)는 YAML 값 끝에 `!`가 오거나 따옴표로 이미 감싸져 있었다. AWW 비밀번호 `AwwS0!ution`의 `!`가 값 중간에 있어서 태그로 해석된 것이다.
+
+### 함정 2 — 도메인이 없으면 Istio Gateway가 터진다
+
+```
+# 커밋: fix: domain 미설정 시 Istio Gateway/VirtualService 생성 방지
+# 날짜: 2026-02-20
+```
+
+**증상**: xgen-frontend의 ArgoCD sync가 실패했다. 에러: `Gateway.networking.istio.io "xgen-frontend-gateway" is invalid: spec.servers[0].hosts: Required value`
+
+**원인**: AWW에 도메인이 아직 확정되지 않아 빈 문자열(`""`)로 설정했다. Helm 템플릿이 빈 hosts 배열로 Gateway를 생성하려고 했고, Istio가 이를 거부했다.
+
+**해결**: `ingress.yaml` 템플릿에 hosts가 비어있으면 Gateway/VirtualService를 아예 생성하지 않는 조건을 추가했다.
+
+```yaml
+# k3s/helm-chart/templates/ingress.yaml
+{{- if .Values.ingress.enabled }}
+{{- $hosts := fromYamlArray (include "xgen-service.ingressHosts" .) }}
+{{- if $hosts }}       ← 이 조건 추가
+...Gateway/VirtualService 생성...
+{{- end }}
+{{- end }}
+```
+
+온프레미스에서는 배포 시점에 항상 도메인이 있었으니 이 케이스를 고려하지 않았다. 클라우드 환경에서는 도메인 확정 전에 서비스부터 올리는 경우가 흔하다.
+
+### 함정 3 — 환경마다 비밀번호가 다르다
+
+**증상**: 모든 Python 서비스가 DB 접속에 실패했다. `password authentication failed for user "ailab"`
+
+**원인**: xgen-secrets에 온프레미스 기본값(`ailab / ailab123`)을 넣었는데, AWW 인프라(10.100.1.70)의 PostgreSQL은 다른 계정(`aww / AwwS0!ution`)을 사용했다. "같은 XGEN 플랫폼이니까 DB 비밀번호도 같겠지"라는 가정이 틀렸다.
+
+**해결**: AWW 인프라 관리 서버의 `.env` 파일을 확인하고, xgen-secrets를 정확한 값으로 재생성했다.
+
+```bash
+KUBECONFIG=~/.kube/config kubectl --context eks-aww -n xgen create secret generic xgen-secrets \
+  --from-literal=POSTGRES_USER=aww \
+  --from-literal=POSTGRES_PASSWORD='AwwS0!ution' \
+  # ... (온프레미스 ailab/ailab123과 다름!)
+```
+
+이건 아키텍처 문제가 아니라 운영 문제다. Secret은 Git에 없으니 `projects/*.yaml`에서 관리할 수 없고, 배포 시점에 수동으로 넣어야 한다. 새 고객사 배포 체크리스트에 "인프라 비밀번호 확인"을 넣어야 한다.
 
 ## 선행 작업이 살렸다 — Nexus 인증 기반
 
@@ -482,15 +650,20 @@ AWW 고객사를 추가하면서 실제로 수정한 파일:
 | `project.yaml` | `siteRegistries.aww` 추가 |
 | `build.groovy` | siteRegistries 분기 로직 |
 | `build-all.groovy` | SITE choices에 aww 추가 |
-| `application.yaml` (Helm 템플릿) | `registryHost` 파라미터 추가 |
-| `xgen-documents.yaml` (Helm values) | MinIO 하드코딩 → 환경변수 참조 |
+| `application.yaml` (ArgoCD 템플릿) | `registryHost` 파라미터 추가 |
+| `ingress.yaml` (Helm 템플릿) | 빈 도메인 시 Gateway 생성 방지 |
+| `config.yml` (backend-gateway) | `xgen-aww` 섹션 추가, URL 따옴표 처리 |
 
-처음 기대한 "파일 1~2개 수정"보다는 많지만, 6개 마이크로서비스 전체를 새 환경에 배포한 것 치고는 적다. 그리고 `application.yaml`과 `xgen-documents.yaml`의 수정은 AWW 전용이 아니라 **모든 고객사에 적용되는 구조 개선**이다. 다음 고객사부터는 이 문제가 반복되지 않는다.
+처음 기대한 "파일 1~2개 수정"보다는 많지만, 6개 마이크로서비스 전체를 새 환경에 배포한 것 치고는 적다. 그리고 `application.yaml`과 `ingress.yaml`의 수정은 AWW 전용이 아니라 **모든 고객사에 적용되는 구조 개선**이다. 다음 고객사부터는 이 문제가 반복되지 않는다.
 
 ### 배운 것
 
 **하드코딩은 환경이 바뀌는 순간 터진다.** MinIO의 `minio / minio123`은 온프레미스에서 문제 없이 1년 넘게 돌았다. 하지만 S3로 전환하는 순간 장애 요인이 됐다. "지금 동작하니까 괜찮다"는 생각으로 남겨둔 하드코딩은, 결국 가장 바쁜 배포 시점에 발목을 잡는다.
 
 **온프레미스 → 클라우드는 레지스트리부터 다르다.** 같은 Nexus를 공유하는 온프레미스 고객사끼리는 `site` 값만 바꾸면 됐다. 클라우드 고객사는 레지스트리 호스트 자체가 다르고, 인증 방식도 다르다. 멀티 고객사 아키텍처를 설계할 때, "모든 고객사가 같은 레지스트리를 쓴다"는 전제를 두지 않는 게 맞다.
+
+**YAML 특수문자는 따옴표로 감싸라.** `!`가 YAML 태그로 해석되어 설정 전체가 무너지는 문제는 에러 로그도 없이 silent failure로 나타났다. 비밀번호, URL 등 외부에서 오는 값은 무조건 따옴표로 감싸는 습관이 필요하다. 특히 Rust serde_yaml처럼 YAML 1.1 스펙을 엄격하게 따르는 파서를 사용할 때.
+
+**환경별 비밀번호를 가정하지 마라.** "같은 플랫폼이니까 비밀번호도 같겠지"라는 가정으로 30분을 날렸다. Secret은 Git에 없으니 배포 체크리스트에 "인프라 인증 정보 확인" 항목이 반드시 필요하다.
 
 **선행 작업의 가치.** Nexus 인증(`imagePullSecrets`)을 온프레미스에서 먼저 해결해둔 덕분에 AWW EKS에서 이미지 pull 문제가 생기지 않았다. 인프라 기반 작업은 "지금 당장 필요하지 않더라도" 미리 해두면 나중에 시간을 절약해준다.

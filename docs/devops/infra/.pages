@@ -28,3 +28,4 @@ nav:
   - xgen-k3s-anatomy-3-helm-chart-design.md
   - xgen-k3s-anatomy-4-cicd-jenkins-argocd.md
   - xgen-k3s-anatomy-5-istio-observability.md
+  - DNS-도메인-SSL-인증서-네임서버-충돌로-Lets-Encrypt-발급-실패한-이야기.md

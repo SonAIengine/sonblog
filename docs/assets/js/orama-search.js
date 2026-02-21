@@ -148,7 +148,7 @@
 
       var [oramaModule, indexResp] = await Promise.all([
         import(ORAMA_CDN),
-        fetch(SITE_BASE + "search/search_index.json"),
+        fetch(SITE_BASE + "search/search_index.json", { cache: "no-cache" }),
       ]);
 
       orama = oramaModule;

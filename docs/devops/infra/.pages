@@ -23,3 +23,8 @@ nav:
   - XGEN-멀티파드-분산-환경-마이그레이션-Redis-분산-락과-직렬화-삽질기.md
   - XGEN-AWS-EKS-신규-고객사-배포기-온프레미스에서-클라우드로.md
   - 홈서버-SSH-보안-강화-키-인증-fail2ban-포트-우회.md
+  - xgen-k3s-anatomy-1-docker-build-strategy.md
+  - xgen-k3s-anatomy-2-kubernetes-core-objects.md
+  - xgen-k3s-anatomy-3-helm-chart-design.md
+  - xgen-k3s-anatomy-4-cicd-jenkins-argocd.md
+  - xgen-k3s-anatomy-5-istio-observability.md

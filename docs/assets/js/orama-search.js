@@ -141,6 +141,122 @@
     return top + " \u203A " + sub;
   }
 
+  // ── 한국어 경량 스테머 ──
+  var KO_COMPOUND = /(?:했습니다|됩니다|있습니다|없습니다|했었다|하였다|되었다|했는데|하는데|되는데|했으며|되었으며|이었다|하겠다)$/;
+  var KO_ENDING = /(?:했다|한다|된다|됐다|있다|없다|했는|하는|되는|없는|있는|했고|하고|되고|했던|했을|하면|되면|하기|되기|하여|해서|인다|였다|이다)$/;
+  var KO_PARTICLE_L = /(?:에서|으로|부터|까지|처럼|같이|밖에|에게|한테|보다|이나|이란|라고|이고|만큼|에는)$/;
+  var KO_PARTICLE_S = /(?:은|는|이|가|을|를|의|에|로|와|과|도|만|뿐|란)$/;
+  var KO_SUFFIX = /기$/;
+  var KO_STEM_PATTERNS = [KO_COMPOUND, KO_ENDING, KO_PARTICLE_L, KO_PARTICLE_S, KO_SUFFIX];
+
+  function stemKorean(token) {
+    if (!token || token.length < 3) return token;
+    if (!/[\uAC00-\uD7AF]/.test(token)) return token;
+    var s = token;
+    for (var iter = 0; iter < 3; iter++) {
+      var changed = false;
+      for (var i = 0; i < KO_STEM_PATTERNS.length; i++) {
+        var stripped = s.replace(KO_STEM_PATTERNS[i], "");
+        if (stripped !== s && stripped.length >= 2) {
+          s = stripped;
+          changed = true;
+          break;
+        }
+      }
+      if (!changed) break;
+    }
+    return s;
+  }
+
+  // ── 동의어 사전 ──
+  var SYNONYM_GROUPS = [
+    ["kubernetes", "k8s", "쿠버네티스"],
+    ["docker", "도커"],
+    ["container", "컨테이너"],
+    ["pod", "파드"],
+    ["helm", "헬름"],
+    ["jenkins", "젠킨스"],
+    ["argocd", "아르고시디"],
+    ["gitops", "깃옵스"],
+    ["istio", "이스티오"],
+    ["prometheus", "프로메테우스"],
+    ["grafana", "그라파나"],
+    ["loki", "로키"],
+    ["ssl", "tls"],
+    ["redis", "레디스"],
+    ["opensearch", "오픈서치"],
+    ["elasticsearch", "엘라스틱서치"],
+    ["qdrant", "큐드란트"],
+    ["embedding", "임베딩"],
+    ["nginx", "엔진엑스"],
+    ["nestjs", "네스트js"],
+    ["nextjs", "넥스트js"],
+    ["rust", "러스트"],
+    ["python", "파이썬"],
+    ["typescript", "타입스크립트"],
+    ["javascript", "자바스크립트"],
+    ["deployment", "디플로이먼트"],
+    ["configmap", "컨피그맵"],
+    ["namespace", "네임스페이스"],
+    ["service mesh", "서비스메시"],
+  ];
+
+  var SYNONYM_MAP = {};
+  SYNONYM_GROUPS.forEach(function (group) {
+    group.forEach(function (term) {
+      var key = term.toLowerCase();
+      if (!SYNONYM_MAP[key]) SYNONYM_MAP[key] = [];
+      group.forEach(function (syn) {
+        var sk = syn.toLowerCase();
+        if (sk !== key && SYNONYM_MAP[key].indexOf(sk) === -1) {
+          SYNONYM_MAP[key].push(sk);
+        }
+      });
+    });
+  });
+
+  // ── 인덱스 enrichment ──
+  function buildEnrichedText(title, text) {
+    var combined = ((title || "") + " " + (text || "")).trim();
+    if (!combined) return "";
+
+    // 1) 한국어 어근 추출
+    var tokens = combined.split(/\s+/);
+    var stemExtras = [];
+    for (var i = 0; i < tokens.length; i++) {
+      var stemmed = stemKorean(tokens[i]);
+      if (stemmed !== tokens[i] && stemExtras.indexOf(stemmed) === -1) {
+        stemExtras.push(stemmed);
+      }
+    }
+
+    // 2) 동의어 확장
+    var lower = combined.toLowerCase();
+    var synExtras = [];
+    var synKeys = Object.keys(SYNONYM_MAP);
+    for (var j = 0; j < synKeys.length; j++) {
+      if (lower.indexOf(synKeys[j]) !== -1) {
+        var syns = SYNONYM_MAP[synKeys[j]];
+        for (var k = 0; k < syns.length; k++) {
+          if (synExtras.indexOf(syns[k]) === -1 && lower.indexOf(syns[k]) === -1) {
+            synExtras.push(syns[k]);
+          }
+        }
+      }
+    }
+
+    var parts = [combined];
+    if (stemExtras.length) parts.push(stemExtras.join(" "));
+    if (synExtras.length) parts.push(synExtras.join(" "));
+    return parts.join(" ");
+  }
+
+  /** 검색 쿼리 한국어 스테밍 */
+  function processQuery(query) {
+    if (!query) return query;
+    return query.split(/\s+/).filter(Boolean).map(stemKorean).join(" ");
+  }
+
   // ── Orama 로드 + 인덱스 구축 (즉시 시작) ──
   var indexPromise = (async function initIndex() {
     try {
@@ -159,21 +275,36 @@
           location: "string",
           title: "string",
           text: "string",
+          enriched: "string",
+        },
+        components: {
+          tokenizer: {
+            stemming: false,
+            tokenize: function (text) {
+              if (!text) return [];
+              return text.toLowerCase()
+                .split(/[\s\-\.\/\\_,;:!?\(\)\[\]{}'"\u2014\u2013\u00B7]+/)
+                .filter(function (t) { return t.length > 0; });
+            },
+          },
         },
       });
 
       for (var i = 0; i < data.docs.length; i++) {
         var doc = data.docs[i];
         if (!doc.title && !doc.text) continue;
+        var cleanTitle = stripHtml(doc.title || "");
+        var cleanText = stripHtml(doc.text || "");
         orama.insert(db, {
           location: doc.location || "",
-          title: stripHtml(doc.title || ""),
-          text: stripHtml(doc.text || ""),
+          title: cleanTitle,
+          text: cleanText,
+          enriched: buildEnrichedText(cleanTitle, cleanText),
         });
       }
 
       ready = true;
-      console.log("orama-search: BM25 인덱스 준비 완료 (" + data.docs.length + " docs)");
+      console.log("orama-search: BM25 인덱스 준비 완료 (" + data.docs.length + " docs, KO stem + 동의어 enrichment)");
       triggerOramaRender();
     } catch (err) {
       console.warn("orama-search: 초기화 실패", err);
@@ -184,9 +315,11 @@
     if (!ready || !db || !query.trim()) return null;
     var t0 = performance.now();
     var result = orama.search(db, {
-      term: query,
+      term: processQuery(query),
+      properties: ["title", "enriched"],
       limit: 30,
-      boost: { title: 5, text: 1 },
+      boost: { title: 5, enriched: 1 },
+      tolerance: 1,
     });
     result._elapsed = Math.round(performance.now() - t0);
     return result;

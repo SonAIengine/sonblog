@@ -1,11 +1,11 @@
 title: 딥러닝 기초
 nav:
-  - GPT 모델 만들기(1).md
-  - GPT 모델 만들기(2).md
-  - 셀프 어텐션의 전체 단계를 설명하라.md
-  - Query, Key, Value 행렬은 어떻게 생성하는가?.md
-  - Scaled Dot-Product Attention 를 정의하시오..md
+  - gpt-model-from-scratch-1.md
+  - gpt-model-from-scratch-2.md
+  - self-attention-step-by-step.md
+  - transformer-query-key-value.md
+  - scaled-dot-product-attention.md
   - Tokenization.md
   - Dropout.md
   - KoBERT.md
-  - Thompson Sampling.md
+  - thompson-sampling.md

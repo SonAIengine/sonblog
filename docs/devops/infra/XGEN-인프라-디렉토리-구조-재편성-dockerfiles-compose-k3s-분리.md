@@ -1,6 +1,6 @@
 ---
-title: "XGEN 2.0 인프라 디렉토리 구조 재편성: dockerfiles/compose/k3s 분리 전략"
-description: "혼재하던 Docker 설정, Compose 배포, K3s 쿠버네티스 매니페스트를 역할별로 분리한 리팩토링 과정과 그 이유"
+title: "인프라 모노레포 디렉토리 구조 설계: dockerfiles/compose/k3s 분리 전략"
+description: "하나의 레포에 혼재하던 Dockerfile, Docker Compose, K3s 쿠버네티스 매니페스트를 역할별로 분리하고 ArgoCD와 연동하는 인프라 모노레포 구조 리팩토링 과정."
 date: 2026-02-09
 tags:
   - DevOps
@@ -9,6 +9,8 @@ tags:
   - ArgoCD
   - 인프라
   - 리팩토링
+  - 도커
+  - 쿠버네티스
 ---
 
 ## 배경

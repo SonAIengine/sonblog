@@ -1,10 +1,12 @@
 ---
-title: "Query, Key, Value 행렬은 어떻게 생성하는가?"
-description: "> 위 절차를 통해 생성된 Q, K, V 행렬은 이후 스케일드 닷 프로덕트 어텐션에 입력되어 문맥 정보를 계산하게 된다."
+title: "Transformer의 Query, Key, Value 행렬 생성 과정"
+description: "Transformer 어텐션에서 Q, K, V 행렬이 생성되는 과정을 단계별로 정리한다. 입력 임베딩에서 가중치 행렬을 곱해 Query, Key, Value를 만들고 어텐션 스코어를 계산하기까지."
 date: 2025-07-14
 tags:
   - AI
   - 딥러닝
+  - Transformer
+  - Self-Attention
 ---
 
 ### 1. 입력 임베딩 확보 단계

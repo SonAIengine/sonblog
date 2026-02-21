@@ -10,6 +10,11 @@ tags:
   - FastAPI
   - 아키텍처
   - xgen
+  - 모델 서빙
+related:
+  - ai/XGEN/XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
+  - ai/XGEN/llama.cpp-서버-운영기-ROCm-GPU에서의-삽질과-해결.md
+  - ai/XGEN/GPU-상태-모니터링-및-자동-모델-배포-시스템.md
 ---
 
 # vLLM vs llama.cpp: 백엔드 스위칭 아키텍처 설계

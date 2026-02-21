@@ -10,6 +10,11 @@ tags:
   - NVIDIA
   - Python
   - LLM
+  - 자동화
+related:
+  - ai/XGEN/llama.cpp-서버-운영기-ROCm-GPU에서의-삽질과-해결.md
+  - ai/XGEN/vLLM-vs-llama.cpp-백엔드-스위칭-아키텍처-설계.md
+  - ai/XGEN/XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
 ---
 
 ## 배경

@@ -9,6 +9,8 @@ tags:
   - ClusterRole
   - DevOps
   - 트러블슈팅
+  - 쿠버네티스
+  - 권한
 ---
 
 ## 배경

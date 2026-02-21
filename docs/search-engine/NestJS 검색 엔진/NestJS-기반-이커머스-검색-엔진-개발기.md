@@ -10,6 +10,12 @@ tags:
   - Handlebars
   - MeCab
   - Redis
+  - 이커머스
+  - 검색 API
+related:
+  - search-engine/Rust 검색 엔진/Rust로-커머스-검색-엔진을-처음부터-만들기.md
+  - search-engine/시맨틱 검색/vector-semantic-search.md
+  - search-engine/NestJS 검색 엔진/Cosine-Similarity-직접-구현으로-검색-재순위화.md
 ---
 
 # NestJS 기반 이커머스 검색 엔진 개발기

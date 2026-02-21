@@ -10,6 +10,8 @@ tags:
   - HTTPS
   - TLS
   - DevOps
+  - 인증서
+  - 쿠버네티스
 ---
 
 ## 배경

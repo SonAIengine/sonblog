@@ -10,6 +10,9 @@ tags:
   - 검색품질
   - OpenSearch
   - Python
+  - 이커머스
+  - 검색 품질
+  - 랭킹
 ---
 
 # Reranker 모델 도입으로 검색 정확도 향상하기

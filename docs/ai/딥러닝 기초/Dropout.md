@@ -1,10 +1,13 @@
 ---
-title: "간단한 신경망에 Dropout 적용"
-description: "딥러닝 모델을 만들다 보면 한 번쯤은 이런 고민을 하게 된다. \"훈련 데이터에선 성능이 좋은데, 테스트 데이터에선 왜 이러지...?\""
+title: "Dropout이란? PyTorch 신경망에 Dropout 적용하기"
+description: "딥러닝 모델의 과적합(Overfitting)을 방지하는 Dropout 기법의 원리와 PyTorch에서 신경망에 적용하는 방법. 훈련/평가 모드 전환, 드롭 확률 설정까지."
 date: 2025-07-11
 tags:
   - AI
   - 딥러닝
+  - PyTorch
+  - Dropout
+  - 과적합
 ---
 
 ## 딥러닝에서 Dropout이란? 과적합을 잡는 똑똑한 방법

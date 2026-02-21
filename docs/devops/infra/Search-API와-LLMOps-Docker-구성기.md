@@ -18,6 +18,8 @@ tags:
   - 배포
 related:
   - devops/infra/XGEN-2.0-인프라-K8s-ArgoCD-운영-배포.md
+  - devops/infra/Docker-BuildKit-캐시-전략과-NO_CACHE-옵션.md
+  - devops/infra/K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md
 ---
 # Search API와 LLMOps Docker 구성기
 

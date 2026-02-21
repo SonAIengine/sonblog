@@ -11,6 +11,11 @@ tags:
   - GitOps
   - XGEN
   - 멀티테넌시
+  - 쿠버네티스
+related:
+  - devops/infra/K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md
+  - devops/infra/XGEN-2.0-인프라-K8s-ArgoCD-운영-배포.md
+  - devops/infra/XGEN-AWS-EKS-신규-고객사-배포기-온프레미스에서-클라우드로.md
 ---
 
 # ArgoCD 멀티 고객사 배포 아키텍처 — ApplicationSet 시행착오와 단일 진입점 설계

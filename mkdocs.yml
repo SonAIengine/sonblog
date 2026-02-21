@@ -87,6 +87,8 @@ plugins:
       categories: true
   - social:
       cards_layout: default/variant
+      cards_layout_options:
+        font_family: Noto Sans KR
   - rss:
       match_path: "(search-engine|ai|devops|full-stack)/.*"
       date_from_meta:

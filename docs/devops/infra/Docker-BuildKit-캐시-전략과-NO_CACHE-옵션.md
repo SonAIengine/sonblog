@@ -9,6 +9,11 @@ tags:
   - Jenkins
   - 캐시
   - DevOps
+  - 도커
+  - 빌드 최적화
+related:
+  - devops/infra/Docker-이미지-빌드-최적화-멀티스테이지와-캐시-전략.md
+  - devops/infra/Search-API와-LLMOps-Docker-구성기.md
 ---
 
 ## 배경

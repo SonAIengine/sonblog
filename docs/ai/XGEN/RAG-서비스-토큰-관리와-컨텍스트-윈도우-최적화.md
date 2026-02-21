@@ -8,6 +8,10 @@ tags:
   - LLM
   - 컨텍스트 윈도우
   - xgen
+related:
+  - ai/XGEN/Qdrant-하이브리드-검색-Sparse-Dense-벡터-통합.md
+  - ai/XGEN/XGEN-2.0-임베딩-전용-서버와-배치-처리-최적화.md
+  - search-engine/시맨틱 검색/vector-semantic-search.md
 ---
 
 # RAG 서비스의 토큰 관리와 컨텍스트 윈도우 최적화

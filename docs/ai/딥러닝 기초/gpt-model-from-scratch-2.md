@@ -1,11 +1,13 @@
 ---
-title: "GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘"
-description: "1. 어떻게 단어 사이의 관계를 파악할 수 있을까? 2. 어떻게 특정 정보의 중요성을 모델에 전달할 수 있을까?"
+title: "GPT 모델 처음부터 만들기 (2) - 셀프 어텐션 구현"
+description: "GPT 구현 시리즈 2편. 셀프 어텐션 메커니즘의 원리를 이해하고 PyTorch로 직접 구현한다. Query/Key/Value 행렬 생성, 어텐션 스코어 계산, 마스킹까지."
 date: 2025-07-09
 tags:
   - AI
   - GPT
   - 딥러닝
+  - Self-Attention
+  - Transformer
 ---
 
 # GPT 모델 만들기 (2) - 셀프 어텐션 메커니즘

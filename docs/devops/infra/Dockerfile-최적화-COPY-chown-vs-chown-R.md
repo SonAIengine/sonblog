@@ -6,8 +6,9 @@ tags:
   - Docker
   - Dockerfile
   - 최적화
-  - Frontend
   - DevOps
+  - 도커
+  - 이미지 최적화
 ---
 
 ## 배경

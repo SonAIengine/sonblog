@@ -24,7 +24,7 @@ EXCLUDE_DIRS = {"blog", "assets"}
 
 
 def _parse_frontmatter(content: str) -> dict:
-    """프론트매터에서 title, date, tags, template을 파싱한다."""
+    """프론트매터에서 title, date, tags, template, related를 파싱한다."""
     result = {}
     if not content.startswith("---"):
         return result
@@ -61,6 +61,26 @@ def _parse_frontmatter(content: str) -> dict:
                 in_tags = False
 
     result["tags"] = tags
+
+    # related 파싱 (명시적 관련 글 경로 목록)
+    related = []
+    in_related = False
+    for line in fm.splitlines():
+        if line.startswith("related:"):
+            in_related = True
+            inline = line[8:].strip()
+            if inline.startswith("["):
+                related = [r.strip().strip('"').strip("'")
+                           for r in inline.strip("[]").split(",") if r.strip()]
+                in_related = False
+            continue
+        if in_related:
+            if line.strip().startswith("- "):
+                related.append(line.strip()[2:].strip().strip('"').strip("'"))
+            elif line.strip() and not line.startswith(" "):
+                in_related = False
+
+    result["related"] = related
     return result
 
 
@@ -126,6 +146,7 @@ def _build_index(docs_dir: str):
                 "title": title,
                 "date": meta.get("date", ""),
                 "tags": set(meta.get("tags", [])),
+                "related": meta.get("related", []),
                 "url": _get_url_path(docs_dir, fpath),
                 "subdir": _get_subdir(docs_dir, fpath),
                 "category": _get_top_category(docs_dir, fpath),
@@ -157,6 +178,17 @@ def _find_related(post_path: str, docs_dir: str, max_results: int = 5) -> list:
     if not current:
         return []
 
+    # related: 필드에 명시된 경로를 인덱스로 매핑
+    explicit_related_indices = set()
+    if current["related"]:
+        for rel_path in current["related"]:
+            # related 경로는 docs/ 기준 상대 경로 (예: ai/XGEN/파일.md)
+            for i, p in enumerate(_posts_index):
+                p_rel = os.path.relpath(p["path"], docs_dir).replace("\\", "/")
+                if p_rel == rel_path or p_rel.endswith(rel_path):
+                    explicit_related_indices.add(i)
+                    break
+
     # 점수 계산
     scores = {}
     for i, p in enumerate(_posts_index):
@@ -164,6 +196,10 @@ def _find_related(post_path: str, docs_dir: str, max_results: int = 5) -> list:
             continue
 
         score = 0
+
+        # 명시적 related: 필드에 지정된 글: +20 (크로스 카테고리 연결 보장)
+        if i in explicit_related_indices:
+            score += 20
 
         # 같은 서브디렉토리: +10
         if p["subdir"] == current["subdir"] and current["subdir"]:

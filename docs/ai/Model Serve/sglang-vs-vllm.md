@@ -1,12 +1,14 @@
 ---
-title: "SGLang vs vLLM"
-description: "대형 언어 모델(LLM)의 활용이 확산됨에 따라, 효율적인 추론(inference) 및 서빙을 위한 인프라 선택이 점점 더 중요해지고 있다."
+title: "SGLang vs vLLM 비교: LLM 추론 프레임워크 선택 가이드"
+description: "UC 버클리에서 개발된 SGLang과 vLLM의 아키텍처, 처리량, 지연 시간, 메모리 효율을 비교 분석한다. RadixAttention vs PagedAttention, 배치 스케줄링 전략 차이까지."
 date: 2025-07-19
 tags:
   - LLM Serving
   - AI
   - SGLang
   - vLLM
+  - 모델서빙
+  - 추론 최적화
 ---
 
 

@@ -1,6 +1,6 @@
 ---
-title: "vLLM vs LMDeploy vs SGLang"
-description: "대형 언어 모델(LLM)은 자연어 처리 분야에서 중요한 돌파구를 만들어냈지만, 고성능 모델일수록 추론 지연과 자원 소모가 큰 것이 현실이다. 특히 모델을 서비스에 배포할 때는 처리 속도, 메모리 효율, 동시 사용자 대응 능력이 핵심 고려 요소이다."
+title: "vLLM vs LMDeploy vs SGLang: LLM 서빙 프레임워크 3종 벤치마크 비교"
+description: "vLLM, LMDeploy, SGLang 세 가지 LLM 추론 프레임워크의 처리 속도, 메모리 효율, 동시 요청 처리 능력을 벤치마크 기반으로 비교 분석한다."
 date: 2025-07-20
 tags:
   - LLM Serving

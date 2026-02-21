@@ -8,6 +8,7 @@ tags:
   - FastAPI
   - Tauri
   - xgen
+  - 모델 관리
 ---
 
 # HuggingFace 모델 검색 및 다운로드 자동화

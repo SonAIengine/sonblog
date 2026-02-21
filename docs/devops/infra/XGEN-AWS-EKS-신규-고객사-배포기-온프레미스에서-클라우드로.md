@@ -13,13 +13,15 @@ tags:
   - XGEN
   - GitOps
   - 멀티테넌시
+  - 쿠버네티스
+  - 클라우드
 ---
 
 # XGEN AWS EKS 신규 고객사 배포기 — 온프레미스에서 클라우드로
 
 ## 배경 — "yaml 하나면 끝"이 진짜인가
 
-XGEN 2.0은 AI Agent 플랫폼이다. 지금까지는 온프레미스 K3s 클러스터에서 운영했고, 고객사(롯데이마트 등)에도 같은 온프레미스 구조로 배포했다. 이전 글 "[ArgoCD 멀티 고객사 배포 아키텍처](ArgoCD-멀티-고객사-배포-아키텍처-ApplicationSet-시행착오와-단일-진입점-설계.md)"에서 `projects/*.yaml` 단일 진입점 구조를 만들었고, 당시 결론은 이랬다:
+XGEN 2.0은 AI Agent 플랫폼이다. 지금까지는 온프레미스 K3s 클러스터에서 운영했고, 고객사(롯데홈쇼핑 등)에도 같은 온프레미스 구조로 배포했다. 이전 글 "[ArgoCD 멀티 고객사 배포 아키텍처](ArgoCD-멀티-고객사-배포-아키텍처-ApplicationSet-시행착오와-단일-진입점-설계.md)"에서 `projects/*.yaml` 단일 진입점 구조를 만들었고, 당시 결론은 이랬다:
 
 > 새 고객사 추가: `projects/newcustomer.yaml` 하나 만들고, Root App yaml 하나 등록하면 끝
 
@@ -69,7 +71,12 @@ flowchart LR
     Jenkins -->|"docker push"| AWSNexus
     GitLab -->|"git mirror"| AWSGitLab
     ArgoCD -->|"git poll"| AWSGitLab
-    ArgoCD -->|"deploy"| FE & GW & Core & WF & Doc & MCP
+    ArgoCD -->|"deploy"| FE
+    ArgoCD -->|"deploy"| GW
+    ArgoCD -->|"deploy"| Core
+    ArgoCD -->|"deploy"| WF
+    ArgoCD -->|"deploy"| Doc
+    ArgoCD -->|"deploy"| MCP
     EKS <-->|"VPC Peering"| MgmtServer
     Doc -->|"문서 저장"| S3
 ```

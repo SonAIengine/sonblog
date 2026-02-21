@@ -1,5 +1,5 @@
 ---
-title: "Scaled Dot-Product Attention 를 정의하시오."
+title: "Scaled Dot-Product Attention 동작 원리와 수식 정리"
 description: "스케일드 닷 프로덕트 어텐션은 쿼리(Query), 키(Key), 밸류(Value) 삼중 구조를 사용해, 유사도 계산 → 스케일 조정 → 확률 정규화 → 가중합의 네 단계를 거쳐 문맥 정보를 추출하는 어텐션 메커니즘이다."
 date: 2025-07-14
 tags:

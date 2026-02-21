@@ -1,6 +1,6 @@
 ---
-title: "워크플로우 실행 메모리 최적화: SearchCache 싱글턴 풀 패턴"
-description: "xgen-workflow에서 반복 실행 시 메모리 누수와 과도한 객체 생성을 막기 위한 SearchCache, LLMPool, RAGServicePool 싱글턴 패턴 구현 - 캐시 비활성화의 역설적 결정과 그 이유"
+title: "Python 싱글턴 풀 패턴으로 배치 실행 메모리 누수 해결하기"
+description: "RAG 워크플로우를 배치로 100건 이상 반복 실행할 때 발생하는 메모리 누수를 싱글턴 풀 패턴으로 해결한 과정. LLM 클라이언트, 검색 캐시, RAG 서비스의 객체 재사용 설계와 캐시 비활성화의 역설적 결정."
 date: 2025-12-24
 tags:
   - 싱글턴

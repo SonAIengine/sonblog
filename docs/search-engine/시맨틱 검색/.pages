@@ -1,6 +1,6 @@
 title: 시맨틱 검색
 nav:
-  - 벡터 기반 시맨틱 검색 구현기.md
+  - vector-semantic-search.md
   - 이미지-검색-기능-구현기.md
   - 커머스-상품-추천-검색-API-설계.md
   - FAISS-벡터-인덱스-적용과-GPU-디바이스-최적화.md

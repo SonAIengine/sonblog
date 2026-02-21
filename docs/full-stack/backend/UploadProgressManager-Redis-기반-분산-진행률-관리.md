@@ -1,6 +1,6 @@
 ---
-title: "UploadProgressManager: Redis 기반 분산 진행률 관리"
-description: "멀티 POD 환경에서 파일 업로드 진행률을 Redis로 중앙 관리하는 시스템 구현"
+title: "Redis로 멀티 Pod 파일 업로드 진행률 동기화하기"
+description: "Kubernetes 멀티 Pod 환경에서 문서 처리 파이프라인(텍스트 추출, 청킹, 임베딩)의 진행률을 Redis로 중앙 관리하고 SSE로 실시간 전달하는 시스템 구현."
 date: 2026-02-04
 tags:
   - Python
@@ -8,6 +8,9 @@ tags:
   - Upload Progress
   - Distributed Systems
   - Kubernetes
+related:
+  - full-stack/backend/LocalConfigManager-분산-환경-전환-파일에서-API-기반으로.md
+  - devops/infra/K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md
 ---
 
 ## 배경

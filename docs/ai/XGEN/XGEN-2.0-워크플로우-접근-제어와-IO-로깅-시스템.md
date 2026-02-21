@@ -1,6 +1,6 @@
 ---
-title: "XGEN 2.0 워크플로우 접근 제어와 IO 로깅 시스템"
-description: "엔터프라이즈급 권한 관리와 감사 추적 시스템 구축 과정. 워크플로우 실행 권한 체계 설계, IO 로깅 미들웨어, Redis 기반 세션 관리까지."
+title: "FastAPI 워크플로우 엔진: 접근 제어와 감사 로깅 구현"
+description: "FastAPI 기반 워크플로우 엔진에 엔터프라이즈급 권한 관리와 감사 추적 시스템을 구축한 과정. 실행 권한 체계 설계, IO 로깅 미들웨어, Redis 기반 세션 관리까지."
 date: 2026-01-15
 series: "XGEN 개발기"
 series_order: 6

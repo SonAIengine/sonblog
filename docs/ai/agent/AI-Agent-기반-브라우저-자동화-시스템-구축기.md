@@ -9,6 +9,9 @@ tags:
   - Tauri
   - Rust
   - Browser Automation
+related:
+  - full-stack/desktop/Remote-WebView-아키텍처-로컬-앱과-원격-서버-연동.md
+  - full-stack/desktop/Tauri-Sidecar로-Python-워크플로우-엔진-자동-시작.md
 ---
 
 # AI Agent 기반 브라우저 자동화 시스템 구축기

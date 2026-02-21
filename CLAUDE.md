@@ -138,6 +138,23 @@ gh api "repos/SonAIengine/{레포명}/commits?since=시작일&until=종료일&pe
 2. GitLab API / GitHub API(`gh`) 또는 로컬 클론으로 실제 소스코드 읽기
 3. 블로그 스타일 가이드에 따라 글 작성
 
+## Notes 워크플로우 (draft.md → 블로그 글 변환)
+
+`docs/notes/draft.md`는 사용자가 자유롭게 메모를 적어두는 파일이다. Claude Code는 이 파일을 기반으로 블로그 글을 생성한다.
+
+### 흐름
+1. 사용자가 `docs/notes/draft.md`에 생각/메모/키워드를 자유롭게 작성
+2. 사용자가 "노트 정리해줘" 등 요청하면 Claude Code가 draft.md를 읽음
+3. 메모 내용을 분석하여 적절한 카테고리(`ai/`, `devops/`, `full-stack/`, `search-engine/`, `notes/`)에 블로그 글 생성
+4. 기술 글이면 블로그 스타일 가이드(~다 체, 10,000자+, Mermaid 다이어그램 등)를 적용
+5. 개인 생각/에세이 등 기술 글이 아니면 `docs/notes/`에 가볍게 정리 (스타일 가이드 완화 가능)
+6. 글 생성 후 draft.md에서 해당 메모는 제거
+
+### draft.md 규칙
+- 형식 자유 — 키워드, 문장, 코드 조각, 링크 등
+- 주제가 여러 개면 `## 제목`으로 구분
+- 사용자가 카테고리를 명시하지 않으면 Claude Code가 내용 기반으로 판단하여 제안
+
 ## 카테고리 구조
 
 | 카테고리 | 폴더 경로 | 성격 |
@@ -146,6 +163,7 @@ gh api "repos/SonAIengine/{레포명}/commits?since=시작일&until=종료일&pe
 | AI/ML & LLM | `docs/ai/` | 모델 서빙, 임베딩, 파인튜닝, Agent, XGEN 플랫폼 |
 | DevOps / 인프라 | `docs/devops/` | K8s, ArgoCD, Jenkins, Docker 등 **전문 인프라/클라우드 경험** |
 | Full Stack | `docs/full-stack/` | Frontend, Backend, Desktop, Python, **PoC/블로그 기능 개발** |
+| Notes | `docs/notes/` | 개인 생각, 메모, 에세이, 기술 외적인 글 |
 
 ### 카테고리 분류 기준
 - **devops/infra**: Kubernetes, 클라우드, CI/CD 등 전문 인프라 지식/경험 위주
@@ -158,6 +176,62 @@ gh api "repos/SonAIengine/{레포명}/commits?since=시작일&until=종료일&pe
 2. **중복 글 체크** — 이동 대상 폴더에 동일/유사 주제 글이 이미 있는지 확인. 중복이면 더 상세한 쪽을 남기고 삭제
 3. **description 검토** — 이전 카테고리 맥락에 맞춰 쓴 description이면 새 카테고리에 맞게 수정
 4. **`.pages` 파일 수정** — 출발 폴더의 `.pages` nav 목록에서 해당 파일명 제거. `.pages`가 있는 폴더에서 파일을 빼면 awesome-pages 플러그인이 `NavEntryNotFound` 에러로 빌드 실패함
+
+## 스크린샷 워크플로우 (Playwright MCP)
+
+블로그 글 작성 시 Playwright MCP를 활용하여 실제 서비스 스크린샷을 촬영하고 글에 삽입한다.
+
+### 사전 조건
+- Playwright MCP가 `--headless` 모드로 설정되어 있어야 함 (`~/.claude/settings.json`)
+- 스크린샷은 각 글 폴더의 `images/` 디렉토리에 저장 (중앙 폴더 사용하지 않음)
+
+### 기본 워크플로우
+
+```
+1. browser_navigate → 대상 URL 접속
+2. (필요시) 로그인 자동화 수행
+3. browser_take_screenshot → 스크린샷 촬영
+   - filename: 글 폴더 기준 절대경로 (예: /home/son/sonblog/docs/devops/infra/images/xgen-dashboard.png)
+   - type: "png"
+   - fullPage: true (또는 특정 요소만)
+4. 마크다운에서 상대경로로 참조: ![설명](./images/파일명.png){ width="800" }
+```
+
+### 로그인 자동화
+
+인증이 필요한 서비스는 아래 순서로 로그인 후 스크린샷을 촬영한다.
+
+**XGEN (xgen.x2bee.com / xgen.infoedu.co.kr)**:
+```
+1. browser_navigate → 로그인 페이지
+2. browser_fill → 이메일/비밀번호 입력 (글로벌 CLAUDE.md의 접속 정보 사용)
+3. browser_click → 로그인 버튼
+4. browser_snapshot → 로그인 성공 확인
+5. browser_navigate → 스크린샷 대상 페이지로 이동
+6. browser_take_screenshot → 촬영
+```
+
+**GitLab (gitlab.x2bee.com)**:
+```
+1. browser_navigate → GitLab 로그인 페이지
+2. browser_fill → Username/Password 입력
+3. browser_click → Sign in
+4. browser_navigate → 대상 페이지 (파이프라인, MR, 코드 등)
+5. browser_take_screenshot → 촬영
+```
+
+**기타 서비스**: 동일 패턴으로 접속 정보는 글로벌 `~/.claude/CLAUDE.md`에서 참조.
+
+### 스크린샷 파일 규칙
+- 파일명: 영문 kebab-case (예: `xgen-workflow-editor.png`, `argocd-sync-status.png`)
+- 포맷: PNG 기본, 용량이 클 때만 JPEG
+- 저장 위치: 해당 글 폴더의 `images/` 하위 (없으면 생성)
+- 마크다운 참조: `![ALT 텍스트](./images/파일명.png){ width="800" }` — glightbox 자동 적용
+
+### 스크린샷 촬영 판단 기준
+- UI/대시보드를 설명하는 글 → 촬영
+- 아키텍처/설정만 다루는 글 → Mermaid 다이어그램으로 충분, 스크린샷 불필요
+- 에러 화면/로그 → 코드 블록이 더 적합, 스크린샷은 시각적 맥락이 필요할 때만
 
 ## 접속 정보
 

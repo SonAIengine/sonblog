@@ -1,6 +1,6 @@
 ---
-title: "XGEN 2.0 임베딩 전용 서버와 배치 처리 최적화"
-description: "XGEN 2.0에서 임베딩 모델을 전용 서버로 분리하고, switch-backend 기반 멀티모드 서빙과 대용량 문서 배치 처리를 최적화한 과정."
+title: "임베딩 전용 서버 분리와 대용량 배치 처리 최적화"
+description: "임베딩 모델을 LLM 서빙과 분리한 전용 서버 아키텍처 설계. switch-backend 기반 멀티모드 서빙과 batch size 512에서 2048로 확대한 대용량 문서 배치 처리 최적화 과정."
 date: 2026-01-30
 series: "XGEN 개발기"
 series_order: 5
@@ -20,6 +20,8 @@ depends_on:
   - ai/XGEN/XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
 related:
   - ai/XGEN/XGEN-2.0-워크플로우-접근-제어와-IO-로깅-시스템.md
+  - ai/XGEN/RAG-서비스-토큰-관리와-컨텍스트-윈도우-최적화.md
+  - ai/XGEN/Qdrant-하이브리드-검색-Sparse-Dense-벡터-통합.md
 ---
 # XGEN 2.0 임베딩 전용 서버와 배치 처리 최적화
 

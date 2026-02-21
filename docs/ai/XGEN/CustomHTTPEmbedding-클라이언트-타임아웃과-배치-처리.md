@@ -1,6 +1,6 @@
 ---
-title: "CustomHTTPEmbedding 클라이언트: 타임아웃과 배치 처리 최적화"
-description: "llama-cpp 임베딩 서버와 통신하는 aiohttp 클라이언트를 구현하며 세션 재사용, 타임아웃 설정, 배치 분할, 재시도 로직을 최적화한 과정"
+title: "aiohttp로 임베딩 API 클라이언트 만들기: 타임아웃과 배치 분할 최적화"
+description: "llama.cpp 임베딩 서버와 통신하는 aiohttp 비동기 클라이언트를 구현하며 세션 재사용, 커넥션 타임아웃 설정, 대용량 텍스트 배치 분할, 지수 백오프 재시도 로직을 최적화한 과정."
 date: 2025-12-30
 tags:
   - Python

@@ -1,6 +1,6 @@
 ---
-title: "LocalConfigManager 분산 환경 전환: 파일에서 API 기반으로"
-description: "단일 서버 파일 기반 설정 관리에서 Redis + DB 기반 분산 설정 시스템으로 전환한 과정"
+title: "파일 기반 설정에서 Redis + API 기반 분산 설정으로 전환하기"
+description: "단일 서버 config.json 파일 기반 설정 관리에서 Redis + DB + FastAPI 기반 분산 설정 시스템으로 전환한 과정. 멀티 Pod 환경에서 설정 불일치 문제 해결."
 date: 2026-02-04
 tags:
   - Python
@@ -8,6 +8,9 @@ tags:
   - Configuration Management
   - Distributed Systems
   - FastAPI
+related:
+  - full-stack/backend/UploadProgressManager-Redis-기반-분산-진행률-관리.md
+  - devops/infra/K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md
 ---
 
 # LocalConfigManager 분산 환경 전환: 파일에서 API 기반으로

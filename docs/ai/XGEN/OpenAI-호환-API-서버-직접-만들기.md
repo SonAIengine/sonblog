@@ -10,6 +10,7 @@ tags:
   - llama.cpp
   - vLLM
   - xgen
+  - API 서버
 ---
 
 # OpenAI 호환 API 서버 직접 만들기

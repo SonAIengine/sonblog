@@ -27,7 +27,7 @@ XGEN 2.0 AI 에이전트 플랫폼을 구축하며 쌓인 LLM 서빙, RAG, 임�
 
 GliNER NER 모델 파인튜닝, DPO/LoRA 학습, Kotaemon RAG 프레임워크 커스터마이징까지 — 모델을 직접 손보며 배운 것들.
 
-- [GliNER과 DPO-LoRA를 활용한 모델 파인튜닝](파인튜닝/GliNER과 DPO-LoRA를 활용한 모델 파인튜닝.md)
+- [GliNER과 DPO-LoRA를 활용한 모델 파인튜닝](파인튜닝/gliner-dpo-lora-finetuning.md)
 - [OJT 리팩토링과 Kotaemon RAG 구현기](파인튜닝/OJT-리팩토링과-Kotaemon-RAG-구현기.md)
 
 ---
@@ -36,5 +36,5 @@ GliNER NER 모델 파인튜닝, DPO/LoRA 학습, Kotaemon RAG 프레임워크 �
 
 vLLM, SGLang, LMDeploy, llama.cpp — 어떤 프레임워크가 어떤 상황에 맞는지 비교 분석.
 
-- [vLLM vs LMDeploy vs SGLang 성능 비교](Model Serve/vLLM vs LMDeploy vs SGLang.md)
-- [SGLang vs vLLM](Model Serve/SGLang vs vLLM.md)
+- [vLLM vs LMDeploy vs SGLang 성능 비교](Model Serve/vllm-vs-lmdeploy-vs-sglang.md)
+- [SGLang vs vLLM](Model Serve/sglang-vs-vllm.md)

@@ -1,10 +1,13 @@
 ---
-title: "멀티턴 vs 싱글턴"
-description: "LLM 기반의 챗봇이나 대화형 AI 시스템에서는 사용자와의 대화 흐름을 어떻게 관리하느냐에 따라 처리 방식이 크게 달라진다."
+title: "LLM 멀티턴 vs 싱글턴 대화: 차이점과 구현 전략"
+description: "LLM 기반 챗봇에서 멀티턴(Multi-turn)과 싱글턴(Single-turn) 대화 방식의 차이를 정리한다. 대화 컨텍스트 유지, KV Cache 관리, 토큰 예산 전략까지."
 date: 2025-07-19
 tags:
   - LLM Serving
   - AI
+  - 멀티턴
+  - 챗봇
+  - KV Cache
 ---
 
 LLM 기반의 챗봇이나 대화형 AI 시스템에서는 사용자와의 대화 흐름을 어떻게 관리하느냐에 따라 처리 방식이 크게 달라진다. 

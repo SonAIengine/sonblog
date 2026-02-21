@@ -25,7 +25,6 @@ related:
 
 2024년 3월부터 5월까지 ai-butler-alfredo-api와 ai-lab 프로젝트에서 Named Entity Recognition(NER) 모델과 언어 모델의 파인튜닝을 진행했다. 특히 한국어 특화 성능을 위해 GliNER 모델을 활용한 라벨링 자동화와 DPO(Direct Preference Optimization)와 LoRA를 결합한 효율적인 파인튜닝 방법론을 실험했다.
 
-![모델 파인튜닝 파이프라인](./images/finetuning-pipeline.png)
 
 ## 기술 스택
 

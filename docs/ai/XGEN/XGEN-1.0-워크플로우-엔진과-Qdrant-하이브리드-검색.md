@@ -1,6 +1,6 @@
 ---
-title: "XGEN 1.0 워크플로우 엔진과 Qdrant 하이브리드 검색"
-description: "FastAPI 기반 워크플로우 엔진과 Qdrant 벡터 DB를 결합하여 하이브리드 검색 파이프라인을 구축한 과정. Circuit Breaker 패턴, MCP Station 연동까지."
+title: "FastAPI 워크플로우 엔진에 Qdrant 하이브리드 검색 붙이기"
+description: "FastAPI 기반 워크플로우 엔진과 Qdrant 벡터 DB를 결합하여 Dense+Sparse 하이브리드 검색 파이프라인을 구축한 과정. Circuit Breaker 패턴으로 장애 전파 차단까지."
 date: 2025-12-15
 series: "XGEN 개발기"
 series_order: 3

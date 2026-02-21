@@ -1,6 +1,6 @@
 ---
-title: "XGEN 도메인 마이그레이션: xgen-stg에서 jeju-xgen으로 전환하기"
-description: "롯데홈쇼핑 납품을 위해 xgen-stg.x2bee.com을 jeju-xgen.x2bee.com으로 변경한 과정, Helm values와 ArgoCD 설정 수정 포인트"
+title: "Istio + ArgoCD 도메인 변경: Helm values 수정 포인트 정리"
+description: "Kubernetes 환경에서 서비스 도메인을 변경할 때 Istio Gateway, ArgoCD Application, Helm values에서 수정해야 할 포인트를 정리한 실전 가이드."
 date: 2026-02-10
 tags:
   - DevOps
@@ -9,6 +9,7 @@ tags:
   - Istio
   - 도메인
   - 마이그레이션
+  - 쿠버네티스
 ---
 
 ## 배경

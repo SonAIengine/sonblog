@@ -26,7 +26,6 @@ related:
 
 2024년 3월, chatbot-ui-next 프로젝트에서 WebSocket 기반의 실시간 채팅 UI를 개발했다. 기존 HTTP 기반의 단순 요청/응답 구조에서 벗어나 실시간 스트리밍 응답 처리와 사용자 경험을 향상시키는 것이 주요 목표였다.
 
-![챗봇 UI 스크린샷](./images/chatbot-ui-screenshot.png)
 
 ## 기술 스택
 

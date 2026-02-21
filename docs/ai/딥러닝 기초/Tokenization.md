@@ -1,10 +1,13 @@
 ---
-title: "Tokenization: 자연어 처리 토큰화 기법"
-description: "최근 인공지능 분야에서 자연어처리(NLP)는 활발하게 연구되고 있는 영역 중 하나입니다."
+title: "Tokenization 기법 정리: BPE, WordPiece, SentencePiece 비교"
+description: "NLP에서 텍스트를 토큰으로 분할하는 주요 기법(BPE, WordPiece, SentencePiece)의 원리와 차이를 정리한다. BERT, GPT 등 Transformer 모델에서 사용하는 토크나이저 비교."
 date: 2025-03-08
 tags:
   - AI
   - 딥러닝
+  - Tokenization
+  - NLP
+  - BPE
 ---
 
 최근 인공지능 분야에서 자연어처리(NLP)는 활발하게 연구되고 있는 영역 중 하나입니다.

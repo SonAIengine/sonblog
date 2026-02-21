@@ -1,6 +1,6 @@
 ---
-title: "XGEN 2.0 인프라: K8s + ArgoCD 운영 배포"
-description: "K3s 기반 Kubernetes 클러스터에 ArgoCD, Istio, Grafana, Prometheus를 구성하여 XGEN 2.0 서비스를 GitOps 방식으로 운영한 과정."
+title: "K3s + ArgoCD로 AI 플랫폼 GitOps 배포 구축하기"
+description: "K3s 기반 Kubernetes 클러스터에 ArgoCD, Istio, Grafana, Prometheus를 구성하여 AI 플랫폼 6개 마이크로서비스를 GitOps 방식으로 운영 배포한 과정."
 date: 2026-01-10
 series: "DevOps 실전"
 series_order: 2
@@ -10,16 +10,18 @@ tags:
   - ArgoCD
   - K3s
   - 인프라
-  - XGEN
   - GitOps
   - Istio
   - Grafana
   - Prometheus
   - 모니터링
+  - 쿠버네티스
 depends_on:
   - devops/infra/Search-API와-LLMOps-Docker-구성기.md
 related:
   - ai/XGEN/XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
+  - devops/infra/K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md
+  - devops/infra/ArgoCD-멀티-고객사-배포-아키텍처-ApplicationSet-시행착오와-단일-진입점-설계.md
 ---
 # XGEN 2.0 인프라: K8s + ArgoCD 운영 배포
 

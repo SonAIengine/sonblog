@@ -8,6 +8,8 @@ tags:
   - LLM
   - 검색
   - xgen
+  - 검색 엔진
+  - 벡터 검색
 ---
 
 # Iterative RAG: 반복 검색으로 복잡한 질문 답변하기

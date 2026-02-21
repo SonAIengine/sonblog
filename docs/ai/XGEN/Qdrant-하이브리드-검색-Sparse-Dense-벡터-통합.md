@@ -9,6 +9,11 @@ tags:
   - BM25
   - RAG
   - xgen
+  - 벡터 검색
+related:
+  - search-engine/시맨틱 검색/vector-semantic-search.md
+  - ai/XGEN/RAG-서비스-토큰-관리와-컨텍스트-윈도우-최적화.md
+  - ai/XGEN/Sparse-Vector와-Full-Text-Index-하이브리드-검색-구현.md
 ---
 
 # Qdrant 하이브리드 검색: Sparse + Dense 벡터 통합

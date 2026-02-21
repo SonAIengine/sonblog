@@ -26,7 +26,6 @@ related:
 
 2024년 5월부터 9월까지 x2bee-nest-search, search-semantic-api, x2bee-api-goods 프로젝트에서 벡터 기반 시맨틱 검색 시스템을 구축했다. 기존의 키워드 기반 검색의 한계를 벗어나 의미론적 유사성을 기반으로 하는 검색 엔진을 개발하여 사용자 경험을 크게 향상시켰다.
 
-![시맨틱 검색 아키텍처](./images/semantic-search-architecture.png)
 
 ## 기술 스택
 

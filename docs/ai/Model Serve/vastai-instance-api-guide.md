@@ -1,10 +1,13 @@
 ---
-title: "VastAI 인스턴스 관리 API 가이드"
-description: "이 문서는 VastAI 인스턴스를 검색, 생성, 관리하는 API 사용법을 설명합니다."
+title: "Vast.ai GPU 인스턴스 관리 API 사용법 정리"
+description: "Vast.ai에서 GPU 인스턴스를 검색, 생성, 관리하는 REST API 사용법을 정리한다. 오퍼 검색 필터링, 인스턴스 생성/삭제, SSH 접속까지."
 date: 2025-07-29
 tags:
   - LLM Serving
   - AI
+  - Vast.ai
+  - GPU
+  - 클라우드
 ---
 
 이 문서는 VastAI 인스턴스를 검색, 생성, 관리하는 API 사용법을 설명합니다.

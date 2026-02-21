@@ -1,11 +1,13 @@
 ---
-title: "Thompson Sampling"
-description: "A/B 테스트, 추천 시스템, 광고 최적화처럼 실시간으로 결과를 보면서 \"무엇이 더 좋을까?\"를 판단해야 할 때 사용하는 방법이다."
+title: "Thompson Sampling: 탐색과 활용의 균형을 잡는 알고리즘"
+description: "A/B 테스트, 추천 시스템, 광고 최적화에서 활용되는 Thompson Sampling 알고리즘의 원리. 베타 분포 기반 확률적 탐색으로 최적의 선택지를 찾는 Multi-Armed Bandit 문제 해결 방법."
 date: 2025-07-07
 tags:
   - AI
   - 강화학습
   - 딥러닝
+  - Thompson Sampling
+  - Multi-Armed Bandit
 ---
 
 A/B 테스트, 추천 시스템, 광고 최적화처럼 실시간으로 결과를 보면서 "무엇이 더 좋을까?"를 판단해야 할 때 사용하는 방법이다.

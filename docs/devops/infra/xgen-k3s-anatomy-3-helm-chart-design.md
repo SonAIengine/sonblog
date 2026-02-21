@@ -19,11 +19,11 @@ tags:
 
 ## 시리즈 목차
 
-- 1편: 전체 구조와 컨테이너 빌드 전략
-- 2편: Kubernetes 핵심 오브젝트와 스케일링 전략
+- [1편: 전체 구조와 컨테이너 빌드 전략](xgen-k3s-anatomy-1-docker-build-strategy.md)
+- [2편: Kubernetes 핵심 오브젝트와 스케일링 전략](xgen-k3s-anatomy-2-kubernetes-core-objects.md)
 - **3편: Helm 차트 설계 — 하나의 Chart로 6개 서비스 배포하기** (현재 글)
-- 4편: CI/CD 파이프라인 — Jenkins 빌드에서 ArgoCD 배포까지
-- 5편: Istio 서비스 메시와 Observability 스택
+- [4편: CI/CD 파이프라인 — Jenkins 빌드에서 ArgoCD 배포까지](xgen-k3s-anatomy-4-cicd-jenkins-argocd.md)
+- [5편: Istio 서비스 메시와 Observability 스택](xgen-k3s-anatomy-5-istio-observability.md)
 
 ---
 

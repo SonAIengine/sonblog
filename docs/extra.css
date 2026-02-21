@@ -23,7 +23,7 @@ p {
   line-height: 1.8;
 }
 
-li {
+.md-content li {
   margin-bottom: 0.6em;
   line-height: 1.5;
 }

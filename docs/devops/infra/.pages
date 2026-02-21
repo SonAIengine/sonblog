@@ -31,3 +31,4 @@ nav:
   - DNS-도메인-SSL-인증서-네임서버-충돌로-Lets-Encrypt-발급-실패한-이야기.md
   - Docker-nginx-HTTPS-적용기-snap-Docker-교체부터-Lets-Encrypt-자동-갱신까지.md
   - Technitium-DNS-홈서버-자체-DNS-구축과-운영기.md
+  - Caddy-리버스-프록시로-홈서버-HTTPS-자동화-Nginx와-비교.md

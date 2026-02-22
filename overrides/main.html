@@ -4,9 +4,12 @@
 <!-- SEO Meta Tags -->
 <meta name="keywords" content="AI Engineer, LLM Serving, RAG, Rust, Kubernetes, 검색엔진, 임베딩, DevOps, Full Stack">
 
-<!-- Open Graph: social 플러그인이 og:title/description/url/image/twitter:* 자동 생성 -->
+<!-- Open Graph -->
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="SON BLOG">
+{% if page %}
+<meta property="og:image" content="{{ config.site_url }}assets/images/social/{% if page.is_homepage %}index{% else %}{{ page.url[:-1] }}{% endif %}.png?v=2">
+{% endif %}
 
 <!-- Open Graph: Article (블로그 글에만 og:type=article 오버라이드 + article 메타) -->
 {% if page and page.meta and page.meta.date %}

@@ -2,6 +2,7 @@
 title: "면접 후보자 A — 서버 백엔드 / DevOps"
 description: "서버 백엔드 / DevOps 엔지니어 면접 준비 자료. 경력 분석, 업무 난이도 평가, 질문 리스트"
 date: 2026-02-22
+password: "1234qwer"
 tags:
   - 면접
   - DevOps

@@ -77,6 +77,8 @@ plugins:
       lang:
         - ko
         - en
+  - encryptcontent:
+      global_password: null
   - glightbox
   - tags
   - blog:

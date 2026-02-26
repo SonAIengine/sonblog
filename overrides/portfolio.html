@@ -48,15 +48,16 @@
   </div>
   <div class="pf-about">
     <p class="pf-about-text">
-      커머스 도메인에서 AI 검색 엔진, LLM 서빙 플랫폼, GPU 모델 관리 시스템을 설계하고 운영한다.
-      OpenSearch/Qdrant 기반 하이브리드 검색(키워드 + 시맨틱)을 직접 구축하여 5,000+ TPS 실 서비스에 적용했고,
-      vLLM/llama.cpp로 NVIDIA CUDA와 AMD ROCm GPU 환경에서 동시 20개 모델을 서빙하는 플랫폼을 만들었다.
-      NestJS로 14개월간 운영한 검색 엔진을 Rust/Axum으로 리라이트하여 응답 28ms, 메모리 1/5로 줄인 경험이 있으며,
-      Kubernetes/ArgoCD 기반 GitOps 파이프라인 설계부터 Jenkins CI/CD, Docker 멀티스테이지 빌드까지
-      서비스의 전체 라이프사이클을 직접 구현하고 운영하는 것이 강점이다.
-      현재는 AI 에이전트 플랫폼(XGEN 2.0)의 핵심 아키텍처를 설계하며,
-      Iterative RAG 파이프라인, MCP 기반 도구 자동화, Cross-Encoder 리랭킹 등
-      검색 품질과 LLM 활용도를 함께 높이는 데 집중하고 있다.
+      커머스 검색 엔진에서 출발했다.
+      OpenSearch 키워드 검색을 5,000+ TPS 실 서비스에 적용하고, Rust로 리라이트하여 응답 28ms까지 끌어내렸다.
+      검색 품질을 높이기 위해 OpenSearch k-NN과 Qdrant 하이브리드 검색, LLM 쿼리 확장을 도입하며 AI Search로 확장했다.
+    </p>
+    <p class="pf-about-text">
+      이후 AI 에이전트 플랫폼(XGEN) 개발을 맡아 진행하고 있다.
+      vLLM/llama.cpp 기반 멀티 GPU(CUDA, ROCm) LLM 서빙, LangChain/LangGraph 기반 Iterative RAG,
+      GraphDB 지식 그래프, MCP 기반 AI Agent, 워크플로우 엔진까지&mdash;
+      7개 마이크로서비스를 Kubernetes/ArgoCD GitOps로 운영하며,
+      검색부터 추론, 자동화, 인프라까지 AI 서비스의 전체 스택을 직접 만들고 운영한다.
     </p>
     <div class="pf-chips-group">
       <div class="pf-chips-row">

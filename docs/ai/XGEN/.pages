@@ -20,9 +20,11 @@ nav:
   - CustomHTTPEmbedding-클라이언트-타임아웃과-배치-처리.md
   - vLLM-모델-배포-샘플링-파라미터-튜닝-가이드.md
   - GPU-상태-모니터링-및-자동-모델-배포-시스템.md
+  - XGEN-GPU-벤더-추상화-Vulkan-의존-제거와-멀티-벤더-Dockerfile-전략.md
   - XGEN-1.0-GPU-모델-서빙-구현기.md
   - XGEN-1.0-워크플로우-엔진과-Qdrant-하이브리드-검색.md
   - XGEN-2.0-모델-서빙-통합-아키텍처-리팩토링.md
   - XGEN-2.0-임베딩-전용-서버와-배치-처리-최적화.md
   - XGEN-2.0-워크플로우-접근-제어와-IO-로깅-시스템.md
+  - XGEN-인증-프로필-시스템-AI-Agent가-로그인-사이트를-자동으로-다루는-방법.md
   - Code-Assistant-개발기.md

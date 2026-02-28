@@ -28,6 +28,9 @@ nav:
   - xgen-k3s-anatomy-3-helm-chart-design.md
   - xgen-k3s-anatomy-4-cicd-jenkins-argocd.md
   - xgen-k3s-anatomy-5-istio-observability.md
+  - K3s-리소스-튜닝-실전-가이드-OOMKilled와-CPU-Throttling-해결기.md
+  - XGEN-멀티사이트-배포-자동화-하나의-코드베이스로-N개-고객사-운영하기.md
+  - Reusable-GHA와-Helm으로-K3s-범용-배포-플랫폼-구축하기.md
   - DNS-도메인-SSL-인증서-네임서버-충돌로-Lets-Encrypt-발급-실패한-이야기.md
   - Docker-nginx-HTTPS-적용기-snap-Docker-교체부터-Lets-Encrypt-자동-갱신까지.md
   - Technitium-DNS-홈서버-자체-DNS-구축과-운영기.md

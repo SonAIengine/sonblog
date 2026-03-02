@@ -1,6 +1,9 @@
 ---
-title: Notes
-description: "짧은 메모, TIL, 기술 외적인 생각 정리"
+title: "Notes - 메모와 생각 정리"
+description: "짧은 메모, TIL, 기술 외적인 생각 정리. 블로그 글로 발전시키기 전의 초안과 단편적인 기록을 모은다."
+noindex: true
 ---
 
 # Notes
+
+짧은 메모, TIL, 기술 외적인 생각을 정리하는 공간이다. 블로그 글로 발전시키기 전의 초안과 단편적인 기록을 모은다.

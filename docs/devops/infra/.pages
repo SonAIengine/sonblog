@@ -28,6 +28,7 @@ nav:
   - xgen-k3s-anatomy-3-helm-chart-design.md
   - xgen-k3s-anatomy-4-cicd-jenkins-argocd.md
   - xgen-k3s-anatomy-5-istio-observability.md
+  - K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md
   - K3s-리소스-튜닝-실전-가이드-OOMKilled와-CPU-Throttling-해결기.md
   - XGEN-멀티사이트-배포-자동화-하나의-코드베이스로-N개-고객사-운영하기.md
   - Reusable-GHA와-Helm으로-K3s-범용-배포-플랫폼-구축하기.md

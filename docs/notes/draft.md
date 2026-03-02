@@ -1,3 +1,9 @@
+---
+noindex: true
+search:
+  exclude: true
+---
+
 # Draft
 
 여기에 자유롭게 메모를 작성한다.

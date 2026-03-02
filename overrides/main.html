@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+<!-- robots: noindex/nofollow (frontmatter에서 noindex: true 설정 시) -->
+{% if page and page.meta and page.meta.noindex %}
+<meta name="robots" content="{{ page.meta.robots_content | default('noindex') }}">
+{% endif %}
+
 <!-- SEO Meta Tags -->
 <meta name="keywords" content="AI Engineer, LLM Serving, RAG, Rust, Kubernetes, 검색엔진, 임베딩, DevOps, Full Stack">
+
+<!-- hreflang: 한국어 사이트임을 명시 -->
+{% if page %}
+<link rel="alternate" hreflang="ko" href="{{ page.canonical_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.canonical_url }}">
+{% endif %}
 
 <!-- Open Graph -->
 <meta property="og:locale" content="ko_KR">
@@ -100,7 +111,7 @@
     ,{
       "@type": "ListItem",
       "position": {{ loop.index + 1 }},
-      "name": "{% if loop.last %}{{ page.meta.title | default(page.title) }}{% else %}{{ part | replace('-', ' ') | title }}{% endif %}",
+      "name": "{% if loop.last %}{{ page.meta.title | default(page.title) }}{% else %}{{ part | urldecode | replace('-', ' ') | title }}{% endif %}",
       "item": "{{ config.site_url }}{{ parts[:loop.index] | join('/') }}/"
     }
     {% endfor %}

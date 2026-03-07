@@ -1,12 +1,14 @@
 ---
-title: "문서 기반 RAG 구성"
-description: "아래는 FastAPI를 이용해 “파일 업로드 → 로드(확장자별) → 청크(split) → Qdrant에 색인(index) → 검색(일반·희소·하이브리드)”까지 전 과정을 보여주는 예제 코드이다."
+title: “Qdrant + FastAPI 문서 기반 RAG 파이프라인 구현”
+description: “FastAPI와 Qdrant를 활용한 문서 기반 RAG 파이프라인 예제를 정리한다. 파일 업로드부터 확장자별 로더, 청킹, Qdrant 벡터 색인, Dense/Sparse/Hybrid 검색까지 전 과정을 다룬다.”
 date: 2025-07-16
 tags:
-  - 검색엔진
-  - 벡터 검색
   - Qdrant
+  - 벡터검색
+  - 검색엔진
   - RAG
+  - FastAPI
+  - Python
 ---
 
 아래는 FastAPI를 이용해 “파일 업로드 → 로드(확장자별) → 청크(split) → Qdrant에 색인(index) → 검색(일반·희소·하이브리드)”까지 전 과정을 보여주는 예제 코드이다.
@@ -182,5 +184,12 @@ if __name__ == "__main__":
     - `mode=dense|sparse|hybrid` 옵션
         
     - hybrid 모드 시 score 반환, optional metadata 필터링 지원
+
+---
+
+**관련 글**
+
+- [LangChain과 Qdrant 통합 — Dense, Sparse, Hybrid 검색 구현](LangChain과%20Qdrant.md): LangChain의 `QdrantVectorStore`를 사용한 다양한 검색 모드 설정과 메타데이터 필터링
+- [Qdrant LangChain — Retriever와 VectorStore 활용법](Qdrant%20LangChain.md): Retriever 변환, 커스텀 payload 키 설정, 기존 컬렉션 연결 등 심화 활용법
 
 

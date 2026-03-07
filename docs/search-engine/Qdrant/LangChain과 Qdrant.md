@@ -1,12 +1,14 @@
 ---
-title: "LangChain과 Qdrant"
-description: "Qdrant는 고성능의 벡터 유사도 검색 엔진으로, REST 및 gRPC API를 통해 벡터 저장, 검색, 필터링을 제공한다. LangChain은 대형 언어 모델(LLM)의 응용을 위한 프레임워크로, 다양한 벡터 저장소(Vector Store)와의 통합을 지원한다."
+title: "LangChain과 Qdrant 통합 — Dense, Sparse, Hybrid 검색 구현"
+description: "langchain-qdrant 모듈을 사용해 Qdrant를 LangChain과 연동하는 방법을 정리한다. Dense Vector, Sparse Vector, Hybrid 검색, 메타데이터 필터링, Retriever 변환 등의 기능을 예제와 함께 다룬다."
 date: 2025-07-16
 tags:
   - LangChain
-  - 검색엔진
-  - 벡터 검색
   - Qdrant
+  - 벡터검색
+  - 검색엔진
+  - 하이브리드검색
+  - Python
 ---
 
 ## 1. 개요
@@ -254,3 +256,10 @@ QdrantVectorStore.from_documents(
 Qdrant는 LangChain과의 통합을 통해 다양한 검색 시나리오를 유연하게 지원하며, Dense, Sparse, Hybrid 검색 모드를 기반으로 하는 강력한 RAG 시스템 구축이 가능하다. 메타데이터 기반 필터링, 다중 벡터 저장, 문서 삭제 및 Retriever 변환까지 포함한 전체 기능을 손쉽게 활용할 수 있다.
 
 Qdrant + LangChain은 단순한 벡터 DB 그 이상으로, LLM 애플리케이션을 위한 실질적인 검색/리트리벌 인프라로 사용될 수 있다.
+
+---
+
+**관련 글**
+
+- [Qdrant LangChain — Retriever와 VectorStore 활용법](Qdrant%20LangChain.md): `langchain-qdrant` 모듈의 Retriever 변환, VectorStore 커스텀 설정 등 실전 활용법
+- [Qdrant + FastAPI 문서 기반 RAG 파이프라인 구현](문서%20기반%20RAG%20구성.md): FastAPI 기반으로 파일 업로드부터 Hybrid 검색까지 전체 RAG 파이프라인을 구현한 예제

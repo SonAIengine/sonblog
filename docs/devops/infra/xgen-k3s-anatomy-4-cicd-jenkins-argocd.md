@@ -1191,3 +1191,11 @@ Jenkins Pod 안에서 호스트의 Docker 데몬 소켓을 직접 사용한다(D
 ---
 
 5편에서는 K3s 클러스터의 네트워크 계층인 Istio 서비스 메시와, 관측성 스택(Prometheus, Loki, Tempo, Grafana)을 분석한다. 서비스 간 트래픽 라우팅, mTLS, 분산 트레이싱이 어떻게 구성되어 있는지를 다룬다.
+
+---
+
+**관련 글**
+
+- [Jenkins JCasC로 6개 서비스 빌드 Job 자동 생성하기](Jenkins-JCasC로-6개-서비스-빌드-Job-자동-생성.md): seed job + Configuration as Code로 Jenkins Job을 코드로 관리하는 방법
+- [Jenkins RBAC Kubernetes 권한 설정 삽질기](Jenkins-RBAC-Kubernetes-권한-설정-삽질기.md): `kubectl rollout status`가 내부적으로 watch 권한을 요구하는 문제와 해결 과정
+- [Jenkins executor 수 최적화: 동시 빌드 성능 튜닝](Jenkins-executor-수-최적화-동시-빌드-성능-튜닝.md): Kubernetes agent Pod 기반 동시 빌드 수 튜닝 경험

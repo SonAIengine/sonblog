@@ -27,7 +27,6 @@ theme:
     # Search
     - search.suggest
     - search.highlight
-    - search.share
     # Content
     - content.code.copy
     - content.code.select

@@ -57,5 +57,6 @@ Allow: /
 # All others
 User-agent: *
 Allow: /
+Disallow: /*?q=
 
 Sitemap: https://infoedu.co.kr/sitemap.xml

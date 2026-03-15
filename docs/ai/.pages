@@ -3,6 +3,6 @@ nav:
   - index.md
   - XGEN
   - AI Agent: agent
-  - 파인튜닝
-  - Model Serve
-  - 딥러닝 기초
+  - fine-tuning
+  - model-serve
+  - deep-learning

@@ -1196,6 +1196,6 @@ Jenkins Pod 안에서 호스트의 Docker 데몬 소켓을 직접 사용한다(D
 
 **관련 글**
 
-- [Jenkins JCasC로 6개 서비스 빌드 Job 자동 생성하기](Jenkins-JCasC로-6개-서비스-빌드-Job-자동-생성.md): seed job + Configuration as Code로 Jenkins Job을 코드로 관리하는 방법
-- [Jenkins RBAC Kubernetes 권한 설정 삽질기](Jenkins-RBAC-Kubernetes-권한-설정-삽질기.md): `kubectl rollout status`가 내부적으로 watch 권한을 요구하는 문제와 해결 과정
-- [Jenkins executor 수 최적화: 동시 빌드 성능 튜닝](Jenkins-executor-수-최적화-동시-빌드-성능-튜닝.md): Kubernetes agent Pod 기반 동시 빌드 수 튜닝 경험
+- [Jenkins JCasC로 6개 서비스 빌드 Job 자동 생성하기](jenkins-jcasc-6-service-build-job-auto-generate.md): seed job + Configuration as Code로 Jenkins Job을 코드로 관리하는 방법
+- [Jenkins RBAC Kubernetes 권한 설정 삽질기](jenkins-rbac-kubernetes-permission-config-troubleshoot.md): `kubectl rollout status`가 내부적으로 watch 권한을 요구하는 문제와 해결 과정
+- [Jenkins executor 수 최적화: 동시 빌드 성능 튜닝](jenkins-executor-optimization-concurrent-build-performance-tuning.md): Kubernetes agent Pod 기반 동시 빌드 수 튜닝 경험

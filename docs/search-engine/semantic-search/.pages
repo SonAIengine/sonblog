@@ -1,0 +1,7 @@
+title: 시맨틱 검색
+nav:
+  - vector-semantic-search.md
+  - image-search-feature-impl.md
+  - commerce-product-search-api-design.md
+  - faiss-vector-index-apply-gpu-device-optimization.md
+  - semantic-search-api-summary-feature-strategy.md

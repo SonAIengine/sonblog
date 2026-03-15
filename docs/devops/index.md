@@ -1,6 +1,6 @@
 ---
 title: DevOps
-description: "K8s, ArgoCD, Jenkins, Docker 등 인프라 및 DevOps 관련 기술 글 모음"
+description: "Kubernetes 클러스터 운영, ArgoCD GitOps 배포, Jenkins CI/CD 파이프라인, Docker 인프라 구성 경험을 다루는 DevOps 기술 글 모음"
 hide:
   - toc
 ---

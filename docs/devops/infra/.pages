@@ -1,38 +1,38 @@
 title: Infra
 nav:
   - index.md
-  - Docker-Compose-개발환경-구성-env-기반-설정-관리.md
-  - GitLab-CI-CD에서-EC2-배포-자동화-SCP-SSH.md
-  - XGEN-도메인-마이그레이션-xgen-stg에서-jeju-xgen으로.md
-  - XGEN-인프라-디렉토리-구조-재편성-dockerfiles-compose-k3s-분리.md
-  - pyproject-toml-dependencies-추출로-Docker-빌드-최적화.md
-  - Redis-인증-설정과-K3s-분산-환경-관리.md
-  - 롯데홈쇼핑-폐쇄망-서버-SSH-터널링-접속-구성.md
-  - Jenkins-JCasC로-6개-서비스-빌드-Job-자동-생성.md
-  - Jenkins-executor-수-최적화-동시-빌드-성능-튜닝.md
-  - Istio-Gateway-HTTPS-설정-TLS-인증서-관리.md
-  - Lets-Encrypt-cert-manager로-K3s-HTTPS-자동화.md
-  - Jenkins-RBAC-Kubernetes-권한-설정-삽질기.md
-  - Docker-BuildKit-캐시-전략과-NO_CACHE-옵션.md
-  - Dockerfile-최적화-COPY-chown-vs-chown-R.md
-  - Kubernetes-Downward-API로-멀티-POD-세션-라우팅.md
-  - Kubernetes-Health-Probe-타임아웃-설정.md
-  - XGEN-2.0-인프라-K8s-ArgoCD-운영-배포.md
-  - Search-API와-LLMOps-Docker-구성기.md
-  - ArgoCD-멀티-고객사-배포-아키텍처-ApplicationSet-시행착오와-단일-진입점-설계.md
-  - XGEN-멀티파드-분산-환경-마이그레이션-Redis-분산-락과-직렬화-삽질기.md
-  - XGEN-AWS-EKS-신규-고객사-배포기-온프레미스에서-클라우드로.md
-  - 홈서버-SSH-보안-강화-키-인증-fail2ban-포트-우회.md
+  - docker-compose-dev-env-compose-env-based-config-management.md
+  - gitlab-ci-cd-ec2-deploy-automation-scp-ssh.md
+  - xgen-domain-migration-xgen-stg-jeju-xgen.md
+  - xgen-infra-directory-structure-restructure-dockerfiles-compose-k3s.md
+  - pyproject-toml-dependencies-extraction-docker-build-optimization.md
+  - redis-auth-config-k3s-distributed-env-management.md
+  - lotteshopping-airgap-server-ssh-tunneling-access-compose.md
+  - jenkins-jcasc-6-service-build-job-auto-generate.md
+  - jenkins-executor-optimization-concurrent-build-performance-tuning.md
+  - istio-gateway-https-config-tls-certificate-management.md
+  - lets-encrypt-cert-manager-k3s-https-automation.md
+  - jenkins-rbac-kubernetes-permission-config-troubleshoot.md
+  - docker-buildkit-cache-strategy-no-cache-option.md
+  - dockerfile-optimization-copy-chown-vs-chown-r.md
+  - kubernetes-downward-api-multi-pod-session-routing.md
+  - kubernetes-health-probe-timeout-config.md
+  - xgen-2-0-infra-k8s-argocd-ops-deploy.md
+  - search-api-llmops-docker-compose.md
+  - argocd-multi-client-site-deploy-architecture-applicationset-trial-error-single-entry-point-design.md
+  - xgen-multi-distributed-env-migration-redis-distributed-serialization-troubleshoot.md
+  - xgen-aws-eks-new-client-site-deploy-on-premise-cloud.md
+  - homeserver-ssh-security-hardening-auth-fail2ban-port.md
   - xgen-k3s-anatomy-1-docker-build-strategy.md
   - xgen-k3s-anatomy-2-kubernetes-core-objects.md
   - xgen-k3s-anatomy-3-helm-chart-design.md
   - xgen-k3s-anatomy-4-cicd-jenkins-argocd.md
   - xgen-k3s-anatomy-5-istio-observability.md
-  - K3s-위에-AI-플랫폼-올리기-인프라-설계부터-배포까지.md
-  - K3s-리소스-튜닝-실전-가이드-OOMKilled와-CPU-Throttling-해결기.md
-  - XGEN-멀티사이트-배포-자동화-하나의-코드베이스로-N개-고객사-운영하기.md
-  - Reusable-GHA와-Helm으로-K3s-범용-배포-플랫폼-구축하기.md
-  - DNS-도메인-SSL-인증서-네임서버-충돌로-Lets-Encrypt-발급-실패한-이야기.md
-  - Docker-nginx-HTTPS-적용기-snap-Docker-교체부터-Lets-Encrypt-자동-갱신까지.md
-  - Technitium-DNS-홈서버-자체-DNS-구축과-운영기.md
-  - Caddy-리버스-프록시로-홈서버-HTTPS-자동화-Nginx와-비교.md
+  - k3s-ai-platform-setup-infra-design-deploy.md
+  - k3s-resource-tuning-practical-guide-oomkilled-cpu-throttling-fix-story.md
+  - xgen-multi-site-deploy-automation-codebase-n-client-site-ops.md
+  - reusable-gha-helm-k3s-generic-deploy-platform-setup.md
+  - dns-domain-ssl-certificate-nameserver-conflict-lets-encrypt-issuance-failure-story.md
+  - docker-nginx-https-adoption-snap-docker-replacement-lets-encrypt-auto-renewal.md
+  - technitium-dns-homeserver-dns-setup-ops-story.md
+  - caddy-reverse-proxy-homeserver-https-automation-nginx-comparison.md

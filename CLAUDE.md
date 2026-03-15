@@ -37,6 +37,10 @@
 - Mermaid 기본 테마에 맡기고, 노드 텍스트로 의미를 전달 (`<br/>`로 부가 설명 가능)
 - 서브그래프는 정말 필요할 때만 사용 (겹치거나 레이아웃 깨지면 플랫 구조로)
 - `flowchart LR`(가로) 기본, 세로가 명확히 나을 때만 `TB` 사용
+- **특수문자가 포함된 노드/엣지 텍스트는 반드시 큰따옴표(`"`)로 감싸기** — `/`, `<br/>`, `:`, `*` 등이 들어가면 Mermaid 파서가 구문으로 해석해서 Syntax error 발생
+  - `[/usr/share/nginx/html]` → `["/usr/share/nginx/html"]` (앞의 `/`가 평행사변형 구문 `[/text/]`으로 파싱됨)
+  - `[server:3001<br/>Node.js]` → `["server:3001<br/>Node.js"]`
+  - `-->|/api/* 프록시|` → `-->|"/api/* 프록시"|`
 
 ### MkDocs Material 메타데이터 (Frontmatter)
 

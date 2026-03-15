@@ -1,3 +1,10 @@
+---
+title: "Infra"
+description: "Kubernetes, ArgoCD, Jenkins, Docker, Cert-Manager 등 인프라 구성과 DevOps 운영 경험을 다루는 기술 문서 모음"
+hide:
+  - toc
+---
+
 # Infra
 
 인프라 및 DevOps 관련 기술 문서.

@@ -1,10 +1,12 @@
 ---
 title: "Intel NPU 가속을 활용한 TinyLlama 챗봇 구현"
-description: "transformers 라이브러리의 버전을 정확히 맞추는 것이 중요합니다. 버전 불일치 시 실행이 되지 않을 수 있습니다."
+description: "Intel NPU Acceleration Library를 사용하여 TinyLlama 모델을 NPU에서 추론하는 챗봇을 구현한 과정. transformers 버전 호환성 문제와 NPU 가속 설정을 정리한다."
 date: 2025-02-03
 tags:
-  - Full Stack
-  - NPU
+  - Intel NPU
+  - TinyLlama
+  - LLM
+  - Python
   - PoC
 ---
 

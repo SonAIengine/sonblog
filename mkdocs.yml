@@ -69,6 +69,7 @@ hooks:
   - hooks/graph_builder.py
   - hooks/related_posts.py
   - hooks/jinja_filters.py
+  - hooks/load_redirects.py
 
 plugins:
   - awesome-pages

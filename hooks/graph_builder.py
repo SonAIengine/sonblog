@@ -46,7 +46,7 @@ _graph_data = None
 def slugify(text: str) -> str:
     text = text.strip().lower()
     text = re.sub(r"[\s_/\\]+", "-", text)
-    text = re.sub(r"[^\w가-힣\-]", "", text)
+    text = re.sub(r"[^\w\-]", "", text)
     return re.sub(r"-+", "-", text).strip("-")
 
 

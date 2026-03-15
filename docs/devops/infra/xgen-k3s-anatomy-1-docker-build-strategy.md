@@ -495,12 +495,12 @@ subsets:
       - port: 5432
 ```
 
-일반적인 Service는 `selector`로 Pod을 자동으로 찾지만, 여기서는 selector 없이 Endpoints를 수동으로 지정한다. `__HOST_IP__`는 설치 스크립트(`setup-k3s.sh`)가 호스트의 실제 IP(예: `14.6.220.78`)로 치환한다.
+일반적인 Service는 `selector`로 Pod을 자동으로 찾지만, 여기서는 selector 없이 Endpoints를 수동으로 지정한다. `__HOST_IP__`는 설치 스크립트(`setup-k3s.sh`)가 호스트의 실제 IP(예: `203.0.113.1`)로 치환한다.
 
 ```mermaid
 flowchart LR
     A[xgen-core Pod] -->|postgresql.xgen-system<br/>.svc.cluster.local:5432| B[Service<br/>ClusterIP]
-    B -->|Endpoints| C[14.6.220.78:5432]
+    B -->|Endpoints| C[203.0.113.1:5432]
     C --> D[Docker Compose<br/>PostgreSQL 컨테이너]
 ```
 
@@ -521,10 +521,10 @@ subsets:
 kubectl get endpoints -n xgen-system
 
 NAME         ENDPOINTS
-postgresql   14.6.220.78:5432
-redis        14.6.220.78:6379
-qdrant       14.6.220.78:6333, 14.6.220.78:6334
-minio        14.6.220.78:9000, 14.6.220.78:9001
+postgresql   203.0.113.1:5432
+redis        203.0.113.1:6379
+qdrant       203.0.113.1:6333, 203.0.113.1:6334
+minio        203.0.113.1:9000, 203.0.113.1:9001
 ```
 
 ---

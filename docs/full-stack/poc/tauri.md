@@ -1,10 +1,12 @@
 ---
 title: "Tauri - 크로스 플랫폼 앱 개발 프레임워크"
-description: "Backend: Rust Frontend: webview를 통한 HTML, CSS, JS (React.js, Next.js 등) 지원"
+description: "Tauri 프레임워크의 개요와 아키텍처를 정리한다. Rust 백엔드와 WebView 기반 프론트엔드(React, Next.js)를 결합한 데스크톱 앱 개발 방식을 다룬다."
 date: 2025-02-03
 tags:
-  - Full Stack
   - Tauri
+  - Rust
+  - Desktop App
+  - WebView
   - PoC
 ---
 

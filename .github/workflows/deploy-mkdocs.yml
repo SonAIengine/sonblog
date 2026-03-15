@@ -70,6 +70,17 @@ jobs:
           source .venv/bin/activate
           mkdocs build
 
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --base site
+            --include-fragments
+            --no-progress
+            --exclude 'https?://'
+            site
+          fail: true
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:

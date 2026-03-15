@@ -1,0 +1,14 @@
+title: Rust 검색 엔진
+nav:
+  - rust-commerce-search-engine-build.md
+  - axum-opensearch-rust-search-api-architecture-design.md
+  - postgresql-mysql-concurrent-rust-db-abstraction-layer-impl.md
+  - rust-search-engine-redis-caching-adoption.md
+  - opensearch-indexing-service-streaming-vs-batch-processing-comparison.md
+  - rust-search-engine-ssh-tunneling-remote-db-access.md
+  - opensearch-aggregation-search-impl-strategy.md
+  - rust-search-engine-ci-cd-pipeline-setup.md
+  - opensearch-dictionary-management-automation.md
+  - handlebars-template-dynamic-search-generate.md
+  - cursor-based-indexing-vs-indexing-performance-comparison.md
+  - rate-limiting-apply-search-api-design.md

@@ -248,5 +248,13 @@
   "portfolio/AI 서비스/index.md": "portfolio/ai-service/index.md",
   "search-engine/시맨틱 검색/index.md": "search-engine/semantic-search/index.md",
   "search-engine/NestJS 검색 엔진/index.md": "search-engine/nestjs-search/index.md",
-  "search-engine/Rust 검색 엔진/index.md": "search-engine/rust-search/index.md"
+  "search-engine/Rust 검색 엔진/index.md": "search-engine/rust-search/index.md",
+
+  "devops/infra/CLAUDE-md로-AI-코딩-어시스턴트-가이드라인-작성하기.md": "full-stack/poc/claude-md-ai-coding-assistant-guideline.md",
+  "full-stack/frontend/backend/비주얼-워크플로우-에디터-노드-기반-AI-파이프라인-설계.md": "full-stack/backend/visual-workflow-editor-node-based-ai-pipeline-design.md",
+  "search-engine/Qdrant/langchain-qdrant/문서 기반 RAG 구성.md": "search-engine/Qdrant/document-based-rag-compose.md",
+  "ai/Model Serve/VastAI 인스턴스 관리 API 가이드.md": "ai/model-serve/vastai-instance-api-guide.md",
+  "full-stack/python/비동기 프로그래밍/1. 비동기 프로그래밍 소개.md": "full-stack/python/async/async-intro.md",
+  "ai/딥러닝 기초/셀프 어텐션의 전체 단계를 설명하라.md": "ai/deep-learning/self-attention-step-by-step.md",
+  "ai/딥러닝 기초/Thompson Sampling.md": "ai/deep-learning/thompson-sampling.md"
 }

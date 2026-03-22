@@ -77,10 +77,20 @@ def on_post_build(config, **kwargs):
         relative_target = "/" + new_url
         full_url = f"{site_url}/{new_url}" if site_url else relative_target
 
-        out_file.write_text(
-            REDIRECT_TEMPLATE.format(url=relative_target, full_url=full_url),
-            encoding="utf-8",
-        )
+        redirect_html = REDIRECT_TEMPLATE.format(url=relative_target, full_url=full_url)
+
+        out_file.write_text(redirect_html, encoding="utf-8")
         count += 1
+
+        # Also generate a .md literal file for URLs like /path/file.md
+        # Google sometimes crawls these directly
+        if old_md.endswith(".md") and not old_md.endswith("index.md"):
+            md_literal = site_dir / old_md
+            if not md_literal.exists():
+                try:
+                    md_literal.parent.mkdir(parents=True, exist_ok=True)
+                    md_literal.write_text(redirect_html, encoding="utf-8")
+                except OSError:
+                    pass
 
     log.info("Created %d redirect pages (%d skipped)", count, len(mapping) - count)

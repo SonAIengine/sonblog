@@ -2426,6 +2426,43 @@ a.hero-portfolio-link:hover {
   text-align: center;
 }
 
+.pf-hero-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+a.pf-social-icon,
+a.pf-social-icon:link,
+a.pf-social-icon:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: rgba(199, 210, 254, 0.8) !important;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+a.pf-social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+a.pf-social-icon:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #e0e7ff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2);
+}
+
 .pf-hero-links {
   display: flex;
   justify-content: center;
@@ -3061,6 +3098,132 @@ a.pf-footer-btn:hover {
   box-shadow: 0 4px 8px rgba(99, 102, 241, 0.1);
 }
 
+/* ── Open Source Grid ── */
+.pf-oss-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+a.pf-oss-card,
+a.pf-oss-card:link,
+a.pf-oss-card:visited {
+  display: block;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.4rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+a.pf-oss-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.08);
+}
+
+.pf-oss-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.pf-oss-icon {
+  width: 22px;
+  height: 22px;
+  color: #6366f1;
+}
+
+.pf-oss-lang {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.pf-oss-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.4rem 0;
+}
+
+.pf-oss-card p {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 0.8rem 0;
+}
+
+.pf-oss-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+a.pf-oss-badge,
+a.pf-oss-badge:link,
+a.pf-oss-badge:visited {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #6366f1 !important;
+  background: rgba(99, 102, 241, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  text-decoration: none !important;
+}
+
+.pf-oss-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ── By the Numbers ── */
+.pf-numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.pf-number-card {
+  text-align: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.6rem 1rem;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pf-number-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+}
+
+.pf-number-value {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #6366f1;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+
+.pf-number-label {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.3;
+}
+
 /* ── Responsive ── */
 @media screen and (max-width: 960px) {
   .pf-expertise-grid {
@@ -3068,6 +3231,12 @@ a.pf-footer-btn:hover {
   }
   .pf-project-grid {
     grid-template-columns: 1fr;
+  }
+  .pf-oss-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pf-numbers-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
   .pf-stack-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3250,6 +3419,42 @@ a.pf-footer-btn:hover {
   }
   .pf-tl-item {
     margin-bottom: 1.5rem;
+  }
+
+  /* Open Source */
+  .pf-oss-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .pf-oss-card {
+    padding: 1.1rem;
+  }
+
+  /* By the Numbers */
+  .pf-numbers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  .pf-number-value {
+    font-size: 1.4rem;
+  }
+  .pf-number-label {
+    font-size: 0.68rem;
+  }
+
+  /* Social Icons */
+  .pf-hero-socials {
+    gap: 0.7rem;
+  }
+  a.pf-social-icon,
+  a.pf-social-icon:link,
+  a.pf-social-icon:visited {
+    width: 36px;
+    height: 36px;
+  }
+  a.pf-social-icon svg {
+    width: 18px;
+    height: 18px;
   }
 
   /* Footer */
@@ -3513,6 +3718,40 @@ a.pf-footer-btn:hover {
 [data-md-color-scheme="slate"] a.pf-footer-btn:hover {
   background: rgba(99, 102, 241, 0.15);
   border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Dark mode: Open Source */
+[data-md-color-scheme="slate"] a.pf-oss-card,
+[data-md-color-scheme="slate"] a.pf-oss-card:link,
+[data-md-color-scheme="slate"] a.pf-oss-card:visited {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(99, 102, 241, 0.1);
+  color: inherit !important;
+}
+[data-md-color-scheme="slate"] a.pf-oss-card:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
+}
+[data-md-color-scheme="slate"] .pf-oss-card h4 {
+  color: #e2e8f0;
+}
+[data-md-color-scheme="slate"] .pf-oss-card p {
+  color: #94a3b8;
+}
+
+/* Dark mode: By the Numbers */
+[data-md-color-scheme="slate"] .pf-number-card {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(99, 102, 241, 0.1);
+}
+[data-md-color-scheme="slate"] .pf-number-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+}
+[data-md-color-scheme="slate"] .pf-number-value {
+  color: #818cf8;
+}
+[data-md-color-scheme="slate"] .pf-number-label {
+  color: #94a3b8;
 }
 
 /* === GoatCounter: Page Views & Total Views === */

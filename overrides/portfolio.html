@@ -703,14 +703,5 @@
   </div>
 </section>
 
-<script>
-/* Spotlight hover effect - radial gradient follows cursor */
-document.querySelectorAll('[data-spotlight]').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-  });
-});
-</script>
+<!-- spotlight은 custom.js의 initSpotlight()에서 통합 처리 -->
 {% endblock %}

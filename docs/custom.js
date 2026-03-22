@@ -100,6 +100,126 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })();
 
+// ── Home: 타이핑 애니메이션 + Spotlight + Scroll Reveal ────────────────────────
+(function () {
+  var typingTimer = null;
+
+  function heroTyping() {
+    var el = document.getElementById("hero-typing");
+    if (!el) return;
+
+    var words = ["LLM Serving", "Rust Search Engine", "K8s Infra", "RAG Pipeline", "MCP Agent", "Embedding Optimization"];
+    var wordIdx = 0, charIdx = 0, deleting = false;
+
+    // 이전 타이머 정리
+    if (typingTimer) clearInterval(typingTimer);
+
+    typingTimer = setInterval(function () {
+      var word = words[wordIdx];
+      if (!deleting) {
+        el.textContent = word.substring(0, charIdx + 1);
+        charIdx++;
+        if (charIdx >= word.length) {
+          deleting = true;
+          // 완성 후 대기
+          clearInterval(typingTimer);
+          typingTimer = setTimeout(function () {
+            typingTimer = setInterval(arguments.callee.caller || deleteLoop, 40);
+          }, 2000);
+          return;
+        }
+      }
+    }, 80);
+
+    // 삭제 루프를 별도로 관리
+    function startTypingLoop() {
+      if (typingTimer) { clearInterval(typingTimer); clearTimeout(typingTimer); }
+
+      var phase = "typing"; // typing | waiting | deleting
+      charIdx = 0;
+      deleting = false;
+
+      function tick() {
+        var word = words[wordIdx];
+        if (phase === "typing") {
+          el.textContent = word.substring(0, charIdx + 1);
+          charIdx++;
+          if (charIdx >= word.length) {
+            phase = "waiting";
+            setTimeout(tick, 2000);
+            return;
+          }
+          setTimeout(tick, 80);
+        } else if (phase === "waiting") {
+          phase = "deleting";
+          setTimeout(tick, 40);
+        } else if (phase === "deleting") {
+          charIdx--;
+          el.textContent = word.substring(0, charIdx);
+          if (charIdx <= 0) {
+            wordIdx = (wordIdx + 1) % words.length;
+            phase = "typing";
+            setTimeout(tick, 300);
+            return;
+          }
+          setTimeout(tick, 40);
+        }
+      }
+      tick();
+    }
+
+    // 깔끔하게 재시작
+    if (typingTimer) { clearInterval(typingTimer); clearTimeout(typingTimer); }
+    startTypingLoop();
+  }
+
+  function initSpotlight() {
+    document.querySelectorAll("[data-spotlight]").forEach(function (card) {
+      if (card._spotlightBound) return;
+      card._spotlightBound = true;
+      card.addEventListener("mousemove", function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        card.style.setProperty("--my", (e.clientY - r.top) + "px");
+      });
+    });
+  }
+
+  function initScrollReveal() {
+    var elements = document.querySelectorAll(".reveal:not(.revealed)");
+    if (!elements.length) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -30px 0px" });
+    elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  function onHomeNavigate() {
+    initSpotlight();
+    if (location.pathname === "/") {
+      heroTyping();
+      // 카드에 reveal 적용
+      document.querySelectorAll(".home-card").forEach(function (c) { c.classList.add("reveal"); });
+      initScrollReveal();
+    }
+  }
+
+  if (window.document$ && window.document$.subscribe) {
+    window.document$.subscribe(onHomeNavigate);
+  } else {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", onHomeNavigate);
+    } else {
+      onHomeNavigate();
+    }
+  }
+})();
+
 // ── Knowledge Graph: instant navigation 대응 ──────────────────────────────────
 // MkDocs Material의 document$ observable은 instant navigation 때마다 emit한다.
 // graph 페이지에서만 번들을 로드하고 initGraphViz()를 호출한다.

@@ -31,7 +31,7 @@ EXCLUDE_FILES = {"index.md", ".pages"}
 
 
 def parse_frontmatter(content: str) -> dict:
-    """마크다운 프론트매터에서 title, date를 파싱한다."""
+    """마크다운 프론트매터에서 title, date, description, tags를 파싱한다."""
     result = {}
     if not content.startswith("---"):
         return result
@@ -41,19 +41,52 @@ def parse_frontmatter(content: str) -> dict:
         return result
 
     frontmatter = content[3:end]
+    in_tags = False
+    tags = []
 
     for line in frontmatter.splitlines():
         if line.startswith("title:"):
             title = line[6:].strip().strip('"').strip("'")
             result["title"] = title
+            in_tags = False
         elif line.startswith("date:"):
             date_str = line[5:].strip()
             try:
                 result["date"] = datetime.strptime(date_str, "%Y-%m-%d").date()
             except ValueError:
                 pass
+            in_tags = False
+        elif line.startswith("description:"):
+            desc = line[12:].strip().strip('"').strip("'")
+            result["description"] = desc
+            in_tags = False
+        elif line.startswith("tags:"):
+            in_tags = True
+        elif in_tags and line.strip().startswith("- "):
+            tags.append(line.strip()[2:].strip())
+        elif in_tags and not line.strip().startswith("- "):
+            in_tags = False
+
+    if tags:
+        result["tags"] = tags
 
     return result
+
+
+def estimate_reading_time(content: str) -> int:
+    """본문 글자 수 기반 읽기 시간(분)을 추정한다. 한글 기준 분당 500자."""
+    # 프론트매터 제거
+    if content.startswith("---"):
+        end = content.find("---", 3)
+        if end != -1:
+            content = content[end + 3:]
+    # 코드블록 제거
+    content = re.sub(r"```[\s\S]*?```", "", content)
+    # 마크다운 문법 제거
+    content = re.sub(r"[#*`\[\]()>|_~]", "", content)
+    char_count = len(content.strip())
+    minutes = max(1, round(char_count / 500))
+    return minutes
 
 
 def get_url_path(docs_dir: str, file_path: str) -> str:
@@ -109,11 +142,18 @@ def collect_posts(docs_dir: str, limit: int = 8) -> list:
             url = get_url_path(docs_dir, fpath)
             category = get_category(docs_dir, fpath)
 
+            tags = meta.get("tags", [])
+            description = meta.get("description", "")
+            reading_time = estimate_reading_time(content)
+
             posts.append({
                 "title": title,
                 "date": post_date,
                 "url": url,
                 "category": category,
+                "tags": tags,
+                "description": description,
+                "reading_time": reading_time,
             })
 
     # date 내림차순 정렬 후 limit개 반환
@@ -174,12 +214,48 @@ def build_recent_posts_html(posts: list) -> str:
     return "\n".join(items)
 
 
+# Featured Posts: 수동 선정
+FEATURED_SLUGS = [
+    "ai/XGEN/xgen-2-0-model-serving-integration-architecture-refactoring.md",
+    "ai/agent/graph-tool-call-llm-agent-graph-based-tool-search-engine.md",
+    "search-engine/rust-search/rust-commerce-search-engine-build.md",
+]
+
+
+def collect_featured(docs_dir: str) -> list:
+    """FEATURED_SLUGS에 해당하는 글의 메타데이터를 반환한다."""
+    featured = []
+    for slug in FEATURED_SLUGS:
+        fpath = os.path.join(docs_dir, slug)
+        if not os.path.exists(fpath):
+            continue
+        try:
+            with open(fpath, encoding="utf-8") as f:
+                content = f.read()
+        except Exception:
+            continue
+        meta = parse_frontmatter(content)
+        if "title" not in meta:
+            continue
+        featured.append({
+            "title": meta["title"],
+            "date": meta.get("date", date.today()),
+            "url": get_url_path(docs_dir, fpath),
+            "category": get_category(docs_dir, fpath),
+            "description": meta.get("description", ""),
+            "tags": meta.get("tags", []),
+        })
+    return featured
+
+
 # MkDocs hook: on_env
 def on_env(env, config, files, **kwargs):
-    """Jinja2 환경에 recent_posts, post_counts 전역 변수를 주입한다."""
+    """Jinja2 환경에 recent_posts, featured_posts, post_counts 전역 변수를 주입한다."""
     docs_dir = config["docs_dir"]
-    posts = collect_posts(docs_dir, limit=5)
+    posts = collect_posts(docs_dir, limit=6)
+    featured = collect_featured(docs_dir)
     counts = count_posts_by_category(docs_dir)
     env.globals["recent_posts"] = posts
+    env.globals["featured_posts"] = featured
     env.globals["post_counts"] = counts
     return env

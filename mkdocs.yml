@@ -57,10 +57,10 @@ extra:
     property: G-9XJ8HP1L17
 
 extra_css:
-  - extra.css?v=24
+  - extra.css?v=25
 
 extra_javascript:
-  - custom.js?v=2
+  - custom.js?v=3
   - assets/js/orama-search.js?v=7
 
 hooks:

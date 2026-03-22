@@ -5,35 +5,63 @@
 {% endblock %}
 
 {% block content %}
+<!-- ============================================
+     Hero
+     ============================================ -->
 <section class="hero">
+  <div class="hero-orbs">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+  </div>
   <div class="hero-inner">
     <h1>SON BLOG</h1>
     <p class="hero-subtitle">AI Engineer · 손성준</p>
-    <p class="hero-desc">LLM Serving · RAG · Rust Search Engine · K8s · Embedding Optimization</p>
-    <a href="portfolio/" class="hero-portfolio-link">Portfolio</a>
+    <p class="hero-desc">
+      <span class="hero-typing-text" id="hero-typing"></span><span class="hero-typing-cursor">|</span>
+    </p>
+    <div class="hero-buttons">
+      <a href="portfolio/" class="hero-portfolio-link">Portfolio</a>
+      <a href="graph/" class="hero-portfolio-link hero-portfolio-link--ghost">Knowledge Graph</a>
+    </div>
   </div>
   <span class="hero-stats">{{ post_counts.total }} posts<span class="gc-home-total"></span></span>
 </section>
 
+<!-- ============================================
+     Category Cards
+     ============================================ -->
 <section class="home-cards">
-  <a href="full-stack/" class="home-card">
-    <h2>Full Stack</h2>
-    <p>Python, PoC, 프론트엔드, 백엔드 개발</p>
-    <span class="home-card-count">{{ post_counts.full_stack }} posts</span>
-  </a>
-  <a href="search-engine/" class="home-card">
+  <a href="search-engine/" class="home-card" data-spotlight>
+    <div class="home-card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </div>
     <h2>Search Engine</h2>
     <p>Rust 커머스 검색 엔진, OpenSearch, Qdrant, 시맨틱 검색</p>
     <span class="home-card-count">{{ post_counts.search_engine }} posts</span>
   </a>
-  <a href="ai/" class="home-card">
-    <h2>AI</h2>
-    <p>GPU 모델 서빙, 임베딩 최적화, 파인튜닝, XGEN 플랫폼</p>
+  <a href="ai/" class="home-card" data-spotlight>
+    <div class="home-card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 014 4v1a4 4 0 01-8 0V6a4 4 0 014-4z"/><path d="M6 10v1a6 6 0 0012 0v-1"/><path d="M12 17v4m-4 0h8"/></svg>
+    </div>
+    <h2>AI / ML</h2>
+    <p>GPU 모델 서빙, MCP Agent, 임베딩 최적화, XGEN 플랫폼</p>
     <span class="home-card-count">{{ post_counts.ai }} posts</span>
   </a>
-  <a href="devops/" class="home-card">
+  <a href="full-stack/" class="home-card" data-spotlight>
+    <div class="home-card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+    </div>
+    <h2>Full Stack</h2>
+    <p>Python, PoC, 프론트엔드, 백엔드, 데스크톱 앱</p>
+    <span class="home-card-count">{{ post_counts.full_stack }} posts</span>
+  </a>
+  <a href="devops/" class="home-card" data-spotlight>
+    <div class="home-card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
     <h2>DevOps</h2>
-    <p>K8s, ArgoCD, Jenkins, Docker, 인프라 구성</p>
+    <p>K8s, ArgoCD, Jenkins, Docker, 홈서버 인프라</p>
     <span class="home-card-count">{{ post_counts.devops }} posts</span>
   </a>
   <a href="graph/" class="home-card home-card--graph">
@@ -49,10 +77,8 @@
             <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
           </radialGradient>
         </defs>
-        <!-- glow halos -->
         <ellipse cx="200" cy="60" rx="80" ry="50" fill="url(#glow1)" opacity="0.4"/>
         <ellipse cx="320" cy="40" rx="50" ry="35" fill="url(#glow2)" opacity="0.3"/>
-        <!-- edges -->
         <line x1="200" y1="60" x2="100" y2="25" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
         <line x1="200" y1="60" x2="300" y2="20" stroke="#a78bfa" stroke-width="1" opacity="0.5"/>
         <line x1="200" y1="60" x2="80" y2="85" stroke="#67e8f9" stroke-width="0.8" opacity="0.4"/>
@@ -64,7 +90,6 @@
         <line x1="80" y1="85" x2="330" y2="90" stroke="#fbbf24" stroke-width="0.6" opacity="0.25"/>
         <line x1="60" y1="50" x2="100" y2="25" stroke="#a78bfa" stroke-width="0.6" opacity="0.3"/>
         <line x1="360" y1="35" x2="300" y2="20" stroke="#67e8f9" stroke-width="0.6" opacity="0.3"/>
-        <!-- satellite nodes -->
         <circle cx="100" cy="25" r="4.5" fill="#a78bfa" opacity="0.9"/>
         <circle cx="300" cy="20" r="4.5" fill="#a78bfa" opacity="0.9"/>
         <circle cx="80" cy="85" r="4" fill="#67e8f9" opacity="0.85"/>
@@ -76,7 +101,6 @@
         <circle cx="360" cy="35" r="3" fill="#67e8f9" opacity="0.7"/>
         <circle cx="40" cy="100" r="2.5" fill="#fbbf24" opacity="0.6"/>
         <circle cx="370" cy="100" r="2.5" fill="#fbbf24" opacity="0.6"/>
-        <!-- center node (pulse) -->
         <circle cx="200" cy="60" r="10" fill="#7c3aed" opacity="0.15" class="graph-pulse-outer"/>
         <circle cx="200" cy="60" r="7" fill="#7c3aed" opacity="0.9"/>
         <circle cx="200" cy="60" r="3.5" fill="#c4b5fd"/>
@@ -91,14 +115,58 @@
   </a>
 </section>
 
-<section class="home-recent">
-  <h2>Recent Posts</h2>
-  <div class="recent-list">
+<!-- ============================================
+     Featured Posts
+     ============================================ -->
+{% if featured_posts %}
+<section class="home-featured reveal">
+  <h2 class="home-section-title">Featured</h2>
+  <div class="featured-grid">
+    {% for post in featured_posts %}
+    <a href="{{ post.url }}" class="featured-card reveal" data-spotlight>
+      <span class="featured-category">{{ post.category }}</span>
+      <h3>{{ post.title }}</h3>
+      {% if post.description %}
+      <p class="featured-desc">{{ post.description[:120] }}{% if post.description|length > 120 %}...{% endif %}</p>
+      {% endif %}
+      {% if post.tags %}
+      <div class="featured-tags">
+        {% for tag in post.tags[:3] %}
+        <span class="featured-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ============================================
+     Recent Posts
+     ============================================ -->
+<section class="home-recent reveal">
+  <h2 class="home-section-title">Recent Posts</h2>
+  <div class="recent-grid">
     {% for post in recent_posts %}
-    <a href="{{ post.url }}" class="recent-item">
-      <span class="recent-category">{{ post.category }}</span>
-      <span class="recent-title">{{ post.title }}</span>
-      <span class="recent-date">{{ post.date.strftime("%Y.%m.%d") }}</span>
+    <a href="{{ post.url }}" class="recent-card reveal">
+      <div class="recent-card-top">
+        <span class="recent-category">{{ post.category }}</span>
+        <span class="recent-date">{{ post.date.strftime("%Y.%m.%d") }}</span>
+      </div>
+      <h3 class="recent-title">{{ post.title }}</h3>
+      <div class="recent-card-bottom">
+        {% if post.tags %}
+        <div class="recent-tags">
+          {% for tag in post.tags[:3] %}
+          <span class="recent-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if post.reading_time %}
+        <span class="recent-readtime">{{ post.reading_time }}min</span>
+        {% endif %}
+      </div>
     </a>
     {% endfor %}
   </div>

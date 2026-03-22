@@ -16,6 +16,7 @@ REDIRECT_TEMPLATE = """\
 <head>
   <meta charset="utf-8">
   <meta http-equiv="refresh" content="0; url={url}">
+  <meta name="robots" content="noindex">
   <link rel="canonical" href="{full_url}">
   <title>Redirecting</title>
 </head>

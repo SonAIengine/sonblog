@@ -1,9 +1,11 @@
 # Traditional Search Engines
 User-agent: Googlebot
 Allow: /
+Disallow: /*?q=
 
 User-agent: Bingbot
 Allow: /
+Disallow: /*?q=
 
 # OpenAI
 User-agent: GPTBot

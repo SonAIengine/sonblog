@@ -23,6 +23,7 @@ nav:
   - xgen-gpu-vendor-abstraction-vulkan-dependency-removal-multi-vendor-dockerfile-strategy.md
   - xgen-1-0-gpu-model-serving-impl.md
   - xgen-1-0-workflow-engine-qdrant-hybrid-search.md
+  - xgen-model-v2-minio-hub-vllm-017-inference-proxy-architecture.md
   - xgen-2-0-model-serving-integration-architecture-refactoring.md
   - xgen-2-0-embedding-server-batch-processing-optimization.md
   - xgen-2-0-workflow-access-io-system.md

@@ -28,7 +28,7 @@
         <span class="pf-hero-stat-label">Years</span>
       </div>
     </div>
-    <p class="pf-hero-emails">sonsj97@plateer.com · sonsj97@naver.com</p>
+    <p class="pf-hero-emails">sonsj97@plateer.com · sonsj97@gmail.com</p>
     <div class="pf-hero-links">
       <a href="https://github.com/SonAIengine" class="pf-hero-btn pf-hero-btn--primary" target="_blank" rel="noopener">GitHub</a>
       <a href="../" class="pf-hero-btn">Blog</a>
@@ -53,11 +53,17 @@
       검색 품질을 높이기 위해 OpenSearch k-NN과 Qdrant 하이브리드 검색, LLM 쿼리 확장을 도입하며 AI Search로 확장했다.
     </p>
     <p class="pf-about-text">
-      이후 AI 에이전트 플랫폼(XGEN) 개발을 맡아 진행하고 있다.
+      이후 AI 에이전트 플랫폼(XGEN 2.0) 개발을 맡아 진행하고 있다.
       vLLM/llama.cpp 기반 멀티 GPU(CUDA, ROCm) LLM 서빙, LangChain/LangGraph 기반 Iterative RAG,
       GraphDB 지식 그래프, MCP 기반 AI Agent, 워크플로우 엔진까지&mdash;
       7개 마이크로서비스를 Kubernetes/ArgoCD GitOps로 운영하며,
       검색부터 추론, 자동화, 인프라까지 AI 서비스의 전체 스택을 직접 만들고 운영한다.
+    </p>
+    <p class="pf-about-text">
+      최근에는 MCP(Model Context Protocol) 생태계에 집중하고 있다.
+      1,000+ API 도구를 그래프 기반으로 검색하는 <a href="../ai/agent/graph-tool-call-llm-agent-graph-based-tool-search-engine/">graph-tool-call</a> 엔진을 오픈소스로 개발하고,
+      9개 소셜 플랫폼을 MCP 파이프라인으로 자동화하는 <a href="../ai/agent/gwanjong-mcp-ai-social-agent-mcp-system-design-impl/">gwanjong-mcp</a> 에이전트를 운영 중이다.
+      AI 도구 검색, 소셜 자동화, 업무 지식 베이스까지&mdash;MCP를 실전에서 설계하고 운영하는 경험을 쌓고 있다.
     </p>
     <div class="pf-chips-group">
       <div class="pf-chips-row">
@@ -84,6 +90,8 @@
         <span class="pf-chip">OpenSearch</span>
         <span class="pf-chip">HuggingFace</span>
         <span class="pf-chip">LangChain</span>
+        <span class="pf-chip">LangGraph</span>
+        <span class="pf-chip">MCP</span>
       </div>
       <div class="pf-chips-row">
         <span class="pf-chips-label">Infra</span>
@@ -129,10 +137,10 @@
       <span class="pf-card-count">{{ post_counts.ai }} posts</span>
       <ul class="pf-card-techs">
         <li>vLLM / llama.cpp GPU 서빙</li>
-        <li>임베딩 최적화</li>
-        <li>AI Agent 자동화</li>
-        <li>파인튜닝 (LoRA, DPO)</li>
-        <li>XGEN AI 플랫폼</li>
+        <li>MCP 기반 AI Agent 설계</li>
+        <li>그래프 기반 도구 검색 엔진</li>
+        <li>LangChain / LangGraph RAG</li>
+        <li>XGEN AI 에이전트 플랫폼</li>
       </ul>
     </a>
     <a href="../full-stack/" class="pf-expertise-card">
@@ -177,7 +185,7 @@
   </div>
 
   <!-- Featured Project -->
-  <a href="../ai/XGEN/XGEN-2.0-%EB%AA%A8%EB%8D%B8-%EC%84%9C%EB%B9%99-%ED%86%B5%ED%95%A9-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/" class="pf-project pf-project--featured" data-spotlight>
+  <a href="../ai/XGEN/xgen-2-0-model-serving-integration-architecture-refactoring/" class="pf-project pf-project--featured" data-spotlight>
     <div class="pf-project-glow"></div>
     <div class="pf-project-content">
       <div class="pf-project-top">
@@ -221,7 +229,64 @@
 
   <!-- Project Grid -->
   <div class="pf-project-grid" data-spotlight-grid>
-    <a href="../search-engine/Rust%20%EA%B2%80%EC%83%89%20%EC%97%94%EC%A7%84/Rust%EB%A1%9C-%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%84-%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0/" class="pf-project" data-spotlight>
+    <a href="../ai/agent/graph-tool-call-llm-agent-graph-based-tool-search-engine/" class="pf-project" data-spotlight>
+      <div class="pf-project-content">
+        <div class="pf-project-top">
+          <span class="pf-tag pf-tag--ai">AI/ML</span>
+          <span class="pf-project-posts">4 posts</span>
+        </div>
+        <h3>graph-tool-call &mdash; 그래프 도구 검색 엔진</h3>
+        <p class="pf-project-desc">
+          1,000+ API 도구에서 LLM이 필요한 도구를 정확히 찾는 그래프 기반 검색 엔진.
+          OpenAPI 스펙을 파싱하여 Tag &rarr; Operation &rarr; Parameter 3계층 가중 그래프를 구축하고,
+          BFS 전파 + IDF 가중치로 Vector/BM25 대비 높은 정확도를 달성했다.
+          MCP Proxy 모드로 다수 MCP 서버를 2개 meta-tool로 축약하는 게이트웨이 기능을 제공한다.
+        </p>
+        <ul class="pf-project-highlights">
+          <li>1,068 Tool 벤치마크에서 Vector 대비 <strong>Recall 2배, 정확도 40% 향상</strong></li>
+          <li>MCP Proxy gateway 모드 &mdash; N개 MCP 서버를 2개 meta-tool로 축약 (1-hop direct calling)</li>
+          <li>워크플로우 체인 엔진 &mdash; 다단계 도구 호출을 DAG로 자동 구성</li>
+        </ul>
+        <div class="pf-project-stack-row">
+          <span class="pf-stack-item">Python</span>
+          <span class="pf-stack-item">MCP</span>
+          <span class="pf-stack-item">OpenAPI</span>
+          <span class="pf-stack-item">Graph</span>
+          <span class="pf-stack-item">BFS</span>
+          <span class="pf-stack-item">PyPI</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="../ai/agent/gwanjong-mcp-ai-social-agent-mcp-system-design-impl/" class="pf-project" data-spotlight>
+      <div class="pf-project-content">
+        <div class="pf-project-top">
+          <span class="pf-tag pf-tag--ai">AI/ML</span>
+          <span class="pf-tag pf-tag--fullstack">Full Stack</span>
+          <span class="pf-project-posts">2 posts</span>
+        </div>
+        <h3>gwanjong-mcp &mdash; AI 소셜 에이전트</h3>
+        <p class="pf-project-desc">
+          9개 소셜 플랫폼(Dev.to, Bluesky, Twitter, Reddit, Mastodon, HN, Stack Overflow, GitHub Discussions, Discourse)을
+          MCP 파이프라인으로 자동화하는 AI 소셜 에이전트.
+          devhub-social 어댑터 패턴으로 플랫폼 추상화, mcp-pipeline의 stores/requires 체인으로 Scout &rarr; Draft &rarr; Strike 3단계 파이프라인을 구성했다.
+        </p>
+        <ul class="pf-project-highlights">
+          <li>4개 &rarr; 9개 플랫폼 확장 &mdash; 어댑터 패턴으로 플랫폼당 추가 코드 최소화</li>
+          <li>stores/requires 체인으로 멀티스텝 파이프라인 자동 의존성 해결</li>
+          <li>캠페인 GTM + 스팸 방지 체계 &mdash; rate limiter, 콘텐츠 검증, 플랫폼별 정책 준수</li>
+        </ul>
+        <div class="pf-project-stack-row">
+          <span class="pf-stack-item">Python</span>
+          <span class="pf-stack-item">MCP</span>
+          <span class="pf-stack-item">TypeScript</span>
+          <span class="pf-stack-item">9 Platforms</span>
+          <span class="pf-stack-item">Pipeline</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="../search-engine/rust-search/rust-commerce-search-engine-build/" class="pf-project" data-spotlight>
       <div class="pf-project-content">
         <div class="pf-project-top">
           <span class="pf-tag pf-tag--search">Search</span>
@@ -249,7 +314,7 @@
       </div>
     </a>
 
-    <a href="../ai/agent/AI-Agent-%EA%B8%B0%EB%B0%98-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%9E%90%EB%8F%99%ED%99%94-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95%EA%B8%B0/" class="pf-project" data-spotlight>
+    <a href="../ai/agent/ai-agent-based-browser-automation-system-setup/" class="pf-project" data-spotlight>
       <div class="pf-project-content">
         <div class="pf-project-top">
           <span class="pf-tag pf-tag--ai">AI/ML</span>
@@ -277,7 +342,7 @@
       </div>
     </a>
 
-    <a href="../search-engine/NestJS%20%EA%B2%80%EC%83%89%20%EC%97%94%EC%A7%84/%EC%8B%9C%EB%A7%A8%ED%8B%B1-%EA%B2%80%EC%83%89%EA%B3%BC-%ED%82%A4%EC%9B%8C%EB%93%9C-%EA%B2%80%EC%83%89%EC%9D%98-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%A0%84%EB%9E%B5/" class="pf-project" data-spotlight>
+    <a href="../search-engine/nestjs-search/semantic-search-keyword-search-hybrid-strategy/" class="pf-project" data-spotlight>
       <div class="pf-project-content">
         <div class="pf-project-top">
           <span class="pf-tag pf-tag--search">Search</span>
@@ -306,7 +371,7 @@
       </div>
     </a>
 
-    <a href="../full-stack/desktop/Remote-WebView-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EB%A1%9C%EC%BB%AC-%EC%95%B1%EA%B3%BC-%EC%9B%90%EA%B2%A9-%EC%84%9C%EB%B2%84-%EC%97%B0%EB%8F%99/" class="pf-project" data-spotlight>
+    <a href="../full-stack/desktop/remote-webview-architecture-local-app-remote-server-integration/" class="pf-project" data-spotlight>
       <div class="pf-project-content">
         <div class="pf-project-top">
           <span class="pf-tag pf-tag--fullstack">Full Stack</span>
@@ -333,7 +398,7 @@
       </div>
     </a>
 
-    <a href="%EA%B2%80%EC%83%89/%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC%EB%AA%B0%20AI%20Search%20%EA%B5%AC%EC%B6%95%20%EC%82%AC%EB%A1%80/" class="pf-project" data-spotlight>
+    <a href="search/ai-search-setup-case/" class="pf-project" data-spotlight>
       <div class="pf-project-content">
         <div class="pf-project-top">
           <span class="pf-tag pf-tag--search">Search</span>
@@ -397,6 +462,8 @@
         <span class="pf-stack-chip">OpenSearch k-NN</span>
         <span class="pf-stack-chip">HuggingFace</span>
         <span class="pf-stack-chip">LangChain</span>
+        <span class="pf-stack-chip">LangGraph</span>
+        <span class="pf-stack-chip">MCP</span>
         <span class="pf-stack-chip">FAISS</span>
         <span class="pf-stack-chip">FastEmbed</span>
       </div>
@@ -411,6 +478,7 @@
         <span class="pf-stack-chip">Istio</span>
         <span class="pf-stack-chip">Jenkins</span>
         <span class="pf-stack-chip">ArgoCD</span>
+        <span class="pf-stack-chip">Caddy</span>
         <span class="pf-stack-chip">GitHub Actions</span>
         <span class="pf-stack-chip">GitLab CI</span>
       </div>
@@ -433,7 +501,11 @@
       <div class="pf-tl-card">
         <span class="pf-tl-year">2026</span>
         <ul class="pf-tl-list">
-          <li><a href="../ai/XGEN/XGEN-2.0-%EB%AA%A8%EB%8D%B8-%EC%84%9C%EB%B9%99-%ED%86%B5%ED%95%A9-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81/">XGEN 2.0 AI 에이전트 플랫폼 구축 (K8s/ArgoCD 인프라, 프론트엔드, 워크플로우)</a></li>
+          <li><a href="../ai/agent/graph-tool-call-llm-agent-graph-based-tool-search-engine/">graph-tool-call 오픈소스 개발 (1,068 Tool 그래프 검색, MCP Proxy, PyPI 배포)</a></li>
+          <li><a href="../ai/agent/gwanjong-mcp-ai-social-agent-mcp-system-design-impl/">gwanjong-mcp AI 소셜 에이전트 (9개 플랫폼, MCP Pipeline)</a></li>
+          <li><a href="../ai/agent/hive-corp-synaptic-memory-graph-tool-call-integration/">Hive Corp AI 자율운영 플랫폼에 synaptic-memory + graph-tool-call 통합</a></li>
+          <li><a href="../full-stack/poc/cashflow-prediction-timeseries-ml-ensemble-rolling-cv/">현금흐름 예측 시계열 ML 앙상블 시스템</a></li>
+          <li><a href="../ai/XGEN/xgen-2-0-model-serving-integration-architecture-refactoring/">XGEN 2.0 AI 에이전트 플랫폼 구축 (K8s/ArgoCD 인프라, 프론트엔드, 워크플로우)</a></li>
           <li><a href="../graph/">Knowledge Graph 시각화 시스템 개발</a></li>
         </ul>
       </div>
@@ -443,11 +515,11 @@
       <div class="pf-tl-card">
         <span class="pf-tl-year">2025</span>
         <ul class="pf-tl-list">
-          <li><a href="../full-stack/desktop/Remote-WebView-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EB%A1%9C%EC%BB%AC-%EC%95%B1%EA%B3%BC-%EC%9B%90%EA%B2%A9-%EC%84%9C%EB%B2%84-%EC%97%B0%EB%8F%99/">Tauri 2.0 크로스 플랫폼 데스크톱 앱 개발</a></li>
-          <li><a href="../search-engine/Rust%20%EA%B2%80%EC%83%89%20%EC%97%94%EC%A7%84/Rust%EB%A1%9C-%EC%BB%A4%EB%A8%B8%EC%8A%A4-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%84-%EC%B2%98%EC%9D%8C%EB%B6%80%ED%84%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0/">Rust 기반 커머스 검색 엔진 개발 (28ms, 2100 req/s)</a></li>
-          <li><a href="../ai/agent/AI-Agent-%EA%B8%B0%EB%B0%98-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%9E%90%EB%8F%99%ED%99%94-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EA%B5%AC%EC%B6%95%EA%B8%B0/">AI Agent 브라우저 자동화 시스템 구축</a></li>
+          <li><a href="../full-stack/desktop/remote-webview-architecture-local-app-remote-server-integration/">Tauri 2.0 크로스 플랫폼 데스크톱 앱 개발</a></li>
+          <li><a href="../search-engine/rust-search/rust-commerce-search-engine-build/">Rust 기반 커머스 검색 엔진 개발 (28ms, 2100 req/s)</a></li>
+          <li><a href="../ai/agent/ai-agent-based-browser-automation-system-setup/">AI Agent 브라우저 자동화 시스템 구축</a></li>
           <li>Moon/아이스크림몰 커머스 검색 서비스 운영</li>
-          <li><a href="../ai/XGEN/XGEN-1.0-GPU-%EB%AA%A8%EB%8D%B8-%EC%84%9C%EB%B9%99-%EA%B5%AC%ED%98%84%EA%B8%B0/">XGEN 1.0 인프라 구축 및 GPU 모델 서빙</a></li>
+          <li><a href="../ai/XGEN/xgen-1-0-gpu-model-serving-impl/">XGEN 1.0 인프라 구축 및 GPU 모델 서빙</a></li>
         </ul>
       </div>
     </div>
@@ -456,10 +528,10 @@
       <div class="pf-tl-card">
         <span class="pf-tl-year">2024</span>
         <ul class="pf-tl-list">
-          <li><a href="../search-engine/NestJS%20%EA%B2%80%EC%83%89%20%EC%97%94%EC%A7%84/%EC%8B%9C%EB%A7%A8%ED%8B%B1-%EA%B2%80%EC%83%89%EA%B3%BC-%ED%82%A4%EC%9B%8C%EB%93%9C-%EA%B2%80%EC%83%89%EC%9D%98-%ED%95%98%EC%9D%B4%EB%B8%8C%EB%A6%AC%EB%93%9C-%EC%A0%84%EB%9E%B5/">NestJS 하이브리드 검색 엔진 구축 (318 커밋, 14개월)</a></li>
-          <li><a href="../search-engine/%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89/%EB%B2%A1%ED%84%B0%20%EA%B8%B0%EB%B0%98%20%EC%8B%9C%EB%A7%A8%ED%8B%B1%20%EA%B2%80%EC%83%89%20%EA%B5%AC%ED%98%84%EA%B8%B0/">시맨틱 검색 API 설계 및 개발</a></li>
-          <li><a href="../search-engine/Qdrant/Capacity%20Planning/">Qdrant 벡터 DB 기반 시맨틱 검색 구축</a></li>
-          <li><a href="../search-engine/OpenSearch/Approximate%20k-NN/">오로라 커머스 검색 API 개발 (OpenSearch 멀티 인덱스)</a></li>
+          <li><a href="../search-engine/nestjs-search/semantic-search-keyword-search-hybrid-strategy/">NestJS 하이브리드 검색 엔진 구축 (318 커밋, 14개월)</a></li>
+          <li><a href="../search-engine/semantic-search/vector-semantic-search/">시맨틱 검색 API 설계 및 개발</a></li>
+          <li><a href="../search-engine/Qdrant/capacity-planning/">Qdrant 벡터 DB 기반 시맨틱 검색 구축</a></li>
+          <li><a href="../search-engine/OpenSearch/approximate-k-nn/">오로라 커머스 검색 API 개발 (OpenSearch 멀티 인덱스)</a></li>
           <li>수요예측 API 개발 / 페르소나 추천 시스템</li>
         </ul>
       </div>

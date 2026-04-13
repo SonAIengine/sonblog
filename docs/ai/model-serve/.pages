@@ -1,6 +1,7 @@
-title: LLM 서빙 비교
+title: 모델 서빙
 nav:
   - vllm-vs-lmdeploy-vs-sglang.md
   - sglang-vs-vllm.md
   - vastai-instance-api-guide.md
   - multiturn-vs-singleturn.md
+  - cohere-transcribe-stt-provider-korean-english-codeswitching-hf-token.md

@@ -9,6 +9,7 @@ nav:
   - redis-auth-config-k3s-distributed-env-management.md
   - lotteshopping-airgap-server-ssh-tunneling-access-compose.md
   - jenkins-jcasc-6-service-build-job-auto-generate.md
+  - jenkins-credentials-k8s-secret-jcasc-variable-reference-hardcoding-removal.md
   - jenkins-executor-optimization-concurrent-build-performance-tuning.md
   - istio-gateway-https-config-tls-certificate-management.md
   - lets-encrypt-cert-manager-k3s-https-automation.md

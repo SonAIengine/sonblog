@@ -28,4 +28,5 @@ nav:
   - xgen-2-0-embedding-server-batch-processing-optimization.md
   - xgen-2-0-workflow-access-io-system.md
   - xgen-auth-profile-system-ai-agent-login-site-auto-handle.md
+  - xgen-2-0-group-to-role-permission-migration-msa-refactor.md
   - code-assistant-dev-story.md

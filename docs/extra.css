@@ -4371,3 +4371,42 @@ a.pf-oss-badge:visited {
 [data-md-color-scheme="slate"] .posts-card-desc { color: #8a8f98; }
 [data-md-color-scheme="slate"] .posts-card-date { color: #6e7479; }
 
+/* ============================================
+   글 상세 — Linear article (좁은 중앙 컬럼)
+   home/portfolio/graph/posts 커스텀 페이지는 마커로 제외
+   ============================================ */
+.md-content__inner:not(:has(.home-cards)):not(:has(.pf-hero)):not(:has(.graph-page)):not(:has(.posts-page)) {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* 본문 타이포 살짝 키워 읽기 편하게 */
+.md-content__inner:not(:has(.home-cards)):not(:has(.pf-hero)):not(:has(.graph-page)):not(:has(.posts-page)) > .md-typeset {
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   Linear-style Light Theme — 라이트 톤 통일
+   (파일 말미 배치로 기존 규칙을 의도적으로 승리)
+   ============================================ */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #fcfcfd;       /* 순백 대신 미세한 톤다운 */
+}
+[data-md-color-scheme="default"] .md-main {
+  background-color: #fcfcfd;
+}
+/* 카드 보더 Linear 톤 통일 */
+[data-md-color-scheme="default"] .home-card,
+[data-md-color-scheme="default"] .recent-card,
+[data-md-color-scheme="default"] .featured-card,
+[data-md-color-scheme="default"] .pf-expertise-card,
+[data-md-color-scheme="default"] .pf-project,
+[data-md-color-scheme="default"] .pf-oss-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+/* 코드블록 얇은 보더 */
+[data-md-color-scheme="default"] .md-typeset pre > code,
+[data-md-color-scheme="default"] .highlight pre {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+

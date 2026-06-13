@@ -60,6 +60,16 @@ def parse_frontmatter(content: str) -> dict:
             desc = line[12:].strip().strip('"').strip("'")
             result["description"] = desc
             in_tags = False
+        elif line.startswith("featured:"):
+            val = line[9:].strip().strip('"').strip("'").lower()
+            result["featured"] = val in ("true", "yes", "1")
+            in_tags = False
+        elif line.startswith("featured_order:"):
+            try:
+                result["featured_order"] = int(line[15:].strip())
+            except ValueError:
+                pass
+            in_tags = False
         elif line.startswith("tags:"):
             in_tags = True
         elif in_tags and line.strip().startswith("- "):
@@ -214,7 +224,7 @@ def build_recent_posts_html(posts: list) -> str:
     return "\n".join(items)
 
 
-# Featured Posts: 수동 선정
+# Featured Posts fallback: featured:true 글이 하나도 없을 때만 사용
 FEATURED_SLUGS = [
     "ai/XGEN/xgen-2-0-model-serving-integration-architecture-refactoring.md",
     "ai/agent/graph-tool-call-llm-agent-graph-based-tool-search-engine.md",
@@ -222,9 +232,52 @@ FEATURED_SLUGS = [
 ]
 
 
-def collect_featured(docs_dir: str) -> list:
-    """FEATURED_SLUGS에 해당하는 글의 메타데이터를 반환한다."""
+def _featured_entry(docs_dir: str, fpath: str, meta: dict) -> dict:
+    return {
+        "title": meta["title"],
+        "date": meta.get("date", date.today()),
+        "url": get_url_path(docs_dir, fpath),
+        "category": get_category(docs_dir, fpath),
+        "description": meta.get("description", ""),
+        "tags": meta.get("tags", []),
+        "featured_order": meta.get("featured_order"),
+    }
+
+
+def collect_featured(docs_dir: str, limit: int = 6) -> list:
+    """frontmatter에 featured: true가 있는 글을 수집한다.
+    featured_order가 있으면 그 순서(오름차순)를 우선하고, 나머지는 date 내림차순.
+    featured 글이 하나도 없으면 FEATURED_SLUGS fallback."""
     featured = []
+    for root, dirs, files in os.walk(docs_dir):
+        dirs[:] = [d for d in dirs if not d.startswith(".") and d != "blog"]
+        for fname in files:
+            if fname in EXCLUDE_FILES or not fname.endswith(".md"):
+                continue
+            fpath = os.path.join(root, fname)
+            try:
+                with open(fpath, encoding="utf-8") as f:
+                    content = f.read()
+            except Exception:
+                continue
+            meta = parse_frontmatter(content)
+            if not meta.get("featured") or "title" not in meta:
+                continue
+            featured.append(_featured_entry(docs_dir, fpath, meta))
+
+    if featured:
+        ordered = sorted(
+            (p for p in featured if p["featured_order"] is not None),
+            key=lambda p: p["featured_order"],
+        )
+        dated = sorted(
+            (p for p in featured if p["featured_order"] is None),
+            key=lambda p: p["date"], reverse=True,
+        )
+        return (ordered + dated)[:limit]
+
+    # fallback: featured 지정 글이 없으면 기존 슬러그 목록 사용
+    fallback = []
     for slug in FEATURED_SLUGS:
         fpath = os.path.join(docs_dir, slug)
         if not os.path.exists(fpath):
@@ -237,15 +290,8 @@ def collect_featured(docs_dir: str) -> list:
         meta = parse_frontmatter(content)
         if "title" not in meta:
             continue
-        featured.append({
-            "title": meta["title"],
-            "date": meta.get("date", date.today()),
-            "url": get_url_path(docs_dir, fpath),
-            "category": get_category(docs_dir, fpath),
-            "description": meta.get("description", ""),
-            "tags": meta.get("tags", []),
-        })
-    return featured
+        fallback.append(_featured_entry(docs_dir, fpath, meta))
+    return fallback
 
 
 # MkDocs hook: on_env

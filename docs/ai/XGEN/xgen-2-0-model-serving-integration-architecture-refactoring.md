@@ -2,6 +2,8 @@
 title: "vLLM에서 llama.cpp로: LLM 서빙 아키텍처 통합 마이그레이션"
 description: "vLLM Ray Serve 분산 구조에서 통합 모델 서빙 서비스로 마이그레이션한 과정. 백엔드 스위칭 매니저 설계, llama.cpp와 vLLM 런타임 전환까지."
 date: 2026-01-22
+featured: true
+featured_order: 1
 series: "XGEN 개발기"
 series_order: 4
 difficulty: advanced

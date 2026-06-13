@@ -7,7 +7,7 @@ tags:
   - 검색엔진
   - 벡터검색
   - GPU
-  - Faiss
+  - FAISS
   - HNSW
 ---
 

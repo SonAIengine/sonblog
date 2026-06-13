@@ -9,8 +9,8 @@ tags:
   - ROCm
   - llama.cpp
   - GGUF
-  - xgen
-  - 모델 서빙
+  - XGEN
+  - 모델서빙
 ---
 
 # AMD GPU에서 LLM 돌리기: Vulkan vs ROCm 비교

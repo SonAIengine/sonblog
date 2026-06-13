@@ -5,7 +5,7 @@ date: 2026-02-18
 tags:
   - NestJS
   - OpenSearch
-  - KNN
+  - k-NN
   - 이미지검색
   - 벡터검색
   - TypeScript

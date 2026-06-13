@@ -7,7 +7,7 @@ tags:
   - 모델 다운로드
   - FastAPI
   - Tauri
-  - xgen
+  - XGEN
   - 모델 관리
 ---
 

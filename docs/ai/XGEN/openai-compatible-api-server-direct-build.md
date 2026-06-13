@@ -9,7 +9,7 @@ tags:
   - 프록시
   - llama.cpp
   - vLLM
-  - xgen
+  - XGEN
   - API 서버
 ---
 

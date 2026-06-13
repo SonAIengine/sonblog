@@ -7,7 +7,7 @@ tags:
   - 비동기
   - asyncio
   - Batch Processing
-  - 성능 비교
+  - 성능비교
 ---
 
 ## 순차 처리

@@ -2,6 +2,8 @@
 title: "graph-tool-call: LLM Agent를 위한 그래프 기반 도구 검색 엔진"
 description: "1,077개 API endpoint를 가진 커머스 플랫폼에서 LLM Agent가 적절한 도구를 찾는 문제를 해결하기 위해 그래프 기반 도구 검색 엔진을 설계하고 구현한 과정을 정리한다. OpenAPI 스펙 자동 수집, 관계 그래프 구축, BM25+그래프확장+임베딩 하이브리드 검색, MCP Annotation-Aware Retrieval까지 8일간의 개발 여정을 다룬다."
 date: 2026-03-08
+featured: true
+featured_order: 2
 tags:
   - LLM Agent
   - Tool Retrieval
@@ -9,7 +11,7 @@ tags:
   - MCP
   - 그래프 검색
   - BM25
-  - Cross-encoder
+  - Cross-Encoder
   - Python
   - graph-tool-call
 ---

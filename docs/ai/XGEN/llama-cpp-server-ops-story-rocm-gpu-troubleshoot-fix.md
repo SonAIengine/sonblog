@@ -8,7 +8,7 @@ tags:
   - GPU
   - AMD
   - XGEN
-  - 모델 서빙
+  - 모델서빙
   - 트러블슈팅
   - LLM
 related:

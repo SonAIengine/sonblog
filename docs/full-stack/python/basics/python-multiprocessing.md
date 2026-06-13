@@ -7,7 +7,7 @@ tags:
   - multiprocessing
   - 병렬처리
   - GIL
-  - 성능 최적화
+  - 성능최적화
 ---
 
 # 파이썬 multiprocessing - 병렬 처리로 성능 향상하기

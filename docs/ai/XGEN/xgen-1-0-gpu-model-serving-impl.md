@@ -906,5 +906,5 @@ XGEN 1.0의 모델 서빙 구축을 통해 LLM 운영의 실체를 깊이 이해
 
 **관련 글**
 
-- [XGEN 1.0 프론트엔드 모델 관리 UI 구현](../../portfolio/AI%20서비스/XGEN-1.0-프론트엔드-모델-관리-UI-구현.md): 이 글에서 다룬 모델 서빙을 프론트엔드에서 관리하는 UI 개발기
+- [XGEN 1.0 프론트엔드 모델 관리 UI 구현](../../portfolio/ai-service/xgen-1-0-frontend-model-management-ui-impl.md): 이 글에서 다룬 모델 서빙을 프론트엔드에서 관리하는 UI 개발기
 - [Admin 모델 서빙 매니저: GPU 현황과 모델 배포 UI](../../full-stack/frontend/admin-model-serving-manager-gpu-status-model-deploy-ui.md): XGEN 2.0에서 다중 백엔드(vLLM/llamacpp/sglang) 지원, GPU 자동 감지, HuggingFace 검색까지 통합한 모델 관리 UI

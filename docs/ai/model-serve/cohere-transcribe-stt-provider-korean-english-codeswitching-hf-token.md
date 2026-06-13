@@ -6,7 +6,7 @@ tags:
   - STT
   - Cohere
   - faster-whisper
-  - Hugging Face
+  - HuggingFace
   - sonlife
   - Korean
   - 음성인식

@@ -103,5 +103,5 @@ tags:
 
 **관련 글**
 
-- [가상 피팅이란](가상%20피팅이란.md): 상품 이미지에서 의류 객체를 추출하고 사용자 사진에 가상 피팅을 적용하는 AI 기술
+- [가상 피팅이란](virtual-fitting-intro.md): 상품 이미지에서 의류 객체를 추출하고 사용자 사진에 가상 피팅을 적용하는 AI 기술
 - [XGEN 1.0 프론트엔드 모델 관리 UI 구현](xgen-1-0-frontend-model-management-ui-impl.md): AI 모델 서빙 관리를 위한 프론트엔드 UI 개발기

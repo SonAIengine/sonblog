@@ -9,8 +9,8 @@ tags:
   - llama.cpp
   - vLLM
   - 레이어 오프로딩
-  - xgen
-  - 모델 서빙
+  - XGEN
+  - 모델서빙
 ---
 
 # 멀티 GPU LLM 배포: GPU 선택 및 레이어 오프로딩 전략

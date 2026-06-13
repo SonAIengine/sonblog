@@ -6,11 +6,11 @@ tags:
   - LLM
   - vLLM
   - llama.cpp
-  - 백엔드 스위칭
+  - 백엔드스위칭
   - FastAPI
   - 아키텍처
-  - xgen
-  - 모델 서빙
+  - XGEN
+  - 모델서빙
 related:
   - ai/XGEN/xgen-2-0-model-serving-integration-architecture-refactoring.md
   - ai/XGEN/llama-cpp-server-ops-story-rocm-gpu-troubleshoot-fix.md

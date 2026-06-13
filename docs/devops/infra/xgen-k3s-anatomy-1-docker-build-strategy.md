@@ -8,7 +8,7 @@ tags:
   - Docker
   - Dockerfile
   - Docker Compose
-  - multi-stage build
+  - Multi-Stage Build
   - BuildKit
   - XGEN
   - DevOps

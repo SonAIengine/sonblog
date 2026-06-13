@@ -7,7 +7,7 @@ tags:
   - Sparse Embedding
   - RAG
   - 임베딩
-  - xgen
+  - XGEN
 ---
 
 # Late Chunking과 Sparse Embedding: 차세대 검색 파이프라인

@@ -4,7 +4,7 @@ description: "amdsmi → pynvml → torch.hip → torch.cuda 순서의 Fallback 
 date: 2026-01-31
 tags:
   - GPU
-  - 모델 서빙
+  - 모델서빙
   - 모니터링
   - AMD
   - NVIDIA

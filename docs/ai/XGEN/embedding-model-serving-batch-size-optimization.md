@@ -7,8 +7,8 @@ tags:
   - LLM
   - batch size
   - llama.cpp
-  - xgen
-  - 모델 서빙
+  - XGEN
+  - 모델서빙
 ---
 
 # Embedding 모델 서빙: batch size 최적화로 긴 문서 처리

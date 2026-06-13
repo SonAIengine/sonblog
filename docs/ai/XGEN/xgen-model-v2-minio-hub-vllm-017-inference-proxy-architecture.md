@@ -9,7 +9,7 @@ tags:
   - GPU
   - FastAPI
   - Python
-  - 모델 서빙
+  - 모델서빙
   - 아키텍처
 ---
 

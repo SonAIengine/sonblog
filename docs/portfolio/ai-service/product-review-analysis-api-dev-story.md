@@ -12,8 +12,8 @@ tags:
   - Python
   - Elasticsearch
   - 형태소분석
-  - 한국어NLP
-  - nori
+  - 한국어 NLP
+  - Nori
   - FastAPI
   - 텍스트분석
 related:

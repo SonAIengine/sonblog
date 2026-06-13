@@ -6,7 +6,7 @@ tags:
   - Qdrant
   - Sparse Vector
   - BM25
-  - 하이브리드 검색
+  - 하이브리드검색
   - RAG
   - Python
 ---

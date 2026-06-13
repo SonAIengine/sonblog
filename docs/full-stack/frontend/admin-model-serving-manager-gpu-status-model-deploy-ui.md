@@ -423,5 +423,5 @@ AdminModelServingManager.tsx가 2900줄에 달한다. 이상적으로는 더 작
 
 **관련 글**
 
-- [XGEN 1.0 프론트엔드 모델 관리 UI 구현](../../portfolio/AI%20서비스/XGEN-1.0-프론트엔드-모델-관리-UI-구현.md): XGEN 1.0에서의 모델 관리 UI — 이 글의 전신에 해당하는 초기 버전
+- [XGEN 1.0 프론트엔드 모델 관리 UI 구현](../../portfolio/ai-service/xgen-1-0-frontend-model-management-ui-impl.md): XGEN 1.0에서의 모델 관리 UI — 이 글의 전신에 해당하는 초기 버전
 - [XGEN 1.0 GPU 모델 서빙 구현기](../../ai/XGEN/xgen-1-0-gpu-model-serving-impl.md): vLLM + llama.cpp 기반 GPU 모델 서빙 백엔드의 구현 과정

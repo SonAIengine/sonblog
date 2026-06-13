@@ -8,7 +8,7 @@ tags:
   - ML Commons
   - 임베딩
   - 메모리최적화
-  - Hugging Face
+  - HuggingFace
 ---
 
  Hugging Face embedding 모델을 OpenSearch에 배포(deploy)한 후 메모리가 급격히 차오르거나 꽉 차는 현상은 다음과 같은 이유에서 발생할 수 있다. 

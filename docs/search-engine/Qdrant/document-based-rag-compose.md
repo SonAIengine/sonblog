@@ -189,7 +189,7 @@ if __name__ == "__main__":
 
 **관련 글**
 
-- [LangChain과 Qdrant 통합 — Dense, Sparse, Hybrid 검색 구현](LangChain과%20Qdrant.md): LangChain의 `QdrantVectorStore`를 사용한 다양한 검색 모드 설정과 메타데이터 필터링
-- [Qdrant LangChain — Retriever와 VectorStore 활용법](Qdrant%20LangChain.md): Retriever 변환, 커스텀 payload 키 설정, 기존 컬렉션 연결 등 심화 활용법
+- [LangChain과 Qdrant 통합 — Dense, Sparse, Hybrid 검색 구현](langchain-qdrant.md): LangChain의 `QdrantVectorStore`를 사용한 다양한 검색 모드 설정과 메타데이터 필터링
+- [Qdrant LangChain — Retriever와 VectorStore 활용법](qdrant-langchain.md): Retriever 변환, 커스텀 payload 키 설정, 기존 컬렉션 연결 등 심화 활용법
 
 

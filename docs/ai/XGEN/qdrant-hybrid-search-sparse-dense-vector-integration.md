@@ -4,12 +4,12 @@ description: "xgen-retrieval에서 Qdrant의 Prefetch+Fusion API로 BM25 Sparse 
 date: 2025-12-29
 tags:
   - Qdrant
-  - 하이브리드 검색
+  - 하이브리드검색
   - Sparse Vector
   - BM25
   - RAG
-  - xgen
-  - 벡터 검색
+  - XGEN
+  - 벡터검색
 related:
   - search-engine/semantic-search/vector-semantic-search.md
   - ai/XGEN/rag-service-token-management-context-window-optimization.md

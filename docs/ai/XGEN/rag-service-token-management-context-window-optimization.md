@@ -7,7 +7,7 @@ tags:
   - 토큰 관리
   - LLM
   - 컨텍스트 윈도우
-  - xgen
+  - XGEN
 related:
   - ai/XGEN/qdrant-hybrid-search-sparse-dense-vector-integration.md
   - ai/XGEN/xgen-2-0-embedding-server-batch-processing-optimization.md

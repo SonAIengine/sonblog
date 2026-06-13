@@ -6,7 +6,7 @@ tags:
   - Jenkins
   - DevOps
   - CI/CD
-  - 성능 최적화
+  - 성능최적화
   - K3s
   - 동시 빌드
   - 파이프라인

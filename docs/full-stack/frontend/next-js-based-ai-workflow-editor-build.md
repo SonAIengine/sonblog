@@ -802,5 +802,5 @@ const handleKeyDown = useCallback((e: KeyboardEvent) => {
 **관련 글**
 
 - [커스텀 노드 에디터: 드래그 앤 드롭과 엣지 스냅핑 구현](custom-node-editor-drag-drop-edge-snapping-impl.md): 노드 드래그 앤 드롭, 엣지 자동 연결(스냅핑), 포트 타입 호환성 체크의 상세 구현
-- [비주얼 워크플로우 에디터: 노드 기반 AI 파이프라인 설계](../backend/비주얼-워크플로우-에디터-노드-기반-AI-파이프라인-설계.md): React + SVG 기반 캔버스 에디터의 4개월간 개발 과정 — Undo/Redo, 셀렉션 박스, 예측 노드 자동 생성
+- [비주얼 워크플로우 에디터: 노드 기반 AI 파이프라인 설계](../backend/visual-workflow-editor-node-based-ai-pipeline-design.md): React + SVG 기반 캔버스 에디터의 4개월간 개발 과정 — Undo/Redo, 셀렉션 박스, 예측 노드 자동 생성
 - [React에서 Undo/Redo 구현: 워크플로우 에디터 히스토리 관리](react-undo-redo-impl-workflow-editor-history-management.md): 워크플로우 에디터에 Command 패턴 기반 히스토리를 추가한 과정

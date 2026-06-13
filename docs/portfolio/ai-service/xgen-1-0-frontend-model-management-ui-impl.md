@@ -8,7 +8,7 @@ difficulty: intermediate
 tags:
   - React
   - 프론트엔드
-  - 모델관리
+  - 모델 관리
   - XGEN
   - Next.js
   - TypeScript

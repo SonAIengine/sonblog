@@ -10,9 +10,9 @@ tags:
   - LLMOps
   - 인프라
   - CI/CD
-  - docker-compose
+  - Docker Compose
   - 컨테이너
-  - 검색API
+  - 검색 API
   - 마이크로서비스
   - DevOps
   - 배포

@@ -6,7 +6,7 @@ tags:
   - Qdrant
   - 벡터검색
   - 검색엔진
-  - Hugging Face
+  - HuggingFace
   - 데이터셋
   - 임베딩
 ---

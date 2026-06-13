@@ -8,7 +8,7 @@ tags:
   - Claude API
   - Node.js
   - 자동화
-  - 데이터 파이프라인
+  - 데이터파이프라인
   - 웹 스크래핑
   - Docsify
 ---

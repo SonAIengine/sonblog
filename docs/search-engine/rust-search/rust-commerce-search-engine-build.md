@@ -2,6 +2,8 @@
 title: "Rust로 커머스 검색 엔진을 처음부터 만들기"
 description: "NestJS 기반 검색 서비스의 한계를 넘어, Rust로 이커머스 검색 엔진을 처음부터 설계하고 구현한 과정을 다룬다."
 date: 2025-03-25
+featured: true
+featured_order: 3
 series: "Rust 커머스 검색 엔진"
 series_order: 1
 difficulty: intermediate
@@ -15,7 +17,6 @@ tags:
   - NestJS
   - 이커머스
   - 성능최적화
-  - 이커머스
   - 백엔드
 related:
   - search-engine/rust-search/axum-opensearch-rust-search-api-architecture-design.md

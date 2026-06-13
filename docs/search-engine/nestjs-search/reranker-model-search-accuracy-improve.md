@@ -4,14 +4,13 @@ description: "이커머스 검색에서 OpenSearch 결과를 Cross-Encoder Reran
 date: 2026-02-18
 tags:
   - Reranker
-  - CrossEncoder
+  - Cross-Encoder
   - NestJS
   - Redis
   - 검색품질
   - OpenSearch
   - Python
   - 이커머스
-  - 검색 품질
   - 랭킹
 ---
 

@@ -477,5 +477,5 @@ Pan과 Zoom이 적용된 캔버스에서 노드 드래그 좌표가 어긋나는
 
 **관련 글**
 
-- [커스텀 노드 에디터: 드래그 앤 드롭과 엣지 스냅핑 구현](../frontend/커스텀-노드-에디터-드래그-앤-드롭과-엣지-스냅핑-구현.md): 노드 드래그, 엣지 스냅핑, 포트 타입 호환성 체크의 상세 구현
-- [Next.js 기반 AI 워크플로우 에디터 만들기](../frontend/Next.js-기반-AI-워크플로우-에디터-만들기.md): 무한 캔버스, 노드/엣지 렌더링, forwardRef 패턴 등 에디터의 기반 아키텍처
+- [커스텀 노드 에디터: 드래그 앤 드롭과 엣지 스냅핑 구현](../frontend/custom-node-editor-drag-drop-edge-snapping-impl.md): 노드 드래그, 엣지 스냅핑, 포트 타입 호환성 체크의 상세 구현
+- [Next.js 기반 AI 워크플로우 에디터 만들기](../frontend/next-js-based-ai-workflow-editor-build.md): 무한 캔버스, 노드/엣지 렌더링, forwardRef 패턴 등 에디터의 기반 아키텍처

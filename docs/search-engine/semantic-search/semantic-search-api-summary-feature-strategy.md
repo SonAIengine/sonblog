@@ -9,7 +9,7 @@ tags:
   - FAISS
   - FastAPI
   - uvicorn
-  - 검색API
+  - 검색 API
 ---
 
 # 시맨틱 검색 API: 요약(Summary) 기능 온/오프 전략
@@ -128,7 +128,7 @@ def generate_product_summary_x(decoded_text):
 # 날짜: 2024-11-18 17:28
 ```
 
-LLM 호출 자체를 없애고, 사전 구축된 FAISS 벡터 인덱스에서 유사 키워드를 찾는 방식이다. 이 전략의 상세 구현은 [FAISS 벡터 인덱스 적용과 GPU 디바이스 최적화](../시맨틱 검색/FAISS-벡터-인덱스-적용과-GPU-디바이스-최적화.md) 글에서 다루었다.
+LLM 호출 자체를 없애고, 사전 구축된 FAISS 벡터 인덱스에서 유사 키워드를 찾는 방식이다. 이 전략의 상세 구현은 [FAISS 벡터 인덱스 적용과 GPU 디바이스 최적화](faiss-vector-index-apply-gpu-device-optimization.md) 글에서 다루었다.
 
 ```python
 def generate_product_summary_faiss(decoded_text):

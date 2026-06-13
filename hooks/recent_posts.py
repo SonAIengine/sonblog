@@ -122,8 +122,9 @@ def get_category(docs_dir: str, file_path: str) -> str:
     return "Uncategorized"
 
 
-def collect_posts(docs_dir: str, limit: int = 8) -> list:
-    """docs/ 디렉토리를 재귀 스캔하여 date 기준 최신 글을 반환한다."""
+def collect_posts(docs_dir: str, limit=8) -> list:
+    """docs/ 디렉토리를 재귀 스캔하여 date 기준 최신 글을 반환한다.
+    limit=None이면 전체 글을 반환한다 (/posts 목록 페이지용)."""
     posts = []
 
     for root, dirs, files in os.walk(docs_dir):
@@ -151,6 +152,11 @@ def collect_posts(docs_dir: str, limit: int = 8) -> list:
             post_date = meta["date"]
             url = get_url_path(docs_dir, fpath)
             category = get_category(docs_dir, fpath)
+            # 썸네일용 social card 경로 — main.html og:image와 동일 규칙(미인코딩 .md→.png)
+            social = re.sub(
+                r"\.md$", ".png",
+                os.path.relpath(fpath, docs_dir).replace("\\", "/"),
+            )
 
             tags = meta.get("tags", [])
             description = meta.get("description", "")
@@ -164,11 +170,12 @@ def collect_posts(docs_dir: str, limit: int = 8) -> list:
                 "tags": tags,
                 "description": description,
                 "reading_time": reading_time,
+                "social": social,
             })
 
-    # date 내림차순 정렬 후 limit개 반환
+    # date 내림차순 정렬 후 limit개 반환 (limit=None이면 전체)
     posts.sort(key=lambda p: p["date"], reverse=True)
-    return posts[:limit]
+    return posts if limit is None else posts[:limit]
 
 
 # 카테고리 폴더 → 카드 키 매핑
@@ -296,7 +303,7 @@ def collect_featured(docs_dir: str, limit: int = 6) -> list:
 
 # MkDocs hook: on_env
 def on_env(env, config, files, **kwargs):
-    """Jinja2 환경에 recent_posts, featured_posts, post_counts 전역 변수를 주입한다."""
+    """Jinja2 환경에 recent_posts, featured_posts, post_counts, all_posts 전역 변수를 주입한다."""
     docs_dir = config["docs_dir"]
     posts = collect_posts(docs_dir, limit=6)
     featured = collect_featured(docs_dir)
@@ -304,4 +311,5 @@ def on_env(env, config, files, **kwargs):
     env.globals["recent_posts"] = posts
     env.globals["featured_posts"] = featured
     env.globals["post_counts"] = counts
+    env.globals["all_posts"] = collect_posts(docs_dir, limit=None)
     return env

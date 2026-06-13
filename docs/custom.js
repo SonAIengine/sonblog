@@ -254,3 +254,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 })();
+
+// ── /posts 카테고리 필터 ──
+(function () {
+  function slug(s) {
+    return (s || "").toLowerCase().replace(/\s+/g, "-");
+  }
+
+  function initPostsFilter() {
+    var filters = document.querySelector("[data-posts-filters]");
+    var grid = document.querySelector("[data-posts-grid]");
+    if (!filters || !grid) return;
+    if (filters._bound) return;       // instant-nav: 요소 교체 시에만 재바인딩
+    filters._bound = true;
+
+    var empty = document.querySelector("[data-posts-empty]");
+
+    // 이벤트 위임 — 컨테이너 하나에만 리스너
+    filters.addEventListener("click", function (e) {
+      var tab = e.target.closest(".posts-filter-tab");
+      if (!tab) return;
+      var f = tab.getAttribute("data-filter");
+
+      filters.querySelectorAll(".posts-filter-tab").forEach(function (t) {
+        t.classList.toggle("is-active", t === tab);
+      });
+
+      var shown = 0;
+      grid.querySelectorAll(".posts-card").forEach(function (card) {
+        var match = f === "all" || slug(card.getAttribute("data-category")) === f;
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      if (empty) empty.hidden = shown > 0;
+    });
+  }
+
+  if (window.document$ && window.document$.subscribe) {
+    window.document$.subscribe(initPostsFilter);
+  } else if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPostsFilter);
+  } else {
+    initPostsFilter();
+  }
+})();

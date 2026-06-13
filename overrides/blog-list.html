@@ -1,0 +1,56 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+<section class="posts-page">
+  <header class="posts-header">
+    <h1 class="posts-title">All Posts</h1>
+    <p class="posts-subtitle">{{ all_posts | length }} articles · AI · Search Engine · DevOps · Full Stack</p>
+  </header>
+
+  <!-- 카테고리 필터 탭 -->
+  <nav class="posts-filters" data-posts-filters>
+    <button class="posts-filter-tab is-active" data-filter="all">
+      All <span class="posts-filter-count">{{ all_posts | length }}</span>
+    </button>
+    <button class="posts-filter-tab" data-filter="ai">
+      AI <span class="posts-filter-count">{{ post_counts.ai }}</span>
+    </button>
+    <button class="posts-filter-tab" data-filter="search-engine">
+      Search Engine <span class="posts-filter-count">{{ post_counts.search_engine }}</span>
+    </button>
+    <button class="posts-filter-tab" data-filter="devops">
+      DevOps <span class="posts-filter-count">{{ post_counts.devops }}</span>
+    </button>
+    <button class="posts-filter-tab" data-filter="full-stack">
+      Full Stack <span class="posts-filter-count">{{ post_counts.full_stack }}</span>
+    </button>
+  </nav>
+
+  <!-- 카드 그리드 -->
+  <div class="posts-grid" data-posts-grid>
+    {% for post in all_posts %}
+    <a class="posts-card" href="{{ base_url }}/{{ post.url }}" data-category="{{ post.category }}">
+      <div class="posts-card-thumb">
+        <img src="{{ base_url }}/assets/images/social/{{ post.social }}"
+             onerror="this.closest('.posts-card').classList.add('no-thumb'); this.remove();"
+             loading="lazy" alt="">
+      </div>
+      <div class="posts-card-body">
+        <div class="posts-card-meta">
+          <span class="posts-card-cat">{{ post.category }}</span>
+          <span class="posts-card-date">{{ post.date.strftime('%Y.%m.%d') }}</span>
+        </div>
+        <h3 class="posts-card-title">{{ post.title }}</h3>
+        <p class="posts-card-desc">{{ post.description[:110] }}{% if post.description | length > 110 %}…{% endif %}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <p class="posts-empty" data-posts-empty hidden>해당 카테고리의 글이 없습니다.</p>
+</section>
+{% endblock %}

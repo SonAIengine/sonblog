@@ -215,6 +215,27 @@
     });
   });
 
+  // ── 제목 복합어 bigram ──
+  // 한글 복합어(붙여쓴 3글자+ 토큰)를 2-gram으로 분해해 부분 검색을 가능하게 한다.
+  // 예: "검색엔진" → "검색", "색엔", "엔진" → 짧은 쿼리 "엔진"으로도 매칭.
+  // 노이즈 폭증을 막기 위해 본문이 아닌 제목에만 적용한다.
+  var KO_RE = /[가-힯]/;
+  function titleBigrams(title) {
+    if (!title) return [];
+    var out = [];
+    var tokens = title.toLowerCase().split(/[\s\-\.\/\\_,;:!?\(\)\[\]{}'"—–·]+/);
+    for (var i = 0; i < tokens.length; i++) {
+      var t = tokens[i];
+      if (t.length >= 3 && KO_RE.test(t)) {
+        for (var k = 0; k < t.length - 1; k++) {
+          var g = t.slice(k, k + 2);
+          if (out.indexOf(g) === -1) out.push(g);
+        }
+      }
+    }
+    return out;
+  }
+
   // ── 인덱스 enrichment ──
   function buildEnrichedText(title, text) {
     var combined = ((title || "") + " " + (text || "")).trim();
@@ -245,9 +266,13 @@
       }
     }
 
+    // 3) 제목 복합어 bigram (부분 검색용)
+    var titleBg = titleBigrams(title);
+
     var parts = [combined];
     if (stemExtras.length) parts.push(stemExtras.join(" "));
     if (synExtras.length) parts.push(synExtras.join(" "));
+    if (titleBg.length) parts.push(titleBg.join(" "));
     return parts.join(" ");
   }
 
@@ -311,15 +336,24 @@
     }
   })();
 
+  // 순수 한글(+공백) 쿼리만 판별 — 영문/숫자가 섞이면 false
+  function isKoreanOnly(query) {
+    return /[가-힯]/.test(query) && !/[a-z0-9]/i.test(query);
+  }
+
   function performSearch(query) {
     if (!ready || !db || !query.trim()) return null;
     var t0 = performance.now();
+    // 한글 전용 쿼리는 tolerance 0 — 한글은 1글자 차이가 의미를 완전히 바꾸므로
+    // 편집거리 매칭이 "추론→크론/결론" 같은 오매칭을 유발한다.
+    // 영문 쿼리는 tolerance 1을 유지해 오타 교정(kubernates→kubernetes)을 살린다.
+    var tol = isKoreanOnly(query) ? 0 : 1;
     var result = orama.search(db, {
       term: processQuery(query),
       properties: ["title", "enriched"],
       limit: 30,
       boost: { title: 5, enriched: 1 },
-      tolerance: 1,
+      tolerance: tol,
     });
     result._elapsed = Math.round(performance.now() - t0);
     return result;

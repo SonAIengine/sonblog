@@ -2773,6 +2773,22 @@ a.pf-hero-btn--primary:visited {
   color: #e0e7ff !important;
 }
 
+/* 언어 토글(KR ⇄ EN) — 점선 테두리로 다른 동작임을 구분 */
+a.pf-hero-btn--lang,
+a.pf-hero-btn--lang:link,
+a.pf-hero-btn--lang:visited {
+  background: transparent !important;
+  border-style: dashed !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  color: #a5b4fc !important;
+  letter-spacing: 0.02em;
+}
+
+a.pf-hero-btn--lang:hover {
+  background: rgba(99, 102, 241, 0.12) !important;
+  border-style: solid !important;
+}
+
 /* ── Section Common ── */
 .pf-section {
   max-width: 1280px;

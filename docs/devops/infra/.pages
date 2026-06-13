@@ -34,6 +34,7 @@ nav:
   - xgen-multi-site-deploy-automation-codebase-n-client-site-ops.md
   - reusable-gha-helm-k3s-generic-deploy-platform-setup.md
   - xgen-workbench-kvm-gpu-distributed-dispatch-infra.md
+  - trial-zone-provisioner-self-service-multitenant-compose-edge-tls.md
   - dns-domain-ssl-certificate-nameserver-conflict-lets-encrypt-issuance-failure-story.md
   - docker-nginx-https-adoption-snap-docker-replacement-lets-encrypt-auto-renewal.md
   - technitium-dns-homeserver-dns-setup-ops-story.md

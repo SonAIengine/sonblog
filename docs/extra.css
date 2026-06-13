@@ -1,11 +1,13 @@
 /* === Font Import === */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap');
 
 /* === Base Typography === */
 :root {
   --md-text-font: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --md-code-font: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --md-code-font: "Geist Mono", "SFMono-Regular", "JetBrains Mono", Consolas, monospace;
+  /* 메타/라벨/숫자용 모노 — Linear 스타일 악센트 */
+  --mono-accent: "Geist Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 body {
@@ -2640,7 +2642,7 @@ a.recent-card:visited {
   color: #818cf8;
   font-size: 0.85rem;
   font-weight: 500;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin: 0 0 0.8rem 0;
@@ -2660,7 +2662,7 @@ a.recent-card:visited {
 .pf-hero-keywords {
   color: rgba(148, 163, 184, 0.7);
   font-size: 0.9rem;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   margin: 0 0 2rem 0;
 }
 
@@ -2682,7 +2684,7 @@ a.recent-card:visited {
   color: #e2e8f0;
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
 }
 
 .pf-hero-stat-label {
@@ -2696,7 +2698,7 @@ a.recent-card:visited {
   margin: 0 0 1.2rem 0;
   color: rgba(148, 163, 184, 0.7);
   font-size: 0.78rem;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   text-align: center;
 }
 
@@ -2804,7 +2806,7 @@ a.pf-hero-btn--lang:hover {
 }
 
 .pf-section-num {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   font-size: 0.85rem;
   font-weight: 600;
   color: #6366f1;
@@ -2855,7 +2857,7 @@ a.pf-hero-btn--lang:hover {
   min-width: 85px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
 }
 
 .pf-chip {
@@ -2947,7 +2949,7 @@ a.pf-hero-btn--lang:hover {
   font-size: 0.68rem;
   color: #6366f1;
   font-weight: 600;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   margin-bottom: 0.6rem;
 }
 
@@ -3067,7 +3069,7 @@ a.pf-hero-btn--lang:hover {
   color: #6366f1;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
 }
 
 .pf-project h3 {
@@ -3118,7 +3120,7 @@ a.pf-hero-btn--lang:hover {
   font-size: 0.68rem;
   color: #6366f1;
   font-weight: 600;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
 }
 
 .md-typeset .pf-project-highlights,
@@ -3171,7 +3173,7 @@ a.pf-hero-btn--lang:hover {
 .pf-stack-item {
   font-size: 0.68rem;
   color: #94a3b8;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   padding: 0.15rem 0.5rem;
   background: rgba(148, 163, 184, 0.08);
   border: 1px solid rgba(148, 163, 184, 0.12);
@@ -3203,7 +3205,7 @@ a.pf-hero-btn--lang:hover {
   color: #94a3b8;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   margin: 0 0 0.3rem 0;
   padding: 0 0 0.4rem 0;
   border: none;
@@ -3298,7 +3300,7 @@ a.pf-hero-btn--lang:hover {
   font-size: 1.1rem;
   font-weight: 800;
   color: #6366f1;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   display: block;
   margin-bottom: 0.6rem;
 }
@@ -3352,7 +3354,7 @@ a.pf-hero-btn--lang:hover {
 .pf-footer-stats {
   color: #94a3b8;
   font-size: 0.78rem;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   margin-bottom: 1rem;
 }
 
@@ -3504,7 +3506,7 @@ a.pf-oss-badge:visited {
   font-size: 1.8rem;
   font-weight: 700;
   color: #6366f1;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: var(--md-code-font);
   line-height: 1.2;
   margin-bottom: 0.3rem;
 }
@@ -4072,5 +4074,41 @@ a.pf-oss-badge:visited {
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.55);
   margin-top: 0.5rem;
+}
+
+/* ============================================
+   Linear-style Mono Accents (Geist Mono)
+   메타·라벨·숫자에 모노 악센트 — 개발자 도구 룩
+   ============================================ */
+
+/* 메타/라벨 — 모노 + 약한 자간 */
+.pf-hero-stat-label,
+.pf-section-num,
+.home-card-count,
+.recent-category,
+.recent-date,
+.md-search-result__meta {
+  font-family: var(--mono-accent);
+  letter-spacing: 0.03em;
+}
+
+/* 영문 라벨 — 대문자 트리트먼트 (Linear 시그니처) */
+.pf-hero-keywords,
+.pf-project-label,
+.pf-card-count,
+.pf-project-posts,
+.pf-stack-label {
+  font-family: var(--mono-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* 숫자 — 모노 + tabular, 큰 숫자는 타이트하게 */
+.pf-hero-stat-num,
+.pf-number-value,
+.pf-tl-year {
+  font-family: var(--mono-accent);
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.02em;
 }
 
